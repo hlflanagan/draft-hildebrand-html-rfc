@@ -1,0 +1,114 @@
+- var slug = require('slug')
+- function slg(txt) { return (txt==null) ? null : slug(txt).toLowerCase(); }
+- var v3 = require('./v3')
+- var irefs={}
+
+mixin elem(e)
+  - var a = $att(e)
+  - delete a.figureNumber
+  - delete a.partNumber
+  - delete a.sectionNumber
+  - delete a.tableNumber
+  - a.id = a.anchor
+  - delete a.anchor
+  #{e.name()}&attributes(a): +children(e)
+
+mixin children(e, opts)
+  each c in e.childNodes()
+    case c.type()
+      when 'text'
+        if c.text().trim().length > 0
+          = c.text()
+      when 'cdata'
+        //- CDATA doens't work in HTML5.  Escape.
+        = c.text()
+      when 'comment'
+        != "<!--" + c.text() + "-->"
+      when 'element'
+        - var nm = c.name()
+        if jade_mixins[nm] != null
+          +#{nm}(c)
+        else if !v3.isIgnored(nm)
+          +elem(c, opts)
+
+mixin artwork(e)
+  - var att = {}
+  - var cl = $att(e, 'type')
+  - if (cl != null) { att['class'] = "art-" + cl; }
+  pre.artwork&attributes(att): +children(e)
+
+mixin bcp14(e)
+  span.bcp14= e.text()
+
+mixin cref(e)
+  span.cref: +children(e)
+
+mixin eref(e)
+  a.eref(href=$att(e,'target'))= e.text() || $att(e,'target')
+
+mixin iref(e)
+  - var si = $att(e,"subitem")
+  - var isi = $att(e,"item") + ((si==null)?"":(","+si))
+  - var num = irefs[isi] || 0
+  - irefs[isi] = num+1
+  span.iref(id="iref-"+isi+"-"+num)
+
+mixin list(e)
+  p WARNING: list is deprecated
+  //- TODO: add list support
+
+mixin ol(e)
+  - var cls = ($att(e,'spacing')=='compact')?'olcompact':null
+  //- TODO: support percent styles
+  ol(class=cls,start=$att(e,'start'),type=$att(e,'style'))
+    +children(e)
+
+mixin sourcecode(e)
+  - var att = {}
+  - var cl = $att(e, 'type')
+  - if (cl != null) { att['class'] = "lang-" + cl; }
+  pre.sourcecode&attributes(att): +children(e)
+
+mixin tt(e)
+  code: +children(e)
+
+mixin ul(e)
+  - var cls = ($att(e,'spacing')=='compact')?'ulcompact':null
+  ul(class=cls): +children(e)
+
+mixin xref(e)
+  a(href='#'+$att(e,'target'))= '[' + $att(e,'target') + ']'
+
+mixin t(e)
+  p: +children(e)
+
+mixin section(s)
+  - var title = $("name/text()", s)
+  - var sn = $att(s,'sectionNumber')
+  - var snn = sn.replace(/^s-/, '')
+  - var snc = sn.split('.').length + 1
+  div(id=$att(s, 'anchor'))
+    #{"h" + snc}(id=sn)
+      a.self-ref(href='#' + sn)= snn
+      | &nbsp;
+      a.self-ref(href=slg(title))= title
+    +children(s)
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='author', content=$$('front/author/@fullname'))
+    meta(name='keywords', content=$$('front/keyword/text()'))
+    meta(name='description', content=v3.ws($$('front/abstract//text()')))
+    meta(name='generator', content=version)
+    title= $('front/title/text()')
+    style
+      include xml2rfc.css
+    link(rel='stylesheet', type='text/css', href='local.css')
+  body
+    #abstract
+      h1 Abstract
+      +children($('front/abstract'))
+    each s, i in $$('middle/section')
+      +section(s)

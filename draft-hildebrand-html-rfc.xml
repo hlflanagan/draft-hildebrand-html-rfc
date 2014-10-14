@@ -2,8 +2,9 @@
 <?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
 <?rfc toc="yes"?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
-<!ENTITY W3C.WD-html5-20140617 SYSTEM "http://xml.resource.org/public/rfc/bibxml4/reference.W3C.WD-html5-20140617.xml">
-<!ENTITY W3C.REC-CSS2-20110607 SYSTEM "http://xml.resource.org/public/rfc/bibxml4/reference.W3C.REC-CSS2-20110607.xml">
+<!ENTITY W3C.PR-html5-20140916 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml4/reference.W3C.PR-html5-20140916.xml">
+<!ENTITY RFC3629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3629.xml">
+<!ENTITY RFC5646 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5646.xml">
 <!ENTITY RFC6949 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6949.xml">
 <!ENTITY I-D.brownlee-svg-rfc SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.brownlee-svg-rfc.xml">
 <!ENTITY I-D.iab-styleguide SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.iab-styleguide.xml">
@@ -25,126 +26,360 @@
         <email>rse@rfc-editor.org</email>
       </address>
     </author>
-    <date year="2014" month="September" day="15"/>
+    <date year="2014" month="September" day="24"/>
+    <keyword>html</keyword>
+    <keyword>css</keyword>
+    <keyword>rfc</keyword>
     <abstract>
-      <t>This document defines the HTML format that will be rendered from the canonical XML format for an RFC.  The HTML output will include a default CSS to enable page layout.</t>
+      <t>This document defines the HTML format that will be rendered from the
+        canonical XML format for an RFC.  The HTML output will include a default
+        CSS to enable page layout.</t>
     </abstract>
   </front>
   <middle>
     <section anchor="introduction" title="Introduction">
-      <section anchor="background" title="Background">
-        <t>As described in <xref target="I-D.flanagan-rfc-framework"/>, the RFC Series is changing. One of those changes includes the RFC Editor publishing a non-canonical HTML version of RFCs.</t>
-        <t>This memo describes the HTML format that will be used as one of the publication formats for the RFC Series. It defines a strict subset of HTML appropriate for RFC Series documents.  The visual layout of the document will be defined through a cascading style sheet (CSS) <xref target="W3C.REC-CSS2-20110607"/>.  The CSS will be included in the HTML file and will be described in a separate document.</t>
-      </section>
+      <t>As described in <xref target="I-D.flanagan-rfc-framework"/>, the RFC
+        Series is changing. One of those changes includes the RFC Editor
+        publishing a non-canonical HTML version of RFCs.</t>
+      <t>This memo describes the HTML format that will be used as one of the
+        publication formats for the RFC Series. It defines a strict subset of
+        HTML appropriate for RFC Series documents.  The visual layout of the
+        document will be defined through a cascading style sheet (CSS)
+        <xref target="W3C.REC-CSS2-20110607"/>.  The CSS will be included in the
+        HTML file but will be described in a separate document.</t>
     </section>
     <section anchor="requirements-for-html" title="Requirements for the HTML Format">
-      <t>This section lists the design requirements used to create the HTML format described in this document.</t>
-      <t>The HTML has to render correctly on the following:</t>
+      <t>This section lists the design requirements used to create the HTML
+        format described in this document.  These requirements build on those
+        found in <xref target="RFC6949"/>.</t>
+      <t>The HTML has to render correctly on a list of browsers versions that
+        the RFC Editor will keep up to date outside of this document.</t>
+      <t>These requirements are expected to change in the future to reflect the
+        expectation that HTML rendering will be required for current versions of
+        browsers and platforms, while ideally continuing to render correctly on
+        earlier versions.</t>
+      <t>The HTML documents may be re-rendered from the canonical XML format in
+        the future to ensure the ongoing readability of the documents.  The
+        intent is that any re-rendering would be due to exceptional
+        circumstances rather than for minor annoyances.</t>
+      <t>The HTML must display adequately in at least one text-based browser.
+        Some consumers of the RFC series can only access the series on text-
+        based terminals.</t>
+      <t>The HTML document will be self-contained, without requiring external
+        files for images, CSS, JavaScript, or the like.  This will allow
+        the HTML file to be moved over various non-HTTP transports (such as
+        e-mail, FTP, and rsync) without breakage.</t>
+      <t>Any use of JavaScript in the HTML document will not negatively impact
+        the ability to read the document.  Some consumers of the RFC series
+        routinely disable JavaScript for security purposes.</t>
+      <t>The HTML document will allow easy local override of the default CSS
+        formatting.  This will allow users who have a different visual style
+        that they prefer to make RFCs display with that style without having to
+        alter the contents of the HTML document.  This might also be valuable
+        for allowing people with specific accessibility needs to use a
+        customized CSS.</t>
+      <t>HTML tags in documents will rarely have attributes whose only purpose
+        is to affect the rendered styling, and those will only be used if it
+        would not be possible to specify that styling in CSS.</t>
+      <t>Both user-defined and autogenerated anchors must be supported and
+        linkable, with user-defined anchors appearing in an "id" attribute.
+        Autogenerated anchors will be generated for every heading, paragraph,
+        and so on, not just those that do not have user-defined anchors.
+        User-defined anchors may, and autogenerated anchors will appear next to
+        paragraphs, figures, tables, blockquotes, and section titles.</t>
+      <t>All section, subsections, figures, and paragraphs should have stable
+        numbered link anchors.  Additionally, anchors expressed in the source
+        XML should be exposed as anchors in the HTML as well.</t>
+      <t>The HTML must make it easy to separate sections along with all of their
+        subsections into separate files.  This will make creating EPUB
+        documents easier in the future.</t>
+      <t>The abstract must be marked up or tagged in a way that popular search
+        engines will extract it as a summary.</t>
+      <t>The format will consist of a subset of HTML deemed to be widely-
+        implementd by common browsers at the time the specification is created,
+        likely to continue to be widely-implemented, and unlikely to cause
+        security issues.  This will maximize the chances that future HTML
+        renderers (such as new web browsers) will continue to produce readable
+        text from the HTML format without the format needing to be changed
+        frequently.</t>
+      <t>Normative information must be easily accessible to the following
+        consumers:</t>
       <t>
         <list style="symbols">
-          <t>the latest released versions of Chrome, Firefox, and Internet Explorer running on Windows 8 in November 2013</t>
-          <t>the latest released versions of Chrome, Firefox, and Safari running on Mac OS X 10.9 in November 2013</t>
-          <t>the latest released versions of Chrome and Safari running on iOS 7 in November 2013</t>
-          <t>the latest released versions of Chrome and Firefox running on Ubuntu 13.10 in November 2013</t>
-          <t>the latest released versions of Chrome and Firefox running on Android 4.1 in November 2013</t>
-        </list>
-      </t>
-      <t>These requirements are expected to change in the future to reflect the expectation that HTML rendering will be required for current versions of browsers and platforms, while ideally continuing to render correctly on earlier versions.  The HTML documents may be re-rendered from the canonical XML format in the future to ensure the ongoing readability of the documents.</t>
-      <t>The HTML document will publish with a default, internal set of CSS formatting.  This will allow for a mostly-consistent display of RFCs across browsers.  It will also allow for the HTML file to be moved over different transports (such as e-mail) and have the result look the same.</t>
-      <t>The HTML must display adequately in at least one text-based browser.  Any use of JavaScript in the HTML document must not negatively impact the ability to read the document.</t>
-      <t>The HTML document must allow easy local override of the default CSS formatting.  This will allow users who have a different visual style that they prefer to make RFCs display with that style without having to alter the contents of the HTML document.  This might also be valuable for allowing people with specific accessibility needs to use a customized CSS.</t>
-      <t>HTML tags in documents will rarely have attributes whose only purpose is to affect the rendered styling, and those will only be used if it would not make sense to specify that styling in CSS.</t>
-      <t>Both user-defined and autogenerated anchors must be supported and linkable, with user-defined anchors appearing in an "id" attribute.  Autogenerated anchors will be generated for every heading, paragraph, and so on, not just those that do not have user-defined anchors.  User-defined anchors may and autogenerated anchors will appear next to paragraphs, figures, tables, blockquotes, and section titles.</t>
-      <t>The HTML must make it easy to separate chunks into separate files.  This will make creating EPUB documents easier in the future.</t>
-      <t>All section, subsections, figures, and paragraphs should have stable numbered link anchors.  Additionally, anchors expressed in the source XML should be exposed as anchors in the HTML as well.</t>
-      <t>The abstract must be marked up or tagged in a way that search engines will extract it as a summary.</t>
-      <t>Normative information must be easily accessible to the following consumers:</t>
-      <t>
-        <list style="symbols">
-          <t>People with impaired vision, including those that use large fonts and those that use screen readers</t>
+          <t>People with impaired vision, including those that use large fonts
+            and those that use screen readers</t>
           <t>People with difficulty distinguishing between colors</t>
           <t>People who use devices with small screens, such as cell phones</t>
           <t>Other groups TBD</t>
         </list>
       </t>
-      <t>Specific instances where goals for accessibility are important in the design choices of the format have been called out in the text.</t>
-      <t>NOTE: designing for these consumers does not preclude the use of features they cannot use, but does require that key semantic data is not lost when read using the tools and settings that are required by a given constituency.</t>
+      <t>Specific instances where goals for accessibility are important in the
+        design choices of the format have been called out in the text.</t>
+      <t>NOTE: designing for these consumers does not preclude the use of
+        features they cannot use, but does require that key semantic data is not
+        lost when read using the tools and settings that are required by a given
+        constituency.</t>
     </section>
-    <section anchor="html-format" title="HTML Format">
-      <t>The format specified here is a subset of HTML, deemed to be widely-implemented by common browsers at the time that this specification was created, likely to continue to be widely-implemented in the future, and unlikely to cause security issues.</t>
-      <section anchor="syntax" title="Syntax">
-        <t>The processor emitting HTML from the XML source will follow these rules:</t>
-        <t>
-          <list style="symbols">
-            <t>The HTML source is encoded as UTF-8, as specified in RFC3629. Note that RFC3629 forbids "surrogate" code points in the range U+D800 to U+DFFF.</t>
-            <t>The document is valid HTML5. </t>
-            <t>Single quotes (U+0027 APOSTROPHE: ') are used to quote attribute values.  No unquoted attribute values will be used.</t>
-            <t>Each logical line is terminated solely with a \n (U+000A: LINE FEED), otherwise known as "Unix-style" line endings.</t>
-            <t>Other than \n (U+000A: LINE FEED), code points less than " " (U+0020: SPACE) (otherwise known as "control characters") are not used.  Any character references that would generate these code points (e.g., &amp;#0009;) may not be used. NOTE: this rule explicitly forbids \t (U+0009: CHARACTER TABULATION), \f (U+000C: FORM FEED), and \r (U+000D: CARRIAGE RETURN) from appearing in the source.</t>
-            <t>Each text-containing element such as headings (&lt;h1&gt;-&lt;h6&gt;), paragraphs (&lt;p&gt;), or list items (&lt;li&gt;), is serialized as a single line without wrapping.</t>
-            <t>The contents of &lt;pre&gt; elements will not be modified by processing tools.  The following rules apply to all elements except for &lt;pre&gt;:
-  <list style="symbols"><t>HTML is indented using spaces (not tabs).</t><t>Each child element is indented two spaces more than its parent element, unless the child element is mixed with non-whitespace-only text children of the same parent element.</t></list></t>
-          </list>
-        </t>
-        <t>NOTE: none of these rules affect the rendered output of the HTML, but are intended to increase the chance that multiple tools that process the format will generate identical syntax.  In turn, this will make difference tools that operate on the HTML source easier to write.</t>
-      </section>
-      <section anchor="basic-structure" title="Basic Structure">
-        <section anchor="html5" title="HTML5">
-          <t>The HTML comprising the document needs to be valid according to the latest version of the HTML specification at the time of publishing, starting with the version commonly known as HTML5.  Although the HTML specification mandates several of syntax and structure rules in this document, they are called out here for emphasis.</t>
-        </section>
-        <section anchor="doctype" title="DOCTYPE">
-          <t>The DOCTYPE of the document is "html", which declares that the document is compliant with HTML5.  The document will start with exactly this string:</t>
-          <figure>
-            <artwork><![CDATA[
+    <section anchor="html5" title="HTML Version">
+      <t>The RFC Editor will periodically determine which version of the
+        HTML specification will be referenced for tools generating the
+        format defined in this document.  The starting version will be that
+        defined in <xref target="W3C.PR-html5-20140916"/>, commonly known as
+        "HTML5".  Although the HTML specification mandates several of syntax
+        and structure rules in this document, they are called out here for
+        emphasis.</t>
+    </section>
+    <section anchor="syntax" title="HTML Syntax">
+      <t>The processor emitting HTML from the XML source will follow these
+        rules:</t>
+      <t>
+        <list style="symbols">
+          <t>The HTML source is encoded as UTF-8, as specified in
+            <xref target="RFC3629"/>.</t>
+          <t>The document is valid HTML.</t>
+          <t>Single quotes (U+0027 APOSTROPHE: ') are used to quote attribute
+            values unless the HTML specification forbids quoting a particular
+            attribute.</t>
+          <t>Each logical line is terminated solely with a \n (U+000A: LINE
+            FEED), otherwise known as "Unix-style" line endings.</t>
+          <t>Other than \n (U+000A: LINE FEED), code points less than " "
+            (U+0020: SPACE) (otherwise known as "control characters") are not
+            used.  Any character references that would generate these code
+            points (e.g., &amp;#0009;) may not be used. NOTE: this rule
+            explicitly forbids \t (U+0009: CHARACTER TABULATION), \f (U+000C:
+            FORM FEED), and \r (U+000D: CARRIAGE RETURN) from appearing in the
+            source.</t>
+          <t>The HTML source will be pretty-printed, using whatever other
+            consistent rules the tooling team deems best.</t>
+        </list>
+      </t>
+      <t>NOTE: none of these rules affect the rendered output of the HTML, but
+        are intended to increase the chance that difference tools that operate
+        on the HTML source easier to write.</t>
+    </section>
+    <section anchor="basic-structure" title="Prologue">
+      <t>The front matter of the HTML format contains processing information,
+        metadata of various types, and styling information that applies to the
+        document as a whole.</t>
+      <section anchor="doctype" title="DOCTYPE">
+        <t>The DOCTYPE of the document is "html", which declares that the
+          document is compliant with HTML5.  The document will start with
+          exactly this string:</t>
+        <figure>
+          <artwork><![CDATA[
 <!DOCTYPE html>
 ]]></artwork>
-          </figure>
-        </section>
-        <section anchor="root-element" title="Root Element">
-          <t>The root element of the document is &lt;html&gt;.  This element includes a lang attribute, whose value is a RFC5646 language tag describing the natural language of the document.  The language of the RFC Series is English and so the language tag to be included is 'en'.</t>
-        </section>
+        </figure>
+      </section>
+      <section anchor="root-element" title="Root Element">
+        <t>The root element of the document is &lt;html&gt;.  This element
+          includes a lang attribute, whose value is a <xref target="RFC5646"/>
+          language tag describing the natural language of the document.  The
+          language of the RFC Series is English and so the language tag to be
+          included is 'en'.</t>
+      </section>
+      <section anchor="head-element" title="Head Element">
+        <t>The root &lt;html&gt; will contain a &lt;head&gt; element that
+          contains the following elements, as needed.</t>
         <section anchor="charset-declaration" title="Charset Declaration">
-          <t>In order to be correctly processed by browsers that load the HTML using a mechanism that does not provide a valid MIME content-type or charset, the HTML &lt;head&gt; element contains a &lt;meta&gt; element, with charset attribute with value 'utf-8'.  This will look like:</t>
-          <figure>
-            <artwork><![CDATA[
-<meta charset='utf-8' >
-]]></artwork>
-          </figure>
+          <t>In order to be correctly processed by browsers that load the HTML
+            using a mechanism that does not provide a valid MIME content-type
+            or charset (such as from a local file system using a "file:" URL),
+            the HTML &lt;head&gt; element contains a &lt;meta&gt; element,
+            with charset attribute with value 'utf-8'.</t>
+        </section>
+        <section anchor="head-title" title="Document Title">
+          <t>The contents of the &lt;title&gt; element from the XML source
+            will be placed inside an HTML &lt;title&gt; element in the
+            header.</t>
+        </section>
+        <section anchor="meta" title="Document metadata">
+          <t>The following &lt;meta&gt; elements will be included:
+            <list style="symbols">
+              <t>author - comma-separated &lt;fullname&gt;s of all of the
+                &lt;author&gt;s from the XML source</t>
+              <t>description - the abstract from the XML source</t>
+              <t>generator - the name and version number of the software used
+                to create the HTML</t>
+              <t>keywords - comma-separated &lt;keyword&gt;s from the XML
+                source</t>
+            </list>
+          </t>
         </section>
         <section anchor="style" title="Style">
-          <t>The &lt;head&gt; contains an embedded CSS stylesheet in a &lt;style&gt; element.  The styles in the stylesheet are to be set consistently between documents by the RFC Editor, according to the best practices of the day. </t>
-          <t>To ensure consistent formatting, individual style attributes are not used in the main portion of the document source except in highly exceptional circumstances; each use of such attributes will be individually justified.</t>
-          <t>Different readers of a specification will desire different formatting when reading the HTML versions of RFCs.  To facilitate this, the &lt;head&gt; includes a &lt;style&gt; tag for the formatting from the RFC Editor and a &lt;link&gt; to a stylesheet in the same directory as the HTML file, named "rfc-local.css". Any formatting in the linked stylesheet will override the formatting in the included stylesheet.</t>
-          <t>For example:</t>
-          <figure>
+          <t>The &lt;head&gt; element contains an embedded CSS stylesheet in a
+            &lt;style&gt; element.  The styles in the stylesheet are to be set
+            consistently between documents by the RFC Editor, according to the
+            best practices of the day.</t>
+          <t>To ensure consistent formatting, individual style attributes are
+            not used in the main portion of the document source except in
+            highly exceptional circumstances; each use of such attributes will
+            be individually justified.</t>
+          <t>Different readers of a specification will desire different
+            formatting when reading the HTML versions of RFCs.  To facilitate
+            this, the &lt;head&gt; element also includes a &lt;link&gt; to a
+            stylesheet in the same directory as the HTML file, named
+            "rfc-local.css". Any formatting in the linked stylesheet will
+            override the formatting in the included stylesheet.</t>
+        </section>
+        <section title="Prologue Example">
+          <t>An example of the beginning of an RFC in HTML format appears in
+            <xref target="example-prologue"/>.</t>
+          <figure anchor="example-prologue" title="Prologue example">
             <artwork><![CDATA[
+<!DOCTYPE html>
+<html lang='en'>
 <head>
-    <style type='text/css'>
-    <! --
+  <meta charset='utf-8'>
+  <meta name='author' content='Joe Hildebrand, Heather Flanagan'>
+  <meta name='keywords' content='html,css,rfc'>
+  <meta name='description' content='This document defines the HTML format that
+    will be rendered from the canonical XML format for an RFC.  The HTML output
+    will include a default CSS to enable page layout.'>
+  <meta name='generator' content='xml2rfc 2.4.8'>
+  <title>HyperText Markup Language Request For Comments Format</title>
+  <style type='text/css'>
     /* RFC-editor styles */
-    -->
-    </style>
-    <link rel='stylesheet' type='text/css' href='local.css' />
+  </style>
+  <link rel='stylesheet'
+        type='text/css'
+        href='local.css' />
 </head>
+...
 ]]></artwork>
           </figure>
         </section>
-        <section anchor="emphasis" title="Emphasis">
-          <t>Words or phrases may be emphasized using the &lt;em&gt; element, usually rendered as italics.  Strong emphasis may be denoted with the &lt;strong&gt; element, which is usually rendered as boldface.  Underlining will not be used except for links, to avoid visual confusion.  Text formatting emphasis indicated in the XML will be rendered in the HTML as HTML markup.</t>
-        </section>
-        <section anchor="comments" title="Comments">
-          <t>Comments in the canonical XML, if any, will not be copied into the HTML.</t>
-        </section>
-        <section anchor="sections" title="Sections">
-          <t>Each section of the document is formatted as a &lt;div&gt; tag, with a class attribute with value 'section'.  A document-unique id attribute is assigned to each section &lt;div&gt;.  Every block item, including section, that can have a user-generated anchor will have than anchor expressed in the item's non-div tag as an id attribute.  </t>
-          <t>NOTE: HTML5 requires id attributes to be unique across an entire document.</t>
-          <t>Each section &lt;div&gt; will contain a header tag (&lt;h2&gt;-&lt;h6&gt;) of the appropriate depth, with top-level sections getting an &lt;h2&gt; tag, and each nested section getting the next higher header level. If more than five levels of headers are required, &lt;h6&gt; is used for each deeper-nested section.i  In addition, section headings in HTML will have two &lt;a&gt; tags: around the section number (with a relative link to the &lt;div&gt;), and optionally around the section title text (with a relative link to the &lt;h#&gt;, if there is an id attribute there)</t>
-          <t>The text in each header tag begins with the section number. Section numbers begin at "1.", and will increment by one for each successive section at the same level.  Subsections are numbered by appending the subsection number to the parent section number.</t>
-          <t>The section number is wrapped in an &lt;a&gt; element whose href attribute points to the corresponding section &lt;div&gt; with a local relative reference to the auto-generated id for the section. If the section also has a user-generated anchor, the section title is wrapped in an &lt;a&gt; element whose href attribute points to the corresponding section &lt;div&gt; with that id. This &lt;a&gt; element has the CSS class self-ref.</t>
-          <t>Within a section, block items (such as &lt;p&gt;, &lt;figure&gt;, &lt;blockquote&gt;, and &lt;texttable&gt;) are surrounded by a &lt;div&gt;. The &lt;div&gt; has an autogenerated id attribute. If the block item has a under-generated anchor, it appears as the id attribut in the block tag.</t>
-          <t>In the following example, the XML has a section that has has an anchor of "fromauthor1". That section has a paragraph that has an anchor of "fromauthor2", followed by a subsection that has no anchor, and a paragraph in that section that also has no anchor. This might look like:</t>
-          <figure>
-            <artwork><![CDATA[
+      </section>
+    </section>
+    <section anchor="document-information" title="Document Information">
+      <t>Information about the document as a whole. The &lt;div&gt; element
+        with id='document' is the first child element of the HTML.
+        For example:</t>
+      <figure>
+        <artwork><![CDATA[
+<div id='document'>
+  <div class='identifiers'>
+    <div class='workgroup'>Network Working Group</div>
+    <div class='series'>Internet-Draft</div>
+    <div class='status'>Standards Track</div>
+    <div class='published'>2012-07-07</div>
+    <div class='expires'>2013-01-07</div>
+    <div class='version'>03</div>
+  </div>
+  <div class='authors'>
+    <div class='author'>
+      <span class='initial'>J.</span>
+      <span class='surname'>Hildebrand</span>
+      <span class='company'>Cisco Systems, Inc.</span>
+    </div>
+  </div>
+</div>
+]]></artwork>
+      </figure>
+    </section>
+    <section anchor="title" title="Title">
+      <t>The title of the document appears in an &lt;h1&gt; element, and
+        follows directly after the Document Information.  The &lt;h1&gt; element
+        has an id attribute with value 'title'.  For example:</t>
+      <figure>
+        <artwork><![CDATA[
+<h1 id='title'>HTML RFC Format</h1>
+]]></artwork>
+      </figure>
+    </section>
+    <section anchor="abstract" title="Abstract">
+      <t>The abstract for the document appears in a &lt;div&gt; element, which
+        follows directly after the Title.  The &lt;div&gt; element has an id
+        attribute with value 'abstract'.  The &lt;div&gt; element contains an
+        &lt;h2&gt; element containing the word Abstract, and contains one or
+        more &lt;p&gt; elements containing text that describes the document
+        succinctly.  For example:</t>
+      <figure>
+        <artwork><![CDATA[
+<div id='abstract'>
+  <h2>Abstract</h2>
+  <p>This document defines an HTML format...</p>
+</div>
+]]></artwork>
+      </figure>
+    </section>
+    <section anchor="ipr-statements" title="IPR Statements">
+      <t>The IPR boilerplate for the document appears in a &lt;div&gt; element,
+        which follows directly after the Abstract.  The &lt;div&gt; element has
+        an id attribute with value 'ipr' and a CSS class of the name of the
+        relevant IPR ruleset.  The only valid values for the IPR ruleset class
+        are 'trust200902', 'noModificationTrust200902', and
+        'noDerivativesTrust200902' at this time.  The contents of the
+        &lt;div&gt; element are to be set correctly for the given ruleset, based
+        on guidance from the IETF trust.  For example:</t>
+      <figure>
+        <artwork><![CDATA[
+<div id='ipr' class='trust200902'>
+  <h2>Status of this Memo</h2>
+  <p>...</p>
+  <h2>Copyright Notice</h2>
+  <p>...</p>
+</div>
+]]></artwork>
+      </figure>
+    </section>
+    <section anchor="author" title="Author">
+      <t>This section will be augmented with normative text when an approach is
+        decided upon. A quick example (as an existence proof) can be found in
+        <xref target="Figure_4"/>. </t>
+      <figure title="Sample (temporary) author information" anchor="Figure_4">
+        <artwork><![CDATA[
+<address class='vcard'>
+  <span class='n hidden'>
+    <span class='family-name'>Hildebrand</span>
+    <span class='given-name'>Joe</span>
+  </span>
+  <span class='nickname hidden'>hildjj</span>
+  <span class='fn'>Joe Hildebrand</span>
+  <span class='org'>Cisco Systems, Inc.</span>
+  <a class='email' href='jhildebr@cisco.com'>jhildebr@cisco.com</a>
+  <div class='adr'>
+    <div class='street-address'>1899 Wynkoop St, Suite 600</div>
+    <div><span class='locality'>Denver</span>,
+         <span class='region'>CO</span>
+         <span class='postal-code'>80202<span></div>
+    <div class='country-name'>United States</div>
+  </div>
+</address>
+]]></artwork>
+      </figure>
+    </section>
+    <section title="structure">
+      <section anchor="sections" title="Sections">
+        <t>TODO: synch this section on sections with Paul's draft; assume it's
+          all going to change.</t>
+        <t>Each section of the document is formatted as a &lt;div&gt; tag, with
+          a class attribute with value 'section'.  A document-unique id
+          attribute is assigned to each section &lt;div&gt;.  Every block item,
+          including section, that can have a user-generated anchor will have
+          than anchor expressed in the item's non-div tag as an id
+          attribute.</t>
+        <t>NOTE: HTML5 requires id attributes to be unique across an entire
+          document.</t>
+        <t>Each section &lt;div&gt; will contain a heading tag
+          (&lt;h2&gt;-&lt;h6&gt;) of the appropriate depth, with top-level
+          sections getting an &lt;h2&gt; tag, and each nested section getting
+          the next higher header level. If more than five levels of headers are
+          required, &lt;h6&gt; is used for each deeper-nested section.</t>
+        <t>Each section heading will have two &lt;a&gt; tags:
+          <list style="symbols">
+            <t>Around the section number, with a relative link to the
+              &lt;div&gt;</t>
+            <t>Around the section title text, with a relative link to the
+              &lt;h#&gt;</t>
+          </list>
+        </t>
+        <t>The text in each header tag begins with the section number.</t>
+        <t>The section number is wrapped in an &lt;a&gt; element whose href attribute points to the corresponding section &lt;div&gt; with a local relative reference to the auto-generated id for the section. If the section also has a user-generated anchor, the section title is wrapped in an &lt;a&gt; element whose href attribute points to the corresponding section &lt;div&gt; with that id. This &lt;a&gt; element has the CSS class self-ref.</t>
+        <t>Within a section, block items (such as &lt;p&gt;, &lt;figure&gt;, &lt;blockquote&gt;, and &lt;texttable&gt;) are surrounded by a &lt;div&gt;. The &lt;div&gt; has an autogenerated id attribute. If the block item has a under-generated anchor, it appears as the id attribut in the block tag.</t>
+        <t>In the following example, the XML has a section that has has an anchor of "fromauthor1". That section has a paragraph that has an anchor of "fromauthor2", followed by a subsection that has no anchor, and a paragraph in that section that also has no anchor. This might look like:</t>
+        <figure>
+          <artwork><![CDATA[
 <section title="Some Section Head" anchor="fromauthor1">
   <t anchor="fromauthor2">This is a description of the example.</t>
   <section title="Example Heading for a Subsection">
@@ -152,10 +387,10 @@
   </section>
 </section>
 ]]></artwork>
-          </figure>
-          <t>The HTML output would be:</t>
-          <figure>
-            <artwork><![CDATA[
+        </figure>
+        <t>The HTML output would be:</t>
+        <figure>
+          <artwork><![CDATA[
 <div class='section' id='autogen-s.1'>
   <h2 id='fromauthor1'>
     <a class='self-ref' href='#autogen-s.1'>1.</a>
@@ -184,19 +419,40 @@
   </div>
 </div>
 ]]></artwork>
-          </figure>
-        </section>
+        </figure>
         <section anchor="appendices" title="Appendices">
-          <t>Appendices are special cases of top-level sections.  Each appendix of the document is formatted as a &lt;div&gt; tag, with a class attribute with value 'appendix'.  The appendix is wrapped with &lt;div&gt; tags using the same rules as for sections. Appendices are identified to the reader with Latin capital letters A-Z, in order. A document should not have more than 26 appendices, but if required, appendices "AA.", "AB.", etc. follow Appendix Z.</t>
-          <t>Inside the appendix, subsections are formatted per Sections, numbered sequentially.  For example, the first subsection of "Appendix A." is "Appendix A.1.".</t>
-        </section>
-        <section anchor="lists" title="Lists">
-          <t>Lists may be used inside a section or paragraph, and may nest in other lists as needed.  Unordered lists (&lt;ul&gt;), ordered lists (&lt;ol&gt;), and definition lists (&lt;dl&gt;) may all appear.</t>
-        </section>
-        <section anchor="references" title="References">
-          <t>Reference format will follow the guidance in the RFC Style Guide <xref target="I-D.iab-styleguide"/>.</t>
+          <t>Appendices are special cases of top-level sections.  Each appendix
+            of the document is formatted as a &lt;div&gt; tag, with a class
+            attribute with value 'appendix'.  The appendix is wrapped with
+            &lt;div&gt; tags using the same rules as for sections. Appendix
+            numbers will be derived from the XML source.</t>
+          <t>Inside the appendix, subsections are formatted per Sections</t>
         </section>
       </section>
+      <section title="Paragraphs">
+      </section>
+      <section anchor="lists" title="Lists">
+        <t>Lists may be used inside a section or paragraph, and may nest in other lists as needed.  Unordered lists (&lt;ul&gt;), ordered lists (&lt;ol&gt;), and definition lists (&lt;dl&gt;) may all appear.</t>
+      </section>
+      <section title="Figures">
+      </section>
+      <section title="Tables">
+      </section>
+    </section>
+    <section anchor="references" title="References">
+      <t>Reference format will follow the guidance in the RFC Style Guide <xref target="I-D.iab-styleguide"/>.</t>
+    </section>
+
+    <section title="Main content">
+      <section anchor="emphasis" title="Emphasis">
+        <t>Words or phrases may be emphasized using the &lt;em&gt; element, usually rendered as italics.  Strong emphasis may be denoted with the &lt;strong&gt; element, which is usually rendered as boldface.  Underlining will not be used except for links, to avoid visual confusion.  Text formatting emphasis indicated in the XML will be rendered in the HTML as HTML markup.</t>
+      </section>
+      <section anchor="comments" title="Comments">
+        <t>Comments in the canonical XML, if any, will not be copied into the HTML.</t>
+      </section>
+
+
+    </section>
       <section anchor="more-elaborate-information" title="More Elaborate Information">
         <t>This section describes how several specific types of information that occur regularly in documents for the RFC Series should be formatted. </t>
         <section anchor="formatting-the-table-of-contents" title="Formatting the Table of Contents">
@@ -293,90 +549,10 @@
           </figure>
         </section>
       </section>
-    </section>
+
     <section anchor="document-metadata" title="Document Metadata">
       <t>The XML representation of the RFC contains all of the document metadata; the HTML representation contains only some of that metadata <xref target="I-D.hoffman-xml2rfc"/>.</t>
       <t>Typically, the class and id attributes of various tags can be used to query the document using CSS-style selectors.  The metadata scheme is designed such that the element name is not required in order to select a given piece of data. Instead, any element that can contain text can be used for a given class or id to be selected.  The value of the data contained by the selected element(s) consists of the concatenation of all of the text from all of the child nodes of the selected element or elements, with each run of consecutive whitespace Unicode code points [code points with the White_Space property, such as U+0020 (SPACE), U+0009 (CHARACTER TABULATION), U+000A (LINE FEED), U+000C (FORM FEED), U+000D (CARRIAGE RETURN), U+00A0 (NON-BREAKING SPACE), and U+2029 (PARAGRAPH SEPARATOR)] compressed to a single U+0020 (SPACE).  The metadata scheme needs to allow unambiguous selection.</t>
-    </section>
-    <section anchor="document-information" title="Document Information">
-      <t>Information about the document as a whole. The &lt;div&gt; element with id='document' is the first child element of the HTML.  For example:</t>
-      <figure>
-        <artwork><![CDATA[
-<div id='document'>
-  <div class='identifiers'>
-    <div class='workgroup'>Network Working Group</div>
-    <div class='series'>Internet-Draft</div>
-    <div class='status'>Standards Track</div>
-    <div class='published'>2012-07-07</div>
-    <div class='expires'>2013-01-07</div>
-    <div class='version'>03</div>
-  </div>
-  <div class='authors'>
-    <div class='author'>
-      <span class='initial'>J.</span>
-      <span class='surname'>Hildebrand</span>
-      <span class='company'>Cisco Systems, Inc.</span>
-    </div>
-  </div>
-</div>
-]]></artwork>
-      </figure>
-    </section>
-    <section anchor="title" title="Title">
-      <t>The title of the document appears in an &lt;h1&gt; element, and follows directly after the Document Information.  The &lt;h1&gt; element has an id attribute with value 'title'.  For example:</t>
-      <figure>
-        <artwork><![CDATA[
-<h1 id='title'>HTML RFC Format</h1>
-]]></artwork>
-      </figure>
-    </section>
-    <section anchor="abstract" title="Abstract">
-      <t>The abstract for the document appears in a &lt;div&gt; element, which follows directly after the Title.  The &lt;div&gt; element has an id attribute with value 'abstract'.  The &lt;div&gt; element contains an &lt;h2&gt; element containing the word Abstract, and contains one or more &lt;p&gt; elements containing text that describes the document succinctly.  For example:</t>
-      <figure>
-        <artwork><![CDATA[
-<div id='abstract'>
-  <h2>Abstract</h2>
-  <p>This document defines an HTML format...</p>
-</div>
-]]></artwork>
-      </figure>
-    </section>
-    <section anchor="ipr-statements" title="IPR Statements">
-      <t>The IPR boilerplate for the document appears in a &lt;div&gt; element, which follows directly after the Abstract.  The &lt;div&gt; element has an id attribute with value 'ipr' and a CSS class of the name of the relevant IPR ruleset.  The only valid values for the IPR ruleset class are trust200902, noModificationTrust200902, and noDerivativesTrust200902 at this time.  The contents of the &lt;div&gt; element are to be set correctly for the given ruleset, based on guidance from the IETF trust.  For example:</t>
-      <figure>
-        <artwork><![CDATA[
-<div id='ipr' class='trust200902'>
-  <h2>Status of this Memo</h2>
-  <p>...</p>
-  <h2>Copyright Notice</h2>
-  <p>...</p>
-</div>
-]]></artwork>
-      </figure>
-    </section>
-    <section anchor="author" title="Author">
-      <t>This section will be augmented with normative text when an approach is decided upon. A quick example (as an existence proof) can be found in <xref target="Figure_4"/>. </t>
-      <figure title="Sample (temporary) author information" anchor="Figure_4">
-        <artwork><![CDATA[
-<address class='vcard'>
-  <span class='n hidden'>
-    <span class='family-name'>Hildebrand</span>
-    <span class='given-name'>Joe</span>
-  </span>
-  <span class='nickname hidden'>hildjj</span>
-  <span class='fn'>Joe Hildebrand</span>
-  <span class='org'>Cisco Systems, Inc.</span>
-  <a class='email' href='jhildebr@cisco.com'>jhildebr@cisco.com</a>
-  <div class='adr'>
-    <div class='street-address'>1899 Wynkoop St, Suite 600</div>
-    <div><span class='locality'>Denver</span>,
-         <span class='region'>CO</span>
-         <span class='postal-code'>80202<span></div>
-    <div class='country-name'>United States</div>
-  </div>
-</address>
-]]></artwork>
-      </figure>
     </section>
     <section anchor="iana-considerations" title="IANA Considerations">
       <t>This document contains no actions for IANA</t>
@@ -390,22 +566,37 @@
   </middle>
   <back>
     <references title="Normative References">
+&RFC3629;
+&W3C.PR-html5-20140916;
+      <reference anchor="W3C.REC-CSS2-20110607" target="http://www.w3.org/TR/2011/REC-CSS2-20110607">
+        <front>
+          <title>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</title>
+          <author initials="B." surname="Bos" fullname="Bert Bos">
+            <organization/>
+          </author>
+          <author initials="T." surname="Celik" fullname="Tantek Celik">
+            <organization/>
+          </author>
+          <author initials="I." surname="Hickson" fullname="Ian Hickson">
+            <organization/>
+          </author>
+          <author initials="H." surname="Lie" fullname="Hakon Wium Lie">
+            <organization/>
+          </author>
+          <date month="June" day="7" year="2011"/>
+        </front>
+        <seriesInfo name="World Wide Web Consortium Recommendation" value="REC-CSS2-20110607"/>
+        <format type="HTML" target="http://www.w3.org/TR/2011/REC-CSS2-20110607"/>
+      </reference>
 
-&W3C.WD-html5-20140617;
-&W3C.REC-CSS2-20110607;
 &I-D.flanagan-rfc-framework;
-
-
     </references>
     <references title="Informative References">
-
+&RFC5646;
 &RFC6949;
 &I-D.brownlee-svg-rfc;
 &I-D.iab-styleguide;
 &I-D.hoffman-xml2rfc;
-
-   <reference anchor="XML-ANNOUNCE" target="http://www.rfc-editor.org/pipermail/rfc-interest/2013-May/005584.html "><front><title>"Subject: Direction of the RFC Format Development effort", message to the rfc-interest@rfc-editor.org mailing list</title><author initials="H." surname="Flanagan"><organization/></author><date year="2013" month="May" day="2"/></front></reference>
-
     </references>
   </back>
 </rfc>

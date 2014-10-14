@@ -1,0 +1,263 @@
+body {
+  font-family: Palatino, serif;
+  margin: 0 5% 0 5%;
+  background-color: #fff;
+  color: #000;
+}
+h4, h5, h6 {
+  font-size: 16px;
+}
+.alt {
+  display: none;
+}
+.hidden {
+  display: none;
+}
+#document {
+  float: right;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  background: transparent;
+  background-color: #eee;
+  margin-left: 20px;
+}
+#document > .identifiers * {
+  float: right;
+  clear: both;
+}
+#document .workgroup:before {
+  content:  "Working Group: ";
+  font-weight: bold;
+}
+#document .series:before {
+  content:  "Series: ";
+  font-weight: bold;
+}
+#document .status:before {
+  content:  "Intended Status: ";
+  font-weight: bold;
+}
+#document .published:before {
+  content:  "Published: ";
+  font-weight: bold;
+}
+#document .expires:before {
+  content:  "Expires: ";
+  font-weight: bold;
+}
+#document .version:before {
+  content:  "Version: ";
+  font-weight: bold;
+}
+.authors {
+  padding-top: 15px;
+  clear: both;
+}
+.authors .author:before {
+  /* TODO: "author" for a single author.  Probably need to fix in HTML. */
+  content: "Author: ";
+  font-weight: bold;
+}
+.authors .author {
+  float: right;
+  clear: both;
+}
+.authors .author .company:before {
+  content:  "(";
+}
+.authors .author .company:after {
+  content:  ")";
+}
+#toc ul {
+  list-style-type: none;
+}
+.section {
+  clear: both;
+}
+.rfc2119 {
+  color: #666;
+  font-weight: bold;
+}
+code, .code {
+  background-color: #eee;
+  font-family: 'Lucida Console', Monaco, monospace;
+  font-size: 90%;
+  line-height: 1.15em;
+}
+.code {
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  float: left;
+}
+blockquote {
+  background-color: #eee;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  float: left;
+}
+.invalid {
+  background-color: #F99;
+}
+.invalid:before {
+  float: right;
+  text-align: right;
+  content: "INVALID EXAMPLE";
+  position: absolute;
+  margin-top: -35px;
+  background-color: #F99;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: -1;
+}
+@media screen {
+  .code {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+}
+figure blockquote {
+  margin-left: 0;
+}
+figure .code {
+  margin-left: 0;
+}
+.code + * {
+  clear: both;
+}
+.todo {
+  color: red;
+}
+a.self-ref {
+  color: #000;
+  text-decoration: none;
+}
+div#toc {
+  page-break-before: always;
+}
+div.section li:not(.ref) {
+  text-align: justify;
+  padding: 4px;
+}
+p {
+  text-align: justify;
+  orphans: 3;
+  widows: 3;
+  line-height: 120%;
+}
+li {
+  line-height: 120%;
+}
+li.ref {
+  list-style-type: none;
+  text-indent: -50px;
+  padding-left: 50px;
+  padding-bottom: 10px;
+}
+@media screen {
+  /* this isn't good enough, but without JavaScript... */
+  p[id]:active:after {
+    content: " [#" attr(id) "]";
+    color: #999;
+  }
+}
+@media print {
+  p[id]:after {
+    content: " [#" attr(id) "]";
+    color: #999;
+  }
+  p a:not(.literal)[href]:after {
+    content: " [" attr(href) "]";
+    color: #999;
+    text-decoration: none;
+    display: inline-block;
+  }
+  div#toc {
+    page-break-before: always;
+  }
+  pre {
+    page-break-inside: avoid;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  h2+*, h3+*, h4+*, h5+*, h6+* {
+    page-break-before: avoid;
+  }
+}
+
+.rfceditor-remove:before {
+  content: "The RFC Editor\awill remove\athis section";
+  background-color: rgba(235, 249, 105, 1);
+  float: right;
+  white-space: pre;
+  padding: 4px;
+}
+.rfceditor-remove {
+  background-color: rgba(235, 249, 105, 0.25);
+  clear: both;
+}
+address {
+  padding-bottom: 10px;
+}
+address > span {
+  display: block;
+}
+
+address * {
+  font-style: normal;
+}
+address .fn {
+  font-weight: bold;
+  font-style: normal;
+}
+figcaption {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+table {
+  border-collapse: collapse;
+}
+th {
+  border: solid thin;
+  text-align: center;
+  background-color: #ccc;
+}
+td {
+  border: solid thin;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+table.pdu {
+  text-align: center;
+}
+table.pdu th, table.pdu td {
+    padding: 0.2em;
+}
+table.pdu th {
+    text-align: right;
+    padding-right: 5px;
+    font-family: 'Lucida Console', Monaco, monospace;
+    font-size: 80%;
+}
+table.pdu tr:nth-child(1) th:nth-child(2), table.pdu tr:nth-child(2) th:nth-child(1), table.pdu tr:nth-child(2) th:nth-child(2) {
+    text-align: center;
+    font-family: Palatino, serif;
+    background-color: rgba(0, 0, 0, 0.05);
+    font-size: 95%;
+}
+table.pdu tr:first-child th:first-child {
+  /* upper left corner */
+    font-family: Palatino, serif;
+    font-style: italic;
+    font-weight: normal;
+    background-color: #fff;
+    border: none;
+}

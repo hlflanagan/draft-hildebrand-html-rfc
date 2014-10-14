@@ -1,0 +1,48 @@
+- var number = require('./number')
+- var slug = require('slug')
+
+mixin elem(e)
+  #{e.name()}&attributes($att(e)): +children(e)
+
+mixin part(e)
+  - var att = $att(e, {partNumber: number.partNumber(e)})
+  #{e.name()}&attributes(att): +children(e)
+
+mixin children(e, opts)
+  each c in e.childNodes()
+    case c.type()
+      when 'text'
+        if c.text().trim().length > 0
+          = c.text()
+      when 'cdata'
+        :cdata
+          !{c.text()}
+      when 'comment'
+        != "<!--" + c.text() + "-->"
+      when 'element'
+        - var nm = c.name()
+        if jade_mixins[nm] != null
+          +#{nm}(c)
+        else if number.isPart(nm)
+          +part(c)
+        else
+          +elem(c, opts)
+
+mixin section(e)
+  - var att = $att(e, {sectionNumber: "s-" + number.section(e)})
+  section&attributes(att): +children(e)
+
+mixin name(e)
+  - var att = $att(e, {slugifiedName: "n-" + slug(e.text()).toLowerCase()})
+  name&attributes(att): +children(e)
+
+mixin figure(e)
+  - var att = $att(e, {figureNumber: "f-" + number.sequentialNumber(e)})
+  figure&attributes(att): +children(e)
+
+mixin table(e)
+  - var att = $att(e, {tableNumber: "t-" + number.sequentialNumber(e)})
+  table&attributes(att): +children(e)
+
+doctype xml
++elem($root())
