@@ -19,7 +19,7 @@ exports.isPart = function(e) {
   if (e == null) {return false};
   var nm = (typeof(e) == "string") ? e : e.name();
   return (parts.indexOf(nm) >= 0);
-}
+};
 
 exports.partNumber = function(e) {
   if (!exports.isPart(e)) {

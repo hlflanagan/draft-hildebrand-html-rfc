@@ -2,11 +2,12 @@
 - var slug = require('slug')
 
 mixin elem(e)
-  #{e.name()}&attributes($att(e)): +children(e)
+  - var a = $att(e, attributes)
+  #{e.name()}&attributes(a): +children(e)
+    block
 
 mixin part(e)
-  - var att = $att(e, {partNumber: number.partNumber(e)})
-  #{e.name()}&attributes(att): +children(e)
+  +elem(e)(partNumber=number.partNumber(e))
 
 mixin children(e, opts)
   each c in e.childNodes()
@@ -29,20 +30,16 @@ mixin children(e, opts)
           +elem(c, opts)
 
 mixin section(e)
-  - var att = $att(e, {sectionNumber: "s-" + number.section(e)})
-  section&attributes(att): +children(e)
+  +elem(e)(sectionNumber="s-" + number.section(e))
 
 mixin name(e)
-  - var att = $att(e, {slugifiedName: "n-" + slug(e.text()).toLowerCase()})
-  name&attributes(att): +children(e)
+  +elem(e)(slugifiedName="n-" + slug(e.text()).toLowerCase())
 
 mixin figure(e)
-  - var att = $att(e, {figureNumber: "f-" + number.sequentialNumber(e)})
-  figure&attributes(att): +children(e)
+  +elem(e)(figureNumber="f-" + number.sequentialNumber(e))
 
 mixin table(e)
-  - var att = $att(e, {tableNumber: "t-" + number.sequentialNumber(e)})
-  table&attributes(att): +children(e)
+  +elem(e)(tableNumber="t-" + number.sequentialNumber(e))
 
 doctype xml
 +elem($root())

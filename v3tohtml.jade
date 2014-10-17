@@ -4,14 +4,17 @@
 - var irefs={}
 
 mixin elem(e)
-  - var a = $att(e)
-  - delete a.figureNumber
+  - var a = $att(e, attributes)
+  if a.id == null
+    - a.id = a.anchor || a.partNumber || a.figureNumber || a.sectionNumber || a.tableNumber
+  - delete a.anchor
   - delete a.partNumber
+  - delete a.figureNumber
   - delete a.sectionNumber
   - delete a.tableNumber
-  - a.id = a.anchor
-  - delete a.anchor
-  #{e.name()}&attributes(a): +children(e)
+  #{e.name()}&attributes(a)
+    +children(e)
+    block
 
 mixin children(e, opts)
   each c in e.childNodes()
@@ -46,12 +49,26 @@ mixin cref(e)
 mixin eref(e)
   a.eref(href=$att(e,'target'))= e.text() || $att(e,'target')
 
+mixin figure(e)
+  +elem(e)
+    - var fn = $att(e, 'figureNumber')
+    - var nm = $('name', e)
+    figcaption
+      a(href="#"+fn) Figure #{fn.replace(/^f-/, '')}.
+      if nm
+        | &nbsp;
+        a(href="#"+$att(nm, "slugifiedName"))= nm.text()
+
 mixin iref(e)
   - var si = $att(e,"subitem")
   - var isi = $att(e,"item") + ((si==null)?"":(","+si))
   - var num = irefs[isi] || 0
   - irefs[isi] = num+1
   span.iref(id="iref-"+isi+"-"+num)
+
+mixin li(e)
+  +elem(e)
+    +pilcrow(e)
 
 mixin list(e)
   p WARNING: list is deprecated
@@ -63,11 +80,28 @@ mixin ol(e)
   ol(class=cls,start=$att(e,'start'),type=$att(e,'style'))
     +children(e)
 
+mixin pilcrow(e)
+  a.pilcrow(href='#'+$att(e, 'partNumber')) &para;
+
 mixin sourcecode(e)
   - var att = {}
   - var cl = $att(e, 'type')
   - if (cl != null) { att['class'] = "lang-" + cl; }
-  pre.sourcecode&attributes(att): +children(e)
+  pre.sourcecode&attributes(att)
+    +children(e)
+    if e.parent().name() != 'figure'
+      +pilcrow(e)
+
+mixin table(e)
+  table(id=$att(e, 'anchor'))
+    - var tn = $att(e, 'tableNumber')
+    - var nm = $('name', e)
+    caption
+      a(href="#"+tn) Table #{tn.replace(/^t-/, '')}.
+      if nm
+        | &nbsp;
+        a(href="#"+$att(nm, "slugifiedName"))= nm.text()
+    +children(e)
 
 mixin tt(e)
   code: +children(e)
@@ -80,7 +114,11 @@ mixin xref(e)
   a(href='#'+$att(e,'target'))= '[' + $att(e,'target') + ']'
 
 mixin t(e)
-  p: +children(e)
+  - var pn = $att(e, 'partNumber')
+  p(id=pn)
+    +children(e)
+    | &nbsp;
+    +pilcrow(e)
 
 mixin section(s)
   - var title = $("name/text()", s)
@@ -107,8 +145,34 @@ html(lang='en')
       include xml2rfc.css
     link(rel='stylesheet', type='text/css', href='local.css')
   body
+    #document
+      dl#identifiers
+        dt Workgroup:
+        dd.workgroup= $('front/workgroup/text()')
+        dt Series:
+        dd.series= v3.series($())
+        dt Status:
+        dd.status= v3.status($())
+        dt Published:
+        dd
+          - var d = v3.isoDate($('front/date'))
+          time.published(datetime=d)= d
+        - var authors = $$('front/author')
+        dt= (authors.length > 1) ? "Authors:" : "Author:"
+        dd.authors
+          each a in authors
+            .author
+              span.initial= $att(a, "initials")
+              = " "
+              span.surname= $att(a, "surname")
+              = " ("
+              span.organization= $("organization/text()", a)
+              = ")"
+    h1#title= $('front/title/text()')
     #abstract
       h1 Abstract
       +children($('front/abstract'))
-    each s, i in $$('middle/section')
+    #ipr
+      = v3.ipr($('/rfc/@ipr'))
+    each s in $$('middle/section')
       +section(s)
