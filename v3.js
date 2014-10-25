@@ -48,27 +48,3 @@ var categories = {
 exports.status = function(e) {
   return categories[atv(e, 'category')];
 };
-
-var months = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December" ];
-
-exports.isoDate = function(e) {
-  var now = new Date();
-  var year = atv(e, 'year') || now.getFullYear();
-  var month = atv(e, 'month');
-  if (month == null) {
-    month = now.getMonth()+1
-  } else {
-    var m = months.indexOf(month);
-    if (m >= 0) {
-      month = m+1;
-    }
-  }
-  var day = atv(e, 'day') || now.getDate();
-  return "" + year + "-" + month + "-" + day;
-};
-
-exports.ipr = function(val) {
-  
-};

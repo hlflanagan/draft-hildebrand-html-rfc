@@ -4,10 +4,13 @@ body {
   background-color: #fff;
   color: #000;
 }
+h1, h2, h3, h4, h5, h6 {
+  clear: left;
+}
 h4, h5, h6 {
   font-size: 16px;
 }
-#document {
+#identifiers {
   float: right;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -16,11 +19,7 @@ h4, h5, h6 {
   background: transparent;
   background-color: #eee;
 }
-#document dl {
-  margin: 0;
-  padding: 0;
-}
-#document dt {
+#identifiers dt {
   margin-top: 2px;
   font-weight: bold;
   float: left;
@@ -28,21 +27,41 @@ h4, h5, h6 {
   text-align: right;
   width: 5.5em;
 }
-#document dd {
+#identifiers dd {
+  margin-left: 8px;
   margin-top: 2px;
   float: left;
-  margin-left: 8px;
-  display:table-row;
 }
+
+.reference {
+  padding-bottom: 10px;
+  float: left;
+}
+.reference dt {
+  margin-top: 8px;
+  font-weight: bold;
+  float: left;
+  text-align: right;
+  width: 6em;
+}
+.reference dd {
+  float: left;
+  margin: -1em 0 0 110px;
+}
+
 #toc ul {
   list-style-type: none;
 }
 .section {
   clear: both;
 }
-.rfc2119 {
+.bcp14 {
   color: #666;
   font-weight: bold;
+}
+.self-ref {
+  color: #000;
+  text-decoration: none;
 }
 code, .code {
   background-color: #eee;
@@ -66,6 +85,11 @@ blockquote {
   border: 1px solid #ccc;
   border-radius: 4px;
   float: left;
+  clear: both;
+}
+blockquote cite {
+  float: right;
+  clear: both;
 }
 figure blockquote {
   margin-left: 0;
@@ -95,13 +119,13 @@ a.pilcrow {
   visibility:hidden;
   font-family: Palatino, serif;
 }
-p:hover a.pilcrow {
+p:hover > a.pilcrow {
   visibility: visible;
 }
-td:hover a.pilcrow {
+blockquote:hover > a.pilcrow {
   visibility: visible;
 }
-li:hover a.pilcrow {
+li:hover > a.pilcrow {
   visibility: visible;
 }
 div#toc {
@@ -126,6 +150,32 @@ li.ref {
   padding-left: 50px;
   padding-bottom: 10px;
 }
+table {
+  border-collapse: collapse;
+}
+th {
+  border: solid thin;
+  text-align: center;
+  background-color: #ccc;
+}
+td {
+  border: solid thin;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.rfceditor-remove:before {
+  content: "The RFC Editor\awill remove\athis section";
+  background-color: rgba(235, 249, 105, 1);
+  float: right;
+  white-space: pre;
+  padding: 4px;
+  margin-left: 10px;
+}
+.rfceditor-remove {
+  background-color: rgba(235, 249, 105, 0.25);
+  clear: both;
+}
+
 @media print {
   div#toc {
     page-break-before: always;
@@ -139,18 +189,4 @@ li.ref {
   h2+*, h3+*, h4+*, h5+*, h6+* {
     page-break-before: avoid;
   }
-}
-
-table {
-  border-collapse: collapse;
-}
-th {
-  border: solid thin;
-  text-align: center;
-  background-color: #ccc;
-}
-td {
-  border: solid thin;
-  padding-left: 5px;
-  padding-right: 5px;
 }

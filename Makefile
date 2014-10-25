@@ -5,7 +5,7 @@ XMLJADE=../xmljade/bin/xmljade
 	perl convertv2v3/convertv2v3  < $< > $@
 
 %.n.xml: %.3.xml number.jade number.js
-	$(XMLJADE) number.jade $< -o $@
+	$(XMLJADE) number.jade $< | xmllint --format - > $@
 
 %.3.html: %.n.xml v3tohtml.jade v3.js xml2rfc.css
 	$(XMLJADE) v3tohtml.jade $< | js-beautify --type html -s 2  -w 70 -n -f - > $@
