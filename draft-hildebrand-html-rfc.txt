@@ -5,8 +5,8 @@
 Network Working Group                                 J. Hildebrand, Ed.
 Internet-Draft                                       Cisco Systems, Inc.
 Intended status: Informational                          H. Flanagan, Ed.
-Expires: March 28, 2015                                       RFC Editor
-                                                      September 24, 2014
+Expires: April 30, 2015                                       RFC Editor
+                                                        October 27, 2014
 
 
          HyperText Markup Language Request For Comments Format
@@ -33,7 +33,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 28, 2015.
+   This Internet-Draft will expire on April 30, 2015.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                 [Page 1]
+Hildebrand & Flanagan    Expires April 30, 2015                 [Page 1]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
 Table of Contents
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                 [Page 2]
+Hildebrand & Flanagan    Expires April 30, 2015                 [Page 2]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
      6.26. <front> . . . . . . . . . . . . . . . . . . . . . . . . .  16
@@ -165,9 +165,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                 [Page 3]
+Hildebrand & Flanagan    Expires April 30, 2015                 [Page 3]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
 1.  Introduction
@@ -221,9 +221,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                 [Page 4]
+Hildebrand & Flanagan    Expires April 30, 2015                 [Page 4]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
    to alter the contents of the HTML document.  This might also be
@@ -277,9 +277,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                 [Page 5]
+Hildebrand & Flanagan    Expires April 30, 2015                 [Page 5]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
    NOTE: designing for these consumers does not preclude the use of
@@ -333,9 +333,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                 [Page 6]
+Hildebrand & Flanagan    Expires April 30, 2015                 [Page 6]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
 5.  Prologue
@@ -389,9 +389,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                 [Page 7]
+Hildebrand & Flanagan    Expires April 30, 2015                 [Page 7]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
    o  description - the abstract from the XML source
@@ -445,9 +445,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                 [Page 8]
+Hildebrand & Flanagan    Expires April 30, 2015                 [Page 8]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
    <dl id="identifiers">
@@ -501,9 +501,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                 [Page 9]
+Hildebrand & Flanagan    Expires April 30, 2015                 [Page 9]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
    <address class="vcard">
@@ -557,9 +557,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                [Page 10]
+Hildebrand & Flanagan    Expires April 30, 2015                [Page 10]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
    Pilcrows are never included inside a <table> or <figure> elements,
@@ -613,9 +613,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                [Page 11]
+Hildebrand & Flanagan    Expires April 30, 2015                [Page 11]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
 6.5.  <artwork>
@@ -669,9 +669,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                [Page 12]
+Hildebrand & Flanagan    Expires April 30, 2015                [Page 12]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
    <aside id="p-1.2-6">A little more than kin, and less than kind.
@@ -725,9 +725,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                [Page 13]
+Hildebrand & Flanagan    Expires April 30, 2015                [Page 13]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
 6.12.  <boilerplate>
@@ -781,9 +781,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                [Page 14]
+Hildebrand & Flanagan    Expires April 30, 2015                [Page 14]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
 6.17.  <date>
@@ -837,9 +837,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                [Page 15]
+Hildebrand & Flanagan    Expires April 30, 2015                [Page 15]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
 6.25.  <figure>
@@ -893,9 +893,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                [Page 16]
+Hildebrand & Flanagan    Expires April 30, 2015                [Page 16]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
 6.31.  <link>
@@ -949,9 +949,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                [Page 17]
+Hildebrand & Flanagan    Expires April 30, 2015                [Page 17]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
 6.38.  <postal>
@@ -1005,9 +1005,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                [Page 18]
+Hildebrand & Flanagan    Expires April 30, 2015                [Page 18]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
    <section id="n-references">
@@ -1061,9 +1061,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                [Page 19]
+Hildebrand & Flanagan    Expires April 30, 2015                [Page 19]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
    <span class="seriesInfo">RFC 5646</span>
@@ -1117,9 +1117,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                [Page 20]
+Hildebrand & Flanagan    Expires April 30, 2015                [Page 20]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
    <p id="p-1-1">A paragraph.
@@ -1173,9 +1173,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                [Page 21]
+Hildebrand & Flanagan    Expires April 30, 2015                [Page 21]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
 6.63.  <ul>
@@ -1229,9 +1229,9 @@ Internet-Draft                  HTML RFC                  September 2014
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                [Page 22]
+Hildebrand & Flanagan    Expires April 30, 2015                [Page 22]
 
-Internet-Draft                  HTML RFC                  September 2014
+Internet-Draft                  HTML RFC                    October 2014
 
 
    [W3C.PR-html5-20140916]
@@ -1285,4 +1285,4 @@ Authors' Addresses
 
 
 
-Hildebrand & Flanagan    Expires March 28, 2015                [Page 23]
+Hildebrand & Flanagan    Expires April 30, 2015                [Page 23]
