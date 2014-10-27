@@ -42,13 +42,24 @@ mixin abstract(e)
     +children(e)
 
 mixin artwork(e)
-  - var att = {}
+  - var att = { id: $att(e, 'partNumber')}
   - var cl = $att(e, 'type')
   - if (cl != null) { att['class'] = "art-" + cl; }
-  pre.artwork&attributes(att)
+  if cl == 'svg'
+    .artwork&attributes(att)
+      +children(e)
+      if e.parent().name() != 'figure'
+        +pilcrow(e)
+  else
+    pre.artwork&attributes(att)
+      +children(e)
+      if e.parent().name() != 'figure'
+        +pilcrow(e)
+
+mixin aside(e)
+  aside(id=$att(e, 'partNumber'))
     +children(e)
-    if e.parent().name() != 'figure'
-      +pilcrow(e)
+    +pilcrow(e)
 
 mixin back(e)
   - var refs = $$('references', e)
@@ -188,9 +199,10 @@ mixin section(s)
   - var depth = Math.min(sn.split('.').length + 1, 6)
   - var rm = ($att(s, 'removeInRFC')==="yes") ? "rfceditor-remove" : null
   - var id = $att(s, 'anchor')||$('name/@slugifiedName',s)
-  .section(id=id, class=rm)
+  section(id=id, class=rm)
     #{"h" + depth}(id=sn)
       if s.parent().name() != 'boilerplate'
+        //- TODO: add class of ipr if boilerplate
         a.self-ref(href='#' + sn)= snn + "."
         = " "
       a.self-ref(href='#' + id)= $("name/text()", s)

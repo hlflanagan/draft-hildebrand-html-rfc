@@ -77,6 +77,12 @@ code, .code {
   border-radius: 4px;
   float: left;
 }
+aside {
+  clear: both;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 10px;
+}
 blockquote {
   background-color: #eee;
   margin-left: 40px;
@@ -119,13 +125,22 @@ a.pilcrow {
   visibility:hidden;
   font-family: Palatino, serif;
 }
+aside:hover > a.pilcrow {
+  visibility: visible;
+}
 p:hover > a.pilcrow {
   visibility: visible;
 }
 blockquote:hover > a.pilcrow {
   visibility: visible;
 }
+div:hover > a.pilcrow {
+  visibility: visible;
+}
 li:hover > a.pilcrow {
+  visibility: visible;
+}
+pre:hover > a.pilcrow {
   visibility: visible;
 }
 div#toc {
