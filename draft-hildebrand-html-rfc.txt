@@ -523,7 +523,7 @@ Internet-Draft                  HTML RFC                  September 2014
          <span class="region">CO</span>
          <span class="postal-code">80202<span>
        </div>
-       <div class="country-name">United States</div>
+       <div class="country-name">US</div>
      </div>
    </address>
 
@@ -766,7 +766,7 @@ Internet-Draft                  HTML RFC                  September 2014
    This element is rendered as a <div> element with CSS class "country-
    name".
 
-   <div class="country-name">United States</div>
+   <div class="country-name">US</div>
 
 6.16.  <cref>
 

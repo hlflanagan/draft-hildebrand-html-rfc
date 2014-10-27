@@ -293,7 +293,7 @@
       <span class="region">CO</span>
       <span class="postal-code">80202<span>
     </div>
-    <div class="country-name">United States</div>
+    <div class="country-name">US</div>
   </div>
 </address>]]></artwork>
         </figure>
@@ -500,7 +500,7 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
           class "country-name".</t>
         <figure>
           <artwork><![CDATA[
-<div class="country-name">United States</div>]]></artwork>
+<div class="country-name">US</div>]]></artwork>
         </figure>
       </section>
       <section title="&lt;cref&gt;" anchor="element.cref">
