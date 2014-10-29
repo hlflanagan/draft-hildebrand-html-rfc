@@ -23,7 +23,8 @@ mixin children(e, opts)
         :cdata
           !{c.text()}
       when 'comment'
-        != "<!--" + c.text() + "-->"
+        //- remove comments
+        //- != "<!--" + c.text() + "-->"
       when 'element'
         - var nm = c.name()
         if jade_mixins[nm] != null
