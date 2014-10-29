@@ -10,13 +10,29 @@
     <author initials='J.' surname='Hildebrand' fullname='Joe Hildebrand' role='editor'>
       <organization>Cisco Systems, Inc.</organization>
       <address>
-        <email>jhildebr@cisco.com</email>
+        <postal>
+          <street>1 Main Street</street>
+          <street>Suite 1</street>
+          <city>Denver</city>
+          <region>CO</region>
+          <code>80212</code>
+          <country>US</country>
+        </postal>
+        <email>jhildebr@example.com</email>
+        <email>joe@example.net</email>
+        <facsimile>+1-303-555-1212</facsimile>
+        <phone>+1-720-555-1212</phone>
+        <uri>http://www.example.com</uri>
       </address>
     </author>
     <author initials='H.' surname='Flanagan' fullname='Heather Flanagan' role='editor'>
       <organization>RFC Editor</organization>
       <address>
         <email>rse@rfc-editor.org</email>
+        <postal>
+          <postalLine>Where the</postalLine>
+          <postalLine>Streets have no name</postalLine>
+        </postal>
       </address>
     </author>
     <area>gen</area>

@@ -1,5 +1,4 @@
-- var slug = require('slug')
-- function slg(txt) { return (txt==null) ? null : slug(txt).toLowerCase(); }
+- var crypto = require('crypto')
 - var v3 = require('./v3')
 - var dt = require('./dt')
 - var irefs={}
@@ -36,7 +35,7 @@ mixin children(e, opts)
           +elem(c, opts)
 
 mixin abstract(e)
-  #abstract
+  section#abstract
     h2
       a.self-ref(href='#abstract') Abstract
     +children(e)
@@ -66,14 +65,14 @@ mixin back(e)
   if refs.length > 0
     - var snn = $('count(middle/section)') + 1
     - var sn = 's-' + snn
-    .section(id='n-references')
+    section(id='n-references')
       h2(id=sn)
         a.self-ref(href='#' + sn)= snn + "."
         = " "
         a.self-ref(href='#n-references') References
       each ref, i in refs
         - var rsn = sn + "." + (i+1)
-        .section(id=$('name/@slugifiedName', ref))
+        section(id=$('name/@slugifiedName', ref))
           h3(id=rsn)
             a.self-ref(href='#' + rsn)= snn + "." + (i+1) + "."
             = " "
@@ -157,7 +156,7 @@ mixin list(e)
 
 mixin note(e)
   - var rm = ($att(e, 'removeInRFC')=="yes") ? "rfceditor-remove" : null
-  .note(id=$att(e, 'anchor') || $att(e,'sectionNumber'), class=rm)
+  section.note(id=$att(e, 'anchor') || $att(e,'sectionNumber'), class=rm)
     h2(id=$att(e, 'slugifiedName'))
       a.self-ref(href='#' + $('name/@slugifiedName', e))= $("name/text()", e)
     +children(e)
@@ -247,6 +246,54 @@ mixin ul(e)
 mixin xref(e)
   a(href='#'+$att(e,'target'))= '[' + $att(e,'target') + ']'
 
+mixin postal(e)
+  - var plines = $$('postalLine/text()', e)
+  if plines.length > 0
+    pre.label= plines.join('\n')
+  else
+    .adr
+      each st in $$('street/text()', e)
+        .street-address= st
+      div
+        each city in $$('city/text()', e)
+          span.city=city
+        = ", "
+        each region in $$('region/text()', e)
+          span.region=region
+        each code in $$('code/text()', e)
+          = " "
+          span.code=code
+      each country in $$('country/text()', e)
+        .country-name=country
+
+
+mixin foot_author(e)
+  address.vcard
+    .namerole
+      span.fn= $att(e, 'fullname')
+      if $att(e, 'role')
+        = " ("
+        span.role= $att(e, 'role')
+        = ")"
+    .org= $("organization/text()",e)
+    - var addr = $('address', e)
+    each p in $$('postal', addr)
+      +postal(p)
+    each phone in $$('phone/text()', addr)
+      div= "Phone: "
+        span.tel= phone + " "
+          span.type VOICE
+    each fax in $$('facsimile/text()', addr)
+      div= "Fax: "
+        span.tel= fax + " "
+          span.type fax
+    each email in $$('email/text()', addr)
+      div= "Email: "
+        a.email(href=email)= email
+    each uri in $$('uri/text()', addr)
+      div= "URI: "
+        a.url(href=uri)= uri
+
 doctype html
 html(lang='en')
   head
@@ -257,8 +304,8 @@ html(lang='en')
     meta(name='generator', content=version)
     title= $('front/title/text()')
     style
-     include xml2rfc.css
-    //- link(rel='stylesheet', type='text/css', href='xml2rfc.css')
+      include xml2rfc.css
+    //-link(rel='stylesheet', type='text/css', href='xml2rfc.css')
     link(rel='stylesheet', type='text/css', href='local.css')
   body
     +identifiers($('front'))
@@ -269,3 +316,23 @@ html(lang='en')
     +children($('front/boilerplate'))
     +children($('middle'))
     +back($('back'))
+    - var authors = $$('front/author')
+    section#author-addresses
+      h2
+        a.self-ref(href='#author-addresses')
+          = (authors.length > 1) ? "Authors' Addresses" : "Author's Address"
+      each a in authors
+        +foot_author(a)
+
+| <!-- XML SOURCE START -->
+- var b = new Buffer($().toString(), 'utf8')
+- var sha = crypto.createHash('sha1')
+- sha.update(b)
+!= "<!--\n"
+!= "Content-Type: application/xml; charset=utf-8\n"
+!= "Content-Transfer-Encoding: base64\n"
+!= "Digest: SHA=" + sha.digest('base64') + "\n"
+!= "\n"
+!= b.toString('base64').replace(/(.{76})/g, "$1\n")
+!= "\n-->"
+| <!-- XML SOURCE END -->

@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rfc ipr="trust200902" docName="draft-hildebrand-html-rfc-04" category="info" tocInclude="yes">
   <front>
-    <!--
-      comment in the front
-      it's got multiple lines and some <>
-      it also has some &amp; &lt; &gt;
-    -->
     <title abbrev="HTML RFC">HyperText Markup Language Request For Comments Format</title>
     <author initials="J." surname="Hildebrand" fullname="Joe Hildebrand" role="editor">
       <organization>Cisco Systems, Inc.</organization>
       <address>
-        <email>jhildebr@cisco.com</email>
+        <postal>
+          <street>1 Main Street</street>
+          <street>Suite 1</street>
+          <city>Denver</city>
+          <region>CO</region>
+          <code>80212</code>
+          <country>US</country>
+        </postal>
+        <email>jhildebr@example.com</email>
+        <email>joe@example.net</email>
+        <facsimile>+1-303-555-1212</facsimile>
+        <phone>+1-720-555-1212</phone>
+        <uri>http://www.example.com</uri>
       </address>
     </author>
     <author initials="H." surname="Flanagan" fullname="Heather Flanagan" role="editor">
       <organization>RFC Editor</organization>
       <address>
         <email>rse@rfc-editor.org</email>
+        <postal>
+          <postalLine>Where the</postalLine>
+          <postalLine>Streets have no name</postalLine>
+        </postal>
       </address>
     </author>
     <area>gen</area>
     <workgroup>rfc-interest</workgroup>
-    <date year="2014" month="October" day="27"/>
+    <date year="2014" month="October" day="29"/>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
@@ -51,7 +62,7 @@ at <eref target="http://datatracker.ietf.org/drafts/current/"/>.</t>
 and may be updated, replaced, or obsoleted by other documents at any
 time.  It is inappropriate to use Internet-Drafts as reference
 material or to cite them other than as "work in progress."</t>
-        <t partNumber="p-boilerplate-1-4">This Internet-Draft will expire on 2015-04-27.</t>
+        <t partNumber="p-boilerplate-1-4">This Internet-Draft will expire on 2015-04-29.</t>
       </section>
       <section sectionNumber="s-boilerplate-2">
         <name slugifiedName="copyright-notice">Copyright Notice</name>
@@ -243,7 +254,7 @@ int main(void)
           <author initials="M." surname="Davis" fullname="M. Davis">
             <organization/>
           </author>
-          <date year="2009" month="September" day="27"/>
+          <date year="2009" month="September" day="29"/>
           <abstract sectionNumber="s-abstract">
             <t partNumber="p-abstract-1">This document describes the structure, content, construction, and
               semantics of language tags for use in cases where it is desirable
@@ -268,7 +279,7 @@ int main(void)
           <author initials="N." surname="Brownlee" fullname="N. Brownlee">
             <organization/>
           </author>
-          <date year="2013" month="May" day="27"/>
+          <date year="2013" month="May" day="29"/>
           <abstract sectionNumber="s-abstract">
             <t partNumber="p-abstract-1">This document describes the current requirements and requests for
               enhancements for the format of the canonical version of RFCs.

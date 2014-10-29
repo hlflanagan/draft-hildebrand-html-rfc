@@ -271,33 +271,6 @@
       <section anchor='index' title='Index'>
         <t>To be documented.</t>
       </section>
-      <section anchor='authors-addresses' title="Authors' Addresses">
-        <t>At the end of the document, author information will be included
-          inside an HTML &lt;address&gt; element.</t>
-        <figure title="Sample author information" anchor="Figure_4">
-          <artwork><![CDATA[
-<address class="vcard">
-  <span class="n hidden">
-    <span class="family-name">Hildebrand</span>
-    <span class="given-name">Joe</span>
-  </span>
-  <span class="nickname hidden">hildjj</span>
-  <span class="fn">Joe Hildebrand</span>
-  <span class="org">Cisco Systems, Inc.</span>
-  <a class="email"
-     href="mailto:jhildebr@example.com">jhildebr@example.com</a>
-  <div class="adr">
-    <div class="street-address">1899 Wynkoop St, Suite 600</div>
-    <div>
-      <span class="locality">Denver</span>,
-      <span class="region">CO</span>
-      <span class="postal-code">80202<span>
-    </div>
-    <div class="country-name">US</div>
-  </div>
-</address>]]></artwork>
-        </figure>
-      </section>
       <section anchor='ids' title='IDs'>
         <t>HTML elements that are generated from XML elements that include
           an anchor attribute will use the value of the anchor attribute
@@ -336,6 +309,58 @@
 ]]></artwork>
         </figure>
       </section>
+      <section anchor='authors-addresses' title="Authors' Addresses">
+        <t>At the end of the document, author information will be included
+          inside an HTML &lt;section&gt; element.  The class names chosen as in
+          <eref target='http://microformats.org/wiki/hcard'>hCard</eref>.</t>
+        <figure>
+          <artwork><![CDATA[
+<section id="author-addresses">
+  <h2>
+    <a href="#author-addresses"
+       class="self-ref">Authors' Addresses</a>
+  </h2>
+  <address class="vcard">
+    <div class="namerole">
+      <span class="fn">Joe Hildebrand</span>
+      <span class="role">(editor)</span>
+    </div>
+    <div class="org">Cisco Systems, Inc.</div>
+    <div class="adr">
+      <div class="street-address">1 Main Street</div>
+      <div class="street-address">Suite 1</div>
+      <div>
+        <span class="city">Denver</span>,
+        <span class="region">CO</span>
+        <span class="code">80212</span>
+      </div>
+      <div class="country-name">US</div>
+    </div>
+    <div>Phone: <span class="tel">+1-720-555-1212
+      <span class="type">VOICE</span></span>
+    </div>
+    <div>Fax: <span class="tel">+1-303-555-1212
+      <span class="type">fax</span></span>
+    </div>
+    <div>Email:
+      <a href="jhildebr@example.com"
+         class="email">jhildebr@example.com</a>
+    </div>
+    <div>Email:
+      <a href="joe@example.net" class="email">joe@example.net</a>
+    </div>
+    <div>URI:
+      <a href="http://www.example.com"
+         class="url">http://www.example.com</a>
+    </div>
+  </address>]]></artwork>
+        </figure>
+      </section>
+      <section title="XML Source" anchor="xml-source">
+        <t>At the very end of the document, the XML source that was used to
+          produce this document will be included with a comment.</t>
+        <t></t>
+      </section>
     </section>
     <section title="Elements" anchor="elements">
       <t>This section describes how each of the XML elements from
@@ -354,10 +379,10 @@
         </figure>
       </section>
       <section title="&lt;address&gt;" anchor="element.address">
-        <t>To be documented.</t>
+        <t>This element does not add any direct output to HTML.</t>
       </section>
       <section title="&lt;annotation&gt;" anchor="element.annotation">
-        <t>To be documented.</t>
+        <t>To be documented, pending RFC editor guidance on desired semantics.</t>
       </section>
       <section title="&lt;area&gt;" anchor="element.area">
         <t>Not currently rendered to HTML.</t>
@@ -417,9 +442,30 @@
         </figure>
       </section>
       <section title="&lt;author&gt;" anchor="element.author">
+        <t>As seen in <xref target='authors-addresses'>Authors' Addresses</xref>,
+          at the end of the document, each document author is rendered into an
+          HTML &lt;address&gt; element with the CSS class "vcard".</t>
+        <t>The HTML &lt;address&gt; element will contain an HTML &lt;div&gt;
+          with CSS class "namerole".  That div will contain an HTML &lt;span&gt;
+          element with CSS class "fn" containing the value of the "fullname"
+          attribute of the &lt;author&gt; XML element, and an HTML &lt;span&gt;
+          element with CSS class "role" containing the value of the "role"
+          attribute of the &lt;author&gt; XML element (if there is a role).
+          Parentheses will surround the &lt;span class="role"&gt;, if it
+          exists.</t>
+        <figure>
+            <artwork><![CDATA[
+<address class="vcard">
+  <div class="namerole">
+    <span class="fn">Joe Hildebrand</span>
+    (<span class="role">editor</span>)
+  </div>
+  ...]]></artwork>
+        </figure>
         <t>The &lt;author&gt; element from the &lt;front&gt; of the document
-          is rendered into the <xref target='document-information'/>, the
-          <xref target='meta'/>, and the <xref target='authors-addresses'/>.
+          is also rendered into the <xref target='document-information'>Document
+          Information</xref>, the <xref target='meta'>HTML meta headers</xref>,
+          and in <xref target='element.reference'>references</xref>.
           See each of those sections for details.</t>
       </section>
       <section title="&lt;b&gt;" anchor="element.b">
@@ -538,13 +584,16 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
         <t>This element is directly rendered as its HTML counterpart.</t>
       </section>
       <section title="&lt;email&gt;" anchor="element.email">
-        <t>This element is rendered as an HTML &lt;a&gt; element, with "href"
-          attribute set to the equivalent "mailto:" URI, and CSS class of
-          "email".</t>
+        <t>As shown in <xref target='authors-addresses'/> this element is
+          rendered as an HTML &lt;div&gt; containing the string "Email:" and
+          an HTML &lt;a&gt; element, with "href" attribute set to the
+          equivalent "mailto:" URI, CSS class of "email", and the contents set
+          to the email address.</t>
         <figure>
           <artwork><![CDATA[
-<a class="email"
-   href="mailto:jhildebr@example.com">jhildebr@example.com</a>]]></artwork>
+<div>Email:
+  <a href="joe@example.net" class="email">joe@example.net</a>
+</div>]]></artwork>
         </figure>
       </section>
       <section title="&lt;eref&gt;" anchor="element.eref">
@@ -554,6 +603,22 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
         <figure>
           <artwork><![CDATA[
 <a href="https://..." class="eref">the text</a>]]></artwork>
+        </figure>
+      </section>
+      <section title="&lt;facsimile&gt;" anchor="element.facsimile">
+        <t>As shown in <xref target='authors-addresses'/> this element is
+        rendered as an HTML &lt;div&gt; containing the string "Fax:",
+        an HTML &lt;span&gt; with CSS class "tel" containing the phone number
+        and an HTML &lt;span&gt; with CSS class "type" containing the string
+        "fax".  Note, the "type" span will be hidden by CSS styling.</t>
+        <t>Note: this element is deprecated</t>
+        <figure>
+          <artwork><![CDATA[
+<div>Fax:
+  <span class="tel">+1-303-555-1212
+    <span class="type">fax</span>
+  </span>
+</div>]]></artwork>
         </figure>
       </section>
       <section title="&lt;figure&gt;" anchor="element.figure">
@@ -638,30 +703,71 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
           "compact", a CSS class of "olcompact" will be added.</t>
       </section>
       <section title="&lt;organization&gt;" anchor="element.organization">
-        <t>This element is rendered as an HTML &lt;span&gt; tag with CSS
-          class "org".</t>
+        <t>As shown in <xref target='authors-addresses'/> this element is
+        rendered as an HTML &lt;div&gt; tag with CSS class "org".</t>
         <figure>
           <artwork><![CDATA[
-<span class="org">Cisco Systems, Inc.</span>]]></artwork>
+<div class="org">Cisco Systems, Inc.</div>]]></artwork>
         </figure>
       </section>
       <section title="&lt;phone&gt;" anchor="element.phone">
-        <t> </t>
+        <t>As shown in <xref target='authors-addresses'/> this element is
+        rendered as an HTML &lt;div&gt; containing the string "Phone:",
+        an HTML &lt;span&gt; with CSS class "tel" containing the phone number
+        and an HTML &lt;span&gt; with CSS class "type" containing the string
+        "VOICE".  Note, the "type" span will be hidden by CSS styling.</t>
+        <figure>
+          <artwork><![CDATA[
+<div>Phone:
+  <span class="tel">+1-720-555-1212
+    <span class="type">VOICE</span>
+  </span>
+</div>]]></artwork>
+        </figure>
       </section>
       <section title="&lt;postal&gt;" anchor="element.postal">
         <t>This element renderes as an HTML &lt;div&gt; with CSS class
-          "adr".</t>
+          "adr", unless it contains a &lt;postalLine&gt; child element
+          (in which case it adds no HTML markup).</t>
+        <t>When there is no &lt;postalLine&gt; child, the following child
+          elements are rendered into the HTML:
+          <list style='symbols'>
+            <t>Each &lt;street&gt; is rendered</t>
+            <t>A &lt;div&gt; that includes:
+              <list style='symbols'>
+                <t>The rendering of all &lt;city&gt; elements</t>
+                <t>A comma and whitespace</t>
+                <t>The rendering of all &lt;region&gt; elements</t>
+                <t>Whitespace</t>
+                <t>The rendering of all &lt;code&gt; elements</t>
+              </list>
+            </t>
+            <t>The rendering of all &lt;country&gt; elemenents</t>
+          </list>
+        </t>
         <figure>
           <artwork><![CDATA[
-<div class="adr">...</div>]]></artwork>
+<div class="adr">
+  <div class="street-address">1 Main Street</div>
+  <div class="street-address">Suite 1</div>
+  <div>
+    <span class="city">Denver</span>,
+    <span class="region">CO</span>
+    <span class="code">80212</span>
+  </div>
+  <div class="country-name">US</div>
+</div>]]></artwork>
         </figure>
       </section>
       <section title="&lt;postalLine&gt;" anchor="element.postalLine">
-        <t>This element renders as an HTML &lt;div&gt; with CSS class
-          "street-address".</t>
+        <t>All of these elements in a give &lt;postal&gt; elements render as a
+          single HTML &lt;pre&gt; with CSS class "label", with each
+          &lt;postalLine&gt; separated by a newline. Note: this &lt;pre&gt;
+          element is not enclosed in a &lt;div class="adr"&gt;.</t>
         <figure>
           <artwork><![CDATA[
-<div class="street-address">1899 Wynkoop St, Suite 600</div>]]></artwork>
+<pre class="label">Where the
+Streets have no name</pre>]]></artwork>
         </figure>
       </section>
       <section title="&lt;refcontent&gt;" anchor="element.refcontent">
@@ -844,8 +950,19 @@ int main(void)
         "compact", a CSS class of "ulcompact" will be added.</t>
       </section>
       <section title="&lt;uri&gt;" anchor="element.uri">
-        <t>This element is rendered as an HTML &lt;a&gt; element, containing
-          the URI as botht the "href" attribute and the linked text.</t>
+        <t>As shown in <xref target='authors-addresses'/> this element is
+          rendered as an HTML &lt;div&gt; containing the string "URI:" and
+          an HTML &lt;a&gt; element, with "href" attribute set to the
+          linked URI, CSS class of "url" [sic], and the contents
+          set to the linked URI.</t>
+        <figure>
+          <artwork><![CDATA[
+<div>URI:
+  <a href="http://www.example.com"
+     class="url">http://www.example.com</a>
+</div>
+]]></artwork>
+        </figure>
       </section>
       <section title="&lt;workgroup&gt;" anchor="element.workgroup">
         <t>This element does not add any direct output to HTML.</t>

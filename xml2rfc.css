@@ -32,7 +32,6 @@ h4, h5, h6 {
   margin-top: 2px;
   float: left;
 }
-
 .reference {
   padding-bottom: 10px;
   float: left;
@@ -45,14 +44,13 @@ h4, h5, h6 {
   width: 6em;
 }
 .reference dd {
-  float: left;
-  margin: -1em 0 0 110px;
+  margin-top: 8px;
+  margin-left: 6.5em;
 }
-
 #toc ul {
   list-style-type: none;
 }
-.section {
+section {
   clear: both;
 }
 .bcp14 {
@@ -63,19 +61,11 @@ h4, h5, h6 {
   color: #000;
   text-decoration: none;
 }
-code, .code {
+code {
   background-color: #eee;
   font-family: 'Lucida Console', Monaco, monospace;
   font-size: 90%;
   line-height: 1.15em;
-}
-.code {
-  margin-left: 40px;
-  margin-right: 40px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  float: left;
 }
 aside {
   clear: both;
@@ -107,23 +97,24 @@ figcaption {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.code + * {
-  clear: both;
-}
 @media screen {
   .code {
     overflow-x: auto;
     max-width: 100%;
   }
 }
-.todo {
-  color: red;
-}
 a.pilcrow {
   color: #999;
   text-decoration: none;
   visibility:hidden;
   font-family: Palatino, serif;
+  user-select: none;
+  -ms-user-select: none;
+  -o-user-select:none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 aside:hover > a.pilcrow {
   visibility: visible;
@@ -146,24 +137,11 @@ pre:hover > a.pilcrow {
 div#toc {
   page-break-before: always;
 }
-div.section li:not(.ref) {
-  text-align: justify;
-  padding: 4px;
-}
 p {
   text-align: justify;
   orphans: 3;
   widows: 3;
   line-height: 120%;
-}
-li {
-  line-height: 120%;
-}
-li.ref {
-  list-style-type: none;
-  text-indent: -50px;
-  padding-left: 50px;
-  padding-bottom: 10px;
 }
 table {
   border-collapse: collapse;
@@ -190,7 +168,25 @@ td {
   background-color: rgba(235, 249, 105, 0.25);
   clear: both;
 }
-
+address.vcard {
+  padding-bottom: 20px;
+  font-style: normal;
+}
+address.vcard > div {
+  padding-bottom: 4px;
+}
+address.vcard .label {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 4px;
+  font-family: Palatino, serif;
+}
+address.vcard .namerole {
+  font-weight: bold;
+}
+address.vcard .type {
+  display: none;
+}
 @media print {
   div#toc {
     page-break-before: always;
