@@ -305,8 +305,7 @@
     dedicated to the proposition that all men are created equal.
     <a href="#p-1.2-2" class="pilcrow">&para;</a></p>
   <!-- NO pilcrow here -->
-</blockquote>
-]]></artwork>
+</blockquote>]]></artwork>
         </figure>
       </section>
       <section anchor='authors-addresses' title="Authors' Addresses">
@@ -517,8 +516,7 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
     <a href="#p-1.2-2" class="pilcrow">&para;</a>
   </p>
   <cite>— <a href="http://...">Abraham Lincoln</a></cite>
-</blockquote>
-  ]]></artwork>
+</blockquote>]]></artwork>
         </figure>
       </section>
       <section title="&lt;boilerplate&gt;" anchor="element.boilerplate">
@@ -536,8 +534,7 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
     conformance with the provisions of BCP 78 and BCP 79.
     <a href="#p-boilerplate-1-1" class="pilcrow">&para;</a>
   </p>
-...
-  ]]></artwork>
+...]]></artwork>
         </figure>
       </section>
       <section title="&lt;city&gt;" anchor="element.city">
@@ -949,8 +946,7 @@ int main(void)
         <figure>
           <artwork><![CDATA[
 <h1 id="title">HyperText Markup Language Request For
-    Comments Format</h1>
-]]></artwork>
+    Comments Format</h1>]]></artwork>
         </figure>
       </section>
       <section title="&lt;tr&gt;" anchor="element.tr">
@@ -975,8 +971,7 @@ int main(void)
 <div>URI:
   <a href="http://www.example.com"
      class="url">http://www.example.com</a>
-</div>
-]]></artwork>
+</div>]]></artwork>
         </figure>
       </section>
       <section title="&lt;workgroup&gt;" anchor="element.workgroup">
