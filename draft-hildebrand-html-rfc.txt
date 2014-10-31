@@ -193,7 +193,7 @@ Internet-Draft                  HTML RFC                    October 2014
    format described in this document.  These requirements build on those
    found in [RFC6949].
 
-   The HTML has to render correctly on a list of browsers versions that
+   The HTML has to render correctly on a list of browser versions that
    the RFC Editor will keep up to date outside of this document.
 
    These requirements are expected to change in the future to reflect
@@ -295,9 +295,9 @@ Internet-Draft                  HTML RFC                    October 2014
    The RFC Editor will periodically determine which version of the HTML
    specification will be referenced for tools generating the format
    defined in this document.  The starting version will be that defined
-   in [W3C.PR-html5-20140916], commonly known as "HTML5".  Although the
-   HTML specification mandates several of syntax and structure rules in
-   this document, they are called out here for emphasis.
+   in [W3C.REC-html5-20141028], commonly known as "HTML5".  Although the
+   HTML specification mandates several of the syntax and structure rules
+   in this document, they are called out here for emphasis.
 
 4.  HTML Syntax
 
@@ -435,11 +435,11 @@ Internet-Draft                  HTML RFC                    October 2014
 
 5.4.  Document Information
 
-   Information about the document as a whole.  The <dl> element with
-   id="identifiers" is the first child element of the HTML <body>
-   element.  The defined terms in the definition list are "Workgroup:",
-   "Series:", "Status:", "Published:", and "Authors:".
-
+   Information about the document as a whole will appear as the first
+   child of the HTML <body> element, embedded in an HTML <dl> element
+   with id="identifiers".  The defined terms (<dt>s) in the definition
+   list are "Workgroup:", "Series:", "Status:", "Published:", and
+   "Authors:".
 
 
 
@@ -491,7 +491,7 @@ Internet-Draft                  HTML RFC                    October 2014
    attribute will be used, where it exists.
 
    Some HTML constructs (such as <section> (Section 6.47)) will use
-   multiple of these identifiers.
+   multiple instances of these identifiers.
 
 5.8.  Pilcrows
 
@@ -1360,8 +1360,8 @@ Internet-Draft                  HTML RFC                    October 2014
 
    The authors gratefully acknowledge the contributions of: Patrick
    Linskey, and the members of the RFC Format Design Team (Nevil
-   Brownlee, Ted Lemon, Paul Hoffman, Julian Reschke, Adam Roach, Alice
-   Russo, Robert Sparks, Dave Thaler).
+   Brownlee, Sandy Ginoza, Tony Hansen, Paul Hoffman, Ted Lemon, Julian
+   Reschke, Adam Roach, Alice Russo, Robert Sparks, Dave Thaler).
 
 10.  References
 
@@ -1370,11 +1370,11 @@ Internet-Draft                  HTML RFC                    October 2014
    [RFC3629]  Yergeau, F., "UTF-8, a transformation format of ISO
               10646", STD 63, RFC 3629, November 2003.
 
-   [W3C.PR-html5-20140916]
+   [W3C.REC-html5-20141028]
               Berjon, R., Faulkner, S., Leithead, T., Navara, E.,
               O&#039;Connor, E., and S. Pfeiffer, "HTML5", World Wide
-              Web Consortium PR PR-html5-20140916, September 2014,
-              <http://www.w3.org/TR/2014/PR-html5-20140916>.
+              Web Consortium Recommendation REC-html5-20141028, October
+              2014, <http://www.w3.org/TR/2014/REC-html5-20141028>.
 
    [W3C.REC-CSS2-20110607]
               Bos, B., Celik, T., Hickson, I., and H. Lie, "Cascading

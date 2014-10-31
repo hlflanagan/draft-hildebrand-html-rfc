@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
 <?rfc toc="yes"?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
-<!ENTITY W3C.PR-html5-20140916 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml4/reference.W3C.PR-html5-20140916.xml">
+<!ENTITY W3C.REC-html5-20141028 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml4/reference.W3C.REC-html5-20141028.xml">
 <!ENTITY RFC3629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3629.xml">
 <!ENTITY RFC5646 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5646.xml">
 <!ENTITY RFC6949 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6949.xml">
@@ -51,7 +51,7 @@
       <t>This section lists the design requirements used to create the HTML
         format described in this document.  These requirements build on those
         found in <xref target="RFC6949"/>.</t>
-      <t>The HTML has to render correctly on a list of browsers versions that
+      <t>The HTML has to render correctly on a list of browser versions that
         the RFC Editor will keep up to date outside of this document.</t>
       <t>These requirements are expected to change in the future to reflect the
         expectation that HTML rendering will be required for current versions of
@@ -123,8 +123,8 @@
       <t>The RFC Editor will periodically determine which version of the
         HTML specification will be referenced for tools generating the
         format defined in this document.  The starting version will be that
-        defined in <xref target="W3C.PR-html5-20140916"/>, commonly known as
-        "HTML5".  Although the HTML specification mandates several of syntax
+        defined in <xref target="W3C.REC-html5-20141028"/>, commonly known as
+        "HTML5".  Although the HTML specification mandates several of the syntax
         and structure rules in this document, they are called out here for
         emphasis.</t>
     </section>
@@ -235,10 +235,10 @@
         </section>
       </section>
       <section anchor="document-information" title="Document Information">
-        <t>Information about the document as a whole. The &lt;dl&gt; element
-          with id="identifiers" is the first child element of the HTML
-          &lt;body&gt; element.  The defined terms in the definition list are
-          "Workgroup:", "Series:", "Status:", "Published:", and "Authors:".</t>
+        <t>Information about the document as a whole will appear as the first child of the
+          HTML &lt;body&gt; element, embedded in an HTML &lt;dl&gt; element
+          with id="identifiers".  The defined terms (&lt;dt&gt;s) in the definition list
+          are "Workgroup:", "Series:", "Status:", "Published:", and "Authors:".</t>
         <figure>
           <artwork><![CDATA[
 <dl id="identifiers">
@@ -280,7 +280,7 @@
           partNumber attribute will be used, where it exists.</t>
         <t>Some HTML constructs (such as
           <xref target='element.section'>&lt;section&gt;</xref>) will use
-          multiple of these identifiers.</t>
+          multiple instances of these identifiers.</t>
       </section>
       <section anchor='pilcrows' title='Pilcrows'>
         <t>Each paragraph, artwork, or sourcecode segment outside of a
@@ -976,16 +976,21 @@ int main(void)
       <t>This document contains no actions for IANA</t>
     </section>
     <section anchor="security-considerations" title="Security Considerations">
-      <t>Since RFCs are sometimes exchanged outside the normal Web sandboxing mechanism (e.g., rsync to a mirror) then loaded from a local file, more care must be taken with the HTML than is ordinary on the web. </t>
+      <t>Since RFCs are sometimes exchanged outside the normal Web sandboxing mechanism
+        (e.g., rsync to a mirror) then loaded from a local file, more care must be taken
+        with the HTML than is ordinary on the web. </t>
     </section>
     <section anchor="appendix-a-acknowledgments" title="Acknowledgments">
-      <t>The authors gratefully acknowledge the contributions of: Patrick Linskey, and the members of the RFC Format Design Team (Nevil Brownlee, Ted Lemon, Paul Hoffman, Julian Reschke, Adam Roach, Alice Russo, Robert Sparks, Dave Thaler).</t>
+      <t>The authors gratefully acknowledge the contributions of: Patrick Linskey, and the
+        members of the RFC Format Design Team (Nevil Brownlee, Sandy Ginoza, Tony Hansen,
+         Paul Hoffman, Ted Lemon, Julian Reschke, Adam Roach, Alice Russo, Robert Sparks,
+         Dave Thaler).</t>
     </section>
   </middle>
   <back>
     <references title="Normative References">
 &RFC3629;
-&W3C.PR-html5-20140916;
+&W3C.REC-html5-20141028;
       <reference anchor="W3C.REC-CSS2-20110607" target="http://www.w3.org/TR/2011/REC-CSS2-20110607">
         <front>
           <title>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</title>

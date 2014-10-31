@@ -643,7 +643,7 @@
 <p id="rfc.section.1.p.2">This memo describes the HTML format that will be used as one of the publication formats for the RFC Series. It defines a strict subset of HTML appropriate for RFC Series documents.  The visual layout of the document will be defined through a cascading style sheet (CSS) <a href="#W3C.REC-CSS2-20110607">[W3C.REC-CSS2-20110607]</a>.  The CSS will be included in the HTML file but will be described in a separate document.</p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#requirements-for-html" id="requirements-for-html">Requirements for the HTML Format</a></h1>
 <p id="rfc.section.2.p.1">This section lists the design requirements used to create the HTML format described in this document.  These requirements build on those found in <a href="#RFC6949">[RFC6949]</a>.</p>
-<p id="rfc.section.2.p.2">The HTML has to render correctly on a list of browsers versions that the RFC Editor will keep up to date outside of this document.</p>
+<p id="rfc.section.2.p.2">The HTML has to render correctly on a list of browser versions that the RFC Editor will keep up to date outside of this document.</p>
 <p id="rfc.section.2.p.3">These requirements are expected to change in the future to reflect the expectation that HTML rendering will be required for current versions of browsers and platforms, while ideally continuing to render correctly on earlier versions.</p>
 <p id="rfc.section.2.p.4">The HTML documents may be re-rendered from the canonical XML format in the future to ensure the ongoing readability of the documents.  The intent is that any re-rendering would be due to exceptional circumstances rather than for minor annoyances.</p>
 <p id="rfc.section.2.p.5">The HTML must display adequately in at least one text-based browser.  Some consumers of the RFC series can only access the series on text- based terminals.</p>
@@ -670,7 +670,7 @@
 <p id="rfc.section.2.p.17">Specific instances where goals for accessibility are important in the design choices of the format have been called out in the text.</p>
 <p id="rfc.section.2.p.18">NOTE: designing for these consumers does not preclude the use of features they cannot use, but does require that key semantic data is not lost when read using the tools and settings that are required by a given constituency.</p>
 <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#html5" id="html5">HTML Version</a></h1>
-<p id="rfc.section.3.p.1">The RFC Editor will periodically determine which version of the HTML specification will be referenced for tools generating the format defined in this document.  The starting version will be that defined in <a href="#W3C.PR-html5-20140916">[W3C.PR-html5-20140916]</a>, commonly known as "HTML5".  Although the HTML specification mandates several of syntax and structure rules in this document, they are called out here for emphasis.</p>
+<p id="rfc.section.3.p.1">The RFC Editor will periodically determine which version of the HTML specification will be referenced for tools generating the format defined in this document.  The starting version will be that defined in <a href="#W3C.REC-html5-20141028">[W3C.REC-html5-20141028]</a>, commonly known as "HTML5".  Although the HTML specification mandates several of the syntax and structure rules in this document, they are called out here for emphasis.</p>
 <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#syntax" id="syntax">HTML Syntax</a></h1>
 <p id="rfc.section.4.p.1">The processor emitting HTML from the XML source will follow these rules:</p>
 <p/>
@@ -723,7 +723,7 @@
 &lt;/style&gt;
 &lt;link rel="stylesheet" type="text/css" href="rfc-local.css"&gt;</pre>
 <h1 id="rfc.section.5.4"><a href="#rfc.section.5.4">5.4.</a> <a href="#document-information" id="document-information">Document Information</a></h1>
-<p id="rfc.section.5.4.p.1">Information about the document as a whole. The &lt;dl&gt; element with id="identifiers" is the first child element of the HTML &lt;body&gt; element.  The defined terms in the definition list are "Workgroup:", "Series:", "Status:", "Published:", and "Authors:".</p>
+<p id="rfc.section.5.4.p.1">Information about the document as a whole will appear as the first child of the HTML &lt;body&gt; element, embedded in an HTML &lt;dl&gt; element with id="identifiers".  The defined terms (&lt;dt&gt;s) in the definition list are "Workgroup:", "Series:", "Status:", "Published:", and "Authors:".</p>
 <pre>
 &lt;dl id="identifiers"&gt;
   &lt;dt&gt;Workgroup:&lt;/dt&gt;
@@ -753,7 +753,7 @@
 <p id="rfc.section.5.6.p.1">To be documented.</p>
 <h1 id="rfc.section.5.7"><a href="#rfc.section.5.7">5.7.</a> <a href="#ids" id="ids">IDs</a></h1>
 <p id="rfc.section.5.7.p.1">HTML elements that are generated from XML elements that include an anchor attribute will use the value of the anchor attribute (prepended by "#") as the id of the corresponding HTML element.  If there is no anchor attribute, the slugifiedName attribute of the contained &lt;name&gt; element will be used.  Otherwise, the partNumber attribute will be used, where it exists.</p>
-<p id="rfc.section.5.7.p.2">Some HTML constructs (such as <a href="#element.section">&lt;section&gt;</a> <cite title="NONE">[element.section]</cite>) will use multiple of these identifiers.</p>
+<p id="rfc.section.5.7.p.2">Some HTML constructs (such as <a href="#element.section">&lt;section&gt;</a> <cite title="NONE">[element.section]</cite>) will use multiple instances of these identifiers.</p>
 <h1 id="rfc.section.5.8"><a href="#rfc.section.5.8">5.8.</a> <a href="#pilcrows" id="pilcrows">Pilcrows</a></h1>
 <p id="rfc.section.5.8.p.1">Each paragraph, artwork, or sourcecode segment outside of a &lt;figure&gt; or &lt;table&gt; element will be appended with a space and a "pilcrow" (U+00B6: PILCROW SIGN), otherwise known as a "paragraph sign".  For the purposes of clarity, in this document pilcrows are rendered as "&amp;para;".</p>
 <p id="rfc.section.5.8.p.2">The pilcrow will normally be invisible unless the element it is attached to is moused over.  The pilcrow will be surrounded by a link that points to the element it is attached to.</p>
@@ -1166,7 +1166,7 @@ int main(void)
 <h1 id="rfc.section.8"><a href="#rfc.section.8">8.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a></h1>
 <p id="rfc.section.8.p.1">Since RFCs are sometimes exchanged outside the normal Web sandboxing mechanism (e.g., rsync to a mirror) then loaded from a local file, more care must be taken with the HTML than is ordinary on the web. </p>
 <h1 id="rfc.section.9"><a href="#rfc.section.9">9.</a> <a href="#appendix-a-acknowledgments" id="appendix-a-acknowledgments">Acknowledgments</a></h1>
-<p id="rfc.section.9.p.1">The authors gratefully acknowledge the contributions of: Patrick Linskey, and the members of the RFC Format Design Team (Nevil Brownlee, Ted Lemon, Paul Hoffman, Julian Reschke, Adam Roach, Alice Russo, Robert Sparks, Dave Thaler).</p>
+<p id="rfc.section.9.p.1">The authors gratefully acknowledge the contributions of: Patrick Linskey, and the members of the RFC Format Design Team (Nevil Brownlee, Sandy Ginoza, Tony Hansen, Paul Hoffman, Ted Lemon, Julian Reschke, Adam Roach, Alice Russo, Robert Sparks, Dave Thaler).</p>
 <h1 id="rfc.references"><a href="#rfc.references">10.</a> References</h1>
 <h1 id="rfc.references.1"><a href="#rfc.references.1">10.1.</a> Normative References</h1>
 <table>
@@ -1179,9 +1179,9 @@ int main(void)
     </tr>
     <tr>
       <td class="reference">
-        <b id="W3C.PR-html5-20140916">[W3C.PR-html5-20140916]</b>
+        <b id="W3C.REC-html5-20141028">[W3C.REC-html5-20141028]</b>
       </td>
-      <td class="top"><a>Berjon, R.</a>, <a>Faulkner, S.</a>, <a>Leithead, T.</a>, <a>Navara, E.</a>, <a>O&amp;#039;Connor, E.</a> and <a>S. Pfeiffer</a>, "<a href="http://www.w3.org/TR/2014/PR-html5-20140916">HTML5</a>", World Wide Web Consortium PR PR-html5-20140916, September 2014.</td>
+      <td class="top"><a>Berjon, R.</a>, <a>Faulkner, S.</a>, <a>Leithead, T.</a>, <a>Navara, E.</a>, <a>O&amp;#039;Connor, E.</a> and <a>S. Pfeiffer</a>, "<a href="http://www.w3.org/TR/2014/REC-html5-20141028">HTML5</a>", World Wide Web Consortium Recommendation REC-html5-20141028, October 2014.</td>
     </tr>
     <tr>
       <td class="reference">
