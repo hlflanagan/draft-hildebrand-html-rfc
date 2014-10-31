@@ -85,10 +85,10 @@ Table of Contents
      6.3.  <annotation>  . . . . . . . . . . . . . . . . . . . . . .  12
      6.4.  <area>  . . . . . . . . . . . . . . . . . . . . . . . . .  12
      6.5.  <artwork> . . . . . . . . . . . . . . . . . . . . . . . .  12
-       6.5.1.  Text Artwork  . . . . . . . . . . . . . . . . . . . .  12
+       6.5.1.  Text Artwork  . . . . . . . . . . . . . . . . . . . .  13
        6.5.2.  SVG Artwork . . . . . . . . . . . . . . . . . . . . .  13
      6.6.  <aside> . . . . . . . . . . . . . . . . . . . . . . . . .  13
-     6.7.  <author>  . . . . . . . . . . . . . . . . . . . . . . . .  13
+     6.7.  <author>  . . . . . . . . . . . . . . . . . . . . . . . .  14
      6.8.  <b> . . . . . . . . . . . . . . . . . . . . . . . . . . .  14
      6.9.  <back>  . . . . . . . . . . . . . . . . . . . . . . . . .  14
      6.10. <bcp14> . . . . . . . . . . . . . . . . . . . . . . . . .  14
@@ -96,16 +96,16 @@ Table of Contents
      6.12. <boilerplate> . . . . . . . . . . . . . . . . . . . . . .  15
      6.13. <city>  . . . . . . . . . . . . . . . . . . . . . . . . .  15
      6.14. <code>  . . . . . . . . . . . . . . . . . . . . . . . . .  15
-     6.15. <country> . . . . . . . . . . . . . . . . . . . . . . . .  15
-     6.16. <cref>  . . . . . . . . . . . . . . . . . . . . . . . . .  15
+     6.15. <country> . . . . . . . . . . . . . . . . . . . . . . . .  16
+     6.16. <cref>  . . . . . . . . . . . . . . . . . . . . . . . . .  16
      6.17. <date>  . . . . . . . . . . . . . . . . . . . . . . . . .  16
      6.18. <dd>  . . . . . . . . . . . . . . . . . . . . . . . . . .  16
      6.19. <displayreference>  . . . . . . . . . . . . . . . . . . .  16
      6.20. <dl>  . . . . . . . . . . . . . . . . . . . . . . . . . .  16
      6.21. <dt>  . . . . . . . . . . . . . . . . . . . . . . . . . .  16
      6.22. <em>  . . . . . . . . . . . . . . . . . . . . . . . . . .  16
-     6.23. <email> . . . . . . . . . . . . . . . . . . . . . . . . .  16
-     6.24. <eref>  . . . . . . . . . . . . . . . . . . . . . . . . .  16
+     6.23. <email> . . . . . . . . . . . . . . . . . . . . . . . . .  17
+     6.24. <eref>  . . . . . . . . . . . . . . . . . . . . . . . . .  17
 
 
 
@@ -116,47 +116,47 @@ Internet-Draft                  HTML RFC                    October 2014
 
      6.25. <facsimile> . . . . . . . . . . . . . . . . . . . . . . .  17
      6.26. <figure>  . . . . . . . . . . . . . . . . . . . . . . . .  17
-     6.27. <front> . . . . . . . . . . . . . . . . . . . . . . . . .  17
-     6.28. <i> . . . . . . . . . . . . . . . . . . . . . . . . . . .  17
-     6.29. <iref>  . . . . . . . . . . . . . . . . . . . . . . . . .  17
+     6.27. <front> . . . . . . . . . . . . . . . . . . . . . . . . .  18
+     6.28. <i> . . . . . . . . . . . . . . . . . . . . . . . . . . .  18
+     6.29. <iref>  . . . . . . . . . . . . . . . . . . . . . . . . .  18
      6.30. <keyword> . . . . . . . . . . . . . . . . . . . . . . . .  18
      6.31. <li>  . . . . . . . . . . . . . . . . . . . . . . . . . .  18
      6.32. <link>  . . . . . . . . . . . . . . . . . . . . . . . . .  18
      6.33. <middle>  . . . . . . . . . . . . . . . . . . . . . . . .  18
      6.34. <name>  . . . . . . . . . . . . . . . . . . . . . . . . .  18
-     6.35. <note>  . . . . . . . . . . . . . . . . . . . . . . . . .  18
+     6.35. <note>  . . . . . . . . . . . . . . . . . . . . . . . . .  19
      6.36. <ol>  . . . . . . . . . . . . . . . . . . . . . . . . . .  19
      6.37. <organization>  . . . . . . . . . . . . . . . . . . . . .  19
      6.38. <phone> . . . . . . . . . . . . . . . . . . . . . . . . .  19
-     6.39. <postal>  . . . . . . . . . . . . . . . . . . . . . . . .  19
+     6.39. <postal>  . . . . . . . . . . . . . . . . . . . . . . . .  20
      6.40. <postalLine>  . . . . . . . . . . . . . . . . . . . . . .  20
-     6.41. <refcontent>  . . . . . . . . . . . . . . . . . . . . . .  20
-     6.42. <reference> . . . . . . . . . . . . . . . . . . . . . . .  20
+     6.41. <refcontent>  . . . . . . . . . . . . . . . . . . . . . .  21
+     6.42. <reference> . . . . . . . . . . . . . . . . . . . . . . .  21
      6.43. <referencegroup>  . . . . . . . . . . . . . . . . . . . .  21
      6.44. <references>  . . . . . . . . . . . . . . . . . . . . . .  21
-     6.45. <region>  . . . . . . . . . . . . . . . . . . . . . . . .  21
-     6.46. <rfc> . . . . . . . . . . . . . . . . . . . . . . . . . .  21
-     6.47. <section> . . . . . . . . . . . . . . . . . . . . . . . .  21
+     6.45. <region>  . . . . . . . . . . . . . . . . . . . . . . . .  22
+     6.46. <rfc> . . . . . . . . . . . . . . . . . . . . . . . . . .  22
+     6.47. <section> . . . . . . . . . . . . . . . . . . . . . . . .  22
      6.48. <seriesInfo>  . . . . . . . . . . . . . . . . . . . . . .  22
      6.49. <sourcecode>  . . . . . . . . . . . . . . . . . . . . . .  22
-     6.50. <street>  . . . . . . . . . . . . . . . . . . . . . . . .  22
+     6.50. <street>  . . . . . . . . . . . . . . . . . . . . . . . .  23
      6.51. <strong>  . . . . . . . . . . . . . . . . . . . . . . . .  23
      6.52. <sub> . . . . . . . . . . . . . . . . . . . . . . . . . .  23
      6.53. <sup> . . . . . . . . . . . . . . . . . . . . . . . . . .  23
      6.54. <t> . . . . . . . . . . . . . . . . . . . . . . . . . . .  23
      6.55. <table> . . . . . . . . . . . . . . . . . . . . . . . . .  23
      6.56. <tbody> . . . . . . . . . . . . . . . . . . . . . . . . .  23
-     6.57. <td>  . . . . . . . . . . . . . . . . . . . . . . . . . .  23
-     6.58. <tfoot> . . . . . . . . . . . . . . . . . . . . . . . . .  23
-     6.59. <th>  . . . . . . . . . . . . . . . . . . . . . . . . . .  23
-     6.60. <thead> . . . . . . . . . . . . . . . . . . . . . . . . .  23
+     6.57. <td>  . . . . . . . . . . . . . . . . . . . . . . . . . .  24
+     6.58. <tfoot> . . . . . . . . . . . . . . . . . . . . . . . . .  24
+     6.59. <th>  . . . . . . . . . . . . . . . . . . . . . . . . . .  24
+     6.60. <thead> . . . . . . . . . . . . . . . . . . . . . . . . .  24
      6.61. <title> . . . . . . . . . . . . . . . . . . . . . . . . .  24
      6.62. <tr>  . . . . . . . . . . . . . . . . . . . . . . . . . .  24
      6.63. <tt>  . . . . . . . . . . . . . . . . . . . . . . . . . .  24
      6.64. <ul>  . . . . . . . . . . . . . . . . . . . . . . . . . .  24
      6.65. <uri> . . . . . . . . . . . . . . . . . . . . . . . . . .  24
-     6.66. <workgroup> . . . . . . . . . . . . . . . . . . . . . . .  24
-     6.67. <xref>  . . . . . . . . . . . . . . . . . . . . . . . . .  24
+     6.66. <workgroup> . . . . . . . . . . . . . . . . . . . . . . .  25
+     6.67. <xref>  . . . . . . . . . . . . . . . . . . . . . . . . .  25
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  25
    8.  Security Considerations . . . . . . . . . . . . . . . . . . .  25
    9.  Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  25
@@ -170,7 +170,7 @@ Hildebrand & Flanagan      Expires May 4, 2015                  [Page 3]
 Internet-Draft                  HTML RFC                    October 2014
 
 
-     10.2.  Informative References . . . . . . . . . . . . . . . . .  25
+     10.2.  Informative References . . . . . . . . . . . . . . . . .  26
      10.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  26
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  26
 
@@ -532,8 +532,8 @@ Internet-Draft                  HTML RFC                    October 2014
 5.9.  Authors' Addresses
 
    At the end of the document, author information will be included
-   inside an HTML <section> element.  The class names chosen as in hCard
-   [1].
+   inside an HTML <section> element.  The class names have been chosen
+   to match the class names in hCard [1].
 
 
 
@@ -605,11 +605,11 @@ Internet-Draft                  HTML RFC                    October 2014
 5.10.  XML Source
 
    At the very end of the document, the XML source that was used to
-   produce this document will be included with a comment.
+   produce this document will be included within a comment.  This
+   comment may be preceded by another comment that describes the source.
 
-
-
-
+   Any instances of "--" in the XML will be modified to "--".  Note that
+   if the dashes in the original XML were in a comment start- (<!--) or
 
 
 
@@ -617,6 +617,17 @@ Hildebrand & Flanagan      Expires May 4, 2015                 [Page 11]
 
 Internet-Draft                  HTML RFC                    October 2014
 
+
+   end-delimiter (-->), the XML will not parse correctly without
+   reversing this transformation.
+
+   <!-- XML SOURCE START (note: each instance of
+        two '-' (U+002D: HYPHEN-MINUS) characters
+        changed to "&#x2d;&#x2d;") -->
+   <!--
+   <?xml version="1.0" encoding="utf-8"?>
+   <rfc>
+     <!&#x2d;&#x2d; A comment &#x2d;&#x2d;>
 
 6.  Elements
 
@@ -655,6 +666,14 @@ Internet-Draft                  HTML RFC                    October 2014
    Inside a <figure> element, the figure title serves the purpose of the
    pilcrow.
 
+
+
+
+Hildebrand & Flanagan      Expires May 4, 2015                 [Page 12]
+
+Internet-Draft                  HTML RFC                    October 2014
+
+
 6.5.1.  Text Artwork
 
    Text artwork is rendered inside an HTML <pre> element.  Note that
@@ -664,15 +683,6 @@ Internet-Draft                  HTML RFC                    October 2014
    The <pre> element will have CSS classes of "artwork" and "art-"
    prepended to the value of the <artwork>'s "type" attribute, if it
    exists.
-
-
-
-
-
-Hildebrand & Flanagan      Expires May 4, 2015                 [Page 12]
-
-Internet-Draft                  HTML RFC                    October 2014
-
 
    <pre class="artwork art-ascii-art" id="p-2-16">
     ______________
@@ -709,6 +719,17 @@ Internet-Draft                  HTML RFC                    October 2014
      <a href="#p-1.2-6" class="pilcrow">&para;</a>
    </aside>
 
+
+
+
+
+
+
+Hildebrand & Flanagan      Expires May 4, 2015                 [Page 13]
+
+Internet-Draft                  HTML RFC                    October 2014
+
+
 6.7.  <author>
 
    As seen in Authors' Addresses (Section 5.9), at the end of the
@@ -722,13 +743,6 @@ Internet-Draft                  HTML RFC                    October 2014
    "role" containing the value of the "role" attribute of the <author>
    XML element (if there is a role).  Parentheses will surround the
    <span class="role">, if it exists.
-
-
-
-Hildebrand & Flanagan      Expires May 4, 2015                 [Page 13]
-
-Internet-Draft                  HTML RFC                    October 2014
-
 
    <address class="vcard">
      <div class="namerole">
@@ -765,6 +779,13 @@ Internet-Draft                  HTML RFC                    October 2014
    element at the end of the quote, with an <a> element surrounding it
    (if there is a "cite" attribute), linking to the "cite" URL.
 
+
+
+Hildebrand & Flanagan      Expires May 4, 2015                 [Page 14]
+
+Internet-Draft                  HTML RFC                    October 2014
+
+
    If the blockquote does not contain another element that gets a
    pilcrow (Section 5.8), a pilcrow is added.
 
@@ -778,13 +799,6 @@ Internet-Draft                  HTML RFC                    October 2014
      </p>
      <cite>-- <a href="http://...">Abraham Lincoln</a></cite>
    </blockquote>
-
-
-
-Hildebrand & Flanagan      Expires May 4, 2015                 [Page 14]
-
-Internet-Draft                  HTML RFC                    October 2014
-
 
 6.12.  <boilerplate>
 
@@ -817,6 +831,17 @@ Internet-Draft                  HTML RFC                    October 2014
 
    <span class="postal-code">80202<span>
 
+
+
+
+
+
+
+Hildebrand & Flanagan      Expires May 4, 2015                 [Page 15]
+
+Internet-Draft                  HTML RFC                    October 2014
+
+
 6.15.  <country>
 
    This element is rendered as a <div> element with CSS class "country-
@@ -829,18 +854,6 @@ Internet-Draft                  HTML RFC                    October 2014
    This element is rendered as a <span> element with CSS class "cref".
 
    <span class="cref">This is a comment</div>
-
-
-
-
-
-
-
-
-Hildebrand & Flanagan      Expires May 4, 2015                 [Page 15]
-
-Internet-Draft                  HTML RFC                    October 2014
-
 
 6.17.  <date>
 
@@ -873,6 +886,18 @@ Internet-Draft                  HTML RFC                    October 2014
 
    This element is directly rendered as its HTML counterpart.
 
+
+
+
+
+
+
+
+Hildebrand & Flanagan      Expires May 4, 2015                 [Page 16]
+
+Internet-Draft                  HTML RFC                    October 2014
+
+
 6.23.  <email>
 
    As shown in Section 5.9 this element is rendered as an HTML <div>
@@ -889,14 +914,6 @@ Internet-Draft                  HTML RFC                    October 2014
    This element is rendered as HTML <a> element, with the "href"
    attribute set to the value of the "target" attribute, and the CSS
    class of "eref"
-
-
-
-
-Hildebrand & Flanagan      Expires May 4, 2015                 [Page 16]
-
-Internet-Draft                  HTML RFC                    October 2014
-
 
    <a href="https://..." class="eref">the text</a>
 
@@ -925,6 +942,18 @@ Internet-Draft                  HTML RFC                    October 2014
    element with CSS class "self-ref" around the figure name, if a name
    was given.
 
+
+
+
+
+
+
+
+Hildebrand & Flanagan      Expires May 4, 2015                 [Page 17]
+
+Internet-Draft                  HTML RFC                    October 2014
+
+
    <figure id="f-1">
      ...
      <figcaption>
@@ -944,15 +973,6 @@ Internet-Draft                  HTML RFC                    October 2014
 6.29.  <iref>
 
    To be documented, once the <iref> element is better documented.
-
-
-
-
-
-Hildebrand & Flanagan      Expires May 4, 2015                 [Page 17]
-
-Internet-Draft                  HTML RFC                    October 2014
-
 
 6.30.  <keyword>
 
@@ -982,6 +1002,14 @@ Internet-Draft                  HTML RFC                    October 2014
    This element is never rendered directly, but instead when considering
    its parent element, such as <section> (Section 6.47).
 
+
+
+
+Hildebrand & Flanagan      Expires May 4, 2015                 [Page 18]
+
+Internet-Draft                  HTML RFC                    October 2014
+
+
 6.35.  <note>
 
    This element is rendered similarly to a <section> (Section 6.47), but
@@ -998,17 +1026,6 @@ Internet-Draft                  HTML RFC                    October 2014
        <a href="#p-note-1-1" class="pilcrow">&para;</a>
      </p>
    </section>
-
-
-
-
-
-
-
-Hildebrand & Flanagan      Expires May 4, 2015                 [Page 18]
-
-Internet-Draft                  HTML RFC                    October 2014
-
 
 6.36.  <ol>
 
@@ -1037,11 +1054,23 @@ Internet-Draft                  HTML RFC                    October 2014
      </span>
    </div>
 
+
+
+
+
+
+
+
+Hildebrand & Flanagan      Expires May 4, 2015                 [Page 19]
+
+Internet-Draft                  HTML RFC                    October 2014
+
+
 6.39.  <postal>
 
-   This element renderes as an HTML <div> with CSS class "adr", unless
-   it contains a <postalLine> child element (in which case it adds no
-   HTML markup).
+   This element renders as an HTML <div> with CSS class "adr", unless it
+   contains a <postalLine> child element (in which case it adds no HTML
+   markup).
 
    When there is no <postalLine> child, the following child elements are
    rendered into the HTML:
@@ -1057,14 +1086,6 @@ Internet-Draft                  HTML RFC                    October 2014
       *  The rendering of all <region> elements
 
       *  Whitespace
-
-
-
-
-Hildebrand & Flanagan      Expires May 4, 2015                 [Page 19]
-
-Internet-Draft                  HTML RFC                    October 2014
-
 
       *  The rendering of all <code> elements
 
@@ -1091,6 +1112,16 @@ Internet-Draft                  HTML RFC                    October 2014
    <pre class="label">Where the
    Streets have no name</pre>
 
+
+
+
+
+
+Hildebrand & Flanagan      Expires May 4, 2015                 [Page 20]
+
+Internet-Draft                  HTML RFC                    October 2014
+
+
 6.41.  <refcontent>
 
    This element renders as an HTML <span> with CSS class "refcontent".
@@ -1109,18 +1140,6 @@ Internet-Draft                  HTML RFC                    October 2014
      <dt id="RFC5646">[RFC5646]</dt>
      <dd><span class="refauthor">Phillips, A.</span> ...</dd>
    </dl>
-
-
-
-
-
-
-
-
-Hildebrand & Flanagan      Expires May 4, 2015                 [Page 20]
-
-Internet-Draft                  HTML RFC                    October 2014
-
 
 6.43.  <referencegroup>
 
@@ -1150,6 +1169,15 @@ Internet-Draft                  HTML RFC                    October 2014
      </section>
    </section>
 
+
+
+
+
+Hildebrand & Flanagan      Expires May 4, 2015                 [Page 21]
+
+Internet-Draft                  HTML RFC                    October 2014
+
+
 6.45.  <region>
 
    This element is rendered as a <span> element with CSS class "region".
@@ -1168,15 +1196,6 @@ Internet-Draft                  HTML RFC                    October 2014
    element contains a <a> element around the sectionNumber, if
    applicable (e.g.  <abstract> does not get a section number).  Another
    <a> element is included with the section's name.
-
-
-
-
-
-Hildebrand & Flanagan      Expires May 4, 2015                 [Page 21]
-
-Internet-Draft                  HTML RFC                    October 2014
-
 
    <section id="intro">
      <h2 id="s-1">
@@ -1206,6 +1225,15 @@ Internet-Draft                  HTML RFC                    October 2014
    (Section 5.8) is included.  Inside a <figure> element, the figure
    title serves the purpose of the pilcrow.
 
+
+
+
+
+Hildebrand & Flanagan      Expires May 4, 2015                 [Page 22]
+
+Internet-Draft                  HTML RFC                    October 2014
+
+
    <pre class="sourcecode lang-c">
    #include &lt;stdio.h&gt;
 
@@ -1222,17 +1250,6 @@ Internet-Draft                  HTML RFC                    October 2014
    address".
 
    <div class="street-address">1899 Wynkoop St, Suite 600</div>
-
-
-
-
-
-
-
-Hildebrand & Flanagan      Expires May 4, 2015                 [Page 22]
-
-Internet-Draft                  HTML RFC                    October 2014
-
 
 6.51.  <strong>
 
@@ -1262,6 +1279,17 @@ Internet-Draft                  HTML RFC                    October 2014
 
    This element is directly rendered as its HTML counterpart.
 
+
+
+
+
+
+
+Hildebrand & Flanagan      Expires May 4, 2015                 [Page 23]
+
+Internet-Draft                  HTML RFC                    October 2014
+
+
 6.57.  <td>
 
    This element is directly rendered as its HTML counterpart.
@@ -1277,18 +1305,6 @@ Internet-Draft                  HTML RFC                    October 2014
 6.60.  <thead>
 
    This element is directly rendered as its HTML counterpart.
-
-
-
-
-
-
-
-
-Hildebrand & Flanagan      Expires May 4, 2015                 [Page 23]
-
-Internet-Draft                  HTML RFC                    October 2014
-
 
 6.61.  <title>
 
@@ -1320,6 +1336,16 @@ Internet-Draft                  HTML RFC                    October 2014
    attribute set to the linked URI, CSS class of "url" [sic], and the
    contents set to the linked URI.
 
+
+
+
+
+
+Hildebrand & Flanagan      Expires May 4, 2015                 [Page 24]
+
+Internet-Draft                  HTML RFC                    October 2014
+
+
    <div>URI:
      <a href="http://www.example.com"
         class="url">http://www.example.com</a>
@@ -1333,18 +1359,6 @@ Internet-Draft                  HTML RFC                    October 2014
 
    This element is rendered as an HTML <a> element containing an
    appropriate local link as the "href" attribute.
-
-
-
-
-
-
-
-
-Hildebrand & Flanagan      Expires May 4, 2015                 [Page 24]
-
-Internet-Draft                  HTML RFC                    October 2014
-
 
 7.  IANA Considerations
 
@@ -1376,6 +1390,18 @@ Internet-Draft                  HTML RFC                    October 2014
               Web Consortium Recommendation REC-html5-20141028, October
               2014, <http://www.w3.org/TR/2014/REC-html5-20141028>.
 
+
+
+
+
+
+
+
+Hildebrand & Flanagan      Expires May 4, 2015                 [Page 25]
+
+Internet-Draft                  HTML RFC                    October 2014
+
+
    [W3C.REC-CSS2-20110607]
               Bos, B., Celik, T., Hickson, I., and H. Lie, "Cascading
               Style Sheets Level 2 Revision 1 (CSS 2.1) Specification",
@@ -1394,13 +1420,6 @@ Internet-Draft                  HTML RFC                    October 2014
 
    [RFC6949]  Flanagan, H. and N. Brownlee, "RFC Series Format
               Requirements and Future Development", RFC 6949, May 2013.
-
-
-
-Hildebrand & Flanagan      Expires May 4, 2015                 [Page 25]
-
-Internet-Draft                  HTML RFC                    October 2014
-
 
    [RFC7322]  Flanagan, H. and S. Ginoza, "RFC Style Guide", RFC 7322,
               September 2014.
@@ -1425,25 +1444,6 @@ Authors' Addresses
    RFC Editor
 
    Email: rse@rfc-editor.org
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

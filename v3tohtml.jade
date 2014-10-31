@@ -324,15 +324,9 @@ html(lang='en')
       each a in authors
         +foot_author(a)
 
-| <!-- XML SOURCE START -->
-- var b = new Buffer($().toString(), 'utf8')
-- var sha = crypto.createHash('sha1')
-- sha.update(b)
+| <!-- XML SOURCE START (note: each instance of two '-' (U+002D: HYPHEN-MINUS)
+| characters changed to "&#x2d;&#x2d;") -->
 != "<!--\n"
-!= "Content-Type: application/xml; charset=utf-8\n"
-!= "Content-Transfer-Encoding: base64\n"
-!= "Digest: SHA=" + sha.digest('base64') + "\n"
-!= "\n"
-!= b.toString('base64').replace(/(.{76})/g, "$1\n")
+!= $source.toString('utf8').replace(/--/g, "&#x2d;&#x2d;")
 != "\n-->"
 | <!-- XML SOURCE END -->

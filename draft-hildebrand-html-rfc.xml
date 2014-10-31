@@ -311,7 +311,8 @@
       </section>
       <section anchor='authors-addresses' title="Authors' Addresses">
         <t>At the end of the document, author information will be included
-          inside an HTML &lt;section&gt; element.  The class names chosen as in
+          inside an HTML &lt;section&gt; element.  The class names have been chosen to
+          match the class names in
           <eref target='http://microformats.org/wiki/hcard'>hCard</eref>.</t>
         <figure>
           <artwork><![CDATA[
@@ -358,8 +359,22 @@
       </section>
       <section title="XML Source" anchor="xml-source">
         <t>At the very end of the document, the XML source that was used to
-          produce this document will be included with a comment.</t>
-        <t></t>
+          produce this document will be included within a comment.  This comment may be
+          preceded by another comment that describes the source.</t>
+        <t>Any instances of "--" in the XML will be modified to "&#x2d;&#x2d;".  Note that
+          if the dashes in the original XML were in a comment start- (&lt;!--) or
+          end-delimiter (--&gt;), the XML will not parse correctly without reversing this
+          transformation.</t>
+        <figure>
+          <artwork><![CDATA[
+<!-- XML SOURCE START (note: each instance of
+     two '-' (U+002D: HYPHEN-MINUS) characters
+     changed to "&#x2d;&#x2d;") -->
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<rfc>
+  <!&#x2d;&#x2d; A comment &#x2d;&#x2d;>]]></artwork>
+        </figure>
       </section>
     </section>
     <section title="Elements" anchor="elements">
@@ -726,7 +741,7 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
         </figure>
       </section>
       <section title="&lt;postal&gt;" anchor="element.postal">
-        <t>This element renderes as an HTML &lt;div&gt; with CSS class
+        <t>This element renders as an HTML &lt;div&gt; with CSS class
           "adr", unless it contains a &lt;postalLine&gt; child element
           (in which case it adds no HTML markup).</t>
         <t>When there is no &lt;postalLine&gt; child, the following child
