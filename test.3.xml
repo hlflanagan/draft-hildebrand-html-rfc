@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rfc ipr='trust200902' docName='draft-hildebrand-html-rfc-04' category='info' xmlns:xi='http://www.w3.org/2001/XInclude' tocInclude='yes'>
+  <link href="https://github.com/hildjj/draft-hildebrand-html-rfc.git" rel="alternate"/>
+  <!-- Didn't do iref -->
+  <!-- Didn't do referencegroup -->
+  <!-- Didn't do xref attributes -->
   <front>
     <!--
       comment in the front
@@ -7,21 +11,20 @@
       it also has some &amp; &lt; &gt;
     -->
     <title abbrev='HTML RFC'>HyperText Markup Language Request For Comments Format</title>
-    <author initials='J.' surname='Hildebrand' fullname='Joe Hildebrand' role='editor'>
+    <author initials='J.' surname='Hildebrand' fullname='Joe Hildebrand' role='editor' ascii='Joseph Hildebrand'>
       <organization>Cisco Systems, Inc.</organization>
       <address>
         <postal>
           <street>1 Main Street</street>
           <street>Suite 1</street>
-          <city>Denver</city>
+          <city ascii='Denver'>Denver</city>
           <region>CO</region>
           <code>80212</code>
           <country>US</country>
         </postal>
-        <email>jhildebr@example.com</email>
-        <email>joe@example.net</email>
-        <facsimile>+1-303-555-1212</facsimile>
         <phone>+1-720-555-1212</phone>
+        <facsimile>+1-303-555-1212</facsimile>
+        <email>jhildebr@example.com</email>
         <uri>http://www.example.com</uri>
       </address>
     </author>
@@ -83,12 +86,12 @@
         <name>Sub Section 3</name>
         <blockquote
           cite='http://www.abrahamlincolnonline.org/lincoln/speeches/gettysburg.htm'
-          quoteFrom='Abraham Lincoln'>
+          quotedFrom='Abraham Lincoln'>
           <t>Four score and seven years ago our fathers brought forth on this
             continent, a new nation, conceived in Liberty, and dedicated to the
             proposition that all men are created equal.</t>
 
-          <t>Now we are engaged in a great civil war, testing whether that nation,
+          <t>Now we are engaged in a <b>great</b> civil war, testing whether that nation,
              or any nation so conceived and so dedicated, can long endure. We are
              met on a great battle-field of that war. We have come to dedicate a
              portion of that field, as a final resting place for those who here
@@ -119,10 +122,11 @@
       <section anchor='sub4'>
         <name>Sub Section 4</name>
         <t>sub section paragraph 4</t>
+        <t>This paragraph has a <cref anchor='unint'>uninteresting comment</cref>.</t>
       </section>
     </section>
     <section>
-      <name>Top</name>
+      <name><tt>top</tt></name>
       <t>A real section</t>
       <table anchor='THE-TABLE'>
         <name>I AM THE TABLE</name>
@@ -139,15 +143,32 @@
       <t>Second paragraph</t>
       <ul>
         <li>List</li>
-        <li>unordered</li>
+        <li>unordered, but it points to <xref target='unint'/></li>
+      </ul>
+      <ul empty='true'>
+        <li>Empty: it's all empty</li>
+        <li>I have not bullets left</li>
       </ul>
       <ol>
         <li><t>now</t><t>then</t></li>
         <li>ordered</li>
       </ol>
+      <ol start="42" style='I'>
+        <li>The meaning of life.</li>
+      </ol>
+      <ol style='Requirement %c:'>
+        <li>Get up every morning with a smile on your face</li>
+        <li>Show the world all the love in your heart</li>
+      </ol>
+      <artwork anchor='not-actually-ee' xlm:lang='en' type='poetry'>
+artwork does not
+     ALWAYS
+   have to bepartofafigure.
+                            --ee cummings
+      </artwork>
       <figure>
         <name>It figures</name>
-        <artwork type='ascii-art'>
+        <artwork type='ascii-art' align='center'>
  <![CDATA[
  ______________
 < hello, world >
@@ -192,6 +213,12 @@
           <dd>Not fine</dd>
           <dt>Angry</dt>
           <dd>Sad<sub>weepy</sub></dd>
+        </dl>
+        <dl hanging='true' spacing='compact'>
+          <dt>Whee!</dt>
+          <dd>Ugh. <em>Really</em> ugh.</dd>
+          <dt>Woah!</dt>
+          <dd>What<i>ever</i>.</dd>
         </dl>
         <figure>
           <name>This is a figure</name>
@@ -259,7 +286,12 @@ int main(void)
         </front>
         <seriesInfo name="RFC" value="6949"/>
         <format type="TXT" octets="29181" target="http://www.rfc-editor.org/rfc/rfc6949.txt"/>
+        <annotation>
+          This is something <strong>relevant</strong> to RFC 6949. 
+        </annotation>
+        <refcontent>I guess I'm saying something here</refcontent>
       </reference>
+      <displayreference from="RFC6949" to="RFC-reqs"/>
     </references>
     <section>
       <name>Doing things in appendices</name>
