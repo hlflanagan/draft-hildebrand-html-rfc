@@ -268,35 +268,35 @@ mixin xref(e)
       case target_el.name()
         when 'section'
           a.xref(href='#'+target)
-            if fmt !== 'counter'
+            if (fmt !== 'counter') && (fmt !== 'title')
               = 'Section '
             if fmt == 'title'
               = $('name', target_el).text()
             else
-              = $attr(target_el, 'sectionNumber').replace(/^s-/, '')
+              = $att(target_el, 'sectionNumber').replace(/^s-/, '')
         when 'figure'
           a.xref(href='#'+target)
-            if fmt !== 'counter'
+            if (fmt !== 'counter') && (fmt !== 'title')
               = 'Figure '
             if fmt == 'title'
               = $('name', target_el).text()
             else
-              = $attr(target_el, 'figureNumber').replace(/^f-/, '')
+              = $att(target_el, 'figureNumber').replace(/^f-/, '')
         when 'table'
           a.xref(href='#'+target)
-            if fmt !== 'counter'
+            if (fmt !== 'counter') && (fmt !== 'title')
               = 'Table '
             if fmt == 'title'
               = $('name', target_el).text()
             else
-              = $attr(target_el, 'tableNumber').replace(/^t-/, '')
+              = $att(target_el, 'tableNumber').replace(/^t-/, '')
         when 'reference'
           = '['
           a.xref(href='#'+target)
             if fmt == 'title'
               = $('front/title/text()', target_el)
             else
-              = 'target'
+              = target
           = ']'
         default
           - console.error("Can't render xref to <" + target_el.name() + "> without text inside the <xref> with target: " + target)

@@ -123,10 +123,10 @@
       <section anchor='sub4'>
         <name>Sub Section 4</name>
         <t>sub section paragraph 4</t>
-        <t>This paragraph has a <cref anchor='unint' source='Paul'>uninteresting comment</cref>.</t>
+        <t>This paragraph has a <cref anchor='unint' source='Paul'>uninteresting <tt>comment</tt></cref>.</t>
       </section>
     </section>
-    <section>
+    <section anchor='top'>
       <name><tt>top</tt></name>
       <t anchor='real'>A real section, with an anchor</t>
       <table anchor='THE-TABLE'>
@@ -144,9 +144,31 @@
       <t>Second paragraph</t>
       <ul>
         <li>List</li>
-        <li><tt>&lt;xref&gt;</tt> without text <xref target='unint'/></li>
-        <li><tt>&lt;xref&gt;</tt> without text, markedup <xref target='n-top'/></li>
         <li><tt>&lt;xref&gt;</tt> with text <xref target='unint'>Some Text</xref></li>
+        <li>Section</li>
+        <ul>
+          <li>no format: <xref target='top'/></li>
+          <li>format=counter: <xref format='counter' target='top'/></li>
+          <li>format=title: <xref format='title' target='top'/></li>
+        </ul>
+        <li>Figure</li>
+        <ul>
+          <li>no format: <xref target='hello'/></li>
+          <li>format=counter: <xref format='counter' target='hello'/></li>
+          <li>format=title: <xref format='title' target='hello'/></li>
+        </ul>
+        <li>Table</li>
+        <ul>
+          <li>no format: <xref target='THE-TABLE'/></li>
+          <li>format=counter: <xref format='counter' target='THE-TABLE'/></li>
+          <li>format=title: <xref format='title' target='THE-TABLE'/></li>
+        </ul>
+        <li>Reference</li>
+        <ul>
+          <li>no format: <xref target='RFC6949'/></li>
+          <li>format=counter: <xref format='counter' target='RFC6949'/></li>
+          <li>format=title: <xref format='title' target='RFC6949'/></li>
+        </ul>
       </ul>
       <ul empty='true'>
         <li>Empty: it's all empty</li>
@@ -223,7 +245,7 @@ artwork does not
           <dt>Woah!</dt>
           <dd>What<i>ever</i>.</dd>
         </dl>
-        <figure>
+        <figure anchor="hello">
           <name>This is a figure</name>
           <sourcecode anchor='helloworld' type='c'>
 <![CDATA[
