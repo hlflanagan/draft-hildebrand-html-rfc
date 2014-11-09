@@ -1,7 +1,7 @@
 - var number = require('./number')
 - var slug = require('slug')
 - var dt = require('./dt')
-- var pubDate = null
+- var pubDate = new Date()
 
 mixin elem(e)
   //- TODO: Deal with namespaces
@@ -11,7 +11,10 @@ mixin elem(e)
     block
 
 mixin part(e)
-  +elem(e)(partNumber=number.partNumber(e))
+  if $('ancestor::reference', e)
+    +elem(e)
+  else
+    +elem(e)(partNumber=number.partNumber(e))
 
 mixin children(e, opts)
   each c in e.childNodes()
@@ -69,7 +72,7 @@ mixin front(e)
             persons identified as the document authors.  All rights reserved.
           t(partNumber="p-boilerplate-2-2").
             This document is subject to BCP 78 and the IETF Trust's Legal
-            Provisions Relating to <a href='http://trustee.ietf.org/license-info'>IETF Documents</a>
+            Provisions Relating to <eref target='http://trustee.ietf.org/license-info'>IETF Documents</eref>
             in effect on the date of publication of this document.  Please review
             these documents carefully, as they describe your rights and restrictions
             with respect to this document.  Code Components extracted from this
@@ -95,7 +98,10 @@ mixin date(e)
     +elem(e)
 
 mixin abstract(e)
-  +elem(e)(sectionNumber="s-abstract")
+  if $('ancestor::reference', e)
+    +elem(e)
+  else
+    +elem(e)(sectionNumber="s-abstract")
 
 mixin note(e)
   +elem(e)(sectionNumber="s-note-" + number.sequentialNumber(e))

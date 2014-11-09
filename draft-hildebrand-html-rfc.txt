@@ -853,7 +853,7 @@ Internet-Draft                  HTML RFC                    October 2014
 
    This element is rendered as a <span> element with CSS class "cref".
 
-   <span class="cref">This is a comment</div>
+   <span class="cref">This is a comment</span>
 
 6.17.  <date>
 

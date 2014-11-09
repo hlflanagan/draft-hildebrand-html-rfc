@@ -32,6 +32,23 @@ h4, h5, h6 {
   margin-top: 2px;
   float: left;
 }
+div, span {
+  position: relative;
+}
+.ascii {
+  display: none;
+  background: yellow;
+  position: absolute;
+  bottom: 0px;
+  left: -4px;
+  padding: 4px;
+}
+span:hover > .ascii {
+  display: block;
+}
+div:hover > .ascii {
+  display: block;
+}
 .reference {
   padding-bottom: 10px;
   float: left;
@@ -167,6 +184,14 @@ td {
 .rfceditor-remove {
   background-color: rgba(235, 249, 105, 0.25);
   clear: both;
+}
+.cref {
+  background-color: rgba(235, 249, 105, 0.25);
+  padding: 4px;
+}
+.cref-source {
+  font-style: italic;
+  background-color: rgba(235, 249, 105, 1);
 }
 address.vcard {
   padding-bottom: 20px;

@@ -566,7 +566,7 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
           class "cref".</t>
         <figure>
           <artwork><![CDATA[
-<span class="cref">This is a comment</div>]]></artwork>
+<span class="cref">This is a comment</span>]]></artwork>
         </figure>
       </section>
       <section title="&lt;date&gt;" anchor="element.date">

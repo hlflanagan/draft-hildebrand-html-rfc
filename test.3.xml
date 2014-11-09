@@ -4,6 +4,7 @@
   <!-- Didn't do iref -->
   <!-- Didn't do referencegroup -->
   <!-- Didn't do xref attributes -->
+  <!-- Need right-to-left names -->
   <front>
     <!--
       comment in the front
@@ -11,15 +12,15 @@
       it also has some &amp; &lt; &gt;
     -->
     <title abbrev='HTML RFC'>HyperText Markup Language Request For Comments Format</title>
-    <author initials='J.' surname='Hildebrand' fullname='Joe Hildebrand' role='editor' ascii='Joseph Hildebrand'>
-      <organization>Cisco Systems, Inc.</organization>
+    <author initials='ɟ.' surname='H̭ildebrand' fullname='ɟöe H̭ildebrand' role='editor' ascii='Joe Hildebrand'>
+      <organization ascii='Cisco Systems, Inc.'>Čisco Śystems, Inc.</organization>
       <address>
         <postal>
           <street>1 Main Street</street>
           <street>Suite 1</street>
-          <city ascii='Denver'>Denver</city>
+          <city ascii='Denver'>ǲenver</city>
           <region>CO</region>
-          <code>80212</code>
+          <code ascii="80202">８０２０２</code>
           <country>US</country>
         </postal>
         <phone>+1-720-555-1212</phone>
@@ -122,12 +123,12 @@
       <section anchor='sub4'>
         <name>Sub Section 4</name>
         <t>sub section paragraph 4</t>
-        <t>This paragraph has a <cref anchor='unint'>uninteresting comment</cref>.</t>
+        <t>This paragraph has a <cref anchor='unint' source='Paul'>uninteresting comment</cref>.</t>
       </section>
     </section>
     <section>
       <name><tt>top</tt></name>
-      <t>A real section</t>
+      <t anchor='real'>A real section, with an anchor</t>
       <table anchor='THE-TABLE'>
         <name>I AM THE TABLE</name>
         <thead>
@@ -143,7 +144,9 @@
       <t>Second paragraph</t>
       <ul>
         <li>List</li>
-        <li>unordered, but it points to <xref target='unint'/></li>
+        <li><tt>&lt;xref&gt;</tt> without text <xref target='unint'/></li>
+        <li><tt>&lt;xref&gt;</tt> without text, markedup <xref target='n-top'/></li>
+        <li><tt>&lt;xref&gt;</tt> with text <xref target='unint'>Some Text</xref></li>
       </ul>
       <ul empty='true'>
         <li>Empty: it's all empty</li>
@@ -160,7 +163,7 @@
         <li>Get up every morning with a smile on your face</li>
         <li>Show the world all the love in your heart</li>
       </ol>
-      <artwork anchor='not-actually-ee' xlm:lang='en' type='poetry'>
+      <artwork anchor='not-actually-ee' xml:lang='en' type='poetry'>
 artwork does not
      ALWAYS
    have to bepartofafigure.
@@ -287,7 +290,7 @@ int main(void)
         <seriesInfo name="RFC" value="6949"/>
         <format type="TXT" octets="29181" target="http://www.rfc-editor.org/rfc/rfc6949.txt"/>
         <annotation>
-          This is something <strong>relevant</strong> to RFC 6949. 
+          This is something <strong>relevant</strong> to RFC 6949.
         </annotation>
         <refcontent>I guess I'm saying something here</refcontent>
       </reference>
