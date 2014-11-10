@@ -287,25 +287,45 @@
       </ol>
       <ol start="42" style="I">
         <li partNumber="p-2-31">The meaning of life.</li>
+        <li partNumber="p-2-32">The after-meaning of the after-life</li>
       </ol>
       <ol style="Requirement %c:">
-        <li partNumber="p-2-32">
+        <li partNumber="p-2-33">
           Get up every morning with a smile on your face
         </li>
-        <li partNumber="p-2-33">Show the world all the love in your heart</li>
+        <li partNumber="p-2-34">Show the world all the love in your heart</li>
       </ol>
-      <artwork anchor="not-actually-ee"
-               lang="en"
-               partNumber="p-2-34"
-               type="poetry">
+      <ol start="26" style="Requirement %C:">
+        <li partNumber="p-2-35">Upper case</li>
+        <li partNumber="p-2-36">Above 26</li>
+      </ol>
+      <ol start="18" style="Requirement %i:">
+        <li partNumber="p-2-37">Wheels on a big rig</li>
+        <li partNumber="p-2-38">
+          Exercitation nisi quis in laborum ipsum esse excepteur culpa. 
+          Aliquip aliquip quis deserunt non ullamco veniam cupidatat laborum 
+          cillum nisi. Nostrud aliqua ut non incididunt eiusmod duis nostrud 
+          deserunt tempor consequat exercitation fugiat irure. Tempor 
+          reprehenderit excepteur irure exercitation ad laboris esse quis 
+          laboris mollit Lorem. Voluptate nisi occaecat ea occaecat mollit 
+          esse veniam quis cillum mollit ex ullamco aliqua dolor. Tempor ex 
+          esse laboris nostrud nulla ipsum aliquip sint do.
+        </li>
+      </ol>
+      <artwork align="center"
+               anchor="not-actually-ee"
+               partNumber="p-2-39"
+               type="poetry"
+               xml:lang="en">
 artwork does not
      ALWAYS
    have to bepartofafigure.
                             --ee cummings
       </artwork>
+      <artwork align="right" partNumber="p-2-40">Just a step to the right</artwork>
       <figure figureNumber="f-1">
         <name slugifiedName="n-it-figures">It figures</name>
-        <artwork align="center" partNumber="p-2-35" type="ascii-art"><![CDATA[
+        <artwork partNumber="p-2-41" type="ascii-art"><![CDATA[
  ______________
 < hello, world >
  --------------
@@ -316,8 +336,8 @@ artwork does not
                 ||     ||
 ]]></artwork>
       </figure>
-      <t partNumber="p-2-36">Artwork can also be outside a figure</t>
-      <artwork partNumber="p-2-37" type="svg">
+      <t partNumber="p-2-42">Artwork can also be outside a figure</t>
+      <artwork partNumber="p-2-43" type="svg">
         <svg height="100" width="100">
           <circle cx="50"
                   cy="50"
@@ -327,7 +347,7 @@ artwork does not
                   stroke-width="4"/>
         </svg>
       </artwork>
-      <artwork partNumber="p-2-38" type="hex-dump"><![CDATA[
+      <artwork partNumber="p-2-44" type="hex-dump"><![CDATA[
 00000000  20 5f 5f 5f 5f 5f 5f 5f  5f 5f 5f 5f 5f 5f 5f 20  | ______________ |
 00000010  0a 3c 20 68 65 6c 6c 6f  2c 20 77 6f 72 6c 64 20  |.< hello, world |
 00000020  3e 0a 20 2d 2d 2d 2d 2d  2d 2d 2d 2d 2d 2d 2d 2d  |>. -------------|
@@ -381,7 +401,7 @@ int main(void)
         Informative References
       </name>
       <reference anchor="RFC5646"
-                 base="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml">
+                 xml:base="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml">
         <front>
           <title>Tags for Identifying Languages</title>
           <author fullname="A. Phillips" initials="A." surname="Phillips">
@@ -411,7 +431,7 @@ int main(void)
                 type="TXT"/>
       </reference>
       <reference anchor="RFC6949"
-                 base="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6949.xml">
+                 xml:base="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6949.xml">
         <front>
           <title>RFC Series Format Requirements and Future Development</title>
           <author fullname="H. Flanagan" initials="H." surname="Flanagan">

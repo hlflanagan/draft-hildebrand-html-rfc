@@ -180,20 +180,31 @@
       </ol>
       <ol start="42" style='I'>
         <li>The meaning of life.</li>
+        <li>The after-meaning of the after-life</li>
       </ol>
       <ol style='Requirement %c:'>
         <li>Get up every morning with a smile on your face</li>
         <li>Show the world all the love in your heart</li>
       </ol>
-      <artwork anchor='not-actually-ee' xml:lang='en' type='poetry'>
+      <ol style='Requirement %C:' start='26'>
+        <li>Upper case</li>
+        <li>Above 26</li>
+      </ol>
+      <ol style='Requirement %i:' start='18'>
+        <li>Wheels on a big rig</li>
+        <li>Exercitation nisi quis in laborum ipsum esse excepteur culpa. Aliquip aliquip quis deserunt non ullamco veniam cupidatat laborum cillum nisi. Nostrud aliqua ut non incididunt eiusmod duis nostrud deserunt tempor consequat exercitation fugiat irure. Tempor reprehenderit excepteur irure exercitation ad laboris esse quis laboris mollit Lorem. Voluptate nisi occaecat ea occaecat mollit esse veniam quis cillum mollit ex ullamco aliqua dolor. Tempor ex esse laboris nostrud nulla ipsum aliquip sint do.
+</li>
+      </ol>
+      <artwork anchor='not-actually-ee' xml:lang='en' type='poetry' align='center'>
 artwork does not
      ALWAYS
    have to bepartofafigure.
                             --ee cummings
       </artwork>
+      <artwork align='right'>Just a step to the right</artwork>
       <figure>
         <name>It figures</name>
-        <artwork type='ascii-art' align='center'>
+        <artwork type='ascii-art'>
  <![CDATA[
  ______________
 < hello, world >

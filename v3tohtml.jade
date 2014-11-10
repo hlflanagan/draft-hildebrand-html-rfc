@@ -42,16 +42,18 @@ mixin abstract(e)
     +children(e)
 
 mixin artwork(e)
-  - var att = { id: $att(e, 'partNumber')}
+  - var classes = ['artwork']
   - var cl = $att(e, 'type')
-  - if (cl != null) { att['class'] = "art-" + cl; }
+  - if (cl != null) { classes.push("art-" + cl); }
   if cl == 'svg'
-    .artwork&attributes(att)
+    div(id=$att(e,'partNumber'), class=classes)
       +children(e)
       if e.parent().name() != 'figure'
         +pilcrow(e)
   else
-    pre.artwork&attributes(att)
+    - var align = $att(e, 'align')
+    - if (align != null) { classes.push('align_' + align); }
+    pre(id=$att(e,'partNumber'), class=classes)
       +children(e)
       if e.parent().name() != 'figure'
         +pilcrow(e)
@@ -114,6 +116,12 @@ mixin cref(e)
       = " "
       span.cref-source= "\u2014" + $att(e,'source')
 
+mixin dl(e)
+  - var classes=[]
+  - if ($att(e,'spacing')=='compact') { classes.push('dlcompact'); }
+  - if ($att(e,'hanging')=='true') { classes.push('dlhanging'); } else { classes.push('dlparallel'); }
+  dl(class=classes): +children(e)
+
 mixin eref(e)
   a.eref(href=$att(e,'target'))= e.text() || $att(e,'target')
 
@@ -173,10 +181,20 @@ mixin note(e)
     +children(e)
 
 mixin ol(e)
-  - var cls = ($att(e,'spacing')=='compact')?'olcompact':null
-  //- TODO: support percent styles
-  ol(class=cls,start=$att(e,'start'),type=$att(e,'style'))
-    +children(e)
+  - var classes = []
+  - if ($att(e,'spacing')=='compact') { classes.push('olcompact'); }
+  - var style = $att(e,'style')
+  if style && (style.length > 1)
+    //- percent styles
+    - classes.push('olpercent')
+    - var start = parseInt($att(e,'start')) || 1
+    dl(class=classes)
+      for li,i in $$('li', e)
+        dt= v3.olStyledNum(style, start+i)
+        dd: +children(li)
+  else
+    ol(class=classes,start=$att(e,'start'),type=style)
+      +children(e)
 
 mixin pilcrow(e)
   if !$('ancestor::table', e) && !$('*//@partNumber', e)
@@ -251,8 +269,10 @@ mixin tt(e)
   code: +children(e)
 
 mixin ul(e)
-  - var cls = ($att(e,'spacing')=='compact')?'ulcompact':null
-  ul(class=cls): +children(e)
+  - var classes = []
+  - if ($att(e,'spacing')=='compact') { classes.push('ulcompact'); }
+  - if ($att(e,'empty')=='true') { classes.push('ulempty'); }
+  ul(class=classes): +children(e)
 
 mixin xref(e)
   - var target = $att(e,'target')

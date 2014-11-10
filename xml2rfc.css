@@ -78,6 +78,36 @@ section {
   color: #000;
   text-decoration: none;
 }
+.ulcompact {
+  line-height: 80%;
+}
+.ulempty {
+  list-style-type: none;
+}
+.olcompact {
+  line-height: 80%;
+}
+.olpercent dt {
+  float: left;
+  clear: left;
+  text-align: right;
+  margin-right: 8px;
+}
+.align_right {
+  text-align: right;
+}
+.align_center {
+  text-align: center;
+}
+.dlparallel dt {
+  float: left;
+  clear: left;
+  margin-right: 8px;
+  font-weight: bold;
+}
+.dlcompact {
+  line-height: 80%;
+}
 code {
   background-color: #eee;
   font-family: 'Lucida Console', Monaco, monospace;
