@@ -45,15 +45,16 @@ mixin artwork(e)
   - var classes = ['artwork']
   - var cl = $att(e, 'type')
   - if (cl != null) { classes.push("art-" + cl); }
+  - var id = $att(e,'anchor') || $att(e,'partNumber')
   if cl == 'svg'
-    div(id=$att(e,'partNumber'), class=classes)
+    div(id=id, class=classes)
       +children(e)
       if e.parent().name() != 'figure'
         +pilcrow(e)
   else
     - var align = $att(e, 'align')
     - if (align != null) { classes.push('align_' + align); }
-    pre(id=$att(e,'partNumber'), class=classes)
+    pre(id=id, class=classes)
       +children(e)
       if e.parent().name() != 'figure'
         +pilcrow(e)
@@ -133,7 +134,8 @@ mixin figure(e)
       a.self-ref(href="#"+fn) Figure #{fn.replace(/^f-/, '')}.
       if nm
         = " "
-        a.self-ref(href="#"+$att(nm, "slugifiedName")): +children(nm)
+        - var sn = $att(nm, "slugifiedName")
+        a.self-ref(href="#"+sn, id=sn): +children(nm)
 
 mixin identifiers(e)
   - var published = dt.isoDate($('date',e))
@@ -409,6 +411,9 @@ html(lang='en')
           = (authors.length > 1) ? "Authors' Addresses" : "Author's Address"
       each a in authors
         +foot_author(a)
+    - var rendered = dt.isoDateTime()
+    .rendered Rendered:
+      time(datetime=rendered)= rendered
 
 | <!-- XML SOURCE START (note: each instance of two '-' (U+002D: HYPHEN-MINUS)
 | characters changed to "&#x2d;&#x2d;") -->
