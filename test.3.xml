@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rfc ipr='trust200902' docName='draft-hildebrand-html-rfc-04' category='info' xmlns:xi='http://www.w3.org/2001/XInclude' tocInclude='yes'>
+<rfc ipr='trust200902' docName='draft-hildebrand-html-rfc-04' category='info' xmlns:xi='http://www.w3.org/2001/XInclude' tocInclude='true'>
   <link href="https://github.com/hildjj/draft-hildebrand-html-rfc.git" rel="alternate"/>
   <!-- Didn't do iref -->
   <!-- Didn't do referencegroup -->
@@ -12,7 +12,9 @@
       it also has some &amp; &lt; &gt;
     -->
     <title abbrev='HTML RFC'>HyperText Markup Language Request For Comments Format</title>
-    <author initials='ɟ.' surname='H̭ildebrand' fullname='ɟöe H̭ildebrand' role='editor' ascii='Joe Hildebrand'>
+    <author role='editor'
+      initials='ɟ.' surname='H̭ildebrand' fullname='ɟöe H̭ildebrand'
+      asciiInitials='J.' asciiSurname='Hildebrand' asciiFullname='Joe Hildebrand'>
       <organization ascii='Cisco Systems, Inc.'>Čisco Śystems, Inc.</organization>
       <address>
         <postal>
@@ -32,16 +34,16 @@
     <author initials='H.' surname='Flanagan' fullname='Heather Flanagan' role='editor'>
       <organization>RFC Editor</organization>
       <address>
-        <email>rse@rfc-editor.org</email>
         <postal>
           <postalLine>Where the</postalLine>
           <postalLine>Streets have no name</postalLine>
         </postal>
+        <email>rse@rfc-editor.org</email>
       </address>
     </author>
+    <date/>
     <area>gen</area>
     <workgroup>rfc-interest</workgroup>
-    <date/>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
@@ -51,7 +53,7 @@
         CSS to enable page layout.</t>
       <t>Abstracts can have multiple &lt;t&gt;'s</t>
     </abstract>
-    <note removeInRFC='yes'>
+    <note removeInRFC='true'>
       <name>Editorial Note</name>
       <t>
         Discussion of this draft takes place on the rfc-interest
@@ -93,7 +95,7 @@
             continent, a new nation, conceived in Liberty, and dedicated to the
             proposition that all men are created equal.</t>
 
-          <t>Now we are engaged in a <b>great</b> civil war, testing whether that nation,
+          <t>Now we are engaged in a <strong>great</strong> civil war, testing whether that nation,
              or any nation so conceived and so dedicated, can long endure. We are
              met on a great battle-field of that war. We have come to dedicate a
              portion of that field, as a final resting place for those who here
@@ -119,18 +121,18 @@
         <blockquote>
           This is a shorter blockquote example
         </blockquote>
-        <aside>Aside: This is an aside, to compare and contrast</aside>
+        <aside><t>Aside: This is an aside, to compare and contrast</t></aside>
       </section>
       <section anchor='sub4'>
         <name>Sub Section 4</name>
         <t>sub section paragraph 4</t>
         <t>This paragraph has a
           <cref anchor='unint' source='Paul'>uninteresting <tt>comment</tt>
-            <b>b</b> <em>em</em>
+            <em>em</em>
             <eref target='https://ietf.org/'>IETF eref</eref>
-            <i>i</i> <strong>strong</strong> <sub>sub</sub> <sup>'sup</sup>
+            <strong>strong</strong> <sub>sub</sub> <sup>'sup</sup>
             <tt>tt</tt>
-            <xref section="1.1"/>
+            <xref target="top"/>
           </cref>.</t>
       </section>
     </section>
@@ -140,7 +142,10 @@
       <table anchor='THE-TABLE'>
         <name>I AM THE TABLE</name>
         <thead>
-          <tr><th>H1</th><th>H2</th></tr>
+          <tr>
+            <th>H1</th>
+            <th>H2</th>
+          </tr>
         </thead>
         <tbody>
           <tr><td><t>One is the loneliest number that you'll ever do</t></td><td>Two can be as bad as one</td></tr>
@@ -153,30 +158,50 @@
       <ul>
         <li>List</li>
         <li><tt>&lt;xref&gt;</tt> with text <xref target='unint'>Some Text</xref></li>
-        <li>Section</li>
-        <ul>
-          <li>no format: <xref target='top'/></li>
-          <li>format=counter: <xref format='counter' target='top'/></li>
-          <li>format=title: <xref format='title' target='top'/></li>
-        </ul>
-        <li>Figure</li>
-        <ul>
-          <li>no format: <xref target='hello'/></li>
-          <li>format=counter: <xref format='counter' target='hello'/></li>
-          <li>format=title: <xref format='title' target='hello'/></li>
-        </ul>
-        <li>Table</li>
-        <ul>
-          <li>no format: <xref target='THE-TABLE'/></li>
-          <li>format=counter: <xref format='counter' target='THE-TABLE'/></li>
-          <li>format=title: <xref format='title' target='THE-TABLE'/></li>
-        </ul>
-        <li>Reference</li>
-        <ul>
-          <li>no format: <xref target='RFC6949'/></li>
-          <li>format=counter: <xref format='counter' target='RFC6949'/></li>
-          <li>format=title: <xref format='title' target='RFC6949'/></li>
-        </ul>
+        <li>
+          <t>Multiple</t>
+          <t>Paragraphs</t>
+        </li>
+        <li>
+          <t>Section</t>
+          <t>
+            <ul>
+              <li>no format: <xref target='top'/></li>
+              <li>format=counter: <xref format='counter' target='top'/></li>
+              <li>format=title: <xref format='title' target='top'/></li>
+            </ul>
+          </t>
+        </li>
+        <li>
+          <t>Figure</t>
+          <t>
+            <ul>
+              <li>no format: <xref target='hello'/></li>
+              <li>format=counter: <xref format='counter' target='hello'/></li>
+              <li>format=title: <xref format='title' target='hello'/></li>
+            </ul>
+          </t>
+        </li>
+        <li>
+          <t>Table</t>
+          <t>
+            <ul>
+              <li>no format: <xref target='THE-TABLE'/></li>
+              <li>format=counter: <xref format='counter' target='THE-TABLE'/></li>
+              <li>format=title: <xref format='title' target='THE-TABLE'/></li>
+            </ul>
+          </t>
+        </li>
+        <li>
+          <t>Reference</t>
+          <t>
+            <ul>
+              <li>no format: <xref target='RFC6949'/></li>
+              <li>format=counter: <xref format='counter' target='RFC6949'/></li>
+              <li>format=title: <xref format='title' target='RFC6949'/></li>
+            </ul>
+          </t>
+        </li>
       </ul>
       <ul empty='true'>
         <li>Empty: it's all empty</li>
@@ -226,12 +251,12 @@ artwork does not
         </artwork>
       </figure>
       <t>Artwork can also be outside a figure</t>
-      <artwork type='svg'>
-        <svg width="100" height="100">
+      <artwork type="svg">
+        <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
           <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
         </svg>
       </artwork>
-      <artwork type='hex-dump'>
+      <artwork type="hex-dump">
 <![CDATA[
 00000000  20 5f 5f 5f 5f 5f 5f 5f  5f 5f 5f 5f 5f 5f 5f 20  | ______________ |
 00000010  0a 3c 20 68 65 6c 6c 6f  2c 20 77 6f 72 6c 64 20  |.< hello, world |
@@ -250,8 +275,8 @@ artwork does not
       <section>
         <name>foo</name>
         <t>another</t>
-        <aside>If this was an interesting section, it would have more
-          interesting things to say</aside>
+        <aside><t>If this was an interesting section, it would have more
+          interesting things to say</t></aside>
         <dl>
           <dt>Fine</dt>
           <dd>Not fine</dd>
@@ -262,7 +287,7 @@ artwork does not
           <dt>Whee!</dt>
           <dd>Ugh. <em>Really</em> ugh.</dd>
           <dt>Woah!</dt>
-          <dd>What<i>ever</i>.</dd>
+          <dd>What<em>ever</em>.</dd>
         </dl>
         <figure anchor="hello">
           <name>This is a figure</name>
@@ -282,6 +307,7 @@ int main(void)
     </section>
   </middle>
   <back>
+    <displayreference target="RFC6949" to="RFC-reqs"/>
     <references>
       <name>Informative References</name>
       <reference anchor="RFC5646" xml:base="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml">
@@ -337,7 +363,6 @@ int main(void)
         </annotation>
         <refcontent>I guess I'm saying something here</refcontent>
       </reference>
-      <displayreference from="RFC6949" to="RFC-reqs"/>
     </references>
     <section>
       <name>Doing things in appendices</name>
