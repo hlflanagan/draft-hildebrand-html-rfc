@@ -49,6 +49,7 @@
       <t>This document defines the <strong>HTML format</strong> that will be rendered from the
         canonical XML format for an RFC.  The HTML output will include a default
         CSS to enable page layout.</t>
+      <t>Abstracts can have multiple &lt;t&gt;'s</t>
     </abstract>
     <note removeInRFC='yes'>
       <name>Editorial Note</name>
@@ -123,7 +124,14 @@
       <section anchor='sub4'>
         <name>Sub Section 4</name>
         <t>sub section paragraph 4</t>
-        <t>This paragraph has a <cref anchor='unint' source='Paul'>uninteresting <tt>comment</tt></cref>.</t>
+        <t>This paragraph has a
+          <cref anchor='unint' source='Paul'>uninteresting <tt>comment</tt>
+            <b>b</b> <em>em</em>
+            <eref target='https://ietf.org/'>IETF eref</eref>
+            <i>i</i> <strong>strong</strong> <sub>sub</sub> <sup>'sup</sup>
+            <tt>tt</tt>
+            <xref section="1.1"/>
+          </cref>.</t>
       </section>
     </section>
     <section anchor='top'>
@@ -323,6 +331,8 @@ int main(void)
         <seriesInfo name="RFC" value="6949"/>
         <format type="TXT" octets="29181" target="http://www.rfc-editor.org/rfc/rfc6949.txt"/>
         <annotation>
+          You <bcp14>MUST</bcp14> read this annotation.
+          <cref>Note: This is a comment.</cref>
           This is something <strong>relevant</strong> to RFC 6949.
         </annotation>
         <refcontent>I guess I'm saying something here</refcontent>

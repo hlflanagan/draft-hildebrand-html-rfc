@@ -14,7 +14,7 @@ mixin part(e)
   if $('ancestor::reference', e)
     +elem(e)
   else
-    +elem(e)(partNumber=number.partNumber(e))
+    +elem(e)(pn=number.partNumber(e))
 
 mixin children(e, opts)
   each c in e.childNodes()
@@ -48,29 +48,29 @@ mixin front(e)
         - var tlp = number.ipr($('@ipr'))
         section(sectionNumber="s-boilerplate-1")
           name(slugifiedName="status-of-this-memo") Status of this Memo
-          t(partNumber="p-boilerplate-1-1").
+          t(pn="p-boilerplate-1-1").
             This Internet-Draft is submitted in full conformance with
             the provisions of BCP 78 and BCP 79.#{tlp[0]||""}
           if $('@docName').match(/^draft-/)
-            t(partNumber="p-boilerplate-1-2").
+            t(pn="p-boilerplate-1-2").
               Internet-Drafts are working documents of the Internet Engineering Task
               Force (IETF).  Note that other groups may also distribute working
               documents as Internet-Drafts.  The list of current Internet-Drafts is
               at <eref target='http://datatracker.ietf.org/drafts/current/'/>.
-            t(partNumber="p-boilerplate-1-3").
+            t(pn="p-boilerplate-1-3").
               Internet-Drafts are draft documents valid for a maximum of six months
               and may be updated, replaced, or obsoleted by other documents at any
               time.  It is inappropriate to use Internet-Drafts as reference
               material or to cite them other than as "work in progress."
             - var expires = new Date(pubDate);
             - expires.setMonth(expires.getMonth() + 6)
-            t(partNumber="p-boilerplate-1-4") This Internet-Draft will expire on #{dt.isoDate(expires)}.
+            t(pn="p-boilerplate-1-4") This Internet-Draft will expire on #{dt.isoDate(expires)}.
         section(sectionNumber="s-boilerplate-2")
           name(slugifiedName="copyright-notice") Copyright Notice
-          t(partNumber="p-boilerplate-2-1").
+          t(pn="p-boilerplate-2-1").
             Copyright &#xa9;#{pubDate.getFullYear()} IETF Trust and the
             persons identified as the document authors.  All rights reserved.
-          t(partNumber="p-boilerplate-2-2").
+          t(pn="p-boilerplate-2-2").
             This document is subject to BCP 78 and the IETF Trust's Legal
             Provisions Relating to <eref target='http://trustee.ietf.org/license-info'>IETF Documents</eref>
             in effect on the date of publication of this document.  Please review
@@ -80,7 +80,7 @@ mixin front(e)
             Section 4.e of the Trust Legal Provisions and are provided without
             warranty as described in the Simplified BSD License.
           if tlp[1]
-            t(partNumber="p-boilerplate-2-3")= tlp[1]
+            t(pn="p-boilerplate-2-3")= tlp[1]
 
 mixin date(e)
   //- in front/date, make sure we have a year, month, and day
@@ -101,7 +101,7 @@ mixin abstract(e)
   if $('ancestor::reference', e)
     +elem(e)
   else
-    +elem(e)(sectionNumber="s-abstract")
+    +elem(e)(pn="s-abstract")
 
 mixin note(e)
   +elem(e)(sectionNumber="s-note-" + number.sequentialNumber(e))

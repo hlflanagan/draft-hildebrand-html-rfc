@@ -1,675 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="author" content="ɟöe H̭ildebrand,Heather Flanagan">
-  <meta name="keywords" content="html,css,rfc">
-  <meta name="description" content="This document defines the HTML format that will be rendered from the canonical XML format for an RFC. The HTML output will include a default CSS to enable page layout.">
-  <meta name="generator" content="xmljade v0.1.10">
-  <title>
-    HyperText Markup Language Request For Comments Format
-  </title>
-  <link rel="stylesheet" type="text/css" href="xml2rfc.css">
-  <link rel="stylesheet" type="text/css" href="local.css">
-</head>
-
-<body>
-  <dl id="identifiers"><dt>Workgroup:</dt>
-    <dd class="workgroup">rfc-interest</dd><dt>Series:</dt>
-    <dd class="series">Internet-Draft</dd><dt>Status:</dt>
-    <dd class="status">Informational</dd><dt>Published:</dt>
-    <dd>
-      <time datetime="2014-11-09" class="published">2014-11-09</time>
-    </dd><dt>Authors:</dt>
-    <dd class="authors">
-      <div class="author"><span class="fn"><span class="initial">ɟ.</span> <span class="surname">H̭ildebrand</span>        <span class="ascii">Joe Hildebrand</span> </span> (<span class="org">
-        Čisco Śystems, Inc.
-       <span class="ascii">Cisco Systems, Inc.</span> </span>)</div>
-      <div
-      class="author"><span class="fn"><span class="initial">H.</span> <span class="surname">Flanagan</span></span>
-        (<span class="org">RFC Editor</span>)</div>
-    </dd>
-  </dl>
-  <h1 id="title">
-      HyperText Markup Language Request For Comments Format
-    </h1>
-  <section id="abstract">
-    <h2><a href="#abstract" class="self-ref">Abstract</a></h2>
-    <p id="p-abstract-1">
-      This document defines the <strong>HTML format</strong> that will
-      be rendered from the canonical XML format for an RFC. The HTML output
-      will include a default CSS to enable page layout.
-      <a href="#p-abstract-1" class="pilcrow">&para;</a>
-    </p>
-  </section>
-  <section id="s-note-1" class="note rfceditor-remove">
-    <h2><a href="#n-editorial-note" class="self-ref">Editorial Note</a></h2>
-    <p id="p-note-1-1">
-      Discussion of this draft takes place on the rfc-interest mailing list (rfc-interest@rfc-editor.org),
-      which has its home page at <a href="https://www.rfc-editor.org/mailman/listinfo/rfc-interest"
-      class="eref">https://www.rfc-editor.org/mailman/listinfo/rfc-interest</a>.
-      <a href="#p-note-1-1" class="pilcrow">&para;</a>
-    </p>
-  </section>
-  <section id="status-of-this-memo">
-    <h2 id="s-boilerplate-1"><a href="#status-of-this-memo" class="self-ref">Status of this Memo</a></h2>
-    <p id="p-boilerplate-1-1">
-      This Internet-Draft is submitted in full conformance with the provisions
-      of BCP 78 and BCP 79.
-      <a href="#p-boilerplate-1-1" class="pilcrow">&para;</a>
-    </p>
-    <p id="p-boilerplate-1-2">
-      Internet-Drafts are working documents of the Internet Engineering Task
-      Force (IETF). Note that other groups may also distribute working
-      documents as Internet-Drafts. The list of current Internet-Drafts
-      is at <a href="http://datatracker.ietf.org/drafts/current/"
-      class="eref">http://datatracker.ietf.org/drafts/current/</a>.
-      <a href="#p-boilerplate-1-2" class="pilcrow">&para;</a>
-    </p>
-    <p id="p-boilerplate-1-3">
-      Internet-Drafts are draft documents valid for a maximum of six months and
-      may be updated, replaced, or obsoleted by other documents at any
-      time. It is inappropriate to use Internet-Drafts as reference material
-      or to cite them other than as &quot;work in progress.&quot;
-      <a href="#p-boilerplate-1-3" class="pilcrow">&para;</a>
-    </p>
-    <p id="p-boilerplate-1-4">
-      This Internet-Draft will expire on 2015-05-09.
-      <a href="#p-boilerplate-1-4" class="pilcrow">&para;</a>
-    </p>
-  </section>
-  <section id="copyright-notice">
-    <h2 id="s-boilerplate-2"><a href="#copyright-notice" class="self-ref">Copyright Notice</a></h2>
-    <p id="p-boilerplate-2-1">
-      Copyright ©2014 IETF Trust and the persons identified as the document authors.
-      All rights reserved.
-      <a href="#p-boilerplate-2-1" class="pilcrow">&para;</a>
-    </p>
-    <p id="p-boilerplate-2-2">
-      This document is subject to BCP 78 and the IETF Trust's Legal Provisions
-      Relating to <a href="http://trustee.ietf.org/license-info"
-      class="eref"> IETF Documents 
-          </a> in effect on the date of publication of this document. Please
-      review these documents carefully, as they describe your rights and
-      restrictions with respect to this document. Code Components extracted
-      from this document must include Simplified BSD License text as described
-      in Section 4.e of the Trust Legal Provisions and are provided without
-      warranty as described in the Simplified BSD License.
-      <a href="#p-boilerplate-2-2" class="pilcrow">&para;</a>
-    </p>
-  </section>
-  <section id="intro">
-    <h2 id="s-1"><a href="#s-1" class="self-ref">1.</a> <a href="#intro" class="self-ref">Introduction</a></h2>
-    <p id="p-1-1">Paragraph <a href="#p-1-1" class="pilcrow">&para;</a>
-    </p>
-    <section id="n-sub-section">
-      <h3 id="s-1.1"><a href="#s-1.1" class="self-ref">1.1.</a> <a href="#n-sub-section" class="self-ref">Sub Section</a></h3>
-      <p id="p-1.1-1">sub section paragraph <a href="#p-1.1-1" class="pilcrow">&para;</a>
-      </p>
-      <section id="sub-sub">
-        <h4 id="s-1.1.1"><a href="#s-1.1.1" class="self-ref">1.1.1.</a> <a href="#sub-sub" class="self-ref">Sub-sub Section</a></h4>
-        <p id="p-1.1.1-1">sub section paragraph <a href="#p-1.1.1-1" class="pilcrow">&para;</a>
-        </p>
-        <section id="sub-sub-sub">
-          <h5 id="s-1.1.1.1"><a href="#s-1.1.1.1" class="self-ref">1.1.1.1.</a> <a href="#sub-sub-sub" class="self-ref">
-              Sub-sub-sub Section
-            </a></h5>
-          <p id="p-1.1.1.1-1">sub section paragraph <a href="#p-1.1.1.1-1" class="pilcrow">&para;</a>
-          </p>
-        </section>
-        <section id="n-sub-sub-sub-section-2">
-          <h5 id="s-1.1.1.2"><a href="#s-1.1.1.2" class="self-ref">1.1.1.2.</a> <a href="#n-sub-sub-sub-section-2" class="self-ref">
-              Sub-sub-sub Section 2
-            </a></h5>
-          <p id="p-1.1.1.2-1">sub section paragraph <a href="#p-1.1.1.2-1" class="pilcrow">&para;</a>
-          </p>
-          <p id="p-1.1.1.2-2">moar paragraph <a href="#p-1.1.1.2-2" class="pilcrow">&para;</a>
-          </p>
-        </section>
-      </section>
-    </section>
-    <section id="sub3">
-      <h3 id="s-1.2"><a href="#s-1.2" class="self-ref">1.2.</a> <a href="#sub3" class="self-ref">Sub Section 3</a></h3>
-      <blockquote id="p-1.2-1" cite="http://www.abrahamlincolnonline.org/lincoln/speeches/gettysburg.htm">
-        <p id="p-1.2-2">
-          Four score and seven years ago our fathers brought forth on this continent,
-          a new nation, conceived in Liberty, and dedicated to the proposition
-          that all men are created equal.
-          <a href="#p-1.2-2" class="pilcrow">&para;</a>
-        </p>
-        <p id="p-1.2-3">
-          Now we are engaged in a <b>great</b> civil war, testing whether
-          that nation, or any nation so conceived and so dedicated, can
-          long endure. We are met on a great battle-field of that war.
-          We have come to dedicate a portion of that field, as a final
-          resting place for those who here gave their lives that that nation
-          might live. It is altogether fitting and proper that we
-          <span
-          class="bcp14">SHOULD</span>
-            do this.
-            <a href="#p-1.2-3" class="pilcrow">&para;</a>
-        </p>
-        <p id="p-1.2-4">
-          But, in a larger sense, we can not dedicate — we can not consecrate — we
-          can not hallow — this ground. The brave men, living and dead,
-          who struggled here, have consecrated it, far above our poor power
-          to add or detract. The world will little note, nor long remember
-          what we say here, but it can never forget what they did here.
-          It is for us the living, rather, to be dedicated here to the
-          unfinished work which they who fought here have thus far so nobly
-          advanced. It is rather for us to be here dedicated to the great
-          task remaining before us — that from these honored dead we take
-          increased devotion to that cause for which they gave the last
-          full measure of devotion — that we here highly resolve that these
-          dead shall not have died in vain — that this nation, under God,
-          shall have a new birth of freedom — and that government of the
-          people, by the people, for the people, shall not perish from
-          the earth.
-          <a href="#p-1.2-4" class="pilcrow">&para;</a>
-        </p><cite>— <a href="http://www.abrahamlincolnonline.org/lincoln/speeches/gettysburg.htm">Abraham Lincoln</a></cite>
-      </blockquote>
-      <blockquote id="p-1.2-5">
-        This is a shorter blockquote example
-        <a href="#p-1.2-5" class="pilcrow">&para;</a>
-      </blockquote>
-      <aside id="p-1.2-6">
-        Aside: This is an aside, to compare and contrast
-        <a href="#p-1.2-6" class="pilcrow">&para;</a>
-      </aside>
-    </section>
-    <section id="sub4">
-      <h3 id="s-1.3"><a href="#s-1.3" class="self-ref">1.3.</a> <a href="#sub4" class="self-ref">Sub Section 4</a></h3>
-      <p id="p-1.3-1">sub section paragraph 4 <a href="#p-1.3-1" class="pilcrow">&para;</a>
-      </p>
-      <p id="p-1.3-2">
-        This paragraph has a <span id="unint" class="cref"> 
-          uninteresting <code>comment</code> <span class="cref-source">—Paul</span></span>.
-        <a href="#p-1.3-2" class="pilcrow">&para;</a>
-      </p>
-    </section>
-  </section>
-  <section id="top">
-    <h2 id="s-2"><a href="#s-2" class="self-ref">2.</a> <a href="#top" class="self-ref"><code>top</code></a></h2>
-    <p id="real">A real section, with an anchor <a href="#real" class="pilcrow">&para;</a>
-    </p>
-    <table id="THE-TABLE">
-      <caption><a href="#t-1" class="self-ref">Table 1.</a> <a href="#n-i-am-the-table"
-        class="self-ref">I AM THE TABLE</a>
-      </caption>
-      <thead>
-        <tr>
-          <th>H1</th>
-          <th>H2</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <p id="p-2-2">
-              One is the loneliest number that you'll ever do
-            </p>
-          </td>
-          <td>Two can be as bad as one</td>
-        </tr>
-        <tr>
-          <td>It's the loneliest number</td>
-          <td>since the number one</td>
-        </tr>
-        <tr>
-          <td><pre class="sourcecode">three(p)</pre>
-          </td>
-          <td>
-            <p id="p-2-4">4</p>
-            <p id="p-2-5">5</p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <p id="p-2-6">Second paragraph <a href="#p-2-6" class="pilcrow">&para;</a>
-    </p>
-    <ul>
-      <li id="p-2-7">List <a href="#p-2-7" class="pilcrow">&para;</a>
-      </li>
-      <li id="p-2-8"><code>&lt;xref&gt;</code> with text <a href="#unint" class="xref">Some 
-          Text</a> <a href="#p-2-8" class="pilcrow">&para;</a>
-      </li>
-      <li id="p-2-9">Section <a href="#p-2-9" class="pilcrow">&para;</a>
-      </li>
-      <ul>
-        <li id="p-2-10">no format: <a href="#top" class="xref">Section 2</a> <a href="#p-2-10"
-          class="pilcrow">&para;</a>
-        </li>
-        <li id="p-2-11">
-          format=counter: <a href="#top" class="xref">2</a> <a href="#p-2-11"
-          class="pilcrow">&para;</a>
-        </li>
-        <li id="p-2-12">
-          format=title: <a href="#top" class="xref">
-        top
-      </a> <a href="#p-2-12" class="pilcrow">&para;</a>
-        </li>
-      </ul>
-      <li id="p-2-13">Figure <a href="#p-2-13" class="pilcrow">&para;</a>
-      </li>
-      <ul>
-        <li id="p-2-14">no format: <a href="#hello" class="xref">Figure 2</a> <a href="#p-2-14"
-          class="pilcrow">&para;</a>
-        </li>
-        <li id="p-2-15">
-          format=counter: <a href="#hello" class="xref">2</a> <a href="#p-2-15"
-          class="pilcrow">&para;</a>
-        </li>
-        <li id="p-2-16">
-          format=title: <a href="#hello" class="xref">This is a figure</a>          <a href="#p-2-16" class="pilcrow">&para;</a>
-        </li>
-      </ul>
-      <li id="p-2-17">Table <a href="#p-2-17" class="pilcrow">&para;</a>
-      </li>
-      <ul>
-        <li id="p-2-18">no format: <a href="#THE-TABLE" class="xref">Table 1</a> <a href="#p-2-18"
-          class="pilcrow">&para;</a>
-        </li>
-        <li id="p-2-19">
-          format=counter: <a href="#THE-TABLE" class="xref">1</a> <a href="#p-2-19"
-          class="pilcrow">&para;</a>
-        </li>
-        <li id="p-2-20">
-          format=title: <a href="#THE-TABLE" class="xref">I AM THE TABLE</a>          <a href="#p-2-20" class="pilcrow">&para;</a>
-        </li>
-      </ul>
-      <li id="p-2-21">Reference <a href="#p-2-21" class="pilcrow">&para;</a>
-      </li>
-      <ul>
-        <li id="p-2-22">no format: [<a href="#RFC6949" class="xref">RFC6949</a>] <a href="#p-2-22"
-          class="pilcrow">&para;</a>
-        </li>
-        <li id="p-2-23">
-          format=counter: [<a href="#RFC6949" class="xref">RFC6949</a>]
-          <a href="#p-2-23" class="pilcrow">&para;</a>
-        </li>
-        <li id="p-2-24">
-          format=title: [<a href="#RFC6949" class="xref">RFC Series Format Requirements and Future Development</a>]
-          <a href="#p-2-24" class="pilcrow">&para;</a>
-        </li>
-      </ul>
-    </ul>
-    <ul class="ulempty">
-      <li id="p-2-25">Empty: it's all empty <a href="#p-2-25" class="pilcrow">&para;</a>
-      </li>
-      <li id="p-2-26">I have not bullets left <a href="#p-2-26" class="pilcrow">&para;</a>
-      </li>
-    </ul>
-    <ol>
-      <li id="p-2-27">
-        <p id="p-2-28">now <a href="#p-2-28" class="pilcrow">&para;</a>
-        </p>
-        <p id="p-2-29">then <a href="#p-2-29" class="pilcrow">&para;</a>
-        </p>
-      </li>
-      <li id="p-2-30">ordered <a href="#p-2-30" class="pilcrow">&para;</a>
-      </li>
-    </ol>
-    <ol start="42" type="I">
-      <li id="p-2-31">The meaning of life. <a href="#p-2-31" class="pilcrow">&para;</a>
-      </li>
-      <li id="p-2-32">The after-meaning of the after-life <a href="#p-2-32" class="pilcrow">&para;</a>
-      </li>
-    </ol>
-    <dl class="olpercent"><dt>Requirement a:</dt>
-      <dd>
-        Get up every morning with a smile on your face
-      </dd><dt>Requirement b:</dt>
-      <dd>Show the world all the love in your heart</dd>
-    </dl>
-    <dl class="olpercent"><dt>Requirement Z:</dt>
-      <dd>Upper case</dd><dt>Requirement AA:</dt>
-      <dd>Above 26</dd>
-    </dl>
-    <dl class="olpercent"><dt>Requirement xviii:</dt>
-      <dd>Wheels on a big rig</dd><dt>Requirement xix:</dt>
-      <dd>
-        Exercitation nisi quis in laborum ipsum esse excepteur culpa. Aliquip aliquip
-        quis deserunt non ullamco veniam cupidatat laborum cillum nisi.
-        Nostrud aliqua ut non incididunt eiusmod duis nostrud deserunt
-        tempor consequat exercitation fugiat irure. Tempor reprehenderit
-        excepteur irure exercitation ad laboris esse quis laboris mollit
-        Lorem. Voluptate nisi occaecat ea occaecat mollit esse veniam quis
-        cillum mollit ex ullamco aliqua dolor. Tempor ex esse laboris nostrud
-        nulla ipsum aliquip sint do.
-      </dd>
-    </dl><pre id="not-actually-ee" class="artwork art-poetry align_center">
-artwork does not
-     ALWAYS
-   have to bepartofafigure.
-                            --ee cummings
-       <a href="#not-actually-ee" class="pilcrow">&para;</a></pre>
-    <pre
-    id="p-2-40" class="artwork align_right">Just a step to the right <a href="#p-2-40" class="pilcrow">&para;</a>
-      </pre>
-      <figure id="f-1"><pre id="p-2-41" class="artwork art-ascii-art">
- ______________
-&lt; hello, world &gt;
- --------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-</pre>
-        <figcaption><a href="#f-1" class="self-ref">Figure 1.</a> <a href="#n-it-figures"
-          id="n-it-figures" class="self-ref">It figures</a>
-        </figcaption>
-      </figure>
-      <p id="p-2-42">Artwork can also be outside a figure <a href="#p-2-42" class="pilcrow">&para;</a>
-      </p>
-      <div id="p-2-43" class="artwork art-svg">
-        <svg height="100" width="100">
-          <circle cx="50" cy="50" fill="yellow" r="40" stroke="green" stroke-width="4"></circle>
-        </svg> <a href="#p-2-43" class="pilcrow">&para;</a>
-      </div><pre id="p-2-44" class="artwork art-hex-dump">
-00000000  20 5f 5f 5f 5f 5f 5f 5f  5f 5f 5f 5f 5f 5f 5f 20  | ______________ |
-00000010  0a 3c 20 68 65 6c 6c 6f  2c 20 77 6f 72 6c 64 20  |.&lt; hello, world |
-00000020  3e 0a 20 2d 2d 2d 2d 2d  2d 2d 2d 2d 2d 2d 2d 2d  |&gt;. -------------|
-00000030  2d 20 0a 20 20 20 20 20  20 20 20 5c 20 20 20 5e  |- .        \   ^|
-00000040  5f 5f 5e 0a 20 20 20 20  20 20 20 20 20 5c 20 20  |__^.         \  |
-00000050  28 6f 6f 29 5c 5f 5f 5f  5f 5f 5f 5f 0a 20 20 20  |(oo)\_______.   |
-00000060  20 20 20 20 20 20 20 20  20 28 5f 5f 29 5c 20 20  |         (__)\  |
-00000070  20 20 20 20 20 29 5c 2f  5c 0a 20 20 20 20 20 20  |     )\/\.      |
-00000080  20 20 20 20 20 20 20 20  20 20 7c 7c 2d 2d 2d 2d  |          ||----|
-00000090  77 20 7c 0a 20 20 20 20  20 20 20 20 20 20 20 20  |w |.            |
-000000a0  20 20 20 20 7c 7c 20 20  20 20 20 7c 7c 0a        |    ||     ||.|
-000000ae
- <a href="#p-2-44" class="pilcrow">&para;</a></pre>
-      <section id="n-foo">
-        <h3 id="s-2.1"><a href="#s-2.1" class="self-ref">2.1.</a> <a href="#n-foo" class="self-ref">foo</a></h3>
-        <p id="p-2.1-1">another <a href="#p-2.1-1" class="pilcrow">&para;</a>
-        </p>
-        <aside id="p-2.1-2">
-          If this was an interesting section, it would have more interesting things
-          to say
-          <a href="#p-2.1-2" class="pilcrow">&para;</a>
-        </aside>
-        <dl class="dlparallel"><dt id="p-2.1-3">Fine</dt>
-          <dd>Not fine</dd><dt id="p-2.1-4">Angry</dt>
-          <dd>Sad <sub>weepy</sub>
-          </dd>
-        </dl>
-        <dl class="dlcompact dlhanging"><dt id="p-2.1-5">Whee!</dt>
-          <dd>Ugh. <em>Really</em> ugh.</dd><dt id="p-2.1-6">Woah!</dt>
-          <dd>What <i>ever</i>.</dd>
-        </dl>
-        <figure id="hello"><pre class="sourcecode lang-c">
-#include &lt;stdio.h&gt;
-
-int main(void)
-{
-    printf(&quot;hello, world\n&quot;);
-    return 0;
-}
-</pre>
-          <figcaption><a href="#f-2" class="self-ref">Figure 2.</a> <a href="#n-this-is-a-figure"
-            id="n-this-is-a-figure" class="self-ref">This is a figure</a>
-          </figcaption>
-        </figure>
-      </section>
-  </section>
-  <section id="n-references">
-    <h2 id="s-3"><a href="#s-3" class="self-ref">3.</a> <a href="#n-references" class="self-ref">References</a></h2>
-    <section id="n-informative-references">
-      <h3 id="s-3.1"><a href="#s-3.1" class="self-ref">3.1.</a> <a href="#n-informative-references" class="self-ref">
-        Informative References
-      </a></h3>
-      <dl class="reference"><dt id="RFC5646">[RFC5646]</dt>
-        <dd><span class="refauthor">Phillips, A.</span> and <span class="refauthor">M. Davis</span>
-          <span
-          class="reftitile">"Tags for Identifying Languages"</span>, <span class="refseries">BCP 47</span>,
-            <span class="refseries">RFC 5646</span><span class="refdate">, September 2009.</span>
-        </dd><dt id="RFC6949">[RFC6949]</dt>
-        <dd><span class="refauthor">Flanagan, H.</span> and <span class="refauthor">N. Brownlee</span>
-          <span
-          class="reftitile">"RFC Series Format Requirements and Future Development"</span>,
-            <span class="refseries">RFC 6949</span><span class="refdate">, May 2013.</span>
-        </dd>
-        <displayreference from="RFC6949" to="RFC-reqs"></displayreference>
-      </dl>
-    </section>
-  </section>
-  <section id="n-doing-things-in-appendices">
-    <h2 id="s-A"><a href="#s-A" class="self-ref">A.</a> <a href="#n-doing-things-in-appendices" class="self-ref">
-        Doing things in appendices
-      </a></h2>
-    <p id="p-A-1">This is where you would put an appendix <a href="#p-A-1" class="pilcrow">&para;</a>
-    </p>
-    <section id="n-sub-appendix">
-      <h3 id="s-A.1"><a href="#s-A.1" class="self-ref">A.1.</a> <a href="#n-sub-appendix" class="self-ref">Sub-appendix</a></h3>
-      <p id="p-A.1-1">Have parts, too <a href="#p-A.1-1" class="pilcrow">&para;</a>
-      </p>
-      <p id="p-A.1-2">And more parts <a href="#p-A.1-2" class="pilcrow">&para;</a>
-      </p>
-    </section>
-  </section>
-  <section id="author-addresses">
-    <h2><a href="#author-addresses" class="self-ref">Authors' Addresses</a></h2><address class="vcard"><div class="namerole"><span class="fn">ɟöe H̭ildebrand <span class="ascii">Joe Hildebrand</span> </span> (<span class="role">editor</span>)</div><div class="org">
-        Čisco Śystems, Inc.
-       <span class="ascii">Cisco Systems, Inc.</span> </div><div class="adr"><div class="street-address">1 Main Street</div><div class="street-address">Suite 1</div><div><span class="city">ǲenver</span>, <span class="region">CO</span> <span class="code">８０２０２ <span class="ascii">80202</span> </span></div><div class="country-name">US</div></div><div>Phone: <span class="tel">+1-720-555-1212 <span class="type">VOICE</span></span></div><div>Fax: <span class="tel">+1-303-555-1212 <span class="type">fax</span></span></div><div>Email: <a href="jhildebr@example.com" class="email">jhildebr@example.com</a></div><div>URI: <a href="http://www.example.com" class="url">http://www.example.com</a></div></address>
-    <address
-    class="vcard">
-      <div class="namerole"><span class="fn">Heather Flanagan</span> (<span class="role">editor</span>)</div>
-      <div
-      class="org">RFC Editor</div><pre class="label">Where the
-Streets have no name</pre>
-        <div>Email: <a href="rse@rfc-editor.org" class="email">rse@rfc-editor.org</a>
-        </div>
-        </address>
-  </section>
-  <div class="rendered">Rendered:
-    <time datetime="2014-11-10T23:26:22Z">2014-11-10T23:26:22Z</time>
-  </div>
-</body>
-
-</html>
-<!-- XML SOURCE START (note: each instance of two '-' (U+002D: HYPHEN-MINUS)
-characters changed to "&#x2d;&#x2d;") -->
-<!--
-<?xml version="1.0"?>
-<rfc category="info"
-     docName="draft-hildebrand-html-rfc-04"
-     ipr="trust200902"
-     tocInclude="yes">
-  <link href="https://github.com/hildjj/draft-hildebrand-html-rfc.git"
-        rel="alternate"/>
-  <front>
-    <title abbrev="HTML RFC">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="ɟöe H̭ildebrand,Heather Flanagan" name="author"/>
+    <meta content="html,css,rfc" name="keywords"/>
+    <meta content="This document defines the HTML format that will be rendered from the canonical XML format for an RFC. The HTML output will include a default CSS to enable page layout. Abstracts can have multiple &lt;t&gt;'s"
+          name="description"/>
+    <meta content="xmljade v0.1.10" name="generator"/>
+    <title>
       HyperText Markup Language Request For Comments Format
     </title>
-    <author ascii="Joe Hildebrand"
-            fullname="ɟöe H̭ildebrand"
-            initials="ɟ."
-            role="editor"
-            surname="H̭ildebrand">
-      <organization ascii="Cisco Systems, Inc.">
-        Čisco Śystems, Inc.
-      </organization>
-      <address>
-        <postal>
-          <street>1 Main Street</street>
-          <street>Suite 1</street>
-          <city ascii="Denver">ǲenver</city>
-          <region>CO</region>
-          <code ascii="80202">８０２０２</code>
-          <country>US</country>
-        </postal>
-        <phone>+1-720-555-1212</phone>
-        <facsimile>+1-303-555-1212</facsimile>
-        <email>jhildebr@example.com</email>
-        <uri>http://www.example.com</uri>
-      </address>
-    </author>
-    <author fullname="Heather Flanagan"
-            initials="H."
-            role="editor"
-            surname="Flanagan">
-      <organization>RFC Editor</organization>
-      <address>
-        <email>rse@rfc-editor.org</email>
-        <postal>
-          <postalLine>Where the</postalLine>
-          <postalLine>Streets have no name</postalLine>
-        </postal>
-      </address>
-    </author>
-    <area>gen</area>
-    <workgroup>rfc-interest</workgroup>
-    <date day="9" month="November" year="2014"/>
-    <keyword>html</keyword>
-    <keyword>css</keyword>
-    <keyword>rfc</keyword>
-    <abstract sectionNumber="s-abstract">
-      <t partNumber="p-abstract-1">
-        This document defines the <strong>HTML format</strong> that will be 
-        rendered from the canonical XML format for an RFC.  The HTML output 
-        will include a default CSS to enable page layout.
-      </t>
-    </abstract>
-    <note removeInRFC="yes" sectionNumber="s-note-1">
-      <name slugifiedName="n-editorial-note">Editorial Note</name>
-      <t partNumber="p-note-1-1">
-        Discussion of this draft takes place on the rfc-interest mailing list 
-        (rfc-interest@rfc-editor.org), which has its home page at <eref 
-        target="https://www.rfc-editor.org/mailman/listinfo/rfc-interest"/>.
-      </t>
-    </note>
-    <boilerplate>
-      <section sectionNumber="s-boilerplate-1">
-        <name slugifiedName="status-of-this-memo">Status of this Memo</name>
-        <t partNumber="p-boilerplate-1-1">
-          This Internet-Draft is submitted in full conformance with the 
-          provisions of BCP 78 and BCP 79.
-        </t>
-        <t partNumber="p-boilerplate-1-2">
-          Internet-Drafts are working documents of the Internet Engineering 
-          Task Force (IETF).  Note that other groups may also distribute 
-          working documents as Internet-Drafts.  The list of current 
-          Internet-Drafts is at <eref 
-          target="http://datatracker.ietf.org/drafts/current/"/>.
-        </t>
-        <t partNumber="p-boilerplate-1-3">
-          Internet-Drafts are draft documents valid for a maximum of six 
-          months and may be updated, replaced, or obsoleted by other documents 
-          at any time.  It is inappropriate to use Internet-Drafts as 
-          reference material or to cite them other than as "work in progress."
-        </t>
-        <t partNumber="p-boilerplate-1-4">
-          This Internet-Draft will expire on 2015-05-09.
-        </t>
-      </section>
-      <section sectionNumber="s-boilerplate-2">
-        <name slugifiedName="copyright-notice">Copyright Notice</name>
-        <t partNumber="p-boilerplate-2-1">
-          Copyright ©2014 IETF Trust and the persons identified as the 
-          document authors.  All rights reserved.
-        </t>
-        <t partNumber="p-boilerplate-2-2">
-          This document is subject to BCP 78 and the IETF Trust's Legal 
-          Provisions Relating to <eref 
-          target="http://trustee.ietf.org/license-info"> IETF Documents 
-          </eref> in effect on the date of publication of this document.  
-          Please review these documents carefully, as they describe your 
-          rights and restrictions with respect to this document.  Code 
-          Components extracted from this document must include Simplified BSD 
-          License text as described in Section 4.e of the Trust Legal 
-          Provisions and are provided without warranty as described in the 
-          Simplified BSD License.
-        </t>
-      </section>
-    </boilerplate>
-  </front>
-  <middle>
-    <section anchor="intro" sectionNumber="s-1">
-      <name slugifiedName="n-introduction">Introduction</name>
-      <t partNumber="p-1-1">Paragraph</t>
-      <section sectionNumber="s-1.1">
-        <name slugifiedName="n-sub-section">Sub Section</name>
-        <t partNumber="p-1.1-1">sub section paragraph</t>
-        <section anchor="sub-sub" sectionNumber="s-1.1.1">
-          <name slugifiedName="n-sub-sub-section">Sub-sub Section</name>
-          <t partNumber="p-1.1.1-1">sub section paragraph</t>
-          <section anchor="sub-sub-sub" sectionNumber="s-1.1.1.1">
-            <name slugifiedName="n-sub-sub-sub-section">
-              Sub-sub-sub Section
-            </name>
-            <t partNumber="p-1.1.1.1-1">sub section paragraph</t>
+    <link href="xml2rfc.css" rel="stylesheet" type="text/css"/>
+    <link href="local.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <dl id="identifiers">
+      <dt>Workgroup:</dt>
+      <dd class="workgroup">rfc-interest</dd>
+      <dt>Series:</dt>
+      <dd class="series">Internet-Draft</dd>
+      <dt>Status:</dt>
+      <dd class="status">Informational</dd>
+      <dt>Published:</dt>
+      <dd>
+        <time class="published" datetime="2015-04-08">
+          2015-04-08
+        </time>
+      </dd>
+      <dt>Authors:</dt>
+      <dd class="authors">
+        <div class="author">
+          <span class="fn"> <span class="initial">ɟ.</span> <span 
+          class="surname">H̭ildebrand</span> <span class="ascii">Joe 
+          Hildebrand</span> </span> ( <span class="org"> Čisco 
+          Śystems, Inc.  <span class="ascii">Cisco Systems, 
+          Inc.</span> </span> )
+        </div>
+        <div class="author">
+          <span class="fn"> <span class="initial">H.</span> <span 
+          class="surname">Flanagan</span> </span> ( <span 
+          class="org">RFC Editor</span> )
+        </div>
+      </dd>
+    </dl>
+    <h1 id="title">
+      HyperText Markup Language Request For Comments Format
+    </h1>
+    <section id="abstract">
+      <h2>
+        <a class="self-ref" href="#abstract">Abstract</a>
+      </h2>
+      <p>
+        This document defines the <strong>HTML format</strong> that 
+        will be rendered from the canonical XML format for an RFC.  
+        The HTML output will include a default CSS to enable page 
+        layout.  <a class="pilcrow" href="#undefined">¶</a>
+      </p>
+      <p>
+        Abstracts can have multiple &lt;t&gt;'s <a class="pilcrow" 
+        href="#undefined">¶</a>
+      </p>
+    </section>
+    <section class="note rfceditor-remove" id="s-note-1">
+      <h2>
+        <a class="self-ref" href="#n-editorial-note">
+          Editorial Note
+        </a>
+      </h2>
+      <p>
+        Discussion of this draft takes place on the rfc-interest 
+        mailing list (rfc-interest@rfc-editor.org), which has its home 
+        page at <a class="eref" 
+        href="https://www.rfc-editor.org/mailman/listinfo/rfc-interest"> 
+        https://www.rfc-editor.org/mailman/listinfo/rfc-interest </a>. 
+         <a class="pilcrow" href="#undefined">¶</a>
+      </p>
+    </section>
+    <section id="status-of-this-memo">
+      <h2 id="s-boilerplate-1">
+        <a class="self-ref" href="#status-of-this-memo">
+          Status of this Memo
+        </a>
+      </h2>
+      <p>
+        This Internet-Draft is submitted in full conformance with the 
+        provisions of BCP 78 and BCP 79.  <a class="pilcrow" 
+        href="#undefined">¶</a>
+      </p>
+      <p>
+        Internet-Drafts are working documents of the Internet 
+        Engineering Task Force (IETF).  Note that other groups may 
+        also distribute working documents as Internet-Drafts.  The 
+        list of current Internet-Drafts is at <a class="eref" 
+        href="http://datatracker.ietf.org/drafts/current/"> 
+        http://datatracker.ietf.org/drafts/current/ </a>.  <a 
+        class="pilcrow" href="#undefined">¶</a>
+      </p>
+      <p>
+        Internet-Drafts are draft documents valid for a maximum of six 
+        months and may be updated, replaced, or obsoleted by other 
+        documents at any time.  It is inappropriate to use 
+        Internet-Drafts as reference material or to cite them other 
+        than as "work in progress." <a class="pilcrow" 
+        href="#undefined">¶</a>
+      </p>
+      <p>
+        This Internet-Draft will expire on 2015-10-08.  <a 
+        class="pilcrow" href="#undefined">¶</a>
+      </p>
+    </section>
+    <section id="copyright-notice">
+      <h2 id="s-boilerplate-2">
+        <a class="self-ref" href="#copyright-notice">
+          Copyright Notice
+        </a>
+      </h2>
+      <p>
+        Copyright ©2015 IETF Trust and the persons identified as the 
+        document authors.  All rights reserved.  <a class="pilcrow" 
+        href="#undefined">¶</a>
+      </p>
+      <p>
+        This document is subject to BCP 78 and the IETF Trust's Legal 
+        Provisions Relating to <a class="eref" 
+        href="http://trustee.ietf.org/license-info"> IETF Documents 
+        </a> in effect on the date of publication of this document.  
+        Please review these documents carefully, as they describe your 
+        rights and restrictions with respect to this document.  Code 
+        Components extracted from this document must include 
+        Simplified BSD License text as described in Section 4.e of the 
+        Trust Legal Provisions and are provided without warranty as 
+        described in the Simplified BSD License.  <a class="pilcrow" 
+        href="#undefined">¶</a>
+      </p>
+    </section>
+    <section id="intro">
+      <h2 id="s-1">
+        <a class="self-ref" href="#s-1">1.</a>
+        <a class="self-ref" href="#intro">Introduction</a>
+      </h2>
+      <p>Paragraph <a class="pilcrow" href="#undefined">¶</a></p>
+      <section id="n-sub-section">
+        <h3 id="s-1.1">
+          <a class="self-ref" href="#s-1.1">1.1.</a>
+          <a class="self-ref" href="#n-sub-section">Sub Section</a>
+        </h3>
+        <p>
+          sub section paragraph <a class="pilcrow" 
+          href="#undefined">¶</a>
+        </p>
+        <section id="sub-sub">
+          <h4 id="s-1.1.1">
+            <a class="self-ref" href="#s-1.1.1">1.1.1.</a>
+            <a class="self-ref" href="#sub-sub">Sub-sub Section</a>
+          </h4>
+          <p>
+            sub section paragraph <a class="pilcrow" 
+            href="#undefined">¶</a>
+          </p>
+          <section id="sub-sub-sub">
+            <h5 id="s-1.1.1.1">
+              <a class="self-ref" href="#s-1.1.1.1">1.1.1.1.</a>
+              <a class="self-ref" href="#sub-sub-sub">
+                Sub-sub-sub Section
+              </a>
+            </h5>
+            <p>
+              sub section paragraph <a class="pilcrow" 
+              href="#undefined">¶</a>
+            </p>
           </section>
-          <section sectionNumber="s-1.1.1.2">
-            <name slugifiedName="n-sub-sub-sub-section-2">
-              Sub-sub-sub Section 2
-            </name>
-            <t partNumber="p-1.1.1.2-1">sub section paragraph</t>
-            <t partNumber="p-1.1.1.2-2">moar paragraph</t>
+          <section id="n-sub-sub-sub-section-2">
+            <h5 id="s-1.1.1.2">
+              <a class="self-ref" href="#s-1.1.1.2">1.1.1.2.</a>
+              <a class="self-ref" href="#n-sub-sub-sub-section-2">
+                Sub-sub-sub Section 2
+              </a>
+            </h5>
+            <p>
+              sub section paragraph <a class="pilcrow" 
+              href="#undefined">¶</a>
+            </p>
+            <p>
+              moar paragraph <a class="pilcrow" 
+              href="#undefined">¶</a>
+            </p>
           </section>
         </section>
       </section>
-      <section anchor="sub3" sectionNumber="s-1.2">
-        <name slugifiedName="n-sub-section-3">Sub Section 3</name>
-        <blockquote cite="http://www.abrahamlincolnonline.org/lincoln/speeches/gettysburg.htm"
-                    partNumber="p-1.2-1"
-                    quotedFrom="Abraham Lincoln">
-          <t partNumber="p-1.2-2">
-            Four score and seven years ago our fathers brought forth on this 
-            continent, a new nation, conceived in Liberty, and dedicated to 
-            the proposition that all men are created equal.
-          </t>
-          <t partNumber="p-1.2-3">
-            Now we are engaged in a <b>great</b> civil war, testing whether 
-            that nation, or any nation so conceived and so dedicated, can long 
-            endure. We are met on a great battle-field of that war. We have 
-            come to dedicate a portion of that field, as a final resting place 
-            for those who here gave their lives that that nation might live. 
-            It is altogether fitting and proper that we <bcp14>SHOULD</bcp14> 
-            do this.
-          </t>
-          <t partNumber="p-1.2-4">
+      <section id="sub3">
+        <h3 id="s-1.2">
+          <a class="self-ref" href="#s-1.2">1.2.</a>
+          <a class="self-ref" href="#sub3">Sub Section 3</a>
+        </h3>
+        <blockquote cite="http://www.abrahamlincolnonline.org/lincoln/speeches/gettysburg.htm">
+          <p>
+            Four score and seven years ago our fathers brought forth 
+            on this continent, a new nation, conceived in Liberty, and 
+            dedicated to the proposition that all men are created 
+            equal.  <a class="pilcrow" href="#undefined">¶</a>
+          </p>
+          <p>
+            Now we are engaged in a <b>great</b> civil war, testing 
+            whether that nation, or any nation so conceived and so 
+            dedicated, can long endure. We are met on a great 
+            battle-field of that war. We have come to dedicate a 
+            portion of that field, as a final resting place for those 
+            who here gave their lives that that nation might live. It 
+            is altogether fitting and proper that we <span 
+            class="bcp14">SHOULD</span> do this.  <a class="pilcrow" 
+            href="#undefined">¶</a>
+          </p>
+          <p>
             But, in a larger sense, we can not dedicate — we can not 
-            consecrate — we can not hallow — this ground. The brave men, 
-            living and dead, who struggled here, have consecrated it, far 
-            above our poor power to add or detract. The world will little 
-            note, nor long remember what we say here, but it can never forget 
-            what they did here. It is for us the living, rather, to be 
-            dedicated here to the unfinished work which they who fought here 
-            have thus far so nobly advanced. It is rather for us to be here 
-            dedicated to the great task remaining before us — that from these 
-            honored dead we take increased devotion to that cause for which 
-            they gave the last full measure of devotion — that we here highly 
-            resolve that these dead shall not have died in vain — that this 
-            nation, under God, shall have a new birth of freedom — and that 
-            government of the people, by the people, for the people, shall not 
-            perish from the earth.
-          </t>
+            consecrate — we can not hallow — this ground. The brave 
+            men, living and dead, who struggled here, have consecrated 
+            it, far above our poor power to add or detract. The world 
+            will little note, nor long remember what we say here, but 
+            it can never forget what they did here. It is for us the 
+            living, rather, to be dedicated here to the unfinished 
+            work which they who fought here have thus far so nobly 
+            advanced. It is rather for us to be here dedicated to the 
+            great task remaining before us — that from these honored 
+            dead we take increased devotion to that cause for which 
+            they gave the last full measure of devotion — that we here 
+            highly resolve that these dead shall not have died in vain 
+            — that this nation, under God, shall have a new birth of 
+            freedom — and that government of the people, by the 
+            people, for the people, shall not perish from the earth.  
+            <a class="pilcrow" href="#undefined">¶</a>
+          </p>
+          <a class="pilcrow" href="#undefined">¶</a>
+          <cite>
+            — <a 
+            href="http://www.abrahamlincolnonline.org/lincoln/speeches/gettysburg.htm"> 
+            Abraham Lincoln </a>
+          </cite>
         </blockquote>
-        <blockquote partNumber="p-1.2-5">
-          This is a shorter blockquote example
+        <blockquote>
+          This is a shorter blockquote example <a class="pilcrow" 
+          href="#undefined">¶</a>
         </blockquote>
-        <aside partNumber="p-1.2-6">
-          Aside: This is an aside, to compare and contrast
+        <aside>
+          Aside: This is an aside, to compare and contrast <a 
+          class="pilcrow" href="#undefined">¶</a>
         </aside>
       </section>
-      <section anchor="sub4" sectionNumber="s-1.3">
-        <name slugifiedName="n-sub-section-4">Sub Section 4</name>
-        <t partNumber="p-1.3-1">sub section paragraph 4</t>
-        <t partNumber="p-1.3-2">
-          This paragraph has a <cref anchor="unint" source="Paul"> 
-          uninteresting <tt>comment</tt> </cref>.
-        </t>
+      <section id="sub4">
+        <h3 id="s-1.3">
+          <a class="self-ref" href="#s-1.3">1.3.</a>
+          <a class="self-ref" href="#sub4">Sub Section 4</a>
+        </h3>
+        <p>
+          sub section paragraph 4 <a class="pilcrow" 
+          href="#undefined">¶</a>
+        </p>
+        <p>
+          This paragraph has a <span class="cref" id="unint"> 
+          uninteresting <code>comment</code> <b>b</b> <em>em</em> <a 
+          class="eref" href="https://ietf.org/">IETF eref</a> <i>i</i> 
+          <strong>strong</strong> <sub>sub</sub> <sup>'sup</sup> 
+          <code>tt</code> <span class="cref-source">—Paul</span> 
+          </span>.  <a class="pilcrow" href="#undefined">¶</a>
+        </p>
       </section>
     </section>
-    <section anchor="top" sectionNumber="s-2">
-      <name slugifiedName="n-top">
-        <tt>top</tt>
-      </name>
-      <t anchor="real" partNumber="p-2-1">A real section, with an anchor</t>
-      <table anchor="THE-TABLE" tableNumber="t-1">
-        <name slugifiedName="n-i-am-the-table">I AM THE TABLE</name>
+    <section id="top">
+      <h2 id="s-2">
+        <a class="self-ref" href="#s-2">2.</a>
+        <a class="self-ref" href="#top">
+          <code>top</code>
+        </a>
+      </h2>
+      <p id="real">
+        A real section, with an anchor <a class="pilcrow" 
+        href="#real">¶</a>
+      </p>
+      <table id="THE-TABLE">
+        <caption>
+          <a class="self-ref" href="#t-1">Table 1.</a>
+          <a class="self-ref" href="#n-i-am-the-table">
+            I AM THE TABLE
+          </a>
+        </caption>
         <thead>
           <tr>
             <th>H1</th>
@@ -679,9 +292,7 @@ characters changed to "&#x2d;&#x2d;") -->
         <tbody>
           <tr>
             <td>
-              <t partNumber="p-2-2">
-                One is the loneliest number that you'll ever do
-              </t>
+              <p>One is the loneliest number that you'll ever do</p>
             </td>
             <td>Two can be as bad as one</td>
           </tr>
@@ -691,127 +302,182 @@ characters changed to "&#x2d;&#x2d;") -->
           </tr>
           <tr>
             <td>
-              <sourcecode partNumber="p-2-3">three(p)</sourcecode>
+              <pre class="sourcecode">three(p)</pre>
             </td>
             <td>
-              <t partNumber="p-2-4">4</t>
-              <t partNumber="p-2-5">5</t>
+              <p>4</p>
+              <p>5</p>
             </td>
           </tr>
         </tbody>
       </table>
-      <t partNumber="p-2-6">Second paragraph</t>
+      <p>
+        Second paragraph <a class="pilcrow" href="#undefined">¶</a>
+      </p>
       <ul>
-        <li partNumber="p-2-7">List</li>
-        <li partNumber="p-2-8">
-          <tt>&lt;xref&gt;</tt> with text <xref target="unint">Some 
-          Text</xref>
+        <li pn="p-2-7">
+          List <a class="pilcrow" href="#undefined">¶</a>
         </li>
-        <li partNumber="p-2-9">Section</li>
+        <li pn="p-2-8">
+          <code>&lt;xref&gt;</code> with text <a class="xref" 
+          href="#unint">Some Text</a> <a class="pilcrow" 
+          href="#undefined">¶</a>
+        </li>
+        <li pn="p-2-9">
+          Section <a class="pilcrow" href="#undefined">¶</a>
+        </li>
         <ul>
-          <li partNumber="p-2-10">no format: <xref target="top"/></li>
-          <li partNumber="p-2-11">
-            format=counter: <xref format="counter" target="top"/>
+          <li pn="p-2-10">
+            no format: <a class="xref" href="#top">Section 2</a> <a 
+            class="pilcrow" href="#undefined">¶</a>
           </li>
-          <li partNumber="p-2-12">
-            format=title: <xref format="title" target="top"/>
+          <li pn="p-2-11">
+            format=counter: <a class="xref" href="#top">2</a> <a 
+            class="pilcrow" href="#undefined">¶</a>
+          </li>
+          <li pn="p-2-12">
+            format=title: <a class="xref" href="#top">top</a> <a 
+            class="pilcrow" href="#undefined">¶</a>
           </li>
         </ul>
-        <li partNumber="p-2-13">Figure</li>
+        <li pn="p-2-13">
+          Figure <a class="pilcrow" href="#undefined">¶</a>
+        </li>
         <ul>
-          <li partNumber="p-2-14">no format: <xref target="hello"/></li>
-          <li partNumber="p-2-15">
-            format=counter: <xref format="counter" target="hello"/>
+          <li pn="p-2-14">
+            no format: <a class="xref" href="#hello">Figure 2</a> <a 
+            class="pilcrow" href="#undefined">¶</a>
           </li>
-          <li partNumber="p-2-16">
-            format=title: <xref format="title" target="hello"/>
+          <li pn="p-2-15">
+            format=counter: <a class="xref" href="#hello">2</a> <a 
+            class="pilcrow" href="#undefined">¶</a>
+          </li>
+          <li pn="p-2-16">
+            format=title: <a class="xref" href="#hello">This is a 
+            figure</a> <a class="pilcrow" href="#undefined">¶</a>
           </li>
         </ul>
-        <li partNumber="p-2-17">Table</li>
+        <li pn="p-2-17">
+          Table <a class="pilcrow" href="#undefined">¶</a>
+        </li>
         <ul>
-          <li partNumber="p-2-18">no format: <xref target="THE-TABLE"/></li>
-          <li partNumber="p-2-19">
-            format=counter: <xref format="counter" target="THE-TABLE"/>
+          <li pn="p-2-18">
+            no format: <a class="xref" href="#THE-TABLE">Table 1</a> 
+            <a class="pilcrow" href="#undefined">¶</a>
           </li>
-          <li partNumber="p-2-20">
-            format=title: <xref format="title" target="THE-TABLE"/>
+          <li pn="p-2-19">
+            format=counter: <a class="xref" href="#THE-TABLE">1</a> <a 
+            class="pilcrow" href="#undefined">¶</a>
+          </li>
+          <li pn="p-2-20">
+            format=title: <a class="xref" href="#THE-TABLE">I AM THE 
+            TABLE</a> <a class="pilcrow" href="#undefined">¶</a>
           </li>
         </ul>
-        <li partNumber="p-2-21">Reference</li>
+        <li pn="p-2-21">
+          Reference <a class="pilcrow" href="#undefined">¶</a>
+        </li>
         <ul>
-          <li partNumber="p-2-22">no format: <xref target="RFC6949"/></li>
-          <li partNumber="p-2-23">
-            format=counter: <xref format="counter" target="RFC6949"/>
+          <li pn="p-2-22">
+            no format: [ <a class="xref" href="#RFC6949">RFC6949</a> ] 
+            <a class="pilcrow" href="#undefined">¶</a>
           </li>
-          <li partNumber="p-2-24">
-            format=title: <xref format="title" target="RFC6949"/>
+          <li pn="p-2-23">
+            format=counter: [ <a class="xref" 
+            href="#RFC6949">RFC6949</a> ] <a class="pilcrow" 
+            href="#undefined">¶</a>
+          </li>
+          <li pn="p-2-24">
+            format=title: [ <a class="xref" href="#RFC6949"> RFC 
+            Series Format Requirements and Future Development </a> ] 
+            <a class="pilcrow" href="#undefined">¶</a>
           </li>
         </ul>
       </ul>
-      <ul empty="true">
-        <li partNumber="p-2-25">Empty: it's all empty</li>
-        <li partNumber="p-2-26">I have not bullets left</li>
+      <ul class="ulempty">
+        <li pn="p-2-25">
+          Empty: it's all empty <a class="pilcrow" 
+          href="#undefined">¶</a>
+        </li>
+        <li pn="p-2-26">
+          I have not bullets left <a class="pilcrow" 
+          href="#undefined">¶</a>
+        </li>
       </ul>
       <ol>
-        <li partNumber="p-2-27">
-          <t partNumber="p-2-28">now</t>
-          <t partNumber="p-2-29">then</t>
+        <li pn="p-2-27">
+          <p>now <a class="pilcrow" href="#undefined">¶</a></p>
+          <p>then <a class="pilcrow" href="#undefined">¶</a></p>
+          <a class="pilcrow" href="#undefined">¶</a>
         </li>
-        <li partNumber="p-2-30">ordered</li>
-      </ol>
-      <ol start="42" style="I">
-        <li partNumber="p-2-31">The meaning of life.</li>
-        <li partNumber="p-2-32">The after-meaning of the after-life</li>
-      </ol>
-      <ol style="Requirement %c:">
-        <li partNumber="p-2-33">
-          Get up every morning with a smile on your face
+        <li pn="p-2-30">
+          ordered <a class="pilcrow" href="#undefined">¶</a>
         </li>
-        <li partNumber="p-2-34">Show the world all the love in your heart</li>
       </ol>
-      <ol start="26" style="Requirement %C:">
-        <li partNumber="p-2-35">Upper case</li>
-        <li partNumber="p-2-36">Above 26</li>
+      <ol start="42" type="I">
+        <li pn="p-2-31">
+          The meaning of life.  <a class="pilcrow" 
+          href="#undefined">¶</a>
+        </li>
+        <li pn="p-2-32">
+          The after-meaning of the after-life <a class="pilcrow" 
+          href="#undefined">¶</a>
+        </li>
       </ol>
-      <ol start="18" style="Requirement %i:">
-        <li partNumber="p-2-37">Wheels on a big rig</li>
-        <li partNumber="p-2-38">
-          Exercitation nisi quis in laborum ipsum esse excepteur culpa. 
-          Aliquip aliquip quis deserunt non ullamco veniam cupidatat laborum 
-          cillum nisi. Nostrud aliqua ut non incididunt eiusmod duis nostrud 
-          deserunt tempor consequat exercitation fugiat irure. Tempor 
-          reprehenderit excepteur irure exercitation ad laboris esse quis 
-          laboris mollit Lorem. Voluptate nisi occaecat ea occaecat mollit 
-          esse veniam quis cillum mollit ex ullamco aliqua dolor. Tempor ex 
+      <dl class="olpercent">
+        <dt>Requirement a:</dt>
+        <dd>Get up every morning with a smile on your face</dd>
+        <dt>Requirement b:</dt>
+        <dd>Show the world all the love in your heart</dd>
+      </dl>
+      <dl class="olpercent">
+        <dt>Requirement Z:</dt>
+        <dd>Upper case</dd>
+        <dt>Requirement AA:</dt>
+        <dd>Above 26</dd>
+      </dl>
+      <dl class="olpercent">
+        <dt>Requirement xviii:</dt>
+        <dd>Wheels on a big rig</dd>
+        <dt>Requirement xix:</dt>
+        <dd>
+          Exercitation nisi quis in laborum ipsum esse excepteur 
+          culpa. Aliquip aliquip quis deserunt non ullamco veniam 
+          cupidatat laborum cillum nisi. Nostrud aliqua ut non 
+          incididunt eiusmod duis nostrud deserunt tempor consequat 
+          exercitation fugiat irure. Tempor reprehenderit excepteur 
+          irure exercitation ad laboris esse quis laboris mollit 
+          Lorem. Voluptate nisi occaecat ea occaecat mollit esse 
+          veniam quis cillum mollit ex ullamco aliqua dolor. Tempor ex 
           esse laboris nostrud nulla ipsum aliquip sint do.
-        </li>
-      </ol>
-      <artwork align="center"
-               anchor="not-actually-ee"
-               partNumber="p-2-39"
-               type="poetry"
-               xml:lang="en">
-artwork does not
-     ALWAYS
-   have to bepartofafigure.
-                            &#x2d;&#x2d;ee cummings
-      </artwork>
-      <artwork align="right" partNumber="p-2-40">Just a step to the right</artwork>
-      <figure figureNumber="f-1">
-        <name slugifiedName="n-it-figures">It figures</name>
-        <artwork partNumber="p-2-41" type="ascii-art"><![CDATA[
- ______________
-< hello, world >
- &#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||&#x2d;&#x2d;&#x2d;&#x2d;w |
-                ||     ||
-]]></artwork>
+        </dd>
+      </dl>
+      <pre class="artwork art-poetry align_center"
+           id="not-actually-ee">
+        artwork does not ALWAYS have to bepartofafigure.  --ee 
+        cummings <a class="pilcrow" href="#not-actually-ee">¶</a>
+      </pre>
+      <pre class="artwork align_right">
+        Just a step to the right <a class="pilcrow" 
+        href="#undefined">¶</a>
+      </pre>
+      <figure id="f-1">
+        <pre class="artwork art-ascii-art">
+          ______________ &lt; hello, world &gt; -------------- \ ^__^ 
+          \ (oo)\_______ (__)\ )\/\ ||----w | || ||
+        </pre>
+        <figcaption>
+          <a class="self-ref" href="#f-1">Figure 1.</a>
+          <a class="self-ref" href="#n-it-figures" id="n-it-figures">
+            It figures
+          </a>
+        </figcaption>
       </figure>
-      <t partNumber="p-2-42">Artwork can also be outside a figure</t>
-      <artwork partNumber="p-2-43" type="svg">
+      <p>
+        Artwork can also be outside a figure <a class="pilcrow" 
+        href="#undefined">¶</a>
+      </p>
+      <div class="artwork art-svg">
         <svg height="100" width="100">
           <circle cx="50"
                   cy="50"
@@ -820,137 +486,178 @@ artwork does not
                   stroke="green"
                   stroke-width="4"/>
         </svg>
-      </artwork>
-      <artwork partNumber="p-2-44" type="hex-dump"><![CDATA[
-00000000  20 5f 5f 5f 5f 5f 5f 5f  5f 5f 5f 5f 5f 5f 5f 20  | ______________ |
-00000010  0a 3c 20 68 65 6c 6c 6f  2c 20 77 6f 72 6c 64 20  |.< hello, world |
-00000020  3e 0a 20 2d 2d 2d 2d 2d  2d 2d 2d 2d 2d 2d 2d 2d  |>. &#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;-|
-00000030  2d 20 0a 20 20 20 20 20  20 20 20 5c 20 20 20 5e  |- .        \   ^|
-00000040  5f 5f 5e 0a 20 20 20 20  20 20 20 20 20 5c 20 20  |__^.         \  |
-00000050  28 6f 6f 29 5c 5f 5f 5f  5f 5f 5f 5f 0a 20 20 20  |(oo)\_______.   |
-00000060  20 20 20 20 20 20 20 20  20 28 5f 5f 29 5c 20 20  |         (__)\  |
-00000070  20 20 20 20 20 29 5c 2f  5c 0a 20 20 20 20 20 20  |     )\/\.      |
-00000080  20 20 20 20 20 20 20 20  20 20 7c 7c 2d 2d 2d 2d  |          ||&#x2d;&#x2d;&#x2d;&#x2d;|
-00000090  77 20 7c 0a 20 20 20 20  20 20 20 20 20 20 20 20  |w |.            |
-000000a0  20 20 20 20 7c 7c 20 20  20 20 20 7c 7c 0a        |    ||     ||.|
-000000ae
-]]></artwork>
-      <section sectionNumber="s-2.1">
-        <name slugifiedName="n-foo">foo</name>
-        <t partNumber="p-2.1-1">another</t>
-        <aside partNumber="p-2.1-2">
-          If this was an interesting section, it would have more interesting 
-          things to say
+        <a class="pilcrow" href="#undefined">¶</a>
+      </div>
+      <pre class="artwork art-hex-dump">
+        00000000 20 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 20 | 
+        ______________ | 00000010 0a 3c 20 68 65 6c 6c 6f 2c 20 77 6f 
+        72 6c 64 20 |.&lt; hello, world | 00000020 3e 0a 20 2d 2d 2d 
+        2d 2d 2d 2d 2d 2d 2d 2d 2d 2d |&gt;. -------------| 00000030 
+        2d 20 0a 20 20 20 20 20 20 20 20 5c 20 20 20 5e |- .  \ ^| 
+        00000040 5f 5f 5e 0a 20 20 20 20 20 20 20 20 20 5c 20 20 |__^. 
+         \ | 00000050 28 6f 6f 29 5c 5f 5f 5f 5f 5f 5f 5f 0a 20 20 20 
+        |(oo)\_______.  | 00000060 20 20 20 20 20 20 20 20 20 28 5f 5f 
+        29 5c 20 20 | (__)\ | 00000070 20 20 20 20 20 29 5c 2f 5c 0a 
+        20 20 20 20 20 20 | )\/\.  | 00000080 20 20 20 20 20 20 20 20 
+        20 20 7c 7c 2d 2d 2d 2d | ||----| 00000090 77 20 7c 0a 20 20 
+        20 20 20 20 20 20 20 20 20 20 |w |.  | 000000a0 20 20 20 20 7c 
+        7c 20 20 20 20 20 7c 7c 0a | || ||.| 000000ae <a 
+        class="pilcrow" href="#undefined">¶</a>
+      </pre>
+      <section id="n-foo">
+        <h3 id="s-2.1">
+          <a class="self-ref" href="#s-2.1">2.1.</a>
+          <a class="self-ref" href="#n-foo">foo</a>
+        </h3>
+        <p>another <a class="pilcrow" href="#undefined">¶</a></p>
+        <aside>
+          If this was an interesting section, it would have more 
+          interesting things to say <a class="pilcrow" 
+          href="#undefined">¶</a>
         </aside>
-        <dl>
-          <dt partNumber="p-2.1-3">Fine</dt>
+        <dl class="dlparallel">
+          <dt pn="p-2.1-3">Fine</dt>
           <dd>Not fine</dd>
-          <dt partNumber="p-2.1-4">Angry</dt>
+          <dt pn="p-2.1-4">Angry</dt>
           <dd>Sad <sub>weepy</sub></dd>
         </dl>
-        <dl hanging="true" spacing="compact">
-          <dt partNumber="p-2.1-5">Whee!</dt>
+        <dl class="dlcompact dlhanging">
+          <dt pn="p-2.1-5">Whee!</dt>
           <dd>Ugh.  <em>Really</em> ugh.</dd>
-          <dt partNumber="p-2.1-6">Woah!</dt>
+          <dt pn="p-2.1-6">Woah!</dt>
           <dd>What <i>ever</i>.</dd>
         </dl>
-        <figure anchor="hello" figureNumber="f-2">
-          <name slugifiedName="n-this-is-a-figure">This is a figure</name>
-          <sourcecode anchor="helloworld" partNumber="p-2.1-7" type="c"><![CDATA[
-#include <stdio.h>
-
-int main(void)
-{
-    printf("hello, world\n");
-    return 0;
-}
-]]></sourcecode>
+        <figure id="hello">
+          <pre class="sourcecode lang-c">
+            #include &lt;stdio.h&gt; int main(void) { printf("hello, 
+            world\n"); return 0; }
+          </pre>
+          <figcaption>
+            <a class="self-ref" href="#f-2">Figure 2.</a>
+            <a class="self-ref"
+               href="#n-this-is-a-figure"
+               id="n-this-is-a-figure">This is a figure</a>
+          </figcaption>
         </figure>
       </section>
     </section>
-  </middle>
-  <back>
-    <references>
-      <name slugifiedName="n-informative-references">
-        Informative References
-      </name>
-      <reference anchor="RFC5646"
-                 xml:base="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml">
-        <front>
-          <title>Tags for Identifying Languages</title>
-          <author fullname="A. Phillips" initials="A." surname="Phillips">
-            <organization/>
-          </author>
-          <author fullname="M. Davis" initials="M." surname="Davis">
-            <organization/>
-          </author>
-          <date day="9" month="September" year="2009"/>
-          <abstract>
-            <t>
-              This document describes the structure, content, construction, 
-              and semantics of language tags for use in cases where it is 
-              desirable to indicate the language used in an information 
-              object.  It also describes how to register values for use in 
-              language tags and the creation of user-defined extensions for 
-              private interchange.  This document specifies an Internet Best 
-              Current Practices for the Internet Community, and requests 
-              discussion and suggestions for improvements.
-            </t>
-          </abstract>
-        </front>
-        <seriesInfo name="BCP" value="47"/>
-        <seriesInfo name="RFC" value="5646"/>
-        <format octets="208592"
-                target="http://www.rfc-editor.org/rfc/rfc5646.txt"
-                type="TXT"/>
-      </reference>
-      <reference anchor="RFC6949"
-                 xml:base="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6949.xml">
-        <front>
-          <title>RFC Series Format Requirements and Future Development</title>
-          <author fullname="H. Flanagan" initials="H." surname="Flanagan">
-            <organization/>
-          </author>
-          <author fullname="N. Brownlee" initials="N." surname="Brownlee">
-            <organization/>
-          </author>
-          <date day="9" month="May" year="2013"/>
-          <abstract>
-            <t>
-              This document describes the current requirements and requests 
-              for enhancements for the format of the canonical version of 
-              RFCs.  Terms are defined to help clarify exactly which stages of 
-              document production are under discussion for format changes.  
-              The requirements described in this document will determine what 
-              changes will be made to RFC format.  This document updates RFC 
-              2223.
-            </t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="6949"/>
-        <format octets="29181"
-                target="http://www.rfc-editor.org/rfc/rfc6949.txt"
-                type="TXT"/>
-        <annotation>
-          This is something <strong>relevant</strong> to RFC 6949.
-        </annotation>
-        <refcontent>I guess I'm saying something here</refcontent>
-      </reference>
-      <displayreference from="RFC6949" to="RFC-reqs"/>
-    </references>
-    <section sectionNumber="s-A">
-      <name slugifiedName="n-doing-things-in-appendices">
-        Doing things in appendices
-      </name>
-      <t partNumber="p-A-1">This is where you would put an appendix</t>
-      <section sectionNumber="s-A.1">
-        <name slugifiedName="n-sub-appendix">Sub-appendix</name>
-        <t partNumber="p-A.1-1">Have parts, too</t>
-        <t partNumber="p-A.1-2">And more parts</t>
+    <section id="n-references">
+      <h2 id="s-3">
+        <a class="self-ref" href="#s-3">3.</a>
+        <a class="self-ref" href="#n-references">References</a>
+      </h2>
+      <section id="n-informative-references">
+        <h3 id="s-3.1">
+          <a class="self-ref" href="#s-3.1">3.1.</a>
+          <a class="self-ref" href="#n-informative-references">
+            Informative References
+          </a>
+        </h3>
+        <dl class="reference">
+          <dt id="RFC5646">[RFC5646]</dt>
+          <dd>
+            <span class="refauthor">Phillips, A.</span> and <span 
+            class="refauthor">M. Davis</span> <span class="reftitile"> 
+            "Tags for Identifying Languages" </span> , <span 
+            class="refseries">BCP 47</span> , <span 
+            class="refseries">RFC 5646</span> <span class="refdate">, 
+            September 2009.</span>
+          </dd>
+          <dt id="RFC6949">[RFC6949]</dt>
+          <dd>
+            <span class="refauthor">Flanagan, H.</span> and <span 
+            class="refauthor">N. Brownlee</span> <span 
+            class="reftitile"> " RFC Series Format Requirements and 
+            Future Development " </span> , <span class="refseries">RFC 
+            6949</span> <span class="refdate">, May 2013.</span>
+          </dd>
+          <displayreference from="RFC6949" to="RFC-reqs"/>
+        </dl>
       </section>
     </section>
-  </back>
-</rfc>
-
--->
-<!-- XML SOURCE END -->
+    <section id="n-doing-things-in-appendices">
+      <h2 id="s-A">
+        <a class="self-ref" href="#s-A">A.</a>
+        <a class="self-ref" href="#n-doing-things-in-appendices">
+          Doing things in appendices
+        </a>
+      </h2>
+      <p>
+        This is where you would put an appendix <a class="pilcrow" 
+        href="#undefined">¶</a>
+      </p>
+      <section id="n-sub-appendix">
+        <h3 id="s-A.1">
+          <a class="self-ref" href="#s-A.1">A.1.</a>
+          <a class="self-ref" href="#n-sub-appendix">Sub-appendix</a>
+        </h3>
+        <p>
+          Have parts, too <a class="pilcrow" href="#undefined">¶</a>
+        </p>
+        <p>
+          And more parts <a class="pilcrow" href="#undefined">¶</a>
+        </p>
+      </section>
+    </section>
+    <section id="author-addresses">
+      <h2>
+        <a class="self-ref" href="#author-addresses">
+          Authors' Addresses
+        </a>
+      </h2>
+      <address class="vcard">
+        <div class="namerole">
+          <span class="fn"> ɟöe H̭ildebrand <span class="ascii">Joe 
+          Hildebrand</span> </span> ( <span class="role">editor</span> 
+          )
+        </div>
+        <div class="org">
+          Čisco Śystems, Inc.  <span class="ascii">Cisco Systems, 
+          Inc.</span>
+        </div>
+        <div class="adr">
+          <div class="street-address">1 Main Street</div>
+          <div class="street-address">Suite 1</div>
+          <div>
+            <span class="city">ǲenver</span> , <span 
+            class="region">CO</span> <span class="code"> ８０２０２ <span 
+            class="ascii">80202</span> </span>
+          </div>
+          <div class="country-name">US</div>
+        </div>
+        <div>
+          Phone: <span class="tel"> +1-720-555-1212 <span 
+          class="type">VOICE</span> </span>
+        </div>
+        <div>
+          Fax: <span class="tel"> +1-303-555-1212 <span 
+          class="type">fax</span> </span>
+        </div>
+        <div>
+          Email: <a class="email" href="jhildebr@example.com"> 
+          jhildebr@example.com </a>
+        </div>
+        <div>
+          URI: <a class="url" href="http://www.example.com"> 
+          http://www.example.com </a>
+        </div>
+      </address>
+      <address class="vcard">
+        <div class="namerole">
+          <span class="fn">Heather Flanagan</span> ( <span 
+          class="role">editor</span> )
+        </div>
+        <div class="org">RFC Editor</div>
+        <pre class="label">Where the Streets have no name</pre>
+        <div>
+          Email: <a class="email" href="rse@rfc-editor.org"> 
+          rse@rfc-editor.org </a>
+        </div>
+      </address>
+    </section>
+    <div class="rendered">
+      Rendered: <time datetime="2015-04-08T21:36:40Z"> 
+      2015-04-08T21:36:40Z </time>
+    </div>
+  </body>
+</html>
