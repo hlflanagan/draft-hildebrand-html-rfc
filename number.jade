@@ -46,7 +46,7 @@ mixin front(e)
       boilerplate
         - var isoPub = dt.isoDate(pubDate)
         - var tlp = number.ipr($('@ipr'))
-        section(sectionNumber="s-boilerplate-1")
+        section(pn="s-boilerplate-1")
           name(slugifiedName="status-of-this-memo") Status of this Memo
           t(pn="p-boilerplate-1-1").
             This Internet-Draft is submitted in full conformance with
@@ -65,7 +65,7 @@ mixin front(e)
             - var expires = new Date(pubDate);
             - expires.setMonth(expires.getMonth() + 6)
             t(pn="p-boilerplate-1-4") This Internet-Draft will expire on #{dt.isoDate(expires)}.
-        section(sectionNumber="s-boilerplate-2")
+        section(pn="s-boilerplate-2")
           name(slugifiedName="copyright-notice") Copyright Notice
           t(pn="p-boilerplate-2-1").
             Copyright &#xa9;#{pubDate.getFullYear()} IETF Trust and the
@@ -104,22 +104,22 @@ mixin abstract(e)
     +elem(e)(pn="s-abstract")
 
 mixin note(e)
-  +elem(e)(sectionNumber="s-note-" + number.sequentialNumber(e))
+  +elem(e)(pn="s-note-" + number.sequentialNumber(e))
 
 mixin section(e)
   if $('ancestor::back', e)
-    +elem(e)(sectionNumber="s-" + number.appendix(e))
+    +elem(e)(pn="s-" + number.appendix(e))
   else
-    +elem(e)(sectionNumber="s-" + number.section(e))
+    +elem(e)(pn="s-" + number.section(e))
 
 mixin name(e)
   +elem(e)(slugifiedName="n-" + slug(e.text()).toLowerCase())
 
 mixin figure(e)
-  +elem(e)(figureNumber="f-" + number.sequentialNumber(e))
+  +elem(e)(pn="f-" + number.sequentialNumber(e))
 
 mixin table(e)
-  +elem(e)(tableNumber="t-" + number.sequentialNumber(e))
+  +elem(e)(pn="t-" + number.sequentialNumber(e))
 
 doctype xml
 +elem($root())

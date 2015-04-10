@@ -6,7 +6,7 @@
     <meta content="html,css,rfc" name="keywords"/>
     <meta content="This document defines the HTML format that will be rendered from the canonical XML format for an RFC. The HTML output will include a default CSS to enable page layout. Abstracts can have multiple &lt;t&gt;'s"
           name="description"/>
-    <meta content="xmljade v0.1.10" name="generator"/>
+    <meta content="xmljade v0.1.13" name="generator"/>
     <title>
       HyperText Markup Language Request For Comments Format
     </title>
@@ -23,18 +23,17 @@
       <dd class="status">Informational</dd>
       <dt>Published:</dt>
       <dd>
-        <time class="published" datetime="2015-04-08">
-          2015-04-08
+        <time class="published" datetime="2015-04-09">
+          2015-04-09
         </time>
       </dd>
       <dt>Authors:</dt>
       <dd class="authors">
         <div class="author">
           <span class="fn"> <span class="initial">ɟ.</span> <span 
-          class="surname">H̭ildebrand</span> <span class="ascii">Joe 
-          Hildebrand</span> </span> ( <span class="org"> Čisco 
-          Śystems, Inc.  <span class="ascii">Cisco Systems, 
-          Inc.</span> </span> )
+          class="surname">H̭ildebrand</span> </span> ( <span 
+          class="org"> Čisco Śystems, Inc.  <span class="ascii">Cisco 
+          Systems, Inc.</span> </span> )
         </div>
         <div class="author">
           <span class="fn"> <span class="initial">H.</span> <span 
@@ -50,30 +49,30 @@
       <h2>
         <a class="self-ref" href="#abstract">Abstract</a>
       </h2>
-      <p>
+      <p id="p-abstract-1">
         This document defines the <strong>HTML format</strong> that 
         will be rendered from the canonical XML format for an RFC.  
         The HTML output will include a default CSS to enable page 
-        layout.  <a class="pilcrow" href="#undefined">¶</a>
+        layout.  <a class="pilcrow" href="#p-abstract-1">¶</a>
       </p>
-      <p>
+      <p id="p-abstract-2">
         Abstracts can have multiple &lt;t&gt;'s <a class="pilcrow" 
-        href="#undefined">¶</a>
+        href="#p-abstract-2">¶</a>
       </p>
     </section>
-    <section class="note rfceditor-remove" id="s-note-1">
+    <section class="note" id="s-note-1">
       <h2>
         <a class="self-ref" href="#n-editorial-note">
           Editorial Note
         </a>
       </h2>
-      <p>
+      <p id="p-note-1-1">
         Discussion of this draft takes place on the rfc-interest 
         mailing list (rfc-interest@rfc-editor.org), which has its home 
         page at <a class="eref" 
         href="https://www.rfc-editor.org/mailman/listinfo/rfc-interest"> 
         https://www.rfc-editor.org/mailman/listinfo/rfc-interest </a>. 
-         <a class="pilcrow" href="#undefined">¶</a>
+         <a class="pilcrow" href="#p-note-1-1">¶</a>
       </p>
     </section>
     <section id="status-of-this-memo">
@@ -82,31 +81,31 @@
           Status of this Memo
         </a>
       </h2>
-      <p>
+      <p id="p-boilerplate-1-1">
         This Internet-Draft is submitted in full conformance with the 
         provisions of BCP 78 and BCP 79.  <a class="pilcrow" 
-        href="#undefined">¶</a>
+        href="#p-boilerplate-1-1">¶</a>
       </p>
-      <p>
+      <p id="p-boilerplate-1-2">
         Internet-Drafts are working documents of the Internet 
         Engineering Task Force (IETF).  Note that other groups may 
         also distribute working documents as Internet-Drafts.  The 
         list of current Internet-Drafts is at <a class="eref" 
         href="http://datatracker.ietf.org/drafts/current/"> 
         http://datatracker.ietf.org/drafts/current/ </a>.  <a 
-        class="pilcrow" href="#undefined">¶</a>
+        class="pilcrow" href="#p-boilerplate-1-2">¶</a>
       </p>
-      <p>
+      <p id="p-boilerplate-1-3">
         Internet-Drafts are draft documents valid for a maximum of six 
         months and may be updated, replaced, or obsoleted by other 
         documents at any time.  It is inappropriate to use 
         Internet-Drafts as reference material or to cite them other 
         than as "work in progress." <a class="pilcrow" 
-        href="#undefined">¶</a>
+        href="#p-boilerplate-1-3">¶</a>
       </p>
-      <p>
-        This Internet-Draft will expire on 2015-10-08.  <a 
-        class="pilcrow" href="#undefined">¶</a>
+      <p id="p-boilerplate-1-4">
+        This Internet-Draft will expire on 2015-10-09.  <a 
+        class="pilcrow" href="#p-boilerplate-1-4">¶</a>
       </p>
     </section>
     <section id="copyright-notice">
@@ -115,12 +114,12 @@
           Copyright Notice
         </a>
       </h2>
-      <p>
+      <p id="p-boilerplate-2-1">
         Copyright ©2015 IETF Trust and the persons identified as the 
         document authors.  All rights reserved.  <a class="pilcrow" 
-        href="#undefined">¶</a>
+        href="#p-boilerplate-2-1">¶</a>
       </p>
-      <p>
+      <p id="p-boilerplate-2-2">
         This document is subject to BCP 78 and the IETF Trust's Legal 
         Provisions Relating to <a class="eref" 
         href="http://trustee.ietf.org/license-info"> IETF Documents 
@@ -131,7 +130,7 @@
         Simplified BSD License text as described in Section 4.e of the 
         Trust Legal Provisions and are provided without warranty as 
         described in the Simplified BSD License.  <a class="pilcrow" 
-        href="#undefined">¶</a>
+        href="#p-boilerplate-2-2">¶</a>
       </p>
     </section>
     <section id="intro">
@@ -139,24 +138,26 @@
         <a class="self-ref" href="#s-1">1.</a>
         <a class="self-ref" href="#intro">Introduction</a>
       </h2>
-      <p>Paragraph <a class="pilcrow" href="#undefined">¶</a></p>
+      <p id="p-1-1">
+        Paragraph <a class="pilcrow" href="#p-1-1">¶</a>
+      </p>
       <section id="n-sub-section">
         <h3 id="s-1.1">
           <a class="self-ref" href="#s-1.1">1.1.</a>
           <a class="self-ref" href="#n-sub-section">Sub Section</a>
         </h3>
-        <p>
+        <p id="p-1.1-1">
           sub section paragraph <a class="pilcrow" 
-          href="#undefined">¶</a>
+          href="#p-1.1-1">¶</a>
         </p>
         <section id="sub-sub">
           <h4 id="s-1.1.1">
             <a class="self-ref" href="#s-1.1.1">1.1.1.</a>
             <a class="self-ref" href="#sub-sub">Sub-sub Section</a>
           </h4>
-          <p>
+          <p id="p-1.1.1-1">
             sub section paragraph <a class="pilcrow" 
-            href="#undefined">¶</a>
+            href="#p-1.1.1-1">¶</a>
           </p>
           <section id="sub-sub-sub">
             <h5 id="s-1.1.1.1">
@@ -165,9 +166,9 @@
                 Sub-sub-sub Section
               </a>
             </h5>
-            <p>
+            <p id="p-1.1.1.1-1">
               sub section paragraph <a class="pilcrow" 
-              href="#undefined">¶</a>
+              href="#p-1.1.1.1-1">¶</a>
             </p>
           </section>
           <section id="n-sub-sub-sub-section-2">
@@ -177,13 +178,13 @@
                 Sub-sub-sub Section 2
               </a>
             </h5>
-            <p>
+            <p id="p-1.1.1.2-1">
               sub section paragraph <a class="pilcrow" 
-              href="#undefined">¶</a>
+              href="#p-1.1.1.2-1">¶</a>
             </p>
-            <p>
+            <p id="p-1.1.1.2-2">
               moar paragraph <a class="pilcrow" 
-              href="#undefined">¶</a>
+              href="#p-1.1.1.2-2">¶</a>
             </p>
           </section>
         </section>
@@ -193,25 +194,26 @@
           <a class="self-ref" href="#s-1.2">1.2.</a>
           <a class="self-ref" href="#sub3">Sub Section 3</a>
         </h3>
-        <blockquote cite="http://www.abrahamlincolnonline.org/lincoln/speeches/gettysburg.htm">
-          <p>
+        <blockquote cite="http://www.abrahamlincolnonline.org/lincoln/speeches/gettysburg.htm"
+                    id="p-1.2-1">
+          <p id="p-1.2-2">
             Four score and seven years ago our fathers brought forth 
             on this continent, a new nation, conceived in Liberty, and 
             dedicated to the proposition that all men are created 
-            equal.  <a class="pilcrow" href="#undefined">¶</a>
+            equal.  <a class="pilcrow" href="#p-1.2-2">¶</a>
           </p>
-          <p>
-            Now we are engaged in a <b>great</b> civil war, testing 
-            whether that nation, or any nation so conceived and so 
-            dedicated, can long endure. We are met on a great 
+          <p id="p-1.2-3">
+            Now we are engaged in a <strong>great</strong> civil war, 
+            testing whether that nation, or any nation so conceived 
+            and so dedicated, can long endure. We are met on a great 
             battle-field of that war. We have come to dedicate a 
             portion of that field, as a final resting place for those 
             who here gave their lives that that nation might live. It 
             is altogether fitting and proper that we <span 
             class="bcp14">SHOULD</span> do this.  <a class="pilcrow" 
-            href="#undefined">¶</a>
+            href="#p-1.2-3">¶</a>
           </p>
-          <p>
+          <p id="p-1.2-4">
             But, in a larger sense, we can not dedicate — we can not 
             consecrate — we can not hallow — this ground. The brave 
             men, living and dead, who struggled here, have consecrated 
@@ -228,22 +230,23 @@
             — that this nation, under God, shall have a new birth of 
             freedom — and that government of the people, by the 
             people, for the people, shall not perish from the earth.  
-            <a class="pilcrow" href="#undefined">¶</a>
+            <a class="pilcrow" href="#p-1.2-4">¶</a>
           </p>
-          <a class="pilcrow" href="#undefined">¶</a>
           <cite>
             — <a 
             href="http://www.abrahamlincolnonline.org/lincoln/speeches/gettysburg.htm"> 
             Abraham Lincoln </a>
           </cite>
         </blockquote>
-        <blockquote>
+        <blockquote id="p-1.2-5">
           This is a shorter blockquote example <a class="pilcrow" 
-          href="#undefined">¶</a>
+          href="#p-1.2-5">¶</a>
         </blockquote>
-        <aside>
-          Aside: This is an aside, to compare and contrast <a 
-          class="pilcrow" href="#undefined">¶</a>
+        <aside id="p-1.2-6">
+          <p id="p-1.2-7">
+            Aside: This is an aside, to compare and contrast <a 
+            class="pilcrow" href="#p-1.2-7">¶</a>
+          </p>
         </aside>
       </section>
       <section id="sub4">
@@ -251,17 +254,18 @@
           <a class="self-ref" href="#s-1.3">1.3.</a>
           <a class="self-ref" href="#sub4">Sub Section 4</a>
         </h3>
-        <p>
+        <p id="p-1.3-1">
           sub section paragraph 4 <a class="pilcrow" 
-          href="#undefined">¶</a>
+          href="#p-1.3-1">¶</a>
         </p>
-        <p>
+        <p id="p-1.3-2">
           This paragraph has a <span class="cref" id="unint"> 
-          uninteresting <code>comment</code> <b>b</b> <em>em</em> <a 
-          class="eref" href="https://ietf.org/">IETF eref</a> <i>i</i> 
+          uninteresting <code>comment</code> <em>em</em> <a 
+          class="eref" href="https://ietf.org/">IETF eref</a> 
           <strong>strong</strong> <sub>sub</sub> <sup>'sup</sup> 
-          <code>tt</code> <span class="cref-source">—Paul</span> 
-          </span>.  <a class="pilcrow" href="#undefined">¶</a>
+          <code>tt</code> <a class="xref" href="#top">Section 2</a> 
+          <span class="cref-source">—Paul</span> </span>.  <a 
+          class="pilcrow" href="#p-1.3-2">¶</a>
         </p>
       </section>
     </section>
@@ -292,7 +296,9 @@
         <tbody>
           <tr>
             <td>
-              <p>One is the loneliest number that you'll ever do</p>
+              <p id="p-2-2">
+                One is the loneliest number that you'll ever do
+              </p>
             </td>
             <td>Two can be as bad as one</td>
           </tr>
@@ -305,123 +311,146 @@
               <pre class="sourcecode">three(p)</pre>
             </td>
             <td>
-              <p>4</p>
-              <p>5</p>
+              <p id="p-2-4">4</p>
+              <p id="p-2-5">5</p>
             </td>
           </tr>
         </tbody>
       </table>
-      <p>
-        Second paragraph <a class="pilcrow" href="#undefined">¶</a>
+      <p id="p-2-6">
+        Second paragraph <a class="pilcrow" href="#p-2-6">¶</a>
       </p>
       <ul>
-        <li pn="p-2-7">
-          List <a class="pilcrow" href="#undefined">¶</a>
+        <li id="p-2-7">
+          List <a class="pilcrow" href="#p-2-7">¶</a>
         </li>
-        <li pn="p-2-8">
+        <li id="p-2-8">
           <code>&lt;xref&gt;</code> with text <a class="xref" 
           href="#unint">Some Text</a> <a class="pilcrow" 
-          href="#undefined">¶</a>
+          href="#p-2-8">¶</a>
         </li>
-        <li pn="p-2-9">
-          Section <a class="pilcrow" href="#undefined">¶</a>
+        <li id="p-2-9">
+          <p id="p-2-10">
+            Multiple <a class="pilcrow" href="#p-2-10">¶</a>
+          </p>
+          <p id="p-2-11">
+            Paragraphs <a class="pilcrow" href="#p-2-11">¶</a>
+          </p>
         </li>
-        <ul>
-          <li pn="p-2-10">
-            no format: <a class="xref" href="#top">Section 2</a> <a 
-            class="pilcrow" href="#undefined">¶</a>
-          </li>
-          <li pn="p-2-11">
-            format=counter: <a class="xref" href="#top">2</a> <a 
-            class="pilcrow" href="#undefined">¶</a>
-          </li>
-          <li pn="p-2-12">
-            format=title: <a class="xref" href="#top">top</a> <a 
-            class="pilcrow" href="#undefined">¶</a>
-          </li>
-        </ul>
-        <li pn="p-2-13">
-          Figure <a class="pilcrow" href="#undefined">¶</a>
+        <li id="p-2-12">
+          <p id="p-2-13">
+            Section <a class="pilcrow" href="#p-2-13">¶</a>
+          </p>
+          <p id="p-2-14"/>
+          <ul>
+            <li id="p-2-15">
+              no format: <a class="xref" href="#top">Section 2</a> <a 
+              class="pilcrow" href="#p-2-15">¶</a>
+            </li>
+            <li id="p-2-16">
+              format=counter: <a class="xref" href="#top">2</a> <a 
+              class="pilcrow" href="#p-2-16">¶</a>
+            </li>
+            <li id="p-2-17">
+              format=title: <a class="xref" href="#top">top</a> <a 
+              class="pilcrow" href="#p-2-17">¶</a>
+            </li>
+          </ul>
         </li>
-        <ul>
-          <li pn="p-2-14">
-            no format: <a class="xref" href="#hello">Figure 2</a> <a 
-            class="pilcrow" href="#undefined">¶</a>
-          </li>
-          <li pn="p-2-15">
-            format=counter: <a class="xref" href="#hello">2</a> <a 
-            class="pilcrow" href="#undefined">¶</a>
-          </li>
-          <li pn="p-2-16">
-            format=title: <a class="xref" href="#hello">This is a 
-            figure</a> <a class="pilcrow" href="#undefined">¶</a>
-          </li>
-        </ul>
-        <li pn="p-2-17">
-          Table <a class="pilcrow" href="#undefined">¶</a>
+        <li id="p-2-18">
+          <p id="p-2-19">
+            Figure <a class="pilcrow" href="#p-2-19">¶</a>
+          </p>
+          <p id="p-2-20"/>
+          <ul>
+            <li id="p-2-21">
+              no format: <a class="xref" href="#hello">Figure 2</a> <a 
+              class="pilcrow" href="#p-2-21">¶</a>
+            </li>
+            <li id="p-2-22">
+              format=counter: <a class="xref" href="#hello">2</a> <a 
+              class="pilcrow" href="#p-2-22">¶</a>
+            </li>
+            <li id="p-2-23">
+              format=title: <a class="xref" href="#hello">This is a 
+              figure</a> <a class="pilcrow" href="#p-2-23">¶</a>
+            </li>
+          </ul>
         </li>
-        <ul>
-          <li pn="p-2-18">
-            no format: <a class="xref" href="#THE-TABLE">Table 1</a> 
-            <a class="pilcrow" href="#undefined">¶</a>
-          </li>
-          <li pn="p-2-19">
-            format=counter: <a class="xref" href="#THE-TABLE">1</a> <a 
-            class="pilcrow" href="#undefined">¶</a>
-          </li>
-          <li pn="p-2-20">
-            format=title: <a class="xref" href="#THE-TABLE">I AM THE 
-            TABLE</a> <a class="pilcrow" href="#undefined">¶</a>
-          </li>
-        </ul>
-        <li pn="p-2-21">
-          Reference <a class="pilcrow" href="#undefined">¶</a>
+        <li id="p-2-24">
+          <p id="p-2-25">
+            Table <a class="pilcrow" href="#p-2-25">¶</a>
+          </p>
+          <p id="p-2-26"/>
+          <ul>
+            <li id="p-2-27">
+              no format: <a class="xref" href="#THE-TABLE">Table 1</a> 
+              <a class="pilcrow" href="#p-2-27">¶</a>
+            </li>
+            <li id="p-2-28">
+              format=counter: <a class="xref" href="#THE-TABLE">1</a> 
+              <a class="pilcrow" href="#p-2-28">¶</a>
+            </li>
+            <li id="p-2-29">
+              format=title: <a class="xref" href="#THE-TABLE">I AM THE 
+              TABLE</a> <a class="pilcrow" href="#p-2-29">¶</a>
+            </li>
+          </ul>
         </li>
-        <ul>
-          <li pn="p-2-22">
-            no format: [ <a class="xref" href="#RFC6949">RFC6949</a> ] 
-            <a class="pilcrow" href="#undefined">¶</a>
-          </li>
-          <li pn="p-2-23">
-            format=counter: [ <a class="xref" 
-            href="#RFC6949">RFC6949</a> ] <a class="pilcrow" 
-            href="#undefined">¶</a>
-          </li>
-          <li pn="p-2-24">
-            format=title: [ <a class="xref" href="#RFC6949"> RFC 
-            Series Format Requirements and Future Development </a> ] 
-            <a class="pilcrow" href="#undefined">¶</a>
-          </li>
-        </ul>
+        <li id="p-2-30">
+          <p id="p-2-31">
+            Reference <a class="pilcrow" href="#p-2-31">¶</a>
+          </p>
+          <p id="p-2-32"/>
+          <ul>
+            <li id="p-2-33">
+              no format: [ <a class="xref" href="#RFC6949">RFC6949</a> 
+              ] <a class="pilcrow" href="#p-2-33">¶</a>
+            </li>
+            <li id="p-2-34">
+              format=counter: [ <a class="xref" 
+              href="#RFC6949">RFC6949</a> ] <a class="pilcrow" 
+              href="#p-2-34">¶</a>
+            </li>
+            <li id="p-2-35">
+              format=title: [ <a class="xref" href="#RFC6949"> RFC 
+              Series Format Requirements and Future Development </a> ] 
+              <a class="pilcrow" href="#p-2-35">¶</a>
+            </li>
+          </ul>
+        </li>
       </ul>
       <ul class="ulempty">
-        <li pn="p-2-25">
+        <li id="p-2-36">
           Empty: it's all empty <a class="pilcrow" 
-          href="#undefined">¶</a>
+          href="#p-2-36">¶</a>
         </li>
-        <li pn="p-2-26">
+        <li id="p-2-37">
           I have not bullets left <a class="pilcrow" 
-          href="#undefined">¶</a>
+          href="#p-2-37">¶</a>
         </li>
       </ul>
       <ol>
-        <li pn="p-2-27">
-          <p>now <a class="pilcrow" href="#undefined">¶</a></p>
-          <p>then <a class="pilcrow" href="#undefined">¶</a></p>
-          <a class="pilcrow" href="#undefined">¶</a>
+        <li id="p-2-38">
+          <p id="p-2-39">
+            now <a class="pilcrow" href="#p-2-39">¶</a>
+          </p>
+          <p id="p-2-40">
+            then <a class="pilcrow" href="#p-2-40">¶</a>
+          </p>
         </li>
-        <li pn="p-2-30">
-          ordered <a class="pilcrow" href="#undefined">¶</a>
+        <li id="p-2-41">
+          ordered <a class="pilcrow" href="#p-2-41">¶</a>
         </li>
       </ol>
       <ol start="42" type="I">
-        <li pn="p-2-31">
+        <li id="p-2-42">
           The meaning of life.  <a class="pilcrow" 
-          href="#undefined">¶</a>
+          href="#p-2-42">¶</a>
         </li>
-        <li pn="p-2-32">
+        <li id="p-2-43">
           The after-meaning of the after-life <a class="pilcrow" 
-          href="#undefined">¶</a>
+          href="#p-2-43">¶</a>
         </li>
       </ol>
       <dl class="olpercent">
@@ -452,20 +481,33 @@
           esse laboris nostrud nulla ipsum aliquip sint do.
         </dd>
       </dl>
-      <pre class="artwork art-poetry align_center"
-           id="not-actually-ee">
-        artwork does not ALWAYS have to bepartofafigure.  --ee 
-        cummings <a class="pilcrow" href="#not-actually-ee">¶</a>
+      <div>
+        <pre class="artwork art-poetry align_center"
+             id="not-actually-ee">
+artwork does not
+     ALWAYS
+   have to bepartofafigure.
+                            --ee cummings
       </pre>
-      <pre class="artwork align_right">
-        Just a step to the right <a class="pilcrow" 
-        href="#undefined">¶</a>
-      </pre>
+        <a class="pilcrow" href="#not-actually-ee">¶</a>
+      </div>
+      <div>
+        <pre class="artwork align_right" id="p-2-51">Just a step to the right</pre>
+        <a class="pilcrow" href="#p-2-51">¶</a>
+      </div>
       <figure id="f-1">
-        <pre class="artwork art-ascii-art">
-          ______________ &lt; hello, world &gt; -------------- \ ^__^ 
-          \ (oo)\_______ (__)\ )\/\ ||----w | || ||
-        </pre>
+        <div>
+          <pre class="artwork art-ascii-art" id="p-2-52">
+ ______________
+&lt; hello, world &gt;
+ --------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+</pre>
+        </div>
         <figcaption>
           <a class="self-ref" href="#f-1">Figure 1.</a>
           <a class="self-ref" href="#n-it-figures" id="n-it-figures">
@@ -473,11 +515,11 @@
           </a>
         </figcaption>
       </figure>
-      <p>
+      <p id="p-2-53">
         Artwork can also be outside a figure <a class="pilcrow" 
-        href="#undefined">¶</a>
+        href="#p-2-53">¶</a>
       </p>
-      <div class="artwork art-svg">
+      <div class="artwork art-svg" id="p-2-54">
         <svg height="100" width="100">
           <circle cx="50"
                   cy="50"
@@ -486,52 +528,62 @@
                   stroke="green"
                   stroke-width="4"/>
         </svg>
-        <a class="pilcrow" href="#undefined">¶</a>
+        <a class="pilcrow" href="#p-2-54">¶</a>
       </div>
-      <pre class="artwork art-hex-dump">
-        00000000 20 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 5f 20 | 
-        ______________ | 00000010 0a 3c 20 68 65 6c 6c 6f 2c 20 77 6f 
-        72 6c 64 20 |.&lt; hello, world | 00000020 3e 0a 20 2d 2d 2d 
-        2d 2d 2d 2d 2d 2d 2d 2d 2d 2d |&gt;. -------------| 00000030 
-        2d 20 0a 20 20 20 20 20 20 20 20 5c 20 20 20 5e |- .  \ ^| 
-        00000040 5f 5f 5e 0a 20 20 20 20 20 20 20 20 20 5c 20 20 |__^. 
-         \ | 00000050 28 6f 6f 29 5c 5f 5f 5f 5f 5f 5f 5f 0a 20 20 20 
-        |(oo)\_______.  | 00000060 20 20 20 20 20 20 20 20 20 28 5f 5f 
-        29 5c 20 20 | (__)\ | 00000070 20 20 20 20 20 29 5c 2f 5c 0a 
-        20 20 20 20 20 20 | )\/\.  | 00000080 20 20 20 20 20 20 20 20 
-        20 20 7c 7c 2d 2d 2d 2d | ||----| 00000090 77 20 7c 0a 20 20 
-        20 20 20 20 20 20 20 20 20 20 |w |.  | 000000a0 20 20 20 20 7c 
-        7c 20 20 20 20 20 7c 7c 0a | || ||.| 000000ae <a 
-        class="pilcrow" href="#undefined">¶</a>
-      </pre>
+      <div>
+        <pre class="artwork art-hex-dump" id="p-2-55">
+00000000  20 5f 5f 5f 5f 5f 5f 5f  5f 5f 5f 5f 5f 5f 5f 20  | ______________ |
+00000010  0a 3c 20 68 65 6c 6c 6f  2c 20 77 6f 72 6c 64 20  |.&lt; hello, world |
+00000020  3e 0a 20 2d 2d 2d 2d 2d  2d 2d 2d 2d 2d 2d 2d 2d  |&gt;. -------------|
+00000030  2d 20 0a 20 20 20 20 20  20 20 20 5c 20 20 20 5e  |- .        \   ^|
+00000040  5f 5f 5e 0a 20 20 20 20  20 20 20 20 20 5c 20 20  |__^.         \  |
+00000050  28 6f 6f 29 5c 5f 5f 5f  5f 5f 5f 5f 0a 20 20 20  |(oo)\_______.   |
+00000060  20 20 20 20 20 20 20 20  20 28 5f 5f 29 5c 20 20  |         (__)\  |
+00000070  20 20 20 20 20 29 5c 2f  5c 0a 20 20 20 20 20 20  |     )\/\.      |
+00000080  20 20 20 20 20 20 20 20  20 20 7c 7c 2d 2d 2d 2d  |          ||----|
+00000090  77 20 7c 0a 20 20 20 20  20 20 20 20 20 20 20 20  |w |.            |
+000000a0  20 20 20 20 7c 7c 20 20  20 20 20 7c 7c 0a        |    ||     ||.|
+000000ae
+</pre>
+        <a class="pilcrow" href="#p-2-55">¶</a>
+      </div>
       <section id="n-foo">
         <h3 id="s-2.1">
           <a class="self-ref" href="#s-2.1">2.1.</a>
           <a class="self-ref" href="#n-foo">foo</a>
         </h3>
-        <p>another <a class="pilcrow" href="#undefined">¶</a></p>
-        <aside>
-          If this was an interesting section, it would have more 
-          interesting things to say <a class="pilcrow" 
-          href="#undefined">¶</a>
+        <p id="p-2.1-1">
+          another <a class="pilcrow" href="#p-2.1-1">¶</a>
+        </p>
+        <aside id="p-2.1-2">
+          <p id="p-2.1-3">
+            If this was an interesting section, it would have more 
+            interesting things to say <a class="pilcrow" 
+            href="#p-2.1-3">¶</a>
+          </p>
         </aside>
         <dl class="dlparallel">
-          <dt pn="p-2.1-3">Fine</dt>
+          <dt id="p-2.1-4">Fine</dt>
           <dd>Not fine</dd>
-          <dt pn="p-2.1-4">Angry</dt>
+          <dt id="p-2.1-5">Angry</dt>
           <dd>Sad <sub>weepy</sub></dd>
         </dl>
         <dl class="dlcompact dlhanging">
-          <dt pn="p-2.1-5">Whee!</dt>
+          <dt id="p-2.1-6">Whee!</dt>
           <dd>Ugh.  <em>Really</em> ugh.</dd>
-          <dt pn="p-2.1-6">Woah!</dt>
-          <dd>What <i>ever</i>.</dd>
+          <dt id="p-2.1-7">Woah!</dt>
+          <dd>What <em>ever</em>.</dd>
         </dl>
         <figure id="hello">
           <pre class="sourcecode lang-c">
-            #include &lt;stdio.h&gt; int main(void) { printf("hello, 
-            world\n"); return 0; }
-          </pre>
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    printf("hello, world\n");
+    return 0;
+}
+</pre>
           <figcaption>
             <a class="self-ref" href="#f-2">Figure 2.</a>
             <a class="self-ref"
@@ -571,7 +623,6 @@
             Future Development " </span> , <span class="refseries">RFC 
             6949</span> <span class="refdate">, May 2013.</span>
           </dd>
-          <displayreference from="RFC6949" to="RFC-reqs"/>
         </dl>
       </section>
     </section>
@@ -582,20 +633,20 @@
           Doing things in appendices
         </a>
       </h2>
-      <p>
+      <p id="p-A-1">
         This is where you would put an appendix <a class="pilcrow" 
-        href="#undefined">¶</a>
+        href="#p-A-1">¶</a>
       </p>
       <section id="n-sub-appendix">
         <h3 id="s-A.1">
           <a class="self-ref" href="#s-A.1">A.1.</a>
           <a class="self-ref" href="#n-sub-appendix">Sub-appendix</a>
         </h3>
-        <p>
-          Have parts, too <a class="pilcrow" href="#undefined">¶</a>
+        <p id="p-A.1-1">
+          Have parts, too <a class="pilcrow" href="#p-A.1-1">¶</a>
         </p>
-        <p>
-          And more parts <a class="pilcrow" href="#undefined">¶</a>
+        <p id="p-A.1-2">
+          And more parts <a class="pilcrow" href="#p-A.1-2">¶</a>
         </p>
       </section>
     </section>
@@ -607,9 +658,8 @@
       </h2>
       <address class="vcard">
         <div class="namerole">
-          <span class="fn"> ɟöe H̭ildebrand <span class="ascii">Joe 
-          Hildebrand</span> </span> ( <span class="role">editor</span> 
-          )
+          <span class="fn">ɟöe H̭ildebrand</span> ( <span 
+          class="role">editor</span> )
         </div>
         <div class="org">
           Čisco Śystems, Inc.  <span class="ascii">Cisco Systems, 
@@ -648,7 +698,8 @@
           class="role">editor</span> )
         </div>
         <div class="org">RFC Editor</div>
-        <pre class="label">Where the Streets have no name</pre>
+        <pre class="label">Where the
+Streets have no name</pre>
         <div>
           Email: <a class="email" href="rse@rfc-editor.org"> 
           rse@rfc-editor.org </a>
@@ -656,8 +707,8 @@
       </address>
     </section>
     <div class="rendered">
-      Rendered: <time datetime="2015-04-08T21:36:40Z"> 
-      2015-04-08T21:36:40Z </time>
+      Rendered: <time datetime="2015-04-10T02:55:35Z"> 
+      2015-04-10T02:55:35Z </time>
     </div>
   </body>
 </html>

@@ -6,12 +6,9 @@
 mixin elem(e)
   - var a = $att(e, attributes)
   if a.id == null
-    - a.id = a.anchor || a.partNumber || a.figureNumber || a.sectionNumber || a.tableNumber
+    - a.id = a.anchor || a.pn
   - delete a.anchor
-  - delete a.partNumber
-  - delete a.figureNumber
-  - delete a.sectionNumber
-  - delete a.tableNumber
+  - delete a.pn
   #{e.name()}&attributes(a)
     +children(e)
     block
@@ -45,7 +42,7 @@ mixin artwork(e)
   - var classes = ['artwork']
   - var cl = $att(e, 'type')
   - if (cl != null) { classes.push("art-" + cl); }
-  - var id = $att(e,'anchor') || $att(e,'partNumber')
+  - var id = $att(e,'anchor') || $att(e,'pn')
   if cl == 'svg'
     div(id=id, class=classes)
       +children(e)
@@ -54,8 +51,9 @@ mixin artwork(e)
   else
     - var align = $att(e, 'align')
     - if (align != null) { classes.push('align_' + align); }
-    pre(id=id, class=classes)
-      +children(e)
+    div
+      pre(id=id, class=classes)
+        +children(e)
       if e.parent().name() != 'figure'
         +pilcrow(e)
 
@@ -67,7 +65,7 @@ mixin ascii(e)
     = " "
 
 mixin aside(e)
-  aside(id=$att(e, 'partNumber'))
+  aside(id=$att(e, 'pn'))
     +children(e)
     +pilcrow(e)
 
@@ -95,7 +93,7 @@ mixin back(e)
 
 mixin blockquote(e)
   - var c = $att(e, 'cite')
-  blockquote(id=$att(e, 'anchor')||$att(e, 'partNumber'), cite=c)
+  blockquote(id=$att(e, 'anchor')||$att(e, 'pn'), cite=c)
     +children(e)
     +pilcrow(e)
     - var quotedFrom = $att(e, 'quotedFrom')
@@ -128,7 +126,7 @@ mixin eref(e)
 
 mixin figure(e)
   +elem(e)
-    - var fn = $att(e, 'figureNumber')
+    - var fn = $att(e, 'pn')
     - var nm = $('name', e)
     figcaption
       a.self-ref(href="#"+fn) Figure #{fn.replace(/^f-/, '')}.
@@ -177,7 +175,7 @@ mixin li(e)
 
 mixin note(e)
   - var rm = ($att(e, 'removeInRFC')=="yes") ? "rfceditor-remove" : null
-  section.note(id=$att(e, 'anchor') || $att(e,'sectionNumber'), class=rm)
+  section.note(id=$att(e, 'anchor') || $att(e,'pn'), class=rm)
     h2(id=$att(e, 'slugifiedName'))
       a.self-ref(href='#' + $('name/@slugifiedName', e)): +children($("name", e))
     +children(e)
@@ -199,8 +197,8 @@ mixin ol(e)
       +children(e)
 
 mixin pilcrow(e)
-  if !$('ancestor::table', e) && !$('*//@partNumber', e)
-    - var ref = $att(e, 'anchor') || $att(e, 'partNumber')
+  if !$('ancestor::table', e) && !$('*//@pn', e)
+    - var ref = $att(e, 'anchor') || $att(e, 'pn')
     = " "
     a.pilcrow(href='#'+ref) &para;
 
@@ -224,7 +222,7 @@ mixin reference(e)
     span.refdate= ", " + $('front/date/@month',e) + " " + $('front/date/@year',e) + "."
 
 mixin section(s)
-  - var sn = $att(s,'sectionNumber')
+  - var sn = $att(s,'pn')
   - var snn = sn.replace(/^s-/, '')
   - var depth = Math.min(sn.split('.').length + 1, 6)
   - var rm = ($att(s, 'removeInRFC')==="yes") ? "rfceditor-remove" : null
@@ -248,14 +246,14 @@ mixin sourcecode(e)
       +pilcrow(e)
 
 mixin t(e)
-  - var pn = $att(e, 'anchor') || $att(e, 'partNumber')
+  - var pn = $att(e, 'anchor') || $att(e, 'pn')
   p(id=pn)
     +children(e)
     +pilcrow(e)
 
 mixin table(e)
   table(id=$att(e, 'anchor'))
-    - var tn = $att(e, 'tableNumber')
+    - var tn = $att(e, 'pn')
     - var nm = $('name', e)
     caption
       a.self-ref(href="#"+tn) Table #{tn.replace(/^t-/, '')}.
@@ -295,7 +293,7 @@ mixin xref(e)
             if fmt == 'title'
               = $('name', target_el).text()
             else
-              = $att(target_el, 'sectionNumber').replace(/^s-/, '')
+              = $att(target_el, 'pn').replace(/^s-/, '')
         when 'figure'
           a.xref(href='#'+target)
             if (fmt !== 'counter') && (fmt !== 'title')
@@ -303,7 +301,7 @@ mixin xref(e)
             if fmt == 'title'
               = $('name', target_el).text()
             else
-              = $att(target_el, 'figureNumber').replace(/^f-/, '')
+              = $att(target_el, 'pn').replace(/^f-/, '')
         when 'table'
           a.xref(href='#'+target)
             if (fmt !== 'counter') && (fmt !== 'title')
@@ -311,7 +309,7 @@ mixin xref(e)
             if fmt == 'title'
               = $('name', target_el).text()
             else
-              = $att(target_el, 'tableNumber').replace(/^t-/, '')
+              = $att(target_el, 'pn').replace(/^t-/, '')
         when 'reference'
           = '['
           a.xref(href='#'+target)

@@ -2,14 +2,16 @@
 <rfc category="info"
      docName="draft-hildebrand-html-rfc-04"
      ipr="trust200902"
-     tocInclude="yes">
+     tocInclude="true">
   <link href="https://github.com/hildjj/draft-hildebrand-html-rfc.git"
         rel="alternate"/>
   <front>
     <title abbrev="HTML RFC">
       HyperText Markup Language Request For Comments Format
     </title>
-    <author ascii="Joe Hildebrand"
+    <author asciiFullname="Joe Hildebrand"
+            asciiInitials="J."
+            asciiSurname="Hildebrand"
             fullname="ɟöe H̭ildebrand"
             initials="ɟ."
             role="editor"
@@ -38,16 +40,16 @@
             surname="Flanagan">
       <organization>RFC Editor</organization>
       <address>
-        <email>rse@rfc-editor.org</email>
         <postal>
           <postalLine>Where the</postalLine>
           <postalLine>Streets have no name</postalLine>
         </postal>
+        <email>rse@rfc-editor.org</email>
       </address>
     </author>
+    <date day="9" month="April" year="2015"/>
     <area>gen</area>
     <workgroup>rfc-interest</workgroup>
-    <date day="8" month="April" year="2015"/>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
@@ -60,7 +62,7 @@
       </t>
       <t pn="p-abstract-2">Abstracts can have multiple &lt;t&gt;'s</t>
     </abstract>
-    <note removeInRFC="yes" sectionNumber="s-note-1">
+    <note pn="s-note-1" removeInRFC="true">
       <name slugifiedName="n-editorial-note">Editorial Note</name>
       <t pn="p-note-1-1">
         Discussion of this draft takes place on the rfc-interest 
@@ -70,7 +72,7 @@
       </t>
     </note>
     <boilerplate>
-      <section sectionNumber="s-boilerplate-1">
+      <section pn="s-boilerplate-1">
         <name slugifiedName="status-of-this-memo">
           Status of this Memo
         </name>
@@ -93,10 +95,10 @@
           than as "work in progress."
         </t>
         <t pn="p-boilerplate-1-4">
-          This Internet-Draft will expire on 2015-10-08.
+          This Internet-Draft will expire on 2015-10-09.
         </t>
       </section>
-      <section sectionNumber="s-boilerplate-2">
+      <section pn="s-boilerplate-2">
         <name slugifiedName="copyright-notice">Copyright Notice</name>
         <t pn="p-boilerplate-2-1">
           Copyright ©2015 IETF Trust and the persons identified as the 
@@ -118,24 +120,24 @@
     </boilerplate>
   </front>
   <middle>
-    <section anchor="intro" sectionNumber="s-1">
+    <section anchor="intro" pn="s-1">
       <name slugifiedName="n-introduction">Introduction</name>
       <t pn="p-1-1">Paragraph</t>
-      <section sectionNumber="s-1.1">
+      <section pn="s-1.1">
         <name slugifiedName="n-sub-section">Sub Section</name>
         <t pn="p-1.1-1">sub section paragraph</t>
-        <section anchor="sub-sub" sectionNumber="s-1.1.1">
+        <section anchor="sub-sub" pn="s-1.1.1">
           <name slugifiedName="n-sub-sub-section">
             Sub-sub Section
           </name>
           <t pn="p-1.1.1-1">sub section paragraph</t>
-          <section anchor="sub-sub-sub" sectionNumber="s-1.1.1.1">
+          <section anchor="sub-sub-sub" pn="s-1.1.1.1">
             <name slugifiedName="n-sub-sub-sub-section">
               Sub-sub-sub Section
             </name>
             <t pn="p-1.1.1.1-1">sub section paragraph</t>
           </section>
-          <section sectionNumber="s-1.1.1.2">
+          <section pn="s-1.1.1.2">
             <name slugifiedName="n-sub-sub-sub-section-2">
               Sub-sub-sub Section 2
             </name>
@@ -144,7 +146,7 @@
           </section>
         </section>
       </section>
-      <section anchor="sub3" sectionNumber="s-1.2">
+      <section anchor="sub3" pn="s-1.2">
         <name slugifiedName="n-sub-section-3">Sub Section 3</name>
         <blockquote cite="http://www.abrahamlincolnonline.org/lincoln/speeches/gettysburg.htm"
                     pn="p-1.2-1"
@@ -156,9 +158,9 @@
             equal.
           </t>
           <t pn="p-1.2-3">
-            Now we are engaged in a <b>great</b> civil war, testing 
-            whether that nation, or any nation so conceived and so 
-            dedicated, can long endure. We are met on a great 
+            Now we are engaged in a <strong>great</strong> civil war, 
+            testing whether that nation, or any nation so conceived 
+            and so dedicated, can long endure. We are met on a great 
             battle-field of that war. We have come to dedicate a 
             portion of that field, as a final resting place for those 
             who here gave their lives that that nation might live. It 
@@ -188,27 +190,29 @@
           This is a shorter blockquote example
         </blockquote>
         <aside pn="p-1.2-6">
-          Aside: This is an aside, to compare and contrast
+          <t pn="p-1.2-7">
+            Aside: This is an aside, to compare and contrast
+          </t>
         </aside>
       </section>
-      <section anchor="sub4" sectionNumber="s-1.3">
+      <section anchor="sub4" pn="s-1.3">
         <name slugifiedName="n-sub-section-4">Sub Section 4</name>
         <t pn="p-1.3-1">sub section paragraph 4</t>
         <t pn="p-1.3-2">
           This paragraph has a <cref anchor="unint" source="Paul"> 
-          uninteresting <tt>comment</tt> <b>b</b> <em>em</em> <eref 
-          target="https://ietf.org/">IETF eref</eref> <i>i</i> 
+          uninteresting <tt>comment</tt> <em>em</em> <eref 
+          target="https://ietf.org/">IETF eref</eref> 
           <strong>strong</strong> <sub>sub</sub> <sup>'sup</sup> 
-          <tt>tt</tt> <xref section="1.1"/> </cref>.
+          <tt>tt</tt> <xref target="top"/> </cref>.
         </t>
       </section>
     </section>
-    <section anchor="top" sectionNumber="s-2">
+    <section anchor="top" pn="s-2">
       <name slugifiedName="n-top">
         <tt>top</tt>
       </name>
       <t anchor="real" pn="p-2-1">A real section, with an anchor</t>
-      <table anchor="THE-TABLE" tableNumber="t-1">
+      <table anchor="THE-TABLE" pn="t-1">
         <name slugifiedName="n-i-am-the-table">I AM THE TABLE</name>
         <thead>
           <tr>
@@ -247,76 +251,101 @@
           <tt>&lt;xref&gt;</tt> with text <xref target="unint">Some 
           Text</xref>
         </li>
-        <li pn="p-2-9">Section</li>
-        <ul>
-          <li pn="p-2-10">no format: <xref target="top"/></li>
-          <li pn="p-2-11">
-            format=counter: <xref format="counter" target="top"/>
-          </li>
-          <li pn="p-2-12">
-            format=title: <xref format="title" target="top"/>
-          </li>
-        </ul>
-        <li pn="p-2-13">Figure</li>
-        <ul>
-          <li pn="p-2-14">no format: <xref target="hello"/></li>
-          <li pn="p-2-15">
-            format=counter: <xref format="counter" target="hello"/>
-          </li>
-          <li pn="p-2-16">
-            format=title: <xref format="title" target="hello"/>
-          </li>
-        </ul>
-        <li pn="p-2-17">Table</li>
-        <ul>
-          <li pn="p-2-18">no format: <xref target="THE-TABLE"/></li>
-          <li pn="p-2-19">
-            format=counter: <xref format="counter" 
-            target="THE-TABLE"/>
-          </li>
-          <li pn="p-2-20">
-            format=title: <xref format="title" target="THE-TABLE"/>
-          </li>
-        </ul>
-        <li pn="p-2-21">Reference</li>
-        <ul>
-          <li pn="p-2-22">no format: <xref target="RFC6949"/></li>
-          <li pn="p-2-23">
-            format=counter: <xref format="counter" target="RFC6949"/>
-          </li>
-          <li pn="p-2-24">
-            format=title: <xref format="title" target="RFC6949"/>
-          </li>
-        </ul>
+        <li pn="p-2-9">
+          <t pn="p-2-10">Multiple</t>
+          <t pn="p-2-11">Paragraphs</t>
+        </li>
+        <li pn="p-2-12">
+          <t pn="p-2-13">Section</t>
+          <t pn="p-2-14">
+            <ul>
+              <li pn="p-2-15">no format: <xref target="top"/></li>
+              <li pn="p-2-16">
+                format=counter: <xref format="counter" target="top"/>
+              </li>
+              <li pn="p-2-17">
+                format=title: <xref format="title" target="top"/>
+              </li>
+            </ul>
+          </t>
+        </li>
+        <li pn="p-2-18">
+          <t pn="p-2-19">Figure</t>
+          <t pn="p-2-20">
+            <ul>
+              <li pn="p-2-21">no format: <xref target="hello"/></li>
+              <li pn="p-2-22">
+                format=counter: <xref format="counter" 
+                target="hello"/>
+              </li>
+              <li pn="p-2-23">
+                format=title: <xref format="title" target="hello"/>
+              </li>
+            </ul>
+          </t>
+        </li>
+        <li pn="p-2-24">
+          <t pn="p-2-25">Table</t>
+          <t pn="p-2-26">
+            <ul>
+              <li pn="p-2-27">
+                no format: <xref target="THE-TABLE"/>
+              </li>
+              <li pn="p-2-28">
+                format=counter: <xref format="counter" 
+                target="THE-TABLE"/>
+              </li>
+              <li pn="p-2-29">
+                format=title: <xref format="title" 
+                target="THE-TABLE"/>
+              </li>
+            </ul>
+          </t>
+        </li>
+        <li pn="p-2-30">
+          <t pn="p-2-31">Reference</t>
+          <t pn="p-2-32">
+            <ul>
+              <li pn="p-2-33">no format: <xref target="RFC6949"/></li>
+              <li pn="p-2-34">
+                format=counter: <xref format="counter" 
+                target="RFC6949"/>
+              </li>
+              <li pn="p-2-35">
+                format=title: <xref format="title" target="RFC6949"/>
+              </li>
+            </ul>
+          </t>
+        </li>
       </ul>
       <ul empty="true">
-        <li pn="p-2-25">Empty: it's all empty</li>
-        <li pn="p-2-26">I have not bullets left</li>
+        <li pn="p-2-36">Empty: it's all empty</li>
+        <li pn="p-2-37">I have not bullets left</li>
       </ul>
       <ol>
-        <li pn="p-2-27">
-          <t pn="p-2-28">now</t>
-          <t pn="p-2-29">then</t>
+        <li pn="p-2-38">
+          <t pn="p-2-39">now</t>
+          <t pn="p-2-40">then</t>
         </li>
-        <li pn="p-2-30">ordered</li>
+        <li pn="p-2-41">ordered</li>
       </ol>
       <ol start="42" style="I">
-        <li pn="p-2-31">The meaning of life.</li>
-        <li pn="p-2-32">The after-meaning of the after-life</li>
+        <li pn="p-2-42">The meaning of life.</li>
+        <li pn="p-2-43">The after-meaning of the after-life</li>
       </ol>
       <ol style="Requirement %c:">
-        <li pn="p-2-33">
+        <li pn="p-2-44">
           Get up every morning with a smile on your face
         </li>
-        <li pn="p-2-34">Show the world all the love in your heart</li>
+        <li pn="p-2-45">Show the world all the love in your heart</li>
       </ol>
       <ol start="26" style="Requirement %C:">
-        <li pn="p-2-35">Upper case</li>
-        <li pn="p-2-36">Above 26</li>
+        <li pn="p-2-46">Upper case</li>
+        <li pn="p-2-47">Above 26</li>
       </ol>
       <ol start="18" style="Requirement %i:">
-        <li pn="p-2-37">Wheels on a big rig</li>
-        <li pn="p-2-38">
+        <li pn="p-2-48">Wheels on a big rig</li>
+        <li pn="p-2-49">
           Exercitation nisi quis in laborum ipsum esse excepteur 
           culpa. Aliquip aliquip quis deserunt non ullamco veniam 
           cupidatat laborum cillum nisi. Nostrud aliqua ut non 
@@ -330,18 +359,18 @@
       </ol>
       <artwork align="center"
                anchor="not-actually-ee"
-               pn="p-2-39"
+               pn="p-2-50"
                type="poetry"
                xml:lang="en">
-        artwork does not ALWAYS have to bepartofafigure.  --ee 
-        cummings
+artwork does not
+     ALWAYS
+   have to bepartofafigure.
+                            --ee cummings
       </artwork>
-      <artwork align="right" pn="p-2-40">
-        Just a step to the right
-      </artwork>
-      <figure figureNumber="f-1">
+      <artwork align="right" pn="p-2-51">Just a step to the right</artwork>
+      <figure pn="f-1">
         <name slugifiedName="n-it-figures">It figures</name>
-        <artwork pn="p-2-41" type="ascii-art"><![CDATA[
+        <artwork pn="p-2-52" type="ascii-art"><![CDATA[
  ______________
 < hello, world >
  --------------
@@ -352,8 +381,8 @@
                 ||     ||
 ]]></artwork>
       </figure>
-      <t pn="p-2-42">Artwork can also be outside a figure</t>
-      <artwork pn="p-2-43" type="svg">
+      <t pn="p-2-53">Artwork can also be outside a figure</t>
+      <artwork pn="p-2-54" type="svg">
         <svg height="100" width="100">
           <circle cx="50"
                   cy="50"
@@ -363,7 +392,7 @@
                   stroke-width="4"/>
         </svg>
       </artwork>
-      <artwork pn="p-2-44" type="hex-dump"><![CDATA[
+      <artwork pn="p-2-55" type="hex-dump"><![CDATA[
 00000000  20 5f 5f 5f 5f 5f 5f 5f  5f 5f 5f 5f 5f 5f 5f 20  | ______________ |
 00000010  0a 3c 20 68 65 6c 6c 6f  2c 20 77 6f 72 6c 64 20  |.< hello, world |
 00000020  3e 0a 20 2d 2d 2d 2d 2d  2d 2d 2d 2d 2d 2d 2d 2d  |>. -------------|
@@ -377,30 +406,32 @@
 000000a0  20 20 20 20 7c 7c 20 20  20 20 20 7c 7c 0a        |    ||     ||.|
 000000ae
 ]]></artwork>
-      <section sectionNumber="s-2.1">
+      <section pn="s-2.1">
         <name slugifiedName="n-foo">foo</name>
         <t pn="p-2.1-1">another</t>
         <aside pn="p-2.1-2">
-          If this was an interesting section, it would have more 
-          interesting things to say
+          <t pn="p-2.1-3">
+            If this was an interesting section, it would have more 
+            interesting things to say
+          </t>
         </aside>
         <dl>
-          <dt pn="p-2.1-3">Fine</dt>
+          <dt pn="p-2.1-4">Fine</dt>
           <dd>Not fine</dd>
-          <dt pn="p-2.1-4">Angry</dt>
+          <dt pn="p-2.1-5">Angry</dt>
           <dd>Sad <sub>weepy</sub></dd>
         </dl>
         <dl hanging="true" spacing="compact">
-          <dt pn="p-2.1-5">Whee!</dt>
+          <dt pn="p-2.1-6">Whee!</dt>
           <dd>Ugh.  <em>Really</em> ugh.</dd>
-          <dt pn="p-2.1-6">Woah!</dt>
-          <dd>What <i>ever</i>.</dd>
+          <dt pn="p-2.1-7">Woah!</dt>
+          <dd>What <em>ever</em>.</dd>
         </dl>
-        <figure anchor="hello" figureNumber="f-2">
+        <figure anchor="hello" pn="f-2">
           <name slugifiedName="n-this-is-a-figure">
             This is a figure
           </name>
-          <sourcecode anchor="helloworld" pn="p-2.1-7" type="c"><![CDATA[
+          <sourcecode anchor="helloworld" pn="p-2.1-8" type="c"><![CDATA[
 #include <stdio.h>
 
 int main(void)
@@ -414,6 +445,7 @@ int main(void)
     </section>
   </middle>
   <back>
+    <displayreference target="RFC6949" to="RFC-reqs"/>
     <references>
       <name slugifiedName="n-informative-references">
         Informative References
@@ -430,7 +462,7 @@ int main(void)
           <author fullname="M. Davis" initials="M." surname="Davis">
             <organization/>
           </author>
-          <date day="8" month="September" year="2009"/>
+          <date day="9" month="September" year="2009"/>
           <abstract>
             <t>
               This document describes the structure, content, 
@@ -467,7 +499,7 @@ int main(void)
                   surname="Brownlee">
             <organization/>
           </author>
-          <date day="8" month="May" year="2013"/>
+          <date day="9" month="May" year="2013"/>
           <abstract>
             <t>
               This document describes the current requirements and 
@@ -492,14 +524,13 @@ int main(void)
         </annotation>
         <refcontent>I guess I'm saying something here</refcontent>
       </reference>
-      <displayreference from="RFC6949" to="RFC-reqs"/>
     </references>
-    <section sectionNumber="s-A">
+    <section pn="s-A">
       <name slugifiedName="n-doing-things-in-appendices">
         Doing things in appendices
       </name>
       <t pn="p-A-1">This is where you would put an appendix</t>
-      <section sectionNumber="s-A.1">
+      <section pn="s-A.1">
         <name slugifiedName="n-sub-appendix">Sub-appendix</name>
         <t pn="p-A.1-1">Have parts, too</t>
         <t pn="p-A.1-2">And more parts</t>
