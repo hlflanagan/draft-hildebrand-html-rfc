@@ -6,6 +6,7 @@
 mixin elem(e)
   //- TODO: Deal with namespaces
   - var a = $att(e, attributes)
+  - a = $nsDecls(e, a)
   #{e.name()}&attributes(a)
     +children(e)
     block
@@ -103,6 +104,10 @@ mixin abstract(e)
   else
     +elem(e)(pn="s-abstract")
 
+mixin artwork(e)
+  - number.loadSrc(e)
+  +elem(e)
+  
 mixin note(e)
   +elem(e)(pn="s-note-" + number.sequentialNumber(e))
 

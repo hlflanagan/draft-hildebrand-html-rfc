@@ -256,6 +256,9 @@ artwork does not
           <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
         </svg>
       </artwork>
+      <artwork type="svg" src="circle.svg"/>
+      <artwork type="svg" src="data:application/octet-stream;base64,PHN2ZyBoZWlnaHQ9IjEwMCIKICAgICB3aWR0aD0iMTAwIgogICAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGNpcmNsZSBjeD0iNTAiCiAgICAgICAgICBjeT0iNTAiCiAgICAgICAgICBmaWxsPSJ5ZWxsb3ciCiAgICAgICAgICByPSI0MCIKICAgICAgICAgIHN0cm9rZT0iYmxhY2siCiAgICAgICAgICBzdHJva2Utd2lkdGg9IjQiLz4KPC9zdmc+Cg=="/>
+      <artwork type="logo" src="http://www.ietf.org/images/ietflogotrans.gif"/>
       <artwork type="hex-dump">
 <![CDATA[
 00000000  20 5f 5f 5f 5f 5f 5f 5f  5f 5f 5f 5f 5f 5f 5f 20  | ______________ |
