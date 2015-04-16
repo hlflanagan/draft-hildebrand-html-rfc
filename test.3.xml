@@ -52,6 +52,10 @@
         canonical XML format for an RFC.  The HTML output will include a default
         CSS to enable page layout.</t>
       <t>Abstracts can have multiple &lt;t&gt;'s</t>
+      <ul>
+        <li>And</li>
+        <li>Lists</li>
+      </ul>
     </abstract>
     <note removeInRFC='true'>
       <name>Editorial Note</name>
@@ -164,43 +168,35 @@
         </li>
         <li>
           <t>Section</t>
-          <t>
-            <ul>
-              <li>no format: <xref target='top'/></li>
-              <li>format=counter: <xref format='counter' target='top'/></li>
-              <li>format=title: <xref format='title' target='top'/></li>
-            </ul>
-          </t>
+          <ul>
+            <li>no format: <xref target='top'/></li>
+            <li>format=counter: <xref format='counter' target='top'/></li>
+            <li>format=title: <xref format='title' target='top'/></li>
+          </ul>
         </li>
         <li>
           <t>Figure</t>
-          <t>
             <ul>
               <li>no format: <xref target='hello'/></li>
               <li>format=counter: <xref format='counter' target='hello'/></li>
               <li>format=title: <xref format='title' target='hello'/></li>
             </ul>
-          </t>
         </li>
         <li>
           <t>Table</t>
-          <t>
-            <ul>
-              <li>no format: <xref target='THE-TABLE'/></li>
-              <li>format=counter: <xref format='counter' target='THE-TABLE'/></li>
-              <li>format=title: <xref format='title' target='THE-TABLE'/></li>
-            </ul>
-          </t>
+          <ul>
+            <li>no format: <xref target='THE-TABLE'/></li>
+            <li>format=counter: <xref format='counter' target='THE-TABLE'/></li>
+            <li>format=title: <xref format='title' target='THE-TABLE'/></li>
+          </ul>
         </li>
         <li>
           <t>Reference</t>
-          <t>
-            <ul>
-              <li>no format: <xref target='RFC6949'/></li>
-              <li>format=counter: <xref format='counter' target='RFC6949'/></li>
-              <li>format=title: <xref format='title' target='RFC6949'/></li>
-            </ul>
-          </t>
+          <ul>
+            <li>no format: <xref target='RFC6949'/></li>
+            <li>format=counter: <xref format='counter' target='RFC6949'/></li>
+            <li>format=title: <xref format='title' target='RFC6949'/></li>
+          </ul>
         </li>
       </ul>
       <ul empty='true'>

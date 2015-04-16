@@ -48,7 +48,7 @@
         <email>rse@rfc-editor.org</email>
       </address>
     </author>
-    <date day='15' month='April' year='2015'/>
+    <date day='16' month='April' year='2015'/>
     <area>gen</area>
     <workgroup>rfc-interest</workgroup>
     <keyword>html</keyword>
@@ -62,6 +62,10 @@
         layout.
       </t>
       <t pn='p-abstract-2'>Abstracts can have multiple &lt;t&gt;'s</t>
+      <ul>
+        <li pn='p-abstract-3'>And</li>
+        <li pn='p-abstract-4'>Lists</li>
+      </ul>
     </abstract>
     <note pn='s-note-1' removeInRFC='true'>
       <name slugifiedName='n-editorial-note'>Editorial Note</name>
@@ -96,7 +100,7 @@
           than as "work in progress."
         </t>
         <t pn='p-boilerplate-1-4'>
-          This Internet-Draft will expire on 2015-10-15.
+          This Internet-Draft will expire on 2015-10-16.
         </t>
       </section>
       <section pn='s-boilerplate-2'>
@@ -258,95 +262,83 @@
         </li>
         <li pn='p-2-12'>
           <t pn='p-2-13'>Section</t>
-          <t pn='p-2-14'>
-            <ul>
-              <li pn='p-2-15'>no format: <xref target='top'/></li>
-              <li pn='p-2-16'>
-                format=counter: <xref format='counter' target='top'/>
-              </li>
-              <li pn='p-2-17'>
-                format=title: <xref format='title' target='top'/>
-              </li>
-            </ul>
-          </t>
+          <ul>
+            <li pn='p-2-14'>no format: <xref target='top'/></li>
+            <li pn='p-2-15'>
+              format=counter: <xref format='counter' target='top'/>
+            </li>
+            <li pn='p-2-16'>
+              format=title: <xref format='title' target='top'/>
+            </li>
+          </ul>
         </li>
-        <li pn='p-2-18'>
-          <t pn='p-2-19'>Figure</t>
-          <t pn='p-2-20'>
-            <ul>
-              <li pn='p-2-21'>no format: <xref target='hello'/></li>
-              <li pn='p-2-22'>
-                format=counter: <xref format='counter'
-                target='hello'/>
-              </li>
-              <li pn='p-2-23'>
-                format=title: <xref format='title' target='hello'/>
-              </li>
-            </ul>
-          </t>
+        <li pn='p-2-17'>
+          <t pn='p-2-18'>Figure</t>
+          <ul>
+            <li pn='p-2-19'>no format: <xref target='hello'/></li>
+            <li pn='p-2-20'>
+              format=counter: <xref format='counter' target='hello'/>
+            </li>
+            <li pn='p-2-21'>
+              format=title: <xref format='title' target='hello'/>
+            </li>
+          </ul>
         </li>
-        <li pn='p-2-24'>
-          <t pn='p-2-25'>Table</t>
-          <t pn='p-2-26'>
-            <ul>
-              <li pn='p-2-27'>
-                no format: <xref target='THE-TABLE'/>
-              </li>
-              <li pn='p-2-28'>
-                format=counter: <xref format='counter'
-                target='THE-TABLE'/>
-              </li>
-              <li pn='p-2-29'>
-                format=title: <xref format='title'
-                target='THE-TABLE'/>
-              </li>
-            </ul>
-          </t>
+        <li pn='p-2-22'>
+          <t pn='p-2-23'>Table</t>
+          <ul>
+            <li pn='p-2-24'>no format: <xref target='THE-TABLE'/></li>
+            <li pn='p-2-25'>
+              format=counter: <xref format='counter'
+              target='THE-TABLE'/>
+            </li>
+            <li pn='p-2-26'>
+              format=title: <xref format='title' target='THE-TABLE'/>
+            </li>
+          </ul>
         </li>
-        <li pn='p-2-30'>
-          <t pn='p-2-31'>Reference</t>
-          <t pn='p-2-32'>
-            <ul>
-              <li pn='p-2-33'>no format: <xref target='RFC6949'/></li>
-              <li pn='p-2-34'>
-                format=counter: <xref format='counter'
-                target='RFC6949'/>
-              </li>
-              <li pn='p-2-35'>
-                format=title: <xref format='title' target='RFC6949'/>
-              </li>
-            </ul>
-          </t>
+        <li pn='p-2-27'>
+          <t pn='p-2-28'>Reference</t>
+          <ul>
+            <li pn='p-2-29'>no format: <xref target='RFC6949'/></li>
+            <li pn='p-2-30'>
+              format=counter: <xref format='counter'
+              target='RFC6949'/>
+            </li>
+            <li pn='p-2-31'>
+              format=title: <xref format='title' target='RFC6949'/>
+            </li>
+          </ul>
         </li>
       </ul>
       <ul empty='true'>
-        <li pn='p-2-36'>Empty: it's all empty</li>
-        <li pn='p-2-37'>I have not bullets left</li>
+        <li pn='p-2-32'>Empty: it's all empty</li>
+        <li pn='p-2-33'>I have not bullets left</li>
       </ul>
       <ol>
-        <li pn='p-2-38'>
-          <t pn='p-2-39'>now</t>
-          <t pn='p-2-40'>then</t>
+        <li pn='p-2-34'>
+          <t pn='p-2-35'>now</t>
+          <t pn='p-2-36'>then</t>
         </li>
-        <li pn='p-2-41'>ordered</li>
+        <li pn='p-2-37'>ordered</li>
       </ol>
       <ol start='42' style='I'>
-        <li pn='p-2-42'>The meaning of life.</li>
-        <li pn='p-2-43'>The after-meaning of the after-life</li>
+        <li pn='p-2-38'>The meaning of life.</li>
+        <li pn='p-2-39'>The after-meaning of the after-life</li>
       </ol>
       <ol style='Requirement %c:'>
-        <li pn='p-2-44'>
+        <li pn='p-2-40'>
           Get up every morning with a smile on your face
         </li>
-        <li pn='p-2-45'>Show the world all the love in your heart</li>
+        <li pn='p-2-41'>Show the world all the love in your heart</li>
       </ol>
       <ol start='26' style='Requirement %C:'>
-        <li pn='p-2-46'>Upper case</li>
-        <li pn='p-2-47'>Above 26</li>
+        <li pn='p-2-42'>Upper case</li>
+        <li pn='p-2-43'>Above 26</li>
       </ol>
       <ol start='18' style='Requirement %i:'>
-        <li pn='p-2-48'>Wheels on a big rig</li>
-        <li pn='p-2-49'>
+        <li pn='p-2-44'>Wheels on a big rig</li>
+        <li pn='p-2-45'>
           Exercitation nisi quis in laborum ipsum esse excepteur
           culpa. Aliquip aliquip quis deserunt non ullamco veniam
           cupidatat laborum cillum nisi. Nostrud aliqua ut non
@@ -381,7 +373,7 @@ artwork does not
                 ||     ||
 ]]></artwork>
       </figure>
-      <t pn='p-2-53'>Artwork can also be outside a figure</t>
+      <t pn='p-2-49'>Artwork can also be outside a figure</t>
       <artwork type='svg'>
         <svg height='100'
              width='100'
@@ -490,7 +482,7 @@ int main(void)
           <author fullname='M. Davis' initials='M.' surname='Davis'>
             <organization/>
           </author>
-          <date day='15' month='September' year='2009'/>
+          <date day='16' month='September' year='2009'/>
           <abstract>
             <t>
               This document describes the structure, content,
@@ -527,7 +519,7 @@ int main(void)
                   surname='Brownlee'>
             <organization/>
           </author>
-          <date day='15' month='May' year='2013'/>
+          <date day='16' month='May' year='2013'/>
           <abstract>
             <t>
               This document describes the current requirements and
