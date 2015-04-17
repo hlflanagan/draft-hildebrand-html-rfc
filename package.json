@@ -9,7 +9,8 @@
   "dependencies": {
     "romanize": "^0.1.0",
     "slug": "^0.8.0",
-    "urllib-sync": "^1.0.1"
+    "urllib-sync": "^1.0.1",
+    "xmljade": "^0.2.3"
   },
   "devDependencies": {},
   "scripts": {

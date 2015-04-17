@@ -1,12 +1,12 @@
 DRAFT=draft-hildebrand-html-rfc
 #XMLJADE=../xmljade/bin/xmljade
-XMLJADE=xmljade
+XMLJADE=node_modules/.bin/xmljade
 
 %.3.xml: %.xml convertv2v3/convertv2v3
 	perl convertv2v3/convertv2v3  < $< > $@
 
 %.n.xml: %.3.xml number.jade number.js
-	$(XMLJADE) --pretty --output $@ number.jade $<
+	$(XMLJADE) --pretty --xinclude --output $@ number.jade $<
 
 %.3.html: %.n.xml v3tohtml.jade v3.js xml2rfc.css
 	$(XMLJADE) --pretty --html --output $@ v3tohtml.jade $<
