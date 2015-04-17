@@ -2,9 +2,8 @@
 <rfc ipr='trust200902' docName='draft-hildebrand-html-rfc-04' category='info'
   xmlns:xi='http://www.w3.org/2001/XInclude' tocInclude='true'>
   <link href="https://github.com/hildjj/draft-hildebrand-html-rfc.git" rel="alternate"/>
-  <!-- Didn't do referencegroup -->
   <!-- Need right-to-left names -->
-  <!-- Paul got to <date> -->
+  <!-- Paul got to <postal> -->
   <front>
     <!--
       comment in the front
@@ -15,7 +14,7 @@
     <author role='editor'
       initials='ɟ.' surname='H̭ildebrand' fullname='ɟöe H̭ildebrand'
       asciiInitials='J.' asciiSurname='Hildebrand' asciiFullname='Joe Hildebrand'>
-      <organization ascii='Cisco Systems, Inc.'>Čisco Śystems, Inc.</organization>
+      <organization ascii='Cisco Systems, Inc.' abbrev='CSI'>Čisco Śystems, Inc.</organization>
       <address>
         <postal>
           <street>1 Main Street</street>
@@ -27,7 +26,7 @@
         </postal>
         <phone>+1-720-555-1212</phone>
         <facsimile>+1-303-555-1212</facsimile>
-        <email>jhildebr@example.com</email>
+        <email ascii="jhildebr@example.com">ɟhildebr@éxample.com</email>
         <uri>http://www.example.com</uri>
       </address>
     </author>
@@ -74,7 +73,7 @@
       <name>Introduction</name>
       <t><iref item="Paragraphs" subitem="first" primary="true"/>Paragraph</t>
       <section>
-        <name>Sub Section</name>
+        <name>Sub Section About <tt>Monospace Fonts</tt></name>
         <t><iref item="Paragraphs" subitem="second"/>sub section paragraph</t>
         <section anchor='sub-sub'>
           <name>Sub-sub Section</name>
@@ -95,7 +94,7 @@
         <blockquote
           cite='http://www.abrahamlincolnonline.org/lincoln/speeches/gettysburg.htm'
           quotedFrom='Abraham Lincoln'>
-          <t><em>Four</em> <strong>score</strong> and <sup>seven</sup> <sub>years</sub>
+          <t keepWithNext="true"><em>Four</em> <strong>score</strong> and <sup><em>seven</em></sup> <sub>years</sub>
             ago, <tt>our</tt> fathers brought forth on this
             continent, a new nation, conceived in Liberty, and dedicated to the
             proposition that all men are created equal.</t>
@@ -138,6 +137,7 @@
       <t anchor='real'>A real section, with an anchor</t>
       <table anchor='THE-TABLE'>
         <name>I AM THE TABLE</name>
+        <iref item="Coffee tables"/>
         <thead>
           <tr>
             <th>H1</th>
@@ -150,6 +150,11 @@
           Remember to do <xref target="crefAnchor">that comment</xref>.</td></tr>
           <tr><td><sourcecode>three(p)</sourcecode></td>
           <td><t>4</t><t>5</t></td></tr>
+          <tr><td colspan='2' align='center'><t>This one covers two whole columns.</t></td></tr>
+          <tr><td rowspan='2' align='center'><t>This one covers two whole rows.</t></td>
+          <td>Another thing</td>
+          <td>And another thing</td>
+          </tr>
         </tbody>
       </table>
       <t>Second paragraph</t>
@@ -201,7 +206,11 @@
         <li><t>now</t><t>then</t></li>
         <li>ordered</li>
       </ol>
-      <ol start="42" style='I'>
+      <ol start="12" style='I' group="green">
+        <li>A dozen or so.</li>
+        <li>Now, with bakers. It's all about <xref target="Bibble"/>.</li>
+      </ol>
+      <ol start="42" style='I' group="green">
         <li>The meaning of life.</li>
         <li>The after-meaning of the after-life</li>
       </ol>
@@ -215,8 +224,7 @@
       </ol>
       <ol style='Requirement %i:' start='18'>
         <li>Wheels on a big rig</li>
-        <li>Exercitation nisi quis in laborum ipsum esse excepteur culpa. Aliquip aliquip quis deserunt non ullamco veniam cupidatat laborum cillum nisi. Nostrud aliqua ut non incididunt eiusmod duis nostrud deserunt tempor consequat exercitation fugiat irure. Tempor reprehenderit excepteur irure exercitation ad laboris esse quis laboris mollit Lorem. Voluptate nisi occaecat ea occaecat mollit esse veniam quis cillum mollit ex ullamco aliqua dolor. Tempor ex esse laboris nostrud nulla ipsum aliquip sint do.
-</li>
+        <li>Exercitation nisi quis in laborum ipsum esse excepteur culpa. And then <xref target="whoa"/>.</li>
       </ol>
       <artwork anchor='not-actually-ee' xml:lang='en' type='poetry' align='center'>
 artwork does not
@@ -284,13 +292,18 @@ artwork does not
           <dt>Fine</dt>
           <dd>Not fine</dd>
           <dt>Angry</dt>
-          <dd>Sad<sub>weepy</sub></dd>
+          <dd>Sad<sub><strong>weepy</strong></sub></dd>
         </dl>
         <dl hanging='true' spacing='compact'>
           <dt>Whee!</dt>
           <dd>Ugh. <em>Really</em> ugh.</dd>
-          <dt>Woah!</dt>
-          <dd>What<em>ever</em>.</dd>
+          <dt anchor="whoa"><tt>Woah!</tt></dt>
+          <dd><t>What<em>ever</em>. I guess I should have an ordered list here:</t>
+             <ol>
+               <li>Won!</li>
+               <li>Too!</li>
+             </ol>
+          </dd>
         </dl>
         <figure anchor="hello">
           <name>This is a figure</name>
@@ -316,12 +329,8 @@ int main(void)
       <reference anchor="RFC5646" xml:base="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml">
         <front>
           <title>Tags for Identifying Languages</title>
-          <author initials="A." surname="Phillips" fullname="A. Phillips">
-            <organization/>
-          </author>
-          <author initials="M." surname="Davis" fullname="M. Davis">
-            <organization/>
-          </author>
+          <author initials="A." surname="Phillips" fullname="A. Phillips"/>
+          <author initials="M." surname="Davis" fullname="M. Davis"/>
           <date year="2009" month="September"/>
           <abstract>
             <t>This document describes the structure, content, construction, and
@@ -364,8 +373,24 @@ int main(void)
           <cref>Note: This is a comment.</cref>
           This is something <strong>relevant</strong> to RFC 6949.
         </annotation>
-        <refcontent>I guess I'm saying something here</refcontent>
+        <refcontent ascii="Note this!">Nötë thïs!</refcontent>
       </reference>
+      <referencegroup anchor="Bibble">
+        <reference anchor="Bibble1" quoteTitle="false">
+          <front>
+            <title>Bibble protocol spec</title>
+            <author initials="N." surname="One" fullname="No One"/>
+          </front>
+        <seriesInfo name="BibbleSpècs" asciiName= "BibbleSpecs" value="12-4444"/>
+        </reference>
+        <reference anchor="Bibble2">
+          <front>
+            <title>Bibble use cases</title>
+            <author initials="N." surname="One" fullname="No One"/>
+          </front>
+        <seriesInfo name="BibbleSpècs" asciiName= "BibbleSpecs" value="12-4479"/>
+        </reference>
+      </referencegroup>
     </references>
     <section>
       <name>Doing things in appendices</name>
