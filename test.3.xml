@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rfc ipr='trust200902' docName='draft-hildebrand-html-rfc-04' category='info' xmlns:xi='http://www.w3.org/2001/XInclude' tocInclude='true'>
+<rfc ipr='trust200902' docName='draft-hildebrand-html-rfc-04' category='info'
+  xmlns:xi='http://www.w3.org/2001/XInclude' tocInclude='true'>
   <link href="https://github.com/hildjj/draft-hildebrand-html-rfc.git" rel="alternate"/>
   <!-- Didn't do referencegroup -->
   <!-- Need right-to-left names -->
@@ -145,8 +146,8 @@
         </thead>
         <tbody>
           <tr><td><t>One is the loneliest number that you'll ever do</t></td><td>Two can be as bad as one</td></tr>
-          <tr><td>It's the loneliest number</td><td>since the number one.<br>
-          Remember to do <xref target="crefTarget">that comment</xref>.</td></tr>
+          <tr><td>It's the loneliest number</td><td>since the number one.<br/>
+          Remember to do <xref target="crefAnchor">that comment</xref>.</td></tr>
           <tr><td><sourcecode>three(p)</sourcecode></td>
           <td><t>4</t><t>5</t></td></tr>
         </tbody>

@@ -9,7 +9,7 @@ mixin elem(e)
     - a.id = a.anchor || a.pn
   - delete a.anchor
   - delete a.pn
-  #{e.name()}&attributes(a)
+  #{$qname(e}&attributes(a)
     +children(e)
     block
 

@@ -7,7 +7,7 @@ mixin elem(e)
   //- TODO: Deal with namespaces
   - var a = $att(e, attributes)
   - a = $nsDecls(e, a)
-  #{e.name()}&attributes(a)
+  #{$qname(e)}&attributes(a)
     +children(e)
     block
 
