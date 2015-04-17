@@ -1,10 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <rfc ipr='trust200902' docName='draft-hildebrand-html-rfc-04' category='info' xmlns:xi='http://www.w3.org/2001/XInclude' tocInclude='true'>
   <link href="https://github.com/hildjj/draft-hildebrand-html-rfc.git" rel="alternate"/>
-  <!-- Didn't do iref -->
   <!-- Didn't do referencegroup -->
-  <!-- Didn't do xref attributes -->
   <!-- Need right-to-left names -->
+  <!-- Paul got to <date> -->
   <front>
     <!--
       comment in the front
@@ -48,7 +47,7 @@
     <keyword>css</keyword>
     <keyword>rfc</keyword>
     <abstract>
-      <t>This document defines the <strong>HTML format</strong> that will be rendered from the
+      <t>This document defines the HTML format that will be rendered from the
         canonical XML format for an RFC.  The HTML output will include a default
         CSS to enable page layout.</t>
       <t>Abstracts can have multiple &lt;t&gt;'s</t>
@@ -72,10 +71,10 @@
   <middle>
     <section anchor='intro'>
       <name>Introduction</name>
-      <t>Paragraph</t>
+      <t><iref item="Paragraphs" subitem="first" primary="true"/>Paragraph</t>
       <section>
         <name>Sub Section</name>
-        <t>sub section paragraph</t>
+        <t><iref item="Paragraphs" subitem="second"/>sub section paragraph</t>
         <section anchor='sub-sub'>
           <name>Sub-sub Section</name>
           <t>sub section paragraph</t>
@@ -95,37 +94,30 @@
         <blockquote
           cite='http://www.abrahamlincolnonline.org/lincoln/speeches/gettysburg.htm'
           quotedFrom='Abraham Lincoln'>
-          <t>Four score and seven years ago our fathers brought forth on this
+          <t><em>Four</em> <strong>score</strong> and <sup>seven</sup> <sub>years</sub>
+            ago, <tt>our</tt> fathers brought forth on this
             continent, a new nation, conceived in Liberty, and dedicated to the
             proposition that all men are created equal.</t>
 
-          <t>Now we are engaged in a <strong>great</strong> civil war, testing whether that nation,
+          <t>Now we are engaged in a great civil war, testing whether that nation,
              or any nation so conceived and so dedicated, can long endure. We are
              met on a great battle-field of that war. We have come to dedicate a
              portion of that field, as a final resting place for those who here
              gave their lives that that nation might live. It is altogether
              fitting and proper that we <bcp14>SHOULD</bcp14> do this.</t>
-
-          <t>But, in a larger sense, we can not dedicate — we can not
-            consecrate — we can not hallow — this ground. The brave
-            men, living and dead, who struggled here, have consecrated it, far
-            above our poor power to add or detract. The world will little note,
-            nor long remember what we say here, but it can never forget what they
-            did here. It is for us the living, rather, to be dedicated here to the
-            unfinished work which they who fought here have thus far so nobly
-            advanced. It is rather for us to be here dedicated to the great task
-            remaining before us — that from these honored dead we take
-            increased devotion to that cause for which they gave the last full
-            measure of devotion — that we here highly resolve that these
-            dead shall not have died in vain — that this nation, under
-            God, shall have a new birth of freedom — and that government
-            of the people, by the people, for the people, shall not perish from
-            the earth.</t>
         </blockquote>
         <blockquote>
           This is a shorter blockquote example
         </blockquote>
-        <aside><t>Aside: This is an aside, to compare and contrast</t></aside>
+        <aside>
+          <t>This is a longer aside. This paragraph has a comment.
+           <cref anchor="crefAnchor" source="life">Just a brief comment about
+          something that we need to remember later.</cref></t>
+          <ul>
+            <li>This is a short list...</li>
+            <li>...that is inside the aside.</li>
+           </ul>
+        </aside>
       </section>
       <section anchor='sub4'>
         <name>Sub Section 4</name>
@@ -153,7 +145,8 @@
         </thead>
         <tbody>
           <tr><td><t>One is the loneliest number that you'll ever do</t></td><td>Two can be as bad as one</td></tr>
-          <tr><td>It's the loneliest number</td><td>since the number one</td></tr>
+          <tr><td>It's the loneliest number</td><td>since the number one.<br>
+          Remember to do <xref target="crefTarget">that comment</xref>.</td></tr>
           <tr><td><sourcecode>three(p)</sourcecode></td>
           <td><t>4</t><t>5</t></td></tr>
         </tbody>
@@ -246,14 +239,24 @@ artwork does not
 ]]>
         </artwork>
       </figure>
-      <t>Artwork can also be outside a figure</t>
-      <artwork type="svg">
-        <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
-        </svg>
-      </artwork>
-      <artwork type="svg" src="circle.svg"/>
-      <artwork type="svg" src="data:application/octet-stream;base64,PHN2ZyBoZWlnaHQ9IjEwMCIKICAgICB3aWR0aD0iMTAwIgogICAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGNpcmNsZSBjeD0iNTAiCiAgICAgICAgICBjeT0iNTAiCiAgICAgICAgICBmaWxsPSJ5ZWxsb3ciCiAgICAgICAgICByPSI0MCIKICAgICAgICAgIHN0cm9rZT0iYmxhY2siCiAgICAgICAgICBzdHJva2Utd2lkdGg9IjQiLz4KPC9zdmc+Cg=="/>
+      <figure><name>Inline with &lt;svg&gt; element</name>
+        <artwork type="svg" alt="green stroke yellow fill circle">
+          <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+          </svg>
+        </artwork>
+      </figure>
+      <figure><name>Inline with XInclude</name>
+        <artwork type="svg" align="right"><xi:include href='http://www.proper.com/redbluecircle.svg'/></artwork>
+      </figure>
+      <figure><name>SVG as a data: URI</name>
+        <artwork type="svg" src="data:application/octet-stream;base64,PHN2ZyBoZWlnaHQ9IjEwMCIKICAgICB3aWR0aD0iMTAwIgogICAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGNpcmNsZSBjeD0iNTAiCiAgICAgICAgICBjeT0iNTAiCiAgICAgICAgICBmaWxsPSJ5ZWxsb3ciCiAgICAgICAgICByPSI0MCIKICAgICAgICAgIHN0cm9rZT0iYmxhY2siCiAgICAgICAgICBzdHJva2Utd2lkdGg9IjQiLz4KPC9zdmc+Cg=="/>
+      </figure>
+      <figure><name>Inline with &lt;src&gt; element</name>
+        <!-- <artwork type="svg" src="circle.svg"/> -->
+        <artwork type="svg" src='http://www.proper.com/redbluecircle.svg' anchor='externalCircle'/>
+      </figure>
+      <t>Artwork can also be outside a figure. Here are two.</t>
       <artwork type="logo" src="http://www.ietf.org/images/ietflogotrans.gif"/>
       <artwork type="hex-dump">
 <![CDATA[
