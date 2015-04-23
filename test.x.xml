@@ -206,7 +206,7 @@
           source='Paul'>uninteresting <tt>comment</tt> <em>em</em>
           <eref target='https://ietf.org/'>IETF eref</eref>
           <strong>strong</strong> <sub>sub</sub> <sup>'sup</sup>
-          <tt>tt</tt> <xref target='top'/></cref>.
+          <tt>tt</tt> <xref target='top'>Section 2</xref></cref>.
         </t>
       </section>
     </section>
@@ -279,50 +279,64 @@
         <li pn='p-2-14'>
           <t pn='p-2-15'>Section</t>
           <ul>
-            <li pn='p-2-16'>no format: <xref target='top'/></li>
+            <li pn='p-2-16'>
+              no format: <xref target='top'>Section 2</xref>
+            </li>
             <li pn='p-2-17'>
-              format=counter: <xref format='counter' target='top'/>
+              format=counter: <xref format='counter'
+              target='top'>2</xref>
             </li>
             <li pn='p-2-18'>
-              format=title: <xref format='title' target='top'/>
+              format=title: <xref format='title'
+              target='top'>top</xref>
             </li>
           </ul>
         </li>
         <li pn='p-2-19'>
           <t pn='p-2-20'>Figure</t>
           <ul>
-            <li pn='p-2-21'>no format: <xref target='hello'/></li>
+            <li pn='p-2-21'>
+              no format: <xref target='hello'>Figure 6</xref>
+            </li>
             <li pn='p-2-22'>
-              format=counter: <xref format='counter' target='hello'/>
+              format=counter: <xref format='counter'
+              target='hello'>6</xref>
             </li>
             <li pn='p-2-23'>
-              format=title: <xref format='title' target='hello'/>
+              format=title: <xref format='title' target='hello'>This
+              is a figure</xref>
             </li>
           </ul>
         </li>
         <li pn='p-2-24'>
           <t pn='p-2-25'>Table</t>
           <ul>
-            <li pn='p-2-26'>no format: <xref target='THE-TABLE'/></li>
+            <li pn='p-2-26'>
+              no format: <xref target='THE-TABLE'>Table 1</xref>
+            </li>
             <li pn='p-2-27'>
               format=counter: <xref format='counter'
-              target='THE-TABLE'/>
+              target='THE-TABLE'>1</xref>
             </li>
             <li pn='p-2-28'>
-              format=title: <xref format='title' target='THE-TABLE'/>
+              format=title: <xref format='title' target='THE-TABLE'>I
+              AM THE TABLE</xref>
             </li>
           </ul>
         </li>
         <li pn='p-2-29'>
           <t pn='p-2-30'>Reference</t>
           <ul>
-            <li pn='p-2-31'>no format: <xref target='RFC6949'/></li>
+            <li pn='p-2-31'>
+              no format: <xref target='RFC6949'>[RFC6949]</xref>
+            </li>
             <li pn='p-2-32'>
               format=counter: <xref format='counter'
               target='RFC6949'/>
             </li>
             <li pn='p-2-33'>
-              format=title: <xref format='title' target='RFC6949'/>
+              format=title: <xref format='title' target='RFC6949'>RFC
+              Series Format Requirements and Future Development</xref>
             </li>
           </ul>
         </li>
@@ -341,7 +355,8 @@
       <ol group='green' start='12' style='I'>
         <li pn='p-2-40'>A dozen or so.</li>
         <li pn='p-2-41'>
-          Now, with bakers. It's all about <xref target='Bibble'/>.
+          Now, with bakers. It's all about <xref
+          target='Bibble'>Bibble</xref>.
         </li>
       </ol>
       <ol group='green' start='42' style='I'>
@@ -362,7 +377,7 @@
         <li pn='p-2-48'>Wheels on a big rig</li>
         <li pn='p-2-49'>
           Exercitation nisi quis in laborum ipsum esse excepteur
-          culpa. And then <xref target='whoa'/>.
+          culpa. And then <xref target='whoa'>whoa</xref>.
         </li>
       </ol>
       <artwork align='center'

@@ -6,7 +6,7 @@
     <meta content='html,css,rfc' name='keywords'/>
     <meta content='This document defines the HTML format that will be rendered from the canonical XML format for an RFC. The HTML output will include a default CSS to enable page layout. Abstracts can have multiple &lt;t&gt;&apos;s And Lists'
           name='description'/>
-    <meta content='xmljade v0.2.2' name='generator'/>
+    <meta content='xmljade v0.2.4' name='generator'/>
     <title>
       HyperText Markup Language Request For Comments Format
     </title>
@@ -23,8 +23,8 @@
       <dd class='status'>Informational</dd>
       <dt>Published:</dt>
       <dd>
-        <time class='published' datetime='2015-04-16'>
-          2015-04-16
+        <time class='published' datetime='2015-04-22'>
+          2015-04-22
         </time>
       </dd>
       <dt>Authors:</dt>
@@ -50,10 +50,10 @@
         <a class='self-ref' href='#abstract'>Abstract</a>
       </h2>
       <p id='p-abstract-1'>
-        This document defines the <strong>HTML format</strong> that
-        will be rendered from the canonical XML format for an RFC.
-        The HTML output will include a default CSS to enable page
-        layout.  <a class='pilcrow' href='#p-abstract-1'>¶</a>
+        This document defines the HTML format that will be rendered
+        from the canonical XML format for an RFC.  The HTML output
+        will include a default CSS to enable page layout.  <a
+        class='pilcrow' href='#p-abstract-1'>¶</a>
       </p>
       <p id='p-abstract-2'>
         Abstracts can have multiple &lt;t&gt;'s <a class='pilcrow'
@@ -110,7 +110,7 @@
         href='#p-boilerplate-1-3'>¶</a>
       </p>
       <p id='p-boilerplate-1-4'>
-        This Internet-Draft will expire on 2015-10-16.  <a
+        This Internet-Draft will expire on 2015-10-22.  <a
         class='pilcrow' href='#p-boilerplate-1-4'>¶</a>
       </p>
     </section>
@@ -145,16 +145,20 @@
         <a class='self-ref' href='#intro'>Introduction</a>
       </h2>
       <p id='p-1-1'>
-        Paragraph <a class='pilcrow' href='#p-1-1'>¶</a>
+        <span class='iref' id='iref-Paragraphs,first-0'/> Paragraph <a
+        class='pilcrow' href='#p-1-1'>¶</a>
       </p>
-      <section id='n-sub-section'>
+      <section id='n-sub-section-about-monospace-fonts'>
         <h3 id='s-1.1'>
           <a class='self-ref' href='#s-1.1'>1.1.</a>
-          <a class='self-ref' href='#n-sub-section'>Sub Section</a>
+          <a class='self-ref'
+             href='#n-sub-section-about-monospace-fonts'>
+            Sub Section About <code>Monospace Fonts</code>
+          </a>
         </h3>
         <p id='p-1.1-1'>
-          sub section paragraph <a class='pilcrow'
-          href='#p-1.1-1'>¶</a>
+          <span class='iref' id='iref-Paragraphs,second-0'/> sub
+          section paragraph <a class='pilcrow' href='#p-1.1-1'>¶</a>
         </p>
         <section id='sub-sub'>
           <h4 id='s-1.1.1'>
@@ -203,40 +207,23 @@
         <blockquote cite='http://www.abrahamlincolnonline.org/lincoln/speeches/gettysburg.htm'
                     id='p-1.2-1'>
           <p id='p-1.2-2'>
-            Four score and seven years ago our fathers brought forth
-            on this continent, a new nation, conceived in Liberty, and
-            dedicated to the proposition that all men are created
-            equal.  <a class='pilcrow' href='#p-1.2-2'>¶</a>
+            <em>Four</em> <strong>score</strong> and
+            <sup><em>seven</em> </sup> <sub>years</sub> ago,
+            <code>our</code> fathers brought forth on this continent,
+            a new nation, conceived in Liberty, and dedicated to the
+            proposition that all men are created equal.  <a
+            class='pilcrow' href='#p-1.2-2'>¶</a>
           </p>
           <p id='p-1.2-3'>
-            Now we are engaged in a <strong>great</strong> civil war,
-            testing whether that nation, or any nation so conceived
-            and so dedicated, can long endure. We are met on a great
-            battle-field of that war. We have come to dedicate a
-            portion of that field, as a final resting place for those
-            who here gave their lives that that nation might live. It
-            is altogether fitting and proper that we <span
+            Now we are engaged in a great civil war, testing whether
+            that nation, or any nation so conceived and so dedicated,
+            can long endure. We are met on a great battle-field of
+            that war. We have come to dedicate a portion of that
+            field, as a final resting place for those who here gave
+            their lives that that nation might live. It is altogether
+            fitting and proper that we <span
             class='bcp14'>SHOULD</span> do this.  <a class='pilcrow'
             href='#p-1.2-3'>¶</a>
-          </p>
-          <p id='p-1.2-4'>
-            But, in a larger sense, we can not dedicate — we can not
-            consecrate — we can not hallow — this ground. The brave
-            men, living and dead, who struggled here, have consecrated
-            it, far above our poor power to add or detract. The world
-            will little note, nor long remember what we say here, but
-            it can never forget what they did here. It is for us the
-            living, rather, to be dedicated here to the unfinished
-            work which they who fought here have thus far so nobly
-            advanced. It is rather for us to be here dedicated to the
-            great task remaining before us — that from these honored
-            dead we take increased devotion to that cause for which
-            they gave the last full measure of devotion — that we here
-            highly resolve that these dead shall not have died in vain
-            — that this nation, under God, shall have a new birth of
-            freedom — and that government of the people, by the
-            people, for the people, shall not perish from the earth.
-            <a class='pilcrow' href='#p-1.2-4'>¶</a>
           </p>
           <cite>
             — <a
@@ -244,15 +231,28 @@
             Lincoln</a>
           </cite>
         </blockquote>
-        <blockquote id='p-1.2-5'>
+        <blockquote id='p-1.2-4'>
           This is a shorter blockquote example <a class='pilcrow'
-          href='#p-1.2-5'>¶</a>
+          href='#p-1.2-4'>¶</a>
         </blockquote>
-        <aside id='p-1.2-6'>
-          <p id='p-1.2-7'>
-            Aside: This is an aside, to compare and contrast <a
-            class='pilcrow' href='#p-1.2-7'>¶</a>
+        <aside id='p-1.2-5'>
+          <p id='p-1.2-6'>
+            This is a longer aside. This paragraph has a comment.
+            <span class='cref' id='crefAnchor'>Just a brief comment
+            about something that we need to remember later.  <span
+            class='cref-source'>—life</span></span> <a class='pilcrow'
+            href='#p-1.2-6'>¶</a>
           </p>
+          <ul>
+            <li id='p-1.2-7'>
+              This is a short list...  <a class='pilcrow'
+              href='#p-1.2-7'>¶</a>
+            </li>
+            <li id='p-1.2-8'>
+              ...that is inside the aside.  <a class='pilcrow'
+              href='#p-1.2-8'>¶</a>
+            </li>
+          </ul>
         </aside>
       </section>
       <section id='sub4'>
@@ -293,6 +293,7 @@
             I AM THE TABLE
           </a>
         </caption>
+        <span class='iref' id='iref-Coffee tables-0'/>
         <thead>
           <tr>
             <th>H1</th>
@@ -310,7 +311,10 @@
           </tr>
           <tr>
             <td>It's the loneliest number</td>
-            <td>since the number one</td>
+            <td>
+              since the number one.  <br/> Remember to do <a
+              class='xref' href='#crefAnchor'>that comment</a>.
+            </td>
           </tr>
           <tr>
             <td>
@@ -321,138 +325,162 @@
               <p id='p-2-5'>5</p>
             </td>
           </tr>
+          <tr>
+            <td align='center' colspan='2'>
+              <p id='p-2-6'>This one covers two whole columns.</p>
+            </td>
+          </tr>
+          <tr>
+            <td align='center' rowspan='2'>
+              <p id='p-2-7'>This one covers two whole rows.</p>
+            </td>
+            <td>Another thing</td>
+          </tr>
+          <tr>
+            <td>And another thing!</td>
+          </tr>
         </tbody>
       </table>
-      <p id='p-2-6'>
-        Second paragraph <a class='pilcrow' href='#p-2-6'>¶</a>
+      <p id='p-2-8'>
+        Second paragraph <a class='pilcrow' href='#p-2-8'>¶</a>
       </p>
       <ul>
-        <li id='p-2-7'>
-          List <a class='pilcrow' href='#p-2-7'>¶</a>
+        <li id='p-2-9'>
+          List <a class='pilcrow' href='#p-2-9'>¶</a>
         </li>
-        <li id='p-2-8'>
+        <li id='p-2-10'>
           <code>&lt;xref&gt;</code> with text <a class='xref'
           href='#unint'>Some Text</a> <a class='pilcrow'
-          href='#p-2-8'>¶</a>
+          href='#p-2-10'>¶</a>
         </li>
-        <li id='p-2-9'>
-          <p id='p-2-10'>
-            Multiple <a class='pilcrow' href='#p-2-10'>¶</a>
+        <li id='p-2-11'>
+          <p id='p-2-12'>
+            Multiple <a class='pilcrow' href='#p-2-12'>¶</a>
           </p>
-          <p id='p-2-11'>
-            Paragraphs <a class='pilcrow' href='#p-2-11'>¶</a>
-          </p>
-        </li>
-        <li id='p-2-12'>
           <p id='p-2-13'>
-            Section <a class='pilcrow' href='#p-2-13'>¶</a>
+            Paragraphs <a class='pilcrow' href='#p-2-13'>¶</a>
+          </p>
+        </li>
+        <li id='p-2-14'>
+          <p id='p-2-15'>
+            Section <a class='pilcrow' href='#p-2-15'>¶</a>
           </p>
           <ul>
-            <li id='p-2-14'>
-              no format: <a class='xref' href='#top'>Section 2</a> <a
-              class='pilcrow' href='#p-2-14'>¶</a>
-            </li>
-            <li id='p-2-15'>
-              format=counter: <a class='xref' href='#top'>2</a> <a
-              class='pilcrow' href='#p-2-15'>¶</a>
-            </li>
             <li id='p-2-16'>
-              format=title: <a class='xref' href='#top'>top</a> <a
+              no format: <a class='xref' href='#top'>Section 2</a> <a
               class='pilcrow' href='#p-2-16'>¶</a>
             </li>
+            <li id='p-2-17'>
+              format=counter: <a class='xref' href='#top'>2</a> <a
+              class='pilcrow' href='#p-2-17'>¶</a>
+            </li>
+            <li id='p-2-18'>
+              format=title: <a class='xref' href='#top'>top</a> <a
+              class='pilcrow' href='#p-2-18'>¶</a>
+            </li>
           </ul>
         </li>
-        <li id='p-2-17'>
-          <p id='p-2-18'>
-            Figure <a class='pilcrow' href='#p-2-18'>¶</a>
+        <li id='p-2-19'>
+          <p id='p-2-20'>
+            Figure <a class='pilcrow' href='#p-2-20'>¶</a>
           </p>
           <ul>
-            <li id='p-2-19'>
-              no format: <a class='xref' href='#hello'>Figure 2</a> <a
-              class='pilcrow' href='#p-2-19'>¶</a>
-            </li>
-            <li id='p-2-20'>
-              format=counter: <a class='xref' href='#hello'>2</a> <a
-              class='pilcrow' href='#p-2-20'>¶</a>
-            </li>
             <li id='p-2-21'>
+              no format: <a class='xref' href='#hello'>Figure 6</a> <a
+              class='pilcrow' href='#p-2-21'>¶</a>
+            </li>
+            <li id='p-2-22'>
+              format=counter: <a class='xref' href='#hello'>6</a> <a
+              class='pilcrow' href='#p-2-22'>¶</a>
+            </li>
+            <li id='p-2-23'>
               format=title: <a class='xref' href='#hello'>This is a
-              figure</a> <a class='pilcrow' href='#p-2-21'>¶</a>
+              figure</a> <a class='pilcrow' href='#p-2-23'>¶</a>
             </li>
           </ul>
         </li>
-        <li id='p-2-22'>
-          <p id='p-2-23'>
-            Table <a class='pilcrow' href='#p-2-23'>¶</a>
+        <li id='p-2-24'>
+          <p id='p-2-25'>
+            Table <a class='pilcrow' href='#p-2-25'>¶</a>
           </p>
           <ul>
-            <li id='p-2-24'>
-              no format: <a class='xref' href='#THE-TABLE'>Table 1</a>
-              <a class='pilcrow' href='#p-2-24'>¶</a>
-            </li>
-            <li id='p-2-25'>
-              format=counter: <a class='xref' href='#THE-TABLE'>1</a>
-              <a class='pilcrow' href='#p-2-25'>¶</a>
-            </li>
             <li id='p-2-26'>
+              no format: <a class='xref' href='#THE-TABLE'>Table 1</a>
+              <a class='pilcrow' href='#p-2-26'>¶</a>
+            </li>
+            <li id='p-2-27'>
+              format=counter: <a class='xref' href='#THE-TABLE'>1</a>
+              <a class='pilcrow' href='#p-2-27'>¶</a>
+            </li>
+            <li id='p-2-28'>
               format=title: <a class='xref' href='#THE-TABLE'>I AM THE
-              TABLE</a> <a class='pilcrow' href='#p-2-26'>¶</a>
+              TABLE</a> <a class='pilcrow' href='#p-2-28'>¶</a>
             </li>
           </ul>
         </li>
-        <li id='p-2-27'>
-          <p id='p-2-28'>
-            Reference <a class='pilcrow' href='#p-2-28'>¶</a>
+        <li id='p-2-29'>
+          <p id='p-2-30'>
+            Reference <a class='pilcrow' href='#p-2-30'>¶</a>
           </p>
           <ul>
-            <li id='p-2-29'>
-              no format: [ <a class='xref' href='#RFC6949'>RFC6949</a>
-              ] <a class='pilcrow' href='#p-2-29'>¶</a>
+            <li id='p-2-31'>
+              no format: <a class='xref' href='#RFC6949'>[RFC6949]</a>
+              <a class='pilcrow' href='#p-2-31'>¶</a>
             </li>
-            <li id='p-2-30'>
+            <li id='p-2-32'>
               format=counter: [ <a class='xref'
               href='#RFC6949'>RFC6949</a> ] <a class='pilcrow'
-              href='#p-2-30'>¶</a>
+              href='#p-2-32'>¶</a>
             </li>
-            <li id='p-2-31'>
-              format=title: [ <a class='xref' href='#RFC6949'>RFC
-              Series Format Requirements and Future Development</a> ]
-              <a class='pilcrow' href='#p-2-31'>¶</a>
+            <li id='p-2-33'>
+              format=title: <a class='xref' href='#RFC6949'>RFC Series
+              Format Requirements and Future Development</a> <a
+              class='pilcrow' href='#p-2-33'>¶</a>
             </li>
           </ul>
         </li>
       </ul>
       <ul class='ulempty'>
-        <li id='p-2-32'>
+        <li id='p-2-34'>
           Empty: it's all empty <a class='pilcrow'
-          href='#p-2-32'>¶</a>
+          href='#p-2-34'>¶</a>
         </li>
-        <li id='p-2-33'>
+        <li id='p-2-35'>
           I have not bullets left <a class='pilcrow'
-          href='#p-2-33'>¶</a>
+          href='#p-2-35'>¶</a>
         </li>
       </ul>
       <ol>
-        <li id='p-2-34'>
-          <p id='p-2-35'>
-            now <a class='pilcrow' href='#p-2-35'>¶</a>
+        <li id='p-2-36'>
+          <p id='p-2-37'>
+            now <a class='pilcrow' href='#p-2-37'>¶</a>
           </p>
-          <p id='p-2-36'>
-            then <a class='pilcrow' href='#p-2-36'>¶</a>
+          <p id='p-2-38'>
+            then <a class='pilcrow' href='#p-2-38'>¶</a>
           </p>
         </li>
-        <li id='p-2-37'>
-          ordered <a class='pilcrow' href='#p-2-37'>¶</a>
+        <li id='p-2-39'>
+          ordered <a class='pilcrow' href='#p-2-39'>¶</a>
+        </li>
+      </ol>
+      <ol start='12' type='I'>
+        <li id='p-2-40'>
+          A dozen or so.  <a class='pilcrow' href='#p-2-40'>¶</a>
+        </li>
+        <li id='p-2-41'>
+          Now, with bakers. It's all about <a class='xref'
+          href='#Bibble'>Bibble</a>.  <a class='pilcrow'
+          href='#p-2-41'>¶</a>
         </li>
       </ol>
       <ol start='42' type='I'>
-        <li id='p-2-38'>
+        <li id='p-2-42'>
           The meaning of life.  <a class='pilcrow'
-          href='#p-2-38'>¶</a>
+          href='#p-2-42'>¶</a>
         </li>
-        <li id='p-2-39'>
+        <li id='p-2-43'>
           The after-meaning of the after-life <a class='pilcrow'
-          href='#p-2-39'>¶</a>
+          href='#p-2-43'>¶</a>
         </li>
       </ol>
       <dl class='olpercent'>
@@ -473,14 +501,7 @@
         <dt>Requirement xix:</dt>
         <dd>
           Exercitation nisi quis in laborum ipsum esse excepteur
-          culpa. Aliquip aliquip quis deserunt non ullamco veniam
-          cupidatat laborum cillum nisi. Nostrud aliqua ut non
-          incididunt eiusmod duis nostrud deserunt tempor consequat
-          exercitation fugiat irure. Tempor reprehenderit excepteur
-          irure exercitation ad laboris esse quis laboris mollit
-          Lorem. Voluptate nisi occaecat ea occaecat mollit esse
-          veniam quis cillum mollit ex ullamco aliqua dolor. Tempor ex
-          esse laboris nostrud nulla ipsum aliquip sint do.
+          culpa. And then <a class='xref' href='#whoa'>whoa</a>.
         </dd>
       </dl>
       <div>
@@ -517,43 +538,92 @@ artwork does not
           </a>
         </figcaption>
       </figure>
-      <p id='p-2-49'>
-        Artwork can also be outside a figure <a class='pilcrow'
-        href='#p-2-49'>¶</a>
+      <figure id='f-2'>
+        <div class='artwork art-svg'>
+          <svg height='100'
+               width='100'
+               xmlns='http://www.w3.org/2000/svg'>
+            <circle cx='50'
+                    cy='50'
+                    fill='yellow'
+                    r='40'
+                    stroke='green'
+                    stroke-width='4'/>
+          </svg>
+        </div>
+        <figcaption>
+          <a class='self-ref' href='#f-2'>Figure 2.</a>
+          <a class='self-ref'
+             href='#n-inline-with-lesssvggreater-element'
+             id='n-inline-with-lesssvggreater-element'>
+            Inline with &lt;svg&gt; element
+          </a>
+        </figcaption>
+      </figure>
+      <figure id='f-3'>
+        <div class='artwork art-svg'>
+          <svg height='100'
+               width='100'
+               xml:base='http://www.proper.com/redbluecircle.svg'>
+            <circle cx='50'
+                    cy='50'
+                    fill='blue'
+                    r='40'
+                    stroke='red'
+                    stroke-width='4'/>
+          </svg>
+        </div>
+        <figcaption>
+          <a class='self-ref' href='#f-3'>Figure 3.</a>
+          <a class='self-ref'
+             href='#n-inline-with-xinclude'
+             id='n-inline-with-xinclude'>Inline with XInclude</a>
+        </figcaption>
+      </figure>
+      <figure id='f-4'>
+        <div class='artwork art-svg'>
+          <svg height='100'
+               width='100'
+               xmlns='http://www.w3.org/2000/svg'>
+            <circle cx='50'
+                    cy='50'
+                    fill='yellow'
+                    r='40'
+                    stroke='black'
+                    stroke-width='4'/>
+          </svg>
+        </div>
+        <figcaption>
+          <a class='self-ref' href='#f-4'>Figure 4.</a>
+          <a class='self-ref'
+             href='#n-svg-as-a-data-uri'
+             id='n-svg-as-a-data-uri'>SVG as a data: URI</a>
+        </figcaption>
+      </figure>
+      <figure id='f-5'>
+        <div class='artwork art-svg' id='externalCircle'>
+          <svg height='100' width='100'>
+            <circle cx='50'
+                    cy='50'
+                    fill='blue'
+                    r='40'
+                    stroke='red'
+                    stroke-width='4'/>
+          </svg>
+        </div>
+        <figcaption>
+          <a class='self-ref' href='#f-5'>Figure 5.</a>
+          <a class='self-ref'
+             href='#n-inline-with-lesssrcgreater-element'
+             id='n-inline-with-lesssrcgreater-element'>
+            Inline with &lt;src&gt; element
+          </a>
+        </figcaption>
+      </figure>
+      <p id='p-2-57'>
+        Artwork can also be outside a figure. Here are two.  <a
+        class='pilcrow' href='#p-2-57'>¶</a>
       </p>
-      <div class='artwork art-svg'>
-        <svg height='100' width='100'>
-          <circle cx='50'
-                  cy='50'
-                  fill='yellow'
-                  r='40'
-                  stroke='green'
-                  stroke-width='4'/>
-        </svg>
-        <a class='pilcrow' href='#undefined'>¶</a>
-      </div>
-      <div class='artwork art-svg'>
-        <svg height='100' width='100'>
-          <circle cx='50'
-                  cy='50'
-                  fill='yellow'
-                  r='40'
-                  stroke='black'
-                  stroke-width='4'/>
-        </svg>
-        <a class='pilcrow' href='#undefined'>¶</a>
-      </div>
-      <div class='artwork art-svg'>
-        <svg height='100' width='100'>
-          <circle cx='50'
-                  cy='50'
-                  fill='yellow'
-                  r='40'
-                  stroke='black'
-                  stroke-width='4'/>
-        </svg>
-        <a class='pilcrow' href='#undefined'>¶</a>
-      </div>
       <div>
         <pre class='artwork art-logo'/>
         <a class='pilcrow' href='#undefined'>¶</a>
@@ -594,13 +664,28 @@ artwork does not
           <dt id='p-2.1-4'>Fine</dt>
           <dd>Not fine</dd>
           <dt id='p-2.1-5'>Angry</dt>
-          <dd>Sad <sub>weepy</sub></dd>
+          <dd>Sad <sub><strong>weepy</strong> </sub></dd>
         </dl>
         <dl class='dlcompact dlhanging'>
           <dt id='p-2.1-6'>Whee!</dt>
           <dd>Ugh.  <em>Really</em> ugh.</dd>
-          <dt id='p-2.1-7'>Woah!</dt>
-          <dd>What <em>ever</em>.</dd>
+          <dt id='whoa'>
+            <code>Woah!</code>
+          </dt>
+          <dd>
+            <p id='p-2.1-8'>
+              What <em>ever</em>. I guess I should have an ordered
+              list here: <a class='pilcrow' href='#p-2.1-8'>¶</a>
+            </p>
+            <ol>
+              <li id='p-2.1-9'>
+                Won! <a class='pilcrow' href='#p-2.1-9'>¶</a>
+              </li>
+              <li id='p-2.1-10'>
+                Too! <a class='pilcrow' href='#p-2.1-10'>¶</a>
+              </li>
+            </ol>
+          </dd>
         </dl>
         <figure id='hello'>
           <pre class='sourcecode lang-c'>
@@ -613,7 +698,7 @@ int main(void)
 }
 </pre>
           <figcaption>
-            <a class='self-ref' href='#f-2'>Figure 2.</a>
+            <a class='self-ref' href='#f-6'>Figure 6.</a>
             <a class='self-ref'
                href='#n-this-is-a-figure'
                id='n-this-is-a-figure'>This is a figure</a>
@@ -651,6 +736,22 @@ int main(void)
             Future Development "</span> , <span class='refseries'>RFC
             6949</span> <span class='refdate'>, May 2013.</span>
           </dd>
+          <referencegroup id='Bibble'>
+            <dt id='Bibble1'>[Bibble1]</dt>
+            <dd>
+              <span class='refauthor'>One, N.</span> <span
+              class='reftitile'>"Bibble protocol spec"</span> , <span
+              class='refseries'>BibbleSpècs 12-4444</span> <span
+              class='refdate'>, undefined undefined.</span>
+            </dd>
+            <dt id='Bibble2'>[Bibble2]</dt>
+            <dd>
+              <span class='refauthor'>One, N.</span> <span
+              class='reftitile'>"Bibble use cases"</span> , <span
+              class='refseries'>BibbleSpècs 12-4479</span> <span
+              class='refdate'>, undefined undefined.</span>
+            </dd>
+          </referencegroup>
         </dl>
       </section>
     </section>
@@ -712,8 +813,8 @@ int main(void)
           class='type'>fax</span></span>
         </div>
         <div>
-          Email: <a class='email'
-          href='jhildebr@example.com'>jhildebr@example.com</a>
+          Email: <a class='email' href=' ɟhildebr@éxample.com
+          '>ɟhildebr@éxample.com</a>
         </div>
         <div>
           URI: <a class='url'
@@ -736,7 +837,7 @@ Streets have no name</pre>
     </section>
     <div class='rendered'>
       Rendered: <time
-      datetime='2015-04-16T20:35:54Z'>2015-04-16T20:35:54Z</time>
+      datetime='2015-04-23T05:21:22Z'>2015-04-23T05:21:22Z</time>
     </div>
   </body>
 </html>

@@ -9,7 +9,8 @@ mixin elem(e)
     - a.id = a.anchor || a.pn
   - delete a.anchor
   - delete a.pn
-  #{$qname(e}&attributes(a)
+  - a = $nsDecls(e, a)
+  #{$qname(e)}&attributes(a)
     +children(e)
     block
 

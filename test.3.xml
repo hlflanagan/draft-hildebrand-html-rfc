@@ -151,9 +151,9 @@
           <tr><td><sourcecode>three(p)</sourcecode></td>
           <td><t>4</t><t>5</t></td></tr>
           <tr><td colspan='2' align='center'><t>This one covers two whole columns.</t></td></tr>
-          <tr><td rowspan='2' align='center'><t>This one covers two whole rows.</t></td>
-          <td>Another thing</td>
-          <td>And another thing</td>
+          <tr><td rowspan='2' align='center'><t>This one covers two whole rows.</t></td><td>Another thing</td></tr>
+          <tr>
+            <td>And another thing!</td>
           </tr>
         </tbody>
       </table>

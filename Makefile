@@ -8,15 +8,18 @@ XMLJADE=node_modules/.bin/xmljade
 %.n.xml: %.3.xml number.jade number.js
 	$(XMLJADE) --pretty --xinclude --output $@ number.jade $<
 
-%.3.html: %.n.xml v3tohtml.jade v3.js xml2rfc.css
+%.x.xml: %.n.xml xref.jade xref.js
+	$(XMLJADE) --pretty --output $@ xref.jade $<
+
+%.3.html: %.x.xml v3tohtml.jade v3.js xml2rfc.css
 	$(XMLJADE) --pretty --html --output $@ v3tohtml.jade $<
 
 %.txt: %.xml
 	xml2rfc --text --html $<
 
-.PRECIOUS: %.3.xml %.n.xml
+.PRECIOUS: %.3.xml %.n.xml %.x.xml
 
 all: $(DRAFT).3.html $(DRAFT).txt test.3.html
 
 clean:
-	$(RM) $(DRAFT).html $(DRAFT).3.html $(DRAFT).3.xml $(DRAFT).n.xml $(DRAFT).txt test.3.html test.n.xml
+	$(RM) $(DRAFT).html $(DRAFT).3.html $(DRAFT).3.xml $(DRAFT).n.xml $(DRAFT).txt test.3.html test.n.xml test.x.xml
