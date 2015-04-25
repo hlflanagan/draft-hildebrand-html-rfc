@@ -185,3 +185,9 @@ exports.loadSrc = function(e) {
     e.attr('src').remove();
   }
 }
+
+exports.defaultAttr = function(e, a, val) {
+  if (e && a && val && !e.attr(a)) {
+    e.attr(a, val);
+  }
+}

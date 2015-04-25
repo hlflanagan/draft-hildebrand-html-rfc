@@ -82,6 +82,21 @@ mixin front(e)
           if tlp[1]
             t(pn="p-boilerplate-2-3")= tlp[1]
 
+mixin abstract(e)
+  if $('ancestor::reference', e)
+    +elem(e)
+  else
+    +elem(e)(pn="s-abstract")
+
+mixin artwork(e)
+  - number.defaultAttr(e, 'align', 'left')
+  - number.loadSrc(e)
+  +part(e)
+  
+mixin cref(e)
+  - number.defaultAttr(e, 'display', 'true')
+  +elem(e)
+
 mixin date(e)
   //- in front/date, make sure we have a year, month, and day
   - var extra = {}
@@ -97,18 +112,32 @@ mixin date(e)
   else
     +elem(e)
 
-mixin abstract(e)
-  if $('ancestor::reference', e)
-    +elem(e)
-  else
-    +elem(e)(pn="s-abstract")
+mixin dl(e)
+  - number.defaultAttr(e, 'hanging', 'true')
+  - number.defaultAttr(e, 'spacing', 'normal')
+  +elem(e)
 
-mixin artwork(e)
-  - number.loadSrc(e)
-  +part(e)
-  
+mixin figure(e)
+  +elem(e)(pn="f-" + number.sequentialNumber(e))
+
+mixin iref(e)
+  - number.defaultAttr(e, 'primary', 'false')
+  +elem(e)
+
+mixin name(e)
+  +elem(e)(slugifiedName="n-" + slug(e.text()).toLowerCase())
+
 mixin note(e)
   +elem(e)(pn="s-note-" + number.sequentialNumber(e))
+
+mixin ol(e)
+  - number.defaultAttr(e, 'spacing', 'normal')
+  - number.defaultAttr(e, 'start', '1')
+  +elem(e)
+
+mixin reference(e)
+  - number.defaultAttr(e, 'quoteTitle', 'true')
+  +elem(e)
 
 mixin section(e)
   if $('ancestor::back', e)
@@ -116,14 +145,37 @@ mixin section(e)
   else
     +elem(e)(pn="s-" + number.section(e))
 
-mixin name(e)
-  +elem(e)(slugifiedName="n-" + slug(e.text()).toLowerCase())
-
-mixin figure(e)
-  +elem(e)(pn="f-" + number.sequentialNumber(e))
-
 mixin table(e)
   +elem(e)(pn="t-" + number.sequentialNumber(e))
 
+mixin td(e)
+  - number.defaultAttr(e, 'align', 'left')
+  - number.defaultAttr(e, 'border', '0')
+  +elem(e)
+
+mixin th(e)
+  - number.defaultAttr(e, 'align', 'left')
+  - number.defaultAttr(e, 'border', '0')
+  +elem(e)
+
+mixin tr(e)
+  - number.defaultAttr(e, 'border', '0')
+  +elem(e)
+
+mixin ul(e)
+  - number.defaultAttr(e, 'empty', 'false')
+  - number.defaultAttr(e, 'spacing', 'normal')
+  +elem(e)
+
+mixin xref(e)
+  - number.defaultAttr(e, 'format', 'default')
+  if $att(e, 'section')
+    - number.defaultAttr(e, 'sectionformat', 'of')
+  +elem(e)
+
 doctype xml
-+elem($root())
+- var root = $root()
+- number.defaultAttr(root, 'submissionType', 'IETF');
+if $att(e, 'tocInclude') == 'true'
+  - number.defaultAttr(root, 'tocDepth', '3');
++elem(root)
