@@ -1,11 +1,17 @@
 DRAFT=draft-hildebrand-html-rfc
 #XMLJADE=../xmljade/bin/xmljade
 XMLJADE=node_modules/.bin/xmljade
+HTTPSERVER=../node_modules/.bin/http-server
+LOCALHOST_DIR=localhost
+RNG = draft-hoffman-xml2rfc/xml2rfcv3.rng
+
+.PHONY: start stop
+.PRECIOUS: %.3.xml %.n.xml %.x.xml
 
 %.3.xml: %.xml convertv2v3/convertv2v3
 	perl convertv2v3/convertv2v3  < $< > $@
 
-%.n.xml: %.3.xml number.jade number.js
+%.n.xml: %.3.xml number.jade number.js server.PID
 	$(XMLJADE) --pretty --xinclude --output $@ number.jade $<
 
 %.x.xml: %.n.xml xref.jade xref.js
@@ -17,9 +23,19 @@ XMLJADE=node_modules/.bin/xmljade
 %.txt: %.xml
 	xml2rfc --text --html $<
 
-.PRECIOUS: %.3.xml %.n.xml %.x.xml
-
 all: $(DRAFT).3.html $(DRAFT).txt test.3.html
 
 clean:
 	$(RM) $(DRAFT).html $(DRAFT).3.html $(DRAFT).3.xml $(DRAFT).n.xml $(DRAFT).txt test.3.html test.n.xml test.x.xml
+
+lint:
+	xmllint --noout --relaxng $(RNG) *.3.xml *.n.xml *.x.xml
+
+start: server.PID
+
+server.PID:
+	@cd $(LOCALHOST_DIR) && { $(HTTPSERVER) & echo $$! > ../$@; }
+	@echo '`make stop` to stop the server'
+
+stop:
+	@if [ -a server.PID ]; then echo 'Stopping'; kill `cat server.PID`; rm server.PID; else echo 'Not running'; fi;

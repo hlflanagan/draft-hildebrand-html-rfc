@@ -23,13 +23,16 @@ exports.appendix = function(e) {
 };
 
 var parts = [
-  "artwork",
-  "aside",
-  "blockquote",
-  "dt",
-  "li",
-  "sourcecode",
-  "t",
+  'abstract',
+  'artwork',
+  'aside',
+  'blockquote',
+  'dt',
+  'li',
+  'note',
+  'references',
+  'sourcecode',
+  't',
 ];
 
 exports.isPart = function(e) {
@@ -130,7 +133,7 @@ exports.loadSrc = function(e) {
   var todata = false;
   if (types.indexOf(typ) === -1) {
     // For unknown types, turn the data into a data: if it's not already
-    if (u.protocol == 'data:') {
+    if (up.protocol == 'data:') {
       return;
     }
     todata = true;
@@ -163,14 +166,21 @@ exports.loadSrc = function(e) {
   }
 
   if (todata) {
-    var u = dataUri.encode(data, media);
-    e.attr({'src': u});
+    var du = dataUri.encode(data, media);
+    e.attr({'src': du, 'xml:base': u});
   } else {
     if (typ === 'svg') {
       var svg = xml.parseXmlString(data);
-      e.addChild(svg.root());
+      var svgr = svg.root();
+      if (up.protocol != 'data:') {
+        svgr.attr({'xml:base': u});
+      }
+      e.addChild(svgr);
     } else {
       e.cdata(data.toString('utf8'));
+      if (up.protocol != 'data:') {
+        e.attr({'xml:base': u});
+      }
     }
     e.attr('src').remove();
   }
