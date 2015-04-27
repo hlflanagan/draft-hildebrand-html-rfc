@@ -1,6 +1,6 @@
 - var number = require('./number')
-- var slug = require('slug')
 - var dt = require('./dt')
+- var slug = require('slug')
 - var pubDate = new Date()
 
 mixin elem(e)
@@ -47,7 +47,7 @@ mixin front(e)
         - var isoPub = dt.isoDate(pubDate)
         - var tlp = number.ipr($('@ipr'))
         section(pn="s-boilerplate-1")
-          name(slugifiedName="status-of-this-memo") Status of this Memo
+          name(slugifiedName="n-status-of-this-memo") Status of this Memo
           t(pn="p-boilerplate-1-1").
             This Internet-Draft is submitted in full conformance with
             the provisions of BCP 78 and BCP 79.#{tlp[0]||""}
@@ -66,7 +66,7 @@ mixin front(e)
             - expires.setMonth(expires.getMonth() + 6)
             t(pn="p-boilerplate-1-4") This Internet-Draft will expire on #{dt.isoDate(expires)}.
         section(pn="s-boilerplate-2")
-          name(slugifiedName="copyright-notice") Copyright Notice
+          name(slugifiedName="n-copyright-notice") Copyright Notice
           t(pn="p-boilerplate-2-1").
             Copyright &#xa9;#{pubDate.getFullYear()} IETF Trust and the
             persons identified as the document authors.  All rights reserved.
@@ -98,10 +98,10 @@ mixin cref(e)
   +elem(e)
 
 mixin date(e)
-  //- in front/date, make sure we have a year, month, and day
+  // in front/date, make sure we have a year, month, and day
   - var extra = {}
   if e.parent().name() == 'front'
-    - var now = new Date()
+    - var now = pubDate || new Date()
     - var a = $att(e)
     - var year = a['year'] || now.getFullYear()
     - var month = a['month'] || dt.monthName(now)
@@ -125,7 +125,11 @@ mixin iref(e)
   +elem(e)
 
 mixin name(e)
-  +elem(e)(slugifiedName="n-" + slug(e.text()).toLowerCase())
+  - var sn = $att(e, 'slugifiedName')
+  if sn
+    +elem(e)
+  else
+    +elem(e)(slugifiedName="n-" + slug(e.text()).toLowerCase())
 
 mixin note(e)
   +elem(e)(pn="s-note-" + number.sequentialNumber(e))
@@ -167,6 +171,16 @@ mixin ul(e)
   - number.defaultAttr(e, 'spacing', 'normal')
   +elem(e)
 
+mixin workgroup(e)
+  - var t = e.text().trim()
+  if !t.match(/Group$/)
+    - sub = $('@submissionType')
+    if sub == 'IETF'
+      - e.text(t + " Working Group")
+    else if sub == 'IRTF'
+      - e.text(t + " Research Group")
+  +elem(e)
+  
 mixin xref(e)
   - number.defaultAttr(e, 'format', 'default')
   if $att(e, 'section')
@@ -176,6 +190,7 @@ mixin xref(e)
 doctype xml
 - var root = $root()
 - number.defaultAttr(root, 'submissionType', 'IETF');
-if $att(e, 'tocInclude') == 'true'
+- root.attr('finalizedTime', dt.isoDateTime(new Date()))
+if $att(root, 'tocInclude') == 'true'
   - number.defaultAttr(root, 'tocDepth', '3');
 +elem(root)

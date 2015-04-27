@@ -25,7 +25,7 @@
         <email>rse@rfc-editor.org</email>
       </address>
     </author>
-    <date year="2015" month="April" day="7"/>
+    <date year="2015" month="April" day="27"/>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
@@ -189,7 +189,11 @@
             using a mechanism that does not provide a valid MIME content-type
             or charset (such as from a local file system using a "file:" URL),
             the HTML &lt;head&gt; element contains a &lt;meta&gt; element,
-            with charset attribute with value 'utf-8'.</t>
+            with charset attribute with value "utf-8":</t>
+          <figure>
+            <artwork><![CDATA[
+<meta charset="utf-8"/>]]></artwork>
+          </figure>
         </section>
         <section anchor="head-title" title="Document Title">
           <t>The contents of the &lt;title&gt; element from the XML source
@@ -207,7 +211,15 @@
               <t>keywords - comma-separated &lt;keyword&gt;s from the XML
                 source</t>
             </list>
+            An example:
           </t>
+          <figure>
+            <artwork><![CDATA[
+<meta name="author" content="Joe Hildebrand,Heather Flanagan">
+<meta name="keywords" content="html,css,rfc">
+<meta name="description" content="This document defines...">
+<meta name="generator" content="xmljade v0.2.4">]]></artwork>
+          </figure>
         </section>
         <section anchor="style" title="Style">
           <t>The &lt;head&gt; element contains an embedded CSS stylesheet in a
@@ -266,7 +278,30 @@
         </figure>
       </section>
       <section anchor='table-of-contents' title='Table of Contents'>
-        <t>To be documented.</t>
+        <t>The table of contents will follow the boilerplate if the &lt;rfc&gt;
+        element's tocInclude attribute has the value "true".  An &lt;h2&gt;
+        heading containing the text "Table of Contents" will be followed by a
+        &lt;nav&gt; element that contains a &lt;ul&gt; element for each depth
+        of the section hierarchy.  Each section will be represented by a
+        &lt;li&gt; element containing links by the section number (from the pn
+        attribute) and by the name (from the slugifiedName attribute of the
+        &lt;name&gt; child element).  Each &lt;nav&gt;, &lt;ul&gt;, and
+        &lt;li&gt; element will have the class "toc".</t>
+        <t>For example:</t>
+        <figure>
+          <artwork><![CDATA[
+<h2 id='toc'>Table of Contents</h2>
+<nav class='toc'>
+  <ul class='toc'>
+    <li class='toc'>
+      <a href='s-1'>1</a>. <a href='n-introduction'>Introduction</a>
+    </li>
+    <ul class='toc'>
+      <li class='toc'>
+        <a href='s-1.1'>1.1</a>. <a href='n-sub-intro'>Sub Intro</a>
+      </li>
+...]]></artwork>
+        </figure>
       </section>
       <section anchor='index' title='Index'>
         <t>To be documented.</t>

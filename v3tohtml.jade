@@ -92,6 +92,9 @@ mixin back(e)
   each adx in $$('back/section')
     +section(adx)
 
+mixin bcp14(e)
+  span.bcp14= e.text()
+
 mixin blockquote(e)
   - var c = $att(e, 'cite')
   blockquote(id=$att(e, 'anchor')||$att(e, 'pn'), cite=c)
@@ -105,9 +108,6 @@ mixin blockquote(e)
           a(href=$att(e, 'cite'))= quotedFrom
         else
           = quotedFrom
-
-mixin bcp14(e)
-  span.bcp14= e.text()
 
 mixin cref(e)
   span.cref(id=$att(e,'anchor'))
@@ -203,6 +203,32 @@ mixin pilcrow(e)
     = " "
     a.pilcrow(href='#'+ref) &para;
 
+mixin postal(e)
+  - var plines = $$('postalLine/text()', e)
+  if plines.length > 0
+    pre.label= plines.join('\n')
+    - var pascii = $$('postalLine/@ascii', e)
+    if pascii.length > 0
+      = " "
+      pre.ascii= pascii.join('\n')
+  else
+    .adr
+      each st in $$('street/text()', e)
+        .street-address= st
+      div
+        each city in $$('city/text()', e)
+          span.city=city
+        = ", "
+        each region in $$('region/text()', e)
+          span.region=region
+        each code in $$('code', e)
+          = " "
+          span.code
+            =code.text()
+            +ascii(code)
+      each country in $$('country/text()', e)
+        .country-name=country
+
 mixin reference(e)
   - var anc = $att(e, 'anchor')
   dt(id=anc) [#{anc}]
@@ -278,75 +304,8 @@ mixin ul(e)
 mixin xref(e)
   - var target = $att(e,'target')
   - var t = e.text()
-  if t && t.trim().length > 0
+  if t.trim()
     a.xref(href='#'+target)= t
-  else
-    - var target_el = $('//*[@anchor="' + target + '"]')
-    if !target_el
-      - console.error("Invalid xref not found: " + target)
-    else
-      - var fmt = $att(e,'format')
-      case target_el.name()
-        when 'section'
-          a.xref(href='#'+target)
-            if (fmt !== 'counter') && (fmt !== 'title')
-              = 'Section '
-            if fmt == 'title'
-              = $('name', target_el).text()
-            else
-              = $att(target_el, 'pn').replace(/^s-/, '')
-        when 'figure'
-          a.xref(href='#'+target)
-            if (fmt !== 'counter') && (fmt !== 'title')
-              = 'Figure '
-            if fmt == 'title'
-              = $('name', target_el).text()
-            else
-              = $att(target_el, 'pn').replace(/^f-/, '')
-        when 'table'
-          a.xref(href='#'+target)
-            if (fmt !== 'counter') && (fmt !== 'title')
-              = 'Table '
-            if fmt == 'title'
-              = $('name', target_el).text()
-            else
-              = $att(target_el, 'pn').replace(/^t-/, '')
-        when 'reference'
-          = '['
-          a.xref(href='#'+target)
-            if fmt == 'title'
-              = $('front/title/text()', target_el)
-            else
-              = target
-          = ']'
-        default
-          - console.error("Can't render xref to <" + target_el.name() + "> without text inside the <xref> with target: " + target)
-
-mixin postal(e)
-  - var plines = $$('postalLine/text()', e)
-  if plines.length > 0
-    pre.label= plines.join('\n')
-    - var pascii = $$('postalLine/@ascii', e)
-    if pascii.length > 0
-      = " "
-      pre.ascii= pascii.join('\n')
-  else
-    .adr
-      each st in $$('street/text()', e)
-        .street-address= st
-      div
-        each city in $$('city/text()', e)
-          span.city=city
-        = ", "
-        each region in $$('region/text()', e)
-          span.region=region
-        each code in $$('code', e)
-          = " "
-          span.code
-            =code.text()
-            +ascii(code)
-      each country in $$('country/text()', e)
-        .country-name=country
 
 mixin foot_org(e)
   .org= e.text()
@@ -381,6 +340,29 @@ mixin foot_author(e)
       div= "URI: "
         a.url(href=uri)= uri
 
+mixin tocSections(p, depth)
+  if depth > 0
+    - var sects = $$('section', p)
+    if sects.length
+      ul.toc
+        each s in $$('section', p)
+          - var pn = $att(s,'pn')
+          - var sn = pn.replace(/^s-/, '')
+          - var nm = $('name',s)
+          li.toc
+            a(href=pn)= sn
+            = "."
+            a(href=$att(nm,'slugifiedName'))= nm.text()
+          +tocSections(s, depth-1)
+
+mixin toc
+  if $att($root(), 'tocInclude') == 'true'
+    - var depth = $att($root(), 'tocDepth')
+    h2#toc Table of Contents
+    nav.toc
+      +tocSections($('middle'), depth)
+      +tocSections($('back'), depth)
+    
 doctype html
 html(lang='en')
   head
@@ -401,6 +383,7 @@ html(lang='en')
     each note in $$('front/note')
       +note(note)
     +children($('front/boilerplate'))
+    +toc()
     +children($('middle'))
     +back($('back'))
     - var authors = $$('front/author')

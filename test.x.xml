@@ -1,8 +1,10 @@
 <?xml version='1.0'?>
 <rfc category='info'
      docName='draft-hildebrand-html-rfc-04'
+     finalizedTime='2015-04-27T20:12:47Z'
      ipr='trust200902'
      submissionType='IETF'
+     tocDepth='3'
      tocInclude='true'
      xmlns:xi='http://www.w3.org/2001/XInclude'>
   <link href='https://github.com/hildjj/draft-hildebrand-html-rfc.git'
@@ -51,9 +53,9 @@
         <email>rse@rfc-editor.org</email>
       </address>
     </author>
-    <date day='25' month='April' year='2015'/>
+    <date day='27' month='April' year='2015'/>
     <area>gen</area>
-    <workgroup>rfc-interest</workgroup>
+    <workgroup>rfc-interest Working Group</workgroup>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
@@ -80,7 +82,7 @@
     </note>
     <boilerplate>
       <section pn='s-boilerplate-1'>
-        <name slugifiedName='status-of-this-memo'>
+        <name slugifiedName='n-status-of-this-memo'>
           Status of this Memo
         </name>
         <t pn='p-boilerplate-1-1'>
@@ -102,11 +104,13 @@
           than as "work in progress."
         </t>
         <t pn='p-boilerplate-1-4'>
-          This Internet-Draft will expire on 2015-10-25.
+          This Internet-Draft will expire on 2015-10-27.
         </t>
       </section>
       <section pn='s-boilerplate-2'>
-        <name slugifiedName='copyright-notice'>Copyright Notice</name>
+        <name slugifiedName='n-copyright-notice'>
+          Copyright Notice
+        </name>
         <t pn='p-boilerplate-2-1'>
           Copyright ©2015 IETF Trust and the persons identified as the
           document authors.  All rights reserved.
@@ -558,6 +562,12 @@ int main(void)
         </figure>
       </section>
     </section>
+    <section pn='s-3'>
+      <name slugifiedName='n-iana-considerations'>
+        IANA Considerations
+      </name>
+      <t pn='p-3-1'>None</t>
+    </section>
   </middle>
   <back>
     <displayreference target='RFC6949' to='RFC-reqs'/>
@@ -574,7 +584,7 @@ int main(void)
                   initials='A.'
                   surname='Phillips'/>
           <author fullname='M. Davis' initials='M.' surname='Davis'/>
-          <date day='25' month='September' year='2009'/>
+          <date day='27' month='September' year='2009'/>
           <abstract>
             <t>
               This document describes the structure, content,
@@ -612,7 +622,7 @@ int main(void)
                   surname='Brownlee'>
             <organization/>
           </author>
-          <date day='25' month='May' year='2013'/>
+          <date day='27' month='May' year='2013'/>
           <abstract>
             <t>
               This document describes the current requirements and
