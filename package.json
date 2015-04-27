@@ -13,7 +13,7 @@
     "slug": "^0.8.0",
     "strong-data-uri": "git://github.com/hildjj/strong-data-uri#binary",
     "urllib-sync": "^1.0.1",
-    "xmljade": "^0.2.3"
+    "xmljade": "^0.2.5"
   },
   "devDependencies": {},
   "scripts": {
