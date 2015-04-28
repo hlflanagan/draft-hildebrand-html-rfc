@@ -200,7 +200,7 @@
         <a class='self-ref' href='#intro'>Introduction</a>
       </h2>
       <p id='p-1-1'>
-        <span class='iref' id='iref-Paragraphs,first-0'/> Paragraph <a
+        <span class='iref' id='s-Paragraphs-first-1'/> Paragraph <a
         class='pilcrow' href='#p-1-1'>¶</a>
       </p>
       <section id='n-sub-section-about-monospace-fonts'>
@@ -212,8 +212,8 @@
           </a>
         </h3>
         <p id='p-1.1-1'>
-          <span class='iref' id='iref-Paragraphs,second-0'/> sub
-          section paragraph <a class='pilcrow' href='#p-1.1-1'>¶</a>
+          <span class='iref' id='s-Paragraphs-second-1'/> sub section
+          paragraph <a class='pilcrow' href='#p-1.1-1'>¶</a>
         </p>
         <section id='sub-sub'>
           <h4 id='s-1.1.1'>
@@ -348,7 +348,7 @@
             I AM THE TABLE
           </a>
         </caption>
-        <span class='iref' id='iref-Coffee tables-0'/>
+        <span class='iref' id='s-Coffee-tables-1'/>
         <thead>
           <tr border='0'>
             <th align='left' border='0'>H1</th>
@@ -356,6 +356,7 @@
           </tr>
         </thead>
         <tbody>
+          <span class='iref' id='s-Coffee-tables-2'/>
           <tr border='0'>
             <td align='left' border='0'>
               <p id='p-2-2'>
@@ -708,7 +709,8 @@ artwork does not
           <a class='self-ref' href='#n-foo'>foo</a>
         </h3>
         <p id='p-2.1-1'>
-          another <a class='pilcrow' href='#p-2.1-1'>¶</a>
+          <span class='iref' id='s-Paragraphs-first-2'/> another <a
+          class='pilcrow' href='#p-2.1-1'>¶</a>
         </p>
         <aside id='p-2.1-2'>
           <p id='p-2.1-3'>
@@ -845,6 +847,51 @@ int main(void)
         </p>
       </section>
     </section>
+    <h1>Index</h1>
+    <div class='index'>
+      <div class='indexIndex'>
+        <a href='#rfc.index.C'>C</a>
+        <a href='#rfc.index.P'>P</a>
+      </div>
+      <ul>
+        <li class='indexChar'>
+          <a href='#rfc.index.C' id='rfc.index.C'>C</a>
+        </li>
+        <ul>
+          <li class='indexItem'>
+            <span class='irefItem'>Coffee tables</span>
+            <span class='irefRefs'>
+              <a href='#s-Coffee-tables-1'>2</a>,&nbsp; <a
+              href='#s-Coffee-tables-2'>2</a>
+            </span>
+          </li>
+        </ul>
+        <li class='indexChar'>
+          <a href='#rfc.index.P' id='rfc.index.P'>P</a>
+        </li>
+        <ul>
+          <li class='indexItem'>
+            <span class='irefItem'>Paragraphs</span>
+          </li>
+          <ul>
+            <li class='indexSubItem'>
+              <span class='irefSubItem'>first</span>
+              <span class='irefRefs'>
+                <a class='primary'
+                href='#s-Paragraphs-first-1'>1</a>,&nbsp; <a
+                href='#s-Paragraphs-first-2'>2</a>
+              </span>
+            </li>
+            <li class='indexSubItem'>
+              <span class='irefSubItem'>second</span>
+              <span class='irefRefs'>
+                <a href='#s-Paragraphs-second-1'>1</a>
+              </span>
+            </li>
+          </ul>
+        </ul>
+      </ul>
+    </div>
     <section id='author-addresses'>
       <h2>
         <a class='self-ref' href='#author-addresses'>
@@ -901,9 +948,15 @@ Streets have no name</pre>
         </div>
       </address>
     </section>
-    <div class='rendered'>
-      Rendered: <time
-      datetime='2015-04-27T20:12:50Z'>2015-04-27T20:12:50Z</time>
+    <div class='times'>
+      <span class='finalized'>
+        Finalized: <time
+        datetime='2015-04-27T23:58:37Z'>2015-04-27T23:58:37Z</time>
+      </span>
+      <span class='rendered'>
+        Rendered: <time
+        datetime='2015-04-28T04:33:15Z'>2015-04-28T04:33:15Z</time>
+      </span>
     </div>
   </body>
 </html>

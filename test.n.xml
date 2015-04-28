@@ -1,9 +1,13 @@
 <?xml version='1.0'?>
 <rfc category='info'
+     consensus='false'
      docName='draft-hildebrand-html-rfc-04'
-     finalizedTime='2015-04-27T20:12:47Z'
+     finalizedTime='2015-04-27T23:58:37Z'
+     indexInclude='true'
      ipr='trust200902'
+     sortRefs='false'
      submissionType='IETF'
+     symRefs='true'
      tocDepth='3'
      tocInclude='true'
      xmlns:xi='http://www.w3.org/2001/XInclude'>
@@ -134,16 +138,16 @@
     <section anchor='intro' pn='s-1'>
       <name slugifiedName='n-introduction'>Introduction</name>
       <t pn='p-1-1'>
-        <iref item='Paragraphs' primary='true' subitem='first'/>
-        Paragraph
+        <iref irefid='s-Paragraphs-first-1' item='Paragraphs'
+        primary='true' subitem='first'/> Paragraph
       </t>
       <section pn='s-1.1'>
         <name slugifiedName='n-sub-section-about-monospace-fonts'>
           Sub Section About <tt>Monospace Fonts</tt>
         </name>
         <t pn='p-1.1-1'>
-          <iref item='Paragraphs' primary='false' subitem='second'/>
-          sub section paragraph
+          <iref irefid='s-Paragraphs-second-1' item='Paragraphs'
+          primary='false' subitem='second'/> sub section paragraph
         </t>
         <section anchor='sub-sub' pn='s-1.1.1'>
           <name slugifiedName='n-sub-sub-section'>
@@ -222,7 +226,9 @@
       <t anchor='real' pn='p-2-1'>A real section, with an anchor</t>
       <table anchor='THE-TABLE' pn='t-1'>
         <name slugifiedName='n-i-am-the-table'>I AM THE TABLE</name>
-        <iref item='Coffee tables' primary='false'/>
+        <iref irefid='s-Coffee-tables-1'
+              item='Coffee tables'
+              primary='false'/>
         <thead>
           <tr border='0'>
             <th align='left' border='0'>H1</th>
@@ -230,6 +236,9 @@
           </tr>
         </thead>
         <tbody>
+          <iref irefid='s-Coffee-tables-2'
+                item='Coffee tables'
+                primary='false'/>
           <tr border='0'>
             <td align='left' border='0'>
               <t pn='p-2-2'>
@@ -504,7 +513,10 @@ artwork does not
 ]]></artwork>
       <section pn='s-2.1'>
         <name slugifiedName='n-foo'>foo</name>
-        <t pn='p-2.1-1'>another</t>
+        <t pn='p-2.1-1'>
+          <iref irefid='s-Paragraphs-first-2' item='Paragraphs'
+          primary='false' subitem='first'/> another
+        </t>
         <aside pn='p-2.1-2'>
           <t pn='p-2.1-3'>
             If this was an interesting section, it would have more

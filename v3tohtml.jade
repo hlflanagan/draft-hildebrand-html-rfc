@@ -1,7 +1,6 @@
 - var crypto = require('crypto')
 - var v3 = require('./v3')
 - var dt = require('./dt')
-- var irefs={}
 
 mixin elem(e)
   - var a = $att(e, attributes)
@@ -164,11 +163,7 @@ mixin identifiers(e)
           = ")"
 
 mixin iref(e)
-  - var si = $att(e,"subitem")
-  - var isi = $att(e,"item") + ((si==null)?"":(","+si))
-  - var num = irefs[isi] || 0
-  - irefs[isi] = num+1
-  span.iref(id="iref-"+isi+"-"+num)
+  span.iref(id=$att(e,"irefid"))
 
 mixin li(e)
   +elem(e)
@@ -349,11 +344,12 @@ mixin tocSections(p, depth)
           - var pn = $att(s,'pn')
           - var sn = pn.replace(/^s-/, '')
           - var nm = $('name',s)
-          li.toc
-            a(href=pn)= sn
-            = "."
-            a(href=$att(nm,'slugifiedName'))= nm.text()
-          +tocSections(s, depth-1)
+          if $att(s, 'toc') != 'exclude'
+            li.toc
+              a(href=pn)= sn
+              = "."
+              a(href=$att(nm,'slugifiedName'))= nm.text()
+            +tocSections(s, depth-1)
 
 mixin toc
   if $att($root(), 'tocInclude') == 'true'
@@ -362,6 +358,48 @@ mixin toc
     nav.toc
       +tocSections($('middle'), depth)
       +tocSections($('back'), depth)
+    
+mixin index
+  - var irs = $$('//iref')
+  if irs.length
+    h1 Index
+    - var parts = v3.indexPartition(irs)
+    .index
+      div.indexIndex
+        each char in parts
+          a(href='#rfc.index.'+char.char)= char.char
+      ul
+        each char in parts
+          li.indexChar
+            a(id='rfc.index.'+char.char, href='#rfc.index.'+char.char)
+              = char.char
+          ul
+            each item in char.items
+              li.indexItem
+                span.irefItem= item.item
+                if item.irefids.length > 0
+                  span.irefRefs
+                    each ir, ir_count in item.irefids
+                      if ir_count > 0
+                        != ",&nbsp;"
+                      if ir.primary
+                        a.primary(href='#'+ir.irefid)= ir.section
+                      else
+                        a(href='#'+ir.irefid)= ir.section
+              if item.subItems.length
+                ul
+                  each subitem in item.subItems
+                    li.indexSubItem
+                      span.irefSubItem= subitem.subItem
+                      if subitem.irefids.length > 0
+                        span.irefRefs
+                          each s, s_count in subitem.irefids
+                            if s_count > 0
+                              != ",&nbsp;"
+                            if s.primary
+                              a.primary(href='#'+s.irefid)= s.section
+                            else
+                              a(href='#'+s.irefid)= s.section
     
 doctype html
 html(lang='en')
@@ -386,6 +424,7 @@ html(lang='en')
     +toc()
     +children($('middle'))
     +back($('back'))
+    +index()
     - var authors = $$('front/author')
     section#author-addresses
       h2
@@ -393,9 +432,13 @@ html(lang='en')
           = (authors.length > 1) ? "Authors' Addresses" : "Author's Address"
       each a in authors
         +foot_author(a)
-    - var rendered = dt.isoDateTime()
-    .rendered Rendered:
-      time(datetime=rendered)= rendered
+    .times
+      - var finalized = $('@finalizedTime')
+      span.finalized Finalized:
+        time(datetime=finalized)= finalized
+      - var rendered = dt.isoDateTime()
+      span.rendered Rendered:
+        time(datetime=rendered)= rendered
 
 | <!-- XML SOURCE START (note: each instance of two '-' (U+002D: HYPHEN-MINUS)
 | characters changed to "&#x2d;&#x2d;") -->

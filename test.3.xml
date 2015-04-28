@@ -145,6 +145,7 @@
           </tr>
         </thead>
         <tbody>
+          <iref item="Coffee tables"/>
           <tr><td><t>One is the loneliest number that you'll ever do</t></td><td>Two can be as bad as one</td></tr>
           <tr><td>It's the loneliest number</td><td>since the number one.<br/>
           Remember to do <xref target="crefAnchor">that comment</xref>.</td></tr>
@@ -285,7 +286,7 @@ artwork does not
       </artwork>
       <section>
         <name>foo</name>
-        <t>another</t>
+        <t><iref item="Paragraphs" subitem="first"/>another</t>
         <aside><t>If this was an interesting section, it would have more
           interesting things to say</t></aside>
         <dl>

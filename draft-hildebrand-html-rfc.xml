@@ -290,15 +290,15 @@
         <t>For example:</t>
         <figure>
           <artwork><![CDATA[
-<h2 id='toc'>Table of Contents</h2>
-<nav class='toc'>
-  <ul class='toc'>
-    <li class='toc'>
-      <a href='s-1'>1</a>. <a href='n-introduction'>Introduction</a>
+<h2 id="toc">Table of Contents</h2>
+<nav class="toc">
+  <ul class="toc">
+    <li class="toc">
+      <a href="s-1">1</a>. <a href="n-introduction">Introduction</a>
     </li>
-    <ul class='toc'>
-      <li class='toc'>
-        <a href='s-1.1'>1.1</a>. <a href='n-sub-intro'>Sub Intro</a>
+    <ul class="toc">
+      <li class="toc">
+        <a href="s-1.1">1.1</a>. <a href="n-sub-intro">Sub Intro</a>
       </li>
 ...]]></artwork>
         </figure>

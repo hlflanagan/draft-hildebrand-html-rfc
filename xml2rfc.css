@@ -242,7 +242,23 @@ address.vcard .namerole {
 address.vcard .type {
   display: none;
 }
-.rendered {
+.index ul {
+  list-style-type: none;
+}
+.index a {
+  text-decoration: none;
+}
+.indexIndex a {
+  font-weight: bold;
+}
+.indexChar a {
+  text-decoration: none;
+  font-weight: bold;
+}
+.index a.primary {
+  font-weight: bold;
+}
+.times {
   float: right;
   clear: both;
   font-style: italic;

@@ -2,6 +2,7 @@
 - var dt = require('./dt')
 - var slug = require('slug')
 - var pubDate = new Date()
+- var irefs={}
 
 mixin elem(e)
   - var a = $att(e, attributes)
@@ -122,6 +123,12 @@ mixin figure(e)
 
 mixin iref(e)
   - number.defaultAttr(e, 'primary', 'false')
+  - var si = $att(e,'subitem')
+  - var isi = 's-' + slug($att(e,'item')) + ((si==null)?"":("-"+slug(si)))
+  - var num = irefs[isi] || 0
+  - num += 1
+  - irefs[isi] = num
+  - e.attr('irefid',isi+'-'+num)
   +elem(e)
 
 mixin name(e)
@@ -189,7 +196,12 @@ mixin xref(e)
 
 doctype xml
 - var root = $root()
-- number.defaultAttr(root, 'submissionType', 'IETF');
+- number.defaultAttr(root, 'consensus', 'false')
+- number.defaultAttr(root, 'indexInclude', 'true')
+- number.defaultAttr(root, 'sortRefs', 'false')
+- number.defaultAttr(root, 'submissionType', 'IETF')
+- number.defaultAttr(root, 'symRefs', 'true')
+- number.defaultAttr(root, 'tocInclude', 'true')
 - root.attr('finalizedTime', dt.isoDateTime(new Date()))
 if $att(root, 'tocInclude') == 'true'
   - number.defaultAttr(root, 'tocDepth', '3');

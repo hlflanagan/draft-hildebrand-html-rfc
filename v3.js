@@ -90,3 +90,92 @@ exports.olStyledNum = function(style, num) {
     }
   })
 }
+
+function strcmp(a,b) {
+  if (a === null) {
+    if (b === null) {
+      return 0;
+    }
+    return -1
+  }
+  if (b === null) {
+    return 1;
+  }
+  if (a < b) {
+    return -1;
+  }
+  if (b < a) {
+    return 1;
+  }
+  return 0;
+}
+
+function compareIrefs(a,b) {
+  var ret = strcmp(atv(a, 'item'), atv(b, 'item'));
+  if (ret === 0) {
+    ret = strcmp(atv(a, 'subitem'), atv(b, 'subitem'));
+  }
+  return ret;
+}
+
+function getSection(iref) {
+  var section = iref.get('ancestor::section');
+  var pn = atv(section, 'pn');
+  return {
+    irefid: atv(iref, 'irefid'),
+    section: pn.replace(/^s-/, ''),
+    primary: atv(iref, 'primary') === 'true'
+  }
+}
+
+exports.indexPartition = function(irefs) {
+  irefs = irefs.sort(compareIrefs);
+  // partition by starting first letter
+  var arefs = []
+  var lastChar = {
+    char:null,
+    items:[]
+  };
+  var lastItem = {
+    item: null,
+    subItems: [],
+    irefids: []
+  };
+  var lastSubItem = {
+    subItem: null,
+    irefids: []
+  };
+  irefs.forEach(function(iref) {
+    var i = atv(iref, 'item')
+    var fc = i[0].toUpperCase();
+    if (fc !== lastChar.char) {
+      lastChar = {
+        char: fc,
+        items: []
+      }
+      arefs.push(lastChar);
+    }
+    if (i !== lastItem.item) {
+      lastItem = {
+        item: i,
+        subItems: [],
+        irefids: []
+      }
+      lastChar.items.push(lastItem);
+    }
+    var si = atv(iref, 'subitem');
+    if (si) {
+      if (si !== lastSubItem.subItem) {
+        lastSubItem = {
+          subItem: si,
+          irefids: []
+        };
+        lastItem.subItems.push(lastSubItem);
+      }
+      lastSubItem.irefids.push(getSection(iref));
+    } else {
+      lastItem.irefids.push(getSection(iref));
+    }
+  });
+  return arefs;
+}
