@@ -160,6 +160,7 @@ exports.loadSrc = function(e) {
     }
     data = res.data;
     media = res.headers['content-type'];
+    media = media.replace(/\s+/g, '');
   } else {
     process.stderr.write('Unknown URI scheme: ' + u + '\n');
     return;

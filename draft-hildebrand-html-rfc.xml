@@ -158,6 +158,47 @@
         are intended to increase the chance that difference tools that operate
         on the HTML source easier to write.</t>
     </section>
+    <section anchor="common" title="Common Items">
+      <t>The following items are common across multiple parts of the HTML
+        document:</t>
+      <section anchor='ids' title='IDs'>
+        <t>HTML elements that are generated from XML elements that include
+          an anchor attribute will use the value of the anchor attribute
+          as the id of the corresponding HTML element.  If
+          there is no anchor attribute, the slugifiedName attribute of the
+          contained &lt;name&gt; element will be used.  Otherwise, the
+          partNumber attribute will be used, where it exists.</t>
+        <t>Some HTML constructs (such as
+          <xref target='element.section'>&lt;section&gt;</xref>) will use
+          multiple instances of these identifiers.</t>
+      </section>
+      <section anchor='pilcrows' title='Pilcrows'>
+        <t>Each paragraph, artwork, or sourcecode segment outside of a
+          &lt;figure&gt; or &lt;table&gt; element will be appended with a
+          space and a "pilcrow" (U+00B6: PILCROW SIGN), otherwise known as a
+          "paragraph sign".  For the purposes of clarity, in this document
+          pilcrows are rendered as "&amp;para;".</t>
+          <t>The pilcrow will normally be invisible unless the element it is
+            attached to is moused over.  The pilcrow will be surrounded by a
+            link that points to the element it is attached to.</t>
+          <t>Pilcrows are never included inside a &lt;table&gt; or
+            &lt;figure&gt; elements, since the figure number or table number
+            serve as adequate link targets.</t>
+          <t>Elements that might otherwise contain a pilcrow do not get marked
+            with a pilcrow if they contain one or more child elements that are
+            marked with a pilcrow.</t>
+        <figure>
+          <artwork><![CDATA[
+<blockquote id="p-1.2-1">
+  <p id="p-1.2-2">Four score and seven years ago our fathers brought
+    forth on this continent, a new nation, conceived in Liberty, and
+    dedicated to the proposition that all men are created equal.
+    <a href="#p-1.2-2" class="pilcrow">&para;</a></p>
+  <!-- NO pilcrow here -->
+</blockquote>]]></artwork>
+        </figure>
+      </section>
+    </section>
     <section anchor="prolog" title="Prologue">
       <t>The front matter of the HTML format contains processing information,
         metadata of various types, and styling information that applies to the
@@ -277,6 +318,7 @@
 </dl>]]></artwork>
         </figure>
       </section>
+
       <section anchor='table-of-contents' title='Table of Contents'>
         <t>The table of contents will follow the boilerplate if the &lt;rfc&gt;
         element's tocInclude attribute has the value "true".  An &lt;h2&gt;
@@ -303,44 +345,33 @@
 ...]]></artwork>
         </figure>
       </section>
+    </section>
+    <section anchor='middle' title='Main Body'>
+      <t>The main body of the document is processed according to the rules in
+        <xref target='elements'/>.</t>
+    </section>
+    <section anchor='epilogue' title='Epilogue'>
+      <t>The back matter of the HTML document includes an index (if generated)
+        information about the authors, and further information about the
+        document itself.</t>
       <section anchor='index' title='Index'>
-        <t>To be documented.</t>
-      </section>
-      <section anchor='ids' title='IDs'>
-        <t>HTML elements that are generated from XML elements that include
-          an anchor attribute will use the value of the anchor attribute
-          (prepended by "#") as the id of the corresponding HTML element.  If
-          there is no anchor attribute, the slugifiedName attribute of the
-          contained &lt;name&gt; element will be used.  Otherwise, the
-          partNumber attribute will be used, where it exists.</t>
-        <t>Some HTML constructs (such as
-          <xref target='element.section'>&lt;section&gt;</xref>) will use
-          multiple instances of these identifiers.</t>
-      </section>
-      <section anchor='pilcrows' title='Pilcrows'>
-        <t>Each paragraph, artwork, or sourcecode segment outside of a
-          &lt;figure&gt; or &lt;table&gt; element will be appended with a
-          space and a "pilcrow" (U+00B6: PILCROW SIGN), otherwise known as a
-          "paragraph sign".  For the purposes of clarity, in this document
-          pilcrows are rendered as "&amp;para;".</t>
-          <t>The pilcrow will normally be invisible unless the element it is
-            attached to is moused over.  The pilcrow will be surrounded by a
-            link that points to the element it is attached to.</t>
-          <t>Pilcrows are never included inside a &lt;table&gt; or
-            &lt;figure&gt; elements, since the figure number or table number
-            serve as adequate link targets.</t>
-          <t>Elements that might otherwise contain a pilcrow do not get marked
-            with a pilcrow if they contain one or more child elements that are
-            marked with a pilcrow.</t>
+        <t>The index will be produced at the end of the document (before the
+          author information) if and only if the &lt;rfc&gt; element has a
+          indexInclude attribute with the value "true", and there is one or
+          more &lt;iref&gt; elements in the document.</t>
+        <t>The index section will start with an &lt;h2&gt; heading containing
+          the text "Index", followed by links to each of the lettered
+          portions of the index.  Links are not generated for letters that
+          do not occur as the first letter of an index item.</t>
+        <t>For example:</t>
         <figure>
           <artwork><![CDATA[
-<blockquote id="p-1.2-1">
-  <p id="p-1.2-2">Four score and seven years ago our fathers brought
-    forth on this continent, a new nation, conceived in Liberty, and
-    dedicated to the proposition that all men are created equal.
-    <a href="#p-1.2-2" class="pilcrow">&para;</a></p>
-  <!-- NO pilcrow here -->
-</blockquote>]]></artwork>
+<div class='index'>
+  <div class='indexIndex'>
+    <a href='#rfc.index.C'>C</a>
+    <a href='#rfc.index.P'>P</a>
+  </div>
+  ...]]></artwork>
         </figure>
       </section>
       <section anchor='authors-addresses' title="Authors' Addresses">
@@ -389,6 +420,29 @@
          class="url">http://www.example.com</a>
     </div>
   </address>]]></artwork>
+        </figure>
+      </section>
+      <section anchor="docinfo" title="Document Information">
+        <t>A few bits of metadata about the document that are less
+          important to most readers are included after the author information.
+          The stylesheet might de-emphasize their display, or hide them
+          altogether.</t>
+        <t>The finalized time is copied from the &lt;rfc&gt; element's
+          finalizedTime attribute.  The rendered time is the time that this
+          HTML was generated.</t>
+        <t>For example:</t>
+        <figure>
+          <artwork><![CDATA[
+<div class="docinfo">
+  <span class="finalized">
+    Finalized: <time
+    datetime="2015-04-29T18:59:08Z">2015-04-29T18:59:08Z</time>
+  </span>
+  <span class="rendered">
+    Rendered: <time
+    datetime="2015-04-29T18:59:10Z">2015-04-29T18:59:10Z</time>
+  </span>
+</div>]]></artwork>
         </figure>
       </section>
       <section title="XML Source" anchor="xml-source">
@@ -443,25 +497,36 @@
           &lt;figure&gt; element, the figure title serves the purpose of the
           pilcrow.</t>
         <section title="Text Artwork" anchor="element.artwork-text">
-          <t>Text artwork is rendered inside an HTML &lt;pre&gt; element.  Note
-            that CDATA blocks do not work consistently in HTML, so all &lt;,
-            &gt;, and &amp; must be escaped as &amp;lt;, &amp;gt;, and
-            &amp;amp;, respectively.</t>
-          <t>The &lt;pre&gt; element will have CSS classes of "artwork" and
-            "art-" prepended to the value of the &lt;artwork&gt;'s "type" attribute, if it exists.</t>
+          <t>Text artwork is rendered inside an HTML &lt;pre&gt; element, which
+            is contained by a &lt;div&gt; element for consistency with SVG
+            artwork.  Note that CDATA blocks do not work consistently in HTML,
+            so all &lt;, &gt;, and &amp; must be escaped as &amp;lt;, &amp;gt;,
+            and &amp;amp;, respectively.</t>
+          <t>The &lt;div&gt; element will have CSS classes of "artwork" and
+            "art-" prepended to the value of the &lt;artwork&gt;'s "type"
+            attribute, if it exists.</t>
           <figure>
             <artwork><![CDATA[
-<pre class="artwork art-ascii-art" id="p-2-16">
- ______________
+<figure id="f-1">
+  <div class="artwork art-ascii-art" id="p-2-52">
+    <pre>
+______________
 &lt; hello, world &gt;
- --------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-<a href="#p-2-16" class="pilcrow">&para;</a></pre>
-</pre>]]></artwork>
+--------------
+  \   ^__^
+   \  (oo)\_______
+      (__)\       )\/\
+          ||----w |
+          ||     ||
+</pre>
+  </div>
+  <figcaption>
+    <a href="#f-1">Figure 1.</a>
+    <a class="self-ref" href="#n-it-figures" id="n-it-figures">
+      It figures
+    </a>
+  </figcaption>
+</figure>]]></artwork>
           </figure>
         </section>
         <section title="SVG Artwork" anchor="element.artwork-svg">
@@ -476,6 +541,20 @@
       stroke="green" stroke-width="4" fill="yellow" />
   </svg>
   <a href="#p-2-17" class="pilcrow">&para;</a></pre>
+</div>]]></artwork>
+          </figure>
+        </section>
+        <section title="Other Artwork" anchor="element">
+          <t>Other artwork will have a src attribute whose value begins with
+            "data:".  Such artwork is rendered in an HTML image element.</t>
+          <t>Note: such images are not yet allowed by the RFC Series Editor,
+            even though the format supports them.</t>
+          <t>For example:</t>
+          <figure>
+            <artwork><![CDATA[
+<div class="artwork art-logo" id="p-2-58">
+  <image src="data:image/gif;charset=utf-8;base64,..."/>
+  <a class="pilcrow" href="#p-2-58">¶</a>
 </div>]]></artwork>
           </figure>
         </section>
@@ -885,7 +964,7 @@ Streets have no name</pre>]]></artwork>
         <t>This element is rendered as an HTML &lt;section&gt; element,
           containing an appropriate level HTML heading element
           (&lt;h2&gt;-&lt;h6&gt;).  That heading element contains a &lt;a&gt;
-          element around the sectionNumber, if applicable (e.g.
+          element around the part number (pn), if applicable (e.g.
           &lt;abstract&gt; does not get a section number).  Another &lt;a&gt;
           element is included with the section's name.</t>
         <figure>
@@ -1015,6 +1094,9 @@ int main(void)
       <section title="&lt;xref&gt;" anchor="element.xref">
         <t>This element is rendered as an HTML &lt;a&gt; element containing
           an appropriate local link as the "href" attribute.</t>
+        <t>NOTE: the &lt;xref&gt; element is still under heavy discussion.
+          More detail will be provided here in a subsequent version of this
+          document.</t>
       </section>
     </section>
     <section anchor="iana-considerations" title="IANA Considerations">

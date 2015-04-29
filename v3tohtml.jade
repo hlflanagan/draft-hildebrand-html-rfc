@@ -42,20 +42,21 @@ mixin artwork(e)
   - var classes = ['artwork']
   - var cl = $att(e, 'type')
   - if (cl != null) { classes.push("art-" + cl); }
+  - var align = $att(e, 'align')
+  - if ((align != null) && (align!='left')) { classes.push('align_' + align); }
   - var id = $att(e,'anchor') || $att(e,'pn')
-  if cl == 'svg'
-    div(id=id, class=classes)
-      +children(e)
-      if e.parent().name() != 'figure'
-        +pilcrow(e)
-  else
-    - var align = $att(e, 'align')
-    - if (align != null) { classes.push('align_' + align); }
-    div
-      pre(id=id, class=classes)
+  div(id=id, class=classes)
+    if cl == 'svg'
         +children(e)
-      if e.parent().name() != 'figure'
-        +pilcrow(e)
+    else
+      - var src = $att(e, 'src')
+      if src && src.match(/^data:/)
+        image(src=src)
+      else
+        pre
+          +children(e)
+    if e.parent().name() != 'figure'
+      +pilcrow(e)
 
 mixin ascii(e)
   - var a = $att(e, "ascii")
@@ -129,7 +130,7 @@ mixin figure(e)
     - var fn = $att(e, 'pn')
     - var nm = $('name', e)
     figcaption
-      a.self-ref(href="#"+fn) Figure #{fn.replace(/^f-/, '')}.
+      a(href="#"+fn) Figure #{fn.replace(/^f-/, '')}.
       if nm
         = " "
         - var sn = $att(nm, "slugifiedName")
@@ -432,7 +433,7 @@ html(lang='en')
           = (authors.length > 1) ? "Authors' Addresses" : "Author's Address"
       each a in authors
         +foot_author(a)
-    .times
+    .docinfo
       - var finalized = $('@finalizedTime')
       span.finalized Finalized:
         time(datetime=finalized)= finalized

@@ -260,7 +260,7 @@ artwork does not
         <artwork type="svg" align="right"><xi:include href='http://localhost:8080/redbluecircle.svg'/></artwork>
       </figure>
       <figure><name>SVG as a data: URI</name>
-        <artwork type="svg" src="data:application/octet-stream;base64,PHN2ZyBoZWlnaHQ9IjEwMCIKICAgICB3aWR0aD0iMTAwIgogICAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGNpcmNsZSBjeD0iNTAiCiAgICAgICAgICBjeT0iNTAiCiAgICAgICAgICBmaWxsPSJ5ZWxsb3ciCiAgICAgICAgICByPSI0MCIKICAgICAgICAgIHN0cm9rZT0iYmxhY2siCiAgICAgICAgICBzdHJva2Utd2lkdGg9IjQiLz4KPC9zdmc+Cg=="/>
+        <artwork type="svg" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEwMCIKICAgICB3aWR0aD0iMTAwIgogICAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGNpcmNsZSBjeD0iNTAiCiAgICAgICAgICBjeT0iNTAiCiAgICAgICAgICBmaWxsPSJ5ZWxsb3ciCiAgICAgICAgICByPSI0MCIKICAgICAgICAgIHN0cm9rZT0iYmxhY2siCiAgICAgICAgICBzdHJva2Utd2lkdGg9IjQiLz4KPC9zdmc+Cg=="/>
       </figure>
       <figure><name>Inline with &lt;src&gt; attribute</name>
         <!-- <artwork type="svg" src="circle.svg"/> -->
