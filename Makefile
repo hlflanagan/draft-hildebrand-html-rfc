@@ -4,6 +4,7 @@ XMLJADE=node_modules/.bin/xmljade
 HTTPSERVER=../node_modules/.bin/http-server
 LOCALHOST_DIR=localhost
 RNG = draft-hoffman-xml2rfc/xml2rfcv3.rng
+BRANCH := $(shell git symbolic-ref --short HEAD)
 
 .PHONY: start stop
 .PRECIOUS: %.3.xml %.n.xml %.x.xml
@@ -39,3 +40,16 @@ server.PID:
 
 stop:
 	@if [ -a server.PID ]; then echo 'Stopping'; kill `cat server.PID`; rm server.PID; else echo 'Not running'; fi;
+
+publish: test.3.html $(DRAFT).txt
+	git co gh-pages
+	git co $(BRANCH) -- test.x.xml
+	git co $(BRANCH) -- test.n.xml
+	git co $(BRANCH) -- test.3.xml
+	git co $(BRANCH) -- test.3.html
+	git co $(BRANCH) -- $(DRAFT).txt
+	git co $(BRANCH) -- $(DRAFT).xml
+	git co $(BRANCH) -- $(DRAFT).html
+	git ci -m "Publish to GitHub pages"
+	git push origin gh-pages
+	git co $(BRANCH)
