@@ -59,8 +59,8 @@ mixin artwork(e)
     if e.parent().name() != 'figure'
       +pilcrow(e)
 
-mixin ascii(e)
-  - var a = $att(e, "ascii")
+mixin ascii(e, asciiAt)
+  - var a = $att(e, asciiAt || "ascii")
   if a
     = " "
     span.ascii= a
@@ -156,13 +156,15 @@ mixin identifiers(e)
         .author
           span.fn
             span.initial= $att(a, "initials")
+              +ascii(a, "asciiInitials")
             = " "
             span.surname= $att(a, "surname")
-            +ascii(a)
-          = " ("
-          span.org= $("organization/text()", a)
-            +ascii($("organization", a))
-          = ")"
+              +ascii(a, "asciiSurname")
+          span.anticomma (
+          - var org = $("organization", a)
+          span.org= org.text()
+            +ascii(org)
+          span.comma )
 
 mixin iref(e)
   span.iref(id=$att(e,"irefid"))
@@ -210,21 +212,24 @@ mixin postal(e)
       pre.ascii= pascii.join('\n')
   else
     .adr
-      each st in $$('street/text()', e)
-        .street-address= st
+      each st in $$('street', e)
+        .street-address= st.text().trim()
+          +ascii(st)
       div
-        each city in $$('city/text()', e)
-          span.city=city
+        each city in $$('city', e)
+          span.city= city.text().trim()
+            +ascii(city)
         span.comma ,
-        each region in $$('region/text()', e)
-          span.region=region
+        each region in $$('region', e)
+          span.region= region.text().trim()
+            +ascii(region)
         each code in $$('code', e)
           = " "
-          span.code
-            =code.text()
+          span.code= code.text()
             +ascii(code)
-      each country in $$('country/text()', e)
-        .country-name=country
+      each country in $$('country', e)
+        .country-name= country.text().trim()
+          +ascii(country)
 
 mixin reference(e)
   - var anc = $att(e, 'anchor')
@@ -233,13 +238,18 @@ mixin reference(e)
     - var authors = $$('front/author', e)
     if authors.length > 0
       span.refauthor= $att(authors[0], 'surname') + ", " + $att(authors[0], 'initials')
+        +ascii(authors[0], 'asciiFullname')
       each a in authors.slice(1,-1)
         span.comma ,
         span.refauthor= $att(a, 'fullname')
+          +ascii(a, 'asciiFullname')
       if authors.length > 1
         span= " and "
         span.refauthor= $att(authors[authors.length-1], 'fullname')
-    span.reftitile "#{$('front/title/text()',e).trim()}"
+          +ascii(authors[authors.length-1], 'asciiFullname')
+    - var title = $('front/title', e)
+    span.reftitile "#{title.text().trim()}"
+      +ascii(title)
     - var refcontent = $('refcontent', e)
     if refcontent
       span.comma ,
@@ -247,7 +257,11 @@ mixin reference(e)
         +children(refcontent)
     each si in $$('seriesInfo', e)
       span.comma ,
-      span.refseries= $att(si, 'name') + " " + $att(si, 'value')
+      span.refSeries
+        span.refSeriesName= $att(si, 'name')
+          +ascii(si, 'asciiName')
+        span.refSeriesValue= $att(si, 'value')
+          +ascii(si, 'asciiValue')
     - var refdate = $('front/date', e)
     if refdate
       span.comma ,
@@ -301,8 +315,9 @@ mixin table(e)
     +children(e)
 
 mixin title(e)
-  h1#title: +children(e)
-
+  h1#title
+    +children(e)
+    +ascii(title)
 mixin tt(e)
   code: +children(e)
 
@@ -318,21 +333,19 @@ mixin xref(e)
   if t.trim()
     a.xref(href='#'+target)= t
 
-mixin foot_org(e)
-  .org= e.text()
-    +ascii(e)
-
 mixin foot_author(e)
   address.vcard
     .namerole
       span.fn
         = $att(e, 'fullname')
-        +ascii(e)
+        +ascii(e, "asciiFullname")
       if $att(e, 'role')
         span.anticomma (
         span.role= $att(e, 'role')
         span.comma )
-    +foot_org($("organization", e))
+    - var org = $('organization', e)
+    .org= org.text()
+      +ascii(org)
     - var addr = $('address', e)
     each p in $$('postal', addr)
       +postal(p)
@@ -357,6 +370,11 @@ mixin foot_author(e)
         span URI:
         a.url(href=uri)= uri
 
+mixin referencegroup(e)
+  - var id=$att(e,'id')
+  span.referencegroup(id=id)
+    +children(e)
+    
 mixin tocSections(p, depth)
   if depth > 0
     - var sects = $$('section', p)

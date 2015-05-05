@@ -2,7 +2,7 @@
 <rfc category='info'
      consensus='false'
      docName='draft-hildebrand-html-rfc-04'
-     finalizedTime='2015-05-05T09:00:27Z'
+     finalizedTime='2015-05-05T13:51:58Z'
      indexInclude='true'
      ipr='trust200902'
      sortRefs='false'
@@ -405,7 +405,18 @@
         <li pn='p-2-52'>Wheels on a big rig</li>
         <li pn='p-2-53'>
           Exercitation nisi quis in laborum ipsum esse excepteur
-          culpa. And then <xref format='default' target='whoa'/>.
+          culpa. And then <xref format='default' target='whoa'/>.  Et
+          pariatur anim labore pariatur qui adipisicing consequat
+          quis. Occaecat fugiat ad mollit ipsum occaecat aliqua
+          consectetur. Esse proident qui amet quis dolore consectetur
+          proident sunt ipsum exercitation veniam exercitation amet.
+          Nostrud exercitation magna officia incididunt deserunt
+          incididunt eiusmod veniam esse minim non. Mollit non ad
+          consectetur adipisicing nisi ex consequat qui proident
+          officia laboris duis adipisicing. Velit commodo aliqua
+          occaecat consequat nostrud anim ad ut. Quis aute eu culpa
+          dolore ut esse ea est elit occaecat. In cupidatat ea ipsum
+          est fugiat ad pariatur nulla.
         </li>
       </ol>
       <artwork align='center'
@@ -685,8 +696,22 @@ int main(void)
         </reference>
         <reference anchor='Bibble2' quoteTitle='true'>
           <front>
-            <title>Bibble use cases</title>
-            <author fullname='No One' initials='N.' surname='One'/>
+            <title ascii='Bibble use cases'>𝔹ibble use cases</title>
+            <author asciiFullname='No One'
+                    asciiInitials='N.'
+                    fullname='Ño One'
+                    initials='Ñ.'
+                    surname='One'/>
+            <author asciiFullname='No Two'
+                    asciiInitials='N.'
+                    fullname='Ño Two'
+                    initials='Ñ.'
+                    surname='Two'/>
+            <author asciiFullname='No Three'
+                    asciiInitials='N.'
+                    fullname='Ño Three'
+                    initials='Ñ.'
+                    surname='Three'/>
           </front>
           <seriesInfo asciiName='BibbleSpecs'
                       name='BibbleSpècs'

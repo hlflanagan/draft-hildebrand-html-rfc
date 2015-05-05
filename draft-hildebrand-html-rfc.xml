@@ -198,6 +198,20 @@
 </blockquote>]]></artwork>
         </figure>
       </section>
+      <section anchor='ascii-equivalents' title='ASCII Equivalents'>
+        <t>Many elements in the XML3RFCv3 schema contain attributes for
+          ASCII equivalents of the Unicode text contained in the element or
+          the Unicode attribute value.  These alternatives are included in a
+          &lt;span&gt; tag with the class "ascii".  The &lt;span&gt; is
+          included inside the tag that is showing the text to the user.</t>
+        <figure>
+          <artwork><![CDATA[
+<span class="surname">
+  HILDEBRAND
+  <span class="ascii">Hildebrand</span>
+</span>]]></artwork>
+        </figure>
+      </section>
     </section>
     <section anchor="prolog" title="Prologue">
       <t>The front matter of the HTML format contains processing information,
@@ -454,47 +468,70 @@
           inside an HTML &lt;section&gt; element.  The class names have been chosen to
           match the class names in
           <eref target='http://microformats.org/wiki/hcard'>hCard</eref>.</t>
+        <t>Note: The following example shows several ascii equivalents that are
+          the same as their nominal equivalents for clarity; normally the ascii
+          equivalents would not be included for these cases.</t>
         <figure>
           <artwork><![CDATA[
 <section id="author-addresses">
   <h2>
-    <a href="#author-addresses"
-       class="self-ref">Authors' Addresses</a>
+    <a class="self-ref" href="#author-addresses">
+      Authors' Addresses
+    </a>
   </h2>
   <address class="vcard">
     <div class="namerole">
-      <span class="fn">Joe Hildebrand</span>
-      <span class="role">(editor)</span>
+      <span class="fn">
+        Joe Hildebrand <span class="ascii">Joe Hildebrand</span>
+      </span>
+      <span class="anticomma">(</span>
+      <span class="role">editor</span>
+      <span class="comma">)</span>
     </div>
-    <div class="org">Cisco Systems, Inc.</div>
+    <div class="org">
+      Cisco Systems, Inc. <span class="ascii">Cisco Systems,
+      Inc.</span>
+    </div>
     <div class="adr">
       <div class="street-address">1 Main Street</div>
       <div class="street-address">Suite 1</div>
       <div>
-        <span class="city">Denver</span>,
+        <span class="city">
+          Denver <span class="ascii">Denver</span>
+        </span>
+        <span class="comma">,</span>
         <span class="region">CO</span>
-        <span class="code">80212</span>
+        <span class="code">
+          80202 <span class="ascii">80202</span>
+        </span>
       </div>
       <div class="country-name">US</div>
     </div>
-    <div>Phone: <span class="tel">+1-720-555-1212
-      <span class="type">VOICE</span></span>
+    <div>
+      <span>Phone:</span>
+      <span class="tel">+1-720-555-1212</span>
+      <span class="type">VOICE</span>
     </div>
-    <div>Fax: <span class="tel">+1-303-555-1212
-      <span class="type">fax</span></span>
+    <div>
+      <span>Fax:</span>
+      <span class="tel">+1-303-555-1212</span>
+      <span class="type">fax</span>
     </div>
-    <div>Email:
-      <a href="jhildebr@example.com"
-         class="email">jhildebr@example.com</a>
+    <div>
+      <span>Email:</span>
+      <a class="email" href="mailto:jhildebr@example.com">
+        jhildebr@example.com
+      </a>
+      <span class="ascii">jhildebr@example.com</span>
     </div>
-    <div>Email:
-      <a href="joe@example.net" class="email">joe@example.net</a>
+    <div>
+      <span>URI:</span>
+      <a class="url" href="http://www.example.com">
+        http://www.example.com
+      </a>
     </div>
-    <div>URI:
-      <a href="http://www.example.com"
-         class="url">http://www.example.com</a>
-    </div>
-  </address>]]></artwork>
+  </address>
+</section>]]></artwork>
         </figure>
       </section>
       <section anchor="docinfo" title="Document Information">
@@ -912,11 +949,38 @@ about something that we need to remember later.
         </figure>
       </section>
       <section title="&lt;ol&gt;" anchor="element.ol">
-        <t>This element is directly rendered as its HTML counterpart.</t>
+        <t>The output created from an &lt;ol&gt; element depends upon the style
+          attribute.</t>
         <t>If the spacing attribute has the value "compact", a CSS class of
           "olcompact" will be added.</t>
         <t>The group attribute is not copied; the input XML should have start
           values added by a prep tool for all group'd ol's.</t>
+        <section title="Percent styles" anchor="ol-percent-styles">
+          <t>If the style attribute includes the character "%", the output is
+            a &lt;dl&gt; tag with the class "olpercent".  Each contained li
+            is emitted as a &lt;dt&gt;/&lt;dd&gt; pair, with the generated
+            label in the &lt;dt&gt; and the contents of the li in the
+            &lt;dd&gt;.</t>
+          <figure>
+            <artwork><![CDATA[
+<dl class="olpercent">
+  <dt>Requirement xviii:</dt>
+  <dd>Wheels on a big rig</dd>
+</dl>
+]]></artwork>
+          </figure>
+        </section>
+        <section title="Standard styles" anchor="ol-standard-styles">
+          <t>For all other styles, an &lt;ol&gt; tag is emitted, with any
+            style attribute turned into the equivalent HTML type attribute.</t>
+          <figure>
+            <artwork><![CDATA[
+<ol class="compact" type="I" start="18">
+  <li>Wheels on a big rig</li>
+</ol>
+]]></artwork>
+          </figure>
+        </section>
       </section>
       <section title="&lt;organization&gt;" anchor="element.organization">
         <t>As shown in <xref target='authors-addresses'/> this element is
@@ -928,17 +992,19 @@ about something that we need to remember later.
       </section>
       <section title="&lt;phone&gt;" anchor="element.phone">
         <t>As shown in <xref target='authors-addresses'/> this element is
-        rendered as an HTML &lt;div&gt; containing the string "Phone:",
-        an HTML &lt;span&gt; with CSS class "tel" containing the phone number
-        and an HTML &lt;span&gt; with CSS class "type" containing the string
-        "VOICE".  Note, the "type" span will be hidden by CSS styling.</t>
+        rendered as an HTML &lt;div&gt; containing the string "Phone:"  (wrapped
+        in a span), an HTML &lt;span&gt; with CSS class "tel" containing the
+        phone number and an HTML &lt;span&gt; with CSS class "type" containing
+        the string "VOICE".  Note, the "type" span will be hidden by CSS
+        styling.</t>
         <figure>
           <artwork><![CDATA[
-<div>Phone:
-  <span class="tel">+1-720-555-1212
-    <span class="type">VOICE</span>
-  </span>
-</div>]]></artwork>
+<div>
+  <span>Phone:</span>
+  <span class="tel">+1-720-555-1212</span>
+  <span class="type">VOICE</span>
+</div>
+]]></artwork>
         </figure>
       </section>
       <section title="&lt;postal&gt;" anchor="element.postal">
@@ -967,7 +1033,8 @@ about something that we need to remember later.
   <div class="street-address">1 Main Street</div>
   <div class="street-address">Suite 1</div>
   <div>
-    <span class="city">Denver</span>,
+    <span class="city">Denver</span>
+    <span class="comma">,</span>
     <span class="region">CO</span>
     <span class="code">80212</span>
   </div>
@@ -1010,7 +1077,16 @@ Streets have no name</pre>]]></artwork>
         </figure>
       </section>
       <section title="&lt;referencegroup&gt;" anchor="element.referencegroup">
-        <t>To be documented, pending RFC editor guidance on desired semantics.</t>
+        <t>A &lt;referencegroup&gt; is translated into a &lt;span&gt; of
+          class referencegroup which contains the references.  &lt;span&gt; is
+          used here to ensure that the reference lists remain as undisturbed
+          as possible.</t>
+        <figure>
+          <artwork><![CDATA[
+<span class="referencegroup">
+  <dl class="reference">...</dl>
+</span>]]></artwork>
+        </figure>
       </section>
       <section title="&lt;references&gt;" anchor="element.references">
         <t>If there is at least one &lt;references&gt; element, a "References"

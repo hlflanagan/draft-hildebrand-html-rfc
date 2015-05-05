@@ -381,6 +381,7 @@
 <link href="#rfc.section.5" rel="Chapter" title="5 Common Items"/>
 <link href="#rfc.section.5.1" rel="Chapter" title="5.1 IDs"/>
 <link href="#rfc.section.5.2" rel="Chapter" title="5.2 Pilcrows"/>
+<link href="#rfc.section.5.3" rel="Chapter" title="5.3 ASCII Equivalents"/>
 <link href="#rfc.section.6" rel="Chapter" title="6 Prologue"/>
 <link href="#rfc.section.6.1" rel="Chapter" title="6.1 DOCTYPE"/>
 <link href="#rfc.section.6.2" rel="Chapter" title="6.2 Root Element"/>
@@ -440,6 +441,8 @@
 <link href="#rfc.section.9.32" rel="Chapter" title="9.32 &lt;name&gt;"/>
 <link href="#rfc.section.9.33" rel="Chapter" title="9.33 &lt;note&gt;"/>
 <link href="#rfc.section.9.34" rel="Chapter" title="9.34 &lt;ol&gt;"/>
+<link href="#rfc.section.9.34.1" rel="Chapter" title="9.34.1 Percent styles"/>
+<link href="#rfc.section.9.34.2" rel="Chapter" title="9.34.2 Standard styles"/>
 <link href="#rfc.section.9.35" rel="Chapter" title="9.35 &lt;organization&gt;"/>
 <link href="#rfc.section.9.36" rel="Chapter" title="9.36 &lt;phone&gt;"/>
 <link href="#rfc.section.9.37" rel="Chapter" title="9.37 &lt;postal&gt;"/>
@@ -553,6 +556,7 @@
 <li>5.   <a href="#rfc.section.5">Common Items</a></li>
 <ul><li>5.1.   <a href="#rfc.section.5.1">IDs</a></li>
 <li>5.2.   <a href="#rfc.section.5.2">Pilcrows</a></li>
+<li>5.3.   <a href="#rfc.section.5.3">ASCII Equivalents</a></li>
 </ul><li>6.   <a href="#rfc.section.6">Prologue</a></li>
 <ul><li>6.1.   <a href="#rfc.section.6.1">DOCTYPE</a></li>
 <li>6.2.   <a href="#rfc.section.6.2">Root Element</a></li>
@@ -612,7 +616,9 @@
 <li>9.32.   <a href="#rfc.section.9.32">&lt;name&gt;</a></li>
 <li>9.33.   <a href="#rfc.section.9.33">&lt;note&gt;</a></li>
 <li>9.34.   <a href="#rfc.section.9.34">&lt;ol&gt;</a></li>
-<li>9.35.   <a href="#rfc.section.9.35">&lt;organization&gt;</a></li>
+<ul><li>9.34.1.   <a href="#rfc.section.9.34.1">Percent styles</a></li>
+<li>9.34.2.   <a href="#rfc.section.9.34.2">Standard styles</a></li>
+</ul><li>9.35.   <a href="#rfc.section.9.35">&lt;organization&gt;</a></li>
 <li>9.36.   <a href="#rfc.section.9.36">&lt;phone&gt;</a></li>
 <li>9.37.   <a href="#rfc.section.9.37">&lt;postal&gt;</a></li>
 <li>9.38.   <a href="#rfc.section.9.38">&lt;postalLine&gt;</a></li>
@@ -721,6 +727,13 @@
     &lt;a href="#p-1.2-2" class="pilcrow"&gt;&amp;para;&lt;/a&gt;&lt;/p&gt;
   &lt;!-- NO pilcrow here --&gt;
 &lt;/blockquote&gt;</pre>
+<h1 id="rfc.section.5.3"><a href="#rfc.section.5.3">5.3.</a> <a href="#ascii-equivalents" id="ascii-equivalents">ASCII Equivalents</a></h1>
+<p id="rfc.section.5.3.p.1">Many elements in the XML3RFCv3 schema contain attributes for ASCII equivalents of the Unicode text contained in the element or the Unicode attribute value.  These alternatives are included in a &lt;span&gt; tag with the class "ascii".  The &lt;span&gt; is included inside the tag that is showing the text to the user.</p>
+<pre>
+&lt;span class="surname"&gt;
+  HILDEBRAND
+  &lt;span class="ascii"&gt;Hildebrand&lt;/span&gt;
+&lt;/span&gt;</pre>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#prolog" id="prolog">Prologue</a></h1>
 <p id="rfc.section.6.p.1">The front matter of the HTML format contains processing information, metadata of various types, and styling information that applies to the document as a whole.  This section describes HTML that is not necessarily a direct transform from the XML format.  For more details on each of the tags that generate content in this section, see <a href="#elements">Section 9</a>.</p>
 <h1 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1.</a> <a href="#doctype" id="doctype">DOCTYPE</a></h1>
@@ -863,46 +876,67 @@
 ...</pre>
 <h1 id="rfc.section.8.2"><a href="#rfc.section.8.2">8.2.</a> <a href="#authors-addresses" id="authors-addresses">Authors' Addresses</a></h1>
 <p id="rfc.section.8.2.p.1">At the end of the document, author information will be included inside an HTML &lt;section&gt; element.  The class names have been chosen to match the class names in <a href="http://microformats.org/wiki/hcard">hCard</a>.</p>
+<p id="rfc.section.8.2.p.2">Note: The following example shows several ascii equivalents that are the same as their nominal equivalents for clarity; normally the ascii equivalents would not be included for these cases.</p>
 <pre>
 &lt;section id="author-addresses"&gt;
   &lt;h2&gt;
-    &lt;a href="#author-addresses"
-       class="self-ref"&gt;Authors' Addresses&lt;/a&gt;
+    &lt;a class="self-ref" href="#author-addresses"&gt;
+      Authors' Addresses
+    &lt;/a&gt;
   &lt;/h2&gt;
   &lt;address class="vcard"&gt;
     &lt;div class="namerole"&gt;
-      &lt;span class="fn"&gt;Joe Hildebrand&lt;/span&gt;
-      &lt;span class="role"&gt;(editor)&lt;/span&gt;
+      &lt;span class="fn"&gt;
+        Joe Hildebrand &lt;span class="ascii"&gt;Joe Hildebrand&lt;/span&gt;
+      &lt;/span&gt;
+      &lt;span class="anticomma"&gt;(&lt;/span&gt;
+      &lt;span class="role"&gt;editor&lt;/span&gt;
+      &lt;span class="comma"&gt;)&lt;/span&gt;
     &lt;/div&gt;
-    &lt;div class="org"&gt;Cisco Systems, Inc.&lt;/div&gt;
+    &lt;div class="org"&gt;
+      Cisco Systems, Inc. &lt;span class="ascii"&gt;Cisco Systems,
+      Inc.&lt;/span&gt;
+    &lt;/div&gt;
     &lt;div class="adr"&gt;
       &lt;div class="street-address"&gt;1 Main Street&lt;/div&gt;
       &lt;div class="street-address"&gt;Suite 1&lt;/div&gt;
       &lt;div&gt;
-        &lt;span class="city"&gt;Denver&lt;/span&gt;,
+        &lt;span class="city"&gt;
+          Denver &lt;span class="ascii"&gt;Denver&lt;/span&gt;
+        &lt;/span&gt;
+        &lt;span class="comma"&gt;,&lt;/span&gt;
         &lt;span class="region"&gt;CO&lt;/span&gt;
-        &lt;span class="code"&gt;80212&lt;/span&gt;
+        &lt;span class="code"&gt;
+          80202 &lt;span class="ascii"&gt;80202&lt;/span&gt;
+        &lt;/span&gt;
       &lt;/div&gt;
       &lt;div class="country-name"&gt;US&lt;/div&gt;
     &lt;/div&gt;
-    &lt;div&gt;Phone: &lt;span class="tel"&gt;+1-720-555-1212
-      &lt;span class="type"&gt;VOICE&lt;/span&gt;&lt;/span&gt;
+    &lt;div&gt;
+      &lt;span&gt;Phone:&lt;/span&gt;
+      &lt;span class="tel"&gt;+1-720-555-1212&lt;/span&gt;
+      &lt;span class="type"&gt;VOICE&lt;/span&gt;
     &lt;/div&gt;
-    &lt;div&gt;Fax: &lt;span class="tel"&gt;+1-303-555-1212
-      &lt;span class="type"&gt;fax&lt;/span&gt;&lt;/span&gt;
+    &lt;div&gt;
+      &lt;span&gt;Fax:&lt;/span&gt;
+      &lt;span class="tel"&gt;+1-303-555-1212&lt;/span&gt;
+      &lt;span class="type"&gt;fax&lt;/span&gt;
     &lt;/div&gt;
-    &lt;div&gt;Email:
-      &lt;a href="jhildebr@example.com"
-         class="email"&gt;jhildebr@example.com&lt;/a&gt;
+    &lt;div&gt;
+      &lt;span&gt;Email:&lt;/span&gt;
+      &lt;a class="email" href="mailto:jhildebr@example.com"&gt;
+        jhildebr@example.com
+      &lt;/a&gt;
+      &lt;span class="ascii"&gt;jhildebr@example.com&lt;/span&gt;
     &lt;/div&gt;
-    &lt;div&gt;Email:
-      &lt;a href="joe@example.net" class="email"&gt;joe@example.net&lt;/a&gt;
+    &lt;div&gt;
+      &lt;span&gt;URI:&lt;/span&gt;
+      &lt;a class="url" href="http://www.example.com"&gt;
+        http://www.example.com
+      &lt;/a&gt;
     &lt;/div&gt;
-    &lt;div&gt;URI:
-      &lt;a href="http://www.example.com"
-         class="url"&gt;http://www.example.com&lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/address&gt;</pre>
+  &lt;/address&gt;
+&lt;/section&gt;</pre>
 <h1 id="rfc.section.8.3"><a href="#rfc.section.8.3">8.3.</a> <a href="#docinfo" id="docinfo">Document Information</a></h1>
 <p id="rfc.section.8.3.p.1">A few bits of metadata about the document that are less important to most readers are included after the author information.  The stylesheet might de-emphasize their display, or hide them altogether.</p>
 <p id="rfc.section.8.3.p.2">The finalized time is copied from the &lt;rfc&gt; element's finalizedTime attribute.  The rendered time is the time that this HTML was generated.</p>
@@ -1124,7 +1158,7 @@ about something that we need to remember later.
 <pre>
 &lt;li id="p-2-7"&gt;Item &lt;a href="#p-2-7" class="pilcrow"&gt;&amp;para;&lt;/a&gt;&lt;/li&gt;</pre>
 <h1 id="rfc.section.9.30"><a href="#rfc.section.9.30">9.30.</a> <a href="#element.link" id="element.link">&lt;link&gt;</a></h1>
-<p id="rfc.section.9.30.p.1">To be documented, pending RFC editor guidance on desired semantics.</p>
+<p id="rfc.section.9.30.p.1">This element is rendered as its HTML counterpart, in the HTML header.</p>
 <h1 id="rfc.section.9.31"><a href="#rfc.section.9.31">9.31.</a> <a href="#element.middle" id="element.middle">&lt;middle&gt;</a></h1>
 <p id="rfc.section.9.31.p.1">This element does not add any direct output to HTML.</p>
 <h1 id="rfc.section.9.32"><a href="#rfc.section.9.32">9.32.</a> <a href="#element.name" id="element.name">&lt;name&gt;</a></h1>
@@ -1142,19 +1176,37 @@ about something that we need to remember later.
   &lt;/p&gt;
 &lt;/section&gt;</pre>
 <h1 id="rfc.section.9.34"><a href="#rfc.section.9.34">9.34.</a> <a href="#element.ol" id="element.ol">&lt;ol&gt;</a></h1>
-<p id="rfc.section.9.34.p.1">This element is directly rendered as its HTML counterpart, with the minor exception that if the spacing attribute has the value "compact", a CSS class of "olcompact" will be added.</p>
+<p id="rfc.section.9.34.p.1">The output created from an &lt;ol&gt; element depends upon the style attribute.</p>
+<p id="rfc.section.9.34.p.2">If the spacing attribute has the value "compact", a CSS class of "olcompact" will be added.</p>
+<p id="rfc.section.9.34.p.3">The group attribute is not copied; the input XML should have start values added by a prep tool for all group'd ol's.</p>
+<h1 id="rfc.section.9.34.1"><a href="#rfc.section.9.34.1">9.34.1.</a> <a href="#ol-percent-styles" id="ol-percent-styles">Percent styles</a></h1>
+<p id="rfc.section.9.34.1.p.1">If the style attribute includes the character "%", the output is a &lt;dl&gt; tag with the class "olpercent".  Each contained li is emitted as a &lt;dt&gt;/&lt;dd&gt; pair, with the generated label in the &lt;dt&gt; and the contents of the li in the &lt;dd&gt;.</p>
+<pre>
+&lt;dl class="olpercent"&gt;
+  &lt;dt&gt;Requirement xviii:&lt;/dt&gt;
+  &lt;dd&gt;Wheels on a big rig&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
+<h1 id="rfc.section.9.34.2"><a href="#rfc.section.9.34.2">9.34.2.</a> <a href="#ol-standard-styles" id="ol-standard-styles">Standard styles</a></h1>
+<p id="rfc.section.9.34.2.p.1">For all other styles, an &lt;ol&gt; tag is emitted, with any style attribute turned into the equivalent HTML type attribute.</p>
+<pre>
+&lt;ol class="compact" type="I" start="18"&gt;
+  &lt;li&gt;Wheels on a big rig&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
 <h1 id="rfc.section.9.35"><a href="#rfc.section.9.35">9.35.</a> <a href="#element.organization" id="element.organization">&lt;organization&gt;</a></h1>
 <p id="rfc.section.9.35.p.1">As shown in <a href="#authors-addresses">Section 8.2</a> this element is rendered as an HTML &lt;div&gt; tag with CSS class "org".</p>
 <pre>
 &lt;div class="org"&gt;Cisco Systems, Inc.&lt;/div&gt;</pre>
 <h1 id="rfc.section.9.36"><a href="#rfc.section.9.36">9.36.</a> <a href="#element.phone" id="element.phone">&lt;phone&gt;</a></h1>
-<p id="rfc.section.9.36.p.1">As shown in <a href="#authors-addresses">Section 8.2</a> this element is rendered as an HTML &lt;div&gt; containing the string "Phone:", an HTML &lt;span&gt; with CSS class "tel" containing the phone number and an HTML &lt;span&gt; with CSS class "type" containing the string "VOICE".  Note, the "type" span will be hidden by CSS styling.</p>
+<p id="rfc.section.9.36.p.1">As shown in <a href="#authors-addresses">Section 8.2</a> this element is rendered as an HTML &lt;div&gt; containing the string "Phone:"  (wrapped in a span), an HTML &lt;span&gt; with CSS class "tel" containing the phone number and an HTML &lt;span&gt; with CSS class "type" containing the string "VOICE".  Note, the "type" span will be hidden by CSS styling.</p>
 <pre>
-&lt;div&gt;Phone:
-  &lt;span class="tel"&gt;+1-720-555-1212
-    &lt;span class="type"&gt;VOICE&lt;/span&gt;
-  &lt;/span&gt;
-&lt;/div&gt;</pre>
+&lt;div&gt;
+  &lt;span&gt;Phone:&lt;/span&gt;
+  &lt;span class="tel"&gt;+1-720-555-1212&lt;/span&gt;
+  &lt;span class="type"&gt;VOICE&lt;/span&gt;
+&lt;/div&gt;
+</pre>
 <h1 id="rfc.section.9.37"><a href="#rfc.section.9.37">9.37.</a> <a href="#element.postal" id="element.postal">&lt;postal&gt;</a></h1>
 <p id="rfc.section.9.37.p.1">This element renders as an HTML &lt;div&gt; with CSS class "adr", unless it contains a &lt;postalLine&gt; child element (in which case it adds no HTML markup).</p>
 <p id="rfc.section.9.37.p.2">When there is no &lt;postalLine&gt; child, the following child elements are rendered into the HTML: </p>
@@ -1171,7 +1223,8 @@ about something that we need to remember later.
   &lt;div class="street-address"&gt;1 Main Street&lt;/div&gt;
   &lt;div class="street-address"&gt;Suite 1&lt;/div&gt;
   &lt;div&gt;
-    &lt;span class="city"&gt;Denver&lt;/span&gt;,
+    &lt;span class="city"&gt;Denver&lt;/span&gt;
+    &lt;span class="comma"&gt;,&lt;/span&gt;
     &lt;span class="region"&gt;CO&lt;/span&gt;
     &lt;span class="code"&gt;80212&lt;/span&gt;
   &lt;/div&gt;
@@ -1194,7 +1247,11 @@ Streets have no name&lt;/pre&gt;</pre>
   &lt;dd&gt;&lt;span class="refauthor"&gt;Phillips, A.&lt;/span&gt; ...&lt;/dd&gt;
 &lt;/dl&gt;</pre>
 <h1 id="rfc.section.9.41"><a href="#rfc.section.9.41">9.41.</a> <a href="#element.referencegroup" id="element.referencegroup">&lt;referencegroup&gt;</a></h1>
-<p id="rfc.section.9.41.p.1">To be documented, pending RFC editor guidance on desired semantics.</p>
+<p id="rfc.section.9.41.p.1">A &lt;referencegroup&gt; is translated into a &lt;span&gt; of class referencegroup which contains the references.  &lt;span&gt; is used here to ensure that the reference lists remain as undisturbed as possible.</p>
+<pre>
+&lt;span class="referencegroup"&gt;
+  &lt;dl class="reference"&gt;...&lt;/dl&gt;
+&lt;/span&gt;</pre>
 <h1 id="rfc.section.9.42"><a href="#rfc.section.9.42">9.42.</a> <a href="#element.references" id="element.references">&lt;references&gt;</a></h1>
 <p id="rfc.section.9.42.p.1">If there is at least one &lt;references&gt; element, a "References" section is added to the document, continuing with the next major section number after the last <a href="#element.section">&lt;section&gt;</a> <cite title="NONE">[element.section]</cite>.  </p>
 <p id="rfc.section.9.42.p.2">Each references element will be added to that "References" section as if it were a section itself.</p>

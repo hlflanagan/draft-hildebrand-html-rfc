@@ -233,7 +233,17 @@
       </ol>
       <ol style='Requirement %i:' start='18'>
         <li>Wheels on a big rig</li>
-        <li>Exercitation nisi quis in laborum ipsum esse excepteur culpa. And then <xref target="whoa"/>.</li>
+        <li>Exercitation nisi quis in laborum ipsum esse excepteur culpa. And
+        then <xref target="whoa"/>.   Et pariatur anim labore pariatur qui
+        adipisicing consequat quis. Occaecat fugiat ad mollit ipsum occaecat
+        aliqua consectetur. Esse proident qui amet quis dolore consectetur
+        proident sunt ipsum exercitation veniam exercitation amet. Nostrud
+        exercitation magna officia incididunt deserunt incididunt eiusmod veniam
+        esse minim non. Mollit non ad consectetur adipisicing nisi ex consequat
+        qui proident officia laboris duis adipisicing. Velit commodo aliqua
+        occaecat consequat nostrud anim ad ut. Quis aute eu culpa dolore ut esse
+        ea est elit occaecat. In cupidatat ea ipsum est fugiat ad pariatur
+        nulla. </li>
       </ol>
       <artwork anchor='not-actually-ee' xml:lang='en' type='poetry' align='center'>
 artwork does not
@@ -399,8 +409,10 @@ int main(void)
         </reference>
         <reference anchor="Bibble2">
           <front>
-            <title>Bibble use cases</title>
-            <author initials="N." surname="One" fullname="No One"/>
+            <title ascii="Bibble use cases">𝔹ibble use cases</title>
+            <author initials="Ñ." asciiInitials="N." surname="One" fullname="Ño One" asciiFullname="No One"/>
+            <author initials="Ñ." asciiInitials="N." surname="Two" fullname="Ño Two" asciiFullname="No Two"/>
+            <author initials="Ñ." asciiInitials="N." surname="Three" fullname="Ño Three" asciiFullname="No Three"/>
           </front>
         <seriesInfo name="BibbleSpècs" asciiName= "BibbleSpecs" value="12-4479"/>
         </reference>
