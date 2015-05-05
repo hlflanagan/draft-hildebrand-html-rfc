@@ -19,10 +19,16 @@
         <email>jhildebr@cisco.com</email>
       </address>
     </author>
-    <author initials="H." surname="Flanagan" fullname="Heather Flanagan" role="editor">
+    <author initials="H." surname="Flanagan" fullname="Heather Flanagan">
       <organization>RFC Editor</organization>
       <address>
         <email>rse@rfc-editor.org</email>
+      </address>
+    </author>
+    <author initials="P." surname="Hoffman" fullname="Paul Hoffman">
+      <organization>VPN Consortium</organization>
+  	  <address>
+        <email>paul.hoffman@vpnc.org</email>
       </address>
     </author>
     <date year="2015" month="May" day="5"/>
@@ -48,6 +54,8 @@
         HTML file but will be described in a separate document.</t>
     </section>
     <section anchor="requirements-for-html" title="Requirements for the HTML Format">
+        <t>
+      <list style="symbols">
       <t>This section lists the design requirements used to create the HTML
         format described in this document.  These requirements build on those
         found in <xref target="RFC6949"/>.</t>
@@ -68,9 +76,9 @@
         files for images, CSS, JavaScript, or the like.  This will allow
         the HTML file to be moved over various non-HTTP transports (such as
         e-mail, FTP, and rsync) without breakage.</t>
-      <t>Any use of JavaScript in the HTML document will not negatively impact
-        the ability to read the document because some consumers of the RFC series
-        routinely disable JavaScript for security purposes.</t>
+      <t>Any use of JavaScript in the HTML document must not be required for
+        comprehensive reading of the document, because some consumers of the
+        RFC series routinely disable JavaScript for security purposes.</t>
       <t>The HTML document will allow easy local override of the default CSS
         formatting.  This will allow users who have a different visual style
         that they prefer to make RFCs display with that style without having to
@@ -94,18 +102,21 @@
         documents easier in the future.</t>
       <t>The abstract must be marked up or tagged in a way that popular search
         engines will extract it as a summary.</t>
-      <t>The format will consist of a subset of HTML deemed to be widely-implemented
-        by common browsers at the time the specification is created,
-        likely to continue to be widely-implemented, and unlikely to cause
-        security issues.  This will maximize the chances that future HTML
+      <t>The format will consist of a subset of HTML deemed to be widely
+        implemented   by common browsers at the time the specification is
+        created, likely to continue to be widely-implemented, and unlikely to
+        cause security issues.  This will maximize the chances that future HTML
         renderers (such as new web browsers) will continue to produce readable
         text from the HTML format without the format needing to be changed
         frequently.</t>
+      </list>
+      </t>
       <section anchor="accessibility" title="Requirements for Accessibility">
-        <t>Normative information must be easily accessible to the following
-          consumers:</t>
         <t>
-          <list style="symbols">
+        <list style="symbols">
+        <t>Normative information must be easily accessible to the following
+          consumers:
+          <list>
             <t>People with impaired vision, including those that use large fonts
               and those that use screen readers</t>
             <t>People with difficulty distinguishing between colors</t>
@@ -119,6 +130,8 @@
           features they cannot use, but does require that key semantic data is not
           lost when read using the tools and settings that are required by a given
           constituency.</t>
+        </list>
+      </t>
       </section>
     </section>
     <section anchor="html5" title="HTML Version">
@@ -127,8 +140,8 @@
         format defined in this document.  The starting version will be that
         defined in <xref target="W3C.REC-html5-20141028"/>, commonly known as
         "HTML5".  Although the HTML specification mandates several of the syntax
-        and structure rules in this document, they are called out here for
-        emphasis.</t>
+        and structure rules described in this document, they are called out here
+        for emphasis.</t>
     </section>
     <section anchor="syntax" title="HTML Syntax">
       <t>The processor emitting HTML from the XML source will follow these
@@ -279,8 +292,8 @@
           </figure>
         </section>
         <section anchor="style" title="Style">
-          <t>The &lt;head&gt; element contains an embedded CSS stylesheet in a
-            &lt;style&gt; element.  The styles in the stylesheet are to be set
+          <t>The &lt;head&gt; element contains an embedded CSS style sheet in a
+            &lt;style&gt; element.  The styles in the style sheet are to be set
             consistently between documents by the RFC Editor, according to the
             best practices of the day.</t>
           <t>To ensure consistent formatting, individual style attributes are
@@ -290,9 +303,9 @@
           <t>Different readers of a specification will desire different
             formatting when reading the HTML versions of RFCs.  To facilitate
             this, the &lt;head&gt; element also includes a &lt;link&gt; to a
-            stylesheet in the same directory as the HTML file, named
-            "rfc-local.css". Any formatting in the linked stylesheet will
-            override the formatting in the included stylesheet. For example:</t>
+            style sheet in the same directory as the HTML file, named
+            "rfc-local.css". Any formatting in the linked style sheet will
+            override the formatting in the included style sheet. For example:</t>
          <figure>
           <artwork><![CDATA[
 <style>
@@ -539,7 +552,7 @@
       <section anchor="docinfo" title="Document Information">
         <t>A few bits of metadata about the document that are less
           important to most readers are included after the author information.
-          The stylesheet might de-emphasize their display, or hide them
+          The style sheet might de-emphasize their display, or hide them
           altogether.</t>
         <t>The finalized time is copied from the &lt;rfc&gt; element's
           prepTime attribute.  The rendered time is the time that this
@@ -747,6 +760,9 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
           attribute), linking to the "cite" URL.</t>
         <t>If the blockquote does not contain another element that get a
           <xref target='pilcrows'>pilcrow</xref>, a pilcrow is added.</t>
+        <t>Note that the "--" at the begining of the &lt;cite&gt; element
+          should be a proper emdash, which is difficult to show in the
+          current format of this format.</t>
         <figure>
           <artwork><![CDATA[
 <blockquote id="p-1.2-1"
@@ -757,7 +773,7 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
     are created equal.
     <a href="#p-1.2-2" class="pilcrow">&para;</a>
   </p>
-  <cite>— <a href="http://...">Abraham Lincoln</a></cite>
+  <cite>-- <a href="http://...">Abraham Lincoln</a></cite>
 </blockquote>]]></artwork>
         </figure>
       </section>

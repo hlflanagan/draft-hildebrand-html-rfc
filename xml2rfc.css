@@ -258,7 +258,7 @@ address.vcard .type {
 .index a.primary {
   font-weight: bold;
 }
-.times {
+.docinfo {
   float: right;
   clear: both;
   font-style: italic;

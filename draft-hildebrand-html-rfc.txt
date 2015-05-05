@@ -4,7 +4,7 @@
 
 Network Working Group                                 J. Hildebrand, Ed.
 Internet-Draft                                       Cisco Systems, Inc.
-Intended status: Informational                          H. Flanagan, Ed.
+Intended status: Informational                               H. Flanagan
 Expires: November 6, 2015                                     RFC Editor
                                                              May 5, 2015
 
@@ -15,8 +15,8 @@ Expires: November 6, 2015                                     RFC Editor
 Abstract
 
    This document defines the HTML format that will be rendered from the
-   canonical XML format for an RFC.  The HTML output will include a
-   default CSS to enable page layout.
+   canonical XML format for an RFC or Internet-Draft.  The HTML output
+   will include a default CSS to enable page layout.
 
 Status of This Memo
 
@@ -62,6 +62,7 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   4
    2.  Requirements for the HTML Format  . . . . . . . . . . . . . .   4
+     2.1.  Requirements for Accessibility  . . . . . . . . . . . . .   6
    3.  HTML Version  . . . . . . . . . . . . . . . . . . . . . . . .   6
    4.  HTML Syntax . . . . . . . . . . . . . . . . . . . . . . . . .   6
    5.  Common Items  . . . . . . . . . . . . . . . . . . . . . . . .   7
@@ -69,7 +70,7 @@ Table of Contents
      5.2.  Pilcrows  . . . . . . . . . . . . . . . . . . . . . . . .   7
      5.3.  ASCII Equivalents . . . . . . . . . . . . . . . . . . . .   8
    6.  Prologue  . . . . . . . . . . . . . . . . . . . . . . . . . .   8
-     6.1.  DOCTYPE . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     6.1.  DOCTYPE . . . . . . . . . . . . . . . . . . . . . . . . .   9
      6.2.  Root Element  . . . . . . . . . . . . . . . . . . . . . .   9
      6.3.  Head Element  . . . . . . . . . . . . . . . . . . . . . .   9
        6.3.1.  Charset Declaration . . . . . . . . . . . . . . . . .   9
@@ -82,7 +83,7 @@ Table of Contents
    7.  Main Body . . . . . . . . . . . . . . . . . . . . . . . . . .  12
    8.  Epilogue  . . . . . . . . . . . . . . . . . . . . . . . . . .  12
      8.1.  Index . . . . . . . . . . . . . . . . . . . . . . . . . .  12
-       8.1.1.  Index Index . . . . . . . . . . . . . . . . . . . . .  12
+       8.1.1.  Index Contents  . . . . . . . . . . . . . . . . . . .  12
        8.1.2.  Index Letters . . . . . . . . . . . . . . . . . . . .  12
        8.1.3.  Index Items . . . . . . . . . . . . . . . . . . . . .  13
        8.1.4.  Index Sub-items . . . . . . . . . . . . . . . . . . .  13
@@ -105,7 +106,6 @@ Table of Contents
      9.10. <blockquote>  . . . . . . . . . . . . . . . . . . . . . .  20
      9.11. <boilerplate> . . . . . . . . . . . . . . . . . . . . . .  20
      9.12. <br>  . . . . . . . . . . . . . . . . . . . . . . . . . .  21
-     9.13. <city>  . . . . . . . . . . . . . . . . . . . . . . . . .  21
 
 
 
@@ -114,39 +114,40 @@ Hildebrand & Flanagan   Expires November 6, 2015                [Page 2]
 Internet-Draft                  HTML RFC                        May 2015
 
 
+     9.13. <city>  . . . . . . . . . . . . . . . . . . . . . . . . .  21
      9.14. <code>  . . . . . . . . . . . . . . . . . . . . . . . . .  21
      9.15. <country> . . . . . . . . . . . . . . . . . . . . . . . .  21
      9.16. <cref>  . . . . . . . . . . . . . . . . . . . . . . . . .  21
-     9.17. <date>  . . . . . . . . . . . . . . . . . . . . . . . . .  21
+     9.17. <date>  . . . . . . . . . . . . . . . . . . . . . . . . .  22
      9.18. <dd>  . . . . . . . . . . . . . . . . . . . . . . . . . .  22
      9.19. <displayreference>  . . . . . . . . . . . . . . . . . . .  22
      9.20. <dl>  . . . . . . . . . . . . . . . . . . . . . . . . . .  22
      9.21. <dt>  . . . . . . . . . . . . . . . . . . . . . . . . . .  22
      9.22. <em>  . . . . . . . . . . . . . . . . . . . . . . . . . .  22
      9.23. <email> . . . . . . . . . . . . . . . . . . . . . . . . .  22
-     9.24. <eref>  . . . . . . . . . . . . . . . . . . . . . . . . .  22
+     9.24. <eref>  . . . . . . . . . . . . . . . . . . . . . . . . .  23
      9.25. <figure>  . . . . . . . . . . . . . . . . . . . . . . . .  23
      9.26. <front> . . . . . . . . . . . . . . . . . . . . . . . . .  23
      9.27. <iref>  . . . . . . . . . . . . . . . . . . . . . . . . .  23
      9.28. <keyword> . . . . . . . . . . . . . . . . . . . . . . . .  23
-     9.29. <li>  . . . . . . . . . . . . . . . . . . . . . . . . . .  23
-     9.30. <link>  . . . . . . . . . . . . . . . . . . . . . . . . .  23
+     9.29. <li>  . . . . . . . . . . . . . . . . . . . . . . . . . .  24
+     9.30. <link>  . . . . . . . . . . . . . . . . . . . . . . . . .  24
      9.31. <middle>  . . . . . . . . . . . . . . . . . . . . . . . .  24
      9.32. <name>  . . . . . . . . . . . . . . . . . . . . . . . . .  24
      9.33. <note>  . . . . . . . . . . . . . . . . . . . . . . . . .  24
      9.34. <ol>  . . . . . . . . . . . . . . . . . . . . . . . . . .  24
-       9.34.1.  Percent styles . . . . . . . . . . . . . . . . . . .  24
+       9.34.1.  Percent styles . . . . . . . . . . . . . . . . . . .  25
        9.34.2.  Standard styles  . . . . . . . . . . . . . . . . . .  25
      9.35. <organization>  . . . . . . . . . . . . . . . . . . . . .  25
      9.36. <phone> . . . . . . . . . . . . . . . . . . . . . . . . .  25
      9.37. <postal>  . . . . . . . . . . . . . . . . . . . . . . . .  25
      9.38. <postalLine>  . . . . . . . . . . . . . . . . . . . . . .  26
      9.39. <refcontent>  . . . . . . . . . . . . . . . . . . . . . .  26
-     9.40. <reference> . . . . . . . . . . . . . . . . . . . . . . .  26
+     9.40. <reference> . . . . . . . . . . . . . . . . . . . . . . .  27
      9.41. <referencegroup>  . . . . . . . . . . . . . . . . . . . .  27
      9.42. <references>  . . . . . . . . . . . . . . . . . . . . . .  27
-     9.43. <region>  . . . . . . . . . . . . . . . . . . . . . . . .  27
-     9.44. <rfc> . . . . . . . . . . . . . . . . . . . . . . . . . .  27
+     9.43. <region>  . . . . . . . . . . . . . . . . . . . . . . . .  28
+     9.44. <rfc> . . . . . . . . . . . . . . . . . . . . . . . . . .  28
      9.45. <section> . . . . . . . . . . . . . . . . . . . . . . . .  28
      9.46. <seriesInfo>  . . . . . . . . . . . . . . . . . . . . . .  28
      9.47. <sourcecode>  . . . . . . . . . . . . . . . . . . . . . .  28
@@ -157,11 +158,10 @@ Internet-Draft                  HTML RFC                        May 2015
      9.52. <t> . . . . . . . . . . . . . . . . . . . . . . . . . . .  29
      9.53. <table> . . . . . . . . . . . . . . . . . . . . . . . . .  29
      9.54. <tbody> . . . . . . . . . . . . . . . . . . . . . . . . .  29
-     9.55. <td>  . . . . . . . . . . . . . . . . . . . . . . . . . .  29
-     9.56. <tfoot> . . . . . . . . . . . . . . . . . . . . . . . . .  29
-     9.57. <th>  . . . . . . . . . . . . . . . . . . . . . . . . . .  29
+     9.55. <td>  . . . . . . . . . . . . . . . . . . . . . . . . . .  30
+     9.56. <tfoot> . . . . . . . . . . . . . . . . . . . . . . . . .  30
+     9.57. <th>  . . . . . . . . . . . . . . . . . . . . . . . . . .  30
      9.58. <thead> . . . . . . . . . . . . . . . . . . . . . . . . .  30
-     9.59. <title> . . . . . . . . . . . . . . . . . . . . . . . . .  30
 
 
 
@@ -170,12 +170,13 @@ Hildebrand & Flanagan   Expires November 6, 2015                [Page 3]
 Internet-Draft                  HTML RFC                        May 2015
 
 
+     9.59. <title> . . . . . . . . . . . . . . . . . . . . . . . . .  30
      9.60. <tr>  . . . . . . . . . . . . . . . . . . . . . . . . . .  30
      9.61. <tt>  . . . . . . . . . . . . . . . . . . . . . . . . . .  30
      9.62. <ul>  . . . . . . . . . . . . . . . . . . . . . . . . . .  30
      9.63. <uri> . . . . . . . . . . . . . . . . . . . . . . . . . .  30
-     9.64. <workgroup> . . . . . . . . . . . . . . . . . . . . . . .  30
-     9.65. <xref>  . . . . . . . . . . . . . . . . . . . . . . . . .  30
+     9.64. <workgroup> . . . . . . . . . . . . . . . . . . . . . . .  31
+     9.65. <xref>  . . . . . . . . . . . . . . . . . . . . . . . . .  31
    10. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  31
    11. Security Considerations . . . . . . . . . . . . . . . . . . .  31
    12. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  31
@@ -200,23 +201,22 @@ Internet-Draft                  HTML RFC                        May 2015
 
 2.  Requirements for the HTML Format
 
-   This section lists the design requirements used to create the HTML
-   format described in this document.  These requirements build on those
-   found in [RFC6949].
+   o  This section lists the design requirements used to create the HTML
+      format described in this document.  These requirements build on
+      those found in [RFC6949].
 
-   The HTML has to render correctly on a list of browser versions that
-   the RFC Editor will keep up to date outside of this document.
+   o  The HTML has to render correctly on a list of browser versions
+      that the RFC Editor will keep up to date outside of this document.
 
-   These requirements are expected to change in the future to reflect
-   the expectation that HTML rendering will be required for current
-   versions of browsers and platforms, while ideally continuing to
-   render correctly on earlier versions.
+   o  These requirements are expected to change in the future to reflect
+      the expectation that HTML rendering will be required for current
+      versions of browsers and platforms, while ideally continuing to
+      render correctly on recent versions of those browsers.
 
-   The HTML documents may be re-rendered from the canonical XML format
-   in the future to ensure the ongoing readability of the documents.
-   The intent is that any re-rendering would be due to exceptional
-   circumstances rather than for minor annoyances.
-
+   o  The HTML documents may be re-rendered from the canonical XML
+      format in the future to ensure the ongoing readability of the
+      documents.  The intent is that any re-rendering would be due to
+      exceptional circumstances rather than for minor annoyances.
 
 
 
@@ -226,54 +226,54 @@ Hildebrand & Flanagan   Expires November 6, 2015                [Page 4]
 Internet-Draft                  HTML RFC                        May 2015
 
 
-   The HTML must display adequately in at least one text-based browser.
-   Some consumers of the RFC series can only access the series on text-
-   based terminals.
+   o  The HTML must display adequately in at least one text-based
+      browser.  Some consumers of the RFC series can only access the
+      series on text- based terminals.
 
-   The HTML document will be self-contained, without requiring external
-   files for images, CSS, JavaScript, or the like.  This will allow the
-   HTML file to be moved over various non-HTTP transports (such as
-   e-mail, FTP, and rsync) without breakage.
+   o  The HTML document will be self-contained, without requiring
+      external files for images, CSS, JavaScript, or the like.  This
+      will allow the HTML file to be moved over various non-HTTP
+      transports (such as e-mail, FTP, and rsync) without breakage.
 
-   Any use of JavaScript in the HTML document will not negatively impact
-   the ability to read the document.  Some consumers of the RFC series
-   routinely disable JavaScript for security purposes.
+   o  Any use of JavaScript in the HTML document must not be required
+      for comprehensive reading of the document, because some consumers
+      of the RFC series routinely disable JavaScript for security
+      purposes.
 
-   The HTML document will allow easy local override of the default CSS
-   formatting.  This will allow users who have a different visual style
-   that they prefer to make RFCs display with that style without having
-   to alter the contents of the HTML document.  This might also be
-   valuable for allowing people with specific accessibility needs to use
-   a customized CSS.
+   o  The HTML document will allow easy local override of the default
+      CSS formatting.  This will allow users who have a different visual
+      style that they prefer to make RFCs display with that style
+      without having to alter the contents of the HTML document.  This
+      might also be valuable for allowing people with specific
+      accessibility needs to use a customized CSS.
 
-   HTML tags in documents will rarely have attributes whose only purpose
-   is to affect the rendered styling, and those will only be used if it
-   would not be possible to specify that styling in CSS.
+   o  HTML tags in documents will rarely have attributes whose only
+      purpose is to affect the rendered styling, and those will only be
+      used if it would not be possible to specify that styling in CSS.
+      No such attributes are known at this time.
 
-   Both user-defined and autogenerated anchors must be supported and
-   linkable, with user-defined anchors appearing in an "id" attribute.
-   Autogenerated anchors will be generated for every heading, paragraph,
-   and so on, not just those that do not have user-defined anchors.
-   User-defined anchors may, and autogenerated anchors will, appear next
-   to paragraphs, figures, tables, blockquotes, and section titles.
+   o  Both user-defined and auto-generated anchors must be supported and
+      linkable, with user-defined anchors appearing in an "id"
+      attribute.  Auto-generated anchors will be generated for every
+      heading, paragraph, and so on, not just those that do not have
+      user-defined anchors.  User-defined anchors may, and auto-
+      generated anchors will, appear next to paragraphs, figures,
+      tables, blockquotes, and section titles.
 
-   All section, subsections, figures, and paragraphs should have stable
-   numbered link anchors.  Additionally, anchors expressed in the source
-   XML should be exposed as anchors in the HTML as well.
+   o  All section, subsections, figures, and paragraphs should have
+      stable numbered link anchors.  Additionally, anchors expressed in
+      the source XML should be exposed as anchors in the HTML output as
+      well.
 
-   The HTML must make it easy to separate sections along with all of
-   their subsections into separate files.  This will make creating EPUB
-   documents easier in the future.
+   o  The HTML must make it easy to separate sections along with all of
+      their subsections into separate files.  This will make creating
+      EPUB documents easier in the future.
 
-   The abstract must be marked up or tagged in a way that popular search
-   engines will extract it as a summary.
+   o  The abstract must be marked up or tagged in a way that popular
+      search engines will extract it as a summary.
 
-   The format will consist of a subset of HTML deemed to be widely-
-   implementd by common browsers at the time the specification is
-   created, likely to continue to be widely-implemented, and unlikely to
-   cause security issues.  This will maximize the chances that future
-   HTML renderers (such as new web browsers) will continue to produce
-
+   o  The format will consist of a subset of HTML deemed to be widely
+      implemented by common browsers at the time the specification is
 
 
 
@@ -282,28 +282,33 @@ Hildebrand & Flanagan   Expires November 6, 2015                [Page 5]
 Internet-Draft                  HTML RFC                        May 2015
 
 
-   readable text from the HTML format without the format needing to be
-   changed frequently.
+      created, likely to continue to be widely-implemented, and unlikely
+      to cause security issues.  This will maximize the chances that
+      future HTML renderers (such as new web browsers) will continue to
+      produce readable text from the HTML format without the format
+      needing to be changed frequently.
 
-   Normative information must be easily accessible to the following
-   consumers:
+2.1.  Requirements for Accessibility
 
-   o  People with impaired vision, including those that use large fonts
-      and those that use screen readers
+   o  Normative information must be easily accessible to the following
+      consumers:
 
-   o  People with difficulty distinguishing between colors
+      *  People with impaired vision, including those that use large
+         fonts and those that use screen readers
 
-   o  People who use devices with small screens, such as cell phones
+      *  People with difficulty distinguishing between colors
 
-   o  Other groups TBD
+      *  People who use devices with small screens, such as cell phones
 
-   Specific instances where goals for accessibility are important in the
-   design choices of the format have been called out in the text.
+      *  Other groups to be determined later
 
-   NOTE: designing for these consumers does not preclude the use of
-   features they cannot use, but does require that key semantic data is
-   not lost when read using the tools and settings that are required by
-   a given constituency.
+   o  Specific instances where goals for accessibility are important in
+      the design choices of the format have been called out in the text.
+
+   o  NOTE: designing for these consumers does not preclude the use of
+      features they cannot use, but does require that key semantic data
+      is not lost when read using the tools and settings that are
+      required by a given constituency.
 
 3.  HTML Version
 
@@ -312,23 +317,18 @@ Internet-Draft                  HTML RFC                        May 2015
    defined in this document.  The starting version will be that defined
    in [W3C.REC-html5-20141028], commonly known as "HTML5".  Although the
    HTML specification mandates several of the syntax and structure rules
-   in this document, they are called out here for emphasis.
+   described in this document, they are called out here for emphasis.
 
 4.  HTML Syntax
 
    The processor emitting HTML from the XML source will follow these
    rules:
 
-   o  The HTML source is encoded as UTF-8, as specified in [RFC3629].
+   o  The HTML output is encoded as UTF-8, as specified in [RFC3629].
 
    o  The document is valid HTML.
 
-   o  Double quotes (U+0022 QUOTATION MARK: ") are used to quote
-      attribute values unless the HTML specification forbids quoting a
-      particular attribute.
 
-   o  Each logical line is terminated solely with a \n (U+000A: LINE
-      FEED), otherwise known as "Unix-style" line endings.
 
 
 
@@ -338,23 +338,30 @@ Hildebrand & Flanagan   Expires November 6, 2015                [Page 6]
 Internet-Draft                  HTML RFC                        May 2015
 
 
+   o  Double quotes (U+0022 QUOTATION MARK: ") are used to quote
+      attribute values unless the HTML specification forbids quoting a
+      particular attribute.
+
+   o  Each logical line is terminated solely with a \n (U+000A: LINE
+      FEED), otherwise known as "Unix-style" line endings.
+
    o  Other than \n (U+000A: LINE FEED), code points less than " "
       (U+0020: SPACE) (otherwise known as "control characters") are not
       used.  Any character references that would generate these code
-      points (e.g., &#0009;) may not be used.  NOTE: this rule
+      points (such as &#0009;) may not be used.  NOTE: this rule
       explicitly forbids \t (U+0009: CHARACTER TABULATION), \f (U+000C:
       FORM FEED), and \r (U+000D: CARRIAGE RETURN) from appearing in the
-      source.
+      output.
 
    o  Comments in the canonical XML, if any, will not be copied into the
       HTML.
 
-   o  The HTML source will be pretty-printed, using whatever consistent
+   o  The HTML output will be pretty-printed, using whatever consistent
       rules the tooling team deems best.
 
    NOTE: none of these rules affect the rendered output of the HTML, but
    are intended to increase the chance that difference tools that
-   operate on the HTML source easier to write.
+   operate on the HTML output easier to write.
 
 5.  Common Items
 
@@ -378,13 +385,6 @@ Internet-Draft                  HTML RFC                        May 2015
    Each paragraph, artwork, or sourcecode segment outside of a <figure>
    or <table> element will be appended with a space and a "pilcrow"
    (U+00B6: PILCROW SIGN), otherwise known as a "paragraph sign".  For
-   the purposes of clarity, in this document pilcrows are rendered as
-   "&para;".
-
-   The pilcrow will normally be invisible unless the element it is
-   attached to is moused over.  The pilcrow will be surrounded by a link
-   that points to the element it is attached to.
-
 
 
 
@@ -394,13 +394,20 @@ Hildebrand & Flanagan   Expires November 6, 2015                [Page 7]
 Internet-Draft                  HTML RFC                        May 2015
 
 
+   the purposes of clarity, in this document pilcrows are rendered as
+   "&para;".
+
+   The pilcrow will normally be invisible unless the element it is
+   attached to is moused over.  The pilcrow will be surrounded by a link
+   that points to the element it is attached to.
+
    Pilcrows are never included inside a <table> or <figure> elements,
    since the figure number or table number serve as adequate link
    targets.
 
    Elements that might otherwise contain a pilcrow do not get marked
    with a pilcrow if they contain one or more child elements that are
-   marked with a pilcrow.
+   marked with a pilcrow.  For example:
 
    <blockquote id="p-1.2-1">
      <p id="p-1.2-2">Four score and seven years ago our fathers brought
@@ -412,11 +419,12 @@ Internet-Draft                  HTML RFC                        May 2015
 
 5.3.  ASCII Equivalents
 
-   Many elements in the XML3RFCv3 schema contain attributes for ASCII
-   equivalents of the Unicode text contained in the element or the
-   Unicode attribute value.  These alternatives are included in a <span>
-   tag with the class "ascii".  The <span> is included inside the tag
-   that is showing the text to the user.
+   Many elements in the v3 schema in [I-D.hoffman-xml2rfc] contain
+   attributes for ASCII equivalents of the Unicode text contained in the
+   element or the Unicode attribute value.  These alternatives are
+   included in a <span> tag with the class "ascii".  The <span> is
+   included inside the tag that is showing the text to the user.  For
+   example:
 
    <span class="surname">
      HILDEBRAND
@@ -432,14 +440,6 @@ Internet-Draft                  HTML RFC                        May 2015
    on each of the tags that generate content in this section, see
    Section 9.
 
-6.1.  DOCTYPE
-
-   The DOCTYPE of the document is "html", which declares that the
-   document is compliant with HTML5.  The document will start with
-   exactly this string:
-
-   <!DOCTYPE html>
-
 
 
 
@@ -449,6 +449,14 @@ Hildebrand & Flanagan   Expires November 6, 2015                [Page 8]
 
 Internet-Draft                  HTML RFC                        May 2015
 
+
+6.1.  DOCTYPE
+
+   The DOCTYPE of the document is "html", which declares that the
+   document is compliant with HTML5.  The document will start with
+   exactly this string:
+
+   <!DOCTYPE html>
 
 6.2.  Root Element
 
@@ -491,14 +499,6 @@ Internet-Draft                  HTML RFC                        May 2015
 
    o  keywords - comma-separated <keyword>s from the XML source
 
-   An example:
-
-   <meta name="author" content="Joe Hildebrand,Heather Flanagan">
-   <meta name="keywords" content="html,css,rfc">
-   <meta name="description" content="This document defines...">
-   <meta name="generator" content="xmljade v0.2.4">
-
-
 
 
 Hildebrand & Flanagan   Expires November 6, 2015                [Page 9]
@@ -506,24 +506,31 @@ Hildebrand & Flanagan   Expires November 6, 2015                [Page 9]
 Internet-Draft                  HTML RFC                        May 2015
 
 
+   For example:
+
+   <meta name="author" content="Joe Hildebrand,Heather Flanagan">
+   <meta name="keywords" content="html,css,rfc">
+   <meta name="description" content="This document defines...">
+   <meta name="generator" content="xmljade v0.2.4">
+
 6.3.4.  Style
 
-   The <head> element contains an embedded CSS stylesheet in a <style>
-   element.  The styles in the stylesheet are to be set consistently
+   The <head> element contains an embedded CSS style sheet in a <style>
+   element.  The styles in the style sheet are to be set consistently
    between documents by the RFC Editor, according to the best practices
    of the day.
 
    To ensure consistent formatting, individual style attributes are not
-   used in the main portion of the document source except in highly
-   exceptional circumstances; each use of such attributes will be
-   individually justified.
+   used in the main portion of the document except in highly exceptional
+   circumstances; each use of such attributes will be individually
+   justified.
 
    Different readers of a specification will desire different formatting
    when reading the HTML versions of RFCs.  To facilitate this, the
-   <head> element also includes a <link> to a stylesheet in the same
+   <head> element also includes a <link> to a style sheet in the same
    directory as the HTML file, named "rfc-local.css".  Any formatting in
-   the linked stylesheet will override the formatting in the included
-   stylesheet.
+   the linked style sheet will override the formatting in the included
+   style sheet.  For example:
 
    <style>
      body {}
@@ -533,23 +540,16 @@ Internet-Draft                  HTML RFC                        May 2015
 
 6.3.5.  Links
 
-   Each link (Section 9.30) from the source is copied into the header.
+   Each link (Section 9.30) from the XML source is copied into the
+   header.
 
 6.4.  Document Information
 
    Information about the document as a whole will appear as the first
    child of the HTML <body> element, embedded in an HTML <dl> element
-   with id="identifiers".  The defined terms (<dt>s) in the definition
-   list are "Workgroup:", "Series:", "Status:", "Published:", and
-   "Authors:".
-
-
-
-
-
-
-
-
+   with id="identifiers".  The defined terms in the definition list are
+   "Workgroup:", "Series:", "Status:", "Published:", and "Authors:".
+   For example:
 
 
 
@@ -625,9 +625,9 @@ Internet-Draft                  HTML RFC                        May 2015
 
 8.  Epilogue
 
-   The back matter of the HTML document includes an index (if generated)
-   information about the authors, and further information about the
-   document itself.
+   The back matter of the HTML document includes an index (if
+   generated), information about the authors, and further information
+   about the document itself.
 
 8.1.  Index
 
@@ -636,7 +636,7 @@ Internet-Draft                  HTML RFC                        May 2015
    indexInclude attribute with the value "true", and there is one or
    more <iref> elements in the document.
 
-8.1.1.  Index Index
+8.1.1.  Index Contents
 
    The index section will start with an <h2> heading containing the text
    "Index", followed by links to each of the lettered portions of the
@@ -685,17 +685,17 @@ Internet-Draft                  HTML RFC                        May 2015
 
 8.1.3.  Index Items
 
-   Each index item can have multiple <iref>'s to point to, all with the
-   same item attribute.  Each index item is represented by a <li> tag of
-   class indexItem containing a <span> of class irefItem for the item
-   text and one of clas irefRefs for the generated references (if there
-   is at least one reference to the item not having a subitem).  Each
-   generated reference contains an <a> tag containing the section number
-   where the <iref> was found, with an href pointing to the irefid of
-   the <iref>.  If the primary attribute of the <iref> has the value
-   "true", the <a> tag will have the class indexPrimary.  Commas may be
-   used to separate the generated references, surrounded by a <span> tag
-   with class indexComma.
+   Each index item can have multiple <iref> elements to point to, all
+   with the same item attribute.  Each index item is represented by a
+   <li> tag of class indexItem containing a <span> of class irefItem for
+   the item text and one of class irefRefs for the generated references
+   (if there is at least one reference to the item not having a
+   subitem).  Each generated reference contains an <a> tag containing
+   the section number where the <iref> was found, with an href pointing
+   to the irefid of the <iref>.  If the primary attribute of the <iref>
+   has the value "true", the <a> tag will have the class indexPrimary.
+   Commas may be used to separate the generated references, surrounded
+   by a <span> tag with class indexComma.
 
    For example:
 
@@ -746,8 +746,8 @@ Internet-Draft                  HTML RFC                        May 2015
    inside an HTML <section> element.  The class names have been chosen
    to match the class names in hCard [1].
 
-   Note: The following example shows several ascii equivalents that are
-   the same as their nominal equivalents for clarity; normally the ascii
+   Note: The following example shows several ASCII equivalents that are
+   the same as their nominal equivalents for clarity; normally the ASCII
    equivalents would not be included for these cases.
 
    <section id="author-addresses">
@@ -821,10 +821,10 @@ Internet-Draft                  HTML RFC                        May 2015
 8.3.  Document Information
 
    A few bits of metadata about the document that are less important to
-   most readers are included after the author information.  The
-   stylesheet might de-emphasize their display, or hide them altogether.
+   most readers are included after the author information.  The style
+   sheet might de-emphasize their display, or hide them altogether.
 
-   The finalized time is copied from the <rfc> element's finalizedTime
+   The finalized time is copied from the <rfc> element's prepTime
    attribute.  The rendered time is the time that this HTML was
    generated.
 
@@ -859,10 +859,10 @@ Internet-Draft                  HTML RFC                        May 2015
    produce this document will be included within a comment.  This
    comment may be preceded by another comment that describes the source.
 
-   Any instances of "--" in the XML will be modified to "--".  Note that
-   if the dashes in the original XML were in a comment start- (<!--) or
-   end-delimiter (-->), the XML will not parse correctly without
-   reversing this transformation.
+   Any instances of "--" in the XML will be modified to use U+002D
+   characters: "--".  Note that if the dashes in the original XML were
+   in a comment start- (<!--) or end-delimiter (-->), the XML will not
+   parse correctly without reversing this transformation.
 
    <!-- XML SOURCE START (note: each instance of
         two '-' (U+002D: HYPHEN-MINUS) characters
@@ -875,7 +875,8 @@ Internet-Draft                  HTML RFC                        May 2015
 9.  Elements
 
    This section describes how each of the XML elements from
-   [I-D.hoffman-xml2rfc] is rendered to HTML.
+   [I-D.hoffman-xml2rfc] is rendered to HTML.  Many of the descriptions
+   have examples to clarify how elements will be rendered.
 
 9.1.  <abstract>
 
@@ -889,7 +890,6 @@ Internet-Draft                  HTML RFC                        May 2015
        <a href="#p-abstract-1" class="pilcrow">&para;</a>
      </p>
    </section>
-
 
 
 
@@ -911,7 +911,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
    <span class="comma">,</span>
    <span class="annotation">
-     You <span class="bcp14">MUST</span> read this annotation
+     You <span class="bcp14">MUST</span> read this annotation.
    </span>
 
 9.4.  <area>
@@ -933,8 +933,8 @@ Internet-Draft                  HTML RFC                        May 2015
    & must be escaped as &lt;, &gt;, and &amp;, respectively.
 
    The <div> element will have CSS classes of "artwork" and "art-"
-   prepended to the value of the <artwork>'s "type" attribute, if it
-   exists.
+   prepended to the value of the <artwork> element's "type" attribute,
+   if it exists.
 
 
 
@@ -981,7 +981,7 @@ Internet-Draft                  HTML RFC                        May 2015
    element with CSS classes "artwork" and "art-svg".
 
    Note: the alt attribute of <artwork> is not currently used for SVG;
-   instead, use <title> and <desc> tags in your SVG.
+   instead, the <title> and <desc> tags are used in the SVG.
 
    <div class="artwork art-svg" id="p-2-17">
      <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
@@ -1000,7 +1000,7 @@ Internet-Draft                  HTML RFC                        May 2015
    Note: such images are not yet allowed by the RFC Series Editor, even
    though the format supports them.
 
-   For example:
+
 
 
 
@@ -1084,6 +1084,10 @@ Internet-Draft                  HTML RFC                        May 2015
    If the blockquote does not contain another element that get a pilcrow
    (Section 5.2), a pilcrow is added.
 
+   Note that the "--" at the begining of the <cite> element should be a
+   proper emdash, which is difficult to show in the current format of
+   this format.
+
    <blockquote id="p-1.2-1"
      cite="http://...">
      <p id="p-1.2-2">Four score and seven years ago our fathers
@@ -1098,8 +1102,25 @@ Internet-Draft                  HTML RFC                        May 2015
 9.11.  <boilerplate>
 
    The IPR boilerplate for the document appears directly after the
-   Abstract.  The childern of the input <boilerplate> element are
+   Abstract.  The children of the input <boilerplate> element are
    treated similarly to sections.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hildebrand & Flanagan   Expires November 6, 2015               [Page 20]
+
+Internet-Draft                  HTML RFC                        May 2015
+
 
    <section id="status-of-this-memo">
      <h2 id="s-boilerplate-1">
@@ -1112,16 +1133,6 @@ Internet-Draft                  HTML RFC                        May 2015
      </p>
    ...
 
-
-
-
-
-
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 20]
-
-Internet-Draft                  HTML RFC                        May 2015
-
-
 9.12.  <br>
 
    This element is directly rendered as its HTML counterpart.
@@ -1131,21 +1142,21 @@ Internet-Draft                  HTML RFC                        May 2015
    This element is rendered as a <span> element with CSS class
    "locality".
 
-   <span class='locality'>Denver</span>
+   <span class='locality'>Guilford</span>
 
 9.14.  <code>
 
    This element is rendered as a <span> element with CSS class "postal-
    code".
 
-   <span class="postal-code">80202<span>
+   <span class="postal-code">GU16 7HF<span>
 
 9.15.  <country>
 
    This element is rendered as a <div> element with CSS class "country-
    name".
 
-   <div class="country-name">US</div>
+   <div class="country-name">England</div>
 
 9.16.  <cref>
 
@@ -1158,6 +1169,15 @@ Internet-Draft                  HTML RFC                        May 2015
    about something that we need to remember later.
    <span class="cref-source">--life</span></span>
 
+
+
+
+
+Hildebrand & Flanagan   Expires November 6, 2015               [Page 21]
+
+Internet-Draft                  HTML RFC                        May 2015
+
+
 9.17.  <date>
 
    This element is rendered as the HTML <time> element.  If the "year",
@@ -1168,15 +1188,6 @@ Internet-Draft                  HTML RFC                        May 2015
    "published".
 
    <time datetime="2014-10" class="published">October 2014</time>
-
-
-
-
-
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 21]
-
-Internet-Draft                  HTML RFC                        May 2015
-
 
 9.18.  <dd>
 
@@ -1192,7 +1203,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
    If the hanging attribute is "false", add the "dlparallel" class.
 
-   If the spacing attribute is "compact" add the "dlcompact" class.
+   If the spacing attribute is "compact", add the "dlcompact" class.
 
 9.21.  <dt>
 
@@ -1212,6 +1223,17 @@ Internet-Draft                  HTML RFC                        May 2015
    If the email contains an ascii attribute, a span of class ascii is
    also contained in the div.
 
+
+
+
+
+
+
+Hildebrand & Flanagan   Expires November 6, 2015               [Page 22]
+
+Internet-Draft                  HTML RFC                        May 2015
+
+
    <div>
      <span>Email:</span>
      <a href="mailto:joe@example.net" class="email">joe@example.net</a>
@@ -1222,17 +1244,9 @@ Internet-Draft                  HTML RFC                        May 2015
 
    This element is rendered as HTML <a> element, with the "href"
    attribute set to the value of the "target" attribute, and the CSS
-   class of "eref"
+   class of "eref".
 
    <a href="https://..." class="eref">the text</a>
-
-
-
-
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 22]
-
-Internet-Draft                  HTML RFC                        May 2015
-
 
 9.25.  <figure>
 
@@ -1258,7 +1272,7 @@ Internet-Draft                  HTML RFC                        May 2015
 9.27.  <iref>
 
    This element is rendered as an empty <> tag of class iref, with an id
-   consisting of the <iref>'s irefid:
+   consisting of the <iref> element's irefid:
 
    <span class="iref" id="s-Paragraphs-first-1"/>
 
@@ -1268,6 +1282,13 @@ Internet-Draft                  HTML RFC                        May 2015
    the document's header, separated by commas.
 
    <meta name="keywords" content="html,css,rfc">
+
+
+
+Hildebrand & Flanagan   Expires November 6, 2015               [Page 23]
+
+Internet-Draft                  HTML RFC                        May 2015
+
 
 9.29.  <li>
 
@@ -1280,15 +1301,6 @@ Internet-Draft                  HTML RFC                        May 2015
 9.30.  <link>
 
    This element is rendered as its HTML counterpart, in the HTML header.
-
-
-
-
-
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 23]
-
-Internet-Draft                  HTML RFC                        May 2015
-
 
 9.31.  <middle>
 
@@ -1325,7 +1337,14 @@ Internet-Draft                  HTML RFC                        May 2015
    "olcompact" will be added.
 
    The group attribute is not copied; the input XML should have start
-   values added by a prep tool for all group'd ol's.
+   values added by a prep tool for all grouped <ol> elements.
+
+
+
+Hildebrand & Flanagan   Expires November 6, 2015               [Page 24]
+
+Internet-Draft                  HTML RFC                        May 2015
+
 
 9.34.1.  Percent styles
 
@@ -1338,13 +1357,6 @@ Internet-Draft                  HTML RFC                        May 2015
      <dt>Requirement xviii:</dt>
      <dd>Wheels on a big rig</dd>
    </dl>
-
-
-
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 24]
-
-Internet-Draft                  HTML RFC                        May 2015
-
 
 9.34.2.  Standard styles
 
@@ -1379,8 +1391,16 @@ Internet-Draft                  HTML RFC                        May 2015
 9.37.  <postal>
 
    This element renders as an HTML <div> with CSS class "adr", unless it
-   contains a <postalLine> child element (in which case it adds no HTML
-   markup).
+   contains a <postalLine> child element; in which case it adds no HTML
+   markup.
+
+
+
+
+Hildebrand & Flanagan   Expires November 6, 2015               [Page 25]
+
+Internet-Draft                  HTML RFC                        May 2015
+
 
    When there is no <postalLine> child, the following child elements are
    rendered into the HTML:
@@ -1395,18 +1415,11 @@ Internet-Draft                  HTML RFC                        May 2015
 
       *  The rendering of all <region> elements
 
-
-
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 25]
-
-Internet-Draft                  HTML RFC                        May 2015
-
-
       *  Whitespace
 
       *  The rendering of all <code> elements
 
-   o  The rendering of all <country> elemenents
+   o  The rendering of all <country> elements
 
    <div class="adr">
      <div class="street-address">1 Main Street</div>
@@ -1427,27 +1440,14 @@ Internet-Draft                  HTML RFC                        May 2015
    by a newline.  Note: this <pre> element is not enclosed in a <div
    class="adr">.
 
-   <pre class="label">Where the
-   Streets have no name</pre>
+   <pre class="label">In care of:
+   Computer Sciences Division</pre>
 
 9.39.  <refcontent>
 
    This element renders as an HTML <span> with CSS class "refcontent".
 
    <span class="refcontent">Self-published pamphlet</span>
-
-9.40.  <reference>
-
-   This element will render as a <dt> <dd> pair, with the defined term
-   being the reference "anchor" attribute surrounded by square brackers,
-   and the definition including the correct set of bibliographic
-   information as specified by [RFC7322].  The <dt> element will have an
-   "id" attribute of the reference anchor.
-
-   <dl class="reference">
-     <dt id="RFC5646">[RFC5646]</dt>
-     <dd><span class="refauthor">Phillips, A.</span> ...</dd>
-   </dl>
 
 
 
@@ -1457,6 +1457,19 @@ Hildebrand & Flanagan   Expires November 6, 2015               [Page 26]
 
 Internet-Draft                  HTML RFC                        May 2015
 
+
+9.40.  <reference>
+
+   This element will render as a <dt> <dd> pair, with the defined term
+   being the reference "anchor" attribute surrounded by square brackets,
+   and the definition including the correct set of bibliographic
+   information as specified by [RFC7322].  The <dt> element will have an
+   "id" attribute of the reference anchor.
+
+   <dl class="reference">
+     <dt id="RFC5646">[RFC5646]</dt>
+     <dd><span class="refauthor">Phillips, A.</span> ...</dd>
+   </dl>
 
 9.41.  <referencegroup>
 
@@ -1492,19 +1505,6 @@ Internet-Draft                  HTML RFC                        May 2015
      </section>
    </section>
 
-9.43.  <region>
-
-   This element is rendered as a <span> element with CSS class "region".
-
-   <span class="region">CO<span>
-
-9.44.  <rfc>
-
-   Various attributes of this element are represented in the HTML
-   document.
-
-
-
 
 
 
@@ -1514,13 +1514,24 @@ Hildebrand & Flanagan   Expires November 6, 2015               [Page 27]
 Internet-Draft                  HTML RFC                        May 2015
 
 
+9.43.  <region>
+
+   This element is rendered as a <span> element with CSS class "region".
+
+   <span class="region">Colorado<span>
+
+9.44.  <rfc>
+
+   Various attributes of this element are represented in different parts
+   of the HTML document.
+
 9.45.  <section>
 
    This element is rendered as an HTML <section> element, containing an
    appropriate level HTML heading element (<h2>-<h6>).  That heading
    element contains a <a> element around the part number (pn), if
-   applicable (e.g.  <abstract> does not get a section number).  Another
-   <a> element is included with the section's name.
+   applicable (for instance, <abstract> does not get a section number).
+   Another <a> element is included with the section's name.
 
    <section id="intro">
      <h2 id="s-1">
@@ -1550,6 +1561,15 @@ Internet-Draft                  HTML RFC                        May 2015
    (Section 5.2) is included.  Inside a <figure> element, the figure
    title serves the purpose of the pilcrow.
 
+
+
+
+
+Hildebrand & Flanagan   Expires November 6, 2015               [Page 28]
+
+Internet-Draft                  HTML RFC                        May 2015
+
+
    <pre class="sourcecode lang-c">
    #include &lt;stdio.h&gt;
 
@@ -1559,16 +1579,6 @@ Internet-Draft                  HTML RFC                        May 2015
        return 0;
    }
    </pre>
-
-
-
-
-
-
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 28]
-
-Internet-Draft                  HTML RFC                        May 2015
-
 
 9.48.  <street>
 
@@ -1605,6 +1615,17 @@ Internet-Draft                  HTML RFC                        May 2015
 
    This element is directly rendered as its HTML counterpart.
 
+
+
+
+
+
+
+Hildebrand & Flanagan   Expires November 6, 2015               [Page 29]
+
+Internet-Draft                  HTML RFC                        May 2015
+
+
 9.55.  <td>
 
    This element is directly rendered as its HTML counterpart.
@@ -1617,15 +1638,6 @@ Internet-Draft                  HTML RFC                        May 2015
 
    This element is directly rendered as its HTML counterpart.
 
-
-
-
-
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 29]
-
-Internet-Draft                  HTML RFC                        May 2015
-
-
 9.58.  <thead>
 
    This element is directly rendered as its HTML counterpart.
@@ -1634,7 +1646,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
    The title of the document appears in an <h1> element, and follows
    directly after the Document Information.  The <h1> element has an id
-   attribute with value "title".  For example:
+   attribute with value "title".
 
    <h1 id="title">HyperText Markup Language Request For
        Comments Format</h1>
@@ -1660,6 +1672,16 @@ Internet-Draft                  HTML RFC                        May 2015
    attribute set to the linked URI, CSS class of "url" [sic], and the
    contents set to the linked URI.
 
+
+
+
+
+
+Hildebrand & Flanagan   Expires November 6, 2015               [Page 30]
+
+Internet-Draft                  HTML RFC                        May 2015
+
+
    <div>URI:
      <a href="http://www.example.com"
         class="url">http://www.example.com</a>
@@ -1674,14 +1696,6 @@ Internet-Draft                  HTML RFC                        May 2015
    This element is rendered as an HTML <a> element containing an
    appropriate local link as the "href" attribute.
 
-
-
-
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 30]
-
-Internet-Draft                  HTML RFC                        May 2015
-
-
    NOTE: the <xref> element is still under heavy discussion.  More
    detail will be provided here in a subsequent version of this
    document.
@@ -1693,8 +1707,9 @@ Internet-Draft                  HTML RFC                        May 2015
 11.  Security Considerations
 
    Since RFCs are sometimes exchanged outside the normal Web sandboxing
-   mechanism (e.g., rsync to a mirror) then loaded from a local file,
-   more care must be taken with the HTML than is ordinary on the web.
+   mechanism (such as using the "rsync" program to a mirror site) then
+   loaded from a local file, more care must be taken with the HTML than
+   is ordinary on the web.
 
 12.  Acknowledgments
 
@@ -1709,6 +1724,19 @@ Internet-Draft                  HTML RFC                        May 2015
 
    [RFC3629]  Yergeau, F., "UTF-8, a transformation format of ISO
               10646", STD 63, RFC 3629, November 2003.
+
+
+
+
+
+
+
+
+
+Hildebrand & Flanagan   Expires November 6, 2015               [Page 31]
+
+Internet-Draft                  HTML RFC                        May 2015
+
 
    [W3C.REC-html5-20141028]
               Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
@@ -1727,16 +1755,6 @@ Internet-Draft                  HTML RFC                        May 2015
    [I-D.flanagan-rfc-framework]
               Flanagan, H., "RFC Format Framework", draft-flanagan-rfc-
               framework-03 (work in progress), January 2015.
-
-
-
-
-
-
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 31]
-
-Internet-Draft                  HTML RFC                        May 2015
-
 
 13.2.  Informative References
 
@@ -1765,7 +1783,18 @@ Authors' Addresses
    Email: jhildebr@cisco.com
 
 
-   Heather Flanagan (editor)
+
+
+
+
+
+
+Hildebrand & Flanagan   Expires November 6, 2015               [Page 32]
+
+Internet-Draft                  HTML RFC                        May 2015
+
+
+   Heather Flanagan
    RFC Editor
 
    Email: rse@rfc-editor.org
@@ -1789,4 +1818,31 @@ Authors' Addresses
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 32]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hildebrand & Flanagan   Expires November 6, 2015               [Page 33]

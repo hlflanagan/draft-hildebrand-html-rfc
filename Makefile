@@ -43,6 +43,7 @@ stop:
 
 publish: test.3.html $(DRAFT).txt
 	git co gh-pages
+	git co $(BRANCH) -- xml2rfc.css
 	git co $(BRANCH) -- test.x.xml
 	git co $(BRANCH) -- test.n.xml
 	git co $(BRANCH) -- test.3.xml
