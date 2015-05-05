@@ -99,9 +99,10 @@ mixin cref(e)
   +elem(e)
 
 mixin date(e)
-  // in front/date, make sure we have a year, month, and day
-  - var extra = {}
-  if e.parent().name() == 'front'
+  // in rfc/front/date, make sure we have a year, month, and day
+  if $('ancestor::reference', e)
+    +elem(e)
+  else
     - var now = pubDate || new Date()
     - var a = $att(e)
     - var year = a['year'] || now.getFullYear()
@@ -110,8 +111,6 @@ mixin date(e)
     - var day = a['day'] || now.getDate();
     - pubDate = new Date(year, mn, day)
     +elem(e)(year=year, month=month, day=day)
-  else
-    +elem(e)
 
 mixin dl(e)
   - number.defaultAttr(e, 'hanging', 'true')
@@ -143,7 +142,17 @@ mixin note(e)
 
 mixin ol(e)
   - number.defaultAttr(e, 'spacing', 'normal')
-  - number.defaultAttr(e, 'start', '1')
+  if !$att(e, 'start')
+    - var group = $att(e, 'group')
+    if group
+      - var prev = $('preceding::ol[@group="' + group + '"][1]', e)
+      if prev
+        - var prevstart = parseInt($att(prev, 'start') || "1")
+        - e.attr('start', prevstart + $('count(li)', prev))
+      else
+        - e.attr('start', '1')
+    else
+      - e.attr('start', '1')
   +elem(e)
 
 mixin reference(e)

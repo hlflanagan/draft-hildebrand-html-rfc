@@ -286,6 +286,10 @@
 <link rel="stylesheet" type="text/css" href="rfc-local.css">]]></artwork>
           </figure>
         </section>
+        <section anchor="links" title="Links">
+          <t>Each <xref target='element.link'>link</xref> from the source is copied into
+            the header.</t>
+        </section>
       </section>
       <section anchor="document-information" title="Document Information">
         <t>Information about the document as a whole will appear as the first child of the
@@ -359,20 +363,91 @@
           author information) if and only if the &lt;rfc&gt; element has a
           indexInclude attribute with the value "true", and there is one or
           more &lt;iref&gt; elements in the document.</t>
-        <t>The index section will start with an &lt;h2&gt; heading containing
-          the text "Index", followed by links to each of the lettered
-          portions of the index.  Links are not generated for letters that
-          do not occur as the first letter of an index item.</t>
-        <t>For example:</t>
-        <figure>
-          <artwork><![CDATA[
-<div class='index'>
-  <div class='indexIndex'>
-    <a href='#rfc.index.C'>C</a>
-    <a href='#rfc.index.P'>P</a>
+        <section anchor='index-index' title='Index Index'>
+          <t>The index section will start with an &lt;h2&gt; heading containing
+            the text "Index", followed by links to each of the lettered
+            portions of the index.  Links are not generated for letters that
+            do not occur as the first letter of an index item.</t>
+          <t>For example:</t>
+          <figure>
+            <artwork><![CDATA[
+<h2>Index</h2>
+<div class="index">
+  <div class="indexIndex">
+    <a href="#rfc.index.C">C</a>
+    <a href="#rfc.index.P">P</a>
   </div>
   ...]]></artwork>
-        </figure>
+          </figure>
+        </section>
+        <section anchor='index-letters' title='Index Letters'>
+          <t>The index index is followed by a &lt;ul&gt; tag that contains a
+            &lt;li&gt; tag for each first letter represented in the index. This
+            &lt;li&gt; tag has the class indexChar, and contains an &lt;a&gt;
+            tag with the id pointed to by the index index, as well as an
+            href to itself.  The &lt;li&gt; tag also includes a &lt;ul&gt; tag
+            that will contain the index items.</t>
+          <t>For example:</t>
+          <figure>
+            <artwork><![CDATA[
+<ul>
+  <li class="indexChar">
+    <a href="#rfc.index.C" id="rfc.index.C">C</a>
+    <ul>
+      <!-- items go here -->
+    </ul>
+  </li>
+  ...]]></artwork>
+          </figure>
+        </section>
+        <section anchor='index-items' title='Index Items'>
+          <t>Each index item can have multiple &lt;iref&gt;'s to point to, all
+          with the same item attribute.  Each index item is represented by a
+          &lt;li&gt; tag of class indexItem containing a &lt;span&gt; of class
+          irefItem for the item text and one of clas irefRefs for the generated
+          references (if there is at least one reference to the item not having
+          a subitem).  Each generated reference contains an &lt;a&gt; tag
+          containing the section number where the &lt;iref&gt; was found, with
+          an href pointing to the irefid of the &lt;iref&gt;. If the primary
+          attribute of the &lt;iref&gt; has the value "true", the &lt;a&gt; tag
+          will have the class indexPrimary. Commas may be used to separate the
+          generated references, surrounded by a &lt;span&gt; tag with class
+          indexComma.</t>
+          <t>For example:</t>
+          <figure>
+            <artwork><![CDATA[
+<li class="indexItem">
+  <span class="irefItem">Bullets</span>
+  <span class="irefRefs">
+    <a class="indexPrimary" href="#s-Bullets-1">2</a>
+    <span class="indexComma">,</span>
+    <a href="#s-Bullets-2">2</a>
+  </span>
+  <!-- subitems go here -->
+</li>
+...]]></artwork>
+          </figure>
+        </section>
+        <section anchor='index-subitems' title='Index Sub-items'>
+          <t>If an index item has at least one subitem, the &lt;li&gt; of
+            that item will contain a &lt;ul&gt;, with one &lt;li&gt; for each
+            subitem, of class indexSubItem.  Each subitem is formatted
+            similarly to items, except the class of the first &lt;span&gt;
+            tag is irefSubItem.</t>
+          <t>For example:</t>
+          <figure>
+            <artwork><![CDATA[
+<ul>
+  <li class="indexSubItem">
+    <span class="irefSubItem">Ordered</span>
+    <span class="irefRefs">
+      <a href="#s-Bullets-Ordered-1">2</a>
+    </span>
+  </li>
+</ul>
+...]]></artwork>
+          </figure>
+        </section>
       </section>
       <section anchor='authors-addresses' title="Authors' Addresses">
         <t>At the end of the document, author information will be included
@@ -482,10 +557,22 @@
         </figure>
       </section>
       <section title="&lt;address&gt;" anchor="element.address">
-        <t>This element does not add any direct output to HTML.</t>
+        <t>This element is used in <xref target='authors-addresses'>Authors'
+          Addresses</xref>.</t>
       </section>
       <section title="&lt;annotation&gt;" anchor="element.annotation">
-        <t>To be documented, pending RFC editor guidance on desired semantics.</t>
+        <t>This element is rendered as a span of class "annotation" at the end
+          of a <xref target='element.reference'>reference</xref>, the span
+          containing appropriately-transformed elements from the children of
+          the &lt;annotation&gt; tag.  A span of class "comma" is added before
+          the annotation.</t>
+        <figure>
+          <artwork><![CDATA[
+<span class="comma">,</span>
+<span class="annotation">
+  You <span class="bcp14">MUST</span> read this annotation
+</span>]]></artwork>
+        </figure>
       </section>
       <section title="&lt;area&gt;" anchor="element.area">
         <t>Not currently rendered to HTML.</t>
@@ -532,10 +619,13 @@ ______________
         <section title="SVG Artwork" anchor="element.artwork-svg">
           <t>SVG artwork MUST be included inline.  The SVG is wrapped in a
             &lt;div&gt; element with CSS classes "artwork" and "art-svg".</t>
+          <t>Note: the alt attribute of &lt;artwork&gt; is not currently used
+            for SVG; instead, use &lt;title&gt; and &lt;desc&gt; tags in your
+            SVG.</t>
           <figure>
             <artwork><![CDATA[
 <div class="artwork art-svg" id="p-2-17">
-  <svg width="100" height="100">
+  <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
     <circle
       cx="50" cy="50" r="40"
       stroke="green" stroke-width="4" fill="yellow" />
@@ -553,7 +643,8 @@ ______________
           <figure>
             <artwork><![CDATA[
 <div class="artwork art-logo" id="p-2-58">
-  <image src="data:image/gif;charset=utf-8;base64,..."/>
+  <img alt="IETF logo"
+       src="data:image/gif;charset=utf-8;base64,..."/>
   <a class="pilcrow" href="#p-2-58">¶</a>
 </div>]]></artwork>
           </figure>
@@ -561,7 +652,8 @@ ______________
       </section>
       <section title="&lt;aside&gt;" anchor="element.aside">
         <t>This element is rendered as an HTML &lt;aside&gt; element, with
-           a <xref target='pilcrows'>pilcrow</xref> added.</t>
+           all child content appropriately transformed and a
+           <xref target='pilcrows'>pilcrow</xref> added.</t>
         <figure>
           <artwork><![CDATA[
 <aside id="p-1.2-6">A little more than kin, and less than kind.
@@ -596,9 +688,6 @@ ______________
           and in <xref target='element.reference'>references</xref>.
           See each of those sections for details.</t>
       </section>
-      <section title="&lt;b&gt;" anchor="element.b">
-        <t>This element is directly rendered as its HTML counterpart.</t>
-      </section>
       <section title="&lt;back&gt;" anchor="element.back">
         <t>This element does not add any direct output to HTML.</t>
       </section>
@@ -617,7 +706,7 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
           it is placed inside a &lt;cite&gt; element at the end of the quote,
           with an &lt;a&gt; element surrounding it (if there is a "cite"
           attribute), linking to the "cite" URL.</t>
-        <t>If the blockquote does not contain another element that gets a
+        <t>If the blockquote does not contain another element that get a
           <xref target='pilcrows'>pilcrow</xref>, a pilcrow is added.</t>
         <figure>
           <artwork><![CDATA[
@@ -651,6 +740,9 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
 ...]]></artwork>
         </figure>
       </section>
+      <section title="&lt;br&gt;" anchor="element.br">
+        <t>This element is directly rendered as its HTML counterpart.</t>
+      </section>
       <section title="&lt;city&gt;" anchor="element.city">
         <t>This element is rendered as a &lt;span&gt; element with CSS
           class "locality".</t>
@@ -677,10 +769,14 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
       </section>
       <section title="&lt;cref&gt;" anchor="element.cref">
         <t>This element is rendered as a &lt;span&gt; element with CSS
-          class "cref".</t>
+          class "cref".  Any anchor is copied to the id attribute.  If there is
+          a source given, it is contained inside the cref span with another
+          span of class cref-source.</t>
         <figure>
           <artwork><![CDATA[
-<span class="cref">This is a comment</span>]]></artwork>
+<span class="cref" id="crefAnchor">Just a brief comment
+about something that we need to remember later.
+<span class="cref-source">--life</span></span>]]></artwork>
         </figure>
       </section>
       <section title="&lt;date&gt;" anchor="element.date">
@@ -698,10 +794,12 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
         <t>This element is directly rendered as its HTML counterpart.</t>
       </section>
       <section title="&lt;displayreference&gt;" anchor="element.displayreference">
-        <t>To be documented, pending RFC editor guidance on desired semantics.</t>
+        <t>This element is not rendered into HTML.</t>
       </section>
       <section title="&lt;dl&gt;" anchor="element.dl">
         <t>This element is directly rendered as its HTML counterpart.</t>
+        <t>If the hanging attribute is "false", add the "dlparallel" class.</t>
+        <t>If the spacing attribute is "compact" add the "dlcompact" class.</t>
       </section>
       <section title="&lt;dt&gt;" anchor="element.dt">
         <t>This element is directly rendered as its HTML counterpart.</t>
@@ -715,10 +813,14 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
           an HTML &lt;a&gt; element, with "href" attribute set to the
           equivalent "mailto:" URI, CSS class of "email", and the contents set
           to the email address.</t>
+        <t>If the email contains an ascii attribute, a span of class ascii is
+          also contained in the div.</t>
         <figure>
           <artwork><![CDATA[
-<div>Email:
-  <a href="joe@example.net" class="email">joe@example.net</a>
+<div>
+  <span>Email:</span>
+  <a href="mailto:joe@example.net" class="email">joe@example.net</a>
+  <span class='ascii'>joe@example.net</span>
 </div>]]></artwork>
         </figure>
       </section>
@@ -729,22 +831,6 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
         <figure>
           <artwork><![CDATA[
 <a href="https://..." class="eref">the text</a>]]></artwork>
-        </figure>
-      </section>
-      <section title="&lt;facsimile&gt;" anchor="element.facsimile">
-        <t>As shown in <xref target='authors-addresses'/> this element is
-        rendered as an HTML &lt;div&gt; containing the string "Fax:",
-        an HTML &lt;span&gt; with CSS class "tel" containing the phone number
-        and an HTML &lt;span&gt; with CSS class "type" containing the string
-        "fax".  Note, the "type" span will be hidden by CSS styling.</t>
-        <t>Note: this element is deprecated</t>
-        <figure>
-          <artwork><![CDATA[
-<div>Fax:
-  <span class="tel">+1-303-555-1212
-    <span class="type">fax</span>
-  </span>
-</div>]]></artwork>
         </figure>
       </section>
       <section title="&lt;figure&gt;" anchor="element.figure">
@@ -768,12 +854,13 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
       <section title="&lt;front&gt;" anchor="element.front">
         <t>This element does not add any direct output to HTML.</t>
       </section>
-      <section title="&lt;i&gt;" anchor="element.i">
-        <t>This element is directly rendered as its HTML counterpart.</t>
-      </section>
       <section title="&lt;iref&gt;" anchor="element.iref">
-        <t>To be documented, once the &lt;iref&gt; element is better
-          documented.</t>
+        <t>This element is rendered as an empty &lt;&gt; tag of class iref, with
+          an id consisting of the &lt;iref&gt;'s irefid:</t>
+        <figure>
+          <artwork><![CDATA[
+<span class="iref" id="s-Paragraphs-first-1"/>]]></artwork>
+        </figure>
       </section>
       <section title="&lt;keyword&gt;" anchor="element.keyword">
         <t>Each of these elements renders its text into the &lt;meta&gt;
@@ -794,7 +881,8 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
         </figure>
       </section>
       <section title="&lt;link&gt;" anchor="element.link">
-        <t>To be documented, pending RFC editor guidance on desired semantics.</t>
+        <t>This element is rendered as its HTML counterpart, in the HTML
+          header.</t>
       </section>
       <section title="&lt;middle&gt;" anchor="element.middle">
         <t>This element does not add any direct output to HTML.</t>
@@ -824,9 +912,11 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
         </figure>
       </section>
       <section title="&lt;ol&gt;" anchor="element.ol">
-        <t>This element is directly rendered as its HTML counterpart, with the
-          minor exception that if the spacing attribute has the value
-          "compact", a CSS class of "olcompact" will be added.</t>
+        <t>This element is directly rendered as its HTML counterpart.</t>
+        <t>If the spacing attribute has the value "compact", a CSS class of
+          "olcompact" will be added.</t>
+        <t>The group attribute is not copied; the input XML should have start
+          values added by a prep tool for all group'd ol's.</t>
       </section>
       <section title="&lt;organization&gt;" anchor="element.organization">
         <t>As shown in <xref target='authors-addresses'/> this element is
@@ -1110,8 +1200,8 @@ int main(void)
     <section anchor="appendix-a-acknowledgments" title="Acknowledgments">
       <t>The authors gratefully acknowledge the contributions of: Patrick Linskey, and the
         members of the RFC Format Design Team (Nevil Brownlee, Sandy Ginoza, Tony Hansen,
-         Paul Hoffman, Ted Lemon, Julian Reschke, Adam Roach, Alice Russo, Robert Sparks,
-         Dave Thaler).</t>
+        Paul Hoffman, Ted Lemon, Julian Reschke, Adam Roach, Alice Russo, Robert Sparks,
+        Dave Thaler).</t>
     </section>
   </middle>
   <back>

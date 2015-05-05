@@ -18,7 +18,7 @@ RNG = draft-hoffman-xml2rfc/xml2rfcv3.rng
 	$(XMLJADE) --pretty --output $@ xref.jade $<
 
 %.3.html: %.x.xml v3tohtml.jade v3.js xml2rfc.css
-	$(XMLJADE) --pretty --html --output $@ v3tohtml.jade $<
+	$(XMLJADE) --pretty --html --doublequote --output $@ v3tohtml.jade $<
 
 %.txt: %.xml
 	xml2rfc --text --html $<

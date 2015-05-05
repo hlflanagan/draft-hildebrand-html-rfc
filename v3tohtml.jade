@@ -38,6 +38,10 @@ mixin abstract(e)
       a.self-ref(href='#abstract') Abstract
     +children(e)
 
+mixin annotation(e)
+  span.annotation
+    +children(e)
+    
 mixin artwork(e)
   - var classes = ['artwork']
   - var cl = $att(e, 'type')
@@ -50,8 +54,9 @@ mixin artwork(e)
         +children(e)
     else
       - var src = $att(e, 'src')
+      - var alt = $att(e, 'alt')
       if src && src.match(/^data:/)
-        image(src=src)
+        img(src=src alt=alt)
       else
         pre
           +children(e)
@@ -119,7 +124,7 @@ mixin cref(e)
 mixin dl(e)
   - var classes=[]
   - if ($att(e,'spacing')=='compact') { classes.push('dlcompact'); }
-  - if ($att(e,'hanging')=='true') { classes.push('dlhanging'); } else { classes.push('dlparallel'); }
+  - if ($att(e,'hanging')=='false') { classes.push('dlparallel'); } else { classes.push('dlhanging'); }
   dl(class=classes): +children(e)
 
 mixin eref(e)
@@ -214,7 +219,7 @@ mixin postal(e)
       div
         each city in $$('city/text()', e)
           span.city=city
-        = ", "
+        span.comma ,
         each region in $$('region/text()', e)
           span.region=region
         each code in $$('code', e)
@@ -233,16 +238,31 @@ mixin reference(e)
     if authors.length > 0
       span.refauthor= $att(authors[0], 'surname') + ", " + $att(authors[0], 'initials')
       each a in authors.slice(1,-1)
-        = ", "
+        span.comma ,
         span.refauthor= $att(a, 'fullname')
       if authors.length > 1
-        = " and "
+        span= " and "
         span.refauthor= $att(authors[authors.length-1], 'fullname')
-    span.reftitile "#{$('front/title/text()',e)}"
+    span.reftitile "#{$('front/title/text()',e).trim()}"
+    - var refcontent = $('refcontent', e)
+    if refcontent
+      span.comma ,
+      span.refcontent
+        +children(refcontent)
     each si in $$('seriesInfo', e)
-      = ", "
+      span.comma ,
       span.refseries= $att(si, 'name') + " " + $att(si, 'value')
-    span.refdate= ", " + $('front/date/@month',e) + " " + $('front/date/@year',e) + "."
+    - var refdate = $('front/date', e)
+    if refdate
+      span.comma ,
+      - var dt = [$att(refdate, 'month')||"", $att(refdate, 'year')||""]
+      span.refdate= dt.join(' ')
+    - var annotation = $('annotation', e)
+    if annotation
+      span.comma ,
+      span.annotation
+        +children(annotation)
+    span.comma .
 
 mixin section(s)
   - var sn = $att(s,'pn')
@@ -314,26 +334,32 @@ mixin foot_author(e)
         = $att(e, 'fullname')
         +ascii(e)
       if $att(e, 'role')
-        = " ("
+        span.anticomma (
         span.role= $att(e, 'role')
-        = ")"
+        span.comma )
     +foot_org($("organization", e))
     - var addr = $('address', e)
     each p in $$('postal', addr)
       +postal(p)
     each phone in $$('phone/text()', addr)
-      div= "Phone: "
-        span.tel= phone + " "
-          span.type VOICE
+      div
+        span Phone:
+        span.tel= phone
+        span.type VOICE
     each fax in $$('facsimile/text()', addr)
-      div= "Fax: "
-        span.tel= fax + " "
-          span.type fax
-    each email in $$('email/text()', addr)
-      div= "Email: "
-        a.email(href=email)= email
+      div
+        span Fax:
+        span.tel= fax
+        span.type fax
+    each email in $$('email', addr)
+      div
+        - var et = email.text().trim()
+        span Email:
+        a.email(href="mailto:" + et)= et
+        +ascii(email)
     each uri in $$('uri/text()', addr)
-      div= "URI: "
+      div
+        span URI:
         a.url(href=uri)= uri
 
 mixin tocSections(p, depth)
@@ -363,7 +389,7 @@ mixin toc
 mixin index
   - var irs = $$('//iref')
   if irs.length
-    h1 Index
+    h2 Index
     - var parts = v3.indexPartition(irs)
     .index
       div.indexIndex
@@ -374,33 +400,33 @@ mixin index
           li.indexChar
             a(id='rfc.index.'+char.char, href='#rfc.index.'+char.char)
               = char.char
-          ul
-            each item in char.items
-              li.indexItem
-                span.irefItem= item.item
-                if item.irefids.length > 0
-                  span.irefRefs
-                    each ir, ir_count in item.irefids
-                      if ir_count > 0
-                        != ",&nbsp;"
-                      if ir.primary
-                        a.primary(href='#'+ir.irefid)= ir.section
-                      else
-                        a(href='#'+ir.irefid)= ir.section
-              if item.subItems.length
-                ul
-                  each subitem in item.subItems
-                    li.indexSubItem
-                      span.irefSubItem= subitem.subItem
-                      if subitem.irefids.length > 0
-                        span.irefRefs
-                          each s, s_count in subitem.irefids
-                            if s_count > 0
-                              != ",&nbsp;"
-                            if s.primary
-                              a.primary(href='#'+s.irefid)= s.section
-                            else
-                              a(href='#'+s.irefid)= s.section
+            ul
+              each item in char.items
+                li.indexItem
+                  span.irefItem= item.item
+                  if item.irefids.length > 0
+                    span.irefRefs
+                      each ir, ir_count in item.irefids
+                        if ir_count > 0
+                          span.comma ,
+                        if ir.primary
+                          a.indexPrimary(href='#'+ir.irefid)= ir.section
+                        else
+                          a(href='#'+ir.irefid)= ir.section
+                  if item.subItems.length
+                    ul
+                      each subitem in item.subItems
+                        li.indexSubItem
+                          span.irefSubItem= subitem.subItem
+                          if subitem.irefids.length > 0
+                            span.irefRefs
+                              each s, s_count in subitem.irefids
+                                if s_count > 0
+                                  span.comma ,
+                                if s.primary
+                                  a.indexPrimary(href='#'+s.irefid)= s.section
+                                else
+                                  a(href='#'+s.irefid)= s.section
     
 doctype html
 html(lang='en')
@@ -415,6 +441,8 @@ html(lang='en')
     //-   include xml2rfc.css
     link(rel='stylesheet', type='text/css', href='xml2rfc.css')
     link(rel='stylesheet', type='text/css', href='local.css')
+    each link in $$('link')
+      +elem(link)
   body
     +identifiers($('front'))
     h1#title= $('front/title/text()')

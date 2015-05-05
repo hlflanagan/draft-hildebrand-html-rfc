@@ -45,12 +45,17 @@ exports.invent = function(e) {
       break;
     case 'reference':
       var t = '';
+      var text = target;
+      var dispref = e.doc().get('back/displayreference[@target="' + target + '"]/@to');
+      if (dispref) {
+        text = dispref.value();
+      }
       switch (format) {
         case 'counter':
           console.error('counter invalid for reference targets');
           return '';
         case 'default':
-          t = '[' + target + ']'
+          t = '[' + text + ']'
           break;
         case 'title':
           t = target_el.get('front/title').text();

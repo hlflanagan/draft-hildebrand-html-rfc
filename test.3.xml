@@ -200,16 +200,24 @@
         </li>
       </ul>
       <ul empty='true'>
-        <li>Empty: it's all empty</li>
-        <li>I have not bullets left</li>
+        <li><iref item="Bullets" primary="true"/>Empty: it's all empty</li>
+        <li><iref item="Bullets"/>I have not bullets left</li>
       </ul>
       <ol>
-        <li><t>now</t><t>then</t></li>
+        <li><iref item="Bullets" subitem="Ordered"/><t>now</t><t>then</t></li>
         <li>ordered</li>
       </ol>
       <ol start="12" style='I' group="green">
         <li>A dozen or so.</li>
         <li>Now, with bakers. It's all about <xref target="Bibble"/>.</li>
+      </ol>
+      <ol group='green' stye='I'>
+        <li>after bakers, before meanings</li>
+        <li>there are meaningless bakers</li>
+      </ol>
+      <ol group='green' stye='I'>
+        <li>who bake</li>
+        <li>bread with meaning</li>
       </ol>
       <ol start="42" style='I' group="green">
         <li>The meaning of life.</li>
@@ -267,7 +275,7 @@ artwork does not
         <artwork type="svg" src='http://localhost:8080/redbluecircle.svg' anchor='externalCircle'/>
       </figure>
       <t>Artwork can also be outside a figure. Here are two.</t>
-      <artwork type="logo" src="http://localhost:8080/ietflogotrans.gif"/>
+      <artwork type="logo" src="http://localhost:8080/ietflogotrans.gif" alt="IETF logo"/>
       <artwork type="hex-dump">
 <![CDATA[
 00000000  20 5f 5f 5f 5f 5f 5f 5f  5f 5f 5f 5f 5f 5f 5f 20  | ______________ |
@@ -376,15 +384,16 @@ int main(void)
         <annotation>
           You <bcp14>MUST</bcp14> read this annotation.
           <cref>Note: This is a comment.</cref>
-          This is something <strong>relevant</strong> to RFC 6949.
+          This is something <strong>relevant</strong> to RFC 6949
         </annotation>
-        <refcontent ascii="Note this!">Nötë thïs!</refcontent>
+        <refcontent ascii="Note this!">Nötë <em>thïs</em>!</refcontent>
       </reference>
       <referencegroup anchor="Bibble">
         <reference anchor="Bibble1" quoteTitle="false">
           <front>
             <title>Bibble protocol spec</title>
             <author initials="N." surname="One" fullname="No One"/>
+            <date year="1850"/>
           </front>
         <seriesInfo name="BibbleSpècs" asciiName= "BibbleSpecs" value="12-4444"/>
         </reference>
