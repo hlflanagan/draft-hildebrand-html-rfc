@@ -38,10 +38,6 @@ mixin abstract(e)
       a.self-ref(href='#abstract') Abstract
     +children(e)
 
-mixin annotation(e)
-  span.annotation
-    +children(e)
-    
 mixin artwork(e)
   - var classes = ['artwork']
   - var cl = $att(e, 'type')
@@ -257,12 +253,11 @@ mixin reference(e)
       span.comma ,
       - var dt = [$att(refdate, 'month')||"", $att(refdate, 'year')||""]
       span.refdate= dt.join(' ')
+    span.comma .
     - var annotation = $('annotation', e)
     if annotation
-      span.comma ,
       span.annotation
         +children(annotation)
-    span.comma .
 
 mixin section(s)
   - var sn = $att(s,'pn')

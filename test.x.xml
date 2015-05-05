@@ -2,7 +2,7 @@
 <rfc category='info'
      consensus='false'
      docName='draft-hildebrand-html-rfc-04'
-     finalizedTime='2015-05-05T08:06:29Z'
+     finalizedTime='2015-05-05T09:00:27Z'
      indexInclude='true'
      ipr='trust200902'
      sortRefs='false'
@@ -674,7 +674,7 @@ int main(void)
         <annotation>
           You <bcp14>MUST</bcp14> read this annotation.  <cref
           display='true'>Note: This is a comment.</cref> This is
-          something <strong>relevant</strong> to RFC 6949
+          something <strong>relevant</strong> to RFC 6949.
         </annotation>
         <refcontent ascii='Note this!'>
           Nötë <em>thïs</em> !

@@ -384,7 +384,7 @@ int main(void)
         <annotation>
           You <bcp14>MUST</bcp14> read this annotation.
           <cref>Note: This is a comment.</cref>
-          This is something <strong>relevant</strong> to RFC 6949
+          This is something <strong>relevant</strong> to RFC 6949.
         </annotation>
         <refcontent ascii="Note this!">Nötë <em>thïs</em>!</refcontent>
       </reference>
