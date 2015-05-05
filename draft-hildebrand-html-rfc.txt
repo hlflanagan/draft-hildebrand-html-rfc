@@ -6,6 +6,8 @@ Network Working Group                                 J. Hildebrand, Ed.
 Internet-Draft                                       Cisco Systems, Inc.
 Intended status: Informational                               H. Flanagan
 Expires: November 6, 2015                                     RFC Editor
+                                                              P. Hoffman
+                                                          VPN Consortium
                                                              May 5, 2015
 
 
@@ -47,16 +49,17 @@ Copyright Notice
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
    include Simplified BSD License text as described in Section 4.e of
-   the Trust Legal Provisions and are provided without warranty as
-   described in the Simplified BSD License.
 
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015                [Page 1]
+Hildebrand, et al.      Expires November 6, 2015                [Page 1]
 
 Internet-Draft                  HTML RFC                        May 2015
 
+
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
 
 Table of Contents
 
@@ -103,17 +106,17 @@ Table of Contents
      9.7.  <author>  . . . . . . . . . . . . . . . . . . . . . . . .  19
      9.8.  <back>  . . . . . . . . . . . . . . . . . . . . . . . . .  19
      9.9.  <bcp14> . . . . . . . . . . . . . . . . . . . . . . . . .  20
-     9.10. <blockquote>  . . . . . . . . . . . . . . . . . . . . . .  20
-     9.11. <boilerplate> . . . . . . . . . . . . . . . . . . . . . .  20
-     9.12. <br>  . . . . . . . . . . . . . . . . . . . . . . . . . .  21
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015                [Page 2]
+Hildebrand, et al.      Expires November 6, 2015                [Page 2]
 
 Internet-Draft                  HTML RFC                        May 2015
 
 
+     9.10. <blockquote>  . . . . . . . . . . . . . . . . . . . . . .  20
+     9.11. <boilerplate> . . . . . . . . . . . . . . . . . . . . . .  20
+     9.12. <br>  . . . . . . . . . . . . . . . . . . . . . . . . . .  21
      9.13. <city>  . . . . . . . . . . . . . . . . . . . . . . . . .  21
      9.14. <code>  . . . . . . . . . . . . . . . . . . . . . . . . .  21
      9.15. <country> . . . . . . . . . . . . . . . . . . . . . . . .  21
@@ -159,17 +162,17 @@ Internet-Draft                  HTML RFC                        May 2015
      9.53. <table> . . . . . . . . . . . . . . . . . . . . . . . . .  29
      9.54. <tbody> . . . . . . . . . . . . . . . . . . . . . . . . .  29
      9.55. <td>  . . . . . . . . . . . . . . . . . . . . . . . . . .  30
-     9.56. <tfoot> . . . . . . . . . . . . . . . . . . . . . . . . .  30
-     9.57. <th>  . . . . . . . . . . . . . . . . . . . . . . . . . .  30
-     9.58. <thead> . . . . . . . . . . . . . . . . . . . . . . . . .  30
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015                [Page 3]
+Hildebrand, et al.      Expires November 6, 2015                [Page 3]
 
 Internet-Draft                  HTML RFC                        May 2015
 
 
+     9.56. <tfoot> . . . . . . . . . . . . . . . . . . . . . . . . .  30
+     9.57. <th>  . . . . . . . . . . . . . . . . . . . . . . . . . .  30
+     9.58. <thead> . . . . . . . . . . . . . . . . . . . . . . . . .  30
      9.59. <title> . . . . . . . . . . . . . . . . . . . . . . . . .  30
      9.60. <tr>  . . . . . . . . . . . . . . . . . . . . . . . . . .  30
      9.61. <tt>  . . . . . . . . . . . . . . . . . . . . . . . . . .  30
@@ -215,16 +218,16 @@ Internet-Draft                  HTML RFC                        May 2015
 
    o  The HTML documents may be re-rendered from the canonical XML
       format in the future to ensure the ongoing readability of the
-      documents.  The intent is that any re-rendering would be due to
-      exceptional circumstances rather than for minor annoyances.
 
 
 
-
-Hildebrand & Flanagan   Expires November 6, 2015                [Page 4]
+Hildebrand, et al.      Expires November 6, 2015                [Page 4]
 
 Internet-Draft                  HTML RFC                        May 2015
 
+
+      documents.  The intent is that any re-rendering would be due to
+      exceptional circumstances rather than for minor annoyances.
 
    o  The HTML must display adequately in at least one text-based
       browser.  Some consumers of the RFC series can only access the
@@ -272,16 +275,15 @@ Internet-Draft                  HTML RFC                        May 2015
    o  The abstract must be marked up or tagged in a way that popular
       search engines will extract it as a summary.
 
-   o  The format will consist of a subset of HTML deemed to be widely
-      implemented by common browsers at the time the specification is
 
 
-
-Hildebrand & Flanagan   Expires November 6, 2015                [Page 5]
+Hildebrand, et al.      Expires November 6, 2015                [Page 5]
 
 Internet-Draft                  HTML RFC                        May 2015
 
 
+   o  The format will consist of a subset of HTML deemed to be widely
+      implemented by common browsers at the time the specification is
       created, likely to continue to be widely-implemented, and unlikely
       to cause security issues.  This will maximize the chances that
       future HTML renderers (such as new web browsers) will continue to
@@ -331,9 +333,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-
-
-Hildebrand & Flanagan   Expires November 6, 2015                [Page 6]
+Hildebrand, et al.      Expires November 6, 2015                [Page 6]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -389,7 +389,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015                [Page 7]
+Hildebrand, et al.      Expires November 6, 2015                [Page 7]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -445,7 +445,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015                [Page 8]
+Hildebrand, et al.      Expires November 6, 2015                [Page 8]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -501,7 +501,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015                [Page 9]
+Hildebrand, et al.      Expires November 6, 2015                [Page 9]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -557,7 +557,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 10]
+Hildebrand, et al.      Expires November 6, 2015               [Page 10]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -613,7 +613,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 11]
+Hildebrand, et al.      Expires November 6, 2015               [Page 11]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -669,7 +669,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 12]
+Hildebrand, et al.      Expires November 6, 2015               [Page 12]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -725,7 +725,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 13]
+Hildebrand, et al.      Expires November 6, 2015               [Page 13]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -781,7 +781,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 14]
+Hildebrand, et al.      Expires November 6, 2015               [Page 14]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -837,7 +837,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 15]
+Hildebrand, et al.      Expires November 6, 2015               [Page 15]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -893,7 +893,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 16]
+Hildebrand, et al.      Expires November 6, 2015               [Page 16]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -949,7 +949,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 17]
+Hildebrand, et al.      Expires November 6, 2015               [Page 17]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1005,7 +1005,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 18]
+Hildebrand, et al.      Expires November 6, 2015               [Page 18]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1061,7 +1061,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 19]
+Hildebrand, et al.      Expires November 6, 2015               [Page 19]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1117,7 +1117,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 20]
+Hildebrand, et al.      Expires November 6, 2015               [Page 20]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1173,7 +1173,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 21]
+Hildebrand, et al.      Expires November 6, 2015               [Page 21]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1229,7 +1229,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 22]
+Hildebrand, et al.      Expires November 6, 2015               [Page 22]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1285,7 +1285,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 23]
+Hildebrand, et al.      Expires November 6, 2015               [Page 23]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1341,7 +1341,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 24]
+Hildebrand, et al.      Expires November 6, 2015               [Page 24]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1397,7 +1397,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 25]
+Hildebrand, et al.      Expires November 6, 2015               [Page 25]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1453,7 +1453,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 26]
+Hildebrand, et al.      Expires November 6, 2015               [Page 26]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1509,7 +1509,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 27]
+Hildebrand, et al.      Expires November 6, 2015               [Page 27]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1565,7 +1565,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 28]
+Hildebrand, et al.      Expires November 6, 2015               [Page 28]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1621,7 +1621,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 29]
+Hildebrand, et al.      Expires November 6, 2015               [Page 29]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1677,7 +1677,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 30]
+Hildebrand, et al.      Expires November 6, 2015               [Page 30]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1733,7 +1733,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 31]
+Hildebrand, et al.      Expires November 6, 2015               [Page 31]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1789,7 +1789,7 @@ Authors' Addresses
 
 
 
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 32]
+Hildebrand, et al.      Expires November 6, 2015               [Page 32]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1800,6 +1800,10 @@ Internet-Draft                  HTML RFC                        May 2015
    Email: rse@rfc-editor.org
 
 
+   Paul Hoffman
+   VPN Consortium
+
+   Email: paul.hoffman@vpnc.org
 
 
 
@@ -1841,8 +1845,4 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-
-
-
-
-Hildebrand & Flanagan   Expires November 6, 2015               [Page 33]
+Hildebrand, et al.      Expires November 6, 2015               [Page 33]
