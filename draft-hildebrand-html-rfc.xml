@@ -228,7 +228,7 @@
         </figure>
       </section>
     </section>
-    <section anchor="prolog" title="Prologue">
+    <section anchor="front-matter" title="Front Matter">
       <t>The front matter of the HTML format contains processing information,
         metadata of various types, and styling information that applies to the
         document as a whole.  This section describes HTML that is not
@@ -383,7 +383,7 @@
       <t>The main body of the document is processed according to the rules in
         <xref target='elements'/>.</t>
     </section>
-    <section anchor='epilogue' title='Epilogue'>
+    <section anchor='back-matter' title='Back Matter'>
       <t>The back matter of the HTML document includes an index (if generated),
         information about the authors, and further information about the
         document itself.</t>

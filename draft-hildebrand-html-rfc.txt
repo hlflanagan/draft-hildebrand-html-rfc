@@ -72,7 +72,7 @@ Table of Contents
      5.1.  IDs . . . . . . . . . . . . . . . . . . . . . . . . . . .   7
      5.2.  Pilcrows  . . . . . . . . . . . . . . . . . . . . . . . .   7
      5.3.  ASCII Equivalents . . . . . . . . . . . . . . . . . . . .   8
-   6.  Prologue  . . . . . . . . . . . . . . . . . . . . . . . . . .   8
+   6.  Front Matter  . . . . . . . . . . . . . . . . . . . . . . . .   8
      6.1.  DOCTYPE . . . . . . . . . . . . . . . . . . . . . . . . .   9
      6.2.  Root Element  . . . . . . . . . . . . . . . . . . . . . .   9
      6.3.  Head Element  . . . . . . . . . . . . . . . . . . . . . .   9
@@ -84,7 +84,7 @@ Table of Contents
      6.4.  Document Information  . . . . . . . . . . . . . . . . . .  10
      6.5.  Table of Contents . . . . . . . . . . . . . . . . . . . .  11
    7.  Main Body . . . . . . . . . . . . . . . . . . . . . . . . . .  12
-   8.  Epilogue  . . . . . . . . . . . . . . . . . . . . . . . . . .  12
+   8.  Back Matter . . . . . . . . . . . . . . . . . . . . . . . . .  12
      8.1.  Index . . . . . . . . . . . . . . . . . . . . . . . . . .  12
        8.1.1.  Index Contents  . . . . . . . . . . . . . . . . . . .  12
        8.1.2.  Index Letters . . . . . . . . . . . . . . . . . . . .  12
@@ -431,7 +431,7 @@ Internet-Draft                  HTML RFC                        May 2015
      <span class="ascii">Hildebrand</span>
    </span>
 
-6.  Prologue
+6.  Front Matter
 
    The front matter of the HTML format contains processing information,
    metadata of various types, and styling information that applies to
@@ -623,7 +623,7 @@ Internet-Draft                  HTML RFC                        May 2015
    The main body of the document is processed according to the rules in
    Section 9.
 
-8.  Epilogue
+8.  Back Matter
 
    The back matter of the HTML document includes an index (if
    generated), information about the authors, and further information

@@ -2,7 +2,7 @@
 <rfc category='info'
      consensus='false'
      docName='draft-hildebrand-html-rfc-04'
-     finalizedTime='2015-05-05T22:42:50Z'
+     finalizedTime='2015-05-05T23:02:04Z'
      indexInclude='true'
      ipr='trust200902'
      sortRefs='false'
@@ -57,7 +57,7 @@
         <email>rse@rfc-editor.org</email>
       </address>
     </author>
-    <date day='5' month='May' year='2015'/>
+    <date day='6' month='May' year='2015'/>
     <area>gen</area>
     <workgroup>rfc-interest Working Group</workgroup>
     <keyword>html</keyword>
@@ -108,7 +108,7 @@
           than as "work in progress."
         </t>
         <t pn='p-boilerplate-1-4'>
-          This Internet-Draft will expire on 2015-11-05.
+          This Internet-Draft will expire on 2015-11-06.
         </t>
       </section>
       <section pn='s-boilerplate-2'>
