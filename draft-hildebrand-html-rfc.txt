@@ -5,10 +5,10 @@
 Network Working Group                                 J. Hildebrand, Ed.
 Internet-Draft                                       Cisco Systems, Inc.
 Intended status: Informational                               H. Flanagan
-Expires: November 6, 2015                                     RFC Editor
+Expires: November 7, 2015                                     RFC Editor
                                                               P. Hoffman
                                                           VPN Consortium
-                                                             May 5, 2015
+                                                             May 6, 2015
 
 
          HyperText Markup Language Request For Comments Format
@@ -16,9 +16,11 @@ Expires: November 6, 2015                                     RFC Editor
 
 Abstract
 
-   This document defines the HTML format that will be rendered from the
-   canonical XML format for an RFC or Internet-Draft.  The HTML output
-   will include a default CSS to enable page layout.
+   In order to meet the evolving needs of the Internet community, the
+   format for RFCs is changing from a plain-text, ASCII-only format to a
+   canonical XML format that will in turn be rendered into several
+   publication formats.  This document defines the HTML format that will
+   be rendered for an RFC or Internet-Draft.
 
 Status of This Memo
 
@@ -35,7 +37,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 6, 2015.
+   This Internet-Draft will expire on November 7, 2015.
 
 Copyright Notice
 
@@ -48,16 +50,15 @@ Copyright Notice
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
-   include Simplified BSD License text as described in Section 4.e of
 
 
 
-
-Hildebrand, et al.      Expires November 6, 2015                [Page 1]
+Hildebrand, et al.      Expires November 7, 2015                [Page 1]
 
 Internet-Draft                  HTML RFC                        May 2015
 
 
+   include Simplified BSD License text as described in Section 4.e of
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
@@ -70,7 +71,7 @@ Table of Contents
    4.  HTML Syntax . . . . . . . . . . . . . . . . . . . . . . . . .   6
    5.  Common Items  . . . . . . . . . . . . . . . . . . . . . . . .   7
      5.1.  IDs . . . . . . . . . . . . . . . . . . . . . . . . . . .   7
-     5.2.  Pilcrows  . . . . . . . . . . . . . . . . . . . . . . . .   7
+     5.2.  Pilcrows  . . . . . . . . . . . . . . . . . . . . . . . .   8
      5.3.  ASCII Equivalents . . . . . . . . . . . . . . . . . . . .   8
    6.  Front Matter  . . . . . . . . . . . . . . . . . . . . . . . .   8
      6.1.  DOCTYPE . . . . . . . . . . . . . . . . . . . . . . . . .   9
@@ -87,9 +88,9 @@ Table of Contents
    8.  Back Matter . . . . . . . . . . . . . . . . . . . . . . . . .  12
      8.1.  Index . . . . . . . . . . . . . . . . . . . . . . . . . .  12
        8.1.1.  Index Contents  . . . . . . . . . . . . . . . . . . .  12
-       8.1.2.  Index Letters . . . . . . . . . . . . . . . . . . . .  12
+       8.1.2.  Index Letters . . . . . . . . . . . . . . . . . . . .  13
        8.1.3.  Index Items . . . . . . . . . . . . . . . . . . . . .  13
-       8.1.4.  Index Sub-items . . . . . . . . . . . . . . . . . . .  13
+       8.1.4.  Index Sub-items . . . . . . . . . . . . . . . . . . .  14
      8.2.  Authors' Addresses  . . . . . . . . . . . . . . . . . . .  14
      8.3.  Document Information  . . . . . . . . . . . . . . . . . .  15
      8.4.  XML Source  . . . . . . . . . . . . . . . . . . . . . . .  16
@@ -105,15 +106,15 @@ Table of Contents
      9.6.  <aside> . . . . . . . . . . . . . . . . . . . . . . . . .  19
      9.7.  <author>  . . . . . . . . . . . . . . . . . . . . . . . .  19
      9.8.  <back>  . . . . . . . . . . . . . . . . . . . . . . . . .  19
-     9.9.  <bcp14> . . . . . . . . . . . . . . . . . . . . . . . . .  20
 
 
 
-Hildebrand, et al.      Expires November 6, 2015                [Page 2]
+Hildebrand, et al.      Expires November 7, 2015                [Page 2]
 
 Internet-Draft                  HTML RFC                        May 2015
 
 
+     9.9.  <bcp14> . . . . . . . . . . . . . . . . . . . . . . . . .  20
      9.10. <blockquote>  . . . . . . . . . . . . . . . . . . . . . .  20
      9.11. <boilerplate> . . . . . . . . . . . . . . . . . . . . . .  20
      9.12. <br>  . . . . . . . . . . . . . . . . . . . . . . . . . .  21
@@ -161,15 +162,15 @@ Internet-Draft                  HTML RFC                        May 2015
      9.52. <t> . . . . . . . . . . . . . . . . . . . . . . . . . . .  29
      9.53. <table> . . . . . . . . . . . . . . . . . . . . . . . . .  29
      9.54. <tbody> . . . . . . . . . . . . . . . . . . . . . . . . .  29
-     9.55. <td>  . . . . . . . . . . . . . . . . . . . . . . . . . .  30
 
 
 
-Hildebrand, et al.      Expires November 6, 2015                [Page 3]
+Hildebrand, et al.      Expires November 7, 2015                [Page 3]
 
 Internet-Draft                  HTML RFC                        May 2015
 
 
+     9.55. <td>  . . . . . . . . . . . . . . . . . . . . . . . . . .  30
      9.56. <tfoot> . . . . . . . . . . . . . . . . . . . . . . . . .  30
      9.57. <th>  . . . . . . . . . . . . . . . . . . . . . . . . . .  30
      9.58. <thead> . . . . . . . . . . . . . . . . . . . . . . . . .  30
@@ -216,16 +217,17 @@ Internet-Draft                  HTML RFC                        May 2015
       versions of browsers and platforms, while ideally continuing to
       render correctly on recent versions of those browsers.
 
-   o  The HTML documents may be re-rendered from the canonical XML
-      format in the future to ensure the ongoing readability of the
 
 
 
-Hildebrand, et al.      Expires November 6, 2015                [Page 4]
+
+Hildebrand, et al.      Expires November 7, 2015                [Page 4]
 
 Internet-Draft                  HTML RFC                        May 2015
 
 
+   o  The HTML documents may be re-rendered from the canonical XML
+      format in the future to ensure the ongoing readability of the
       documents.  The intent is that any re-rendering would be due to
       exceptional circumstances rather than for minor annoyances.
 
@@ -272,15 +274,16 @@ Internet-Draft                  HTML RFC                        May 2015
       their subsections into separate files.  This will make creating
       EPUB documents easier in the future.
 
-   o  The abstract must be marked up or tagged in a way that popular
-      search engines will extract it as a summary.
 
 
 
-Hildebrand, et al.      Expires November 6, 2015                [Page 5]
+Hildebrand, et al.      Expires November 7, 2015                [Page 5]
 
 Internet-Draft                  HTML RFC                        May 2015
 
+
+   o  The abstract must be marked up or tagged in a way that popular
+      search engines will extract it as a summary.
 
    o  The format will consist of a subset of HTML deemed to be widely
       implemented by common browsers at the time the specification is
@@ -328,15 +331,14 @@ Internet-Draft                  HTML RFC                        May 2015
 
    o  The HTML output is encoded as UTF-8, as specified in [RFC3629].
 
-   o  The document is valid HTML.
 
 
-
-
-Hildebrand, et al.      Expires November 6, 2015                [Page 6]
+Hildebrand, et al.      Expires November 7, 2015                [Page 6]
 
 Internet-Draft                  HTML RFC                        May 2015
 
+
+   o  The document is valid HTML.
 
    o  Double quotes (U+0022 QUOTATION MARK: ") are used to quote
       attribute values unless the HTML specification forbids quoting a
@@ -380,20 +382,23 @@ Internet-Draft                  HTML RFC                        May 2015
    Some HTML constructs (such as <section> (Section 9.45)) will use
    multiple instances of these identifiers.
 
+
+
+
+
+
+
+
+Hildebrand, et al.      Expires November 7, 2015                [Page 7]
+
+Internet-Draft                  HTML RFC                        May 2015
+
+
 5.2.  Pilcrows
 
    Each paragraph, artwork, or sourcecode segment outside of a <figure>
    or <table> element will be appended with a space and a "pilcrow"
    (U+00B6: PILCROW SIGN), otherwise known as a "paragraph sign".  For
-
-
-
-
-Hildebrand, et al.      Expires November 6, 2015                [Page 7]
-
-Internet-Draft                  HTML RFC                        May 2015
-
-
    the purposes of clarity, in this document pilcrows are rendered as
    "&para;".
 
@@ -437,18 +442,16 @@ Internet-Draft                  HTML RFC                        May 2015
    metadata of various types, and styling information that applies to
    the document as a whole.  This section describes HTML that is not
    necessarily a direct transform from the XML format.  For more details
-   on each of the tags that generate content in this section, see
-   Section 9.
 
 
 
-
-
-
-Hildebrand, et al.      Expires November 6, 2015                [Page 8]
+Hildebrand, et al.      Expires November 7, 2015                [Page 8]
 
 Internet-Draft                  HTML RFC                        May 2015
 
+
+   on each of the tags that generate content in this section, see
+   Section 9.
 
 6.1.  DOCTYPE
 
@@ -494,17 +497,19 @@ Internet-Draft                  HTML RFC                        May 2015
 
    o  description - the abstract from the XML source
 
+
+
+
+
+Hildebrand, et al.      Expires November 7, 2015                [Page 9]
+
+Internet-Draft                  HTML RFC                        May 2015
+
+
    o  generator - the name and version number of the software used to
       create the HTML
 
    o  keywords - comma-separated <keyword>s from the XML source
-
-
-
-Hildebrand, et al.      Expires November 6, 2015                [Page 9]
-
-Internet-Draft                  HTML RFC                        May 2015
-
 
    For example:
 
@@ -548,19 +553,17 @@ Internet-Draft                  HTML RFC                        May 2015
    Information about the document as a whole will appear as the first
    child of the HTML <body> element, embedded in an HTML <dl> element
    with id="identifiers".  The defined terms in the definition list are
-   "Workgroup:", "Series:", "Status:", "Published:", and "Authors:".
-   For example:
 
 
 
 
-
-
-
-Hildebrand, et al.      Expires November 6, 2015               [Page 10]
+Hildebrand, et al.      Expires November 7, 2015               [Page 10]
 
 Internet-Draft                  HTML RFC                        May 2015
 
+
+   "Workgroup:", "Series:", "Status:", "Published:", and "Authors:".
+   For example:
 
    <dl id="identifiers">
      <dt>Workgroup:</dt>
@@ -599,6 +602,22 @@ Internet-Draft                  HTML RFC                        May 2015
 
    For example:
 
+
+
+
+
+
+
+
+
+
+
+
+Hildebrand, et al.      Expires November 7, 2015               [Page 11]
+
+Internet-Draft                  HTML RFC                        May 2015
+
+
    <h2 id="toc">Table of Contents</h2>
    <nav class="toc">
      <ul class="toc">
@@ -610,13 +629,6 @@ Internet-Draft                  HTML RFC                        May 2015
            <a href="s-1.1">1.1</a>. <a href="n-sub-intro">Sub Intro</a>
          </li>
    ...
-
-
-
-Hildebrand, et al.      Expires November 6, 2015               [Page 11]
-
-Internet-Draft                  HTML RFC                        May 2015
-
 
 7.  Main Body
 
@@ -653,6 +665,15 @@ Internet-Draft                  HTML RFC                        May 2015
      </div>
      ...
 
+
+
+
+
+Hildebrand, et al.      Expires November 7, 2015               [Page 12]
+
+Internet-Draft                  HTML RFC                        May 2015
+
+
 8.1.2.  Index Letters
 
    The index index is followed by a <ul> tag that contains a <li> tag
@@ -662,17 +683,6 @@ Internet-Draft                  HTML RFC                        May 2015
    includes a <ul> tag that will contain the index items.
 
    For example:
-
-
-
-
-
-
-
-Hildebrand, et al.      Expires November 6, 2015               [Page 12]
-
-Internet-Draft                  HTML RFC                        May 2015
-
 
    <ul>
      <li class="indexChar">
@@ -710,6 +720,16 @@ Internet-Draft                  HTML RFC                        May 2015
    </li>
    ...
 
+
+
+
+
+
+Hildebrand, et al.      Expires November 7, 2015               [Page 13]
+
+Internet-Draft                  HTML RFC                        May 2015
+
+
 8.1.4.  Index Sub-items
 
    If an index item has at least one subitem, the <li> of that item will
@@ -718,17 +738,6 @@ Internet-Draft                  HTML RFC                        May 2015
    the class of the first <span> tag is irefSubItem.
 
    For example:
-
-
-
-
-
-
-
-Hildebrand, et al.      Expires November 6, 2015               [Page 13]
-
-Internet-Draft                  HTML RFC                        May 2015
-
 
    <ul>
      <li class="indexSubItem">
@@ -769,6 +778,14 @@ Internet-Draft                  HTML RFC                        May 2015
          Cisco Systems, Inc. <span class="ascii">Cisco Systems,
          Inc.</span>
        </div>
+
+
+
+Hildebrand, et al.      Expires November 7, 2015               [Page 14]
+
+Internet-Draft                  HTML RFC                        May 2015
+
+
        <div class="adr">
          <div class="street-address">1 Main Street</div>
          <div class="street-address">Suite 1</div>
@@ -778,14 +795,6 @@ Internet-Draft                  HTML RFC                        May 2015
            </span>
            <span class="comma">,</span>
            <span class="region">CO</span>
-
-
-
-Hildebrand, et al.      Expires November 6, 2015               [Page 14]
-
-Internet-Draft                  HTML RFC                        May 2015
-
-
            <span class="code">
              80202 <span class="ascii">80202</span>
            </span>
@@ -824,23 +833,20 @@ Internet-Draft                  HTML RFC                        May 2015
    most readers are included after the author information.  The style
    sheet might de-emphasize their display, or hide them altogether.
 
+
+
+
+
+Hildebrand, et al.      Expires November 7, 2015               [Page 15]
+
+Internet-Draft                  HTML RFC                        May 2015
+
+
    The finalized time is copied from the <rfc> element's prepTime
    attribute.  The rendered time is the time that this HTML was
    generated.
 
    For example:
-
-
-
-
-
-
-
-
-Hildebrand, et al.      Expires November 6, 2015               [Page 15]
-
-Internet-Draft                  HTML RFC                        May 2015
-
 
    <div class="docinfo">
      <span class="finalized">
@@ -884,19 +890,20 @@ Internet-Draft                  HTML RFC                        May 2015
    anchor="abstract" and <name>Abstract</name>, but without a section
    number.
 
+
+
+
+Hildebrand, et al.      Expires November 7, 2015               [Page 16]
+
+Internet-Draft                  HTML RFC                        May 2015
+
+
    <section id="abstract">
      <h2><a href="#abstract" class="self-ref">Abstract</a></h2>
      <p id="p-abstract-1">This document defines...
        <a href="#p-abstract-1" class="pilcrow">&para;</a>
      </p>
    </section>
-
-
-
-Hildebrand, et al.      Expires November 6, 2015               [Page 16]
-
-Internet-Draft                  HTML RFC                        May 2015
-
 
 9.2.  <address>
 
@@ -942,14 +949,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-
-
-
-
-
-
-
-Hildebrand, et al.      Expires November 6, 2015               [Page 17]
+Hildebrand, et al.      Expires November 7, 2015               [Page 17]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1005,7 +1005,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 18]
+Hildebrand, et al.      Expires November 7, 2015               [Page 18]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1061,7 +1061,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 19]
+Hildebrand, et al.      Expires November 7, 2015               [Page 19]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1117,7 +1117,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 20]
+Hildebrand, et al.      Expires November 7, 2015               [Page 20]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1173,7 +1173,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 21]
+Hildebrand, et al.      Expires November 7, 2015               [Page 21]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1229,7 +1229,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 22]
+Hildebrand, et al.      Expires November 7, 2015               [Page 22]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1285,7 +1285,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 23]
+Hildebrand, et al.      Expires November 7, 2015               [Page 23]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1341,7 +1341,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 24]
+Hildebrand, et al.      Expires November 7, 2015               [Page 24]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1397,7 +1397,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 25]
+Hildebrand, et al.      Expires November 7, 2015               [Page 25]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1453,7 +1453,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 26]
+Hildebrand, et al.      Expires November 7, 2015               [Page 26]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1509,7 +1509,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 27]
+Hildebrand, et al.      Expires November 7, 2015               [Page 27]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1565,7 +1565,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 28]
+Hildebrand, et al.      Expires November 7, 2015               [Page 28]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1621,7 +1621,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 29]
+Hildebrand, et al.      Expires November 7, 2015               [Page 29]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1677,7 +1677,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 30]
+Hildebrand, et al.      Expires November 7, 2015               [Page 30]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1733,7 +1733,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 31]
+Hildebrand, et al.      Expires November 7, 2015               [Page 31]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1789,7 +1789,7 @@ Authors' Addresses
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 32]
+Hildebrand, et al.      Expires November 7, 2015               [Page 32]
 
 Internet-Draft                  HTML RFC                        May 2015
 
@@ -1845,4 +1845,4 @@ Internet-Draft                  HTML RFC                        May 2015
 
 
 
-Hildebrand, et al.      Expires November 6, 2015               [Page 33]
+Hildebrand, et al.      Expires November 7, 2015               [Page 33]

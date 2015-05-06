@@ -31,14 +31,16 @@
         <email>paul.hoffman@vpnc.org</email>
       </address>
     </author>
-    <date year="2015" month="May" day="5"/>
+    <date year="2015" month="May" day="6"/>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
     <abstract>
-      <t>This document defines the HTML format that will be rendered from the
-        canonical XML format for an RFC or Internet-Draft.  The HTML output will include a default
-        CSS to enable page layout.</t>
+      <t>In order to meet the evolving needs of the Internet community, the
+        format for RFCs is changing from a plain-text, ASCII-only format to a
+        canonical XML format that will in turn be rendered into several
+        publication formats. This document defines the HTML format that will
+        be rendered for an RFC or Internet-Draft.</t>
     </abstract>
   </front>
   <middle>
