@@ -10,7 +10,7 @@
 <!ENTITY I-D.hoffman-xml2rfc SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.hoffman-xml2rfc.xml">
 <!ENTITY I-D.flanagan-rfc-framework SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.flanagan-rfc-framework.xml">
 ]>
-<rfc ipr="trust200902" docName="draft-hildebrand-html-rfc-05" category="info">
+<rfc ipr="trust200902" docName="draft-hildebrand-html-rfc-06" category="info">
   <front>
     <title abbrev="HTML RFC">HyperText Markup Language Request For Comments Format</title>
     <author initials="J." surname="Hildebrand" fullname="Joe Hildebrand" role="editor">
@@ -318,7 +318,7 @@
           </figure>
         </section>
         <section anchor="links" title="Links">
-          <t>Each <xref target='element.link'>link</xref> from the XML source is copied into
+          <t>Each <xref target='element.link' format='title'/> from the XML source is copied into
             the header.</t>
         </section>
       </section>
@@ -599,7 +599,7 @@
         <xref target='I-D.hoffman-xml2rfc'/> is rendered to HTML.
         Many of the descriptions have examples to clarify how elements will be rendered.</t>
       <section title="&lt;abstract&gt;" anchor="element.abstract">
-        <t>The abstract is rendered similarly to a <xref target='element.section'>&lt;section&gt;</xref> with anchor="abstract" and
+        <t>The abstract is rendered similarly to a <xref target='element.section' format='none'>&lt;section&gt;</xref> with anchor="abstract" and
         &lt;name&gt;Abstract&lt;/name&gt;, but without a section number.</t>
         <figure>
           <artwork><![CDATA[

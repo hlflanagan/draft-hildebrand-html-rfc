@@ -192,3 +192,43 @@ exports.defaultAttr = function(e, a, val) {
     e.attr(a, val);
   }
 }
+
+exports.scripts = function(text) {
+  var punycode = require('punycode');
+  var unicode = require('unicode-properties');
+  var s = new Set();
+  var decoded = punycode.ucs2.decode(text);
+  var i;
+  for (i=0; i<decoded.length; i++) {
+    s.add(unicode.getScript(decoded[i]));
+  }
+  var all = [];
+  s.forEach(function(scr){
+     all.push(scr);
+  });
+  return all.sort();
+}
+
+exports.blocks = function(text) {
+  var punycode = require('punycode');
+  var UnicodeTrie = require('unicode-trie');
+  var blocks = require('./blocks.json');
+  var blockt = new UnicodeTrie(fs.readFileSync(__dirname + '/block.trie'));
+
+  var s = new Set();
+  var decoded = punycode.ucs2.decode(text);
+  var i;
+  var b;
+  for (i=0; i<decoded.length; i++) {
+    b = blocks[blockt.get(decoded[i])]
+    if (b != 'Basic Latin') {
+      console.error('U+'+decoded[i].toString(16)+': ', b, String.fromCharCode(decoded[i]), i)
+    }
+    s.add(b);
+  }
+  var all = [];
+  s.forEach(function(scr){
+     all.push(scr);
+  });
+  return all.sort();
+}

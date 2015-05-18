@@ -1,15 +1,18 @@
 <?xml version='1.0'?>
-<rfc category='info'
+<rfc blocks='Basic Latin,Combining Diacritical Marks,Halfwidth and Fullwidth Forms,IPA Extensions,Latin Extended-A,Latin Extended-B,Latin-1 Supplement,Mathematical Alphanumeric Symbols'
+     category='info'
      consensus='false'
      docName='draft-hildebrand-html-rfc-04'
-     finalizedTime='2015-05-06T10:32:51Z'
+     finalizedTime='2015-05-14T03:20:12Z'
      indexInclude='true'
      ipr='trust200902'
+     scripts='Common,Inherited,Latin'
      sortRefs='false'
      submissionType='IETF'
      symRefs='true'
      tocDepth='3'
      tocInclude='true'
+     version='3'
      xmlns:xi='http://www.w3.org/2001/XInclude'>
   <link href='https://github.com/hildjj/draft-hildebrand-html-rfc.git'
         rel='alternate'/>
@@ -57,7 +60,7 @@
         <email>rse@rfc-editor.org</email>
       </address>
     </author>
-    <date day='6' month='May' year='2015'/>
+    <date day='13' month='May' year='2015'/>
     <area>gen</area>
     <workgroup>rfc-interest Working Group</workgroup>
     <keyword>html</keyword>
@@ -108,7 +111,7 @@
           than as "work in progress."
         </t>
         <t pn='p-boilerplate-1-4'>
-          This Internet-Draft will expire on 2015-11-06.
+          This Internet-Draft will expire on 2015-11-13.
         </t>
       </section>
       <section pn='s-boilerplate-2'>

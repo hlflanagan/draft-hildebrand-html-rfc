@@ -1,5 +1,6 @@
+
 body {
-  font-family: Palatino, serif;
+  font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
   margin: 0 5% 0 5%;
   background-color: #fff;
   color: #000;
@@ -110,7 +111,7 @@ section {
 }
 code {
   background-color: #eee;
-  font-family: 'Lucida Console', Monaco, monospace;
+  font-family: 'Droid Serif', Monaco, monospace;
   font-size: 90%;
   line-height: 1.15em;
 }
@@ -154,7 +155,7 @@ a.pilcrow {
   color: #999;
   text-decoration: none;
   visibility:hidden;
-  font-family: Palatino, serif;
+  font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
   user-select: none;
   -ms-user-select: none;
   -o-user-select:none;
@@ -234,7 +235,7 @@ address.vcard .label {
   margin: 0;
   padding: 0;
   padding-bottom: 4px;
-  font-family: Palatino, serif;
+  font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
 }
 address.vcard .namerole {
   font-weight: bold;
