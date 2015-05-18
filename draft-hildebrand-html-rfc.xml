@@ -194,7 +194,8 @@
           &lt;figure&gt; or &lt;table&gt; element will be appended with a
           space and a "pilcrow" (U+00B6: PILCROW SIGN), otherwise known as a
           "paragraph sign".  For the purposes of clarity, in this document
-          pilcrows are rendered as "&amp;para;".</t>
+          pilcrows are rendered as "&amp;para;".  The pilcrow will linked to
+          the "id" attribute on the XML entity to which it is associated.</t>
           <t>The pilcrow will normally be invisible unless the element it is
             attached to is moused over.  The pilcrow will be surrounded by a
             link that points to the element it is attached to.</t>
