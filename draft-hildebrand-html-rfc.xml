@@ -1143,6 +1143,20 @@ Computer Sciences Division</pre>]]></artwork>
 <span class="region">Colorado<span>]]></artwork>
         </figure>
       </section>
+      <section title="&lt;relref&gt;" anchor="element.relref">
+        <t>This element is rendered as an HTML &lt;a&gt; element containing an
+          appropriate external link as the "href" attribute.</t>
+        <t>The value of the "href" attribute is taken directly from the
+          "derivedLink" attribute.</t>
+        <t>The contents of the
+          &lt;a&gt; is determined by whether or not there is content
+          in the &lt;relref&gt; element, and possibly the values of the
+          "derivedRemoteContent" and "displayFormat" attributes.
+          If there is content in the the &lt;relref&gt; element, that
+          becomes the content of the &lt;a&gt; element. Otherwise,
+          the content is created as shown in the &lt;relref&gt; description
+          in <xref target="I-D.hoffman-xml2rfc"/>.</t>
+      </section>
       <section title="&lt;rfc&gt;" anchor="element.rfc">
         <t>Various attributes of this element are represented in different parts of the HTML
           document.</t>
@@ -1281,11 +1295,18 @@ int main(void)
         <t>This element does not add any direct output to HTML.</t>
       </section>
       <section title="&lt;xref&gt;" anchor="element.xref">
-        <t>This element is rendered as an HTML &lt;a&gt; element containing
-          an appropriate local link as the "href" attribute.</t>
-        <t>NOTE: the &lt;xref&gt; element is still under heavy discussion.
-          More detail will be provided here in a subsequent version of this
-          document.</t>
+        <t>This element is rendered as an HTML &lt;a&gt; element containing an
+          appropriate local link as the "href" attribute.</t>
+        <t>The value of the "href" attribute is taken directly from the
+          "target" attribute.</t>
+        <t>The contents of the
+          &lt;a&gt; is determined by whether or not there is content
+          in the &lt;xref&gt; element, and possibly the values of the
+          "derivedRemoteContent" and "format" attributes.
+          If there is content in the the &lt;xref&gt; element, that
+          becomes the content of the &lt;a&gt; element. Otherwise,
+          the content is created as shown in the &lt;xref&gt; description
+          in <xref target="I-D.hoffman-xml2rfc"/>.</t>
       </section>
     </section>
     <section anchor="iana-considerations" title="IANA Considerations">
