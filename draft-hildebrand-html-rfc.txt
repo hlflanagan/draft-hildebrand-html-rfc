@@ -400,7 +400,8 @@ Internet-Draft                  HTML RFC                        May 2015
    or <table> element will be appended with a space and a "pilcrow"
    (U+00B6: PILCROW SIGN), otherwise known as a "paragraph sign".  For
    the purposes of clarity, in this document pilcrows are rendered as
-   "&para;".
+   "&para;".  The pilcrow will linked to the "id" attribute on the XML
+   entity to which it is associated.
 
    The pilcrow will normally be invisible unless the element it is
    attached to is moused over.  The pilcrow will be surrounded by a link
@@ -441,7 +442,6 @@ Internet-Draft                  HTML RFC                        May 2015
    The front matter of the HTML format contains processing information,
    metadata of various types, and styling information that applies to
    the document as a whole.  This section describes HTML that is not
-   necessarily a direct transform from the XML format.  For more details
 
 
 
@@ -450,6 +450,7 @@ Hildebrand, et al.      Expires November 7, 2015                [Page 8]
 Internet-Draft                  HTML RFC                        May 2015
 
 
+   necessarily a direct transform from the XML format.  For more details
    on each of the tags that generate content in this section, see
    Section 9.
 
@@ -496,7 +497,6 @@ Internet-Draft                  HTML RFC                        May 2015
       the XML source
 
    o  description - the abstract from the XML source
-
 
 
 
@@ -1644,9 +1644,12 @@ Internet-Draft                  HTML RFC                        May 2015
 
 9.59.  <title>
 
-   The title of the document appears in an <h1> element, and follows
-   directly after the Document Information.  The <h1> element has an id
-   attribute with value "title".
+   The title of the document appears in an <title> element in the <head>
+   element, as shown in Section 6.3.2.
+
+   The title also appears in an <h1> element, and follows directly after
+   the Document Information.  The <h1> element has an id attribute with
+   value "title".
 
    <h1 id="title">HyperText Markup Language Request For
        Comments Format</h1>
@@ -1671,9 +1674,6 @@ Internet-Draft                  HTML RFC                        May 2015
    containing the string "URI:" and an HTML <a> element, with "href"
    attribute set to the linked URI, CSS class of "url" [sic], and the
    contents set to the linked URI.
-
-
-
 
 
 
@@ -1769,7 +1769,7 @@ Internet-Draft                  HTML RFC                        May 2015
 
    [I-D.hoffman-xml2rfc]
               Hoffman, P., "The 'XML2RFC' version 3 Vocabulary", draft-
-              hoffman-xml2rfc-17 (work in progress), April 2015.
+              hoffman-xml2rfc-18 (work in progress), May 2015.
 
 13.3.  URIs
 

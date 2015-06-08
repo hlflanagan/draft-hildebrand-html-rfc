@@ -1241,14 +1241,13 @@ int main(void)
         <t>This element is directly rendered as its HTML counterpart.</t>
       </section>
       <section title="&lt;title&gt;" anchor="element.title">
-        <t>The title of the document appears in an &lt;title&gt; element in the &lt;head&gt; element, as shown in <xref target="head-title"/>.
-          It also appears in an &lt;h1&gt; element, and
-          follows directly after the Document Information.  The &lt;h1&gt; element
-          has an id attribute with value "title".</t>
+        <t>The title of the document appears in an &lt;title&gt; element in the
+           &lt;head&gt; element, as shown in <xref target="head-title"/>.</t>
+        <t>The title also appears in an &lt;h1&gt; element, and follows directly
+           after the Document Information.  The &lt;h1&gt; element has an id
+           attribute with value "title".</t>
         <figure>
           <artwork><![CDATA[
-<head>...<title>HyperText Markup Language Request For
-    Comments Format</title>...</head>...
 <h1 id="title">HyperText Markup Language Request For
     Comments Format</h1>]]></artwork>
         </figure>

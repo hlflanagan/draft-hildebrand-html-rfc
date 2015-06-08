@@ -484,7 +484,7 @@
 <link href="#rfc.authors" rel="Chapter"/>
 
 
-  <meta name="generator" content="xml2rfc version 2.4.12 - http://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.5.0 - http://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Hildebrand, J., Ed., Flanagan, H., and P. Hoffman" />
@@ -728,7 +728,7 @@
 <p id="rfc.section.5.1.p.1">HTML elements that are generated from XML elements that include an anchor attribute will use the value of the anchor attribute as the id of the corresponding HTML element.  If there is no anchor attribute, the slugifiedName attribute of the contained &lt;name&gt; element will be used.  Otherwise, the partNumber attribute will be used, where it exists.</p>
 <p id="rfc.section.5.1.p.2">Some HTML constructs (such as <a href="#element.section">&lt;section&gt;</a> <cite title="NONE">[element.section]</cite>) will use multiple instances of these identifiers.</p>
 <h1 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2.</a> <a href="#pilcrows" id="pilcrows">Pilcrows</a></h1>
-<p id="rfc.section.5.2.p.1">Each paragraph, artwork, or sourcecode segment outside of a &lt;figure&gt; or &lt;table&gt; element will be appended with a space and a "pilcrow" (U+00B6: PILCROW SIGN), otherwise known as a "paragraph sign".  For the purposes of clarity, in this document pilcrows are rendered as "&amp;para;".</p>
+<p id="rfc.section.5.2.p.1">Each paragraph, artwork, or sourcecode segment outside of a &lt;figure&gt; or &lt;table&gt; element will be appended with a space and a "pilcrow" (U+00B6: PILCROW SIGN), otherwise known as a "paragraph sign".  For the purposes of clarity, in this document pilcrows are rendered as "&amp;para;".  The pilcrow will linked to the "id" attribute on the XML entity to which it is associated.</p>
 <p id="rfc.section.5.2.p.2">The pilcrow will normally be invisible unless the element it is attached to is moused over.  The pilcrow will be surrounded by a link that points to the element it is attached to.</p>
 <p id="rfc.section.5.2.p.3">Pilcrows are never included inside a &lt;table&gt; or &lt;figure&gt; elements, since the figure number or table number serve as adequate link targets.</p>
 <p id="rfc.section.5.2.p.4">Elements that might otherwise contain a pilcrow do not get marked with a pilcrow if they contain one or more child elements that are marked with a pilcrow. For example:</p>
@@ -1345,7 +1345,8 @@ int main(void)
 <h1 id="rfc.section.9.58"><a href="#rfc.section.9.58">9.58.</a> <a href="#element.thead" id="element.thead">&lt;thead&gt;</a></h1>
 <p id="rfc.section.9.58.p.1">This element is directly rendered as its HTML counterpart.</p>
 <h1 id="rfc.section.9.59"><a href="#rfc.section.9.59">9.59.</a> <a href="#element.title" id="element.title">&lt;title&gt;</a></h1>
-<p id="rfc.section.9.59.p.1">The title of the document appears in an &lt;h1&gt; element, and follows directly after the Document Information.  The &lt;h1&gt; element has an id attribute with value "title".</p>
+<p id="rfc.section.9.59.p.1">The title of the document appears in an &lt;title&gt; element in the &lt;head&gt; element, as shown in <a href="#head-title">Section 6.3.2</a>.</p>
+<p id="rfc.section.9.59.p.2">The title also appears in an &lt;h1&gt; element, and follows directly after the Document Information.  The &lt;h1&gt; element has an id attribute with value "title".</p>
 <pre>
 &lt;h1 id="title"&gt;HyperText Markup Language Request For
     Comments Format&lt;/h1&gt;</pre>
@@ -1428,7 +1429,7 @@ int main(void)
       <td class="reference">
         <b id="I-D.hoffman-xml2rfc">[I-D.hoffman-xml2rfc]</b>
       </td>
-      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-hoffman-xml2rfc-17">The 'XML2RFC' version 3 Vocabulary</a>", Internet-Draft draft-hoffman-xml2rfc-17, April 2015.</td>
+      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-hoffman-xml2rfc-18">The 'XML2RFC' version 3 Vocabulary</a>", Internet-Draft draft-hoffman-xml2rfc-18, May 2015.</td>
     </tr>
   </tbody>
 </table>
