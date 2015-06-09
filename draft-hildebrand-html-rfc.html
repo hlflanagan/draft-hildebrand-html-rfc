@@ -454,6 +454,10 @@
 <link href="#rfc.section.9.42" rel="Chapter" title="9.42 &lt;references&gt;"/>
 <link href="#rfc.section.9.43" rel="Chapter" title="9.43 &lt;region&gt;"/>
 <link href="#rfc.section.9.44" rel="Chapter" title="9.44 &lt;relref&gt;"/>
+<link href="#rfc.section.9.44.1" rel="Chapter" title="9.44.1 displayFormat='of'"/>
+<link href="#rfc.section.9.44.2" rel="Chapter" title="9.44.2 displayFormat='comma'"/>
+<link href="#rfc.section.9.44.3" rel="Chapter" title="9.44.3 displayFormat='parens'"/>
+<link href="#rfc.section.9.44.4" rel="Chapter" title="9.44.4 displayFormat='bare'"/>
 <link href="#rfc.section.9.45" rel="Chapter" title="9.45 &lt;rfc&gt;"/>
 <link href="#rfc.section.9.46" rel="Chapter" title="9.46 &lt;section&gt;"/>
 <link href="#rfc.section.9.47" rel="Chapter" title="9.47 &lt;seriesInfo&gt;"/>
@@ -490,7 +494,7 @@
 
   <meta name="dct.creator" content="Hildebrand, J., Ed., Flanagan, H., and P. Hoffman" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-hildebrand-html-rfc-06" />
-  <meta name="dct.issued" scheme="ISO8601" content="2015-5-6" />
+  <meta name="dct.issued" scheme="ISO8601" content="2015-6-9" />
   <meta name="dct.abstract" content="In order to meet the evolving needs of the Internet community, the format for RFCs is changing from a plain-text, ASCII-only format to a canonical XML format that will in turn be rendered into several publication formats. This document defines the HTML format that will be rendered for an RFC or Internet-Draft." />
   <meta name="description" content="In order to meet the evolving needs of the Internet community, the format for RFCs is changing from a plain-text, ASCII-only format to a canonical XML format that will in turn be rendered into several publication formats. This document defines the HTML format that will be rendered for an RFC or Internet-Draft." />
 
@@ -514,7 +518,7 @@
   <td class="right">H. Flanagan</td>
 </tr>
 <tr>
-  <td class="left">Expires: November 7, 2015</td>
+  <td class="left">Expires: December 11, 2015</td>
   <td class="right">RFC Editor</td>
 </tr>
 <tr>
@@ -527,7 +531,7 @@
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">May 6, 2015</td>
+  <td class="right">June 9, 2015</td>
 </tr>
 
     	
@@ -547,7 +551,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on November 7, 2015.</p>
+<p>This Internet-Draft will expire on December 11, 2015.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -639,7 +643,11 @@
 <li>9.42.   <a href="#rfc.section.9.42">&lt;references&gt;</a></li>
 <li>9.43.   <a href="#rfc.section.9.43">&lt;region&gt;</a></li>
 <li>9.44.   <a href="#rfc.section.9.44">&lt;relref&gt;</a></li>
-<li>9.45.   <a href="#rfc.section.9.45">&lt;rfc&gt;</a></li>
+<ul><li>9.44.1.   <a href="#rfc.section.9.44.1">displayFormat='of'</a></li>
+<li>9.44.2.   <a href="#rfc.section.9.44.2">displayFormat='comma'</a></li>
+<li>9.44.3.   <a href="#rfc.section.9.44.3">displayFormat='parens'</a></li>
+<li>9.44.4.   <a href="#rfc.section.9.44.4">displayFormat='bare'</a></li>
+</ul><li>9.45.   <a href="#rfc.section.9.45">&lt;rfc&gt;</a></li>
 <li>9.46.   <a href="#rfc.section.9.46">&lt;section&gt;</a></li>
 <li>9.47.   <a href="#rfc.section.9.47">&lt;seriesInfo&gt;</a></li>
 <li>9.48.   <a href="#rfc.section.9.48">&lt;sourcecode&gt;</a></li>
@@ -1290,96 +1298,65 @@ Computer Sciences Division&lt;/pre&gt;</pre>
 <pre>
 &lt;span class="region"&gt;Colorado&lt;span&gt;</pre>
 <h1 id="rfc.section.9.44"><a href="#rfc.section.9.44">9.44.</a> <a href="#element.relref" id="element.relref">&lt;relref&gt;</a></h1>
-<p id="rfc.section.9.44.p.1">This element is rendered as one or more HTML &lt;a&gt; elements containing appropriate external links as their "href" attributes as well as potentially some connective text.  All of the &lt;a&gt; attributes generated will have class "relref".  The contents of the &lt;a&gt; element(s) are determined by the values of the "derivedRemoteContent" and "displayFormat" attributes.  Here is the HTML output for each "displayFormat" value:</p>
+<p id="rfc.section.9.44.p.1">This element is rendered as one or more HTML &lt;a&gt; elements containing appropriate external links as their "href" attributes as well as potentially some connective text.  All of the &lt;a&gt; elements generated will have class "relref".  The contents of the &lt;a&gt; element(s) are determined by the values of the "derivedRemoteContent" and "displayFormat" attributes.  Here is the HTML output for each "displayFormat" value:</p>
+<h1 id="rfc.section.9.44.1"><a href="#rfc.section.9.44.1">9.44.1.</a> <a href="#element.relref.df-of" id="element.relref.df-of">displayFormat='of'</a></h1>
+<p id="rfc.section.9.44.1.p.1">The output is an &lt;a&gt; element with "href" attribute whose value is the value of the "derivedLink" attribute, and whose contents are the value of the "derivedRemoteContent" attribute.  This is followed by the word "of" (surrounded by whitespace). This is followed by a second &lt;a&gt; element, surrounded by square brackets, whose href attribute is the value of the "target" attribute prepended with "#", and whose content is the value of the "target" attribute.</p>
+<p id="rfc.section.9.44.1.p.2">For example, if Section 2.3 of RFC 7878 has the title "Protocol Overview", with an input of:</p>
 <pre>
-      See &lt;relref section="2.3" target="RFC7878" displayFormat="of"
-      derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-      derivedContent="Section 2.3"/&gt; for an overview.
-  </pre>
+See &lt;relref section="2.3" target="RFC7878" displayFormat="of"
+derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
+derivedContent="Section 2.3"/&gt; for an overview.</pre>
+<p/>
+<p id="rfc.section.9.44.1.p.4">The HTML generated will be:</p>
 <pre>
-      See &lt;a class="relref"
-      href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;
-      Section 2.3&lt;/a&gt; of
-      [&lt;a class="relref" href="#RFC7878"&gt;RFC7878&lt;/a&gt;]
-      for an overview.
-  </pre>
-<p id="rfc.section.9.44.p.2">"of" </p>
-
-<ul class="empty">
-  <li>The output is an &lt;a&gt; element with "href" attribute whose value is the value of the "derivedLink" attribute, and whose contents are the value of the "derivedRemoteContent" attribute.  This is followed by the word "of" (surrounded by whitespace). This is followed by a second &lt;a&gt; element, surrounded by square brackets, whose href attribute is the value of the "target" attribute prepended with "#", and whose content is the value of the "target" attribute.</li>
-  <li>For example, if Section 2.3 of RFC 7878 has the title "Protocol Overview", with an input of: </li>
-  <li>The HTML generated will be: </li>
-</ul>
-
-<p> </p>
+See &lt;a class="relref"
+href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;Section
+2.3&lt;/a&gt; of [&lt;a class="relref" href="#RFC7878"&gt;RFC7878&lt;/a&gt;]
+for an overview.</pre>
+<p/>
+<h1 id="rfc.section.9.44.2"><a href="#rfc.section.9.44.2">9.44.2.</a> <a href="#element.relref.df-comma" id="element.relref.df-comma">displayFormat='comma'</a></h1>
+<p id="rfc.section.9.44.2.p.1">The output is an &lt;a&gt; element with  "href" attribute whose value is the value of the "target"  attribute prepended by "#", and whose content is the value of the  "target" attribute; the entire element is wrapped in square brackets.  This is followed by a comma (","), followed by whitespace.  This is followed by an &lt;a&gt; element whose "href" attribute is the value of the "derivedLink" attribute and whose content is the value of the "derivedContent" attribute.</p>
+<p id="rfc.section.9.44.2.p.2">For example, if Section 2.3 of RFC 7878 has the title "Protocol Overview", for an input of:</p>
 <pre>
-      See
-      &lt;relref section="2.3" target="RFC7878" displayFormat="comma"
-      derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-      derivedContent="Section 2.3"/&gt;,
-      for an overview.
-  </pre>
+See &lt;relref section="2.3" target="RFC7878" displayFormat="comma"
+derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
+derivedContent="Section 2.3"/&gt;, for an overview.</pre>
+<p/>
+<p id="rfc.section.9.44.2.p.4">The HTML generated will be:</p>
 <pre>
-      See
-      [&lt;a class="relref" href="#RFC7878"&gt;RFC7878&lt;/a&gt;],
-      &lt;a class="relref"
-      href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;
-      Section 2.3&lt;/a&gt;, for an overview.
-  </pre>
-<p id="rfc.section.9.44.p.3">"comma" </p>
-
-<ul class="empty">
-  <li>The output is an &lt;a&gt; element with  "href" attribute whose value is the value of the "target"  attribute prepended by "#", and whose content is the value of the  "target" attribute; the entire element is wrapped in square brackets.  This is followed by a comma (",") and whitespace.  This is followed by an &lt;a&gt; element whose "href" attribute is the value of the "derivedLink" attribute and whose content is the value of the "derivedContent" attribute.</li>
-  <li>For example, if Section 2.3 of RFC 7878 has the title "Protocol Overview", for an input of: </li>
-  <li>The HTML generated will be: </li>
-</ul>
-
-<p> </p>
+See [&lt;a class="relref" href="#RFC7878"&gt;RFC7878&lt;/a&gt;],
+&lt;a class="relref"
+href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;Section
+2.3&lt;/a&gt;, for an overview.</pre>
+<p/>
+<h1 id="rfc.section.9.44.3"><a href="#rfc.section.9.44.3">9.44.3.</a> <a href="#element.relref.df-parens" id="element.relref.df-parens">displayFormat='parens'</a></h1>
+<p id="rfc.section.9.44.3.p.1">The output is an &lt;a&gt; element with "href" attribute whose value is the value of the "target" attribute prepended by "#", and whose content is the value of the "target" attribute; the entire element is wrapped in square brackets.  This is followed by  whitespace.  This is followed by an &lt;a&gt; element whose "href" attribute is the value of the "derivedLink" attribute and whose content is the value of the "derivedContent" attribute; the entire element is wrapped in  parentheses.</p>
+<p id="rfc.section.9.44.3.p.2">For example, if Section 2.3 of RFC 7878 has the title "Protocol Overview", for an input of:</p>
 <pre>
-      See
-      &lt;relref section="2.3" target="RFC7878" displayFormat="parens"
-      derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-      derivedContent="Section 2.3"/&gt;
-      for an overview.
-  </pre>
+See &lt;relref section="2.3" target="RFC7878" displayFormat="parens"
+derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
+derivedContent="Section 2.3"/&gt; for an overview.</pre>
+<p/>
+<p id="rfc.section.9.44.3.p.4">The HTML generated will be:</p>
 <pre>
-      See
-      [&lt;a href="#RFC7878"&gt;RFC7878&lt;/a&gt;]
-      (&lt;a href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;
-      Section 2.3&lt;/a&gt;)
-      for an overview.
-  </pre>
-<p id="rfc.section.9.44.p.4">"parens" </p>
-
-<ul class="empty">
-  <li>The output is an &lt;a&gt; element with "href" attribute whose value is the value of the "target" attribute prepended by "#", and whose content is the value of the "target" attribute; the entire element is wrapped in square brackets.  This is followed by  whitespace.  This is followed by an &lt;a&gt; element whose "href" attribute is the value of the "derivedLink" attribute and whose content is the value of the "derivedContent" attribute; the entire element is wrapped in  parentheses.</li>
-  <li>For example, if Section 2.3 of RFC 7878 has the title "Protocol Overview", for an input of: </li>
-  <li>The HTML generated will be: </li>
-</ul>
-
-<p> </p>
+See [&lt;a href="#RFC7878"&gt;RFC7878&lt;/a&gt;]
+(&lt;a href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;
+Section 2.3&lt;/a&gt;) for an overview.</pre>
+<p/>
+<h1 id="rfc.section.9.44.4"><a href="#rfc.section.9.44.4">9.44.4.</a> <a href="#element.relref.df-bare" id="element.relref.df-bare">displayFormat='bare'</a></h1>
+<p id="rfc.section.9.44.4.p.1">The output is an &lt;a&gt; element whose "href" attribute is the value of the "derivedLink" attribute and whose content is the value of the "derivedContent" attribute.</p>
+<p id="rfc.section.9.44.4.p.2">For this input:</p>
 <pre>
-      See
-      &lt;relref section="2.3" target="RFC7878" displayFormat="bare"
-      derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-      derivedContent="Section 2.3"/&gt;
-      and ...
-  </pre>
+See &lt;relref section="2.3" target="RFC7878" displayFormat="bare"
+derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
+derivedContent="Section 2.3"/&gt; and ...</pre>
+<p/>
+<p id="rfc.section.9.44.4.p.4">The HTML generated will be:</p>
 <pre>
-      See &lt;a class="relref"
-      href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;Section
-      2.3&lt;/a&gt;
-      and ...
-  </pre>
-<p id="rfc.section.9.44.p.5">"bare" </p>
-
-<ul class="empty">
-  <li>The output is an &lt;a&gt; element whose "href" attribute is the value of the "derivedLink" attribute and whose content is the value of the "derivedContent" attribute.</li>
-  <li>For this input: </li>
-  <li>The HTML generated will be: </li>
-</ul>
-
-<p> </p>
+See &lt;a class="relref"
+href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;Section
+2.3&lt;/a&gt; and ...</pre>
+<p/>
 <h1 id="rfc.section.9.45"><a href="#rfc.section.9.45">9.45.</a> <a href="#element.rfc" id="element.rfc">&lt;rfc&gt;</a></h1>
 <p id="rfc.section.9.45.p.1">Various attributes of this element are represented in different parts of the HTML document.</p>
 <h1 id="rfc.section.9.46"><a href="#rfc.section.9.46">9.46.</a> <a href="#element.section" id="element.section">&lt;section&gt;</a></h1>
@@ -1459,9 +1436,9 @@ int main(void)
 <h1 id="rfc.section.9.65"><a href="#rfc.section.9.65">9.65.</a> <a href="#element.workgroup" id="element.workgroup">&lt;workgroup&gt;</a></h1>
 <p id="rfc.section.9.65.p.1">This element does not add any direct output to HTML.</p>
 <h1 id="rfc.section.9.66"><a href="#rfc.section.9.66">9.66.</a> <a href="#element.xref" id="element.xref">&lt;xref&gt;</a></h1>
-<p id="rfc.section.9.66.p.1">This element is rendered as an HTML &lt;a&gt; element containing an appropriate local link as the "href" attribute.</p>
-<p id="rfc.section.9.66.p.2">The value of the "href" attribute is taken directly from the "target" attribute.</p>
-<p id="rfc.section.9.66.p.3">The contents of the &lt;a&gt; is determined by whether or not there is content in the &lt;xref&gt; element, and possibly the values of the "derivedRemoteContent" and "format" attributes.  If there is content in the the &lt;xref&gt; element, that becomes the content of the &lt;a&gt; element. Otherwise, the content is created as shown in the &lt;xref&gt; description in <a href="#I-D.hoffman-xml2rfc">[I-D.hoffman-xml2rfc]</a>.</p>
+<p id="rfc.section.9.66.p.1">This element is rendered as an HTML &lt;a&gt; element containing an appropriate local link as the "href" attribute.  The value of the "href" attribute is taken directly from the "target" attribute, prepended by "#".  All of the &lt;a&gt; elements generated will have class "xref".  The contents of the &lt;a&gt; element are the value of the "derivedContent" attribute.</p>
+<pre>
+&lt;a class="xref" href="#target"&gt;derivedContent&lt;/a&gt;</pre>
 <h1 id="rfc.section.10"><a href="#rfc.section.10">10.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a></h1>
 <p id="rfc.section.10.p.1">This document contains no actions for IANA</p>
 <h1 id="rfc.section.11"><a href="#rfc.section.11">11.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a></h1>
