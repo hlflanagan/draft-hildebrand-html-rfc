@@ -188,11 +188,11 @@ Internet-Draft                  HTML RFC                       June 2015
      9.66. <xref>  . . . . . . . . . . . . . . . . . . . . . . . . .  33
    10. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  33
    11. Security Considerations . . . . . . . . . . . . . . . . . . .  33
-   12. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  33
+   12. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  34
    13. References  . . . . . . . . . . . . . . . . . . . . . . . . .  34
      13.1.  Normative References . . . . . . . . . . . . . . . . . .  34
      13.2.  Informative References . . . . . . . . . . . . . . . . .  34
-     13.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  34
+     13.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  35
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  35
 
 1.  Introduction
@@ -1524,11 +1524,10 @@ Internet-Draft                  HTML RFC                       June 2015
 
    This element is rendered as one or more HTML <a> elements containing
    appropriate external links as their "href" attributes as well as
-   potentially some connective text.  All of the <a> elements generated
-   will have class "relref".  The contents of the <a> element(s) are
-   determined by the values of the "derivedRemoteContent" and
-   "displayFormat" attributes.  Here is the HTML output for each
-   "displayFormat" value:
+   (potentially) some connective text.  All of the <a> elements
+   generated will have class "relref".  The contents of the <a>
+   element(s) are determined by the values of the "derivedRemoteContent"
+   and "displayFormat" attributes.
 
 9.44.1.  displayFormat='of'
 
@@ -1561,7 +1560,8 @@ Internet-Draft                  HTML RFC                       June 2015
    is the value of the "target" attribute; the entire element is wrapped
    in square brackets.  This is followed by a comma (","), followed by
    whitespace.  This is followed by an <a> element whose "href"
-
+   attribute is the value of the "derivedLink" attribute and whose
+   content is the value of the "derivedContent" attribute.
 
 
 
@@ -1569,9 +1569,6 @@ Hildebrand, et al.      Expires December 11, 2015              [Page 28]
 
 Internet-Draft                  HTML RFC                       June 2015
 
-
-   attribute is the value of the "derivedLink" attribute and whose
-   content is the value of the "derivedContent" attribute.
 
    For example, if Section 2.3 of RFC 7878 has the title "Protocol
    Overview", for an input of:
@@ -1607,9 +1604,10 @@ Internet-Draft                  HTML RFC                       June 2015
 
    The HTML generated will be:
 
-   See [<a href="#RFC7878">RFC7878</a>]
-   (<a href="http://www.rfc-editor.org/info/rfc7878#s-2.3">
-   Section 2.3</a>) for an overview.
+   See [<a class="relref" href="#RFC7878">RFC7878</a>]
+   (<a class="relref"
+   href="http://www.rfc-editor.org/info/rfc7878#s-2.3">Section
+   2.3</a>) for an overview.
 
 9.44.4.  displayFormat='bare'
 
@@ -1618,6 +1616,8 @@ Internet-Draft                  HTML RFC                       June 2015
    "derivedContent" attribute.
 
    For this input:
+
+
 
 
 
@@ -1814,12 +1814,19 @@ Internet-Draft                  HTML RFC                       June 2015
 
    This element is rendered as an HTML <a> element containing an
    appropriate local link as the "href" attribute.  The value of the
-   "href" attribute is taken directly from the "target" attribute,
-   prepended by "#".  All of the <a> elements generated will have class
-   "xref".  The contents of the <a> element are the value of the
-   "derivedContent" attribute.
+   "href" attribute is taken from the "target" attribute, prepended by
+   "#".  The <a> element generated will have class "xref".  The contents
+   of the <a> element are the value of the "derivedContent" attribute.
+   If the "format" attribute has the value "default", and the "target"
+   attribute points to a <reference> or <referencegroup> element, then
+   the generated <a> element is surrounded by square brackets in the
+   output.
 
-   <a class="xref" href="#target">derivedContent</a>
+   <a class="xref" href="#target">Table 2</a>
+
+   or
+
+   [<a class="xref" href="#RFC1234">RFC1234</a>]
 
 10.  IANA Considerations
 
@@ -1832,13 +1839,6 @@ Internet-Draft                  HTML RFC                       June 2015
    loaded from a local file, more care must be taken with the HTML than
    is ordinary on the web.
 
-12.  Acknowledgments
-
-   The authors gratefully acknowledge the contributions of: Patrick
-   Linskey, and the members of the RFC Format Design Team (Nevil
-   Brownlee, Sandy Ginoza, Tony Hansen, Paul Hoffman, Ted Lemon, Julian
-   Reschke, Adam Roach, Alice Russo, Robert Sparks, Dave Thaler).
-
 
 
 
@@ -1849,6 +1849,13 @@ Hildebrand, et al.      Expires December 11, 2015              [Page 33]
 
 Internet-Draft                  HTML RFC                       June 2015
 
+
+12.  Acknowledgments
+
+   The authors gratefully acknowledge the contributions of: Patrick
+   Linskey, and the members of the RFC Format Design Team (Nevil
+   Brownlee, Sandy Ginoza, Tony Hansen, Paul Hoffman, Ted Lemon, Julian
+   Reschke, Adam Roach, Alice Russo, Robert Sparks, Dave Thaler).
 
 13.  References
 
@@ -1890,13 +1897,6 @@ Internet-Draft                  HTML RFC                       June 2015
               Hoffman, P., "The 'XML2RFC' version 3 Vocabulary", draft-
               hoffman-xml2rfc-18 (work in progress), May 2015.
 
-13.3.  URIs
-
-   [1] http://microformats.org/wiki/hcard
-
-
-
-
 
 
 
@@ -1905,6 +1905,10 @@ Hildebrand, et al.      Expires December 11, 2015              [Page 34]
 
 Internet-Draft                  HTML RFC                       June 2015
 
+
+13.3.  URIs
+
+   [1] http://microformats.org/wiki/hcard
 
 Authors' Addresses
 
@@ -1924,10 +1928,6 @@ Authors' Addresses
    VPN Consortium
 
    Email: paul.hoffman@vpnc.org
-
-
-
-
 
 
 

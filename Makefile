@@ -12,11 +12,11 @@ BRANCH := $(shell git symbolic-ref --short HEAD)
 %.3.xml: %.xml convertv2v3/convertv2v3
 	perl convertv2v3/convertv2v3  < $< > $@
 
-%.n.xml: %.3.xml number.jade number.js server.PID
-	$(XMLJADE) --pretty --xinclude --output $@ number.jade $<
+%.n.xml: %.3.xml prep1.jade number.js server.PID
+	$(XMLJADE) --pretty --xinclude --output $@ prep1.jade $<
 
-%.x.xml: %.n.xml xref.jade xref.js
-	$(XMLJADE) --pretty --output $@ xref.jade $<
+%.x.xml: %.n.xml prep2.jade xref.js
+	$(XMLJADE) --pretty --output $@ prep2.jade $<
 
 %.3.html: %.x.xml v3tohtml.jade v3.js xml2rfc.css
 	$(XMLJADE) --pretty --html --doublequote --output $@ v3tohtml.jade $<

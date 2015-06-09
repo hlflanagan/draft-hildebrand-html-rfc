@@ -1298,7 +1298,7 @@ Computer Sciences Division&lt;/pre&gt;</pre>
 <pre>
 &lt;span class="region"&gt;Colorado&lt;span&gt;</pre>
 <h1 id="rfc.section.9.44"><a href="#rfc.section.9.44">9.44.</a> <a href="#element.relref" id="element.relref">&lt;relref&gt;</a></h1>
-<p id="rfc.section.9.44.p.1">This element is rendered as one or more HTML &lt;a&gt; elements containing appropriate external links as their "href" attributes as well as potentially some connective text.  All of the &lt;a&gt; elements generated will have class "relref".  The contents of the &lt;a&gt; element(s) are determined by the values of the "derivedRemoteContent" and "displayFormat" attributes.  Here is the HTML output for each "displayFormat" value:</p>
+<p id="rfc.section.9.44.p.1">This element is rendered as one or more HTML &lt;a&gt; elements containing appropriate external links as their "href" attributes as well as (potentially) some connective text.  All of the &lt;a&gt; elements generated will have class "relref".  The contents of the &lt;a&gt; element(s) are determined by the values of the "derivedRemoteContent" and "displayFormat" attributes.</p>
 <h1 id="rfc.section.9.44.1"><a href="#rfc.section.9.44.1">9.44.1.</a> <a href="#element.relref.df-of" id="element.relref.df-of">displayFormat='of'</a></h1>
 <p id="rfc.section.9.44.1.p.1">The output is an &lt;a&gt; element with "href" attribute whose value is the value of the "derivedLink" attribute, and whose contents are the value of the "derivedRemoteContent" attribute.  This is followed by the word "of" (surrounded by whitespace). This is followed by a second &lt;a&gt; element, surrounded by square brackets, whose href attribute is the value of the "target" attribute prepended with "#", and whose content is the value of the "target" attribute.</p>
 <p id="rfc.section.9.44.1.p.2">For example, if Section 2.3 of RFC 7878 has the title "Protocol Overview", with an input of:</p>
@@ -1339,9 +1339,10 @@ derivedContent="Section 2.3"/&gt; for an overview.</pre>
 <p/>
 <p id="rfc.section.9.44.3.p.4">The HTML generated will be:</p>
 <pre>
-See [&lt;a href="#RFC7878"&gt;RFC7878&lt;/a&gt;]
-(&lt;a href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;
-Section 2.3&lt;/a&gt;) for an overview.</pre>
+See [&lt;a class="relref" href="#RFC7878"&gt;RFC7878&lt;/a&gt;]
+(&lt;a class="relref"
+href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;Section
+2.3&lt;/a&gt;) for an overview.</pre>
 <p/>
 <h1 id="rfc.section.9.44.4"><a href="#rfc.section.9.44.4">9.44.4.</a> <a href="#element.relref.df-bare" id="element.relref.df-bare">displayFormat='bare'</a></h1>
 <p id="rfc.section.9.44.4.p.1">The output is an &lt;a&gt; element whose "href" attribute is the value of the "derivedLink" attribute and whose content is the value of the "derivedContent" attribute.</p>
@@ -1436,9 +1437,12 @@ int main(void)
 <h1 id="rfc.section.9.65"><a href="#rfc.section.9.65">9.65.</a> <a href="#element.workgroup" id="element.workgroup">&lt;workgroup&gt;</a></h1>
 <p id="rfc.section.9.65.p.1">This element does not add any direct output to HTML.</p>
 <h1 id="rfc.section.9.66"><a href="#rfc.section.9.66">9.66.</a> <a href="#element.xref" id="element.xref">&lt;xref&gt;</a></h1>
-<p id="rfc.section.9.66.p.1">This element is rendered as an HTML &lt;a&gt; element containing an appropriate local link as the "href" attribute.  The value of the "href" attribute is taken directly from the "target" attribute, prepended by "#".  All of the &lt;a&gt; elements generated will have class "xref".  The contents of the &lt;a&gt; element are the value of the "derivedContent" attribute.</p>
+<p id="rfc.section.9.66.p.1">This element is rendered as an HTML &lt;a&gt; element containing an appropriate local link as the "href" attribute.  The value of the "href" attribute is taken from the "target" attribute, prepended by "#".  The &lt;a&gt; element generated will have class "xref".  The contents of the &lt;a&gt; element are the value of the "derivedContent" attribute. If the "format" attribute has the value "default", and the "target" attribute points to a &lt;reference&gt; or &lt;referencegroup&gt; element, then the generated &lt;a&gt; element is surrounded by square brackets in the output.</p>
 <pre>
-&lt;a class="xref" href="#target"&gt;derivedContent&lt;/a&gt;</pre>
+&lt;a class="xref" href="#target"&gt;Table 2&lt;/a&gt;</pre>
+<p id="rfc.section.9.66.p.2">or</p>
+<pre>
+[&lt;a class="xref" href="#RFC1234"&gt;RFC1234&lt;/a&gt;]</pre>
 <h1 id="rfc.section.10"><a href="#rfc.section.10">10.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a></h1>
 <p id="rfc.section.10.p.1">This document contains no actions for IANA</p>
 <h1 id="rfc.section.11"><a href="#rfc.section.11">11.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a></h1>
