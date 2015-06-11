@@ -8,12 +8,14 @@
 <!ENTITY RFC6949 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6949.xml">
 <!ENTITY RFC7322 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7322.xml">
 <!ENTITY I-D.hoffman-xml2rfc SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.hoffman-xml2rfc.xml">
+<!ENTITY I-D.hoffman-rfcv3-preptool SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.hoffman-rfcv3-preptool.xml">
 <!ENTITY I-D.flanagan-rfc-framework SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.flanagan-rfc-framework.xml">
 ]>
 <rfc ipr="trust200902" docName="draft-hildebrand-html-rfc-06" category="info">
-  <!-- NOTE:
-Paul wants to go through all of section 9, putting in xrefs to other places
-in this doc where that element is referenced, such as the header.
+<!--  ### Notes for Joe and Paul go here. ###
+
+Eventually remove Heather from the author list.
+
 -->
   <front>
     <title abbrev="HTML RFC">HyperText Markup Language Request For Comments Format</title>
@@ -21,12 +23,6 @@ in this doc where that element is referenced, such as the header.
       <organization>Cisco Systems, Inc.</organization>
       <address>
         <email>jhildebr@cisco.com</email>
-      </address>
-    </author>
-    <author initials="H." surname="Flanagan" fullname="Heather Flanagan">
-      <organization>RFC Editor</organization>
-      <address>
-        <email>rse@rfc-editor.org</email>
       </address>
     </author>
     <author initials="P." surname="Hoffman" fullname="Paul Hoffman">
@@ -52,7 +48,7 @@ in this doc where that element is referenced, such as the header.
       <t>As described in <xref target="I-D.flanagan-rfc-framework"/>, the RFC
         Series is changing. One of those changes includes the RFC Editor
         publishing a non-canonical HTML version of RFCs.</t>
-      <t>This memo describes the HTML format that will be used as one of the
+      <t>This document describes the HTML format that will be used as one of the
         publication formats for the RFC Series. It defines a strict subset of
         HTML appropriate for RFC Series documents.  The visual layout of the
         document will be defined through a cascading style sheet (CSS)
@@ -60,24 +56,33 @@ in this doc where that element is referenced, such as the header.
         HTML file but will be described in a separate document.</t>
     </section>
     <section anchor="requirements-for-html" title="Requirements for the HTML Format">
-        <t>
-      <list style="symbols">
       <t>This section lists the design requirements used to create the HTML
         format described in this document.  These requirements build on those
-        found in <xref target="RFC6949"/>.</t>
+        found in <xref target="RFC6949"/>. Many of these requirements are
+        naturally fulfilled by using the output of the prep tool
+        <xref target="I-D.hoffman-rfcv3-preptool"/>.</t>
+      <t>
+      <list style="symbols">
       <t>The HTML has to render correctly on a list of browser versions that
         the RFC Editor will keep up to date outside of this document.</t>
+      <t>The format will consist of a subset of HTML deemed to be widely
+        implemented   by common browsers at the time the specification is
+        created, likely to continue to be widely-implemented, and unlikely to
+        cause security issues.  This will maximize the chances that future HTML
+        renderers (such as new web browsers) will continue to produce readable
+        text from the HTML format without the format needing to be changed
+        frequently.</t>
       <t>These requirements are expected to change in the future to reflect the
         expectation that HTML rendering will be required for current versions of
         browsers and platforms, while ideally continuing to render correctly on
         recent versions of those browsers.</t>
-      <t>The HTML documents may be re-rendered from the canonical XML format in
+      <t>The HTML documents from the RFC Editor may be re-rendered from the canonical XML format in
         the future to ensure the ongoing readability of the documents.  The
         intent is that any re-rendering would be due to exceptional
         circumstances rather than for minor annoyances.</t>
       <t>The HTML must display adequately in at least one text-based browser.
-        Some consumers of the RFC series can only access the series on text-
-        based terminals.</t>
+        Some consumers of the RFC series can only access the series on
+        text-based terminals.</t>
       <t>The HTML document will be self-contained, without requiring external
         files for images, CSS, JavaScript, or the like.  This will allow
         the HTML file to be moved over various non-HTTP transports (such as
@@ -106,15 +111,10 @@ in this doc where that element is referenced, such as the header.
       <t>The HTML must make it easy to separate sections along with all of their
         subsections into separate files.  This will make creating EPUB
         documents easier in the future.</t>
+      <t>The HTML produced for Internet-Drafts will differ fromt that produced
+        by the RFC Editor due to differences in the output from the prep tool.</t>
       <t>The abstract must be marked up or tagged in a way that popular search
         engines will extract it as a summary.</t>
-      <t>The format will consist of a subset of HTML deemed to be widely
-        implemented   by common browsers at the time the specification is
-        created, likely to continue to be widely-implemented, and unlikely to
-        cause security issues.  This will maximize the chances that future HTML
-        renderers (such as new web browsers) will continue to produce readable
-        text from the HTML format without the format needing to be changed
-        frequently.</t>
       </list>
       </t>
       <section anchor="accessibility" title="Requirements for Accessibility">
@@ -169,10 +169,10 @@ in this doc where that element is referenced, such as the header.
             explicitly forbids \t (U+0009: CHARACTER TABULATION), \f (U+000C:
             FORM FEED), and \r (U+000D: CARRIAGE RETURN) from appearing in the
             output.</t>
-          <t>Comments in the canonical XML, if any, will not be copied into
+          <t>Comments in the source XML, if any, will not be copied into
             the HTML.</t>
           <t>The HTML output will be pretty-printed, using whatever
-            consistent rules the tooling team deems best.</t>
+            consistent rules deemed best in the HTML production tool.</t>
         </list>
       </t>
       <t>NOTE: none of these rules affect the rendered output of the HTML, but
@@ -180,17 +180,15 @@ in this doc where that element is referenced, such as the header.
         on the HTML output easier to write.</t>
     </section>
     <section anchor="common" title="Common Items">
-      <t>The following items are common across multiple parts of the HTML
-        document:</t>
+      <t>This section lists items that are common across multiple parts of the HTML
+        document.</t>
       <section anchor='ids' title='IDs'>
         <t>HTML elements that are generated from XML elements that include
-          an anchor attribute will use the value of the anchor attribute
-          as the id of the corresponding HTML element.  If
-          there is no anchor attribute, the slugifiedName attribute of the
-          contained &lt;name&gt; element will be used.  Otherwise, the
-          partNumber attribute will be used, where it exists.</t>
-        <t>Some HTML constructs (such as
-          <xref target='element.section'>&lt;section&gt;</xref>) will use
+          an "anchor" attribute will use the value of the "anchor" attribute
+          as the value of the "id" attribute of the corresponding HTML element.
+          The prep tool produces XML with "anchor" attributes in all elements that need them.
+          Some HTML constructs (such as
+          &lt;section&gt;) will use
           multiple instances of these identifiers.</t>
       </section>
       <section anchor='pilcrows' title='Pilcrows'>
@@ -223,7 +221,7 @@ in this doc where that element is referenced, such as the header.
       <section anchor='ascii-equivalents' title='ASCII Equivalents'>
         <t>Many elements in the v3 schema in <xref target='I-D.hoffman-xml2rfc'/> contain attributes for
           ASCII equivalents of the Unicode text contained in the element or
-          the Unicode attribute value.  These alternatives are included in a
+          the Unicode attribute value.  These alternatives are included in the HTML as in a
           &lt;span&gt; tag with the class "ascii".  The &lt;span&gt; is
           included inside the tag that is showing the text to the user. For example:</t>
         <figure>
@@ -255,8 +253,8 @@ in this doc where that element is referenced, such as the header.
         <t>The root element of the document is &lt;html&gt;.  This element
           includes a lang attribute, whose value is a <xref target="RFC5646"/>
           language tag describing the natural language of the document.  The
-          language of the RFC Series is English and so the language tag to be
-          included is 'en'.</t>
+          language tag to be
+          included is "en".</t>
       </section>
       <section anchor="head-element" title="Head Element">
         <t>The root &lt;html&gt; will contain a &lt;head&gt; element that
@@ -282,7 +280,7 @@ in this doc where that element is referenced, such as the header.
             <list style="symbols">
               <t>author - comma-separated &lt;fullname&gt;s of all of the
                 &lt;author&gt;s from the XML source</t>
-              <t>description - the abstract from the XML source</t>
+              <t>description - the &lt;abstract&gt; from the XML source</t>
               <t>generator - the name and version number of the software used
                 to create the HTML</t>
               <t>keywords - comma-separated &lt;keyword&gt;s from the XML
@@ -323,8 +321,8 @@ in this doc where that element is referenced, such as the header.
           </figure>
         </section>
         <section anchor="links" title="Links">
-          <t>Each <xref target='element.link' format='title'/> from the XML source is copied into
-            the header.</t>
+          <t>Each &lt;link&gt; element from the XML source is copied into
+            the HTML header.</t>
         </section>
       </section>
       <section anchor="document-information" title="Document Information">
@@ -360,13 +358,13 @@ in this doc where that element is referenced, such as the header.
       </section>
 
       <section anchor='table-of-contents' title='Table of Contents'>
-        <t>The table of contents will follow the boilerplate if the &lt;rfc&gt;
-        element's tocInclude attribute has the value "true".  An &lt;h2&gt;
+        <t>The table of contents will follow the boilerplate if the XML's &lt;rfc&gt;
+        element's tocInclude attribute has the value "true".  An HTML &lt;h2&gt;
         heading containing the text "Table of Contents" will be followed by a
         &lt;nav&gt; element that contains a &lt;ul&gt; element for each depth
         of the section hierarchy.  Each section will be represented by a
-        &lt;li&gt; element containing links by the section number (from the pn
-        attribute) and by the name (from the slugifiedName attribute of the
+        &lt;li&gt; element containing links by the section number (from the "pn"
+        attribute) and by the name (from the "slugifiedName" attribute of the
         &lt;name&gt; child element).  Each &lt;nav&gt;, &lt;ul&gt;, and
         &lt;li&gt; element will have the class "toc".</t>
         <t>For example:</t>
@@ -387,7 +385,7 @@ in this doc where that element is referenced, such as the header.
       </section>
     </section>
     <section anchor='middle' title='Main Body'>
-      <t>The main body of the document is processed according to the rules in
+      <t>The main body of the HTML document is processed according to the rules in
         <xref target='elements'/>.</t>
     </section>
     <section anchor='back-matter' title='Back Matter'>
@@ -396,7 +394,7 @@ in this doc where that element is referenced, such as the header.
         document itself.</t>
       <section anchor='index' title='Index'>
         <t>The index will be produced at the end of the document (before the
-          author information) if and only if the &lt;rfc&gt; element has a
+          author information) if and only if the XML document's &lt;rfc&gt; element has a
           indexInclude attribute with the value "true", and there is one or
           more &lt;iref&gt; elements in the document.</t>
         <section anchor='index-index' title='Index Contents'>
@@ -419,7 +417,7 @@ in this doc where that element is referenced, such as the header.
         <section anchor='index-letters' title='Index Letters'>
           <t>The index index is followed by a &lt;ul&gt; tag that contains a
             &lt;li&gt; tag for each first letter represented in the index. This
-            &lt;li&gt; tag has the class indexChar, and contains an &lt;a&gt;
+            &lt;li&gt; tag has the class "indexChar", and contains an &lt;a&gt;
             tag with the id pointed to by the index index, as well as an
             href to itself.  The &lt;li&gt; tag also includes a &lt;ul&gt; tag
             that will contain the index items.</t>
@@ -439,16 +437,16 @@ in this doc where that element is referenced, such as the header.
         <section anchor='index-items' title='Index Items'>
           <t>Each index item can have multiple &lt;iref&gt; elements to point to, all
           with the same item attribute.  Each index item is represented by a
-          &lt;li&gt; tag of class indexItem containing a &lt;span&gt; of class
-          irefItem for the item text and one of class irefRefs for the generated
+          &lt;li&gt; tag of class "indexItem" containing a &lt;span&gt; of class
+          "irefItem" for the item text and one of class "irefRefs" for the generated
           references (if there is at least one reference to the item not having
           a subitem).  Each generated reference contains an &lt;a&gt; tag
           containing the section number where the &lt;iref&gt; was found, with
-          an href pointing to the irefid of the &lt;iref&gt;. If the primary
-          attribute of the &lt;iref&gt; has the value "true", the &lt;a&gt; tag
-          will have the class indexPrimary. Commas may be used to separate the
+          an "href" attribute pointing to the "irefid" attribute of the &lt;iref&gt; element from the XML document. If the primary
+          attribute of the &lt;iref&gt; element has the value "true", the &lt;a&gt; element in the HTML document
+          will have the class "indexPrimary". Commas may be used to separate the
           generated references, surrounded by a &lt;span&gt; tag with class
-          indexComma.</t>
+          "indexComma".</t>
           <t>For example:</t>
           <figure>
             <artwork><![CDATA[
@@ -467,9 +465,9 @@ in this doc where that element is referenced, such as the header.
         <section anchor='index-subitems' title='Index Sub-items'>
           <t>If an index item has at least one subitem, the &lt;li&gt; of
             that item will contain a &lt;ul&gt;, with one &lt;li&gt; for each
-            subitem, of class indexSubItem.  Each subitem is formatted
+            subitem, of class "indexSubItem".  Each subitem is formatted
             similarly to items, except the class of the first &lt;span&gt;
-            tag is irefSubItem.</t>
+            tag is "irefSubItem".</t>
           <t>For example:</t>
           <figure>
             <artwork><![CDATA[
@@ -488,8 +486,7 @@ in this doc where that element is referenced, such as the header.
       <section anchor='authors-addresses' title="Authors' Addresses">
         <t>At the end of the document, author information will be included
           inside an HTML &lt;section&gt; element.  The class names have been chosen to
-          match the class names in
-          <eref target='http://microformats.org/wiki/hcard'>hCard</eref>.</t>
+          match the class names in <xref target="HCARD"/>.</t>
         <t>Note: The following example shows several ASCII equivalents that are
           the same as their nominal equivalents for clarity; normally the ASCII
           equivalents would not be included for these cases.</t>
@@ -604,7 +601,7 @@ in this doc where that element is referenced, such as the header.
         <xref target='I-D.hoffman-xml2rfc'/> is rendered to HTML.
         Many of the descriptions have examples to clarify how elements will be rendered.</t>
       <section title="&lt;abstract&gt;" anchor="element.abstract">
-        <t>The abstract is rendered similarly to a <xref target='element.section' format='none'>&lt;section&gt;</xref> with anchor="abstract" and
+        <t>The abstract is rendered similarly to a &lt;section&gt; with anchor="abstract" and
         &lt;name&gt;Abstract&lt;/name&gt;, but without a section number.</t>
         <figure>
           <artwork><![CDATA[
@@ -622,7 +619,7 @@ in this doc where that element is referenced, such as the header.
       </section>
       <section title="&lt;annotation&gt;" anchor="element.annotation">
         <t>This element is rendered as a span of class "annotation" at the end
-          of a <xref target='element.reference'>reference</xref>, the span
+          of a &lt;reference&gt; element, the span
           containing appropriately-transformed elements from the children of
           the &lt;annotation&gt; tag.  A span of class "comma" is added before
           the annotation.</t>
@@ -744,7 +741,7 @@ ______________
         <t>The &lt;author&gt; element from the &lt;front&gt; of the document
           is also rendered into the <xref target='document-information'>Document
           Information</xref>, the <xref target='meta'>HTML meta headers</xref>,
-          and in <xref target='element.reference'>references</xref>.
+          and in &lt;references&gt;.
           See each of those sections for details.</t>
       </section>
       <section title="&lt;back&gt;" anchor="element.back">
@@ -952,11 +949,11 @@ about something that we need to remember later.
       <section title="&lt;name&gt;" anchor="element.name">
         <t>This element is never rendered directly, but instead when
           considering its parent element, such as
-          <xref target='element.section'>&lt;section&gt;</xref>.</t>
+          &lt;section&gt;.</t>
       </section>
       <section title="&lt;note&gt;" anchor="element.note">
         <t>This element is rendered similarly to a
-          <xref target='element.section'>&lt;section&gt;</xref>, but without
+          &lt;section&gt;, but without
           a section number, and with the CSS class of "note.  If the
           "removeInRFC" attribute is set to "yes", the generated div will also
           include the CSS class "rfceditor-remove".</t>
@@ -1117,7 +1114,7 @@ Computer Sciences Division</pre>]]></artwork>
         <t>If there is at least one &lt;references&gt; element, a "References"
           section is added to the document, continuing with the next major
           section number after the last
-          <xref target='element.section'>&lt;section&gt;</xref>.
+          &lt;section&gt;.
         </t>
         <t>Each references element will be added to that "References" section
           as if it were a section itself.</t>
@@ -1330,6 +1327,9 @@ int main(void)
       <section title="&lt;sup&gt;" anchor="element.sup">
         <t>This element is directly rendered as its HTML counterpart.</t>
       </section>
+      <section title="&lt;svg&gt;" anchor="element.svg">
+        <t>This element is rendered as part of the &lt;artwork&gt; element.</t>
+      </section>
       <section title="&lt;t&gt;" anchor="element.t">
         <t>This element is rendered as an HTML &lt;p&gt; element.  A
           <xref target='pilcrows'>pilcrow</xref> is included.</t>
@@ -1428,9 +1428,10 @@ int main(void)
         with the HTML than is ordinary on the web. </t>
     </section>
     <section anchor="appendix-a-acknowledgments" title="Acknowledgments">
-      <t>The authors gratefully acknowledge the contributions of: Patrick Linskey, and the
+      <t>Heather Flanangan was an early co-author of this document and helped its formation.
+        The authors gratefully acknowledge the contributions of: Patrick Linskey, and the
         members of the RFC Format Design Team (Nevil Brownlee, Sandy Ginoza, Tony Hansen,
-        Paul Hoffman, Ted Lemon, Julian Reschke, Adam Roach, Alice Russo, Robert Sparks,
+        Ted Lemon, Julian Reschke, Adam Roach, Alice Russo, Robert Sparks,
         Dave Thaler).</t>
     </section>
   </middle>
@@ -1461,11 +1462,20 @@ int main(void)
 
 &I-D.flanagan-rfc-framework;
     </references>
+
     <references title="Informative References">
+    <reference anchor="HCARD" target="http://microformats.org/wiki/hcard">
+      <front>
+        <title>hCard 1.0</title>
+        <author initials="T." surname = "Celik" fullname="Tantek Celik"/>
+        <date year="2015"/>
+      </front>
+    </reference>
 &RFC5646;
 &RFC6949;
 &RFC7322;
 &I-D.hoffman-xml2rfc;
+&I-D.hoffman-rfcv3-preptool;
     </references>
   </back>
 </rfc>
