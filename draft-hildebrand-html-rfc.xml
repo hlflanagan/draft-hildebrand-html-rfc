@@ -76,7 +76,8 @@ Eventually remove Heather from the author list.
         expectation that HTML rendering will be required for current versions of
         browsers and platforms, while ideally continuing to render correctly on
         recent versions of those browsers.</t>
-      <t>The HTML documents from the RFC Editor may be re-rendered from the canonical XML format in
+      <t>The HTML documents from the RFC Editor or Internet-Drafts directory
+        may be re-rendered from the canonical XML format in
         the future to ensure the ongoing readability of the documents.  The
         intent is that any re-rendering would be due to exceptional
         circumstances rather than for minor annoyances.</t>
