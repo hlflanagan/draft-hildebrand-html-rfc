@@ -11,11 +11,10 @@
 <!ENTITY I-D.hoffman-rfcv3-preptool SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.hoffman-rfcv3-preptool.xml">
 <!ENTITY I-D.flanagan-rfc-framework SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.flanagan-rfc-framework.xml">
 ]>
-<rfc ipr="trust200902" docName="draft-hildebrand-html-rfc-06" category="info">
+<rfc ipr="trust200902" docName="draft-hildebrand-html-rfc-07" category="info">
 <!--  ### Notes for Joe and Paul go here. ###
 
-Eventually remove Heather from the author list.
-
+Deal with displayreference in relref or xref
 -->
   <front>
     <title abbrev="HTML RFC">HyperText Markup Language Request For Comments Format</title>
@@ -31,7 +30,7 @@ Eventually remove Heather from the author list.
         <email>paul.hoffman@vpnc.org</email>
       </address>
     </author>
-    <date year="2015" month="June" day="9"/>
+    <date year="2015" month="June" day="17"/>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
