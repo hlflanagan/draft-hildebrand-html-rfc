@@ -807,7 +807,7 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
           class "locality".</t>
         <figure>
           <artwork><![CDATA[
-<span class='locality'>Guilford</span>]]></artwork>
+<span class="locality">Guilford</span>]]></artwork>
         </figure>
       </section>
       <section title="&lt;code&gt;" anchor="element.code">
@@ -879,7 +879,7 @@ about something that we need to remember later.
 <div>
   <span>Email:</span>
   <a href="mailto:joe@example.net" class="email">joe@example.net</a>
-  <span class='ascii'>joe@example.net</span>
+  <span class="ascii">joe@example.net</span>
 </div>]]></artwork>
         </figure>
       </section>
