@@ -1,45 +1,28 @@
 - var number = require('./number')
 - var dt = require('./dt')
 - var slug = require('slug')
-- var pubDate = new Date()
+- var pubDate = null
+- var expiresDate = null
 - var irefs={}
 
+include lib.jade
+  
 mixin elem(e)
+  - var pno = attributes ? attributes.pn : null
   - var a = $att(e, attributes)
   - a = $nsDecls(e, a)
+  if pno 
+    - a.pn = pno
+  else if number.isPart(e)
+    - a.pn = number.partNumber(e)
+
   #{$qname(e)}&attributes(a)
-    +children(e)
+    +nodes(e.childNodes())
     block
-
-mixin part(e)
-  if $('ancestor::reference', e)
-    +elem(e)
-  else
-    +elem(e)(pn=number.partNumber(e))
-
-mixin children(e, opts)
-  each c in e.childNodes()
-    case c.type()
-      when 'text'
-        if c.text().trim().length > 0
-          = c.text()
-      when 'cdata'
-        :cdata
-          !{c.text()}
-      when 'comment'
-        //- remove comments
-        //- != "<!--" + c.text() + "-->"
-      when 'element'
-        - var nm = c.name()
-        if jade_mixins[nm] != null
-          +#{nm}(c)
-        else if number.isPart(nm)
-          +part(c)
-        else
-          +elem(c, opts)
 
 mixin boilerplate(e)
   //- remove any old boilerplate
+  +warn("Existing boilerplate being removed")
 
 mixin front(e)
   +elem(e)
@@ -47,7 +30,7 @@ mixin front(e)
       boilerplate
         - var isoPub = dt.isoDate(pubDate)
         - var tlp = number.ipr($('@ipr'))
-        section(pn="s-boilerplate-1")
+        section(pn="s-boilerplate-1", numbered="false")
           name(slugifiedName="n-status-of-this-memo") Status of this Memo
           t(pn="p-boilerplate-1-1").
             This Internet-Draft is submitted in full conformance with
@@ -63,10 +46,8 @@ mixin front(e)
               and may be updated, replaced, or obsoleted by other documents at any
               time.  It is inappropriate to use Internet-Drafts as reference
               material or to cite them other than as "work in progress."
-            - var expires = new Date(pubDate);
-            - expires.setMonth(expires.getMonth() + 6)
-            t(pn="p-boilerplate-1-4") This Internet-Draft will expire on #{dt.isoDate(expires)}.
-        section(pn="s-boilerplate-2")
+            t(pn="p-boilerplate-1-4") This Internet-Draft will expire on #{dt.isoDate(expiresDate)}.
+        section(pn="s-boilerplate-2", numbered="false")
           name(slugifiedName="n-copyright-notice") Copyright Notice
           t(pn="p-boilerplate-2-1").
             Copyright &#xa9;#{pubDate.getFullYear()} IETF Trust and the
@@ -92,24 +73,27 @@ mixin abstract(e)
 mixin artwork(e)
   - number.defaultAttr(e, 'align', 'left')
   - number.loadSrc(e)
-  +part(e)
+  +elem(e)
   
 mixin cref(e)
   - number.defaultAttr(e, 'display', 'true')
   +elem(e)
 
 mixin date(e)
-  // in rfc/front/date, make sure we have a year, month, and day
+  //- in rfc/front/date, make sure we have a year, month, and day
   if $('ancestor::reference', e)
     +elem(e)
   else
-    - var now = pubDate || new Date()
+    - var now = new Date()
+    - now = new Date(now.getFullYear(), now.getMonth(), now.getDate())
     - var a = $att(e)
     - var year = a['year'] || now.getFullYear()
     - var month = a['month'] || dt.monthName(now)
     - var mn = dt.monthNumber(month)
     - var day = a['day'] || now.getDate();
     - pubDate = new Date(year, mn, day)
+    if (pubDate < now) && (defs.mode != 'RFC')
+      +warn('Publication date before today: ' + pubDate)
     +elem(e)(year=year, month=month, day=day)
 
 mixin dl(e)
@@ -138,6 +122,25 @@ mixin name(e)
     +elem(e)(slugifiedName="n-" + slug(e.text()).toLowerCase())
 
 mixin note(e)
+  if $att(e, 'removeInRFC') === 'true'
+    if defs.mode === 'RFC'
+      +error("Must remove removeInRFC note", e)
+    - var t = $('t', e)
+    - var txt = 'This note is to be removed before publishing as an RFC.'
+    if !t || t.text().trim() !== txt
+      //- <t>txt</t> needed.  Put it after the name if it exists, or as the
+      //- first child of e.
+      - var nm = $('name', e)
+      if nm
+        - nm.addNextSibling($element('t', txt))
+      else
+        - var first = $('*', e)
+        if first
+          - first.addPrevSibling($element('t', txt))
+        else
+          //- no children
+          - e.addChild($element('t', txt))
+      
   +elem(e)(pn="s-note-" + number.sequentialNumber(e))
 
 mixin ol(e)
@@ -159,7 +162,71 @@ mixin reference(e)
   - number.defaultAttr(e, 'quoteTitle', 'true')
   +elem(e)
 
+mixin referencegroup(e)
+  if $att($root(), 'sortRefs') !== 'true'
+    +elem(e)
+  else
+    - var a = $att(e)
+    - a = $nsDecls(e, a)
+    #{$qname(e)}&attributes(a)
+      - var rs = e.find('reference')
+      - rs.sort(number.cmpAnchor)
+      +nodes(rs)
+
+mixin references(e)
+  if $att($root(), 'sortRefs') !== 'true'
+    +elem(e)
+  else
+    - var a = $att(e)
+    - a = $nsDecls(e, a)
+    - a.pn = number.partNumber(e)
+    #{$qname(e)}&attributes(a)
+      - var nm = $('name', e)
+      if nm
+        +elem(nm)
+      - var rs = e.find('reference|referencegroup')
+      - rs.sort(number.cmpAnchor)
+      +nodes(rs)
+
+mixin relref(e)
+  - var target = $att(e, 'target')
+  if !target
+    +error("relref without target", e)
+  - var target_el = $('//*[@anchor="' + target + '"]')
+  if !target_el
+    +error("relref with non-existent target", e)
+  - var nm = target_el.name()
+  if (nm != 'reference') && (nm != 'referencegroup')
+    +error("relref with invalid target", e)
+  - var relative = $att(e, 'relative')
+  - var section = $att(e, 'section')
+  if (!relative && !section)
+    +error('relref with neither section nor relative', e)
+  if (relative && section)
+    +error('relref with both section and relative', e)
+  - var uri = $att(target_el, 'target')
+  if !uri
+    +error('relref reference(group) does not have target attribute', e)
+  if relative
+    - e.attr('derivedLink', uri + relative)
+  if section
+    - e.attr('derivedLink', uri + "#s-" + section)
+  - var txt = e.text().trim()
+  if txt
+    - var dc = $att(e, 'derivedContent')
+    if dc && (dc != txt)
+      +warn('relref derivedContent invalid.  replacing', e)
+    - e.attr('derivedContent', txt)
+  +elem(e)
+
 mixin section(e)
+  if $att(e, 'numbered') === "false"
+    - var pnm = e.parent().name()
+    if  (pnm !== "middle") && (pnm !== "back") && (pnm !== "boilerplate")
+      +error("Un-numbered section must be a child of middle or back", e)
+    if e.get('following-sibling::section[not(@numbered="false")]')
+      +error("Un-numbered section must not be followed by a numbered section", e)
+    
   if $('ancestor::back', e)
     +elem(e)(pn="s-" + number.appendix(e))
   else
@@ -190,17 +257,23 @@ mixin ul(e)
 mixin workgroup(e)
   - var t = e.text().trim()
   if !t.match(/Group$/)
-    - sub = $('@submissionType')
-    if sub == 'IETF'
-      - e.text(t + " Working Group")
-    else if sub == 'IRTF'
-      - e.text(t + " Research Group")
+    +warn('Workgroup must end with "Group", current value: "'+ t + '"', e)
   +elem(e)
-  
+
 mixin xref(e)
+  - var targ = $att(e, 'target')
+  if targ == null
+    +error("xref target required", e)
+
+  - var targel = $('//*[@anchor="' + targ + '"]')
+  if targel == null
+    +error('unknown xref target: ' + targ, e)
+    
   - number.defaultAttr(e, 'format', 'default')
   if $att(e, 'section')
     - number.defaultAttr(e, 'sectionformat', 'of')
+    
+  //- invent text in the next pass
   +elem(e)
 
 doctype xml
@@ -211,10 +284,29 @@ doctype xml
 - number.defaultAttr(root, 'submissionType', 'IETF')
 - number.defaultAttr(root, 'symRefs', 'true')
 - number.defaultAttr(root, 'tocInclude', 'true')
-- root.attr('finalizedTime', dt.isoDateTime(new Date()))
+- root.attr('prepTime', dt.isoDateTime(new Date()))
 - root.attr('version', '3')
 - root.attr('scripts', number.scripts($root().toString()))
-- root.attr('blocks', number.blocks($root().toString()))
 if $att(root, 'tocInclude') == 'true'
   - number.defaultAttr(root, 'tocDepth', '3');
+  
+- var now = new Date()
+- now = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+- var dat = $('/rfc/front/date')
+- var a = $att(dat) || {}
+- var year = a['year'] || now.getFullYear()
+- var month = a['month'] || dt.monthName(now)
+- var mn = dt.monthNumber(month)
+- var day = a['day'] || now.getDate();
+- pubDate = new Date(year, mn, day)
+- expiresDate = new Date(year, mn+6, day)
+if defs.mode != 'RFC'
+  if pubDate < now
+    +warn('Publication date before today: ' + pubDate)
+  - root.attr('expiresDate', dt.isoDate(expiresDate))
+- number.sanity(root, "updates")
+- number.sanity(root, "obsoletes")
+  
++nodes($$('/*/preceding::node()'))
 +elem(root)
++nodes($$('/*/following::node()'))

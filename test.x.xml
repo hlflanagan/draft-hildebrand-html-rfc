@@ -1,22 +1,28 @@
 <?xml version='1.0'?>
-<rfc blocks='Basic Latin,Combining Diacritical Marks,Halfwidth and Fullwidth Forms,IPA Extensions,Latin Extended-A,Latin Extended-B,Latin-1 Supplement,Mathematical Alphanumeric Symbols'
-     category='info'
+<rfc category='info'
      consensus='false'
      docName='draft-hildebrand-html-rfc-04'
-     finalizedTime='2015-05-14T03:20:12Z'
+     expiresDate='2015-12-16'
      indexInclude='true'
      ipr='trust200902'
+     prepTime='2015-06-17T14:49:41Z'
      scripts='Common,Inherited,Latin'
-     sortRefs='false'
+     sortRefs='true'
      submissionType='IETF'
      symRefs='true'
      tocDepth='3'
      tocInclude='true'
+     updates='5646, 6949'
      version='3'
      xmlns:xi='http://www.w3.org/2001/XInclude'>
   <link href='https://github.com/hildjj/draft-hildebrand-html-rfc.git'
         rel='alternate'/>
+  <!-- Need right-to-left names -->
+  <!-- Paul got to <postal> -->
   <front>
+    <!-- comment in the front
+      it's got multiple lines and some <>
+      it also has some &amp; &lt; &gt; -->
     <title abbrev='HTML RFC'>
       HyperText Markup Language Request For Comments Format
     </title>
@@ -60,9 +66,9 @@
         <email>rse@rfc-editor.org</email>
       </address>
     </author>
-    <date day='13' month='May' year='2015'/>
+    <date day='17' month='June' year='2015'/>
     <area>gen</area>
-    <workgroup>rfc-interest Working Group</workgroup>
+    <workgroup>RFC-Interest Pseudo Working Group</workgroup>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
@@ -81,14 +87,27 @@
     <note pn='s-note-1' removeInRFC='true'>
       <name slugifiedName='n-editorial-note'>Editorial Note</name>
       <t pn='p-note-1-1'>
+        This note is to be removed before publishing as an RFC.
+      </t>
+      <t pn='p-note-1-2'>
         Discussion of this draft takes place on the rfc-interest
         mailing list (rfc-interest@rfc-editor.org), which has its home
         page at <eref
         target='https://www.rfc-editor.org/mailman/listinfo/rfc-interest'/>.
       </t>
     </note>
+    <note pn='s-note-2' removeInRFC='true'>
+      <name slugifiedName='n-editorial-note'>Editorial Note</name>
+      <t pn='p-note-2-1'>
+        This note is to be removed before publishing as an RFC.
+      </t>
+      <dl hanging='true' spacing='normal'>
+        <dt pn='p-note-2-2'>A term</dt>
+        <dd>A def</dd>
+      </dl>
+    </note>
     <boilerplate>
-      <section pn='s-boilerplate-1'>
+      <section numbered='false' pn='s-boilerplate-1'>
         <name slugifiedName='n-status-of-this-memo'>
           Status of this Memo
         </name>
@@ -111,10 +130,10 @@
           than as "work in progress."
         </t>
         <t pn='p-boilerplate-1-4'>
-          This Internet-Draft will expire on 2015-11-13.
+          This Internet-Draft will expire on 2015-12-16.
         </t>
       </section>
-      <section pn='s-boilerplate-2'>
+      <section numbered='false' pn='s-boilerplate-2'>
         <name slugifiedName='n-copyright-notice'>
           Copyright Notice
         </name>
@@ -218,8 +237,8 @@
           source='Paul'>uninteresting <tt>comment</tt> <em>em</em>
           <eref target='https://ietf.org/'>IETF eref</eref>
           <strong>strong</strong> <sub>sub</sub> <sup>'sup</sup>
-          <tt>tt</tt> <xref format='default' target='top'>Section
-          2</xref></cref>.
+          <tt>tt</tt> <xref derivedContent='Section 2'
+          format='default' target='top'/></cref>.
         </t>
       </section>
     </section>
@@ -240,9 +259,6 @@
           </tr>
         </thead>
         <tbody>
-          <iref irefid='s-Coffee-tables-2'
-                item='Coffee tables'
-                primary='false'/>
           <tr border='0'>
             <td align='left' border='0'>
               <t pn='p-2-2'>
@@ -255,8 +271,8 @@
             <td align='left' border='0'>It's the loneliest number</td>
             <td align='left' border='0'>
               since the number one.  <br/> Remember to do <xref
-              format='default' target='crefAnchor'>that
-              comment</xref>.
+              derivedContent='that comment' format='default'
+              target='crefAnchor'>that comment</xref>.
             </td>
           </tr>
           <tr border='0'>
@@ -280,7 +296,10 @@
             <td align='left' border='0'>Another thing</td>
           </tr>
           <tr border='0'>
-            <td align='left' border='0'>And another thing!</td>
+            <td align='left' border='0'>
+              <iref irefid='s-Coffee-tables-2' item='Coffee tables'
+              primary='false'/> And another thing!
+            </td>
           </tr>
         </tbody>
       </table>
@@ -288,153 +307,168 @@
       <ul empty='false' spacing='normal'>
         <li pn='p-2-9'>List</li>
         <li pn='p-2-10'>
-          <tt>&lt;xref&gt;</tt> with text <xref format='default'
-          target='unint'>Some Text</xref>
+          <tt>&lt;xref&gt;</tt> with text <xref derivedContent='Some
+          Text' format='default' target='unint'>Some Text</xref>
         </li>
         <li pn='p-2-11'>
-          <t pn='p-2-12'>Multiple</t>
-          <t pn='p-2-13'>Paragraphs</t>
+          <tt>&lt;relref&gt;</tt> with text <relref
+          derivedLink='https://tools.ietf.org/html/rfc5646#s-1'
+          section='1' target='RFC5646'>requirements</relref>
         </li>
-        <li pn='p-2-14'>
-          <t pn='p-2-15'>Section</t>
+        <li pn='p-2-12'>
+          <t pn='p-2-13'>Multiple</t>
+          <t pn='p-2-14'>Paragraphs</t>
+        </li>
+        <li pn='p-2-15'>
+          <t pn='p-2-16'>Section</t>
           <ul empty='false' spacing='normal'>
-            <li pn='p-2-16'>
-              no format: <xref format='default' target='top'>Section
-              2</xref>
-            </li>
             <li pn='p-2-17'>
-              format=counter: <xref format='counter'
-              target='top'>2</xref>
+              no format: <xref derivedContent='Section 2'
+              format='default' target='top'/>
             </li>
             <li pn='p-2-18'>
-              format=title: <xref format='title'
-              target='top'>top</xref>
+              format=counter: <xref derivedContent='2'
+              format='counter' target='top'/>
+            </li>
+            <li pn='p-2-19'>
+              format=title: <xref derivedContent=' top '
+              format='title' target='top'/>
             </li>
           </ul>
         </li>
-        <li pn='p-2-19'>
-          <t pn='p-2-20'>Figure</t>
+        <li pn='p-2-20'>
+          <t pn='p-2-21'>Figure</t>
           <ul empty='false' spacing='normal'>
-            <li pn='p-2-21'>
-              no format: <xref format='default' target='hello'>Figure
-              6</xref>
-            </li>
             <li pn='p-2-22'>
-              format=counter: <xref format='counter'
-              target='hello'>6</xref>
+              no format: <xref derivedContent='Figure 6'
+              format='default' target='hello'/>
             </li>
             <li pn='p-2-23'>
-              format=title: <xref format='title' target='hello'>This
-              is a figure</xref>
+              format=counter: <xref derivedContent='6'
+              format='counter' target='hello'/>
+            </li>
+            <li pn='p-2-24'>
+              format=title: <xref derivedContent=' This is a figure '
+              format='title' target='hello'/>
             </li>
           </ul>
         </li>
-        <li pn='p-2-24'>
-          <t pn='p-2-25'>Table</t>
+        <li pn='p-2-25'>
+          <t pn='p-2-26'>Table</t>
           <ul empty='false' spacing='normal'>
-            <li pn='p-2-26'>
-              no format: <xref format='default'
-              target='THE-TABLE'>Table 1</xref>
-            </li>
             <li pn='p-2-27'>
-              format=counter: <xref format='counter'
-              target='THE-TABLE'>1</xref>
+              no format: <xref derivedContent='Table 1'
+              format='default' target='THE-TABLE'/>
             </li>
             <li pn='p-2-28'>
-              format=title: <xref format='title' target='THE-TABLE'>I
-              AM THE TABLE</xref>
+              format=counter: <xref derivedContent='1'
+              format='counter' target='THE-TABLE'/>
+            </li>
+            <li pn='p-2-29'>
+              format=title: <xref derivedContent='I AM THE TABLE'
+              format='title' target='THE-TABLE'/>
             </li>
           </ul>
         </li>
-        <li pn='p-2-29'>
-          <t pn='p-2-30'>Reference</t>
+        <li pn='p-2-30'>
+          <t pn='p-2-31'>Reference</t>
           <ul empty='false' spacing='normal'>
-            <li pn='p-2-31'>
-              no format: <xref format='default'
-              target='RFC6949'>[RFC-reqs]</xref>
-            </li>
             <li pn='p-2-32'>
+              no format: <xref derivedContent='RFC6949'
+              format='default' target='RFC6949'/>
+            </li>
+            <li pn='p-2-33'>
               format=counter: <xref format='counter'
               target='RFC6949'/>
             </li>
-            <li pn='p-2-33'>
-              format=title: <xref format='title' target='RFC6949'>RFC
-              Series Format Requirements and Future Development</xref>
+            <li pn='p-2-34'>
+              format=title: <xref derivedContent='RFC Series Format
+              Requirements and Future Development' format='title'
+              target='RFC6949'/>
             </li>
           </ul>
         </li>
       </ul>
       <ul empty='true' spacing='normal'>
-        <li pn='p-2-34'>
+        <li pn='p-2-35'>
           <iref irefid='s-Bullets-1' item='Bullets' primary='true'/>
           Empty: it's all empty
         </li>
-        <li pn='p-2-35'>
+        <li pn='p-2-36'>
           <iref irefid='s-Bullets-2' item='Bullets' primary='false'/>
           I have not bullets left
         </li>
       </ul>
       <ol spacing='normal' start='1'>
-        <li pn='p-2-36'>
-          <iref irefid='s-Bullets-Ordered-1'
-                item='Bullets'
-                primary='false'
-                subitem='Ordered'/>
-          <t pn='p-2-37'>now</t>
-          <t pn='p-2-38'>then</t>
+        <li pn='p-2-37'>
+          <t pn='p-2-38'>now</t>
+          <t pn='p-2-39'>then</t>
         </li>
-        <li pn='p-2-39'>ordered</li>
-      </ol>
-      <ol group='green' spacing='normal' start='12' style='I'>
-        <li pn='p-2-40'>A dozen or so.</li>
+        <li pn='p-2-40'>
+          <iref irefid='s-Bullets-Ordered-1' item='Bullets'
+          primary='false' subitem='Ordered'/> ordered
+        </li>
         <li pn='p-2-41'>
-          Now, with bakers. It's all about <xref format='default'
-          target='Bibble'>Bibble</xref>.
+          <ol spacing='normal' start='1'>
+            <li pn='p-2-42'>before</li>
+            <li anchor='nested-li' pn='p-2-43'>A nested li</li>
+            <li pn='p-2-44'>
+              And a reference to <xref derivedContent='3.2'
+              format='counter' target='nested-li'/>
+            </li>
+          </ol>
         </li>
       </ol>
-      <ol group='green' spacing='normal' start='14' stye='I'>
-        <li pn='p-2-42'>after bakers, before meanings</li>
-        <li pn='p-2-43'>there are meaningless bakers</li>
+      <ol group='green' spacing='normal' start='12' type='I'>
+        <li pn='p-2-45'>A dozen or so.</li>
+        <li pn='p-2-46'>
+          Now, with bakers. It's all about <xref
+          derivedContent='Bibble' format='default' target='Bibble'/>.
+        </li>
       </ol>
-      <ol group='green' spacing='normal' start='16' stye='I'>
-        <li pn='p-2-44'>who bake</li>
-        <li pn='p-2-45'>bread with meaning</li>
+      <ol group='green' spacing='normal' start='14' type='I'>
+        <li pn='p-2-47'>after bakers, before meanings</li>
+        <li pn='p-2-48'>there are meaningless bakers</li>
       </ol>
-      <ol group='green' spacing='normal' start='42' style='I'>
-        <li pn='p-2-46'>The meaning of life.</li>
-        <li pn='p-2-47'>The after-meaning of the after-life</li>
+      <ol group='green' spacing='normal' start='16' type='I'>
+        <li pn='p-2-49'>who bake</li>
+        <li pn='p-2-50'>bread with meaning</li>
       </ol>
-      <ol spacing='normal' start='1' style='Requirement %c:'>
-        <li pn='p-2-48'>
+      <ol group='green' spacing='normal' start='42' type='I'>
+        <li pn='p-2-51'>The meaning of life.</li>
+        <li pn='p-2-52'>The after-meaning of the after-life</li>
+      </ol>
+      <ol spacing='normal' start='1' type='Requirement %c:'>
+        <li pn='p-2-53'>
           Get up every morning with a smile on your face
         </li>
-        <li pn='p-2-49'>Show the world all the love in your heart</li>
+        <li pn='p-2-54'>Show the world all the love in your heart</li>
       </ol>
-      <ol spacing='normal' start='26' style='Requirement %C:'>
-        <li pn='p-2-50'>Upper case</li>
-        <li pn='p-2-51'>Above 26</li>
+      <ol spacing='normal' start='26' type='Requirement %C:'>
+        <li pn='p-2-55'>Upper case</li>
+        <li pn='p-2-56'>Above 26</li>
       </ol>
-      <ol spacing='normal' start='18' style='Requirement %i:'>
-        <li pn='p-2-52'>Wheels on a big rig</li>
-        <li pn='p-2-53'>
+      <ol spacing='normal' start='18' type='Requirement %i:'>
+        <li pn='p-2-57'>Wheels on a big rig</li>
+        <li pn='p-2-58'>
           Exercitation nisi quis in laborum ipsum esse excepteur
-          culpa. And then <xref format='default'
-          target='whoa'>whoa</xref>.  Et pariatur anim labore pariatur
-          qui adipisicing consequat quis. Occaecat fugiat ad mollit
-          ipsum occaecat aliqua consectetur. Esse proident qui amet
-          quis dolore consectetur proident sunt ipsum exercitation
-          veniam exercitation amet.  Nostrud exercitation magna
-          officia incididunt deserunt incididunt eiusmod veniam esse
-          minim non. Mollit non ad consectetur adipisicing nisi ex
-          consequat qui proident officia laboris duis adipisicing.
-          Velit commodo aliqua occaecat consequat nostrud anim ad ut.
-          Quis aute eu culpa dolore ut esse ea est elit occaecat. In
-          cupidatat ea ipsum est fugiat ad pariatur nulla.
+          culpa. And then <xref format='default' target='whoa'/>.  Et
+          pariatur anim labore pariatur qui adipisicing consequat
+          quis. Occaecat fugiat ad mollit ipsum occaecat aliqua
+          consectetur. Esse proident qui amet quis dolore consectetur
+          proident sunt ipsum exercitation veniam exercitation amet.
+          Nostrud exercitation magna officia incididunt deserunt
+          incididunt eiusmod veniam esse minim non. Mollit non ad
+          consectetur adipisicing nisi ex consequat qui proident
+          officia laboris duis adipisicing. Velit commodo aliqua
+          occaecat consequat nostrud anim ad ut. Quis aute eu culpa
+          dolore ut esse ea est elit occaecat. In cupidatat ea ipsum
+          est fugiat ad pariatur nulla.
         </li>
       </ol>
       <artwork align='center'
                anchor='not-actually-ee'
-               pn='p-2-54'
+               pn='p-2-59'
                type='poetry'
                xml:lang='en'>
 artwork does not
@@ -442,10 +476,10 @@ artwork does not
    have to bepartofafigure.
                             --ee cummings
       </artwork>
-      <artwork align='right' pn='p-2-55'>Just a step to the right</artwork>
+      <artwork align='right' pn='p-2-60'>Just a step to the right</artwork>
       <figure pn='f-1'>
         <name slugifiedName='n-it-figures'>It figures</name>
-        <artwork align='left' pn='p-2-56' type='ascii-art'><![CDATA[
+        <artwork align='left' pn='p-2-61' type='ascii-art'><![CDATA[
  ______________
 < hello, world >
  --------------
@@ -462,7 +496,7 @@ artwork does not
         </name>
         <artwork align='left'
                  alt='green stroke yellow fill circle'
-                 pn='p-2-57'
+                 pn='p-2-62'
                  type='svg'>
           <svg height='100'
                width='100'
@@ -480,7 +514,7 @@ artwork does not
         <name slugifiedName='n-inline-with-xinclude'>
           Inline with XInclude
         </name>
-        <artwork align='right' pn='p-2-58' type='svg'>
+        <artwork align='right' pn='p-2-63' type='svg'>
           <svg height='100'
                width='100'
                xml:base='http://localhost:8080/redbluecircle.svg'
@@ -498,7 +532,7 @@ artwork does not
         <name slugifiedName='n-svg-as-a-data-uri'>
           SVG as a data: URI
         </name>
-        <artwork align='left' pn='p-2-59' type='svg'>
+        <artwork align='left' pn='p-2-64' type='svg'>
           <svg height='100'
                width='100'
                xmlns='http://www.w3.org/2000/svg'>
@@ -515,9 +549,10 @@ artwork does not
         <name slugifiedName='n-inline-with-lesssrcgreater-attribute'>
           Inline with &lt;src&gt; attribute
         </name>
+        <!-- <artwork type="svg" src="circle.svg"/> -->
         <artwork align='left'
                  anchor='externalCircle'
-                 pn='p-2-60'
+                 pn='p-2-65'
                  type='svg'>
           <svg height='100'
                width='100'
@@ -532,16 +567,16 @@ artwork does not
           </svg>
         </artwork>
       </figure>
-      <t pn='p-2-61'>
+      <t pn='p-2-66'>
         Artwork can also be outside a figure. Here are two.
       </t>
       <artwork align='left'
                alt='IETF logo'
-               pn='p-2-62'
+               pn='p-2-67'
                src='data:image/gif;charset=utf-8;base64,R0lGODlhGAGVANUAAP///+/v797v/+/vxffvc8Xv5t7m5s7vxffeUubO3vfOUvfOQsXF1qXOzsXFvb3FvdbFQr29xb29vaW9tb2txb2tvb2tpa2ttealOpyllMWUOpyMrZyMjJyEWpyEGXOEjHOEWnOEKUKMa3Njc6VaGWNjUmtjGYRaGTpjUkJahGNKUmNKEDo6Wjo6Qjo6GRBCGWMpECEhGToQWiEZITEQMTEQCCEQCBAQMRAQECEIIQgACAAAAAAAAAAAAAAAAAAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNC4xLWMwMzQgNDYuMjcyOTc2LCBTYXQgSmFuIDI3IDIwMDcgMjI6Mzc6MzcgICAgICAgICI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnhhcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyI+CiAgICAgICAgIDx4YXA6Q3JlYXRvclRvb2w+QWRvYmUgRmlyZXdvcmtzIENTMzwveGFwOkNyZWF0b3JUb29sPgogICAgICAgICA8eGFwOkNyZWF0ZURhdGU+MjAwNy0wMS0wNFQyMjoxMDozMVo8L3hhcDpDcmVhdGVEYXRlPgogICAgICAgICA8eGFwOk1vZGlmeURhdGU+MjAwOS0wNC0wNlQyMToyNjoyOVo8L3hhcDpNb2RpZnlEYXRlPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIj4KICAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9naWY8L2RjOmZvcm1hdD4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgCjw/eHBhY2tldCBlbmQ9InciPz4B//79/Pv6+fj39vX08/Lx8O/u7ezr6uno5+bl5OPi4eDf3t3c29rZ2NfW1dTT0tHQz87NzMvKycjHxsXEw8LBwL++vby7urm4t7a1tLOysbCvrq2sq6qpqKempaSjoqGgn56dnJuamZiXlpWUk5KRkI+OjYyLiomIh4aFhIOCgYB/fn18e3p5eHd2dXRzcnFwb25tbGtqaWhnZmVkY2JhYF9eXVxbWllYV1ZVVFNSUVBPTk1MS0pJSEdGRURDQkFAPz49PAA6OTg3NjU0MzIxMC8uLSwrKikoJyYlJCMiISAfHh0cGxoZGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIBAAAh+QQBBwAAACwAAAAAGAGVAAAG/0CAcEgsGo/IpHLJbDqf0Kh0Sq1ar9isdsvter/gsHhMLpvP6LR6zW673/C4fE6v2+/4vH7P7/v/gIGCg4SFhoeIiYqLbwxmjmUSjJONEpJjDJZkEZqUnmiZlhdiDpadYJymn6uYFg+mEgZfqaYTYKESqay7XQyvtKdbmbQRDra9psACvMxWDK6ptMdauLmWFcFYpbXAzd5RpaGcERPjl1i40dYS01fpuebZ3/NGoRPJ1qkV6K6mDdiWxu27AitgQVPL6Ckc8gqfOoPtpAxb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'
                type='logo'
                xml:base='http://localhost:8080/ietflogotrans.gif'/>
-      <artwork align='left' pn='p-2-63' type='hex-dump'><![CDATA[
+      <artwork align='left' pn='p-2-68' type='hex-dump'><![CDATA[
 00000000  20 5f 5f 5f 5f 5f 5f 5f  5f 5f 5f 5f 5f 5f 5f 20  | ______________ |
 00000010  0a 3c 20 68 65 6c 6c 6f  2c 20 77 6f 72 6c 64 20  |.< hello, world |
 00000020  3e 0a 20 2d 2d 2d 2d 2d  2d 2d 2d 2d 2d 2d 2d 2d  |>. -------------|
@@ -616,11 +651,45 @@ int main(void)
   <back>
     <displayreference target='RFC6949' to='RFC-reqs'/>
     <references>
-      <name slugifiedName='n-informative-references'>
-        Informative References
-      </name>
+      <name>Informative References</name>
+      <referencegroup anchor='Bibble'>
+        <reference anchor='Bibble2' quoteTitle='true'>
+          <front>
+            <title ascii='Bibble use cases'>𝔹ibble use cases</title>
+            <author asciiFullname='No One'
+                    asciiInitials='N.'
+                    fullname='Ño One'
+                    initials='Ñ.'
+                    surname='One'/>
+            <author asciiFullname='No Two'
+                    asciiInitials='N.'
+                    fullname='Ño Two'
+                    initials='Ñ.'
+                    surname='Two'/>
+            <author asciiFullname='No Three'
+                    asciiInitials='N.'
+                    fullname='Ño Three'
+                    initials='Ñ.'
+                    surname='Three'/>
+          </front>
+          <seriesInfo asciiName='BibbleSpecs'
+                      name='BibbleSpècs'
+                      value='12-4479'/>
+        </reference>
+        <reference anchor='Bibble3' quoteTitle='false'>
+          <front>
+            <title>Bibble protocol spec</title>
+            <author fullname='No One' initials='N.' surname='One'/>
+            <date year='1850'/>
+          </front>
+          <seriesInfo asciiName='BibbleSpecs'
+                      name='BibbleSpècs'
+                      value='12-4444'/>
+        </reference>
+      </referencegroup>
       <reference anchor='RFC5646'
                  quoteTitle='true'
+                 target='https://tools.ietf.org/html/rfc5646'
                  xml:base='http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml'>
         <front>
           <title>Tags for Identifying Languages</title>
@@ -649,9 +718,7 @@ int main(void)
                 target='http://www.rfc-editor.org/rfc/rfc5646.txt'
                 type='TXT'/>
       </reference>
-      <reference anchor='RFC6949'
-                 quoteTitle='true'
-                 xml:base='http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6949.xml'>
+      <reference anchor='RFC6949' quoteTitle='true'>
         <front>
           <title>
             RFC Series Format Requirements and Future Development
@@ -684,50 +751,7 @@ int main(void)
         <format octets='29181'
                 target='http://www.rfc-editor.org/rfc/rfc6949.txt'
                 type='TXT'/>
-        <annotation>
-          You <bcp14>MUST</bcp14> read this annotation.  <cref
-          display='true'>Note: This is a comment.</cref> This is
-          something <strong>relevant</strong> to RFC 6949.
-        </annotation>
-        <refcontent ascii='Note this!'>
-          Nötë <em>thïs</em> !
-        </refcontent>
       </reference>
-      <referencegroup anchor='Bibble'>
-        <reference anchor='Bibble1' quoteTitle='false'>
-          <front>
-            <title>Bibble protocol spec</title>
-            <author fullname='No One' initials='N.' surname='One'/>
-            <date year='1850'/>
-          </front>
-          <seriesInfo asciiName='BibbleSpecs'
-                      name='BibbleSpècs'
-                      value='12-4444'/>
-        </reference>
-        <reference anchor='Bibble2' quoteTitle='true'>
-          <front>
-            <title ascii='Bibble use cases'>𝔹ibble use cases</title>
-            <author asciiFullname='No One'
-                    asciiInitials='N.'
-                    fullname='Ño One'
-                    initials='Ñ.'
-                    surname='One'/>
-            <author asciiFullname='No Two'
-                    asciiInitials='N.'
-                    fullname='Ño Two'
-                    initials='Ñ.'
-                    surname='Two'/>
-            <author asciiFullname='No Three'
-                    asciiInitials='N.'
-                    fullname='Ño Three'
-                    initials='Ñ.'
-                    surname='Three'/>
-          </front>
-          <seriesInfo asciiName='BibbleSpecs'
-                      name='BibbleSpècs'
-                      value='12-4479'/>
-        </reference>
-      </referencegroup>
     </references>
     <section pn='s-A'>
       <name slugifiedName='n-doing-things-in-appendices'>

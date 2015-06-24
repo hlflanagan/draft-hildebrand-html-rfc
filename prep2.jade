@@ -1,5 +1,7 @@
 - var xref = require('./xref')
 
+include lib.jade
+
 mixin elem(e)
   - var a = $att(e, attributes)
   - a = $nsDecls(e, a)
@@ -7,30 +9,8 @@ mixin elem(e)
     +children(e)
     block
 
-mixin children(e, opts)
-  each c in e.childNodes()
-    case c.type()
-      when 'text'
-        if c.text().trim().length > 0
-          = c.text()
-      when 'cdata'
-        :cdata
-          !{c.text()}
-      when 'comment'
-        //- remove comments
-        //- != "<!--" + c.text() + "-->"
-      when 'element'
-        - var nm = c.name()
-        if jade_mixins[nm] != null
-          +#{nm}(c)
-        else
-          +elem(c, opts)
-
 mixin xref(e)
-  - var t = e.text().trim()
-  if t.length == 0
-    - e.text(xref.invent(e))
-  +elem(e)
+  +elem(e)(derivedContent=xref.invent(e))
   
 doctype xml
 +elem($root())

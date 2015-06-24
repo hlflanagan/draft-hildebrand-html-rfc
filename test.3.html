@@ -11,12 +11,6 @@
     <title>
       HyperText Markup Language Request For Comments Format
     </title>
-    <link href="http://fonts.googleapis.com/css?family=Noto+Sans"
-          rel="stylesheet"
-          type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Droid+Serif"
-          rel="stylesheet"
-          type="text/css">
     <link href="xml2rfc.css" rel="stylesheet" type="text/css">
     <link href="local.css" rel="stylesheet" type="text/css">
     <link href="https://github.com/hildjj/draft-hildebrand-html-rfc.git"
@@ -32,8 +26,8 @@
       <dd class="status">Informational</dd>
       <dt>Published:</dt>
       <dd>
-        <time class="published" datetime="2015-05-13">
-          2015-05-13
+        <time class="published" datetime="2015-06-15">
+          2015-06-15
         </time>
       </dd>
       <dt>Authors:</dt>
@@ -133,7 +127,7 @@
         href="#p-boilerplate-1-3">¶</a>
       </p>
       <p id="p-boilerplate-1-4">
-        This Internet-Draft will expire on 2015-11-13.  <a
+        This Internet-Draft will expire on 2015-12-15.  <a
         class="pilcrow" href="#p-boilerplate-1-4">¶</a>
       </p>
     </section>
@@ -379,7 +373,6 @@
           </tr>
         </thead>
         <tbody>
-          <span class="iref" id="s-Coffee-tables-2"></span>
           <tr border="0">
             <td align="left" border="0">
               <p id="p-2-2">
@@ -416,7 +409,10 @@
             <td align="left" border="0">Another thing</td>
           </tr>
           <tr border="0">
-            <td align="left" border="0">And another thing!</td>
+            <td align="left" border="0">
+              <span class="iref" id="s-Coffee-tables-2"></span> And
+              another thing!
+            </td>
           </tr>
         </tbody>
       </table>
@@ -530,7 +526,6 @@
       </ul>
       <ol start="1">
         <li id="p-2-36">
-          <span class="iref" id="s-Bullets-Ordered-1"></span>
           <p id="p-2-37">
             now <a class="pilcrow" href="#p-2-37">¶</a>
           </p>
@@ -539,10 +534,11 @@
           </p>
         </li>
         <li id="p-2-39">
-          ordered <a class="pilcrow" href="#p-2-39">¶</a>
+          <span class="iref" id="s-Bullets-Ordered-1"></span> ordered
+          <a class="pilcrow" href="#p-2-39">¶</a>
         </li>
       </ol>
-      <ol start="12" type="I">
+      <ol start="12">
         <li id="p-2-40">
           A dozen or so.  <a class="pilcrow" href="#p-2-40">¶</a>
         </li>
@@ -570,7 +566,7 @@
           bread with meaning <a class="pilcrow" href="#p-2-45">¶</a>
         </li>
       </ol>
-      <ol start="42" type="I">
+      <ol start="42">
         <li id="p-2-46">
           The meaning of life.  <a class="pilcrow"
           href="#p-2-46">¶</a>
@@ -580,23 +576,29 @@
           href="#p-2-47">¶</a>
         </li>
       </ol>
-      <dl class="olpercent">
-        <dt>Requirement a:</dt>
-        <dd>Get up every morning with a smile on your face</dd>
-        <dt>Requirement b:</dt>
-        <dd>Show the world all the love in your heart</dd>
-      </dl>
-      <dl class="olpercent">
-        <dt>Requirement Z:</dt>
-        <dd>Upper case</dd>
-        <dt>Requirement AA:</dt>
-        <dd>Above 26</dd>
-      </dl>
-      <dl class="olpercent">
-        <dt>Requirement xviii:</dt>
-        <dd>Wheels on a big rig</dd>
-        <dt>Requirement xix:</dt>
-        <dd>
+      <ol start="1">
+        <li id="p-2-48">
+          Get up every morning with a smile on your face <a
+          class="pilcrow" href="#p-2-48">¶</a>
+        </li>
+        <li id="p-2-49">
+          Show the world all the love in your heart <a class="pilcrow"
+          href="#p-2-49">¶</a>
+        </li>
+      </ol>
+      <ol start="26">
+        <li id="p-2-50">
+          Upper case <a class="pilcrow" href="#p-2-50">¶</a>
+        </li>
+        <li id="p-2-51">
+          Above 26 <a class="pilcrow" href="#p-2-51">¶</a>
+        </li>
+      </ol>
+      <ol start="18">
+        <li id="p-2-52">
+          Wheels on a big rig <a class="pilcrow" href="#p-2-52">¶</a>
+        </li>
+        <li id="p-2-53">
           Exercitation nisi quis in laborum ipsum esse excepteur
           culpa. And then <a class="xref" href="#whoa">whoa</a>.  Et
           pariatur anim labore pariatur qui adipisicing consequat
@@ -609,9 +611,10 @@
           officia laboris duis adipisicing.  Velit commodo aliqua
           occaecat consequat nostrud anim ad ut.  Quis aute eu culpa
           dolore ut esse ea est elit occaecat. In cupidatat ea ipsum
-          est fugiat ad pariatur nulla.
-        </dd>
-      </dl>
+          est fugiat ad pariatur nulla.  <a class="pilcrow"
+          href="#p-2-53">¶</a>
+        </li>
+      </ol>
       <div class="artwork art-poetry align_center"
            id="not-actually-ee">
         <pre>
@@ -710,6 +713,7 @@ artwork does not
         </figcaption>
       </figure>
       <figure id="f-5">
+        <!-- <artwork type="svg" src="circle.svg"/> -->
         <div class="artwork art-svg" id="externalCircle">
           <svg height="100"
                width="100"
@@ -842,6 +846,23 @@ int main(void)
           </a>
         </h3>
         <dl class="reference">
+          <dt id="RFC6949">[RFC6949]</dt>
+          <dd>
+            <span class="refauthor">Flanagan, H.</span>
+            <span>and</span>
+            <span class="refauthor">N. Brownlee</span>
+            <span class="reftitile">
+              "RFC Series Format Requirements and Future Development"
+            </span>
+            <span class="comma">,</span>
+            <span class="refSeries">
+              <span class="refSeriesName">RFC</span>
+              <span class="refSeriesValue">6949</span>
+            </span>
+            <span class="comma">,</span>
+            <span class="refdate">May 2013</span>
+            <span class="comma">.</span>
+          </dd>
           <dt id="RFC5646">[RFC5646]</dt>
           <dd>
             <span class="refauthor">Phillips, A.</span>
@@ -863,31 +884,6 @@ int main(void)
             <span class="comma">,</span>
             <span class="refdate">September 2009</span>
             <span class="comma">.</span>
-          </dd>
-          <dt id="RFC6949">[RFC6949]</dt>
-          <dd>
-            <span class="refauthor">Flanagan, H.</span>
-            <span>and</span>
-            <span class="refauthor">N. Brownlee</span>
-            <span class="reftitile">
-              "RFC Series Format Requirements and Future Development"
-            </span>
-            <span class="comma">,</span>
-            <span class="refcontent">Nötë <em>thïs</em> !</span>
-            <span class="comma">,</span>
-            <span class="refSeries">
-              <span class="refSeriesName">RFC</span>
-              <span class="refSeriesValue">6949</span>
-            </span>
-            <span class="comma">,</span>
-            <span class="refdate">May 2013</span>
-            <span class="comma">.</span>
-            <span class="annotation">
-              You <span class="bcp14">MUST</span> read this
-              annotation.  <span class="cref">Note: This is a
-              comment.</span> This is something
-              <strong>relevant</strong> to RFC 6949.
-            </span>
           </dd>
           <span class="referencegroup">
             <dt id="Bibble1">[Bibble1]</dt>
@@ -1105,13 +1101,10 @@ Streets have no name</pre>
       </address>
     </section>
     <div class="docinfo">
-      <span class="prepared">
-        Prepared: <time
-        datetime="2015-05-13T18:40:06Z">2015-05-13T18:40:06Z</time>
-      </span>
+      <span class="prepared">Prepared: <time></time></span>
       <span class="rendered">
         Rendered: <time
-        datetime="2015-05-13T18:40:08Z">2015-05-13T18:40:08Z</time>
+        datetime="2015-06-15T19:06:21Z">2015-06-15T19:06:21Z</time>
       </span>
     </div>
   </body>
@@ -1122,9 +1115,10 @@ characters changed to "&#x2d;&#x2d;") -->
 <rfc category='info'
      consensus='false'
      docName='draft-hildebrand-html-rfc-04'
-     finalizedTime='2015-05-13T18:40:06Z'
      indexInclude='true'
      ipr='trust200902'
+     prepTime='2015-06-15T19:06:19Z'
+     scripts='Common,Inherited,Latin'
      sortRefs='false'
      submissionType='IETF'
      symRefs='true'
@@ -1134,7 +1128,12 @@ characters changed to "&#x2d;&#x2d;") -->
      xmlns:xi='http://www.w3.org/2001/XInclude'>
   <link href='https://github.com/hildjj/draft-hildebrand-html-rfc.git'
         rel='alternate'/>
+  <!&#x2d;&#x2d; Need right-to-left names &#x2d;&#x2d;>
+  <!&#x2d;&#x2d; Paul got to <postal> &#x2d;&#x2d;>
   <front>
+    <!&#x2d;&#x2d; comment in the front
+      it's got multiple lines and some <>
+      it also has some &amp; &lt; &gt; &#x2d;&#x2d;>
     <title abbrev='HTML RFC'>
       HyperText Markup Language Request For Comments Format
     </title>
@@ -1178,7 +1177,7 @@ characters changed to "&#x2d;&#x2d;") -->
         <email>rse@rfc-editor.org</email>
       </address>
     </author>
-    <date day='13' month='May' year='2015'/>
+    <date day='15' month='June' year='2015'/>
     <area>gen</area>
     <workgroup>rfc-interest Working Group</workgroup>
     <keyword>html</keyword>
@@ -1229,7 +1228,7 @@ characters changed to "&#x2d;&#x2d;") -->
           than as "work in progress."
         </t>
         <t pn='p-boilerplate-1-4'>
-          This Internet-Draft will expire on 2015-11-13.
+          This Internet-Draft will expire on 2015-12-15.
         </t>
       </section>
       <section pn='s-boilerplate-2'>
@@ -1358,9 +1357,6 @@ characters changed to "&#x2d;&#x2d;") -->
           </tr>
         </thead>
         <tbody>
-          <iref irefid='s-Coffee-tables-2'
-                item='Coffee tables'
-                primary='false'/>
           <tr border='0'>
             <td align='left' border='0'>
               <t pn='p-2-2'>
@@ -1398,7 +1394,10 @@ characters changed to "&#x2d;&#x2d;") -->
             <td align='left' border='0'>Another thing</td>
           </tr>
           <tr border='0'>
-            <td align='left' border='0'>And another thing!</td>
+            <td align='left' border='0'>
+              <iref irefid='s-Coffee-tables-2' item='Coffee tables'
+              primary='false'/> And another thing!
+            </td>
           </tr>
         </tbody>
       </table>
@@ -1494,45 +1493,44 @@ characters changed to "&#x2d;&#x2d;") -->
       </ul>
       <ol spacing='normal' start='1'>
         <li pn='p-2-36'>
-          <iref irefid='s-Bullets-Ordered-1'
-                item='Bullets'
-                primary='false'
-                subitem='Ordered'/>
           <t pn='p-2-37'>now</t>
           <t pn='p-2-38'>then</t>
         </li>
-        <li pn='p-2-39'>ordered</li>
+        <li pn='p-2-39'>
+          <iref irefid='s-Bullets-Ordered-1' item='Bullets'
+          primary='false' subitem='Ordered'/> ordered
+        </li>
       </ol>
-      <ol group='green' spacing='normal' start='12' style='I'>
+      <ol group='green' spacing='normal' start='12' type='I'>
         <li pn='p-2-40'>A dozen or so.</li>
         <li pn='p-2-41'>
           Now, with bakers. It's all about <xref format='default'
           target='Bibble'>Bibble</xref>.
         </li>
       </ol>
-      <ol group='green' spacing='normal' start='14' stye='I'>
+      <ol group='green' spacing='normal' start='14' type='I'>
         <li pn='p-2-42'>after bakers, before meanings</li>
         <li pn='p-2-43'>there are meaningless bakers</li>
       </ol>
-      <ol group='green' spacing='normal' start='16' stye='I'>
+      <ol group='green' spacing='normal' start='16' type='I'>
         <li pn='p-2-44'>who bake</li>
         <li pn='p-2-45'>bread with meaning</li>
       </ol>
-      <ol group='green' spacing='normal' start='42' style='I'>
+      <ol group='green' spacing='normal' start='42' type='I'>
         <li pn='p-2-46'>The meaning of life.</li>
         <li pn='p-2-47'>The after-meaning of the after-life</li>
       </ol>
-      <ol spacing='normal' start='1' style='Requirement %c:'>
+      <ol spacing='normal' start='1' type='Requirement %c:'>
         <li pn='p-2-48'>
           Get up every morning with a smile on your face
         </li>
         <li pn='p-2-49'>Show the world all the love in your heart</li>
       </ol>
-      <ol spacing='normal' start='26' style='Requirement %C:'>
+      <ol spacing='normal' start='26' type='Requirement %C:'>
         <li pn='p-2-50'>Upper case</li>
         <li pn='p-2-51'>Above 26</li>
       </ol>
-      <ol spacing='normal' start='18' style='Requirement %i:'>
+      <ol spacing='normal' start='18' type='Requirement %i:'>
         <li pn='p-2-52'>Wheels on a big rig</li>
         <li pn='p-2-53'>
           Exercitation nisi quis in laborum ipsum esse excepteur
@@ -1633,6 +1631,7 @@ artwork does not
         <name slugifiedName='n-inline-with-lesssrcgreater-attribute'>
           Inline with &lt;src&gt; attribute
         </name>
+        <!&#x2d;&#x2d; <artwork type="svg" src="circle.svg"/> &#x2d;&#x2d;>
         <artwork align='left'
                  anchor='externalCircle'
                  pn='p-2-60'
@@ -1737,39 +1736,7 @@ int main(void)
       <name slugifiedName='n-informative-references'>
         Informative References
       </name>
-      <reference anchor='RFC5646'
-                 quoteTitle='true'
-                 xml:base='http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml'>
-        <front>
-          <title>Tags for Identifying Languages</title>
-          <author fullname='A. Phillips'
-                  initials='A.'
-                  surname='Phillips'/>
-          <author fullname='M. Davis' initials='M.' surname='Davis'/>
-          <date month='September' year='2009'/>
-          <abstract>
-            <t>
-              This document describes the structure, content,
-              construction, and semantics of language tags for use in
-              cases where it is desirable to indicate the language
-              used in an information object.  It also describes how to
-              register values for use in language tags and the
-              creation of user-defined extensions for private
-              interchange.  This document specifies an Internet Best
-              Current Practices for the Internet Community, and
-              requests discussion and suggestions for improvements.
-            </t>
-          </abstract>
-        </front>
-        <seriesInfo name='BCP' value='47'/>
-        <seriesInfo name='RFC' value='5646'/>
-        <format octets='208592'
-                target='http://www.rfc-editor.org/rfc/rfc5646.txt'
-                type='TXT'/>
-      </reference>
-      <reference anchor='RFC6949'
-                 quoteTitle='true'
-                 xml:base='http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6949.xml'>
+      <reference anchor='RFC6949' quoteTitle='true'>
         <front>
           <title>
             RFC Series Format Requirements and Future Development
@@ -1802,14 +1769,36 @@ int main(void)
         <format octets='29181'
                 target='http://www.rfc-editor.org/rfc/rfc6949.txt'
                 type='TXT'/>
-        <annotation>
-          You <bcp14>MUST</bcp14> read this annotation.  <cref
-          display='true'>Note: This is a comment.</cref> This is
-          something <strong>relevant</strong> to RFC 6949.
-        </annotation>
-        <refcontent ascii='Note this!'>
-          Nötë <em>thïs</em> !
-        </refcontent>
+      </reference>
+      <reference anchor='RFC5646'
+                 quoteTitle='true'
+                 xml:base='http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml'>
+        <front>
+          <title>Tags for Identifying Languages</title>
+          <author fullname='A. Phillips'
+                  initials='A.'
+                  surname='Phillips'/>
+          <author fullname='M. Davis' initials='M.' surname='Davis'/>
+          <date month='September' year='2009'/>
+          <abstract>
+            <t>
+              This document describes the structure, content,
+              construction, and semantics of language tags for use in
+              cases where it is desirable to indicate the language
+              used in an information object.  It also describes how to
+              register values for use in language tags and the
+              creation of user-defined extensions for private
+              interchange.  This document specifies an Internet Best
+              Current Practices for the Internet Community, and
+              requests discussion and suggestions for improvements.
+            </t>
+          </abstract>
+        </front>
+        <seriesInfo name='BCP' value='47'/>
+        <seriesInfo name='RFC' value='5646'/>
+        <format octets='208592'
+                target='http://www.rfc-editor.org/rfc/rfc5646.txt'
+                type='TXT'/>
       </reference>
       <referencegroup anchor='Bibble'>
         <reference anchor='Bibble1' quoteTitle='false'>

@@ -1,5 +1,21 @@
+function warn(msg, n) {
+  var ln = ""
+  if (n && n.line) {
+    ln = " (input line " + n.line() + ")";
+  }
+  console.error("WARNING" + ln + ": " + msg);
+}
+
+function error(msg, n) {
+  var ln = ""
+  if (n && n.line) {
+    ln = " (input line " + n.line() + ")";
+  }
+  console.error("ERROR" + ln + ": " + msg);
+  process.exit(1);
+}
+
 function att(e, a, def) {
-  if (!def) { def = null; }
   if (!e || !a) {return def;}
   var v = e.attr(a);
   if (!v) { return def; }
@@ -10,87 +26,79 @@ function titleCase(s) {
   return s[0].toUpperCase() + s.slice(1).toLowerCase();
 }
 
-exports.invent = function(e) {
+function liNum(li) {
+  var ret = '';
+  while (li) {
+    var ol = li.get('ancestor::ol[1]');
+    if (ret) {
+      ret = '.' + ret;
+    }
+    ret = (parseInt(att(ol, 'start')) +
+           li.get('count(preceding-sibling::li)')) + ret;
+    li = ol.get('ancestor::li[1]');
+  }
+  return ret;
+}
+
+function getInvent(e) {
+  var t = e.text().trim();
+  if (t) { return t; }
   var target = att(e, 'target');
   if (!target) {
-    console.error('target required on xref');
+    warn('target required on xref', e);
     return '';
   }
   var target_el = e.doc().get('//*[@anchor="' + target + '"]');
   if (!target_el) {
-    console.error('Invalid xref not found: ' + target)
+    warn('Invalid xref not found: ' + target, e)
     return '';
   }
   var tname = target_el.name();
+  var num = att(target_el, 'pn', '').replace(/^[fst]-/, '');
   var format = att(e, 'format', 'default');
-  switch (tname) {
-    case 'figure':
-    case 'section':
-    case 'table':
-      var num = att(target_el, 'pn', '').replace(/^[fst]-/, '');
-      switch (format) {
-        case 'counter':
+  switch (format) {
+    case 'counter':
+      switch (tname) {
+        case 'figure':
+        case 'section':
+        case 'table':
           return num;
-        case 'default':
+        case 'li':
+          return liNum(target_el);
+      };
+      break;
+    case 'default':
+      switch (tname) {
+        case 'figure':
+        case 'section':
+        case 'table':
           return titleCase(tname) + ' ' + num;
-        case 'title':
-          return target_el.get('name').text();
-        case 'none':
-          console.error('Deprecated format ' + format + ' in element ' + tname);
-          return '';
-        default:
-          console.error('Invalid format ' + format + ' in element ' + tname);
-          return '';
+        case 'reference':
+        case 'referencegroup':
+          return target;
+        case 'li':
+          return 'Item ' + liNum(target_el);
       }
       break;
-    case 'reference':
-      var t = '';
-      var text = target;
-      var dispref = e.doc().get('back/displayreference[@target="' + target + '"]/@to');
-      if (dispref) {
-        text = dispref.value();
+    case 'title':
+      if (tname === 'reference') {
+        return target_el.get('front/title').text().trim();
       }
-      switch (format) {
-        case 'counter':
-          console.error('counter invalid for reference targets');
-          return '';
-        case 'default':
-          t = '[' + text + ']'
-          break;
-        case 'title':
-          t = target_el.get('front/title').text();
-          break;
-        case 'none':
-          console.error('Deprecated format ' + format + ' in element ' + tname);
-          return '';
-        default:
-          console.error('Invalid format ' + format + ' in element ' + tname);
-          return '';
+      var nm = target_el.get('name');
+      if (nm) {
+        return nm.text();
       }
-
-      var section = att(e, 'section');
-      if (section) {
-        var sectionFormat = att(e, 'sectionFormat', 'of');
-        switch (sectionFormat) {
-          case 'of':
-            return 'Section ' + section + 'of ' + t;
-          case 'comma':
-            return t + ', Section ' + section;
-          case 'parens':
-            return t + '(Section ' + section + ')';
-          case 'section':
-            return 'Section ' + section;
-          case 'number-only':
-            return section;
-          default:
-            console.error('Invalid sectionFormat: ' + sectionFormat);
-            return '';
-        }
-      }
-      return t;
-    default:
       return target;
   }
-  console.error('Invalid target type: ' + tname);
-  return '';
+  warn('Invalid target type: ' + tname + ' for format="' + format + '"', e);
+  return null;
+}
+
+exports.invent = function(e) {
+  var invented = getInvent(e);
+  var dc = att(e, 'derivedContent');
+  if (dc && (dc !== invented)) {
+    warn('Invalid derivedContent being overwritten', e);
+  }
+  return invented;
 }

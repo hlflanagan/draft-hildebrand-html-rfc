@@ -37,7 +37,10 @@ var parts = [
 
 exports.isPart = function(e) {
   if (e == null) {return false};
-  var nm = (typeof(e) == "string") ? e : e.name();
+  if ((typeof(e.get) === "function") && e.get('ancestor::reference')) {
+    return false;
+  }
+  var nm = (typeof(e) === "string") ? e : e.name();
   return (parts.indexOf(nm) >= 0);
 };
 
@@ -231,4 +234,36 @@ exports.blocks = function(text) {
      all.push(scr);
   });
   return all.sort();
+}
+
+exports.sanity = function(root, nm) {
+  var v = att(root, nm);
+  if (!v) {return;}
+  var all = v.split(', ');
+  all.forEach(function (n) {
+    if (!n.match(/^\d+$/)) {
+      console.error("WARNING: invalid " + nm + " value: '" + n + "'");
+      return;
+    }
+    var ref = root.get('/rfc/back/references/reference[@anchor="RFC' + n + '"]')
+    if (!ref) {
+      console.error("WARNING: no " + nm + " reference: 'RFC" + n + "'");
+    }
+  });
+  all = all.sort(function(a,b) {
+    return parseInt(a) - parseInt(b);
+  });
+  root.attr(nm, all.join(', '));
+}
+
+exports.cmpAnchor = function(a, b) {
+  var aa = att(a, 'anchor');
+  var ba = att(b, 'anchor');
+  if (aa === ba) {
+    return 0;
+  }
+  if (aa < ba) {
+    return -1;
+  }
+  return 1;
 }

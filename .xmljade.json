@@ -3,5 +3,8 @@
     "artwork",
     "sourcecode",
     "pre"
-  ]
+  ],
+  "define": {
+    "mode": "ID"
+  }
 }
