@@ -1142,7 +1142,7 @@ Internet-Draft                  HTML RFC                       June 2015
    This element is rendered as a <span> element with CSS class
    "locality".
 
-   <span class='locality'>Guilford</span>
+   <span class="locality">Guilford</span>
 
 9.14.  <code>
 
@@ -1237,7 +1237,7 @@ Internet-Draft                  HTML RFC                       June 2015
    <div>
      <span>Email:</span>
      <a href="mailto:joe@example.net" class="email">joe@example.net</a>
-     <span class='ascii'>joe@example.net</span>
+     <span class="ascii">joe@example.net</span>
    </div>
 
 9.24.  <eref>
@@ -1888,7 +1888,7 @@ Internet-Draft                  HTML RFC                       June 2015
 
    [I-D.flanagan-rfc-framework]
               Flanagan, H., "RFC Format Framework", draft-flanagan-rfc-
-              framework-03 (work in progress), January 2015.
+              framework-04 (work in progress), June 2015.
 
 13.2.  Informative References
 
@@ -1914,7 +1914,7 @@ Internet-Draft                  HTML RFC                       June 2015
 
    [I-D.hoffman-xml2rfc]
               Hoffman, P., "The 'XML2RFC' version 3 Vocabulary", draft-
-              hoffman-xml2rfc-19 (work in progress), June 2015.
+              hoffman-xml2rfc-20 (work in progress), June 2015.
 
    [I-D.hoffman-rfcv3-preptool]
               Hoffman, P. and J. Hildebrand, "RFC v3 Prep Tool
