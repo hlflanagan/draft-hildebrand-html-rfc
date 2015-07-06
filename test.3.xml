@@ -1,6 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
+<?rfc toc="yes"?> <!-- PI gets removed.  This comment doesn't. -->
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+<!ENTITY RFC6949 SYSTEM "reference.RFC.6949.xml">
+]>
 <rfc ipr='trust200902' docName='draft-hildebrand-html-rfc-04' category='info'
-  xmlns:xi='http://www.w3.org/2001/XInclude' tocInclude='true'>
+  xmlns:xi='http://www.w3.org/2001/XInclude' tocInclude='true' sortRefs='true'
+  updates='6949, 5646'>
   <link href="https://github.com/hildjj/draft-hildebrand-html-rfc.git" rel="alternate"/>
   <!-- Need right-to-left names -->
   <!-- Paul got to <postal> -->
@@ -42,7 +47,7 @@
     </author>
     <date/>
     <area>gen</area>
-    <workgroup>rfc-interest</workgroup>
+    <workgroup>RFC-Interest Pseudo Working Group</workgroup>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
@@ -63,6 +68,13 @@
         mailing list (rfc-interest@rfc-editor.org), which has its home page at
         <eref target="https://www.rfc-editor.org/mailman/listinfo/rfc-interest"/>.
       </t>
+    </note>
+    <note removeInRFC='true'>
+      <name>Editorial Note</name>
+      <dl>
+        <dt>A term</dt>
+        <dd>A def</dd>
+      </dl>
     </note>
     <boilerplate>
       <section><t>foo</t></section>
@@ -145,7 +157,6 @@
           </tr>
         </thead>
         <tbody>
-          <iref item="Coffee tables"/>
           <tr><td><t>One is the loneliest number that you'll ever do</t></td><td>Two can be as bad as one</td></tr>
           <tr><td>It's the loneliest number</td><td>since the number one.<br/>
           Remember to do <xref target="crefAnchor">that comment</xref>.</td></tr>
@@ -154,7 +165,7 @@
           <tr><td colspan='2' align='center'><t>This one covers two whole columns.</t></td></tr>
           <tr><td rowspan='2' align='center'><t>This one covers two whole rows.</t></td><td>Another thing</td></tr>
           <tr>
-            <td>And another thing!</td>
+            <td><iref item="Coffee tables"/>And another thing!</td>
           </tr>
         </tbody>
       </table>
@@ -162,6 +173,7 @@
       <ul>
         <li>List</li>
         <li><tt>&lt;xref&gt;</tt> with text <xref target='unint'>Some Text</xref></li>
+        <li><tt>&lt;relref&gt;</tt> with text <relref target="RFC5646" section="1">requirements</relref></li>
         <li>
           <t>Multiple</t>
           <t>Paragraphs</t>
@@ -204,34 +216,39 @@
         <li><iref item="Bullets"/>I have not bullets left</li>
       </ul>
       <ol>
-        <li><iref item="Bullets" subitem="Ordered"/><t>now</t><t>then</t></li>
-        <li>ordered</li>
+        <li><t>now</t><t>then</t></li>
+        <li><iref item="Bullets" subitem="Ordered"/>ordered</li>
+        <li><ol>
+          <li>before</li>
+          <li anchor="nested-li">A nested li</li>
+          <li>And a reference to <xref format="counter" target="nested-li"/></li>
+        </ol></li>
       </ol>
-      <ol start="12" style='I' group="green">
+      <ol start="12" type='I' group="green">
         <li>A dozen or so.</li>
         <li>Now, with bakers. It's all about <xref target="Bibble"/>.</li>
       </ol>
-      <ol group='green' stye='I'>
+      <ol group='green' type='I'>
         <li>after bakers, before meanings</li>
         <li>there are meaningless bakers</li>
       </ol>
-      <ol group='green' stye='I'>
+      <ol group='green' type='I'>
         <li>who bake</li>
         <li>bread with meaning</li>
       </ol>
-      <ol start="42" style='I' group="green">
+      <ol start="42" type='I' group="green">
         <li>The meaning of life.</li>
         <li>The after-meaning of the after-life</li>
       </ol>
-      <ol style='Requirement %c:'>
+      <ol type='Requirement %c:'>
         <li>Get up every morning with a smile on your face</li>
         <li>Show the world all the love in your heart</li>
       </ol>
-      <ol style='Requirement %C:' start='26'>
+      <ol type='Requirement %C:' start='26'>
         <li>Upper case</li>
         <li>Above 26</li>
       </ol>
-      <ol style='Requirement %i:' start='18'>
+      <ol type='Requirement %i:' start='18'>
         <li>Wheels on a big rig</li>
         <li>Exercitation nisi quis in laborum ipsum esse excepteur culpa. And
         then <xref target="whoa"/>.   Et pariatur anim labore pariatur qui
@@ -349,7 +366,8 @@ int main(void)
     <displayreference target="RFC6949" to="RFC-reqs"/>
     <references>
       <name>Informative References</name>
-      <reference anchor="RFC5646" xml:base="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml">
+      &RFC6949;
+      <reference anchor="RFC5646" target="https://tools.ietf.org/html/rfc5646" xml:base="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml">
         <front>
           <title>Tags for Identifying Languages</title>
           <author initials="A." surname="Phillips" fullname="A. Phillips"/>
@@ -370,36 +388,8 @@ int main(void)
         <seriesInfo name="RFC" value="5646"/>
         <format type="TXT" octets="208592" target="http://www.rfc-editor.org/rfc/rfc5646.txt"/>
       </reference>
-      <reference anchor="RFC6949" xml:base="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6949.xml">
-        <front>
-          <title>RFC Series Format Requirements and Future Development</title>
-          <author initials="H." surname="Flanagan" fullname="H. Flanagan">
-            <organization/>
-          </author>
-          <author initials="N." surname="Brownlee" fullname="N. Brownlee">
-            <organization/>
-          </author>
-          <date year="2013" month="May"/>
-          <abstract>
-            <t>This document describes the current requirements and requests for
-              enhancements for the format of the canonical version of RFCs.
-              Terms are defined to help clarify exactly which stages of document
-              production are under discussion for format changes.  The
-              requirements described in this document will determine what changes
-              will be made to RFC format.  This document updates RFC 2223.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="6949"/>
-        <format type="TXT" octets="29181" target="http://www.rfc-editor.org/rfc/rfc6949.txt"/>
-        <annotation>
-          You <bcp14>MUST</bcp14> read this annotation.
-          <cref>Note: This is a comment.</cref>
-          This is something <strong>relevant</strong> to RFC 6949.
-        </annotation>
-        <refcontent ascii="Note this!">Nötë <em>thïs</em>!</refcontent>
-      </reference>
       <referencegroup anchor="Bibble">
-        <reference anchor="Bibble1" quoteTitle="false">
+        <reference anchor="Bibble3" quoteTitle="false">
           <front>
             <title>Bibble protocol spec</title>
             <author initials="N." surname="One" fullname="No One"/>
@@ -429,3 +419,4 @@ int main(void)
     </section>
   </back>
 </rfc>
+<!-- ideally this comment stays in I-D mode -->

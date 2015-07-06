@@ -442,7 +442,7 @@ mixin index
                                   a(href='#'+s.irefid)= s.section
     
 doctype html
-html(lang='en')
+html(lang='en', class=$('/rfc/@mode'))
   head
     meta(charset='utf-8')
     meta(name='author', content=$$('front/author/@fullname'))

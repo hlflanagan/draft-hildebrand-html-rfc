@@ -12,6 +12,7 @@
     "romanize": "^0.1.0",
     "slug": "^0.9.1",
     "strong-data-uri": "*",
+    "unicode-properties": "^1.0.0",
     "unicode-trie": "^0.3.0",
     "urllib-sync": "^1.0.1",
     "xmljade": "^0.2.8"

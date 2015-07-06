@@ -3,7 +3,7 @@ DRAFT=draft-hildebrand-html-rfc
 XMLJADE=node_modules/.bin/xmljade
 HTTPSERVER=../node_modules/.bin/http-server
 LOCALHOST_DIR=localhost
-RNG = draft-hoffman-xml2rfc/xml2rfcv3.rng
+RNG = draft-hoffman-xml2rfc/xml2rfcv3-full.rng
 BRANCH := $(shell git symbolic-ref --short HEAD)
 
 .PHONY: start stop
@@ -12,25 +12,25 @@ BRANCH := $(shell git symbolic-ref --short HEAD)
 %.3.xml: %.xml convertv2v3/convertv2v3
 	perl convertv2v3/convertv2v3  < $< > $@
 
-%.n.xml: %.3.xml prep1.jade number.js server.PID
+%.n.xml: %.3.xml prep1.jade lib.jade number.js server.PID
 	$(XMLJADE) --pretty --xinclude --output $@ prep1.jade $<
 
-%.x.xml: %.n.xml prep2.jade xref.js
+%.x.xml: %.n.xml prep2.jade lib.jade xref.js
 	$(XMLJADE) --pretty --output $@ prep2.jade $<
 
-%.3.html: %.x.xml v3tohtml.jade v3.js xml2rfc.css
+%.3.html: %.x.xml v3tohtml.jade lib.jade v3.js xml2rfc.css
 	$(XMLJADE) --pretty --html --doublequote --output $@ v3tohtml.jade $<
 
 %.txt: %.xml
 	xml2rfc --text --html $<
 
-all: $(DRAFT).3.html $(DRAFT).txt test.3.html
+all: $(DRAFT).txt test.3.html
 
 clean:
 	$(RM) $(DRAFT).html $(DRAFT).3.html $(DRAFT).3.xml $(DRAFT).n.xml $(DRAFT).txt test.3.html test.n.xml test.x.xml
 
-lint:
-	xmllint --noout --relaxng $(RNG) *.3.xml *.n.xml *.x.xml
+lint: server.PID
+	xmllint --noout --noent --xinclude --relaxng $(RNG) *.3.xml *.n.xml *.x.xml
 
 start: server.PID
 
