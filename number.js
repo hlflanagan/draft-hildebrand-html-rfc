@@ -1,3 +1,9 @@
+var fs = require('fs');
+var dataUri = require('strong-data-uri');
+var url = require('url');
+var urllibsync = require('urllib-sync');
+var xml = require('libxmljs');
+
 exports.section = function(e) {
   var all = e.find('ancestor-or-self::section');
   return all.map(function(a){
@@ -17,13 +23,16 @@ exports.appendix = function(e) {
 };
 
 var parts = [
-  "artwork",
-  "aside",
-  "blockquote",
-  "dt",
-  "li",
-  "sourcecode",
-  "t",
+  'abstract',
+  'artwork',
+  'aside',
+  'blockquote',
+  'dt',
+  'li',
+  'note',
+  'references',
+  'sourcecode',
+  't',
 ];
 
 exports.isPart = function(e) {
@@ -92,3 +101,134 @@ exports.normalize = function(t) {
   t = t.replace(/\.\s*\n\s+/gm, '.  ');
   return t.replace(/\s*\n\s+/gm, ' ');
 };
+
+att = function(e, a) {
+  var attr = e.attr(a);
+  if (!attr) { return null; }
+  return attr.value();
+}
+
+exports.loadSrc = function(e) {
+  var src = att(e, 'src');
+  if (!src) { return; }
+  var typ = att(e, 'type');
+  if (!typ) {
+    process.stderr.write("'type' attribute suggested for src: " + src + "\n");
+  }
+
+  var types = ['ascii-art', 'call-flow', 'hex-dump', 'svg'];
+
+  // TODO: can base64 generate ".."?
+  if (src.match(/(^\/)|(\.\.)/)) {
+    process.stderr.write('Invalid src URL: ' + src + '\n');
+    return;
+  }
+  var cwd = process.cwd() + '/';
+  var u = url.resolve('file://' + cwd, src);
+  var up = url.parse(u, false, true);
+  if (!up) {
+    return;
+  }
+
+  var todata = false;
+  if (types.indexOf(typ) === -1) {
+    // For unknown types, turn the data into a data: if it's not already
+    if (up.protocol == 'data:') {
+      return;
+    }
+    todata = true;
+  }
+
+  var data = null;
+  var media = 'text/plain';
+
+  if (up.protocol === 'file:') {
+    // check to make sure we're in cwd or a subdir
+    if (up.pathname.slice(0,cwd.length) !== cwd) {
+      process.stderr.write('Invalid path: ' + up.pathname + '\n');
+      return;
+    }
+    data = fs.readFileSync(up.pathname);
+  } else if (up.protocol === 'data:') {
+    data = dataUri.decode(u);
+  } else if ((up.protocol === 'http:') || (up.protocol === 'http:')) {
+    // jade is strictly snychronous
+    var res = urllibsync.request(u);
+    if (res.status !== 200) {
+      process.stderr.write('HTTP error (' + res.statusCode + '): ' + u + '\n');
+      return;
+    }
+    data = res.data;
+    media = res.headers['content-type'];
+    media = media.replace(/\s+/g, '');
+  } else {
+    process.stderr.write('Unknown URI scheme: ' + u + '\n');
+    return;
+  }
+
+  if (todata) {
+    var du = dataUri.encode(data, media);
+    e.attr({'src': du, 'xml:base': u});
+  } else {
+    if (typ === 'svg') {
+      var svg = xml.parseXmlString(data);
+      var svgr = svg.root();
+      if (up.protocol != 'data:') {
+        svgr.attr({'xml:base': u});
+      }
+      e.addChild(svgr);
+    } else {
+      e.cdata(data.toString('utf8'));
+      if (up.protocol != 'data:') {
+        e.attr({'xml:base': u});
+      }
+    }
+    e.attr('src').remove();
+  }
+}
+
+exports.defaultAttr = function(e, a, val) {
+  if (e && a && val && !e.attr(a)) {
+    e.attr(a, val);
+  }
+}
+
+exports.scripts = function(text) {
+  var punycode = require('punycode');
+  var unicode = require('unicode-properties');
+  var s = new Set();
+  var decoded = punycode.ucs2.decode(text);
+  var i;
+  for (i=0; i<decoded.length; i++) {
+    s.add(unicode.getScript(decoded[i]));
+  }
+  var all = [];
+  s.forEach(function(scr){
+     all.push(scr);
+  });
+  return all.sort();
+}
+
+exports.blocks = function(text) {
+  var punycode = require('punycode');
+  var UnicodeTrie = require('unicode-trie');
+  var blocks = require('./blocks.json');
+  var blockt = new UnicodeTrie(fs.readFileSync(__dirname + '/block.trie'));
+
+  var s = new Set();
+  var decoded = punycode.ucs2.decode(text);
+  var i;
+  var b;
+  for (i=0; i<decoded.length; i++) {
+    b = blocks[blockt.get(decoded[i])]
+    if (b != 'Basic Latin') {
+      console.error('U+'+decoded[i].toString(16)+': ', b, String.fromCharCode(decoded[i]), i)
+    }
+    s.add(b);
+  }
+  var all = [];
+  s.forEach(function(scr){
+     all.push(scr);
+  });
+  return all.sort();
+}

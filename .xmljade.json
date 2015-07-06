@@ -1,0 +1,7 @@
+{
+  "dentin-ignore": [
+    "artwork",
+    "sourcecode",
+    "pre"
+  ]
+}

@@ -1,0 +1,220 @@
+- var number = require('./number')
+- var dt = require('./dt')
+- var slug = require('slug')
+- var pubDate = new Date()
+- var irefs={}
+
+mixin elem(e)
+  - var a = $att(e, attributes)
+  - a = $nsDecls(e, a)
+  #{$qname(e)}&attributes(a)
+    +children(e)
+    block
+
+mixin part(e)
+  if $('ancestor::reference', e)
+    +elem(e)
+  else
+    +elem(e)(pn=number.partNumber(e))
+
+mixin children(e, opts)
+  each c in e.childNodes()
+    case c.type()
+      when 'text'
+        if c.text().trim().length > 0
+          = c.text()
+      when 'cdata'
+        :cdata
+          !{c.text()}
+      when 'comment'
+        //- remove comments
+        //- != "<!--" + c.text() + "-->"
+      when 'element'
+        - var nm = c.name()
+        if jade_mixins[nm] != null
+          +#{nm}(c)
+        else if number.isPart(nm)
+          +part(c)
+        else
+          +elem(c, opts)
+
+mixin boilerplate(e)
+  //- remove any old boilerplate
+
+mixin front(e)
+  +elem(e)
+    if e.parent().name() == 'rfc'
+      boilerplate
+        - var isoPub = dt.isoDate(pubDate)
+        - var tlp = number.ipr($('@ipr'))
+        section(pn="s-boilerplate-1")
+          name(slugifiedName="n-status-of-this-memo") Status of this Memo
+          t(pn="p-boilerplate-1-1").
+            This Internet-Draft is submitted in full conformance with
+            the provisions of BCP 78 and BCP 79.#{tlp[0]||""}
+          if $('@docName').match(/^draft-/)
+            t(pn="p-boilerplate-1-2").
+              Internet-Drafts are working documents of the Internet Engineering Task
+              Force (IETF).  Note that other groups may also distribute working
+              documents as Internet-Drafts.  The list of current Internet-Drafts is
+              at <eref target='http://datatracker.ietf.org/drafts/current/'/>.
+            t(pn="p-boilerplate-1-3").
+              Internet-Drafts are draft documents valid for a maximum of six months
+              and may be updated, replaced, or obsoleted by other documents at any
+              time.  It is inappropriate to use Internet-Drafts as reference
+              material or to cite them other than as "work in progress."
+            - var expires = new Date(pubDate);
+            - expires.setMonth(expires.getMonth() + 6)
+            t(pn="p-boilerplate-1-4") This Internet-Draft will expire on #{dt.isoDate(expires)}.
+        section(pn="s-boilerplate-2")
+          name(slugifiedName="n-copyright-notice") Copyright Notice
+          t(pn="p-boilerplate-2-1").
+            Copyright &#xa9;#{pubDate.getFullYear()} IETF Trust and the
+            persons identified as the document authors.  All rights reserved.
+          t(pn="p-boilerplate-2-2").
+            This document is subject to BCP 78 and the IETF Trust's Legal
+            Provisions Relating to <eref target='http://trustee.ietf.org/license-info'>IETF Documents</eref>
+            in effect on the date of publication of this document.  Please review
+            these documents carefully, as they describe your rights and restrictions
+            with respect to this document.  Code Components extracted from this
+            document must include Simplified BSD License text as described in
+            Section 4.e of the Trust Legal Provisions and are provided without
+            warranty as described in the Simplified BSD License.
+          if tlp[1]
+            t(pn="p-boilerplate-2-3")= tlp[1]
+
+mixin abstract(e)
+  if $('ancestor::reference', e)
+    +elem(e)
+  else
+    +elem(e)(pn="s-abstract")
+
+mixin artwork(e)
+  - number.defaultAttr(e, 'align', 'left')
+  - number.loadSrc(e)
+  +part(e)
+  
+mixin cref(e)
+  - number.defaultAttr(e, 'display', 'true')
+  +elem(e)
+
+mixin date(e)
+  // in rfc/front/date, make sure we have a year, month, and day
+  if $('ancestor::reference', e)
+    +elem(e)
+  else
+    - var now = pubDate || new Date()
+    - var a = $att(e)
+    - var year = a['year'] || now.getFullYear()
+    - var month = a['month'] || dt.monthName(now)
+    - var mn = dt.monthNumber(month)
+    - var day = a['day'] || now.getDate();
+    - pubDate = new Date(year, mn, day)
+    +elem(e)(year=year, month=month, day=day)
+
+mixin dl(e)
+  - number.defaultAttr(e, 'hanging', 'true')
+  - number.defaultAttr(e, 'spacing', 'normal')
+  +elem(e)
+
+mixin figure(e)
+  +elem(e)(pn="f-" + number.sequentialNumber(e))
+
+mixin iref(e)
+  - number.defaultAttr(e, 'primary', 'false')
+  - var si = $att(e,'subitem')
+  - var isi = 's-' + slug($att(e,'item')) + ((si==null)?"":("-"+slug(si)))
+  - var num = irefs[isi] || 0
+  - num += 1
+  - irefs[isi] = num
+  - e.attr('irefid',isi+'-'+num)
+  +elem(e)
+
+mixin name(e)
+  - var sn = $att(e, 'slugifiedName')
+  if sn
+    +elem(e)
+  else
+    +elem(e)(slugifiedName="n-" + slug(e.text()).toLowerCase())
+
+mixin note(e)
+  +elem(e)(pn="s-note-" + number.sequentialNumber(e))
+
+mixin ol(e)
+  - number.defaultAttr(e, 'spacing', 'normal')
+  if !$att(e, 'start')
+    - var group = $att(e, 'group')
+    if group
+      - var prev = $('preceding::ol[@group="' + group + '"][1]', e)
+      if prev
+        - var prevstart = parseInt($att(prev, 'start') || "1")
+        - e.attr('start', prevstart + $('count(li)', prev))
+      else
+        - e.attr('start', '1')
+    else
+      - e.attr('start', '1')
+  +elem(e)
+
+mixin reference(e)
+  - number.defaultAttr(e, 'quoteTitle', 'true')
+  +elem(e)
+
+mixin section(e)
+  if $('ancestor::back', e)
+    +elem(e)(pn="s-" + number.appendix(e))
+  else
+    +elem(e)(pn="s-" + number.section(e))
+
+mixin table(e)
+  +elem(e)(pn="t-" + number.sequentialNumber(e))
+
+mixin td(e)
+  - number.defaultAttr(e, 'align', 'left')
+  - number.defaultAttr(e, 'border', '0')
+  +elem(e)
+
+mixin th(e)
+  - number.defaultAttr(e, 'align', 'left')
+  - number.defaultAttr(e, 'border', '0')
+  +elem(e)
+
+mixin tr(e)
+  - number.defaultAttr(e, 'border', '0')
+  +elem(e)
+
+mixin ul(e)
+  - number.defaultAttr(e, 'empty', 'false')
+  - number.defaultAttr(e, 'spacing', 'normal')
+  +elem(e)
+
+mixin workgroup(e)
+  - var t = e.text().trim()
+  if !t.match(/Group$/)
+    - sub = $('@submissionType')
+    if sub == 'IETF'
+      - e.text(t + " Working Group")
+    else if sub == 'IRTF'
+      - e.text(t + " Research Group")
+  +elem(e)
+  
+mixin xref(e)
+  - number.defaultAttr(e, 'format', 'default')
+  if $att(e, 'section')
+    - number.defaultAttr(e, 'sectionformat', 'of')
+  +elem(e)
+
+doctype xml
+- var root = $root()
+- number.defaultAttr(root, 'consensus', 'false')
+- number.defaultAttr(root, 'indexInclude', 'true')
+- number.defaultAttr(root, 'sortRefs', 'false')
+- number.defaultAttr(root, 'submissionType', 'IETF')
+- number.defaultAttr(root, 'symRefs', 'true')
+- number.defaultAttr(root, 'tocInclude', 'true')
+- root.attr('finalizedTime', dt.isoDateTime(new Date()))
+- root.attr('version', '3')
+- root.attr('scripts', number.scripts($root().toString()))
+- root.attr('blocks', number.blocks($root().toString()))
+if $att(root, 'tocInclude') == 'true'
+  - number.defaultAttr(root, 'tocDepth', '3');
++elem(root)

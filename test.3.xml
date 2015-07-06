@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rfc ipr='trust200902' docName='draft-hildebrand-html-rfc-04' category='info' xmlns:xi='http://www.w3.org/2001/XInclude' tocInclude='yes'>
+<rfc ipr='trust200902' docName='draft-hildebrand-html-rfc-04' category='info'
+  xmlns:xi='http://www.w3.org/2001/XInclude' tocInclude='true'>
+  <link href="https://github.com/hildjj/draft-hildebrand-html-rfc.git" rel="alternate"/>
+  <!-- Need right-to-left names -->
+  <!-- Paul got to <postal> -->
   <front>
     <!--
       comment in the front
@@ -7,30 +11,52 @@
       it also has some &amp; &lt; &gt;
     -->
     <title abbrev='HTML RFC'>HyperText Markup Language Request For Comments Format</title>
-    <author initials='J.' surname='Hildebrand' fullname='Joe Hildebrand' role='editor'>
-      <organization>Cisco Systems, Inc.</organization>
+    <author role='editor'
+      initials='ɟ.' surname='H̭ildebrand' fullname='ɟöe H̭ildebrand'
+      asciiInitials='J.' asciiSurname='Hildebrand' asciiFullname='Joe Hildebrand'>
+      <organization ascii='Cisco Systems, Inc.' abbrev='CSI'>Čisco Śystems, Inc.</organization>
       <address>
-        <email>jhildebr@cisco.com</email>
+        <postal>
+          <street>1 Main Street</street>
+          <street>Suite 1</street>
+          <city ascii='Denver'>ǲenver</city>
+          <region>CO</region>
+          <code ascii="80202">８０２０２</code>
+          <country>US</country>
+        </postal>
+        <phone>+1-720-555-1212</phone>
+        <facsimile>+1-303-555-1212</facsimile>
+        <email ascii="jhildebr@example.com">ɟhildebr@éxample.com</email>
+        <uri>http://www.example.com</uri>
       </address>
     </author>
     <author initials='H.' surname='Flanagan' fullname='Heather Flanagan' role='editor'>
       <organization>RFC Editor</organization>
       <address>
+        <postal>
+          <postalLine>Where the</postalLine>
+          <postalLine>Streets have no name</postalLine>
+        </postal>
         <email>rse@rfc-editor.org</email>
       </address>
     </author>
+    <date/>
     <area>gen</area>
     <workgroup>rfc-interest</workgroup>
-    <date/>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
     <abstract>
-      <t>This document defines the <strong>HTML format</strong> that will be rendered from the
+      <t>This document defines the HTML format that will be rendered from the
         canonical XML format for an RFC.  The HTML output will include a default
         CSS to enable page layout.</t>
+      <t>Abstracts can have multiple &lt;t&gt;'s</t>
+      <ul>
+        <li>And</li>
+        <li>Lists</li>
+      </ul>
     </abstract>
-    <note removeInRFC='yes'>
+    <note removeInRFC='true'>
       <name>Editorial Note</name>
       <t>
         Discussion of this draft takes place on the rfc-interest
@@ -45,10 +71,10 @@
   <middle>
     <section anchor='intro'>
       <name>Introduction</name>
-      <t>Paragraph</t>
+      <t><iref item="Paragraphs" subitem="first" primary="true"/>Paragraph</t>
       <section>
-        <name>Sub Section</name>
-        <t>sub section paragraph</t>
+        <name>Sub Section About <tt>Monospace Fonts</tt></name>
+        <t><iref item="Paragraphs" subitem="second"/>sub section paragraph</t>
         <section anchor='sub-sub'>
           <name>Sub-sub Section</name>
           <t>sub section paragraph</t>
@@ -67,8 +93,9 @@
         <name>Sub Section 3</name>
         <blockquote
           cite='http://www.abrahamlincolnonline.org/lincoln/speeches/gettysburg.htm'
-          quoteFrom='Abraham Lincoln'>
-          <t>Four score and seven years ago our fathers brought forth on this
+          quotedFrom='Abraham Lincoln'>
+          <t keepWithNext="true"><em>Four</em> <strong>score</strong> and <sup><em>seven</em></sup> <sub>years</sub>
+            ago, <tt>our</tt> fathers brought forth on this
             continent, a new nation, conceived in Liberty, and dedicated to the
             proposition that all men are created equal.</t>
 
@@ -78,57 +105,153 @@
              portion of that field, as a final resting place for those who here
              gave their lives that that nation might live. It is altogether
              fitting and proper that we <bcp14>SHOULD</bcp14> do this.</t>
-
-          <t>But, in a larger sense, we can not dedicate — we can not
-            consecrate — we can not hallow — this ground. The brave
-            men, living and dead, who struggled here, have consecrated it, far
-            above our poor power to add or detract. The world will little note,
-            nor long remember what we say here, but it can never forget what they
-            did here. It is for us the living, rather, to be dedicated here to the
-            unfinished work which they who fought here have thus far so nobly
-            advanced. It is rather for us to be here dedicated to the great task
-            remaining before us — that from these honored dead we take
-            increased devotion to that cause for which they gave the last full
-            measure of devotion — that we here highly resolve that these
-            dead shall not have died in vain — that this nation, under
-            God, shall have a new birth of freedom — and that government
-            of the people, by the people, for the people, shall not perish from
-            the earth.</t>
         </blockquote>
         <blockquote>
           This is a shorter blockquote example
         </blockquote>
-        <aside>Aside: This is an aside, to compare and contrast</aside>
+        <aside>
+          <t>This is a longer aside. This paragraph has a comment.
+           <cref anchor="crefAnchor" source="life">Just a brief comment about
+          something that we need to remember later.</cref></t>
+          <ul>
+            <li>This is a short list...</li>
+            <li>...that is inside the aside.</li>
+           </ul>
+        </aside>
       </section>
       <section anchor='sub4'>
         <name>Sub Section 4</name>
         <t>sub section paragraph 4</t>
+        <t>This paragraph has a
+          <cref anchor='unint' source='Paul'>uninteresting <tt>comment</tt>
+            <em>em</em>
+            <eref target='https://ietf.org/'>IETF eref</eref>
+            <strong>strong</strong> <sub>sub</sub> <sup>'sup</sup>
+            <tt>tt</tt>
+            <xref target="top"/>
+          </cref>.</t>
       </section>
     </section>
-    <section>
-      <name>Top</name>
-      <t>A real section</t>
+    <section anchor='top'>
+      <name><tt>top</tt></name>
+      <t anchor='real'>A real section, with an anchor</t>
       <table anchor='THE-TABLE'>
         <name>I AM THE TABLE</name>
+        <iref item="Coffee tables"/>
         <thead>
-          <tr><th>H1</th><th>H2</th></tr>
+          <tr>
+            <th>H1</th>
+            <th>H2</th>
+          </tr>
         </thead>
         <tbody>
+          <iref item="Coffee tables"/>
           <tr><td><t>One is the loneliest number that you'll ever do</t></td><td>Two can be as bad as one</td></tr>
-          <tr><td>It's the loneliest number</td><td>since the number one</td></tr>
+          <tr><td>It's the loneliest number</td><td>since the number one.<br/>
+          Remember to do <xref target="crefAnchor">that comment</xref>.</td></tr>
           <tr><td><sourcecode>three(p)</sourcecode></td>
           <td><t>4</t><t>5</t></td></tr>
+          <tr><td colspan='2' align='center'><t>This one covers two whole columns.</t></td></tr>
+          <tr><td rowspan='2' align='center'><t>This one covers two whole rows.</t></td><td>Another thing</td></tr>
+          <tr>
+            <td>And another thing!</td>
+          </tr>
         </tbody>
       </table>
       <t>Second paragraph</t>
       <ul>
         <li>List</li>
-        <li>unordered</li>
+        <li><tt>&lt;xref&gt;</tt> with text <xref target='unint'>Some Text</xref></li>
+        <li>
+          <t>Multiple</t>
+          <t>Paragraphs</t>
+        </li>
+        <li>
+          <t>Section</t>
+          <ul>
+            <li>no format: <xref target='top'/></li>
+            <li>format=counter: <xref format='counter' target='top'/></li>
+            <li>format=title: <xref format='title' target='top'/></li>
+          </ul>
+        </li>
+        <li>
+          <t>Figure</t>
+            <ul>
+              <li>no format: <xref target='hello'/></li>
+              <li>format=counter: <xref format='counter' target='hello'/></li>
+              <li>format=title: <xref format='title' target='hello'/></li>
+            </ul>
+        </li>
+        <li>
+          <t>Table</t>
+          <ul>
+            <li>no format: <xref target='THE-TABLE'/></li>
+            <li>format=counter: <xref format='counter' target='THE-TABLE'/></li>
+            <li>format=title: <xref format='title' target='THE-TABLE'/></li>
+          </ul>
+        </li>
+        <li>
+          <t>Reference</t>
+          <ul>
+            <li>no format: <xref target='RFC6949'/></li>
+            <li>format=counter: <xref format='counter' target='RFC6949'/></li>
+            <li>format=title: <xref format='title' target='RFC6949'/></li>
+          </ul>
+        </li>
+      </ul>
+      <ul empty='true'>
+        <li><iref item="Bullets" primary="true"/>Empty: it's all empty</li>
+        <li><iref item="Bullets"/>I have not bullets left</li>
       </ul>
       <ol>
-        <li><t>now</t><t>then</t></li>
+        <li><iref item="Bullets" subitem="Ordered"/><t>now</t><t>then</t></li>
         <li>ordered</li>
       </ol>
+      <ol start="12" style='I' group="green">
+        <li>A dozen or so.</li>
+        <li>Now, with bakers. It's all about <xref target="Bibble"/>.</li>
+      </ol>
+      <ol group='green' stye='I'>
+        <li>after bakers, before meanings</li>
+        <li>there are meaningless bakers</li>
+      </ol>
+      <ol group='green' stye='I'>
+        <li>who bake</li>
+        <li>bread with meaning</li>
+      </ol>
+      <ol start="42" style='I' group="green">
+        <li>The meaning of life.</li>
+        <li>The after-meaning of the after-life</li>
+      </ol>
+      <ol style='Requirement %c:'>
+        <li>Get up every morning with a smile on your face</li>
+        <li>Show the world all the love in your heart</li>
+      </ol>
+      <ol style='Requirement %C:' start='26'>
+        <li>Upper case</li>
+        <li>Above 26</li>
+      </ol>
+      <ol style='Requirement %i:' start='18'>
+        <li>Wheels on a big rig</li>
+        <li>Exercitation nisi quis in laborum ipsum esse excepteur culpa. And
+        then <xref target="whoa"/>.   Et pariatur anim labore pariatur qui
+        adipisicing consequat quis. Occaecat fugiat ad mollit ipsum occaecat
+        aliqua consectetur. Esse proident qui amet quis dolore consectetur
+        proident sunt ipsum exercitation veniam exercitation amet. Nostrud
+        exercitation magna officia incididunt deserunt incididunt eiusmod veniam
+        esse minim non. Mollit non ad consectetur adipisicing nisi ex consequat
+        qui proident officia laboris duis adipisicing. Velit commodo aliqua
+        occaecat consequat nostrud anim ad ut. Quis aute eu culpa dolore ut esse
+        ea est elit occaecat. In cupidatat ea ipsum est fugiat ad pariatur
+        nulla. </li>
+      </ol>
+      <artwork anchor='not-actually-ee' xml:lang='en' type='poetry' align='center'>
+artwork does not
+     ALWAYS
+   have to bepartofafigure.
+                            --ee cummings
+      </artwork>
+      <artwork align='right'>Just a step to the right</artwork>
       <figure>
         <name>It figures</name>
         <artwork type='ascii-art'>
@@ -144,13 +267,26 @@
 ]]>
         </artwork>
       </figure>
-      <t>Artwork can also be outside a figure</t>
-      <artwork type='svg'>
-        <svg width="100" height="100">
-          <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
-        </svg>
-      </artwork>
-      <artwork type='hex-dump'>
+      <figure><name>Inline with &lt;svg&gt; element</name>
+        <artwork type="svg" alt="green stroke yellow fill circle">
+          <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+          </svg>
+        </artwork>
+      </figure>
+      <figure><name>Inline with XInclude</name>
+        <artwork type="svg" align="right"><xi:include href='http://localhost:8080/redbluecircle.svg'/></artwork>
+      </figure>
+      <figure><name>SVG as a data: URI</name>
+        <artwork type="svg" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEwMCIKICAgICB3aWR0aD0iMTAwIgogICAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGNpcmNsZSBjeD0iNTAiCiAgICAgICAgICBjeT0iNTAiCiAgICAgICAgICBmaWxsPSJ5ZWxsb3ciCiAgICAgICAgICByPSI0MCIKICAgICAgICAgIHN0cm9rZT0iYmxhY2siCiAgICAgICAgICBzdHJva2Utd2lkdGg9IjQiLz4KPC9zdmc+Cg=="/>
+      </figure>
+      <figure><name>Inline with &lt;src&gt; attribute</name>
+        <!-- <artwork type="svg" src="circle.svg"/> -->
+        <artwork type="svg" src='http://localhost:8080/redbluecircle.svg' anchor='externalCircle'/>
+      </figure>
+      <t>Artwork can also be outside a figure. Here are two.</t>
+      <artwork type="logo" src="http://localhost:8080/ietflogotrans.gif" alt="IETF logo"/>
+      <artwork type="hex-dump">
 <![CDATA[
 00000000  20 5f 5f 5f 5f 5f 5f 5f  5f 5f 5f 5f 5f 5f 5f 20  | ______________ |
 00000010  0a 3c 20 68 65 6c 6c 6f  2c 20 77 6f 72 6c 64 20  |.< hello, world |
@@ -168,16 +304,27 @@
       </artwork>
       <section>
         <name>foo</name>
-        <t>another</t>
-        <aside>If this was an interesting section, it would have more
-          interesting things to say</aside>
+        <t><iref item="Paragraphs" subitem="first"/>another</t>
+        <aside><t>If this was an interesting section, it would have more
+          interesting things to say</t></aside>
         <dl>
           <dt>Fine</dt>
           <dd>Not fine</dd>
           <dt>Angry</dt>
-          <dd>Sad<sub>weepy</sub></dd>
+          <dd>Sad<sub><strong>weepy</strong></sub></dd>
         </dl>
-        <figure>
+        <dl hanging='true' spacing='compact'>
+          <dt>Whee!</dt>
+          <dd>Ugh. <em>Really</em> ugh.</dd>
+          <dt anchor="whoa"><tt>Woah!</tt></dt>
+          <dd><t>What<em>ever</em>. I guess I should have an ordered list here:</t>
+             <ol>
+               <li>Won!</li>
+               <li>Too!</li>
+             </ol>
+          </dd>
+        </dl>
+        <figure anchor="hello">
           <name>This is a figure</name>
           <sourcecode anchor='helloworld' type='c'>
 <![CDATA[
@@ -193,19 +340,20 @@ int main(void)
         </figure>
       </section>
     </section>
+    <section>
+      <name>IANA Considerations</name>
+      <t>None</t>
+    </section>
   </middle>
   <back>
+    <displayreference target="RFC6949" to="RFC-reqs"/>
     <references>
       <name>Informative References</name>
       <reference anchor="RFC5646" xml:base="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml">
         <front>
           <title>Tags for Identifying Languages</title>
-          <author initials="A." surname="Phillips" fullname="A. Phillips">
-            <organization/>
-          </author>
-          <author initials="M." surname="Davis" fullname="M. Davis">
-            <organization/>
-          </author>
+          <author initials="A." surname="Phillips" fullname="A. Phillips"/>
+          <author initials="M." surname="Davis" fullname="M. Davis"/>
           <date year="2009" month="September"/>
           <abstract>
             <t>This document describes the structure, content, construction, and
@@ -243,7 +391,32 @@ int main(void)
         </front>
         <seriesInfo name="RFC" value="6949"/>
         <format type="TXT" octets="29181" target="http://www.rfc-editor.org/rfc/rfc6949.txt"/>
+        <annotation>
+          You <bcp14>MUST</bcp14> read this annotation.
+          <cref>Note: This is a comment.</cref>
+          This is something <strong>relevant</strong> to RFC 6949.
+        </annotation>
+        <refcontent ascii="Note this!">Nötë <em>thïs</em>!</refcontent>
       </reference>
+      <referencegroup anchor="Bibble">
+        <reference anchor="Bibble1" quoteTitle="false">
+          <front>
+            <title>Bibble protocol spec</title>
+            <author initials="N." surname="One" fullname="No One"/>
+            <date year="1850"/>
+          </front>
+        <seriesInfo name="BibbleSpècs" asciiName= "BibbleSpecs" value="12-4444"/>
+        </reference>
+        <reference anchor="Bibble2">
+          <front>
+            <title ascii="Bibble use cases">𝔹ibble use cases</title>
+            <author initials="Ñ." asciiInitials="N." surname="One" fullname="Ño One" asciiFullname="No One"/>
+            <author initials="Ñ." asciiInitials="N." surname="Two" fullname="Ño Two" asciiFullname="No Two"/>
+            <author initials="Ñ." asciiInitials="N." surname="Three" fullname="Ño Three" asciiFullname="No Three"/>
+          </front>
+        <seriesInfo name="BibbleSpècs" asciiName= "BibbleSpecs" value="12-4479"/>
+        </reference>
+      </referencegroup>
     </references>
     <section>
       <name>Doing things in appendices</name>

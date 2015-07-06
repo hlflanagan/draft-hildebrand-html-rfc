@@ -60,7 +60,6 @@
         <email>rse@rfc-editor.org</email>
       </address>
     </author>
-    <!-- in rfc/front/date, make sure we have a year, month, and day -->
     <date day='13' month='May' year='2015'/>
     <area>gen</area>
     <workgroup>rfc-interest Working Group</workgroup>
@@ -219,7 +218,8 @@
           source='Paul'>uninteresting <tt>comment</tt> <em>em</em>
           <eref target='https://ietf.org/'>IETF eref</eref>
           <strong>strong</strong> <sub>sub</sub> <sup>'sup</sup>
-          <tt>tt</tt> <xref format='default' target='top'/></cref>.
+          <tt>tt</tt> <xref format='default' target='top'>Section
+          2</xref></cref>.
         </t>
       </section>
     </section>
@@ -299,13 +299,16 @@
           <t pn='p-2-15'>Section</t>
           <ul empty='false' spacing='normal'>
             <li pn='p-2-16'>
-              no format: <xref format='default' target='top'/>
+              no format: <xref format='default' target='top'>Section
+              2</xref>
             </li>
             <li pn='p-2-17'>
-              format=counter: <xref format='counter' target='top'/>
+              format=counter: <xref format='counter'
+              target='top'>2</xref>
             </li>
             <li pn='p-2-18'>
-              format=title: <xref format='title' target='top'/>
+              format=title: <xref format='title'
+              target='top'>top</xref>
             </li>
           </ul>
         </li>
@@ -313,13 +316,16 @@
           <t pn='p-2-20'>Figure</t>
           <ul empty='false' spacing='normal'>
             <li pn='p-2-21'>
-              no format: <xref format='default' target='hello'/>
+              no format: <xref format='default' target='hello'>Figure
+              6</xref>
             </li>
             <li pn='p-2-22'>
-              format=counter: <xref format='counter' target='hello'/>
+              format=counter: <xref format='counter'
+              target='hello'>6</xref>
             </li>
             <li pn='p-2-23'>
-              format=title: <xref format='title' target='hello'/>
+              format=title: <xref format='title' target='hello'>This
+              is a figure</xref>
             </li>
           </ul>
         </li>
@@ -327,14 +333,16 @@
           <t pn='p-2-25'>Table</t>
           <ul empty='false' spacing='normal'>
             <li pn='p-2-26'>
-              no format: <xref format='default' target='THE-TABLE'/>
+              no format: <xref format='default'
+              target='THE-TABLE'>Table 1</xref>
             </li>
             <li pn='p-2-27'>
               format=counter: <xref format='counter'
-              target='THE-TABLE'/>
+              target='THE-TABLE'>1</xref>
             </li>
             <li pn='p-2-28'>
-              format=title: <xref format='title' target='THE-TABLE'/>
+              format=title: <xref format='title' target='THE-TABLE'>I
+              AM THE TABLE</xref>
             </li>
           </ul>
         </li>
@@ -342,14 +350,16 @@
           <t pn='p-2-30'>Reference</t>
           <ul empty='false' spacing='normal'>
             <li pn='p-2-31'>
-              no format: <xref format='default' target='RFC6949'/>
+              no format: <xref format='default'
+              target='RFC6949'>[RFC-reqs]</xref>
             </li>
             <li pn='p-2-32'>
               format=counter: <xref format='counter'
               target='RFC6949'/>
             </li>
             <li pn='p-2-33'>
-              format=title: <xref format='title' target='RFC6949'/>
+              format=title: <xref format='title' target='RFC6949'>RFC
+              Series Format Requirements and Future Development</xref>
             </li>
           </ul>
         </li>
@@ -379,7 +389,7 @@
         <li pn='p-2-40'>A dozen or so.</li>
         <li pn='p-2-41'>
           Now, with bakers. It's all about <xref format='default'
-          target='Bibble'/>.
+          target='Bibble'>Bibble</xref>.
         </li>
       </ol>
       <ol group='green' spacing='normal' start='14' stye='I'>
@@ -408,18 +418,18 @@
         <li pn='p-2-52'>Wheels on a big rig</li>
         <li pn='p-2-53'>
           Exercitation nisi quis in laborum ipsum esse excepteur
-          culpa. And then <xref format='default' target='whoa'/>.  Et
-          pariatur anim labore pariatur qui adipisicing consequat
-          quis. Occaecat fugiat ad mollit ipsum occaecat aliqua
-          consectetur. Esse proident qui amet quis dolore consectetur
-          proident sunt ipsum exercitation veniam exercitation amet.
-          Nostrud exercitation magna officia incididunt deserunt
-          incididunt eiusmod veniam esse minim non. Mollit non ad
-          consectetur adipisicing nisi ex consequat qui proident
-          officia laboris duis adipisicing. Velit commodo aliqua
-          occaecat consequat nostrud anim ad ut. Quis aute eu culpa
-          dolore ut esse ea est elit occaecat. In cupidatat ea ipsum
-          est fugiat ad pariatur nulla.
+          culpa. And then <xref format='default'
+          target='whoa'>whoa</xref>.  Et pariatur anim labore pariatur
+          qui adipisicing consequat quis. Occaecat fugiat ad mollit
+          ipsum occaecat aliqua consectetur. Esse proident qui amet
+          quis dolore consectetur proident sunt ipsum exercitation
+          veniam exercitation amet.  Nostrud exercitation magna
+          officia incididunt deserunt incididunt eiusmod veniam esse
+          minim non. Mollit non ad consectetur adipisicing nisi ex
+          consequat qui proident officia laboris duis adipisicing.
+          Velit commodo aliqua occaecat consequat nostrud anim ad ut.
+          Quis aute eu culpa dolore ut esse ea est elit occaecat. In
+          cupidatat ea ipsum est fugiat ad pariatur nulla.
         </li>
       </ol>
       <artwork align='center'
@@ -618,7 +628,6 @@ int main(void)
                   initials='A.'
                   surname='Phillips'/>
           <author fullname='M. Davis' initials='M.' surname='Davis'/>
-          <!-- in rfc/front/date, make sure we have a year, month, and day -->
           <date month='September' year='2009'/>
           <abstract>
             <t>
@@ -657,7 +666,6 @@ int main(void)
                   surname='Brownlee'>
             <organization/>
           </author>
-          <!-- in rfc/front/date, make sure we have a year, month, and day -->
           <date month='May' year='2013'/>
           <abstract>
             <t>
@@ -690,7 +698,6 @@ int main(void)
           <front>
             <title>Bibble protocol spec</title>
             <author fullname='No One' initials='N.' surname='One'/>
-            <!-- in rfc/front/date, make sure we have a year, month, and day -->
             <date year='1850'/>
           </front>
           <seriesInfo asciiName='BibbleSpecs'

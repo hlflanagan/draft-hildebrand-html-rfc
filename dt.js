@@ -27,22 +27,29 @@ function pad2(v) {
 exports.isoDate = function(e) {
   var year, month, day;
   if (e instanceof Date) {
-    year = e.getFullYear();
-    month = e.getMonth()+1;
-    day = e.getDate();
+    year = e.getUTCFullYear();
+    month = e.getUTCMonth()+1;
+    day = e.getUTCDate();
   } else {
     var now = new Date();
-    year = atv(e, 'year') || now.getFullYear();
+    year = atv(e, 'year') || now.getUTCFullYear();
     month = atv(e, 'month');
     if (month == null) {
-      month = now.getMonth()+1
+      month = now.getUTCMonth()+1
     } else {
       var m = months.indexOf(month);
       if (m >= 0) {
         month = m+1;
       }
     }
-    day = atv(e, 'day') || now.getDate();
+    day = atv(e, 'day') || now.getUTCDate();
   }
   return "" + year + "-" + pad2(month) + "-" + pad2(day);
+};
+
+exports.isoDateTime = function(d) {
+  if (d == null) {
+    d = new Date();
+  }
+  return exports.isoDate(d) + "T" + pad2(d.getUTCHours()) + ":" + pad2(d.getUTCMinutes()) + ":" + pad2(d.getUTCSeconds()) + "Z";
 };
