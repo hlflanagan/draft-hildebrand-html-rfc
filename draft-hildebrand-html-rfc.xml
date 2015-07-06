@@ -11,7 +11,7 @@
 <!ENTITY I-D.hoffman-rfcv3-preptool SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.hoffman-rfcv3-preptool.xml">
 <!ENTITY I-D.flanagan-rfc-framework SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.flanagan-rfc-framework.xml">
 ]>
-<rfc ipr="trust200902" docName="draft-hildebrand-html-rfc-07" category="info">
+<rfc ipr="trust200902" docName="draft-hildebrand-html-rfc-08" category="info">
 <!--  ### Notes for Joe and Paul go here. ###
 
 Deal with displayreference in relref or xref
@@ -30,7 +30,7 @@ Deal with displayreference in relref or xref
         <email>paul.hoffman@icann.org</email>
       </address>
     </author>
-    <date year="2015" month="June" day="17"/>
+    <date year="2015" month="July" day="6"/>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
@@ -253,8 +253,14 @@ Deal with displayreference in relref or xref
         <t>The root element of the document is &lt;html&gt;.  This element
           includes a lang attribute, whose value is a <xref target="RFC5646"/>
           language tag describing the natural language of the document.  The
-          language tag to be
-          included is "en".</t>
+          language tag to be included is "en".  The class of the &lt;html&gt;
+          element will be copied verbatim from the XML &lt;rfc&gt; element's
+          "mode" attribute, allowing CSS to style RFCs and Internet-Drafts
+          differently from one another (if needed):</t>
+        <figure>
+          <artwork><![CDATA[
+<html lang="en" class="RFC">]]></artwork>
+        </figure>
       </section>
       <section anchor="head-element" title="Head Element">
         <t>The root &lt;html&gt; will contain a &lt;head&gt; element that

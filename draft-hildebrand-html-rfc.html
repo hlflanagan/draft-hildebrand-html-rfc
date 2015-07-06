@@ -494,8 +494,8 @@
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Hildebrand, J., Ed. and P. Hoffman" />
-  <meta name="dct.identifier" content="urn:ietf:id:draft-hildebrand-html-rfc-07" />
-  <meta name="dct.issued" scheme="ISO8601" content="2015-6-17" />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-hildebrand-html-rfc-08" />
+  <meta name="dct.issued" scheme="ISO8601" content="2015-7-6" />
   <meta name="dct.abstract" content="In order to meet the evolving needs of the Internet community, the format for RFCs is changing from a plain-text, ASCII-only format to a canonical XML format that will in turn be rendered into several publication formats. This document defines the HTML format that will be rendered for an RFC or Internet-Draft." />
   <meta name="description" content="In order to meet the evolving needs of the Internet community, the format for RFCs is changing from a plain-text, ASCII-only format to a canonical XML format that will in turn be rendered into several publication formats. This document defines the HTML format that will be rendered for an RFC or Internet-Draft." />
 
@@ -519,12 +519,12 @@
   <td class="right">P. Hoffman</td>
 </tr>
 <tr>
-  <td class="left">Expires: December 19, 2015</td>
+  <td class="left">Expires: January 7, 2016</td>
   <td class="right">ICANN</td>
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">June 17, 2015</td>
+  <td class="right">July 6, 2015</td>
 </tr>
 
     	
@@ -532,7 +532,7 @@
   </table>
 
   <p class="title">HyperText Markup Language Request For Comments Format<br />
-  <span class="filename">draft-hildebrand-html-rfc-07</span></p>
+  <span class="filename">draft-hildebrand-html-rfc-08</span></p>
   
   <h1 id="rfc.abstract">
   <a href="#rfc.abstract">Abstract</a>
@@ -544,7 +544,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on December 19, 2015.</p>
+<p>This Internet-Draft will expire on January 7, 2016.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -758,7 +758,9 @@
 <pre>
 &lt;!DOCTYPE html&gt;</pre>
 <h1 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2.</a> <a href="#root-element" id="root-element">Root Element</a></h1>
-<p id="rfc.section.6.2.p.1">The root element of the document is &lt;html&gt;.  This element includes a lang attribute, whose value is a <a href="#RFC5646">[RFC5646]</a> language tag describing the natural language of the document.  The language tag to be included is "en".</p>
+<p id="rfc.section.6.2.p.1">The root element of the document is &lt;html&gt;.  This element includes a lang attribute, whose value is a <a href="#RFC5646">[RFC5646]</a> language tag describing the natural language of the document.  The language tag to be included is "en".  The class of the &lt;html&gt; element will be copied verbatim from the XML &lt;rfc&gt; element's "mode" attribute, allowing CSS to style RFCs and Internet-Drafts differently from one another (if needed):</p>
+<pre>
+&lt;html lang="en" class="RFC"&gt;</pre>
 <h1 id="rfc.section.6.3"><a href="#rfc.section.6.3">6.3.</a> <a href="#head-element" id="head-element">Head Element</a></h1>
 <p id="rfc.section.6.3.p.1">The root &lt;html&gt; will contain a &lt;head&gt; element that contains the following elements, as needed.</p>
 <h1 id="rfc.section.6.3.1"><a href="#rfc.section.6.3.1">6.3.1.</a> <a href="#charset-declaration" id="charset-declaration">Charset Declaration</a></h1>

@@ -287,6 +287,7 @@ doctype xml
 - root.attr('prepTime', dt.isoDateTime(new Date()))
 - root.attr('version', '3')
 - root.attr('scripts', number.scripts($root().toString()))
+- root.attr('mode', defs.mode)
 if $att(root, 'tocInclude') == 'true'
   - number.defaultAttr(root, 'tocDepth', '3');
   
