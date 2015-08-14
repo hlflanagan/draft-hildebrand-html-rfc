@@ -11,7 +11,7 @@
 <!ENTITY I-D.hoffman-rfcv3-preptool SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.hoffman-rfcv3-preptool.xml">
 <!ENTITY I-D.flanagan-rfc-framework SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.flanagan-rfc-framework.xml">
 ]>
-<rfc ipr="trust200902" docName="draft-hildebrand-html-rfc-08" category="info">
+<rfc ipr="trust200902" docName="draft-hildebrand-html-rfc-09" category="info">
 <!--  ### Notes for Joe and Paul go here. ###
 
 Deal with displayreference in relref or xref
@@ -30,7 +30,7 @@ Deal with displayreference in relref or xref
         <email>paul.hoffman@icann.org</email>
       </address>
     </author>
-    <date year="2015" month="July" day="6"/>
+    <date year="2015" month="August" day="14"/>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
@@ -53,6 +53,12 @@ Deal with displayreference in relref or xref
         document will be defined through a cascading style sheet (CSS)
         <xref target="W3C.REC-CSS2-20110607"/>.  The CSS will be included in the
         HTML file but will be described in a separate document.</t>
+      <t>The details (particularly any vocabularies) described in this document
+        are expected to change based on experience gained in implementing the
+        RFC production center's toolset. Revised documents will be published
+        capturing those changes as the toolset is completed. Other implementers
+        must not expect those changes to remain backwards-compatible with the
+        details described this document.</t>
     </section>
     <section anchor="requirements-for-html" title="Requirements for the HTML Format">
       <t>This section lists the design requirements used to create the HTML
