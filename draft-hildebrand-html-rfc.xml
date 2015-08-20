@@ -11,7 +11,7 @@
 <!ENTITY I-D.hoffman-rfcv3-preptool SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.hoffman-rfcv3-preptool.xml">
 <!ENTITY I-D.flanagan-rfc-framework SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.flanagan-rfc-framework.xml">
 ]>
-<rfc ipr="trust200902" docName="draft-hildebrand-html-rfc-09" category="info">
+<rfc ipr="trust200902" docName="draft-hildebrand-html-rfc-10" category="info">
 <!--  ### Notes for Joe and Paul go here. ###
 
 Deal with displayreference in relref or xref
@@ -30,7 +30,7 @@ Deal with displayreference in relref or xref
         <email>paul.hoffman@icann.org</email>
       </address>
     </author>
-    <date year="2015" month="August" day="14"/>
+    <date year="2015" month="August" day="20"/>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
