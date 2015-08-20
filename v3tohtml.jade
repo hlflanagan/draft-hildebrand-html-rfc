@@ -225,7 +225,7 @@ mixin postal(e)
             +ascii(region)
         each code in $$('code', e)
           = " "
-          span.code= code.text()
+          span.postal-code= code.text()
             +ascii(code)
       each country in $$('country', e)
         .country-name= country.text().trim()

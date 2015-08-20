@@ -812,7 +812,7 @@ Internet-Draft                  HTML RFC                     August 2015
            </span>
            <span class="comma">,</span>
            <span class="region">CO</span>
-           <span class="code">
+           <span class="postal-code">
              80202 <span class="ascii">80202</span>
            </span>
          </div>
@@ -1411,7 +1411,7 @@ Internet-Draft                  HTML RFC                     August 2015
 
       *  The rendering of all <city> elements
 
-      *  A comma and whitespace
+      *  A comma (wrapped in a span of class "comma")
 
       *  The rendering of all <region> elements
 
@@ -1428,7 +1428,7 @@ Internet-Draft                  HTML RFC                     August 2015
        <span class="city">Denver</span>
        <span class="comma">,</span>
        <span class="region">CO</span>
-       <span class="code">80212</span>
+       <span class="postal-code">80212</span>
      </div>
      <div class="country-name">US</div>
    </div>

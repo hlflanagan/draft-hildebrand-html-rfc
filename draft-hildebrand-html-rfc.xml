@@ -532,7 +532,7 @@ Deal with displayreference in relref or xref
         </span>
         <span class="comma">,</span>
         <span class="region">CO</span>
-        <span class="code">
+        <span class="postal-code">
           80202 <span class="ascii">80202</span>
         </span>
       </div>
@@ -1052,7 +1052,7 @@ about something that we need to remember later.
             <t>A &lt;div&gt; that includes:
               <list style='symbols'>
                 <t>The rendering of all &lt;city&gt; elements</t>
-                <t>A comma and whitespace</t>
+                <t>A comma (wrapped in a span of class "comma")</t>
                 <t>The rendering of all &lt;region&gt; elements</t>
                 <t>Whitespace</t>
                 <t>The rendering of all &lt;code&gt; elements</t>
@@ -1070,7 +1070,7 @@ about something that we need to remember later.
     <span class="city">Denver</span>
     <span class="comma">,</span>
     <span class="region">CO</span>
-    <span class="code">80212</span>
+    <span class="postal-code">80212</span>
   </div>
   <div class="country-name">US</div>
 </div>]]></artwork>
