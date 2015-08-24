@@ -761,7 +761,8 @@
 <h1 id="rfc.section.5.4"><a href="#rfc.section.5.4">5.4.</a> <a href="#syntactic" id="syntactic">Syntactic Elements</a></h1>
 <p id="rfc.section.5.4.p.1">A few HTML elements are added to ensure particular syntax items can be styled appropriately using CSS.</p>
 <p id="rfc.section.5.4.p.2">Commas that are not in running text (e.g., that might have white-space added before them by the HTML indentation step) are wrapped by an HTML &lt;span&gt; tag of CSS class "comma".</p>
-<p id="rfc.section.5.4.p.3">Open and close parentheses that are not running text (e.g., that might have white-space added before them by the HTML indentation step) are wrapped by an HTML &lt;span&gt; tag of CSS class "openParen" or "closeParen" respectively.</p>
+<p id="rfc.section.5.4.p.3">Periods that are not in running text (e.g., that might have white-space added before them by the HTML indentation step) are wrapped by an HTML &lt;span&gt; tag of CSS class "fullStop".</p>
+<p id="rfc.section.5.4.p.4">Open and close parentheses that are not running text (e.g., that might have white-space added before them by the HTML indentation step) are wrapped by an HTML &lt;span&gt; tag of CSS class "openParen" or "closeParen" respectively.</p>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#front-matter" id="front-matter">Front Matter</a></h1>
 <p id="rfc.section.6.p.1">The front matter of the HTML format contains processing information, metadata of various types, and styling information that applies to the document as a whole.  This section describes HTML that is not necessarily a direct transform from the XML format.  For more details on each of the tags that generate content in this section, see <a href="#elements">Section 9</a>.</p>
 <h1 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1.</a> <a href="#doctype" id="doctype">DOCTYPE</a></h1>
@@ -910,7 +911,7 @@
 <pre>
 &lt;section id="author-addresses"&gt;
   &lt;h2&gt;
-    &lt;a class="self-ref" href="#author-addresses"&gt;
+    &lt;a class="selfRef" href="#author-addresses"&gt;
       Authors' Addresses
     &lt;/a&gt;
   &lt;/h2&gt;
@@ -999,7 +1000,7 @@
 <p id="rfc.section.9.1.p.1">The abstract is rendered similarly to a &lt;section&gt; with anchor="abstract" and &lt;name&gt;Abstract&lt;/name&gt;, but without a section number.</p>
 <pre>
 &lt;section id="abstract"&gt;
-  &lt;h2&gt;&lt;a href="#abstract" class="self-ref"&gt;Abstract&lt;/a&gt;&lt;/h2&gt;
+  &lt;h2&gt;&lt;a href="#abstract" class="selfRef"&gt;Abstract&lt;/a&gt;&lt;/h2&gt;
   &lt;p id="p-abstract-1"&gt;This document defines...
     &lt;a href="#p-abstract-1" class="pilcrow"&gt;&amp;para;&lt;/a&gt;
   &lt;/p&gt;
@@ -1036,7 +1037,7 @@ ______________
   &lt;/div&gt;
   &lt;figcaption&gt;
     &lt;a href="#f-1"&gt;Figure 1.&lt;/a&gt;
-    &lt;a class="self-ref" href="#n-it-figures" id="n-it-figures"&gt;
+    &lt;a class="selfRef" href="#n-it-figures" id="n-it-figures"&gt;
       It figures
     &lt;/a&gt;
   &lt;/figcaption&gt;
@@ -1110,7 +1111,7 @@ You &lt;span class="bcp14"&gt;MUST&lt;/span&gt; be joking.</pre>
 <pre>
 &lt;section id="status-of-this-memo"&gt;
   &lt;h2 id="s-boilerplate-1"&gt;
-    &lt;a href="#status-of-this-memo" class="self-ref"&gt;
+    &lt;a href="#status-of-this-memo" class="selfRef"&gt;
       Status of this Memo&lt;/a&gt;
   &lt;/h2&gt;
   &lt;p id="p-boilerplate-1-1"&gt;This Internet-Draft is submitted in full
@@ -1170,13 +1171,13 @@ about something that we need to remember later.
 <pre>
 &lt;a href="https://..." class="eref"&gt;the text&lt;/a&gt;</pre>
 <h1 id="rfc.section.9.25"><a href="#rfc.section.9.25">9.25.</a> <a href="#element.figure" id="element.figure">&lt;figure&gt;</a></h1>
-<p id="rfc.section.9.25.p.1">This element renders as the HTML &lt;figure&gt; element, containing the artwork or sourcecode indicated and an HTML &lt;figcaption&gt; element.  The &lt;figcaption&gt; will contain an &lt;a&gt; element with CSS class "self-ref" around the figure number.  It will also contain another &lt;a&gt; element with CSS class "self-ref" around the figure name, if a name was given.</p>
+<p id="rfc.section.9.25.p.1">This element renders as the HTML &lt;figure&gt; element, containing the artwork or sourcecode indicated and an HTML &lt;figcaption&gt; element.  The &lt;figcaption&gt; will contain an &lt;a&gt; element with CSS class "selfRef" around the figure number.  It will also contain another &lt;a&gt; element with CSS class "selfRef" around the figure name, if a name was given.</p>
 <pre>
 &lt;figure id="f-1"&gt;
   ...
   &lt;figcaption&gt;
-    &lt;a href="#f-1" class="self-ref"&gt;Figure 1.&lt;/a&gt;
-    &lt;a href="#n-it-figures" class="self-ref"&gt;It figures&lt;/a&gt;
+    &lt;a href="#f-1" class="selfRef"&gt;Figure 1.&lt;/a&gt;
+    &lt;a href="#n-it-figures" class="selfRef"&gt;It figures&lt;/a&gt;
   &lt;/figcaption&gt;
 &lt;/figure&gt;</pre>
 <h1 id="rfc.section.9.26"><a href="#rfc.section.9.26">9.26.</a> <a href="#element.front" id="element.front">&lt;front&gt;</a></h1>
@@ -1204,7 +1205,7 @@ about something that we need to remember later.
 <pre>
 &lt;section id="s-note-1" class="note rfceditor-remove"&gt;
   &lt;h2&gt;
-    &lt;a href="#n-editorial-note" class="self-ref"&gt;Editorial Note&lt;/a&gt;
+    &lt;a href="#n-editorial-note" class="selfRef"&gt;Editorial Note&lt;/a&gt;
   &lt;/h2&gt;
   &lt;p id="p-note-1-1"&gt;
     Discussion of this draft takes place...
@@ -1287,6 +1288,7 @@ Computer Sciences Division&lt;/pre&gt;</pre>
     &lt;span class="refTitle"&gt;"Tags for Identifying Languages"&lt;/span&gt;
     &lt;span class="comma"&gt;,&lt;/span&gt;
     ...
+    &lt;span class="fullStop"&gt;.&lt;/span&gt;
   &lt;/dd&gt;
 &lt;/dl&gt;</pre>
 <h1 id="rfc.section.9.41"><a href="#rfc.section.9.41">9.41.</a> <a href="#element.referencegroup" id="element.referencegroup">&lt;referencegroup&gt;</a></h1>
@@ -1301,13 +1303,13 @@ Computer Sciences Division&lt;/pre&gt;</pre>
 <pre>
 &lt;section id="n-references"&gt;
   &lt;h2 id="s-3"&gt;
-    &lt;a href="#s-3" class="self-ref"&gt;3.&lt;/a&gt;
-    &lt;a href="#n-references" class="self-ref"&gt;References&lt;/a&gt;
+    &lt;a href="#s-3" class="selfRef"&gt;3.&lt;/a&gt;
+    &lt;a href="#n-references" class="selfRef"&gt;References&lt;/a&gt;
   &lt;/h2&gt;
   &lt;section id="n-informative-references"&gt;
     &lt;h3 id="s-3.1"&gt;
-      &lt;a href="#s-3.1" class="self-ref"&gt;3.1.&lt;/a&gt;
-      &lt;a href="#n-informative-references" class="self-ref"&gt;
+      &lt;a href="#s-3.1" class="selfRef"&gt;3.1.&lt;/a&gt;
+      &lt;a href="#n-informative-references" class="selfRef"&gt;
         Informative References&lt;/a&gt;&lt;/h3&gt;
     &lt;dl class="reference"&gt;...
     &lt;/dl&gt;
@@ -1385,8 +1387,8 @@ href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;Section
 <pre>
 &lt;section id="intro"&gt;
   &lt;h2 id="s-1"&gt;
-    &lt;a href="#s-1" class="self-ref"&gt;1.&lt;/a&gt;
-    &lt;a href="#intro" class="self-ref"&gt;Introduction&lt;/a&gt;
+    &lt;a href="#s-1" class="selfRef"&gt;1.&lt;/a&gt;
+    &lt;a href="#intro" class="selfRef"&gt;Introduction&lt;/a&gt;
   &lt;/h2&gt;
   &lt;p id="p-1-1"&gt;Paragraph &lt;a href="#p-1-1" class="pilcrow"&gt;&amp;para;&lt;/a&gt;
   &lt;/p&gt;

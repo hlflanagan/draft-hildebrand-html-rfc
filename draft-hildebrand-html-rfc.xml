@@ -244,6 +244,9 @@ Deal with displayreference in relref or xref
         <t>Commas that are not in running text (e.g., that might have white-space
           added before them by the HTML indentation step) are wrapped by an
           HTML &lt;span&gt; tag of CSS class "comma".</t>
+        <t>Periods that are not in running text (e.g., that might have white-space
+          added before them by the HTML indentation step) are wrapped by an
+          HTML &lt;span&gt; tag of CSS class "fullStop".</t>
         <t>Open and close parentheses that are not running text (e.g., that might
           have white-space added before them by the HTML indentation step) are
           wrapped by an HTML &lt;span&gt; tag of CSS class "openParen" or
@@ -517,7 +520,7 @@ Deal with displayreference in relref or xref
           <artwork><![CDATA[
 <section id="author-addresses">
   <h2>
-    <a class="self-ref" href="#author-addresses">
+    <a class="selfRef" href="#author-addresses">
       Authors' Addresses
     </a>
   </h2>
@@ -630,7 +633,7 @@ Deal with displayreference in relref or xref
         <figure>
           <artwork><![CDATA[
 <section id="abstract">
-  <h2><a href="#abstract" class="self-ref">Abstract</a></h2>
+  <h2><a href="#abstract" class="selfRef">Abstract</a></h2>
   <p id="p-abstract-1">This document defines...
     <a href="#p-abstract-1" class="pilcrow">&para;</a>
   </p>
@@ -692,7 +695,7 @@ ______________
   </div>
   <figcaption>
     <a href="#f-1">Figure 1.</a>
-    <a class="self-ref" href="#n-it-figures" id="n-it-figures">
+    <a class="selfRef" href="#n-it-figures" id="n-it-figures">
       It figures
     </a>
   </figcaption>
@@ -825,7 +828,7 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
           <artwork><![CDATA[
 <section id="status-of-this-memo">
   <h2 id="s-boilerplate-1">
-    <a href="#status-of-this-memo" class="self-ref">
+    <a href="#status-of-this-memo" class="selfRef">
       Status of this Memo</a>
   </h2>
   <p id="p-boilerplate-1-1">This Internet-Draft is submitted in full
@@ -935,16 +938,16 @@ about something that we need to remember later.
         <t>This element renders as the HTML &lt;figure&gt; element, containing
           the artwork or sourcecode indicated and an HTML &lt;figcaption&gt;
           element.  The &lt;figcaption&gt; will contain an &lt;a&gt; element
-          with CSS class "self-ref" around the figure number.  It will also
-          contain another &lt;a&gt; element with CSS class "self-ref" around the
+          with CSS class "selfRef" around the figure number.  It will also
+          contain another &lt;a&gt; element with CSS class "selfRef" around the
           figure name, if a name was given.</t>
         <figure>
           <artwork><![CDATA[
 <figure id="f-1">
   ...
   <figcaption>
-    <a href="#f-1" class="self-ref">Figure 1.</a>
-    <a href="#n-it-figures" class="self-ref">It figures</a>
+    <a href="#f-1" class="selfRef">Figure 1.</a>
+    <a href="#n-it-figures" class="selfRef">It figures</a>
   </figcaption>
 </figure>]]></artwork>
         </figure>
@@ -1000,7 +1003,7 @@ about something that we need to remember later.
           <artwork><![CDATA[
 <section id="s-note-1" class="note rfceditor-remove">
   <h2>
-    <a href="#n-editorial-note" class="self-ref">Editorial Note</a>
+    <a href="#n-editorial-note" class="selfRef">Editorial Note</a>
   </h2>
   <p id="p-note-1-1">
     Discussion of this draft takes place...
@@ -1140,6 +1143,7 @@ Computer Sciences Division</pre>]]></artwork>
     <span class="refTitle">"Tags for Identifying Languages"</span>
     <span class="comma">,</span>
     ...
+    <span class="fullStop">.</span>
   </dd>
 </dl>]]></artwork>
         </figure>
@@ -1168,13 +1172,13 @@ Computer Sciences Division</pre>]]></artwork>
           <artwork><![CDATA[
 <section id="n-references">
   <h2 id="s-3">
-    <a href="#s-3" class="self-ref">3.</a>
-    <a href="#n-references" class="self-ref">References</a>
+    <a href="#s-3" class="selfRef">3.</a>
+    <a href="#n-references" class="selfRef">References</a>
   </h2>
   <section id="n-informative-references">
     <h3 id="s-3.1">
-      <a href="#s-3.1" class="self-ref">3.1.</a>
-      <a href="#n-informative-references" class="self-ref">
+      <a href="#s-3.1" class="selfRef">3.1.</a>
+      <a href="#n-informative-references" class="selfRef">
         Informative References</a></h3>
     <dl class="reference">...
     </dl>
@@ -1319,8 +1323,8 @@ href="http://www.rfc-editor.org/info/rfc7878#s-2.3">Section
           <artwork><![CDATA[
 <section id="intro">
   <h2 id="s-1">
-    <a href="#s-1" class="self-ref">1.</a>
-    <a href="#intro" class="self-ref">Introduction</a>
+    <a href="#s-1" class="selfRef">1.</a>
+    <a href="#intro" class="selfRef">Introduction</a>
   </h2>
   <p id="p-1-1">Paragraph <a href="#p-1-1" class="pilcrow">&para;</a>
   </p>

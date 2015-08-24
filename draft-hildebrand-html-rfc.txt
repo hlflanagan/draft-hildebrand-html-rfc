@@ -75,7 +75,7 @@ Table of Contents
      5.4.  Syntactic Elements  . . . . . . . . . . . . . . . . . . .   9
    6.  Front Matter  . . . . . . . . . . . . . . . . . . . . . . . .   9
      6.1.  DOCTYPE . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     6.2.  Root Element  . . . . . . . . . . . . . . . . . . . . . .   9
+     6.2.  Root Element  . . . . . . . . . . . . . . . . . . . . . .  10
      6.3.  Head Element  . . . . . . . . . . . . . . . . . . . . . .  10
        6.3.1.  Charset Declaration . . . . . . . . . . . . . . . . .  10
        6.3.2.  Document Title  . . . . . . . . . . . . . . . . . . .  10
@@ -468,6 +468,10 @@ Internet-Draft                  HTML RFC                     August 2015
    space added before them by the HTML indentation step) are wrapped by
    an HTML <span> tag of CSS class "comma".
 
+   Periods that are not in running text (e.g., that might have white-
+   space added before them by the HTML indentation step) are wrapped by
+   an HTML <span> tag of CSS class "fullStop".
+
    Open and close parentheses that are not running text (e.g., that
    might have white-space added before them by the HTML indentation
    step) are wrapped by an HTML <span> tag of CSS class "openParen" or
@@ -490,13 +494,9 @@ Internet-Draft                  HTML RFC                     August 2015
 
    <!DOCTYPE html>
 
-6.2.  Root Element
 
-   The root element of the document is <html>.  This element includes a
-   lang attribute, whose value is a [RFC5646] language tag describing
-   the natural language of the document.  The language tag to be
-   included is "en".  The class of the <html> element will be copied
-   verbatim from the XML <rfc> element's "mode" attribute, allowing CSS
+
+
 
 
 
@@ -506,6 +506,13 @@ Hildebrand & Hoffman    Expires February 25, 2016               [Page 9]
 Internet-Draft                  HTML RFC                     August 2015
 
 
+6.2.  Root Element
+
+   The root element of the document is <html>.  This element includes a
+   lang attribute, whose value is a [RFC5646] language tag describing
+   the natural language of the document.  The language tag to be
+   included is "en".  The class of the <html> element will be copied
+   verbatim from the XML <rfc> element's "mode" attribute, allowing CSS
    to style RFCs and Internet-Drafts differently from one another (if
    needed):
 
@@ -547,13 +554,6 @@ Internet-Draft                  HTML RFC                     August 2015
 
    For example:
 
-   <meta name="author" content="Joe Hildebrand,Heather Flanagan">
-   <meta name="keywords" content="html,css,rfc">
-   <meta name="description" content="This document defines...">
-   <meta name="generator" content="xmljade v0.2.4">
-
-
-
 
 
 
@@ -561,6 +561,11 @@ Hildebrand & Hoffman    Expires February 25, 2016              [Page 10]
 
 Internet-Draft                  HTML RFC                     August 2015
 
+
+   <meta name="author" content="Joe Hildebrand,Heather Flanagan">
+   <meta name="keywords" content="html,css,rfc">
+   <meta name="description" content="This document defines...">
+   <meta name="generator" content="xmljade v0.2.4">
 
 6.3.4.  Style
 
@@ -599,11 +604,6 @@ Internet-Draft                  HTML RFC                     August 2015
    with id="identifiers".  The defined terms in the definition list are
    "Workgroup:", "Series:", "Status:", "Published:", and "Authors:".
    For example:
-
-
-
-
-
 
 
 
@@ -808,7 +808,7 @@ Internet-Draft                  HTML RFC                     August 2015
 
    <section id="author-addresses">
      <h2>
-       <a class="self-ref" href="#author-addresses">
+       <a class="selfRef" href="#author-addresses">
          Authors' Addresses
        </a>
      </h2>
@@ -941,7 +941,7 @@ Internet-Draft                  HTML RFC                     August 2015
    number.
 
    <section id="abstract">
-     <h2><a href="#abstract" class="self-ref">Abstract</a></h2>
+     <h2><a href="#abstract" class="selfRef">Abstract</a></h2>
      <p id="p-abstract-1">This document defines...
        <a href="#p-abstract-1" class="pilcrow">&para;</a>
      </p>
@@ -1025,7 +1025,7 @@ Internet-Draft                  HTML RFC                     August 2015
      </div>
      <figcaption>
        <a href="#f-1">Figure 1.</a>
-       <a class="self-ref" href="#n-it-figures" id="n-it-figures">
+       <a class="selfRef" href="#n-it-figures" id="n-it-figures">
          It figures
        </a>
      </figcaption>
@@ -1180,7 +1180,7 @@ Internet-Draft                  HTML RFC                     August 2015
 
    <section id="status-of-this-memo">
      <h2 id="s-boilerplate-1">
-       <a href="#status-of-this-memo" class="self-ref">
+       <a href="#status-of-this-memo" class="selfRef">
          Status of this Memo</a>
      </h2>
      <p id="p-boilerplate-1-1">This Internet-Draft is submitted in full
@@ -1308,16 +1308,15 @@ Internet-Draft                  HTML RFC                     August 2015
 
    This element renders as the HTML <figure> element, containing the
    artwork or sourcecode indicated and an HTML <figcaption> element.
-   The <figcaption> will contain an <a> element with CSS class "self-
-   ref" around the figure number.  It will also contain another <a>
-   element with CSS class "self-ref" around the figure name, if a name
-   was given.
+   The <figcaption> will contain an <a> element with CSS class "selfRef"
+   around the figure number.  It will also contain another <a> element
+   with CSS class "selfRef" around the figure name, if a name was given.
 
    <figure id="f-1">
      ...
      <figcaption>
-       <a href="#f-1" class="self-ref">Figure 1.</a>
-       <a href="#n-it-figures" class="self-ref">It figures</a>
+       <a href="#f-1" class="selfRef">Figure 1.</a>
+       <a href="#n-it-figures" class="selfRef">It figures</a>
      </figcaption>
    </figure>
 
@@ -1338,6 +1337,7 @@ Internet-Draft                  HTML RFC                     August 2015
    the document's header, separated by commas.
 
    <meta name="keywords" content="html,css,rfc">
+
 
 
 
@@ -1376,7 +1376,7 @@ Internet-Draft                  HTML RFC                     August 2015
 
    <section id="s-note-1" class="note rfceditor-remove">
      <h2>
-       <a href="#n-editorial-note" class="self-ref">Editorial Note</a>
+       <a href="#n-editorial-note" class="selfRef">Editorial Note</a>
      </h2>
      <p id="p-note-1-1">
        Discussion of this draft takes place...
@@ -1531,6 +1531,7 @@ Internet-Draft                  HTML RFC                     August 2015
        <span class="refTitle">"Tags for Identifying Languages"</span>
        <span class="comma">,</span>
        ...
+       <span class="fullStop">.</span>
      </dd>
    </dl>
 
@@ -1564,7 +1565,6 @@ Internet-Draft                  HTML RFC                     August 2015
 
 
 
-
 Hildebrand & Hoffman    Expires February 25, 2016              [Page 28]
 
 Internet-Draft                  HTML RFC                     August 2015
@@ -1572,13 +1572,13 @@ Internet-Draft                  HTML RFC                     August 2015
 
    <section id="n-references">
      <h2 id="s-3">
-       <a href="#s-3" class="self-ref">3.</a>
-       <a href="#n-references" class="self-ref">References</a>
+       <a href="#s-3" class="selfRef">3.</a>
+       <a href="#n-references" class="selfRef">References</a>
      </h2>
      <section id="n-informative-references">
        <h3 id="s-3.1">
-         <a href="#s-3.1" class="self-ref">3.1.</a>
-         <a href="#n-informative-references" class="self-ref">
+         <a href="#s-3.1" class="selfRef">3.1.</a>
+         <a href="#n-informative-references" class="selfRef">
            Informative References</a></h3>
        <dl class="reference">...
        </dl>
@@ -1720,8 +1720,8 @@ Internet-Draft                  HTML RFC                     August 2015
 
    <section id="intro">
      <h2 id="s-1">
-       <a href="#s-1" class="self-ref">1.</a>
-       <a href="#intro" class="self-ref">Introduction</a>
+       <a href="#s-1" class="selfRef">1.</a>
+       <a href="#intro" class="selfRef">Introduction</a>
      </h2>
      <p id="p-1-1">Paragraph <a href="#p-1-1" class="pilcrow">&para;</a>
      </p>

@@ -268,7 +268,7 @@ mixin reference(e)
       span.comma ,
       - var dat = [$att(refdate, 'month')||"", $att(refdate, 'year')||""]
       time.refDate(datetime=dt.isoYearMonth(refdate))= dat.join(' ')
-    span.comma .
+    span.fullStop .
     - var annotation = $('annotation', e)
     if annotation
       span.annotation

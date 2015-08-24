@@ -270,6 +270,9 @@ address.vcard .type {
 .comma {
   margin-left: -4px;
 }
+.fullStop {
+  margin-left: -4px;
+}
 .closeParen {
   margin-left: -4px;
 }
