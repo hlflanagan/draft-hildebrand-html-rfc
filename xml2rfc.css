@@ -75,38 +75,38 @@ section {
   color: #666;
   font-weight: bold;
 }
-.self-ref {
+.selfRef {
   color: #000;
   text-decoration: none;
 }
-.ulcompact {
+.ulCompact {
   line-height: 80%;
 }
-.ulempty {
+.ulEmpty {
   list-style-type: none;
 }
-.olcompact {
+.olCompact {
   line-height: 80%;
 }
-.olpercent dt {
+.olPercent dt {
   float: left;
   clear: left;
   text-align: right;
   margin-right: 8px;
 }
-.align_right {
+.alignRight {
   text-align: right;
 }
-.align_center {
+.alignCenter {
   text-align: center;
 }
-.dlparallel dt {
+.dlParallel dt {
   float: left;
   clear: left;
   margin-right: 8px;
   font-weight: bold;
 }
-.dlcompact {
+.dlCompact {
   line-height: 80%;
 }
 code {
@@ -212,7 +212,7 @@ td {
   padding: 4px;
   margin-left: 10px;
 }
-.rfceditor-remove {
+.rfcEditorRemove {
   background-color: rgba(235, 249, 105, 0.25);
   clear: both;
 }
@@ -220,7 +220,7 @@ td {
   background-color: rgba(235, 249, 105, 0.25);
   padding: 4px;
 }
-.cref-source {
+.crefSource {
   font-style: italic;
   background-color: rgba(235, 249, 105, 1);
 }
@@ -259,7 +259,7 @@ address.vcard .type {
 .index a.primary {
   font-weight: bold;
 }
-.docinfo {
+.docInfo {
   float: right;
   clear: both;
   font-style: italic;
@@ -270,7 +270,10 @@ address.vcard .type {
 .comma {
   margin-left: -4px;
 }
-.anticomma {
+.closeParen {
+  margin-left: -4px;
+}
+.openParen {
   margin-right: -4px;
 }
 @media print {

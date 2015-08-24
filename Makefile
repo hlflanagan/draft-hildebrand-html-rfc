@@ -18,7 +18,7 @@ BRANCH := $(shell git symbolic-ref --short HEAD)
 %.x.xml: %.n.xml prep2.jade lib.jade xref.js
 	$(XMLJADE) --pretty --output $@ prep2.jade $<
 
-%.3.html: %.x.xml v3tohtml.jade lib.jade v3.js xml2rfc.css
+%.3.html: %.x.xml v3tohtml.jade lib.jade v3.js dt.js xml2rfc.css
 	$(XMLJADE) --pretty --html --doublequote --output $@ v3tohtml.jade $<
 
 %.txt: %.xml

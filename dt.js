@@ -21,8 +21,25 @@ exports.monthNumber = function(m) {
 }
 
 function pad2(v) {
-  return ("0"+v).slice(-2);
+  return ("00"+v).slice(-2);
 }
+
+function pad4(v) {
+  return ("0000"+v).slice(-4);
+}
+
+exports.isoYearMonth = function(e) {
+  var year = atv(e, 'year');
+  if (!year) {return ""};
+  var month = atv(e, 'month');
+  if (month) {
+    var m = months.indexOf(month);
+    if (m >= 0) {
+      return pad4(year) + "-" + pad2(m+1)
+    }
+  }
+  return pad4(year)
+};
 
 exports.isoDate = function(e) {
   var year, month, day;
@@ -44,7 +61,7 @@ exports.isoDate = function(e) {
     }
     day = atv(e, 'day') || now.getUTCDate();
   }
-  return "" + year + "-" + pad2(month) + "-" + pad2(day);
+  return "" + pad4(year) + "-" + pad2(month) + "-" + pad2(day);
 };
 
 exports.isoDateTime = function(d) {

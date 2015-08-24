@@ -30,7 +30,7 @@ Deal with displayreference in relref or xref
         <email>paul.hoffman@icann.org</email>
       </address>
     </author>
-    <date year="2015" month="August" day="20"/>
+    <date year="2015" month="August" day="24"/>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
@@ -224,8 +224,8 @@ Deal with displayreference in relref or xref
 </blockquote>]]></artwork>
         </figure>
       </section>
-      <section anchor='ascii-equivalents' title='ASCII Equivalents'>
-        <t>Many elements in the v3 schema in <xref target='I-D.hoffman-xml2rfc'/> contain attributes for
+      <section anchor="ascii-equivalents" title="ASCII Equivalents">
+        <t>Many elements in the v3 schema in <xref target="I-D.hoffman-xml2rfc"/> contain attributes for
           ASCII equivalents of the Unicode text contained in the element or
           the Unicode attribute value.  These alternatives are included in the HTML as in a
           &lt;span&gt; tag with the class "ascii".  The &lt;span&gt; is
@@ -237,6 +237,17 @@ Deal with displayreference in relref or xref
   <span class="ascii">Hildebrand</span>
 </span>]]></artwork>
         </figure>
+      </section>
+      <section anchor="syntactic" title="Syntactic Elements">
+        <t>A few HTML elements are added to ensure particular syntax items can
+          be styled appropriately using CSS.</t>
+        <t>Commas that are not in running text (e.g., that might have white-space
+          added before them by the HTML indentation step) are wrapped by an
+          HTML &lt;span&gt; tag of CSS class "comma".</t>
+        <t>Open and close parentheses that are not running text (e.g., that might
+          have white-space added before them by the HTML indentation step) are
+          wrapped by an HTML &lt;span&gt; tag of CSS class "openParen" or
+          "closeParen" respectively.</t>
       </section>
     </section>
     <section anchor="front-matter" title="Front Matter">
@@ -458,7 +469,7 @@ Deal with displayreference in relref or xref
           attribute of the &lt;iref&gt; element has the value "true", the &lt;a&gt; element in the HTML document
           will have the class "indexPrimary". Commas may be used to separate the
           generated references, surrounded by a &lt;span&gt; tag with class
-          "indexComma".</t>
+          "comma".</t>
           <t>For example:</t>
           <figure>
             <artwork><![CDATA[
@@ -466,7 +477,7 @@ Deal with displayreference in relref or xref
   <span class="irefItem">Bullets</span>
   <span class="irefRefs">
     <a class="indexPrimary" href="#s-Bullets-1">2</a>
-    <span class="indexComma">,</span>
+    <span class="comma">,</span>
     <a href="#s-Bullets-2">2</a>
   </span>
   <!-- subitems go here -->
@@ -511,13 +522,13 @@ Deal with displayreference in relref or xref
     </a>
   </h2>
   <address class="vcard">
-    <div class="namerole">
+    <div class="nameRole">
       <span class="fn">
         Joe Hildebrand <span class="ascii">Joe Hildebrand</span>
       </span>
-      <span class="anticomma">(</span>
+      <span class="openParen">(</span>
       <span class="role">editor</span>
-      <span class="comma">)</span>
+      <span class="closeParen">)</span>
     </div>
     <div class="org">
       Cisco Systems, Inc. <span class="ascii">Cisco Systems,
@@ -565,18 +576,19 @@ Deal with displayreference in relref or xref
 </section>]]></artwork>
         </figure>
       </section>
-      <section anchor="docinfo" title="Document Information">
+      <section anchor="docInfo" title="Document Information">
         <t>A few bits of metadata about the document that are less
           important to most readers are included after the author information.
           The style sheet might de-emphasize their display, or hide them
-          altogether.</t>
+          altogether. These are gathered together into a &lt;div&gt; of class
+          "docInfo".</t>
         <t>The finalized time is copied from the &lt;rfc&gt; element's
           prepTime attribute.  The rendered time is the time that this
           HTML was generated.</t>
         <t>For example:</t>
         <figure>
           <artwork><![CDATA[
-<div class="docinfo">
+<div class="docInfo">
   <span class="finalized">
     Finalized: <time
     datetime="2015-04-29T18:59:08Z">2015-04-29T18:59:08Z</time>
@@ -633,8 +645,8 @@ Deal with displayreference in relref or xref
         <t>This element is rendered as a span of class "annotation" at the end
           of a &lt;reference&gt; element, the span
           containing appropriately-transformed elements from the children of
-          the &lt;annotation&gt; tag.  A span of class "comma" is added before
-          the annotation.</t>
+          the &lt;annotation&gt; tag.  A &lt;span&gt; of class "comma" is added
+          before the annotation, containing ",".</t>
         <figure>
           <artwork><![CDATA[
 <span class="comma">,</span>
@@ -651,7 +663,9 @@ Deal with displayreference in relref or xref
           not inside a &lt;figure&gt; element, a
           <xref target='pilcrows'>pilcrow</xref> is included.  Inside a
           &lt;figure&gt; element, the figure title serves the purpose of the
-          pilcrow.</t>
+          pilcrow. If the "align" attribute has the value "right", the CSS class
+          "alignRight" will be added. If the "align" attribute has the value
+          "center", the CSS class "alignCenter" will be added.</t>
         <section title="Text Artwork" anchor="element.artwork-text">
           <t>Text artwork is rendered inside an HTML &lt;pre&gt; element, which
             is contained by a &lt;div&gt; element for consistency with SVG
@@ -730,31 +744,41 @@ ______________
         </figure>
       </section>
       <section title="&lt;author&gt;" anchor="element.author">
-        <t>As seen in <xref target='authors-addresses'>Authors' Addresses</xref>,
-          at the end of the document, each document author is rendered into an
-          HTML &lt;address&gt; element with the CSS class "vcard".</t>
-        <t>The HTML &lt;address&gt; element will contain an HTML &lt;div&gt;
-          with CSS class "namerole".  That div will contain an HTML &lt;span&gt;
-          element with CSS class "fn" containing the value of the "fullname"
-          attribute of the &lt;author&gt; XML element, and an HTML &lt;span&gt;
-          element with CSS class "role" containing the value of the "role"
-          attribute of the &lt;author&gt; XML element (if there is a role).
-          Parentheses will surround the &lt;span class="role"&gt;, if it
-          exists.</t>
-        <figure>
-            <artwork><![CDATA[
+        <section title="Authors of this document">
+          <t>As seen in <xref target='authors-addresses'>Authors' Addresses</xref>,
+            at the end of the document, each document author is rendered into an
+            HTML &lt;address&gt; element with the CSS class "vcard".</t>
+          <t>The HTML &lt;address&gt; element will contain an HTML &lt;div&gt;
+            with CSS class "nameRole".  That div will contain an HTML &lt;span&gt;
+            element with CSS class "fn" containing the value of the "fullname"
+            attribute of the &lt;author&gt; XML element, and an HTML &lt;span&gt;
+            element with CSS class "role" containing the value of the "role"
+            attribute of the &lt;author&gt; XML element (if there is a role).
+            Parentheses will surround the &lt;span class="role"&gt;, if it
+            exists, each enclosed in a &lt;span&gt; with CSS class "openParen"
+            or "closeParen" as appropriate.</t>
+          <figure>
+              <artwork><![CDATA[
 <address class="vcard">
-  <div class="namerole">
+  <div class="nameRole">
     <span class="fn">Joe Hildebrand</span>
-    (<span class="role">editor</span>)
+    <span class="openParen">(</span>
+    <span class="role">editor</span>
+    <span class="closeParen">)</span>
   </div>
   ...]]></artwork>
-        </figure>
-        <t>The &lt;author&gt; element from the &lt;front&gt; of the document
-          is also rendered into the <xref target='document-information'>Document
-          Information</xref>, the <xref target='meta'>HTML meta headers</xref>,
-          and in &lt;references&gt;.
-          See each of those sections for details.</t>
+          </figure>
+          <t>The &lt;author&gt; element from the &lt;front&gt; of the document
+            is also rendered into the <xref target='document-information'>Document
+            Information</xref>, the <xref target='meta'>HTML meta headers</xref>,
+            and in &lt;references&gt;.
+            See each of those sections for details.</t>
+        </section>
+        <section title="Authors of references">
+          <t>In the output generated from a reference element, author tags are
+            rendered inside an HTML &lt;span&gt; element with CSS class
+            "refAuthor".</t>
+        </section>
       </section>
       <section title="&lt;back&gt;" anchor="element.back">
         <t>This element does not add any direct output to HTML.</t>
@@ -842,20 +866,22 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
         <t>This element is rendered as a &lt;span&gt; element with CSS
           class "cref".  Any anchor is copied to the id attribute.  If there is
           a source given, it is contained inside the cref span with another
-          span of class cref-source.</t>
+          span of class "crefSource".</t>
         <figure>
           <artwork><![CDATA[
 <span class="cref" id="crefAnchor">Just a brief comment
 about something that we need to remember later.
-<span class="cref-source">--life</span></span>]]></artwork>
+<span class="crefSource">--life</span></span>]]></artwork>
         </figure>
       </section>
       <section title="&lt;date&gt;" anchor="element.date">
         <t>This element is rendered as the HTML &lt;time&gt; element.  If the
           "year", "month", or "day" attribute is included on the XML element,
           an appropriate "datetime" element will be generated in HTML.</t>
-        <t>If this date is a child of the &lt;front&gt; element, it gets the
-          CSS class "published".</t>
+        <t>If this date is a child of the document's &lt;front&gt; element, it
+          gets the CSS class "published".</t>
+        <t>If this date is inside a &lt;reference&gt; element, it gets the
+          CSS class "refDate".</t>
         <figure>
           <artwork><![CDATA[
 <time datetime="2014-10" class="published">October 2014</time>]]></artwork>
@@ -869,8 +895,9 @@ about something that we need to remember later.
       </section>
       <section title="&lt;dl&gt;" anchor="element.dl">
         <t>This element is directly rendered as its HTML counterpart.</t>
-        <t>If the hanging attribute is "false", add the "dlparallel" class.</t>
-        <t>If the spacing attribute is "compact", add the "dlcompact" class.</t>
+        <t>If the hanging attribute is "false", add the "dlParallel" class, else
+          add the "dlHanging" class.</t>
+        <t>If the spacing attribute is "compact", add the "dlCompact" class.</t>
       </section>
       <section title="&lt;dt&gt;" anchor="element.dt">
         <t>This element is directly rendered as its HTML counterpart.</t>
@@ -967,8 +994,8 @@ about something that we need to remember later.
         <t>This element is rendered similarly to a
           &lt;section&gt;, but without
           a section number, and with the CSS class of "note.  If the
-          "removeInRFC" attribute is set to "yes", the generated div will also
-          include the CSS class "rfceditor-remove".</t>
+          "removeInRFC" attribute is set to "yes", the generated &lt;div&gt;
+          will also include the CSS class "rfcEditorRemove".</t>
         <figure>
           <artwork><![CDATA[
 <section id="s-note-1" class="note rfceditor-remove">
@@ -986,18 +1013,18 @@ about something that we need to remember later.
         <t>The output created from an &lt;ol&gt; element depends upon the style
           attribute.</t>
         <t>If the spacing attribute has the value "compact", a CSS class of
-          "olcompact" will be added.</t>
+          "olCompact" will be added.</t>
         <t>The group attribute is not copied; the input XML should have start
           values added by a prep tool for all grouped &lt;ol&gt; elements.</t>
         <section title="Percent styles" anchor="ol-percent-styles">
           <t>If the style attribute includes the character "%", the output is
-            a &lt;dl&gt; tag with the class "olpercent".  Each contained li
+            a &lt;dl&gt; tag with the class "olPercent".  Each contained li
             is emitted as a &lt;dt&gt;/&lt;dd&gt; pair, with the generated
             label in the &lt;dt&gt; and the contents of the li in the
             &lt;dd&gt;.</t>
           <figure>
             <artwork><![CDATA[
-<dl class="olpercent">
+<dl class="olPercent">
   <dt>Requirement xviii:</dt>
   <dd>Wheels on a big rig</dd>
 </dl>
@@ -1092,7 +1119,7 @@ Computer Sciences Division</pre>]]></artwork>
           "refcontent".</t>
         <figure>
           <artwork><![CDATA[
-<span class="refcontent">Self-published pamphlet</span>]]></artwork>
+<span class="refContent">Self-published pamphlet</span>]]></artwork>
         </figure>
       </section>
       <section title="&lt;reference&gt;" anchor="element.reference">
@@ -1106,13 +1133,20 @@ Computer Sciences Division</pre>]]></artwork>
           <artwork><![CDATA[
 <dl class="reference">
   <dt id="RFC5646">[RFC5646]</dt>
-  <dd><span class="refauthor">Phillips, A.</span> ...</dd>
+  <dd>
+    <span class="refAuthor">Phillips, A.</span>
+    <span>and</span>
+    <span class="refAuthor">M. Davis</span>
+    <span class="refTitle">"Tags for Identifying Languages"</span>
+    <span class="comma">,</span>
+    ...
+  </dd>
 </dl>]]></artwork>
         </figure>
       </section>
       <section title="&lt;referencegroup&gt;" anchor="element.referencegroup">
         <t>A &lt;referencegroup&gt; is translated into a &lt;span&gt; of
-          class referencegroup which contains the references.  &lt;span&gt; is
+          class "referenceGroup" which contains the references.  &lt;span&gt; is
           used here to ensure that the reference lists remain as undisturbed
           as possible.</t>
         <figure>
@@ -1196,7 +1230,8 @@ for an overview.</artwork></figure>
             value is the value of the "target"  attribute prepended by "#",
             and whose content is the value of the  "target" attribute; the
             entire element is wrapped in square brackets.  This is followed by
-            a comma (","), followed by whitespace.  This is followed by an &lt;a&gt;
+            a comma (","), followed by
+            whitespace.  This is followed by an &lt;a&gt;
             element whose "href" attribute is the value of the "derivedLink"
             attribute and whose content is the value of the "derivedContent"
             attribute.</t>
@@ -1212,11 +1247,11 @@ derivedContent="Section 2.3"/&gt;, for an overview.</artwork></figure>
           <t>The HTML generated will be:</t>
           <t>
 <figure>
-  <artwork>
-See [&lt;a class="relref" href="#RFC7878"&gt;RFC7878&lt;/a&gt;],
-&lt;a class="relref"
-href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;Section
-2.3&lt;/a&gt;, for an overview.</artwork></figure>
+  <artwork><![CDATA[
+See [<a class="relref" href="#RFC7878">RFC7878</a>],
+<a class="relref"
+href="http://www.rfc-editor.org/info/rfc7878#s-2.3">Section
+2.3</a>, for an overview.]]></artwork></figure>
           </t>
         </section>
         <section title="displayFormat='parens'" anchor="element.relref.df-parens">
@@ -1240,11 +1275,11 @@ derivedContent="Section 2.3"/&gt; for an overview.</artwork></figure>
           <t>The HTML generated will be:</t>
           <t>
 <figure>
-  <artwork>
-See [&lt;a class="relref" href="#RFC7878"&gt;RFC7878&lt;/a&gt;]
-(&lt;a class="relref"
-href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;Section
-2.3&lt;/a&gt;) for an overview.</artwork></figure>
+  <artwork><![CDATA[
+See [<a class="relref" href="#RFC7878">RFC7878</a>]
+(<a class="relref"
+href="http://www.rfc-editor.org/info/rfc7878#s-2.3">Section
+2.3</a>) for an overview.]]></artwork></figure>
           </t>
         </section>
         <section title="displayFormat='bare'" anchor="element.relref.df-bare">
@@ -1262,10 +1297,10 @@ derivedContent="Section 2.3"/&gt; and ...</artwork></figure>
           <t>The HTML generated will be:</t>
           <t>
 <figure>
-  <artwork>
-See &lt;a class="relref"
-href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;Section
-2.3&lt;/a&gt; and ...</artwork></figure>
+  <artwork><![CDATA[
+See <a class="relref"
+href="http://www.rfc-editor.org/info/rfc7878#s-2.3">Section
+2.3</a> and ...]]></artwork></figure>
           </t>
         </section>
       </section>
@@ -1380,6 +1415,13 @@ int main(void)
 <h1 id="title">HyperText Markup Language Request For
     Comments Format</h1>]]></artwork>
         </figure>
+        <t>Inside a reference, the title is rendered as an HTML &lt;span&gt;
+          tag with CSS class "refTitle".  The text is surrounded by quotes
+          inside the &lt;span&gt;.</t>
+        <figure>
+          <artwork><![CDATA[
+<span class="refTitle">"Tags for Identifying Languages"</span>]]></artwork>
+        </figure>
       </section>
       <section title="&lt;tr&gt;" anchor="element.tr">
         <t>This element is directly rendered as its HTML counterpart.</t>
@@ -1388,9 +1430,10 @@ int main(void)
         <t>This element is directly rendered as its HTML counterpart.</t>
       </section>
       <section title="&lt;ul&gt;" anchor="element.ul">
-      <t>This element is directly rendered as its HTML counterpart, with the
-        minor exception that if the spacing attribute has the value
-        "compact", a CSS class of "ulcompact" will be added.</t>
+      <t>This element is directly rendered as its HTML counterpart. If the
+        "spacing" attribute has the value "compact", a CSS class of "ulCompact"
+        will be added. If the "empty" attribute has the value "true", as CSS
+        class of "ulEmpty" will be added.</t>
       </section>
       <section title="&lt;uri&gt;" anchor="element.uri">
         <t>As shown in <xref target='authors-addresses'/> this element is
