@@ -369,7 +369,7 @@ mixin foot_author(e)
     each uri in $$('uri/text()', addr)
       div
         span URI:
-        a.url(href=uri)= uri
+        a.authorURI(href=uri)= uri
 
 mixin referencegroup(e)
   - var id=$att(e,'id')

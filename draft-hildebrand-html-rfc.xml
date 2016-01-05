@@ -11,7 +11,7 @@
 <!ENTITY I-D.hoffman-rfcv3-preptool SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.hoffman-rfcv3-preptool.xml">
 <!ENTITY I-D.flanagan-rfc-framework SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.flanagan-rfc-framework.xml">
 ]>
-<rfc ipr="trust200902" docName="draft-hildebrand-html-rfc-10" category="info">
+<rfc ipr="trust200902" docName="draft-hildebrand-html-rfc-11" category="info">
 <!--  ### Notes for Joe and Paul go here. ###
 
 Deal with displayreference in relref or xref
@@ -30,7 +30,7 @@ Deal with displayreference in relref or xref
         <email>paul.hoffman@icann.org</email>
       </address>
     </author>
-    <date year="2015" month="August" day="24"/>
+    <date year="2016" month="January" day="4"/>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
@@ -168,22 +168,21 @@ Deal with displayreference in relref or xref
             attribute.</t>
           <t>Each logical line is terminated solely with a \n (U+000A: LINE
             FEED), otherwise known as "Unix-style" line endings.</t>
-          <t>Other than \n (U+000A: LINE FEED), code points less than " "
-            (U+0020: SPACE) (otherwise known as "control characters") are not
-            used.  Any character references that would generate these code
-            points (such as &amp;#0009;) may not be used. NOTE: this rule
-            explicitly forbids \t (U+0009: CHARACTER TABULATION), \f (U+000C:
-            FORM FEED), and \r (U+000D: CARRIAGE RETURN) from appearing in the
-            output.</t>
+          <t>Code points below (U+0020: SPACE) or character entity references
+            that generate them (e.g. &amp;#9;), other than (U+000A: LINE FEED)
+            may not be used.  NOTE: this rule explicitly forbids \t (U+0009:
+            CHARACTER TABULATION), \f (U+000C: FORM FEED), and \r (U+000D:
+            CARRIAGE RETURN) from appearing in the HTML output.</t>
           <t>Comments in the source XML, if any, will not be copied into
             the HTML.</t>
           <t>The HTML output will be pretty-printed, using whatever
-            consistent rules deemed best in the HTML production tool.</t>
+            consistent rules are deemed best by the developers of the HTML
+            production tools.</t>
         </list>
       </t>
       <t>NOTE: none of these rules affect the rendered output of the HTML, but
-        are intended to increase the chance that difference tools that operate
-        on the HTML output easier to write.</t>
+        are intended to increase the chance that difference tools (e.g. "diff")
+        that operate on the HTML output easier to write.</t>
     </section>
     <section anchor="common" title="Common Items">
       <t>This section lists items that are common across multiple parts of the HTML
@@ -201,18 +200,26 @@ Deal with displayreference in relref or xref
         <t>Each paragraph, artwork, or sourcecode segment outside of a
           &lt;figure&gt; or &lt;table&gt; element will be appended with a
           space and a "pilcrow" (U+00B6: PILCROW SIGN), otherwise known as a
-          "paragraph sign".  For the purposes of clarity, in this document
-          pilcrows are rendered as "&amp;para;".  The pilcrow will linked to
-          the "id" attribute on the XML entity to which it is associated.</t>
-          <t>The pilcrow will normally be invisible unless the element it is
-            attached to is moused over.  The pilcrow will be surrounded by a
-            link that points to the element it is attached to.</t>
-          <t>Pilcrows are never included inside a &lt;table&gt; or
-            &lt;figure&gt; elements, since the figure number or table number
-            serve as adequate link targets.</t>
-          <t>Elements that might otherwise contain a pilcrow do not get marked
-            with a pilcrow if they contain one or more child elements that are
-            marked with a pilcrow. For example:</t>
+          "paragraph sign".  For the purposes of clarity in ASCII renderings
+          of this document, in this document pilcrows are rendered as
+          "&amp;para;".  The pilcrow will linked to the "id" attribute on the
+          XML entity to which it is associated using an &lt;a&gt; element of
+          class "pilcrow".  For example:</t>
+        <figure>
+          <artwork><![CDATA[
+<p id="p-1.1-1">
+  Some paragraph text. <a class="pilcrow" href="#p-1.1-1">&para;</a>
+</p>]]></artwork>
+        </figure>
+        <t>The pilcrow will normally be invisible unless the element it is
+          attached to is moused over.  The pilcrow will be surrounded by a
+          link that points to the element it is attached to.</t>
+        <t>Pilcrows are never included inside a &lt;table&gt; or
+          &lt;figure&gt; elements, since the figure number or table number
+          serve as adequate link targets.</t>
+        <t>Elements that might otherwise contain a pilcrow do not get marked
+          with a pilcrow if they contain one or more child elements that are
+          marked with a pilcrow. For example:</t>
         <figure>
           <artwork><![CDATA[
 <blockquote id="p-1.2-1">
@@ -327,10 +334,8 @@ Deal with displayreference in relref or xref
             &lt;style&gt; element.  The styles in the style sheet are to be set
             consistently between documents by the RFC Editor, according to the
             best practices of the day.</t>
-          <t>To ensure consistent formatting, individual style attributes are
-            not used in the main portion of the document except in
-            highly exceptional circumstances; each use of such attributes will
-            be individually justified.</t>
+          <t>To ensure consistent formatting, individual style attributes should
+            not be used in the main portion of the document.</t>
           <t>Different readers of a specification will desire different
             formatting when reading the HTML versions of RFCs.  To facilitate
             this, the &lt;head&gt; element also includes a &lt;link&gt; to a
@@ -582,8 +587,7 @@ Deal with displayreference in relref or xref
       <section anchor="docInfo" title="Document Information">
         <t>A few bits of metadata about the document that are less
           important to most readers are included after the author information.
-          The style sheet might de-emphasize their display, or hide them
-          altogether. These are gathered together into a &lt;div&gt; of class
+          These are gathered together into a &lt;div&gt; of class
           "docInfo".</t>
         <t>The finalized time is copied from the &lt;rfc&gt; element's
           prepTime attribute.  The rendered time is the time that this
@@ -724,7 +728,9 @@ ______________
           <t>Other artwork will have a src attribute whose value begins with
             "data:".  Such artwork is rendered in an HTML image element.</t>
           <t>Note: such images are not yet allowed by the RFC Series Editor,
-            even though the format supports them.</t>
+            even though the format supports them.  If the RFC Series Editor
+            does allow other artwork in the future, a limited set of allowed
+            data: media types shall be specified.</t>
           <figure>
             <artwork><![CDATA[
 <div class="artwork art-logo" id="p-2-58">
@@ -996,7 +1002,7 @@ about something that we need to remember later.
       <section title="&lt;note&gt;" anchor="element.note">
         <t>This element is rendered similarly to a
           &lt;section&gt;, but without
-          a section number, and with the CSS class of "note.  If the
+          a section number, and with the CSS class of "note".  If the
           "removeInRFC" attribute is set to "yes", the generated &lt;div&gt;
           will also include the CSS class "rfcEditorRemove".</t>
         <figure>
@@ -1073,8 +1079,9 @@ about something that we need to remember later.
       </section>
       <section title="&lt;postal&gt;" anchor="element.postal">
         <t>This element renders as an HTML &lt;div&gt; with CSS class
-          "adr", unless it contains a &lt;postalLine&gt; child element;
-          in which case it adds no HTML markup.</t>
+          "adr", unless it contains one or more &lt;postalLine&gt; child
+          elements; in which case renders as an HTML &lt;pre&gt; with CSS class
+          "label".</t>
         <t>When there is no &lt;postalLine&gt; child, the following child
           elements are rendered into the HTML:
           <list style='symbols'>
@@ -1107,10 +1114,17 @@ about something that we need to remember later.
         </figure>
       </section>
       <section title="&lt;postalLine&gt;" anchor="element.postalLine">
-        <t>All of these elements in a give &lt;postal&gt; elements render as a
-          single HTML &lt;pre&gt; with CSS class "label", with each
-          &lt;postalLine&gt; separated by a newline. Note: this &lt;pre&gt;
-          element is not enclosed in a &lt;div class="adr"&gt;.</t>
+        <t>This element renders as the text contained by the element, followed
+          by a newline.  However, the last &lt;postalLine&gt; in a given
+          &lt;postal&gt; should not be followed by a newline.  For example:</t>
+        <figure>
+          <artwork><![CDATA[
+<postal>
+  <postalLine>In care of:</postalLine>
+  <postalLine>Computer Sciences Division</postalLine>
+</postal>]]></artwork>
+        </figure>
+        <t>Would be rendered as:</t>
         <figure>
           <artwork><![CDATA[
 <pre class="label">In care of:

@@ -7,15 +7,15 @@
     "example": "examples"
   },
   "dependencies": {
-    "http-server": "^0.8.0",
-    "libxmljs": "git://github.com/hildjj/libxmljs.git#all-2",
-    "romanize": "^0.1.0",
-    "slug": "^0.9.1",
+    "http-server": "^0.8",
+    "libxmljs": "git://github.com/hildjj/libxmljs.git#all-5",
+    "romanize": "^0.1",
+    "slug": "^0.9",
     "strong-data-uri": "*",
-    "unicode-properties": "^1.0.0",
-    "unicode-trie": "^0.3.0",
-    "urllib-sync": "^1.0.1",
-    "xmljade": "^0.2.8"
+    "unicode-properties": "^1.0",
+    "unicode-trie": "^0.3",
+    "urllib-sync": "^1.0",
+    "xmljade": "^0.3"
   },
   "devDependencies": {},
   "scripts": {

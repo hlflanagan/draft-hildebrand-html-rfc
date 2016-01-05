@@ -493,12 +493,12 @@
 <link href="#rfc.authors" rel="Chapter"/>
 
 
-  <meta name="generator" content="xml2rfc version 2.5.0 - http://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.5.1 - http://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Hildebrand, J., Ed. and P. Hoffman" />
-  <meta name="dct.identifier" content="urn:ietf:id:draft-hildebrand-html-rfc-10" />
-  <meta name="dct.issued" scheme="ISO8601" content="2015-8-24" />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-hildebrand-html-rfc-11" />
+  <meta name="dct.issued" scheme="ISO8601" content="2016-1-4" />
   <meta name="dct.abstract" content="In order to meet the evolving needs of the Internet community, the format for RFCs is changing from a plain-text, ASCII-only format to a canonical XML format that will in turn be rendered into several publication formats. This document defines the HTML format that will be rendered for an RFC or Internet-Draft." />
   <meta name="description" content="In order to meet the evolving needs of the Internet community, the format for RFCs is changing from a plain-text, ASCII-only format to a canonical XML format that will in turn be rendered into several publication formats. This document defines the HTML format that will be rendered for an RFC or Internet-Draft." />
 
@@ -522,12 +522,12 @@
   <td class="right">P. Hoffman</td>
 </tr>
 <tr>
-  <td class="left">Expires: February 25, 2016</td>
+  <td class="left">Expires: July 7, 2016</td>
   <td class="right">ICANN</td>
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">August 24, 2015</td>
+  <td class="right">January 4, 2016</td>
 </tr>
 
     	
@@ -535,7 +535,7 @@
   </table>
 
   <p class="title">HyperText Markup Language Request For Comments Format<br />
-  <span class="filename">draft-hildebrand-html-rfc-10</span></p>
+  <span class="filename">draft-hildebrand-html-rfc-11</span></p>
   
   <h1 id="rfc.abstract">
   <a href="#rfc.abstract">Abstract</a>
@@ -547,11 +547,11 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on February 25, 2016.</p>
+<p>This Internet-Draft will expire on July 7, 2016.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
-<p>Copyright (c) 2015 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>Copyright (c) 2016 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
 
   
@@ -727,19 +727,23 @@
   <li>The document is valid HTML.</li>
   <li>Double quotes (U+0022 QUOTATION MARK: ") are used to quote attribute values unless the HTML specification forbids quoting a particular attribute.</li>
   <li>Each logical line is terminated solely with a \n (U+000A: LINE FEED), otherwise known as "Unix-style" line endings.</li>
-  <li>Other than \n (U+000A: LINE FEED), code points less than " " (U+0020: SPACE) (otherwise known as "control characters") are not used.  Any character references that would generate these code points (such as &amp;#0009;) may not be used. NOTE: this rule explicitly forbids \t (U+0009: CHARACTER TABULATION), \f (U+000C: FORM FEED), and \r (U+000D: CARRIAGE RETURN) from appearing in the output.</li>
+  <li>Code points below (U+0020: SPACE) or character entity references that generate them (e.g. &amp;#9;), other than (U+000A: LINE FEED) may not be used.  NOTE: this rule explicitly forbids \t (U+0009: CHARACTER TABULATION), \f (U+000C: FORM FEED), and \r (U+000D: CARRIAGE RETURN) from appearing in the HTML output.</li>
   <li>Comments in the source XML, if any, will not be copied into the HTML.</li>
-  <li>The HTML output will be pretty-printed, using whatever consistent rules deemed best in the HTML production tool.</li>
+  <li>The HTML output will be pretty-printed, using whatever consistent rules are deemed best by the developers of the HTML production tools.</li>
 </ul>
 
 <p> </p>
-<p id="rfc.section.4.p.3">NOTE: none of these rules affect the rendered output of the HTML, but are intended to increase the chance that difference tools that operate on the HTML output easier to write.</p>
+<p id="rfc.section.4.p.3">NOTE: none of these rules affect the rendered output of the HTML, but are intended to increase the chance that difference tools (e.g. "diff") that operate on the HTML output easier to write.</p>
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#common" id="common">Common Items</a></h1>
 <p id="rfc.section.5.p.1">This section lists items that are common across multiple parts of the HTML document.</p>
 <h1 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1.</a> <a href="#ids" id="ids">IDs</a></h1>
 <p id="rfc.section.5.1.p.1">HTML elements that are generated from XML elements that include an "anchor" attribute will use the value of the "anchor" attribute as the value of the "id" attribute of the corresponding HTML element.  The prep tool produces XML with "anchor" attributes in all elements that need them.  Some HTML constructs (such as &lt;section&gt;) will use multiple instances of these identifiers.</p>
 <h1 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2.</a> <a href="#pilcrows" id="pilcrows">Pilcrows</a></h1>
-<p id="rfc.section.5.2.p.1">Each paragraph, artwork, or sourcecode segment outside of a &lt;figure&gt; or &lt;table&gt; element will be appended with a space and a "pilcrow" (U+00B6: PILCROW SIGN), otherwise known as a "paragraph sign".  For the purposes of clarity, in this document pilcrows are rendered as "&amp;para;".  The pilcrow will linked to the "id" attribute on the XML entity to which it is associated.</p>
+<p id="rfc.section.5.2.p.1">Each paragraph, artwork, or sourcecode segment outside of a &lt;figure&gt; or &lt;table&gt; element will be appended with a space and a "pilcrow" (U+00B6: PILCROW SIGN), otherwise known as a "paragraph sign".  For the purposes of clarity in ASCII renderings of this document, in this document pilcrows are rendered as "&amp;para;".  The pilcrow will linked to the "id" attribute on the XML entity to which it is associated using an &lt;a&gt; element of class "pilcrow".  For example:</p>
+<pre>
+&lt;p id="p-1.1-1"&gt;
+  Some paragraph text. &lt;a class="pilcrow" href="#p-1.1-1"&gt;&amp;para;&lt;/a&gt;
+&lt;/p&gt;</pre>
 <p id="rfc.section.5.2.p.2">The pilcrow will normally be invisible unless the element it is attached to is moused over.  The pilcrow will be surrounded by a link that points to the element it is attached to.</p>
 <p id="rfc.section.5.2.p.3">Pilcrows are never included inside a &lt;table&gt; or &lt;figure&gt; elements, since the figure number or table number serve as adequate link targets.</p>
 <p id="rfc.section.5.2.p.4">Elements that might otherwise contain a pilcrow do not get marked with a pilcrow if they contain one or more child elements that are marked with a pilcrow. For example:</p>
@@ -799,7 +803,7 @@
 &lt;meta name="generator" content="xmljade v0.2.4"&gt;</pre>
 <h1 id="rfc.section.6.3.4"><a href="#rfc.section.6.3.4">6.3.4.</a> <a href="#style" id="style">Style</a></h1>
 <p id="rfc.section.6.3.4.p.1">The &lt;head&gt; element contains an embedded CSS style sheet in a &lt;style&gt; element.  The styles in the style sheet are to be set consistently between documents by the RFC Editor, according to the best practices of the day.</p>
-<p id="rfc.section.6.3.4.p.2">To ensure consistent formatting, individual style attributes are not used in the main portion of the document except in highly exceptional circumstances; each use of such attributes will be individually justified.</p>
+<p id="rfc.section.6.3.4.p.2">To ensure consistent formatting, individual style attributes should not be used in the main portion of the document.</p>
 <p id="rfc.section.6.3.4.p.3">Different readers of a specification will desire different formatting when reading the HTML versions of RFCs.  To facilitate this, the &lt;head&gt; element also includes a &lt;link&gt; to a style sheet in the same directory as the HTML file, named "rfc-local.css". Any formatting in the linked style sheet will override the formatting in the included style sheet. For example:</p>
 <pre>
 &lt;style&gt;
@@ -969,7 +973,7 @@
   &lt;/address&gt;
 &lt;/section&gt;</pre>
 <h1 id="rfc.section.8.3"><a href="#rfc.section.8.3">8.3.</a> <a href="#docInfo" id="docInfo">Document Information</a></h1>
-<p id="rfc.section.8.3.p.1">A few bits of metadata about the document that are less important to most readers are included after the author information.  The style sheet might de-emphasize their display, or hide them altogether. These are gathered together into a &lt;div&gt; of class "docInfo".</p>
+<p id="rfc.section.8.3.p.1">A few bits of metadata about the document that are less important to most readers are included after the author information.  These are gathered together into a &lt;div&gt; of class "docInfo".</p>
 <p id="rfc.section.8.3.p.2">The finalized time is copied from the &lt;rfc&gt; element's prepTime attribute.  The rendered time is the time that this HTML was generated.</p>
 <p id="rfc.section.8.3.p.3">For example:</p>
 <pre>
@@ -1056,7 +1060,7 @@ ______________
 &lt;/div&gt;</pre>
 <h1 id="rfc.section.9.5.3"><a href="#rfc.section.9.5.3">9.5.3.</a> <a href="#element" id="element">Other Artwork</a></h1>
 <p id="rfc.section.9.5.3.p.1">Other artwork will have a src attribute whose value begins with "data:".  Such artwork is rendered in an HTML image element.</p>
-<p id="rfc.section.9.5.3.p.2">Note: such images are not yet allowed by the RFC Series Editor, even though the format supports them.</p>
+<p id="rfc.section.9.5.3.p.2">Note: such images are not yet allowed by the RFC Series Editor, even though the format supports them.  If the RFC Series Editor does allow other artwork in the future, a limited set of allowed data: media types shall be specified.</p>
 <pre>
 &lt;div class="artwork art-logo" id="p-2-58"&gt;
   &lt;img alt="IETF logo"
@@ -1201,7 +1205,7 @@ about something that we need to remember later.
 <h1 id="rfc.section.9.32"><a href="#rfc.section.9.32">9.32.</a> <a href="#element.name" id="element.name">&lt;name&gt;</a></h1>
 <p id="rfc.section.9.32.p.1">This element is never rendered directly, but instead when considering its parent element, such as &lt;section&gt;.</p>
 <h1 id="rfc.section.9.33"><a href="#rfc.section.9.33">9.33.</a> <a href="#element.note" id="element.note">&lt;note&gt;</a></h1>
-<p id="rfc.section.9.33.p.1">This element is rendered similarly to a &lt;section&gt;, but without a section number, and with the CSS class of "note.  If the "removeInRFC" attribute is set to "yes", the generated &lt;div&gt; will also include the CSS class "rfcEditorRemove".</p>
+<p id="rfc.section.9.33.p.1">This element is rendered similarly to a &lt;section&gt;, but without a section number, and with the CSS class of "note".  If the "removeInRFC" attribute is set to "yes", the generated &lt;div&gt; will also include the CSS class "rfcEditorRemove".</p>
 <pre>
 &lt;section id="s-note-1" class="note rfceditor-remove"&gt;
   &lt;h2&gt;
@@ -1245,7 +1249,7 @@ about something that we need to remember later.
 &lt;/div&gt;
 </pre>
 <h1 id="rfc.section.9.37"><a href="#rfc.section.9.37">9.37.</a> <a href="#element.postal" id="element.postal">&lt;postal&gt;</a></h1>
-<p id="rfc.section.9.37.p.1">This element renders as an HTML &lt;div&gt; with CSS class "adr", unless it contains a &lt;postalLine&gt; child element; in which case it adds no HTML markup.</p>
+<p id="rfc.section.9.37.p.1">This element renders as an HTML &lt;div&gt; with CSS class "adr", unless it contains one or more &lt;postalLine&gt; child elements; in which case renders as an HTML &lt;pre&gt; with CSS class "label".</p>
 <p id="rfc.section.9.37.p.2">When there is no &lt;postalLine&gt; child, the following child elements are rendered into the HTML: </p>
 
 <ul>
@@ -1268,7 +1272,13 @@ about something that we need to remember later.
   &lt;div class="country-name"&gt;US&lt;/div&gt;
 &lt;/div&gt;</pre>
 <h1 id="rfc.section.9.38"><a href="#rfc.section.9.38">9.38.</a> <a href="#element.postalLine" id="element.postalLine">&lt;postalLine&gt;</a></h1>
-<p id="rfc.section.9.38.p.1">All of these elements in a give &lt;postal&gt; elements render as a single HTML &lt;pre&gt; with CSS class "label", with each &lt;postalLine&gt; separated by a newline. Note: this &lt;pre&gt; element is not enclosed in a &lt;div class="adr"&gt;.</p>
+<p id="rfc.section.9.38.p.1">This element renders as the text contained by the element, followed by a newline.  However, the last &lt;postalLine&gt; in a given &lt;postal&gt; should not be followed by a newline.  For example:</p>
+<pre>
+&lt;postal&gt;
+  &lt;postalLine&gt;In care of:&lt;/postalLine&gt;
+  &lt;postalLine&gt;Computer Sciences Division&lt;/postalLine&gt;
+&lt;/postal&gt;</pre>
+<p id="rfc.section.9.38.p.2">Would be rendered as:</p>
 <pre>
 &lt;pre class="label"&gt;In care of:
 Computer Sciences Division&lt;/pre&gt;</pre>
@@ -1502,7 +1512,7 @@ int main(void)
       <td class="reference">
         <b id="I-D.flanagan-rfc-framework">[I-D.flanagan-rfc-framework]</b>
       </td>
-      <td class="top"><a>Flanagan, H.</a>, "<a href="http://tools.ietf.org/html/draft-flanagan-rfc-framework-04">RFC Format Framework</a>", Internet-Draft draft-flanagan-rfc-framework-04, June 2015.</td>
+      <td class="top"><a>Flanagan, H.</a>, "<a href="http://tools.ietf.org/html/draft-flanagan-rfc-framework-08">RFC Format Framework</a>", Internet-Draft draft-flanagan-rfc-framework-08, December 2015.</td>
     </tr>
   </tbody>
 </table>
@@ -1537,13 +1547,13 @@ int main(void)
       <td class="reference">
         <b id="I-D.hoffman-xml2rfc">[I-D.hoffman-xml2rfc]</b>
       </td>
-      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-hoffman-xml2rfc-21">The 'XML2RFC' version 3 Vocabulary</a>", Internet-Draft draft-hoffman-xml2rfc-21, July 2015.</td>
+      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-hoffman-xml2rfc-23">The 'XML2RFC' version 3 Vocabulary</a>", Internet-Draft draft-hoffman-xml2rfc-23, September 2015.</td>
     </tr>
     <tr>
       <td class="reference">
         <b id="I-D.hoffman-rfcv3-preptool">[I-D.hoffman-rfcv3-preptool]</b>
       </td>
-      <td class="top"><a>Hoffman, P.</a> and <a>J. Hildebrand</a>, "<a href="http://tools.ietf.org/html/draft-hoffman-rfcv3-preptool-05">RFC v3 Prep Tool Description</a>", Internet-Draft draft-hoffman-rfcv3-preptool-05, July 2015.</td>
+      <td class="top"><a>Hoffman, P.</a> and <a>J. Hildebrand</a>, "<a href="http://tools.ietf.org/html/draft-hoffman-rfcv3-preptool-06">RFC v3 Prep Tool Description</a>", Internet-Draft draft-hoffman-rfcv3-preptool-06, September 2015.</td>
     </tr>
   </tbody>
 </table>
