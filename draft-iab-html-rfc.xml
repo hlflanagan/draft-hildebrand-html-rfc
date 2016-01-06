@@ -3,19 +3,16 @@
 <?rfc toc="yes"?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
 <!ENTITY W3C.REC-html5-20141028 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml4/reference.W3C.REC-html5-20141028.xml">
+<!ENTITY RFC2397 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2397.xml">
 <!ENTITY RFC3629 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3629.xml">
 <!ENTITY RFC5646 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5646.xml">
 <!ENTITY RFC6949 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6949.xml">
 <!ENTITY RFC7322 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7322.xml">
 <!ENTITY I-D.hoffman-xml2rfc SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.hoffman-xml2rfc.xml">
 <!ENTITY I-D.hoffman-rfcv3-preptool SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.hoffman-rfcv3-preptool.xml">
-<!ENTITY I-D.flanagan-rfc-framework SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.flanagan-rfc-framework.xml">
+<!ENTITY I-D.iab-rfc-framework SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.iab-rfc-framework.xml">
 ]>
-<rfc ipr="trust200902" docName="draft-hildebrand-html-rfc-11" category="info">
-<!--  ### Notes for Joe and Paul go here. ###
-
-Deal with displayreference in relref or xref
--->
+<rfc ipr="trust200902" docName="draft-iab-html-rfc-11" category="info">
   <front>
     <title abbrev="HTML RFC">HyperText Markup Language Request For Comments Format</title>
     <author initials="J." surname="Hildebrand" fullname="Joe Hildebrand" role="editor">
@@ -44,7 +41,7 @@ Deal with displayreference in relref or xref
   </front>
   <middle>
     <section anchor="introduction" title="Introduction">
-      <t>As described in <xref target="I-D.flanagan-rfc-framework"/>, the RFC
+      <t>As described in <xref target="I-D.iab-rfc-framework"/>, the RFC
         Series is changing. One of those changes includes the RFC Editor
         publishing a non-canonical HTML version of RFCs.</t>
       <t>This document describes the HTML format that will be used as one of the
@@ -181,8 +178,8 @@ Deal with displayreference in relref or xref
         </list>
       </t>
       <t>NOTE: none of these rules affect the rendered output of the HTML, but
-        are intended to increase the chance that difference tools (e.g. "diff")
-        that operate on the HTML output easier to write.</t>
+        are intended to increase the chance that text comparison tools
+        (e.g. "diff") that operate on the HTML output easier to write.</t>
     </section>
     <section anchor="common" title="Common Items">
       <t>This section lists items that are common across multiple parts of the HTML
@@ -282,8 +279,9 @@ Deal with displayreference in relref or xref
           language tag describing the natural language of the document.  The
           language tag to be included is "en".  The class of the &lt;html&gt;
           element will be copied verbatim from the XML &lt;rfc&gt; element's
-          "mode" attribute, allowing CSS to style RFCs and Internet-Drafts
-          differently from one another (if needed):</t>
+          &lt;front&gt; element's &lt;seriesInfo&gt; element's "name"
+          attributes (separated by spaces), allowing CSS to style RFCs and
+          Internet-Drafts differently from one another (if needed):</t>
         <figure>
           <artwork><![CDATA[
 <html lang="en" class="RFC">]]></artwork>
@@ -725,18 +723,19 @@ ______________
           </figure>
         </section>
         <section title="Other Artwork" anchor="element">
-          <t>Other artwork will have a src attribute whose value begins with
-            "data:".  Such artwork is rendered in an HTML image element.</t>
+          <t>Other artwork will have a src attribute uses the "data" URI scheme
+            defined in <xref target="RFC2397"/>.  Such artwork is rendered in an
+            HTML image element.</t>
           <t>Note: such images are not yet allowed by the RFC Series Editor,
-            even though the format supports them.  If the RFC Series Editor
-            does allow other artwork in the future, a limited set of allowed
-            data: media types shall be specified.</t>
+            even though the format supports them.  The RFC Series Editor may
+            allow a limited set of "data:" mediatypes for artwork in the
+            future​.</t>
           <figure>
             <artwork><![CDATA[
 <div class="artwork art-logo" id="p-2-58">
   <img alt="IETF logo"
        src="data:image/gif;charset=utf-8;base64,..."/>
-  <a class="pilcrow" href="#p-2-58">¶</a>
+  <a class="pilcrow" href="#p-2-58">&para;</a>
 </div>]]></artwork>
           </figure>
         </section>
@@ -900,7 +899,10 @@ about something that we need to remember later.
         <t>This element is directly rendered as its HTML counterpart.</t>
       </section>
       <section title="&lt;displayreference&gt;" anchor="element.displayreference">
-        <t>This element is not rendered into HTML.</t>
+        <t>Does not effect the HTML output.  The prep tool
+          (<xref target='I-D.hoffman-rfcv3-preptool'/>) will have already
+          used this element to generate the &lt;xref&gt;'s "derivedContent"
+          attribute.</t>
       </section>
       <section title="&lt;dl&gt;" anchor="element.dl">
         <t>This element is directly rendered as its HTML counterpart.</t>
@@ -1065,8 +1067,7 @@ about something that we need to remember later.
         rendered as an HTML &lt;div&gt; containing the string "Phone:"  (wrapped
         in a span), an HTML &lt;span&gt; with CSS class "tel" containing the
         phone number and an HTML &lt;span&gt; with CSS class "type" containing
-        the string "VOICE".  Note, the "type" span will be hidden by CSS
-        styling.</t>
+        the string "VOICE".</t>
         <figure>
           <artwork><![CDATA[
 <div>
@@ -1080,8 +1081,8 @@ about something that we need to remember later.
       <section title="&lt;postal&gt;" anchor="element.postal">
         <t>This element renders as an HTML &lt;div&gt; with CSS class
           "adr", unless it contains one or more &lt;postalLine&gt; child
-          elements; in which case renders as an HTML &lt;pre&gt; with CSS class
-          "label".</t>
+          elements; in which case it renders as an HTML &lt;pre&gt; with CSS
+          class "label".</t>
         <t>When there is no &lt;postalLine&gt; child, the following child
           elements are rendered into the HTML:
           <list style='symbols'>
@@ -1140,7 +1141,8 @@ Computer Sciences Division</pre>]]></artwork>
         </figure>
       </section>
       <section title="&lt;reference&gt;" anchor="element.reference">
-        <t>This element will render as a &lt;dt&gt; &lt;dd&gt; pair, with the
+        <t>If the parent of this element is not a &lt;referencegroup&gt;, this
+          element will render as a &lt;dt&gt; &lt;dd&gt; pair, with the
           defined term being the reference "anchor" attribute surrounded by
           square brackets, and the definition including the correct set of
           bibliographic information as specified by <xref target="RFC7322"/>.
@@ -1161,17 +1163,37 @@ Computer Sciences Division</pre>]]></artwork>
   </dd>
 </dl>]]></artwork>
         </figure>
-      </section>
-      <section title="&lt;referencegroup&gt;" anchor="element.referencegroup">
-        <t>A &lt;referencegroup&gt; is translated into a &lt;span&gt; of
-          class "referenceGroup" which contains the references.  &lt;span&gt; is
-          used here to ensure that the reference lists remain as undisturbed
-          as possible.</t>
+        <t>If this element is the child of a &lt;referencegroup&gt;, this
+          element renders as a &lt;div&gt; of class "refInstance", whose
+          "id" attribute is the value of the source element's "anchor"
+          attribute.</t>
         <figure>
           <artwork><![CDATA[
-<span class="referencegroup">
-  <dl class="reference">...</dl>
-</span>]]></artwork>
+<div class="refInstance" id="RFC5730">
+  ...
+</div>]]></artwork>
+        </figure>
+      </section>
+      <section title="&lt;referencegroup&gt;" anchor="element.referencegroup">
+        <t>A &lt;referencegroup&gt; is translated into a &lt;dt&gt; &lt;dd&gt;
+          pair, with the defined term being the referencegroup "anchor"
+          attribute surrounded by square brackets, and the definition containing
+          the translated output of all of the child &lt;reference&gt;
+          elements.</t>
+        <figure>
+          <artwork><![CDATA[
+<dt id="STD69">[STD69]</dt>
+<dd>
+  <div class="refInstance" id="RFC5730">
+    <span class="refAuthor">Hollenbeck, S.</span>
+    ...
+  </div>
+  <div class="refInstance" id="RFC5731">
+    <span class="refAuthor">Hollenbeck, S.</span>
+    ...
+  </div>
+  ...
+</dd>]]></artwork>
         </figure>
       </section>
       <section title="&lt;references&gt;" anchor="element.references">
@@ -1231,7 +1253,7 @@ Computer Sciences Division</pre>]]></artwork>
   <artwork>
 See &lt;relref section="2.3" target="RFC7878" displayFormat="of"
 derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-derivedContent="Section 2.3"/&gt; for an overview.</artwork></figure>
+derivedRemoteContent="Section 2.3"/&gt; for an overview.</artwork></figure>
           </t>
           <t>The HTML generated will be:</t>
           <t>
@@ -1251,8 +1273,8 @@ for an overview.</artwork></figure>
             a comma (","), followed by
             whitespace.  This is followed by an &lt;a&gt;
             element whose "href" attribute is the value of the "derivedLink"
-            attribute and whose content is the value of the "derivedContent"
-            attribute.</t>
+            attribute and whose content is the value of the
+            "derivedRemoteContent" attribute.</t>
           <t>For example, if Section 2.3 of RFC 7878 has the title "Protocol
             Overview", for an input of:</t>
           <t>
@@ -1260,7 +1282,7 @@ for an overview.</artwork></figure>
   <artwork>
 See &lt;relref section="2.3" target="RFC7878" displayFormat="comma"
 derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-derivedContent="Section 2.3"/&gt;, for an overview.</artwork></figure>
+derivedRemoteContent="Section 2.3"/&gt;, for an overview.</artwork></figure>
           </t>
           <t>The HTML generated will be:</t>
           <t>
@@ -1279,7 +1301,7 @@ href="http://www.rfc-editor.org/info/rfc7878#s-2.3">Section
             is wrapped in square brackets.  This is followed by  whitespace.
             This is followed by an &lt;a&gt; element whose "href" attribute is
             the value of the "derivedLink" attribute and whose content is the
-            value of the "derivedContent" attribute; the entire element is
+            value of the "derivedRemoteContent" attribute; the entire element is
             wrapped in  parentheses.</t>
           <t>For example, if Section 2.3 of RFC 7878 has the title "Protocol
             Overview", for an input of:</t>
@@ -1288,7 +1310,7 @@ href="http://www.rfc-editor.org/info/rfc7878#s-2.3">Section
   <artwork>
 See &lt;relref section="2.3" target="RFC7878" displayFormat="parens"
 derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-derivedContent="Section 2.3"/&gt; for an overview.</artwork></figure>
+derivedRemoteContent="Section 2.3"/&gt; for an overview.</artwork></figure>
           </t>
           <t>The HTML generated will be:</t>
           <t>
@@ -1303,14 +1325,14 @@ href="http://www.rfc-editor.org/info/rfc7878#s-2.3">Section
         <section title="displayFormat='bare'" anchor="element.relref.df-bare">
           <t>The output is an &lt;a&gt; element whose "href" attribute is
             the value of the "derivedLink" attribute and whose content is the
-            value of the "derivedContent" attribute.</t>
+            value of the "derivedRemoteContent" attribute.</t>
           <t>For this input:</t>
           <t>
 <figure>
   <artwork>
 See &lt;relref section="2.3" target="RFC7878" displayFormat="bare"
 derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-derivedContent="Section 2.3"/&gt; and ...</artwork></figure>
+derivedRemoteContent="Section 2.3"/&gt; and ...</artwork></figure>
           </t>
           <t>The HTML generated will be:</t>
           <t>
@@ -1510,7 +1532,10 @@ int main(void)
   </middle>
   <back>
     <references title="Normative References">
+&RFC2397;
 &RFC3629;
+&RFC5646;
+&I-D.hoffman-xml2rfc;
 &W3C.REC-html5-20141028;
       <reference anchor="W3C.REC-CSS2-20110607" target="http://www.w3.org/TR/2011/REC-CSS2-20110607">
         <front>
@@ -1533,7 +1558,6 @@ int main(void)
         <format type="HTML" target="http://www.w3.org/TR/2011/REC-CSS2-20110607"/>
       </reference>
 
-&I-D.flanagan-rfc-framework;
     </references>
 
     <references title="Informative References">
@@ -1544,11 +1568,10 @@ int main(void)
         <date year="2015"/>
       </front>
     </reference>
-&RFC5646;
 &RFC6949;
 &RFC7322;
-&I-D.hoffman-xml2rfc;
 &I-D.hoffman-rfcv3-preptool;
+&I-D.iab-rfc-framework;
     </references>
   </back>
 </rfc>

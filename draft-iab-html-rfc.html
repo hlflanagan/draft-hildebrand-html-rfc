@@ -497,7 +497,7 @@
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Hildebrand, J., Ed. and P. Hoffman" />
-  <meta name="dct.identifier" content="urn:ietf:id:draft-hildebrand-html-rfc-11" />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-iab-html-rfc-11" />
   <meta name="dct.issued" scheme="ISO8601" content="2016-1-4" />
   <meta name="dct.abstract" content="In order to meet the evolving needs of the Internet community, the format for RFCs is changing from a plain-text, ASCII-only format to a canonical XML format that will in turn be rendered into several publication formats. This document defines the HTML format that will be rendered for an RFC or Internet-Draft." />
   <meta name="description" content="In order to meet the evolving needs of the Internet community, the format for RFCs is changing from a plain-text, ASCII-only format to a canonical XML format that will in turn be rendered into several publication formats. This document defines the HTML format that will be rendered for an RFC or Internet-Draft." />
@@ -535,7 +535,7 @@
   </table>
 
   <p class="title">HyperText Markup Language Request For Comments Format<br />
-  <span class="filename">draft-hildebrand-html-rfc-11</span></p>
+  <span class="filename">draft-iab-html-rfc-11</span></p>
   
   <h1 id="rfc.abstract">
   <a href="#rfc.abstract">Abstract</a>
@@ -681,7 +681,7 @@
   </ul>
 
   <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> <a href="#introduction" id="introduction">Introduction</a></h1>
-<p id="rfc.section.1.p.1">As described in <a href="#I-D.flanagan-rfc-framework">[I-D.flanagan-rfc-framework]</a>, the RFC Series is changing. One of those changes includes the RFC Editor publishing a non-canonical HTML version of RFCs.</p>
+<p id="rfc.section.1.p.1">As described in <a href="#I-D.iab-rfc-framework">[I-D.iab-rfc-framework]</a>, the RFC Series is changing. One of those changes includes the RFC Editor publishing a non-canonical HTML version of RFCs.</p>
 <p id="rfc.section.1.p.2">This document describes the HTML format that will be used as one of the publication formats for the RFC Series. It defines a strict subset of HTML appropriate for RFC Series documents.  The visual layout of the document will be defined through a cascading style sheet (CSS) <a href="#W3C.REC-CSS2-20110607">[W3C.REC-CSS2-20110607]</a>.  The CSS will be included in the HTML file but will be described in a separate document.</p>
 <p id="rfc.section.1.p.3">The details (particularly any vocabularies) described in this document are expected to change based on experience gained in implementing the RFC production center's toolset. Revised documents will be published capturing those changes as the toolset is completed. Other implementers must not expect those changes to remain backwards-compatible with the details described this document.</p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#requirements-for-html" id="requirements-for-html">Requirements for the HTML Format</a></h1>
@@ -733,7 +733,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.4.p.3">NOTE: none of these rules affect the rendered output of the HTML, but are intended to increase the chance that difference tools (e.g. "diff") that operate on the HTML output easier to write.</p>
+<p id="rfc.section.4.p.3">NOTE: none of these rules affect the rendered output of the HTML, but are intended to increase the chance that text comparison tools (e.g. "diff") that operate on the HTML output easier to write.</p>
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#common" id="common">Common Items</a></h1>
 <p id="rfc.section.5.p.1">This section lists items that are common across multiple parts of the HTML document.</p>
 <h1 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1.</a> <a href="#ids" id="ids">IDs</a></h1>
@@ -774,7 +774,7 @@
 <pre>
 &lt;!DOCTYPE html&gt;</pre>
 <h1 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2.</a> <a href="#root-element" id="root-element">Root Element</a></h1>
-<p id="rfc.section.6.2.p.1">The root element of the document is &lt;html&gt;.  This element includes a lang attribute, whose value is a <a href="#RFC5646">[RFC5646]</a> language tag describing the natural language of the document.  The language tag to be included is "en".  The class of the &lt;html&gt; element will be copied verbatim from the XML &lt;rfc&gt; element's "mode" attribute, allowing CSS to style RFCs and Internet-Drafts differently from one another (if needed):</p>
+<p id="rfc.section.6.2.p.1">The root element of the document is &lt;html&gt;.  This element includes a lang attribute, whose value is a <a href="#RFC5646">[RFC5646]</a> language tag describing the natural language of the document.  The language tag to be included is "en".  The class of the &lt;html&gt; element will be copied verbatim from the XML &lt;rfc&gt; element's &lt;front&gt; element's &lt;seriesInfo&gt; element's "name" attributes (separated by spaces), allowing CSS to style RFCs and Internet-Drafts differently from one another (if needed):</p>
 <pre>
 &lt;html lang="en" class="RFC"&gt;</pre>
 <h1 id="rfc.section.6.3"><a href="#rfc.section.6.3">6.3.</a> <a href="#head-element" id="head-element">Head Element</a></h1>
@@ -1059,13 +1059,13 @@ ______________
   &lt;a href="#p-2-17" class="pilcrow"&gt;&amp;para;&lt;/a&gt;&lt;/pre&gt;
 &lt;/div&gt;</pre>
 <h1 id="rfc.section.9.5.3"><a href="#rfc.section.9.5.3">9.5.3.</a> <a href="#element" id="element">Other Artwork</a></h1>
-<p id="rfc.section.9.5.3.p.1">Other artwork will have a src attribute whose value begins with "data:".  Such artwork is rendered in an HTML image element.</p>
-<p id="rfc.section.9.5.3.p.2">Note: such images are not yet allowed by the RFC Series Editor, even though the format supports them.  If the RFC Series Editor does allow other artwork in the future, a limited set of allowed data: media types shall be specified.</p>
+<p id="rfc.section.9.5.3.p.1">Other artwork will have a src attribute uses the "data" URI scheme defined in <a href="#RFC2397">[RFC2397]</a>.  Such artwork is rendered in an HTML image element.</p>
+<p id="rfc.section.9.5.3.p.2">Note: such images are not yet allowed by the RFC Series Editor, even though the format supports them.  The RFC Series Editor may allow a limited set of "data:" mediatypes for artwork in the future&#8203;.</p>
 <pre>
 &lt;div class="artwork art-logo" id="p-2-58"&gt;
   &lt;img alt="IETF logo"
        src="data:image/gif;charset=utf-8;base64,..."/&gt;
-  &lt;a class="pilcrow" href="#p-2-58"&gt;&#182;&lt;/a&gt;
+  &lt;a class="pilcrow" href="#p-2-58"&gt;&amp;para;&lt;/a&gt;
 &lt;/div&gt;</pre>
 <h1 id="rfc.section.9.6"><a href="#rfc.section.9.6">9.6.</a> <a href="#element.aside" id="element.aside">&lt;aside&gt;</a></h1>
 <p id="rfc.section.9.6.p.1">This element is rendered as an HTML &lt;aside&gt; element, with all child content appropriately transformed and a <a href="#pilcrows">pilcrow</a> <cite title="NONE">[pilcrows]</cite> added.</p>
@@ -1152,7 +1152,7 @@ about something that we need to remember later.
 <h1 id="rfc.section.9.18"><a href="#rfc.section.9.18">9.18.</a> <a href="#element.dd" id="element.dd">&lt;dd&gt;</a></h1>
 <p id="rfc.section.9.18.p.1">This element is directly rendered as its HTML counterpart.</p>
 <h1 id="rfc.section.9.19"><a href="#rfc.section.9.19">9.19.</a> <a href="#element.displayreference" id="element.displayreference">&lt;displayreference&gt;</a></h1>
-<p id="rfc.section.9.19.p.1">This element is not rendered into HTML.</p>
+<p id="rfc.section.9.19.p.1">Does not effect the HTML output.  The prep tool (<a href="#I-D.hoffman-rfcv3-preptool">[I-D.hoffman-rfcv3-preptool]</a>) will have already used this element to generate the &lt;xref&gt;'s "derivedContent" attribute.</p>
 <h1 id="rfc.section.9.20"><a href="#rfc.section.9.20">9.20.</a> <a href="#element.dl" id="element.dl">&lt;dl&gt;</a></h1>
 <p id="rfc.section.9.20.p.1">This element is directly rendered as its HTML counterpart.</p>
 <p id="rfc.section.9.20.p.2">If the hanging attribute is "false", add the "dlParallel" class, else add the "dlHanging" class.</p>
@@ -1240,7 +1240,7 @@ about something that we need to remember later.
 <pre>
 &lt;div class="org"&gt;Cisco Systems, Inc.&lt;/div&gt;</pre>
 <h1 id="rfc.section.9.36"><a href="#rfc.section.9.36">9.36.</a> <a href="#element.phone" id="element.phone">&lt;phone&gt;</a></h1>
-<p id="rfc.section.9.36.p.1">As shown in <a href="#authors-addresses">Section 8.2</a> this element is rendered as an HTML &lt;div&gt; containing the string "Phone:"  (wrapped in a span), an HTML &lt;span&gt; with CSS class "tel" containing the phone number and an HTML &lt;span&gt; with CSS class "type" containing the string "VOICE".  Note, the "type" span will be hidden by CSS styling.</p>
+<p id="rfc.section.9.36.p.1">As shown in <a href="#authors-addresses">Section 8.2</a> this element is rendered as an HTML &lt;div&gt; containing the string "Phone:"  (wrapped in a span), an HTML &lt;span&gt; with CSS class "tel" containing the phone number and an HTML &lt;span&gt; with CSS class "type" containing the string "VOICE".</p>
 <pre>
 &lt;div&gt;
   &lt;span&gt;Phone:&lt;/span&gt;
@@ -1249,7 +1249,7 @@ about something that we need to remember later.
 &lt;/div&gt;
 </pre>
 <h1 id="rfc.section.9.37"><a href="#rfc.section.9.37">9.37.</a> <a href="#element.postal" id="element.postal">&lt;postal&gt;</a></h1>
-<p id="rfc.section.9.37.p.1">This element renders as an HTML &lt;div&gt; with CSS class "adr", unless it contains one or more &lt;postalLine&gt; child elements; in which case renders as an HTML &lt;pre&gt; with CSS class "label".</p>
+<p id="rfc.section.9.37.p.1">This element renders as an HTML &lt;div&gt; with CSS class "adr", unless it contains one or more &lt;postalLine&gt; child elements; in which case it renders as an HTML &lt;pre&gt; with CSS class "label".</p>
 <p id="rfc.section.9.37.p.2">When there is no &lt;postalLine&gt; child, the following child elements are rendered into the HTML: </p>
 
 <ul>
@@ -1287,7 +1287,7 @@ Computer Sciences Division&lt;/pre&gt;</pre>
 <pre>
 &lt;span class="refContent"&gt;Self-published pamphlet&lt;/span&gt;</pre>
 <h1 id="rfc.section.9.40"><a href="#rfc.section.9.40">9.40.</a> <a href="#element.reference" id="element.reference">&lt;reference&gt;</a></h1>
-<p id="rfc.section.9.40.p.1">This element will render as a &lt;dt&gt; &lt;dd&gt; pair, with the defined term being the reference "anchor" attribute surrounded by square brackets, and the definition including the correct set of bibliographic information as specified by <a href="#RFC7322">[RFC7322]</a>.  The &lt;dt&gt; element will have an "id" attribute of the reference anchor.</p>
+<p id="rfc.section.9.40.p.1">If the parent of this element is not a &lt;referencegroup&gt;, this element will render as a &lt;dt&gt; &lt;dd&gt; pair, with the defined term being the reference "anchor" attribute surrounded by square brackets, and the definition including the correct set of bibliographic information as specified by <a href="#RFC7322">[RFC7322]</a>.  The &lt;dt&gt; element will have an "id" attribute of the reference anchor.</p>
 <pre>
 &lt;dl class="reference"&gt;
   &lt;dt id="RFC5646"&gt;[RFC5646]&lt;/dt&gt;
@@ -1301,12 +1301,26 @@ Computer Sciences Division&lt;/pre&gt;</pre>
     &lt;span class="fullStop"&gt;.&lt;/span&gt;
   &lt;/dd&gt;
 &lt;/dl&gt;</pre>
-<h1 id="rfc.section.9.41"><a href="#rfc.section.9.41">9.41.</a> <a href="#element.referencegroup" id="element.referencegroup">&lt;referencegroup&gt;</a></h1>
-<p id="rfc.section.9.41.p.1">A &lt;referencegroup&gt; is translated into a &lt;span&gt; of class "referenceGroup" which contains the references.  &lt;span&gt; is used here to ensure that the reference lists remain as undisturbed as possible.</p>
+<p id="rfc.section.9.40.p.2">If this element is the child of a &lt;referencegroup&gt;, this element renders as a &lt;div&gt; of class "refInstance", whose "id" attribute is the value of the source element's "anchor" attribute.</p>
 <pre>
-&lt;span class="referencegroup"&gt;
-  &lt;dl class="reference"&gt;...&lt;/dl&gt;
-&lt;/span&gt;</pre>
+&lt;div class="refInstance" id="RFC5730"&gt;
+  ...
+&lt;/div&gt;</pre>
+<h1 id="rfc.section.9.41"><a href="#rfc.section.9.41">9.41.</a> <a href="#element.referencegroup" id="element.referencegroup">&lt;referencegroup&gt;</a></h1>
+<p id="rfc.section.9.41.p.1">A &lt;referencegroup&gt; is translated into a &lt;dt&gt; &lt;dd&gt; pair, with the defined term being the referencegroup "anchor" attribute surrounded by square brackets, and the definition containing the translated output of all of the child &lt;reference&gt; elements.</p>
+<pre>
+&lt;dt id="STD69"&gt;[STD69]&lt;/dt&gt;
+&lt;dd&gt;
+  &lt;div class="refInstance" id="RFC5730"&gt;
+    &lt;span class="refAuthor"&gt;Hollenbeck, S.&lt;/span&gt;
+    ...
+  &lt;/div&gt;
+  &lt;div class="refInstance" id="RFC5731"&gt;
+    &lt;span class="refAuthor"&gt;Hollenbeck, S.&lt;/span&gt;
+    ...
+  &lt;/div&gt;
+  ...
+&lt;/dd&gt;</pre>
 <h1 id="rfc.section.9.42"><a href="#rfc.section.9.42">9.42.</a> <a href="#element.references" id="element.references">&lt;references&gt;</a></h1>
 <p id="rfc.section.9.42.p.1">If there is at least one &lt;references&gt; element, a "References" section is added to the document, continuing with the next major section number after the last &lt;section&gt;.  </p>
 <p id="rfc.section.9.42.p.2">Each references element will be added to that "References" section as if it were a section itself.</p>
@@ -1337,7 +1351,7 @@ Computer Sciences Division&lt;/pre&gt;</pre>
 <pre>
 See &lt;relref section="2.3" target="RFC7878" displayFormat="of"
 derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-derivedContent="Section 2.3"/&gt; for an overview.</pre>
+derivedRemoteContent="Section 2.3"/&gt; for an overview.</pre>
 <p/>
 <p id="rfc.section.9.44.1.p.4">The HTML generated will be:</p>
 <pre>
@@ -1347,12 +1361,12 @@ href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;Section
 for an overview.</pre>
 <p/>
 <h1 id="rfc.section.9.44.2"><a href="#rfc.section.9.44.2">9.44.2.</a> <a href="#element.relref.df-comma" id="element.relref.df-comma">displayFormat='comma'</a></h1>
-<p id="rfc.section.9.44.2.p.1">The output is an &lt;a&gt; element with  "href" attribute whose value is the value of the "target"  attribute prepended by "#", and whose content is the value of the  "target" attribute; the entire element is wrapped in square brackets.  This is followed by a comma (","), followed by whitespace.  This is followed by an &lt;a&gt; element whose "href" attribute is the value of the "derivedLink" attribute and whose content is the value of the "derivedContent" attribute.</p>
+<p id="rfc.section.9.44.2.p.1">The output is an &lt;a&gt; element with  "href" attribute whose value is the value of the "target"  attribute prepended by "#", and whose content is the value of the  "target" attribute; the entire element is wrapped in square brackets.  This is followed by a comma (","), followed by whitespace.  This is followed by an &lt;a&gt; element whose "href" attribute is the value of the "derivedLink" attribute and whose content is the value of the "derivedRemoteContent" attribute.</p>
 <p id="rfc.section.9.44.2.p.2">For example, if Section 2.3 of RFC 7878 has the title "Protocol Overview", for an input of:</p>
 <pre>
 See &lt;relref section="2.3" target="RFC7878" displayFormat="comma"
 derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-derivedContent="Section 2.3"/&gt;, for an overview.</pre>
+derivedRemoteContent="Section 2.3"/&gt;, for an overview.</pre>
 <p/>
 <p id="rfc.section.9.44.2.p.4">The HTML generated will be:</p>
 <pre>
@@ -1362,12 +1376,12 @@ href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;Section
 2.3&lt;/a&gt;, for an overview.</pre>
 <p/>
 <h1 id="rfc.section.9.44.3"><a href="#rfc.section.9.44.3">9.44.3.</a> <a href="#element.relref.df-parens" id="element.relref.df-parens">displayFormat='parens'</a></h1>
-<p id="rfc.section.9.44.3.p.1">The output is an &lt;a&gt; element with "href" attribute whose value is the value of the "target" attribute prepended by "#", and whose content is the value of the "target" attribute; the entire element is wrapped in square brackets.  This is followed by  whitespace.  This is followed by an &lt;a&gt; element whose "href" attribute is the value of the "derivedLink" attribute and whose content is the value of the "derivedContent" attribute; the entire element is wrapped in  parentheses.</p>
+<p id="rfc.section.9.44.3.p.1">The output is an &lt;a&gt; element with "href" attribute whose value is the value of the "target" attribute prepended by "#", and whose content is the value of the "target" attribute; the entire element is wrapped in square brackets.  This is followed by  whitespace.  This is followed by an &lt;a&gt; element whose "href" attribute is the value of the "derivedLink" attribute and whose content is the value of the "derivedRemoteContent" attribute; the entire element is wrapped in  parentheses.</p>
 <p id="rfc.section.9.44.3.p.2">For example, if Section 2.3 of RFC 7878 has the title "Protocol Overview", for an input of:</p>
 <pre>
 See &lt;relref section="2.3" target="RFC7878" displayFormat="parens"
 derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-derivedContent="Section 2.3"/&gt; for an overview.</pre>
+derivedRemoteContent="Section 2.3"/&gt; for an overview.</pre>
 <p/>
 <p id="rfc.section.9.44.3.p.4">The HTML generated will be:</p>
 <pre>
@@ -1377,12 +1391,12 @@ href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;Section
 2.3&lt;/a&gt;) for an overview.</pre>
 <p/>
 <h1 id="rfc.section.9.44.4"><a href="#rfc.section.9.44.4">9.44.4.</a> <a href="#element.relref.df-bare" id="element.relref.df-bare">displayFormat='bare'</a></h1>
-<p id="rfc.section.9.44.4.p.1">The output is an &lt;a&gt; element whose "href" attribute is the value of the "derivedLink" attribute and whose content is the value of the "derivedContent" attribute.</p>
+<p id="rfc.section.9.44.4.p.1">The output is an &lt;a&gt; element whose "href" attribute is the value of the "derivedLink" attribute and whose content is the value of the "derivedRemoteContent" attribute.</p>
 <p id="rfc.section.9.44.4.p.2">For this input:</p>
 <pre>
 See &lt;relref section="2.3" target="RFC7878" displayFormat="bare"
 derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-derivedContent="Section 2.3"/&gt; and ...</pre>
+derivedRemoteContent="Section 2.3"/&gt; and ...</pre>
 <p/>
 <p id="rfc.section.9.44.4.p.4">The HTML generated will be:</p>
 <pre>
@@ -1492,9 +1506,27 @@ int main(void)
   <tbody>
     <tr>
       <td class="reference">
+        <b id="RFC2397">[RFC2397]</b>
+      </td>
+      <td class="top"><a>Masinter, L.</a>, "<a href="http://tools.ietf.org/html/rfc2397">The "data" URL scheme</a>", RFC 2397, DOI 10.17487/RFC2397, August 1998.</td>
+    </tr>
+    <tr>
+      <td class="reference">
         <b id="RFC3629">[RFC3629]</b>
       </td>
       <td class="top"><a>Yergeau, F.</a>, "<a href="http://tools.ietf.org/html/rfc3629">UTF-8, a transformation format of ISO 10646</a>", STD 63, RFC 3629, DOI 10.17487/RFC3629, November 2003.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC5646">[RFC5646]</b>
+      </td>
+      <td class="top"><a>Phillips, A.</a> and <a>M. Davis</a>, "<a href="http://tools.ietf.org/html/rfc5646">Tags for Identifying Languages</a>", BCP 47, RFC 5646, DOI 10.17487/RFC5646, September 2009.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="I-D.hoffman-xml2rfc">[I-D.hoffman-xml2rfc]</b>
+      </td>
+      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-hoffman-xml2rfc-23">The 'XML2RFC' version 3 Vocabulary</a>", Internet-Draft draft-hoffman-xml2rfc-23, September 2015.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -1508,12 +1540,6 @@ int main(void)
       </td>
       <td class="top"><a>Bos, B.</a>, <a>Celik, T.</a>, <a>Hickson, I.</a> and <a>H. Lie</a>, "<a href="http://www.w3.org/TR/2011/REC-CSS2-20110607">Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a>", World Wide Web Consortium Recommendation REC-CSS2-20110607, June 2011.</td>
     </tr>
-    <tr>
-      <td class="reference">
-        <b id="I-D.flanagan-rfc-framework">[I-D.flanagan-rfc-framework]</b>
-      </td>
-      <td class="top"><a>Flanagan, H.</a>, "<a href="http://tools.ietf.org/html/draft-flanagan-rfc-framework-08">RFC Format Framework</a>", Internet-Draft draft-flanagan-rfc-framework-08, December 2015.</td>
-    </tr>
   </tbody>
 </table>
 <h1 id="rfc.references.2"><a href="#rfc.references.2">13.2.</a> Informative References</h1>
@@ -1524,12 +1550,6 @@ int main(void)
         <b id="HCARD">[HCARD]</b>
       </td>
       <td class="top"><a>Celik, T.</a>, "<a href="http://microformats.org/wiki/hcard">hCard 1.0</a>", 2015.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC5646">[RFC5646]</b>
-      </td>
-      <td class="top"><a>Phillips, A.</a> and <a>M. Davis</a>, "<a href="http://tools.ietf.org/html/rfc5646">Tags for Identifying Languages</a>", BCP 47, RFC 5646, DOI 10.17487/RFC5646, September 2009.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -1545,15 +1565,15 @@ int main(void)
     </tr>
     <tr>
       <td class="reference">
-        <b id="I-D.hoffman-xml2rfc">[I-D.hoffman-xml2rfc]</b>
-      </td>
-      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-hoffman-xml2rfc-23">The 'XML2RFC' version 3 Vocabulary</a>", Internet-Draft draft-hoffman-xml2rfc-23, September 2015.</td>
-    </tr>
-    <tr>
-      <td class="reference">
         <b id="I-D.hoffman-rfcv3-preptool">[I-D.hoffman-rfcv3-preptool]</b>
       </td>
       <td class="top"><a>Hoffman, P.</a> and <a>J. Hildebrand</a>, "<a href="http://tools.ietf.org/html/draft-hoffman-rfcv3-preptool-06">RFC v3 Prep Tool Description</a>", Internet-Draft draft-hoffman-rfcv3-preptool-06, September 2015.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="I-D.iab-rfc-framework">[I-D.iab-rfc-framework]</b>
+      </td>
+      <td class="top"><a>Flanagan, H.</a>, "<a href="http://tools.ietf.org/html/draft-iab-rfc-framework-00">RFC Format Framework</a>", Internet-Draft draft-iab-rfc-framework-00, January 2016.</td>
     </tr>
   </tbody>
 </table>

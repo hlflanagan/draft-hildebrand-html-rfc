@@ -10,7 +10,7 @@ Expires: July 7, 2016                                              ICANN
 
 
          HyperText Markup Language Request For Comments Format
-                      draft-hildebrand-html-rfc-11
+                         draft-iab-html-rfc-11
 
 Abstract
 
@@ -135,31 +135,31 @@ Internet-Draft                  HTML RFC                    January 2016
      9.25. <figure>  . . . . . . . . . . . . . . . . . . . . . . . .  24
      9.26. <front> . . . . . . . . . . . . . . . . . . . . . . . . .  24
      9.27. <iref>  . . . . . . . . . . . . . . . . . . . . . . . . .  24
-     9.28. <keyword> . . . . . . . . . . . . . . . . . . . . . . . .  24
+     9.28. <keyword> . . . . . . . . . . . . . . . . . . . . . . . .  25
      9.29. <li>  . . . . . . . . . . . . . . . . . . . . . . . . . .  25
      9.30. <link>  . . . . . . . . . . . . . . . . . . . . . . . . .  25
      9.31. <middle>  . . . . . . . . . . . . . . . . . . . . . . . .  25
      9.32. <name>  . . . . . . . . . . . . . . . . . . . . . . . . .  25
      9.33. <note>  . . . . . . . . . . . . . . . . . . . . . . . . .  25
-     9.34. <ol>  . . . . . . . . . . . . . . . . . . . . . . . . . .  25
+     9.34. <ol>  . . . . . . . . . . . . . . . . . . . . . . . . . .  26
        9.34.1.  Percent styles . . . . . . . . . . . . . . . . . . .  26
        9.34.2.  Standard styles  . . . . . . . . . . . . . . . . . .  26
      9.35. <organization>  . . . . . . . . . . . . . . . . . . . . .  26
      9.36. <phone> . . . . . . . . . . . . . . . . . . . . . . . . .  26
-     9.37. <postal>  . . . . . . . . . . . . . . . . . . . . . . . .  26
+     9.37. <postal>  . . . . . . . . . . . . . . . . . . . . . . . .  27
      9.38. <postalLine>  . . . . . . . . . . . . . . . . . . . . . .  27
      9.39. <refcontent>  . . . . . . . . . . . . . . . . . . . . . .  28
      9.40. <reference> . . . . . . . . . . . . . . . . . . . . . . .  28
-     9.41. <referencegroup>  . . . . . . . . . . . . . . . . . . . .  28
-     9.42. <references>  . . . . . . . . . . . . . . . . . . . . . .  28
-     9.43. <region>  . . . . . . . . . . . . . . . . . . . . . . . .  29
-     9.44. <relref>  . . . . . . . . . . . . . . . . . . . . . . . .  29
-       9.44.1.  displayFormat='of' . . . . . . . . . . . . . . . . .  29
+     9.41. <referencegroup>  . . . . . . . . . . . . . . . . . . . .  29
+     9.42. <references>  . . . . . . . . . . . . . . . . . . . . . .  29
+     9.43. <region>  . . . . . . . . . . . . . . . . . . . . . . . .  30
+     9.44. <relref>  . . . . . . . . . . . . . . . . . . . . . . . .  30
+       9.44.1.  displayFormat='of' . . . . . . . . . . . . . . . . .  30
        9.44.2.  displayFormat='comma'  . . . . . . . . . . . . . . .  30
-       9.44.3.  displayFormat='parens' . . . . . . . . . . . . . . .  30
+       9.44.3.  displayFormat='parens' . . . . . . . . . . . . . . .  31
        9.44.4.  displayFormat='bare' . . . . . . . . . . . . . . . .  31
-     9.45. <rfc> . . . . . . . . . . . . . . . . . . . . . . . . . .  31
-     9.46. <section> . . . . . . . . . . . . . . . . . . . . . . . .  31
+     9.45. <rfc> . . . . . . . . . . . . . . . . . . . . . . . . . .  32
+     9.46. <section> . . . . . . . . . . . . . . . . . . . . . . . .  32
      9.47. <seriesInfo>  . . . . . . . . . . . . . . . . . . . . . .  32
      9.48. <sourcecode>  . . . . . . . . . . . . . . . . . . . . . .  32
 
@@ -170,38 +170,38 @@ Hildebrand & Hoffman      Expires July 7, 2016                  [Page 3]
 Internet-Draft                  HTML RFC                    January 2016
 
 
-     9.49. <street>  . . . . . . . . . . . . . . . . . . . . . . . .  32
-     9.50. <strong>  . . . . . . . . . . . . . . . . . . . . . . . .  32
-     9.51. <sub> . . . . . . . . . . . . . . . . . . . . . . . . . .  32
+     9.49. <street>  . . . . . . . . . . . . . . . . . . . . . . . .  33
+     9.50. <strong>  . . . . . . . . . . . . . . . . . . . . . . . .  33
+     9.51. <sub> . . . . . . . . . . . . . . . . . . . . . . . . . .  33
      9.52. <sup> . . . . . . . . . . . . . . . . . . . . . . . . . .  33
      9.53. <svg> . . . . . . . . . . . . . . . . . . . . . . . . . .  33
      9.54. <t> . . . . . . . . . . . . . . . . . . . . . . . . . . .  33
-     9.55. <table> . . . . . . . . . . . . . . . . . . . . . . . . .  33
-     9.56. <tbody> . . . . . . . . . . . . . . . . . . . . . . . . .  33
-     9.57. <td>  . . . . . . . . . . . . . . . . . . . . . . . . . .  33
-     9.58. <tfoot> . . . . . . . . . . . . . . . . . . . . . . . . .  33
-     9.59. <th>  . . . . . . . . . . . . . . . . . . . . . . . . . .  33
-     9.60. <thead> . . . . . . . . . . . . . . . . . . . . . . . . .  33
-     9.61. <title> . . . . . . . . . . . . . . . . . . . . . . . . .  33
+     9.55. <table> . . . . . . . . . . . . . . . . . . . . . . . . .  34
+     9.56. <tbody> . . . . . . . . . . . . . . . . . . . . . . . . .  34
+     9.57. <td>  . . . . . . . . . . . . . . . . . . . . . . . . . .  34
+     9.58. <tfoot> . . . . . . . . . . . . . . . . . . . . . . . . .  34
+     9.59. <th>  . . . . . . . . . . . . . . . . . . . . . . . . . .  34
+     9.60. <thead> . . . . . . . . . . . . . . . . . . . . . . . . .  34
+     9.61. <title> . . . . . . . . . . . . . . . . . . . . . . . . .  34
      9.62. <tr>  . . . . . . . . . . . . . . . . . . . . . . . . . .  34
-     9.63. <tt>  . . . . . . . . . . . . . . . . . . . . . . . . . .  34
-     9.64. <ul>  . . . . . . . . . . . . . . . . . . . . . . . . . .  34
-     9.65. <uri> . . . . . . . . . . . . . . . . . . . . . . . . . .  34
-     9.66. <workgroup> . . . . . . . . . . . . . . . . . . . . . . .  34
-     9.67. <xref>  . . . . . . . . . . . . . . . . . . . . . . . . .  34
-   10. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  35
-   11. Security Considerations . . . . . . . . . . . . . . . . . . .  35
-   12. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  35
-   13. References  . . . . . . . . . . . . . . . . . . . . . . . . .  35
-     13.1.  Normative References . . . . . . . . . . . . . . . . . .  35
-     13.2.  Informative References . . . . . . . . . . . . . . . . .  36
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  36
+     9.63. <tt>  . . . . . . . . . . . . . . . . . . . . . . . . . .  35
+     9.64. <ul>  . . . . . . . . . . . . . . . . . . . . . . . . . .  35
+     9.65. <uri> . . . . . . . . . . . . . . . . . . . . . . . . . .  35
+     9.66. <workgroup> . . . . . . . . . . . . . . . . . . . . . . .  35
+     9.67. <xref>  . . . . . . . . . . . . . . . . . . . . . . . . .  35
+   10. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  36
+   11. Security Considerations . . . . . . . . . . . . . . . . . . .  36
+   12. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .  36
+   13. References  . . . . . . . . . . . . . . . . . . . . . . . . .  36
+     13.1.  Normative References . . . . . . . . . . . . . . . . . .  36
+     13.2.  Informative References . . . . . . . . . . . . . . . . .  37
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  37
 
 1.  Introduction
 
-   As described in [I-D.flanagan-rfc-framework], the RFC Series is
-   changing.  One of those changes includes the RFC Editor publishing a
-   non-canonical HTML version of RFCs.
+   As described in [I-D.iab-rfc-framework], the RFC Series is changing.
+   One of those changes includes the RFC Editor publishing a non-
+   canonical HTML version of RFCs.
 
    This document describes the HTML format that will be used as one of
    the publication formats for the RFC Series.  It defines a strict
@@ -382,7 +382,7 @@ Internet-Draft                  HTML RFC                    January 2016
       tools.
 
    NOTE: none of these rules affect the rendered output of the HTML, but
-   are intended to increase the chance that difference tools (e.g.
+   are intended to increase the chance that text comparison tools (e.g.
    "diff") that operate on the HTML output easier to write.
 
 
@@ -512,8 +512,9 @@ Internet-Draft                  HTML RFC                    January 2016
    lang attribute, whose value is a [RFC5646] language tag describing
    the natural language of the document.  The language tag to be
    included is "en".  The class of the <html> element will be copied
-   verbatim from the XML <rfc> element's "mode" attribute, allowing CSS
-   to style RFCs and Internet-Drafts differently from one another (if
+   verbatim from the XML <rfc> element's <front> element's <seriesInfo>
+   element's "name" attributes (separated by spaces), allowing CSS to
+   style RFCs and Internet-Drafts differently from one another (if
    needed):
 
    <html lang="en" class="RFC">
@@ -553,7 +554,6 @@ Internet-Draft                  HTML RFC                    January 2016
    o  keywords - comma-separated <keyword>s from the XML source
 
    For example:
-
 
 
 
@@ -1050,13 +1050,13 @@ Internet-Draft                  HTML RFC                    January 2016
 
 9.5.3.  Other Artwork
 
-   Other artwork will have a src attribute whose value begins with
-   "data:".  Such artwork is rendered in an HTML image element.
+   Other artwork will have a src attribute uses the "data" URI scheme
+   defined in [RFC2397].  Such artwork is rendered in an HTML image
+   element.
 
    Note: such images are not yet allowed by the RFC Series Editor, even
-   though the format supports them.  If the RFC Series Editor does allow
-   other artwork in the future, a limited set of allowed data: media
-   types shall be specified.
+   though the format supports them.  The RFC Series Editor may allow a
+   limited set of "data:" mediatypes for artwork in the future.
 
 
 
@@ -1069,7 +1069,7 @@ Internet-Draft                  HTML RFC                    January 2016
    <div class="artwork art-logo" id="p-2-58">
      <img alt="IETF logo"
           src="data:image/gif;charset=utf-8;base64,..."/>
-     <a class="pilcrow" href="#p-2-58">P.</a>
+     <a class="pilcrow" href="#p-2-58">&para;</a>
    </div>
 
 9.6.  <aside>
@@ -1254,7 +1254,9 @@ Internet-Draft                  HTML RFC                    January 2016
 
 9.19.  <displayreference>
 
-   This element is not rendered into HTML.
+   Does not effect the HTML output.  The prep tool
+   ([I-D.hoffman-rfcv3-preptool]) will have already used this element to
+   generate the <xref>'s "derivedContent" attribute.
 
 9.20.  <dl>
 
@@ -1280,8 +1282,6 @@ Internet-Draft                  HTML RFC                    January 2016
    attribute set to the equivalent "mailto:" URI, CSS class of "email",
    and the contents set to the email address.
 
-   If the email contains an ascii attribute, a span of class ascii is
-   also contained in the div.
 
 
 
@@ -1289,6 +1289,9 @@ Hildebrand & Hoffman      Expires July 7, 2016                 [Page 23]
 
 Internet-Draft                  HTML RFC                    January 2016
 
+
+   If the email contains an ascii attribute, a span of class ascii is
+   also contained in the div.
 
    <div>
      <span>Email:</span>
@@ -1331,12 +1334,9 @@ Internet-Draft                  HTML RFC                    January 2016
 
    <span class="iref" id="s-Paragraphs-first-1"/>
 
-9.28.  <keyword>
 
-   Each of these elements renders its text into the <meta> keywords in
-   the document's header, separated by commas.
 
-   <meta name="keywords" content="html,css,rfc">
+
 
 
 
@@ -1345,6 +1345,13 @@ Hildebrand & Hoffman      Expires July 7, 2016                 [Page 24]
 
 Internet-Draft                  HTML RFC                    January 2016
 
+
+9.28.  <keyword>
+
+   Each of these elements renders its text into the <meta> keywords in
+   the document's header, separated by commas.
+
+   <meta name="keywords" content="html,css,rfc">
 
 9.29.  <li>
 
@@ -1384,6 +1391,17 @@ Internet-Draft                  HTML RFC                    January 2016
      </p>
    </section>
 
+
+
+
+
+
+
+Hildebrand & Hoffman      Expires July 7, 2016                 [Page 25]
+
+Internet-Draft                  HTML RFC                    January 2016
+
+
 9.34.  <ol>
 
    The output created from an <ol> element depends upon the style
@@ -1394,13 +1412,6 @@ Internet-Draft                  HTML RFC                    January 2016
 
    The group attribute is not copied; the input XML should have start
    values added by a prep tool for all grouped <ol> elements.
-
-
-
-Hildebrand & Hoffman      Expires July 7, 2016                 [Page 25]
-
-Internet-Draft                  HTML RFC                    January 2016
-
 
 9.34.1.  Percent styles
 
@@ -1435,8 +1446,17 @@ Internet-Draft                  HTML RFC                    January 2016
    As shown in Section 8.2 this element is rendered as an HTML <div>
    containing the string "Phone:" (wrapped in a span), an HTML <span>
    with CSS class "tel" containing the phone number and an HTML <span>
-   with CSS class "type" containing the string "VOICE".  Note, the
-   "type" span will be hidden by CSS styling.
+   with CSS class "type" containing the string "VOICE".
+
+
+
+
+
+
+Hildebrand & Hoffman      Expires July 7, 2016                 [Page 26]
+
+Internet-Draft                  HTML RFC                    January 2016
+
 
    <div>
      <span>Phone:</span>
@@ -1447,16 +1467,8 @@ Internet-Draft                  HTML RFC                    January 2016
 9.37.  <postal>
 
    This element renders as an HTML <div> with CSS class "adr", unless it
-   contains one or more <postalLine> child elements; in which case
+   contains one or more <postalLine> child elements; in which case it
    renders as an HTML <pre> with CSS class "label".
-
-
-
-
-Hildebrand & Hoffman      Expires July 7, 2016                 [Page 26]
-
-Internet-Draft                  HTML RFC                    January 2016
-
 
    When there is no <postalLine> child, the following child elements are
    rendered into the HTML:
@@ -1495,6 +1507,13 @@ Internet-Draft                  HTML RFC                    January 2016
    by a newline.  However, the last <postalLine> in a given <postal>
    should not be followed by a newline.  For example:
 
+
+
+Hildebrand & Hoffman      Expires July 7, 2016                 [Page 27]
+
+Internet-Draft                  HTML RFC                    January 2016
+
+
    <postal>
      <postalLine>In care of:</postalLine>
      <postalLine>Computer Sciences Division</postalLine>
@@ -1505,15 +1524,6 @@ Internet-Draft                  HTML RFC                    January 2016
    <pre class="label">In care of:
    Computer Sciences Division</pre>
 
-
-
-
-
-Hildebrand & Hoffman      Expires July 7, 2016                 [Page 27]
-
-Internet-Draft                  HTML RFC                    January 2016
-
-
 9.39.  <refcontent>
 
    This element renders as an HTML <span> with CSS class "refcontent".
@@ -1522,11 +1532,12 @@ Internet-Draft                  HTML RFC                    January 2016
 
 9.40.  <reference>
 
-   This element will render as a <dt> <dd> pair, with the defined term
-   being the reference "anchor" attribute surrounded by square brackets,
-   and the definition including the correct set of bibliographic
-   information as specified by [RFC7322].  The <dt> element will have an
-   "id" attribute of the reference anchor.
+   If the parent of this element is not a <referencegroup>, this element
+   will render as a <dt> <dd> pair, with the defined term being the
+   reference "anchor" attribute surrounded by square brackets, and the
+   definition including the correct set of bibliographic information as
+   specified by [RFC7322].  The <dt> element will have an "id" attribute
+   of the reference anchor.
 
    <dl class="reference">
      <dt id="RFC5646">[RFC5646]</dt>
@@ -1541,24 +1552,13 @@ Internet-Draft                  HTML RFC                    January 2016
      </dd>
    </dl>
 
-9.41.  <referencegroup>
+   If this element is the child of a <referencegroup>, this element
+   renders as a <div> of class "refInstance", whose "id" attribute is
+   the value of the source element's "anchor" attribute.
 
-   A <referencegroup> is translated into a <span> of class
-   "referenceGroup" which contains the references.  <span> is used here
-   to ensure that the reference lists remain as undisturbed as possible.
-
-   <span class="referencegroup">
-     <dl class="reference">...</dl>
-   </span>
-
-9.42.  <references>
-
-   If there is at least one <references> element, a "References" section
-   is added to the document, continuing with the next major section
-   number after the last <section>.
-
-   Each references element will be added to that "References" section as
-   if it were a section itself.
+   <div class="refInstance" id="RFC5730">
+     ...
+   </div>
 
 
 
@@ -1569,6 +1569,35 @@ Hildebrand & Hoffman      Expires July 7, 2016                 [Page 28]
 
 Internet-Draft                  HTML RFC                    January 2016
 
+
+9.41.  <referencegroup>
+
+   A <referencegroup> is translated into a <dt> <dd> pair, with the
+   defined term being the referencegroup "anchor" attribute surrounded
+   by square brackets, and the definition containing the translated
+   output of all of the child <reference> elements.
+
+   <dt id="STD69">[STD69]</dt>
+   <dd>
+     <div class="refInstance" id="RFC5730">
+       <span class="refAuthor">Hollenbeck, S.</span>
+       ...
+     </div>
+     <div class="refInstance" id="RFC5731">
+       <span class="refAuthor">Hollenbeck, S.</span>
+       ...
+     </div>
+     ...
+   </dd>
+
+9.42.  <references>
+
+   If there is at least one <references> element, a "References" section
+   is added to the document, continuing with the next major section
+   number after the last <section>.
+
+   Each references element will be added to that "References" section as
+   if it were a section itself.
 
    <section id="n-references">
      <h2 id="s-3">
@@ -1584,6 +1613,18 @@ Internet-Draft                  HTML RFC                    January 2016
        </dl>
      </section>
    </section>
+
+
+
+
+
+
+
+
+Hildebrand & Hoffman      Expires July 7, 2016                 [Page 29]
+
+Internet-Draft                  HTML RFC                    January 2016
+
 
 9.43.  <region>
 
@@ -1615,16 +1656,9 @@ Internet-Draft                  HTML RFC                    January 2016
 
    See <relref section="2.3" target="RFC7878" displayFormat="of"
    derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-   derivedContent="Section 2.3"/> for an overview.
+   derivedRemoteContent="Section 2.3"/> for an overview.
 
    The HTML generated will be:
-
-
-
-Hildebrand & Hoffman      Expires July 7, 2016                 [Page 29]
-
-Internet-Draft                  HTML RFC                    January 2016
-
 
    See <a class="relref"
    href="http://www.rfc-editor.org/info/rfc7878#s-2.3">Section
@@ -1639,14 +1673,21 @@ Internet-Draft                  HTML RFC                    January 2016
    in square brackets.  This is followed by a comma (","), followed by
    whitespace.  This is followed by an <a> element whose "href"
    attribute is the value of the "derivedLink" attribute and whose
-   content is the value of the "derivedContent" attribute.
+   content is the value of the "derivedRemoteContent" attribute.
+
+
+
+Hildebrand & Hoffman      Expires July 7, 2016                 [Page 30]
+
+Internet-Draft                  HTML RFC                    January 2016
+
 
    For example, if Section 2.3 of RFC 7878 has the title "Protocol
    Overview", for an input of:
 
    See <relref section="2.3" target="RFC7878" displayFormat="comma"
    derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-   derivedContent="Section 2.3"/>, for an overview.
+   derivedRemoteContent="Section 2.3"/>, for an overview.
 
    The HTML generated will be:
 
@@ -1663,7 +1704,7 @@ Internet-Draft                  HTML RFC                    January 2016
    in square brackets.  This is followed by whitespace.  This is
    followed by an <a> element whose "href" attribute is the value of the
    "derivedLink" attribute and whose content is the value of the
-   "derivedContent" attribute; the entire element is wrapped in
+   "derivedRemoteContent" attribute; the entire element is wrapped in
    parentheses.
 
    For example, if Section 2.3 of RFC 7878 has the title "Protocol
@@ -1671,16 +1712,9 @@ Internet-Draft                  HTML RFC                    January 2016
 
    See <relref section="2.3" target="RFC7878" displayFormat="parens"
    derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-   derivedContent="Section 2.3"/> for an overview.
+   derivedRemoteContent="Section 2.3"/> for an overview.
 
    The HTML generated will be:
-
-
-
-Hildebrand & Hoffman      Expires July 7, 2016                 [Page 30]
-
-Internet-Draft                  HTML RFC                    January 2016
-
 
    See [<a class="relref" href="#RFC7878">RFC7878</a>]
    (<a class="relref"
@@ -1691,13 +1725,22 @@ Internet-Draft                  HTML RFC                    January 2016
 
    The output is an <a> element whose "href" attribute is the value of
    the "derivedLink" attribute and whose content is the value of the
-   "derivedContent" attribute.
+   "derivedRemoteContent" attribute.
 
    For this input:
 
+
+
+
+
+Hildebrand & Hoffman      Expires July 7, 2016                 [Page 31]
+
+Internet-Draft                  HTML RFC                    January 2016
+
+
    See <relref section="2.3" target="RFC7878" displayFormat="bare"
    derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-   derivedContent="Section 2.3"/> and ...
+   derivedRemoteContent="Section 2.3"/> and ...
 
    The HTML generated will be:
 
@@ -1727,17 +1770,6 @@ Internet-Draft                  HTML RFC                    January 2016
      </p>
    </section>
 
-
-
-
-
-
-
-Hildebrand & Hoffman      Expires July 7, 2016                 [Page 31]
-
-Internet-Draft                  HTML RFC                    January 2016
-
-
 9.47.  <seriesInfo>
 
    This element is rendered in an HTML <span> element with CSS name
@@ -1752,6 +1784,15 @@ Internet-Draft                  HTML RFC                    January 2016
    HTML, so all <, >, and & must be escaped as &lt;, &gt;, and &amp;,
    respectively.  If the input XML has a "type" attribute, another CSS
    class of "lang-" and the type is added.
+
+
+
+
+
+Hildebrand & Hoffman      Expires July 7, 2016                 [Page 32]
+
+Internet-Draft                  HTML RFC                    January 2016
+
 
    If the sourcecode is not inside a <figure> element, a pilcrow
    (Section 5.2) is included.  Inside a <figure> element, the figure
@@ -1782,18 +1823,6 @@ Internet-Draft                  HTML RFC                    January 2016
 
    This element is directly rendered as its HTML counterpart.
 
-
-
-
-
-
-
-
-Hildebrand & Hoffman      Expires July 7, 2016                 [Page 32]
-
-Internet-Draft                  HTML RFC                    January 2016
-
-
 9.52.  <sup>
 
    This element is directly rendered as its HTML counterpart.
@@ -1809,6 +1838,17 @@ Internet-Draft                  HTML RFC                    January 2016
 
    <p id="p-1-1">A paragraph.
      <a href="#p-1-1" class="pilcrow">&para;</a></p>
+
+
+
+
+
+
+
+Hildebrand & Hoffman      Expires July 7, 2016                 [Page 33]
+
+Internet-Draft                  HTML RFC                    January 2016
+
 
 9.55.  <table>
 
@@ -1843,13 +1883,6 @@ Internet-Draft                  HTML RFC                    January 2016
    the Document Information.  The <h1> element has an id attribute with
    value "title".
 
-
-
-Hildebrand & Hoffman      Expires July 7, 2016                 [Page 33]
-
-Internet-Draft                  HTML RFC                    January 2016
-
-
    <h1 id="title">HyperText Markup Language Request For
        Comments Format</h1>
 
@@ -1862,6 +1895,16 @@ Internet-Draft                  HTML RFC                    January 2016
 9.62.  <tr>
 
    This element is directly rendered as its HTML counterpart.
+
+
+
+
+
+
+Hildebrand & Hoffman      Expires July 7, 2016                 [Page 34]
+
+Internet-Draft                  HTML RFC                    January 2016
+
 
 9.63.  <tt>
 
@@ -1898,14 +1941,6 @@ Internet-Draft                  HTML RFC                    January 2016
    "#".  The <a> element generated will have class "xref".  The contents
    of the <a> element are the value of the "derivedContent" attribute.
    If the "format" attribute has the value "default", and the "target"
-
-
-
-Hildebrand & Hoffman      Expires July 7, 2016                 [Page 34]
-
-Internet-Draft                  HTML RFC                    January 2016
-
-
    attribute points to a <reference> or <referencegroup> element, then
    the generated <a> element is surrounded by square brackets in the
    output.
@@ -1915,6 +1950,17 @@ Internet-Draft                  HTML RFC                    January 2016
    or
 
    [<a class="xref" href="#RFC1234">RFC1234</a>]
+
+
+
+
+
+
+
+Hildebrand & Hoffman      Expires July 7, 2016                 [Page 35]
+
+Internet-Draft                  HTML RFC                    January 2016
+
 
 10.  IANA Considerations
 
@@ -1939,9 +1985,21 @@ Internet-Draft                  HTML RFC                    January 2016
 
 13.1.  Normative References
 
+   [RFC2397]  Masinter, L., "The "data" URL scheme", RFC 2397,
+              DOI 10.17487/RFC2397, August 1998,
+              <http://www.rfc-editor.org/info/rfc2397>.
+
    [RFC3629]  Yergeau, F., "UTF-8, a transformation format of ISO
               10646", STD 63, RFC 3629, DOI 10.17487/RFC3629, November
               2003, <http://www.rfc-editor.org/info/rfc3629>.
+
+   [RFC5646]  Phillips, A., Ed. and M. Davis, Ed., "Tags for Identifying
+              Languages", BCP 47, RFC 5646, DOI 10.17487/RFC5646,
+              September 2009, <http://www.rfc-editor.org/info/rfc5646>.
+
+   [I-D.hoffman-xml2rfc]
+              Hoffman, P., "The 'XML2RFC' version 3 Vocabulary", draft-
+              hoffman-xml2rfc-23 (work in progress), September 2015.
 
    [W3C.REC-html5-20141028]
               Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
@@ -1955,9 +2013,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-
-
-Hildebrand & Hoffman      Expires July 7, 2016                 [Page 35]
+Hildebrand & Hoffman      Expires July 7, 2016                 [Page 36]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1969,18 +2025,10 @@ Internet-Draft                  HTML RFC                    January 2016
               CSS2-20110607, June 2011,
               <http://www.w3.org/TR/2011/REC-CSS2-20110607>.
 
-   [I-D.flanagan-rfc-framework]
-              Flanagan, H., "RFC Format Framework", draft-flanagan-rfc-
-              framework-08 (work in progress), December 2015.
-
 13.2.  Informative References
 
    [HCARD]    Celik, T., "hCard 1.0", 2015,
               <http://microformats.org/wiki/hcard>.
-
-   [RFC5646]  Phillips, A., Ed. and M. Davis, Ed., "Tags for Identifying
-              Languages", BCP 47, RFC 5646, DOI 10.17487/RFC5646,
-              September 2009, <http://www.rfc-editor.org/info/rfc5646>.
 
    [RFC6949]  Flanagan, H. and N. Brownlee, "RFC Series Format
               Requirements and Future Development", RFC 6949,
@@ -1991,14 +2039,14 @@ Internet-Draft                  HTML RFC                    January 2016
               DOI 10.17487/RFC7322, September 2014,
               <http://www.rfc-editor.org/info/rfc7322>.
 
-   [I-D.hoffman-xml2rfc]
-              Hoffman, P., "The 'XML2RFC' version 3 Vocabulary", draft-
-              hoffman-xml2rfc-23 (work in progress), September 2015.
-
    [I-D.hoffman-rfcv3-preptool]
               Hoffman, P. and J. Hildebrand, "RFC v3 Prep Tool
               Description", draft-hoffman-rfcv3-preptool-06 (work in
               progress), September 2015.
+
+   [I-D.iab-rfc-framework]
+              Flanagan, H., "RFC Format Framework", draft-iab-rfc-
+              framework-00 (work in progress), January 2016.
 
 Authors' Addresses
 
@@ -2008,58 +2056,10 @@ Authors' Addresses
    Email: jhildebr@cisco.com
 
 
-
-
-
-
-
-Hildebrand & Hoffman      Expires July 7, 2016                 [Page 36]
-
-Internet-Draft                  HTML RFC                    January 2016
-
-
    Paul Hoffman
    ICANN
 
    Email: paul.hoffman@icann.org
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -65,6 +65,9 @@ function getInvent(e) {
           return num;
         case 'li':
           return liNum(target_el);
+        case 'reference':
+        case 'referencegroup':
+          error('invalid format=counter for ' + tname, e);
       };
       break;
     case 'default':
@@ -75,7 +78,9 @@ function getInvent(e) {
           return titleCase(tname) + ' ' + num;
         case 'reference':
         case 'referencegroup':
-          return target;
+          var dr = e.doc().get('//displayreference[@target="' + target + '"]/@to');
+          dr = dr && dr.value();
+          return dr || target;
         case 'li':
           return 'Item ' + liNum(target_el);
       }

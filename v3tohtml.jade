@@ -143,8 +143,9 @@ mixin identifiers(e)
   dl#identifiers
     dt Workgroup:
     dd.workgroup= $('workgroup/text()',e)
-    dt Series:
-    dd.series= v3.series($())
+    each s in $$('seriesInfo/@name', e)
+      dt Series:
+      dd.series= s
     dt Status:
     dd.status= v3.status($())
     dt Published:
@@ -232,47 +233,54 @@ mixin postal(e)
         .country-name= country.text().trim()
           +ascii(country)
 
+mixin refText(e)
+  - var authors = $$('front/author', e)
+  if authors.length > 0
+    span.refAuthor= $att(authors[0], 'surname') + ", " + $att(authors[0], 'initials')
+      +ascii(authors[0], 'asciiFullname')
+    each a in authors.slice(1,-1)
+      span.comma ,
+      span.refAuthor= $att(a, 'fullname')
+        +ascii(a, 'asciiFullname')
+    if authors.length > 1
+      span= " and "
+      span.refAuthor= $att(authors[authors.length-1], 'fullname')
+        +ascii(authors[authors.length-1], 'asciiFullname')
+  - var title = $('front/title', e)
+  span.refTitle "#{title.text().trim()}"
+    +ascii(title)
+  - var refcontent = $('refcontent', e)
+  if refcontent
+    span.comma ,
+    span.refContent
+      +children(refcontent)
+  each si in $$('seriesInfo', e)
+    span.comma ,
+    span.refSeries
+      span.refSeriesName= $att(si, 'name')
+        +ascii(si, 'asciiName')
+      span.refSeriesValue= $att(si, 'value')
+        +ascii(si, 'asciiValue')
+  - var refdate = $('front/date', e)
+  if refdate
+    span.comma ,
+    - var dat = [$att(refdate, 'month')||"", $att(refdate, 'year')||""]
+    time.refDate(datetime=dt.isoYearMonth(refdate))= dat.join(' ')
+  span.fullStop .
+  - var annotation = $('annotation', e)
+  if annotation
+    span.annotation
+      +children(annotation)
+      
 mixin reference(e)
   - var anc = $att(e, 'anchor')
-  dt(id=anc) [#{anc}]
-  dd
-    - var authors = $$('front/author', e)
-    if authors.length > 0
-      span.refAuthor= $att(authors[0], 'surname') + ", " + $att(authors[0], 'initials')
-        +ascii(authors[0], 'asciiFullname')
-      each a in authors.slice(1,-1)
-        span.comma ,
-        span.refAuthor= $att(a, 'fullname')
-          +ascii(a, 'asciiFullname')
-      if authors.length > 1
-        span= " and "
-        span.refAuthor= $att(authors[authors.length-1], 'fullname')
-          +ascii(authors[authors.length-1], 'asciiFullname')
-    - var title = $('front/title', e)
-    span.refTitle "#{title.text().trim()}"
-      +ascii(title)
-    - var refcontent = $('refcontent', e)
-    if refcontent
-      span.comma ,
-      span.refContent
-        +children(refcontent)
-    each si in $$('seriesInfo', e)
-      span.comma ,
-      span.refSeries
-        span.refSeriesName= $att(si, 'name')
-          +ascii(si, 'asciiName')
-        span.refSeriesValue= $att(si, 'value')
-          +ascii(si, 'asciiValue')
-    - var refdate = $('front/date', e)
-    if refdate
-      span.comma ,
-      - var dat = [$att(refdate, 'month')||"", $att(refdate, 'year')||""]
-      time.refDate(datetime=dt.isoYearMonth(refdate))= dat.join(' ')
-    span.fullStop .
-    - var annotation = $('annotation', e)
-    if annotation
-      span.annotation
-        +children(annotation)
+  if e.parent().name() != 'referencegroup'
+    dt(id=anc) [#{anc}]
+    dd
+      +refText(e)
+  else
+    .refInstance(id=anc)
+      +refText(e)
 
 mixin section(s)
   - var sn = $att(s,'pn')
@@ -330,8 +338,14 @@ mixin ul(e)
 
 mixin xref(e)
   - var target = $att(e,'target')
-  - var t = e.text()
-  if t.trim()
+  - var t = $att(e,'derivedContent')
+  - var target_el = e.doc().get('//*[@anchor="' + target + '"]')
+  - var tn = target_el.name()
+  if (tn == 'reference') || (tn == 'referencegroup')
+    | [
+    a.xref(href='#'+target)= t
+    | ]
+  else
     a.xref(href='#'+target)= t
 
 mixin foot_author(e)
@@ -372,8 +386,9 @@ mixin foot_author(e)
         a.authorURI(href=uri)= uri
 
 mixin referencegroup(e)
-  - var id=$att(e,'id')
-  span.referenceGroup(id=id)
+  - var anc=$att(e,'anchor')
+  dt(id=anc) [#{anc}]
+  dd
     +children(e)
     
 mixin tocSections(p, depth)
@@ -443,7 +458,7 @@ mixin index
                                   a(href='#'+s.irefid)= s.section
     
 doctype html
-html(lang='en', class=$('/rfc/@mode'))
+html(lang='en', class=$$('/rfc/front/seriesInfo/@name'))
   head
     meta(charset='utf-8')
     meta(name='author', content=$$('front/author/@fullname'))

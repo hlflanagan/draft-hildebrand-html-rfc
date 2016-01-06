@@ -35,7 +35,7 @@ mixin front(e)
           t(pn="p-boilerplate-1-1").
             This Internet-Draft is submitted in full conformance with
             the provisions of BCP 78 and BCP 79.#{tlp[0]||""}
-          if $('@docName').match(/^draft-/)
+          if defs.mode !== 'RFC'
             t(pn="p-boilerplate-1-2").
               Internet-Drafts are working documents of the Internet Engineering Task
               Force (IETF).  Note that other groups may also distribute working
@@ -92,7 +92,7 @@ mixin date(e)
     - var mn = dt.monthNumber(month)
     - var day = a['day'] || now.getDate();
     - pubDate = new Date(year, mn, day)
-    if (pubDate < now) && (defs.mode != 'RFC')
+    if (pubDate < now) && (defs.mode !== 'RFC')
       +warn('Publication date before today: ' + pubDate)
     +elem(e)(year=year, month=month, day=day)
 
@@ -168,7 +168,7 @@ mixin referencegroup(e)
   else
     - var a = $att(e)
     - a = $nsDecls(e, a)
-    #{$qname(e)}&attributes(a)
+    referencegroup&attributes(a)
       - var rs = e.find('reference')
       - rs.sort(number.cmpAnchor)
       +nodes(rs)
@@ -180,7 +180,7 @@ mixin references(e)
     - var a = $att(e)
     - a = $nsDecls(e, a)
     - a.pn = number.partNumber(e)
-    #{$qname(e)}&attributes(a)
+    references&attributes(a)
       - var nm = $('name', e)
       if nm
         +elem(nm)
@@ -213,10 +213,10 @@ mixin relref(e)
     - e.attr('derivedLink', uri + "#s-" + section)
   - var txt = e.text().trim()
   if txt
-    - var dc = $att(e, 'derivedContent')
+    - var dc = $att(e, 'derivedRemoteContent')
     if dc && (dc != txt)
-      +warn('relref derivedContent invalid.  replacing', e)
-    - e.attr('derivedContent', txt)
+      +warn('relref derivedRemoteContent invalid.  replacing', e)
+    - e.attr('derivedRemoteContent', txt)
   +elem(e)
 
 mixin section(e)
@@ -287,7 +287,6 @@ doctype xml
 - root.attr('prepTime', dt.isoDateTime(new Date()))
 - root.attr('version', '3')
 - root.attr('scripts', number.scripts($root().toString()))
-- root.attr('mode', defs.mode)
 if $att(root, 'tocInclude') == 'true'
   - number.defaultAttr(root, 'tocDepth', '3');
   

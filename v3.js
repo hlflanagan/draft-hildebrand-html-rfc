@@ -26,19 +26,6 @@ exports.ws = function(ary) {
   }).join(' ');
 }
 
-exports.series = function(e) {
-  var dn = e.attr('docName');
-  if (!dn) {
-    return "RFC";
-  } else {
-    dn = dn.value();
-    if (dn.match(/^draft-/)) {
-      return 'Internet-Draft';
-    }
-  }
-  return 'Private';
-}
-
 var categories = {
   std:      "Standards Track",
   bcp:      "BCP",

@@ -65,6 +65,9 @@ div:hover > .ascii {
   margin-top: 8px;
   margin-left: 6.5em;
 }
+.refInstance {
+  padding-bottom: 10px;
+}
 #toc ul {
   list-style-type: none;
 }

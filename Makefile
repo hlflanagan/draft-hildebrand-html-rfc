@@ -1,4 +1,4 @@
-DRAFT=draft-hildebrand-html-rfc
+DRAFT=draft-iab-html-rfc
 #XMLJADE=../xmljade/bin/xmljade
 XMLJADE=node_modules/.bin/xmljade
 HTTPSERVER=../node_modules/.bin/http-server

@@ -1,9 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?rfc toc="yes"?> <!-- PI gets removed.  This comment doesn't. -->
-<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
-<!ENTITY RFC6949 SYSTEM "reference.RFC.6949.xml">
-]>
-<rfc ipr='trust200902' docName='draft-hildebrand-html-rfc-04' category='info'
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
+<rfc ipr='trust200902'
   xmlns:xi='http://www.w3.org/2001/XInclude' tocInclude='true' sortRefs='true'
   updates='6949, 5646'>
   <link href="https://github.com/hildjj/draft-hildebrand-html-rfc.git" rel="alternate"/>
@@ -61,6 +59,8 @@
         <li>Lists</li>
       </ul>
     </abstract>
+    <seriesInfo name='foo' value='4'/>
+    <seriesInfo name='Internet-Draft' value='draft-hildebrand-html-rfc-04'/>
     <note removeInRFC='true'>
       <name>Editorial Note</name>
       <t>
@@ -206,8 +206,16 @@
           <t>Reference</t>
           <ul>
             <li>no format: <xref target='RFC6949'/></li>
-            <li>format=counter: <xref format='counter' target='RFC6949'/></li>
             <li>format=title: <xref format='title' target='RFC6949'/></li>
+            <li>displayreference: <xref target='RFC5646'/></li>
+          </ul>
+        </li>
+        <li>
+          <t>ReferenceGroup</t>
+          <ul>
+            <li>no format: <xref target='Bibble'/></li>
+            <li>format=title: <xref format='title' target='Bibble'/></li>
+            <li>displayreference: <xref target='STD69'/></li>
           </ul>
         </li>
       </ul>
@@ -363,10 +371,11 @@ int main(void)
     </section>
   </middle>
   <back>
-    <displayreference target="RFC6949" to="RFC-reqs"/>
+    <displayreference target="STD69" to="EPP"/>
+    <displayreference target="RFC5646" to="LANG-TAGS"/>
     <references>
       <name>Informative References</name>
-      &RFC6949;
+      <xi:include href='reference.RFC.6949.xml'/>
       <reference anchor="RFC5646" target="https://tools.ietf.org/html/rfc5646" xml:base="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml">
         <front>
           <title>Tags for Identifying Languages</title>
@@ -388,6 +397,13 @@ int main(void)
         <seriesInfo name="RFC" value="5646"/>
         <format type="TXT" octets="208592" target="http://www.rfc-editor.org/rfc/rfc5646.txt"/>
       </reference>
+      <referencegroup anchor="STD69">
+        <xi:include href='reference.RFC.5734.xml'/>
+        <xi:include href='reference.RFC.5730.xml'/>
+        <xi:include href='reference.RFC.5731.xml'/>
+        <xi:include href='reference.RFC.5732.xml'/>
+        <xi:include href='reference.RFC.5733.xml'/>
+      </referencegroup>
       <referencegroup anchor="Bibble">
         <reference anchor="Bibble3" quoteTitle="false">
           <front>
