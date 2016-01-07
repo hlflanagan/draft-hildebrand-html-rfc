@@ -96,6 +96,9 @@ mixin date(e)
       +warn('Publication date before today: ' + pubDate)
     +elem(e)(year=year, month=month, day=day)
 
+mixin displayreference(e)
+  //- do not output displayreference
+  
 mixin dl(e)
   - number.defaultAttr(e, 'hanging', 'true')
   - number.defaultAttr(e, 'spacing', 'normal')
@@ -160,9 +163,17 @@ mixin ol(e)
 
 mixin reference(e)
   - number.defaultAttr(e, 'quoteTitle', 'true')
+  - var anchor = $att(e, 'anchor')
+  - var dr = $('//displayreference[@target="' + anchor + '"]/@to')
+  if dr
+    - e.attr('anchor', dr)
   +elem(e)
 
 mixin referencegroup(e)
+  - var anchor = $att(e, 'anchor')
+  - var dr = $('//displayreference[@target="' + anchor + '"]/@to')
+  if dr
+    - e.attr('anchor', dr)
   if $att($root(), 'sortRefs') !== 'true'
     +elem(e)
   else
@@ -189,10 +200,17 @@ mixin references(e)
       +nodes(rs)
 
 mixin relref(e)
+  //- target can be to either original reference anchor, or to the one
+  //- modified by displayreference.
   - var target = $att(e, 'target')
   if !target
     +error("relref without target", e)
   - var target_el = $('//*[@anchor="' + target + '"]')
+  - var dr = $('//displayreference[@target="' + target + '"]/@to')
+  if dr
+    - e.attr('target', dr)
+    - target = dr
+    - target_el = target_el || $('//*[@anchor="' + target + '"]')
   if !target_el
     +error("relref with non-existent target", e)
   - var nm = target_el.name()
@@ -261,13 +279,19 @@ mixin workgroup(e)
   +elem(e)
 
 mixin xref(e)
-  - var targ = $att(e, 'target')
-  if targ == null
+  - var target = $att(e, 'target')
+  if target == null
     +error("xref target required", e)
 
-  - var targel = $('//*[@anchor="' + targ + '"]')
-  if targel == null
-    +error('unknown xref target: ' + targ, e)
+  - var target_el = $('//*[@anchor="' + target + '"]')
+  - var dr = $('//displayreference[@target="' + target + '"]/@to')
+  if dr
+    - e.attr('target', dr)
+    - target = dr
+    - target_el = target_el || $('//*[@anchor="' + target + '"]')
+
+  if target_el == null
+    +error('unknown xref target: ' + target, e)
     
   - number.defaultAttr(e, 'format', 'default')
   if $att(e, 'section')

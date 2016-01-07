@@ -60,6 +60,8 @@ div:hover > .ascii {
   float: left;
   text-align: right;
   width: 6em;
+  white-space: nowrap;
+  clear: left;
 }
 .reference dd {
   margin-top: 8px;

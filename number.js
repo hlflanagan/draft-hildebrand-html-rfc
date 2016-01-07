@@ -258,7 +258,17 @@ exports.sanity = function(root, nm) {
 
 exports.cmpAnchor = function(a, b) {
   var aa = att(a, 'anchor');
+  var adr = a.get('//displayreference[@target="' + aa + '"]/@to')
+  if (adr) {
+    aa = adr.value();
+  }
+
   var ba = att(b, 'anchor');
+  var bdr = b.get('//displayreference[@target="' + ba + '"]/@to')
+  if (bdr) {
+    ba = bdr.value();
+  }
+
   if (aa === ba) {
     return 0;
   }

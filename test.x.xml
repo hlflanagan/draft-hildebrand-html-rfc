@@ -1,9 +1,9 @@
 <?xml version='1.0'?>
 <rfc consensus='false'
-     expiresDate='2016-07-06'
+     expiresDate='2016-07-07'
      indexInclude='true'
      ipr='trust200902'
-     prepTime='2016-01-06T21:54:47Z'
+     prepTime='2016-01-07T16:19:16Z'
      scripts='Common,Inherited,Latin'
      sortRefs='true'
      submissionType='IETF'
@@ -64,7 +64,7 @@
         <email>rse@rfc-editor.org</email>
       </address>
     </author>
-    <date day='6' month='January' year='2016'/>
+    <date day='7' month='January' year='2016'/>
     <area>gen</area>
     <workgroup>RFC-Interest Pseudo Working Group</workgroup>
     <keyword>html</keyword>
@@ -131,7 +131,7 @@
           than as "work in progress."
         </t>
         <t pn='p-boilerplate-1-4'>
-          This Internet-Draft will expire on 2016-07-06.
+          This Internet-Draft will expire on 2016-07-07.
         </t>
       </section>
       <section numbered='false' pn='s-boilerplate-2'>
@@ -315,7 +315,7 @@
           <tt>&lt;relref&gt;</tt> with text <relref
           derivedLink='https://tools.ietf.org/html/rfc5646#s-1'
           derivedRemoteContent='requirements' section='1'
-          target='RFC5646'>requirements</relref>
+          target='LANG-TAGS'>requirements</relref>
         </li>
         <li pn='p-2-12'>
           <t pn='p-2-13'>Multiple</t>
@@ -386,7 +386,7 @@
             </li>
             <li pn='p-2-34'>
               displayreference: <xref derivedContent='LANG-TAGS'
-              format='default' target='RFC5646'/>
+              format='default' target='LANG-TAGS'/>
             </li>
           </ul>
         </li>
@@ -403,7 +403,7 @@
             </li>
             <li pn='p-2-39'>
               displayreference: <xref derivedContent='EPP'
-              format='default' target='STD69'/>
+              format='default' target='EPP'/>
             </li>
           </ul>
         </li>
@@ -668,8 +668,6 @@ int main(void)
     </section>
   </middle>
   <back>
-    <displayreference target='STD69' to='EPP'/>
-    <displayreference target='RFC5646' to='LANG-TAGS'/>
     <references>
       <name>Informative References</name>
       <referencegroup anchor='Bibble'>
@@ -707,72 +705,7 @@ int main(void)
                       value='12-4444'/>
         </reference>
       </referencegroup>
-      <reference anchor='RFC5646'
-                 quoteTitle='true'
-                 target='https://tools.ietf.org/html/rfc5646'
-                 xml:base='http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml'>
-        <front>
-          <title>Tags for Identifying Languages</title>
-          <author fullname='A. Phillips'
-                  initials='A.'
-                  surname='Phillips'/>
-          <author fullname='M. Davis' initials='M.' surname='Davis'/>
-          <date month='September' year='2009'/>
-          <abstract>
-            <t>
-              This document describes the structure, content,
-              construction, and semantics of language tags for use in
-              cases where it is desirable to indicate the language
-              used in an information object.  It also describes how to
-              register values for use in language tags and the
-              creation of user-defined extensions for private
-              interchange.  This document specifies an Internet Best
-              Current Practices for the Internet Community, and
-              requests discussion and suggestions for improvements.
-            </t>
-          </abstract>
-        </front>
-        <seriesInfo name='BCP' value='47'/>
-        <seriesInfo name='RFC' value='5646'/>
-        <format octets='208592'
-                target='http://www.rfc-editor.org/rfc/rfc5646.txt'
-                type='TXT'/>
-      </reference>
-      <reference anchor='RFC6949'
-                 quoteTitle='true'
-                 target='http://www.rfc-editor.org/info/rfc6949'>
-        <front>
-          <title>
-            RFC Series Format Requirements and Future Development
-          </title>
-          <author fullname='H. Flanagan'
-                  initials='H.'
-                  surname='Flanagan'>
-            <organization/>
-          </author>
-          <author fullname='N. Brownlee'
-                  initials='N.'
-                  surname='Brownlee'>
-            <organization/>
-          </author>
-          <date month='May' year='2013'/>
-          <abstract>
-            <t>
-              This document describes the current requirements and
-              requests for enhancements for the format of the
-              canonical version of RFCs.  Terms are defined to help
-              clarify exactly which stages of document production are
-              under discussion for format changes.  The requirements
-              described in this document will determine what changes
-              will be made to RFC format.  This document updates RFC
-              2223.
-            </t>
-          </abstract>
-        </front>
-        <seriesInfo name='RFC' value='6949'/>
-        <seriesInfo name='DOI' value='10.17487/RFC6949'/>
-      </reference>
-      <referencegroup anchor='STD69'>
+      <referencegroup anchor='EPP'>
         <reference anchor='RFC5730'
                    quoteTitle='true'
                    target='http://www.rfc-editor.org/info/rfc5730'>
@@ -924,6 +857,71 @@ int main(void)
           <seriesInfo name='DOI' value='10.17487/RFC5734'/>
         </reference>
       </referencegroup>
+      <reference anchor='LANG-TAGS'
+                 quoteTitle='true'
+                 target='https://tools.ietf.org/html/rfc5646'
+                 xml:base='http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5646.xml'>
+        <front>
+          <title>Tags for Identifying Languages</title>
+          <author fullname='A. Phillips'
+                  initials='A.'
+                  surname='Phillips'/>
+          <author fullname='M. Davis' initials='M.' surname='Davis'/>
+          <date month='September' year='2009'/>
+          <abstract>
+            <t>
+              This document describes the structure, content,
+              construction, and semantics of language tags for use in
+              cases where it is desirable to indicate the language
+              used in an information object.  It also describes how to
+              register values for use in language tags and the
+              creation of user-defined extensions for private
+              interchange.  This document specifies an Internet Best
+              Current Practices for the Internet Community, and
+              requests discussion and suggestions for improvements.
+            </t>
+          </abstract>
+        </front>
+        <seriesInfo name='BCP' value='47'/>
+        <seriesInfo name='RFC' value='5646'/>
+        <format octets='208592'
+                target='http://www.rfc-editor.org/rfc/rfc5646.txt'
+                type='TXT'/>
+      </reference>
+      <reference anchor='RFC6949'
+                 quoteTitle='true'
+                 target='http://www.rfc-editor.org/info/rfc6949'>
+        <front>
+          <title>
+            RFC Series Format Requirements and Future Development
+          </title>
+          <author fullname='H. Flanagan'
+                  initials='H.'
+                  surname='Flanagan'>
+            <organization/>
+          </author>
+          <author fullname='N. Brownlee'
+                  initials='N.'
+                  surname='Brownlee'>
+            <organization/>
+          </author>
+          <date month='May' year='2013'/>
+          <abstract>
+            <t>
+              This document describes the current requirements and
+              requests for enhancements for the format of the
+              canonical version of RFCs.  Terms are defined to help
+              clarify exactly which stages of document production are
+              under discussion for format changes.  The requirements
+              described in this document will determine what changes
+              will be made to RFC format.  This document updates RFC
+              2223.
+            </t>
+          </abstract>
+        </front>
+        <seriesInfo name='RFC' value='6949'/>
+        <seriesInfo name='DOI' value='10.17487/RFC6949'/>
+      </reference>
     </references>
     <section pn='s-A'>
       <name slugifiedName='n-doing-things-in-appendices'>
