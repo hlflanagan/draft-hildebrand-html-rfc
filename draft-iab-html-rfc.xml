@@ -12,7 +12,7 @@
 <!ENTITY I-D.iab-rfcv3-preptool SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.iab-rfcv3-preptool.xml">
 <!ENTITY I-D.iab-rfc-framework SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.iab-rfc-framework.xml">
 ]>
-<rfc ipr="trust200902" docName="draft-iab-html-rfc-00" category="info">
+<rfc ipr="trust200902" docName="draft-iab-html-rfc-01" category="info">
   <front>
     <title abbrev="HTML RFC">HyperText Markup Language Request For Comments Format</title>
     <author initials="J." surname="Hildebrand" fullname="Joe Hildebrand" role="editor">
@@ -27,7 +27,7 @@
         <email>paul.hoffman@icann.org</email>
       </address>
     </author>
-    <date year="2016" month="January" day="7"/>
+    <date year="2016" month="January" day="12"/>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>

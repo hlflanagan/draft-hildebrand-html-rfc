@@ -5,12 +5,12 @@
 Network Working Group                                 J. Hildebrand, Ed.
 Internet-Draft                                       Cisco Systems, Inc.
 Intended status: Informational                                P. Hoffman
-Expires: July 10, 2016                                             ICANN
-                                                         January 7, 2016
+Expires: July 15, 2016                                             ICANN
+                                                        January 12, 2016
 
 
          HyperText Markup Language Request For Comments Format
-                         draft-iab-html-rfc-00
+                         draft-iab-html-rfc-01
 
 Abstract
 
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 10, 2016.
+   This Internet-Draft will expire on July 15, 2016.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                 [Page 1]
+Hildebrand & Hoffman      Expires July 15, 2016                 [Page 1]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                 [Page 2]
+Hildebrand & Hoffman      Expires July 15, 2016                 [Page 2]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -165,7 +165,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                 [Page 3]
+Hildebrand & Hoffman      Expires July 15, 2016                 [Page 3]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -221,7 +221,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                 [Page 4]
+Hildebrand & Hoffman      Expires July 15, 2016                 [Page 4]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -277,7 +277,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                 [Page 5]
+Hildebrand & Hoffman      Expires July 15, 2016                 [Page 5]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -333,7 +333,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                 [Page 6]
+Hildebrand & Hoffman      Expires July 15, 2016                 [Page 6]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -389,7 +389,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                 [Page 7]
+Hildebrand & Hoffman      Expires July 15, 2016                 [Page 7]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -445,7 +445,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                 [Page 8]
+Hildebrand & Hoffman      Expires July 15, 2016                 [Page 8]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -501,7 +501,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                 [Page 9]
+Hildebrand & Hoffman      Expires July 15, 2016                 [Page 9]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -557,7 +557,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 10]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 10]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -613,7 +613,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 11]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 11]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -669,7 +669,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 12]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 12]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -725,7 +725,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 13]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 13]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -781,7 +781,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 14]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 14]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -837,7 +837,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 15]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 15]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -893,7 +893,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 16]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 16]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -949,7 +949,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 17]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 17]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1005,7 +1005,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 18]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 18]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1061,7 +1061,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 19]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 19]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1117,7 +1117,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 20]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 20]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1173,7 +1173,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 21]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 21]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1229,7 +1229,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 22]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 22]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1285,7 +1285,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 23]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 23]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1341,7 +1341,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 24]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 24]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1397,7 +1397,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 25]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 25]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1453,7 +1453,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 26]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 26]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1509,7 +1509,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 27]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 27]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1565,7 +1565,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 28]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 28]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1621,7 +1621,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 29]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 29]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1677,7 +1677,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 30]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 30]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1733,7 +1733,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 31]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 31]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1789,7 +1789,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 32]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 32]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1845,7 +1845,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 33]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 33]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1901,7 +1901,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 34]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 34]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -1957,7 +1957,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 35]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 35]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -2013,7 +2013,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 36]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 36]
 
 Internet-Draft                  HTML RFC                    January 2016
 
@@ -2069,4 +2069,4 @@ Authors' Addresses
 
 
 
-Hildebrand & Hoffman      Expires July 10, 2016                [Page 37]
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 37]
