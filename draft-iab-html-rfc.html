@@ -685,7 +685,7 @@
 <p id="rfc.section.1.p.2">This document describes the HTML format that will be used as one of the publication formats for the RFC Series. It defines a strict subset of HTML appropriate for RFC Series documents.  The visual layout of the document will be defined through a cascading style sheet (CSS) <a href="#W3C.REC-CSS2-20110607">[W3C.REC-CSS2-20110607]</a>.  The CSS will be included in the HTML file but will be described in a separate document.</p>
 <p id="rfc.section.1.p.3">The details (particularly any vocabularies) described in this document are expected to change based on experience gained in implementing the RFC production center's toolset. Revised documents will be published capturing those changes as the toolset is completed. Other implementers must not expect those changes to remain backwards-compatible with the details described this document.</p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#requirements-for-html" id="requirements-for-html">Requirements for the HTML Format</a></h1>
-<p id="rfc.section.2.p.1">This section lists the design requirements used to create the HTML format described in this document.  These requirements build on those found in <a href="#RFC6949">[RFC6949]</a>. Many of these requirements are naturally fulfilled by using the output of the prep tool <a href="#I-D.hoffman-rfcv3-preptool">[I-D.hoffman-rfcv3-preptool]</a>.</p>
+<p id="rfc.section.2.p.1">This section lists the design requirements used to create the HTML format described in this document.  These requirements build on those found in <a href="#RFC6949">[RFC6949]</a>. Many of these requirements are naturally fulfilled by using the output of the prep tool <a href="#I-D.iab-rfcv3-preptool">[I-D.iab-rfcv3-preptool]</a>.</p>
 <p/>
 
 <ul>
@@ -756,7 +756,7 @@
   &lt;!-- NO pilcrow here --&gt;
 &lt;/blockquote&gt;</pre>
 <h1 id="rfc.section.5.3"><a href="#rfc.section.5.3">5.3.</a> <a href="#ascii-equivalents" id="ascii-equivalents">ASCII Equivalents</a></h1>
-<p id="rfc.section.5.3.p.1">Many elements in the v3 schema in <a href="#I-D.hoffman-xml2rfc">[I-D.hoffman-xml2rfc]</a> contain attributes for ASCII equivalents of the Unicode text contained in the element or the Unicode attribute value.  These alternatives are included in the HTML as in a &lt;span&gt; tag with the class "ascii".  The &lt;span&gt; is included inside the tag that is showing the text to the user. For example:</p>
+<p id="rfc.section.5.3.p.1">Many elements in the v3 schema in <a href="#I-D.iab-xml2rfc">[I-D.iab-xml2rfc]</a> contain attributes for ASCII equivalents of the Unicode text contained in the element or the Unicode attribute value.  These alternatives are included in the HTML as in a &lt;span&gt; tag with the class "ascii".  The &lt;span&gt; is included inside the tag that is showing the text to the user. For example:</p>
 <pre>
 &lt;span class="surname"&gt;
   HILDEBRAND
@@ -999,7 +999,7 @@
 &lt;rfc&gt;
   &lt;!&amp;#x2d;&amp;#x2d; A comment &amp;#x2d;&amp;#x2d;&gt;</pre>
 <h1 id="rfc.section.9"><a href="#rfc.section.9">9.</a> <a href="#elements" id="elements">Elements</a></h1>
-<p id="rfc.section.9.p.1">This section describes how each of the XML elements from <a href="#I-D.hoffman-xml2rfc">[I-D.hoffman-xml2rfc]</a> is rendered to HTML.  Many of the descriptions have examples to clarify how elements will be rendered.</p>
+<p id="rfc.section.9.p.1">This section describes how each of the XML elements from <a href="#I-D.iab-xml2rfc">[I-D.iab-xml2rfc]</a> is rendered to HTML.  Many of the descriptions have examples to clarify how elements will be rendered.</p>
 <h1 id="rfc.section.9.1"><a href="#rfc.section.9.1">9.1.</a> <a href="#element.abstract" id="element.abstract">&lt;abstract&gt;</a></h1>
 <p id="rfc.section.9.1.p.1">The abstract is rendered similarly to a &lt;section&gt; with anchor="abstract" and &lt;name&gt;Abstract&lt;/name&gt;, but without a section number.</p>
 <pre>
@@ -1152,7 +1152,7 @@ about something that we need to remember later.
 <h1 id="rfc.section.9.18"><a href="#rfc.section.9.18">9.18.</a> <a href="#element.dd" id="element.dd">&lt;dd&gt;</a></h1>
 <p id="rfc.section.9.18.p.1">This element is directly rendered as its HTML counterpart.</p>
 <h1 id="rfc.section.9.19"><a href="#rfc.section.9.19">9.19.</a> <a href="#element.displayreference" id="element.displayreference">&lt;displayreference&gt;</a></h1>
-<p id="rfc.section.9.19.p.1">Does not effect the HTML output.  The prep tool (<a href="#I-D.hoffman-rfcv3-preptool">[I-D.hoffman-rfcv3-preptool]</a>) will have already used this element to generate the &lt;xref&gt;'s "derivedContent" attribute.</p>
+<p id="rfc.section.9.19.p.1">Does not effect the HTML output.  The prep tool (<a href="#I-D.iab-rfcv3-preptool">[I-D.iab-rfcv3-preptool]</a>) will have already used this element to generate the &lt;xref&gt;'s "derivedContent" attribute.</p>
 <h1 id="rfc.section.9.20"><a href="#rfc.section.9.20">9.20.</a> <a href="#element.dl" id="element.dl">&lt;dl&gt;</a></h1>
 <p id="rfc.section.9.20.p.1">This element is directly rendered as its HTML counterpart.</p>
 <p id="rfc.section.9.20.p.2">If the hanging attribute is "false", add the "dlParallel" class, else add the "dlHanging" class.</p>
@@ -1524,9 +1524,9 @@ int main(void)
     </tr>
     <tr>
       <td class="reference">
-        <b id="I-D.hoffman-xml2rfc">[I-D.hoffman-xml2rfc]</b>
+        <b id="I-D.iab-xml2rfc">[I-D.iab-xml2rfc]</b>
       </td>
-      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-hoffman-xml2rfc-23">The 'XML2RFC' version 3 Vocabulary</a>", Internet-Draft draft-hoffman-xml2rfc-23, September 2015.</td>
+      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-iab-xml2rfc-00">The 'XML2RFC' version 3 Vocabulary</a>", Internet-Draft draft-iab-xml2rfc-00, December 2015.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -1565,9 +1565,9 @@ int main(void)
     </tr>
     <tr>
       <td class="reference">
-        <b id="I-D.hoffman-rfcv3-preptool">[I-D.hoffman-rfcv3-preptool]</b>
+        <b id="I-D.iab-rfcv3-preptool">[I-D.iab-rfcv3-preptool]</b>
       </td>
-      <td class="top"><a>Hoffman, P.</a> and <a>J. Hildebrand</a>, "<a href="http://tools.ietf.org/html/draft-hoffman-rfcv3-preptool-06">RFC v3 Prep Tool Description</a>", Internet-Draft draft-hoffman-rfcv3-preptool-06, September 2015.</td>
+      <td class="top"><a>Hoffman, P.</a> and <a>J. Hildebrand</a>, "<a href="http://tools.ietf.org/html/draft-iab-rfcv3-preptool-00">RFC v3 Prep Tool Description</a>", Internet-Draft draft-iab-rfcv3-preptool-00, January 2016.</td>
     </tr>
     <tr>
       <td class="reference">

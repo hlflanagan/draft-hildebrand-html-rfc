@@ -232,7 +232,7 @@ Internet-Draft                  HTML RFC                    January 2016
    format described in this document.  These requirements build on those
    found in [RFC6949].  Many of these requirements are naturally
    fulfilled by using the output of the prep tool
-   [I-D.hoffman-rfcv3-preptool].
+   [I-D.iab-rfcv3-preptool].
 
    o  The HTML has to render correctly on a list of browser versions
       that the RFC Editor will keep up to date outside of this document.
@@ -452,7 +452,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 5.3.  ASCII Equivalents
 
-   Many elements in the v3 schema in [I-D.hoffman-xml2rfc] contain
+   Many elements in the v3 schema in [I-D.iab-xml2rfc] contain
    attributes for ASCII equivalents of the Unicode text contained in the
    element or the Unicode attribute value.  These alternatives are
    included in the HTML as in a <span> tag with the class "ascii".  The
@@ -931,8 +931,8 @@ Internet-Draft                  HTML RFC                    January 2016
 9.  Elements
 
    This section describes how each of the XML elements from
-   [I-D.hoffman-xml2rfc] is rendered to HTML.  Many of the descriptions
-   have examples to clarify how elements will be rendered.
+   [I-D.iab-xml2rfc] is rendered to HTML.  Many of the descriptions have
+   examples to clarify how elements will be rendered.
 
 9.1.  <abstract>
 
@@ -1255,7 +1255,7 @@ Internet-Draft                  HTML RFC                    January 2016
 9.19.  <displayreference>
 
    Does not effect the HTML output.  The prep tool
-   ([I-D.hoffman-rfcv3-preptool]) will have already used this element to
+   ([I-D.iab-rfcv3-preptool]) will have already used this element to
    generate the <xref>'s "derivedContent" attribute.
 
 9.20.  <dl>
@@ -1997,9 +1997,9 @@ Internet-Draft                  HTML RFC                    January 2016
               Languages", BCP 47, RFC 5646, DOI 10.17487/RFC5646,
               September 2009, <http://www.rfc-editor.org/info/rfc5646>.
 
-   [I-D.hoffman-xml2rfc]
+   [I-D.iab-xml2rfc]
               Hoffman, P., "The 'XML2RFC' version 3 Vocabulary", draft-
-              hoffman-xml2rfc-23 (work in progress), September 2015.
+              iab-xml2rfc-00 (work in progress), December 2015.
 
    [W3C.REC-html5-20141028]
               Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
@@ -2039,10 +2039,10 @@ Internet-Draft                  HTML RFC                    January 2016
               DOI 10.17487/RFC7322, September 2014,
               <http://www.rfc-editor.org/info/rfc7322>.
 
-   [I-D.hoffman-rfcv3-preptool]
+   [I-D.iab-rfcv3-preptool]
               Hoffman, P. and J. Hildebrand, "RFC v3 Prep Tool
-              Description", draft-hoffman-rfcv3-preptool-06 (work in
-              progress), September 2015.
+              Description", draft-iab-rfcv3-preptool-00 (work in
+              progress), January 2016.
 
    [I-D.iab-rfc-framework]
               Flanagan, H., "RFC Format Framework", draft-iab-rfc-

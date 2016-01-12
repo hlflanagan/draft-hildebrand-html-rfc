@@ -8,8 +8,8 @@
 <!ENTITY RFC5646 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5646.xml">
 <!ENTITY RFC6949 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6949.xml">
 <!ENTITY RFC7322 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7322.xml">
-<!ENTITY I-D.hoffman-xml2rfc SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.hoffman-xml2rfc.xml">
-<!ENTITY I-D.hoffman-rfcv3-preptool SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.hoffman-rfcv3-preptool.xml">
+<!ENTITY I-D.iab-xml2rfc SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.iab-xml2rfc.xml">
+<!ENTITY I-D.iab-rfcv3-preptool SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.iab-rfcv3-preptool.xml">
 <!ENTITY I-D.iab-rfc-framework SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.iab-rfc-framework.xml">
 ]>
 <rfc ipr="trust200902" docName="draft-iab-html-rfc-00" category="info">
@@ -62,7 +62,7 @@
         format described in this document.  These requirements build on those
         found in <xref target="RFC6949"/>. Many of these requirements are
         naturally fulfilled by using the output of the prep tool
-        <xref target="I-D.hoffman-rfcv3-preptool"/>.</t>
+        <xref target="I-D.iab-rfcv3-preptool"/>.</t>
       <t>
       <list style="symbols">
       <t>The HTML has to render correctly on a list of browser versions that
@@ -229,7 +229,7 @@
         </figure>
       </section>
       <section anchor="ascii-equivalents" title="ASCII Equivalents">
-        <t>Many elements in the v3 schema in <xref target="I-D.hoffman-xml2rfc"/> contain attributes for
+        <t>Many elements in the v3 schema in <xref target="I-D.iab-xml2rfc"/> contain attributes for
           ASCII equivalents of the Unicode text contained in the element or
           the Unicode attribute value.  These alternatives are included in the HTML as in a
           &lt;span&gt; tag with the class "ascii".  The &lt;span&gt; is
@@ -627,7 +627,7 @@
     </section>
     <section title="Elements" anchor="elements">
       <t>This section describes how each of the XML elements from
-        <xref target='I-D.hoffman-xml2rfc'/> is rendered to HTML.
+        <xref target='I-D.iab-xml2rfc'/> is rendered to HTML.
         Many of the descriptions have examples to clarify how elements will be rendered.</t>
       <section title="&lt;abstract&gt;" anchor="element.abstract">
         <t>The abstract is rendered similarly to a &lt;section&gt; with anchor="abstract" and
@@ -900,7 +900,7 @@ about something that we need to remember later.
       </section>
       <section title="&lt;displayreference&gt;" anchor="element.displayreference">
         <t>Does not effect the HTML output.  The prep tool
-          (<xref target='I-D.hoffman-rfcv3-preptool'/>) will have already
+          (<xref target='I-D.iab-rfcv3-preptool'/>) will have already
           used this element to generate the &lt;xref&gt;'s "derivedContent"
           attribute.</t>
       </section>
@@ -1535,7 +1535,7 @@ int main(void)
 &RFC2397;
 &RFC3629;
 &RFC5646;
-&I-D.hoffman-xml2rfc;
+&I-D.iab-xml2rfc;
 &W3C.REC-html5-20141028;
       <reference anchor="W3C.REC-CSS2-20110607" target="http://www.w3.org/TR/2011/REC-CSS2-20110607">
         <front>
@@ -1570,7 +1570,7 @@ int main(void)
     </reference>
 &RFC6949;
 &RFC7322;
-&I-D.hoffman-rfcv3-preptool;
+&I-D.iab-rfcv3-preptool;
 &I-D.iab-rfc-framework;
     </references>
   </back>
