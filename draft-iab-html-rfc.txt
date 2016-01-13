@@ -208,7 +208,7 @@ Internet-Draft                  HTML RFC                    January 2016
    subset of HTML appropriate for RFC Series documents.  The visual
    layout of the document will be defined through a cascading style
    sheet (CSS) [W3C.REC-CSS2-20110607].  The CSS will be included in the
-   HTML file but will be described in a separate document.
+   HTML file but will be described in [I-D.iab-rfc-css].
 
    The details (particularly any vocabularies) described in this
    document are expected to change based on experience gained in
@@ -326,10 +326,10 @@ Internet-Draft                  HTML RFC                    January 2016
 
       *  People who use devices with small screens, such as cell phones
 
-      *  Other groups to be determined later
-
    o  Specific instances where goals for accessibility are important in
       the design choices of the format have been called out in the text.
+
+
 
 
 
@@ -915,10 +915,12 @@ Internet-Draft                  HTML RFC                    January 2016
    produce this document will be included within a comment.  This
    comment may be preceded by another comment that describes the source.
 
-   Any instances of "--" in the XML will be modified to use U+002D
-   characters: "--".  Note that if the dashes in the original XML were
-   in a comment start- (<!--) or end-delimiter (-->), the XML will not
-   parse correctly without reversing this transformation.
+   Since the sequence "--" is invalid in an HTML comment, any instances
+   of "--" in the input XML will be modified to use the escaped form of
+   the HYPHEN-MINUS characters: "&#x2d;&#x2d;".  Note that if the dashes
+   in the original XML were in a comment start- (<!--) or end-delimiter
+   (-->), the XML will not parse correctly without reversing this
+   transformation before parsing.
 
    <!-- XML SOURCE START (note: each instance of
         two '-' (U+002D: HYPHEN-MINUS) characters
@@ -940,12 +942,10 @@ Internet-Draft                  HTML RFC                    January 2016
    anchor="abstract" and <name>Abstract</name>, but without a section
    number.
 
-   <section id="abstract">
-     <h2><a href="#abstract" class="selfRef">Abstract</a></h2>
-     <p id="p-abstract-1">This document defines...
-       <a href="#p-abstract-1" class="pilcrow">&para;</a>
-     </p>
-   </section>
+
+
+
+
 
 
 
@@ -953,6 +953,13 @@ Hildebrand & Hoffman      Expires July 15, 2016                [Page 17]
 
 Internet-Draft                  HTML RFC                    January 2016
 
+
+   <section id="abstract">
+     <h2><a href="#abstract" class="selfRef">Abstract</a></h2>
+     <p id="p-abstract-1">This document defines...
+       <a href="#p-abstract-1" class="pilcrow">&para;</a>
+     </p>
+   </section>
 
 9.2.  <address>
 
@@ -994,13 +1001,6 @@ Internet-Draft                  HTML RFC                    January 2016
    The <div> element will have CSS classes of "artwork" and "art-"
    prepended to the value of the <artwork> element's "type" attribute,
    if it exists.
-
-
-
-
-
-
-
 
 
 
@@ -2001,12 +2001,12 @@ Internet-Draft                  HTML RFC                    January 2016
               Hoffman, P., "The 'XML2RFC' version 3 Vocabulary", draft-
               iab-xml2rfc-00 (work in progress), December 2015.
 
-   [W3C.REC-html5-20141028]
-              Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
-              Navara, E., O&#039;Connor, E., and S. Pfeiffer, "HTML5",
-              World Wide Web Consortium Recommendation REC-
-              html5-20141028, October 2014,
-              <http://www.w3.org/TR/2014/REC-html5-20141028>.
+   [I-D.iab-rfc-css]
+              Flanagan, H., "CSS Requirements for RFCs", draft-iab-rfc-
+              css-00 (work in progress), January 2016.
+
+
+
 
 
 
@@ -2017,6 +2017,13 @@ Hildebrand & Hoffman      Expires July 15, 2016                [Page 36]
 
 Internet-Draft                  HTML RFC                    January 2016
 
+
+   [W3C.REC-html5-20141028]
+              Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
+              Navara, E., O&#039;Connor, E., and S. Pfeiffer, "HTML5",
+              World Wide Web Consortium Recommendation REC-
+              html5-20141028, October 2014,
+              <http://www.w3.org/TR/2014/REC-html5-20141028>.
 
    [W3C.REC-CSS2-20110607]
               Bos, B., Celik, T., Hickson, I., and H. Lie, "Cascading
@@ -2056,6 +2063,17 @@ Authors' Addresses
    Email: jhildebr@cisco.com
 
 
+
+
+
+
+
+
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 37]
+
+Internet-Draft                  HTML RFC                    January 2016
+
+
    Paul Hoffman
    ICANN
 
@@ -2069,4 +2087,42 @@ Authors' Addresses
 
 
 
-Hildebrand & Hoffman      Expires July 15, 2016                [Page 37]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 38]

@@ -9,6 +9,7 @@
 <!ENTITY RFC6949 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6949.xml">
 <!ENTITY RFC7322 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7322.xml">
 <!ENTITY I-D.iab-xml2rfc SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.iab-xml2rfc.xml">
+<!ENTITY I-D.iab-rfc-css SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.iab-rfc-css.xml">
 <!ENTITY I-D.iab-rfcv3-preptool SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.iab-rfcv3-preptool.xml">
 <!ENTITY I-D.iab-rfc-framework SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.iab-rfc-framework.xml">
 ]>
@@ -49,7 +50,7 @@
         HTML appropriate for RFC Series documents.  The visual layout of the
         document will be defined through a cascading style sheet (CSS)
         <xref target="W3C.REC-CSS2-20110607"/>.  The CSS will be included in the
-        HTML file but will be described in a separate document.</t>
+        HTML file but will be described in <xref target="I-D.iab-rfc-css"/>.</t>
       <t>The details (particularly any vocabularies) described in this document
         are expected to change based on experience gained in implementing the
         RFC production center's toolset. Revised documents will be published
@@ -61,7 +62,7 @@
       <t>This section lists the design requirements used to create the HTML
         format described in this document.  These requirements build on those
         found in <xref target="RFC6949"/>. Many of these requirements are
-        naturally fulfilled by using the output of the prep tool
+        naturally fulfilled by using the output of the preparation tool
         <xref target="I-D.iab-rfcv3-preptool"/>.</t>
       <t>
       <list style="symbols">
@@ -114,7 +115,7 @@
       <t>The HTML must make it easy to separate sections along with all of their
         subsections into separate files.  This will make creating EPUB
         documents easier in the future.</t>
-      <t>The HTML produced for Internet-Drafts will differ fromt that produced
+      <t>The HTML produced for Internet-Drafts will differ from that produced
         by the RFC Editor due to differences in the output from the prep tool.</t>
       <t>The abstract must be marked up or tagged in a way that popular search
         engines will extract it as a summary.</t>
@@ -130,7 +131,6 @@
               and those that use screen readers</t>
             <t>People with difficulty distinguishing between colors</t>
             <t>People who use devices with small screens, such as cell phones</t>
-            <t>Other groups to be determined later</t>
           </list>
         </t>
         <t>Specific instances where goals for accessibility are important in the
@@ -179,7 +179,7 @@
       </t>
       <t>NOTE: none of these rules affect the rendered output of the HTML, but
         are intended to increase the chance that text comparison tools
-        (e.g. "diff") that operate on the HTML output easier to write.</t>
+        (e.g., "diff") that operate on the HTML output easier to write.</t>
     </section>
     <section anchor="common" title="Common Items">
       <t>This section lists items that are common across multiple parts of the HTML
@@ -199,7 +199,7 @@
           space and a "pilcrow" (U+00B6: PILCROW SIGN), otherwise known as a
           "paragraph sign".  For the purposes of clarity in ASCII renderings
           of this document, in this document pilcrows are rendered as
-          "&amp;para;".  The pilcrow will linked to the "id" attribute on the
+          "&amp;para;".  The pilcrow will be linked to the "id" attribute on the
           XML entity to which it is associated using an &lt;a&gt; element of
           class "pilcrow".  For example:</t>
         <figure>
@@ -212,8 +212,8 @@
           attached to is moused over.  The pilcrow will be surrounded by a
           link that points to the element it is attached to.</t>
         <t>Pilcrows are never included inside a &lt;table&gt; or
-          &lt;figure&gt; elements, since the figure number or table number
-          serve as adequate link targets.</t>
+          &lt;figure&gt; element, since the figure number or table number
+          serves as an adequate link target.</t>
         <t>Elements that might otherwise contain a pilcrow do not get marked
           with a pilcrow if they contain one or more child elements that are
           marked with a pilcrow. For example:</t>
@@ -292,7 +292,7 @@
           contains the following elements, as needed.</t>
         <section anchor="charset-declaration" title="Charset Declaration">
           <t>In order to be correctly processed by browsers that load the HTML
-            using a mechanism that does not provide a valid MIME content-type
+            using a mechanism that does not provide a valid content-type
             or charset (such as from a local file system using a "file:" URL),
             the HTML &lt;head&gt; element contains a &lt;meta&gt; element,
             with charset attribute with value "utf-8":</t>
@@ -423,9 +423,9 @@
         document itself.</t>
       <section anchor='index' title='Index'>
         <t>The index will be produced at the end of the document (before the
-          author information) if and only if the XML document's &lt;rfc&gt; element has a
-          indexInclude attribute with the value "true", and there is one or
-          more &lt;iref&gt; elements in the document.</t>
+          author information) if and only if the XML document's &lt;rfc&gt;
+          element has an indexInclude attribute with the value "true", and there
+          is one or more &lt;iref&gt; elements in the document.</t>
         <section anchor='index-index' title='Index Contents'>
           <t>The index section will start with an &lt;h2&gt; heading containing
             the text "Index", followed by links to each of the lettered
@@ -444,10 +444,10 @@
           </figure>
         </section>
         <section anchor='index-letters' title='Index Letters'>
-          <t>The index index is followed by a &lt;ul&gt; tag that contains a
+          <t>The index letter is followed by a &lt;ul&gt; tag that contains a
             &lt;li&gt; tag for each first letter represented in the index. This
             &lt;li&gt; tag has the class "indexChar", and contains an &lt;a&gt;
-            tag with the id pointed to by the index index, as well as an
+            tag with the id pointed to by the index letter, as well as an
             href to itself.  The &lt;li&gt; tag also includes a &lt;ul&gt; tag
             that will contain the index items.</t>
           <t>For example:</t>
@@ -465,7 +465,7 @@
         </section>
         <section anchor='index-items' title='Index Items'>
           <t>Each index item can have multiple &lt;iref&gt; elements to point to, all
-          with the same item attribute.  Each index item is represented by a
+          with the same item attribute.  Each index item is represented by an
           &lt;li&gt; tag of class "indexItem" containing a &lt;span&gt; of class
           "irefItem" for the item text and one of class "irefRefs" for the generated
           references (if there is at least one reference to the item not having
@@ -607,12 +607,14 @@
       </section>
       <section title="XML Source" anchor="xml-source">
         <t>At the very end of the document, the XML source that was used to
-          produce this document will be included within a comment.  This comment may be
-          preceded by another comment that describes the source.</t>
-        <t>Any instances of "--" in the XML will be modified to use U+002D characters: "&#x2d;&#x2d;".  Note that
-          if the dashes in the original XML were in a comment start- (&lt;!--) or
-          end-delimiter (--&gt;), the XML will not parse correctly without reversing this
-          transformation.</t>
+          produce this document will be included within a comment.  This comment
+          may be preceded by another comment that describes the source.</t>
+        <t>Since the sequence "--" is invalid in an HTML comment, any instances
+          of "--" in the input XML will be modified to use the escaped form of
+          the HYPHEN-MINUS characters: "&amp;#x2d;&amp;#x2d;".  Note that if the
+          dashes in the original XML were in a comment start- (&lt;!--) or
+          end-delimiter (--&gt;), the XML will not parse correctly without
+          reversing this transformation before parsing.</t>
         <figure>
           <artwork><![CDATA[
 <!-- XML SOURCE START (note: each instance of
@@ -705,7 +707,7 @@ ______________
           </figure>
         </section>
         <section title="SVG Artwork" anchor="element.artwork-svg">
-          <t>SVG artwork MUST be included inline.  The SVG is wrapped in a
+          <t>SVG artwork will be included inline.  The SVG is wrapped in a
             &lt;div&gt; element with CSS classes "artwork" and "art-svg".</t>
           <t>Note: the alt attribute of &lt;artwork&gt; is not currently used
             for SVG; instead, the &lt;title&gt; and &lt;desc&gt; tags are used in the
@@ -806,9 +808,9 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
           it is placed inside a &lt;cite&gt; element at the end of the quote,
           with an &lt;a&gt; element surrounding it (if there is a "cite"
           attribute), linking to the "cite" URL.</t>
-        <t>If the blockquote does not contain another element that get a
+        <t>If the blockquote does not contain another element that gets a
           <xref target='pilcrows'>pilcrow</xref>, a pilcrow is added.</t>
-        <t>Note that the "--" at the begining of the &lt;cite&gt; element
+        <t>Note that the "--" at the beginning of the &lt;cite&gt; element
           should be a proper emdash, which is difficult to show in the
           current format of this format.</t>
         <figure>
@@ -899,7 +901,7 @@ about something that we need to remember later.
         <t>This element is directly rendered as its HTML counterpart.</t>
       </section>
       <section title="&lt;displayreference&gt;" anchor="element.displayreference">
-        <t>Does not effect the HTML output.  The prep tool
+        <t>Does not affect the HTML output.  The prep tool
           (<xref target='I-D.iab-rfcv3-preptool'/>) will have already
           used this element to generate the &lt;xref&gt;'s "derivedContent"
           attribute.</t>
@@ -980,7 +982,7 @@ about something that we need to remember later.
         </figure>
       </section>
       <section title="&lt;li&gt;" anchor="element.li">
-        <t>This element is rendered as its HTML counterpart, however if there
+        <t>This element is rendered as its HTML counterpart.  However if there
           is no contained element that had a
           <xref target='pilcrows'>pilcrow</xref> attached, a pilcrow
           is added.</t>
@@ -1351,7 +1353,7 @@ href="http://www.rfc-editor.org/info/rfc7878#s-2.3">Section
       <section title="&lt;section&gt;" anchor="element.section">
         <t>This element is rendered as an HTML &lt;section&gt; element,
           containing an appropriate level HTML heading element
-          (&lt;h2&gt;-&lt;h6&gt;).  That heading element contains a &lt;a&gt;
+          (&lt;h2&gt;-&lt;h6&gt;).  That heading element contains an &lt;a&gt;
           element around the part number (pn), if applicable (for instance,
           &lt;abstract&gt; does not get a section number).  Another &lt;a&gt;
           element is included with the section's name.</t>
@@ -1472,7 +1474,7 @@ int main(void)
       <section title="&lt;ul&gt;" anchor="element.ul">
       <t>This element is directly rendered as its HTML counterpart. If the
         "spacing" attribute has the value "compact", a CSS class of "ulCompact"
-        will be added. If the "empty" attribute has the value "true", as CSS
+        will be added. If the "empty" attribute has the value "true", a CSS
         class of "ulEmpty" will be added.</t>
       </section>
       <section title="&lt;uri&gt;" anchor="element.uri">
@@ -1535,6 +1537,7 @@ int main(void)
 &RFC2397;
 &RFC3629;
 &RFC5646;
+&I-D.iab-rfc-css;
 &I-D.iab-xml2rfc;
 &W3C.REC-html5-20141028;
       <reference anchor="W3C.REC-CSS2-20110607" target="http://www.w3.org/TR/2011/REC-CSS2-20110607">

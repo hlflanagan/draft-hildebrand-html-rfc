@@ -682,7 +682,7 @@
 
   <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> <a href="#introduction" id="introduction">Introduction</a></h1>
 <p id="rfc.section.1.p.1">As described in <a href="#I-D.iab-rfc-framework">[I-D.iab-rfc-framework]</a>, the RFC Series is changing. One of those changes includes the RFC Editor publishing a non-canonical HTML version of RFCs.</p>
-<p id="rfc.section.1.p.2">This document describes the HTML format that will be used as one of the publication formats for the RFC Series. It defines a strict subset of HTML appropriate for RFC Series documents.  The visual layout of the document will be defined through a cascading style sheet (CSS) <a href="#W3C.REC-CSS2-20110607">[W3C.REC-CSS2-20110607]</a>.  The CSS will be included in the HTML file but will be described in a separate document.</p>
+<p id="rfc.section.1.p.2">This document describes the HTML format that will be used as one of the publication formats for the RFC Series. It defines a strict subset of HTML appropriate for RFC Series documents.  The visual layout of the document will be defined through a cascading style sheet (CSS) <a href="#W3C.REC-CSS2-20110607">[W3C.REC-CSS2-20110607]</a>.  The CSS will be included in the HTML file but will be described in <a href="#I-D.iab-rfc-css">[I-D.iab-rfc-css]</a>.</p>
 <p id="rfc.section.1.p.3">The details (particularly any vocabularies) described in this document are expected to change based on experience gained in implementing the RFC production center's toolset. Revised documents will be published capturing those changes as the toolset is completed. Other implementers must not expect those changes to remain backwards-compatible with the details described this document.</p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#requirements-for-html" id="requirements-for-html">Requirements for the HTML Format</a></h1>
 <p id="rfc.section.2.p.1">This section lists the design requirements used to create the HTML format described in this document.  These requirements build on those found in <a href="#RFC6949">[RFC6949]</a>. Many of these requirements are naturally fulfilled by using the output of the prep tool <a href="#I-D.iab-rfcv3-preptool">[I-D.iab-rfcv3-preptool]</a>.</p>
@@ -710,7 +710,7 @@
 <p/>
 
 <ul>
-  <li>Normative information must be easily accessible to the following consumers: <ul><li>People with impaired vision, including those that use large fonts and those that use screen readers</li><li>People with difficulty distinguishing between colors</li><li>People who use devices with small screens, such as cell phones</li><li>Other groups to be determined later</li></ul><p> </p></li>
+  <li>Normative information must be easily accessible to the following consumers: <ul><li>People with impaired vision, including those that use large fonts and those that use screen readers</li><li>People with difficulty distinguishing between colors</li><li>People who use devices with small screens, such as cell phones</li></ul><p> </p></li>
   <li>Specific instances where goals for accessibility are important in the design choices of the format have been called out in the text.</li>
   <li>NOTE: designing for these consumers does not preclude the use of features they cannot use, but does require that key semantic data is not lost when read using the tools and settings that are required by a given constituency.</li>
 </ul>
@@ -989,7 +989,7 @@
 &lt;/div&gt;</pre>
 <h1 id="rfc.section.8.4"><a href="#rfc.section.8.4">8.4.</a> <a href="#xml-source" id="xml-source">XML Source</a></h1>
 <p id="rfc.section.8.4.p.1">At the very end of the document, the XML source that was used to produce this document will be included within a comment.  This comment may be preceded by another comment that describes the source.</p>
-<p id="rfc.section.8.4.p.2">Any instances of "--" in the XML will be modified to use U+002D characters: "--".  Note that if the dashes in the original XML were in a comment start- (&lt;!--) or end-delimiter (--&gt;), the XML will not parse correctly without reversing this transformation.</p>
+<p id="rfc.section.8.4.p.2">Since the sequence "--" is invalid in an HTML comment, any instances of "--" in the input XML will be modified to use the escaped form of the HYPHEN-MINUS characters: "&amp;#x2d;&amp;#x2d;".  Note that if the dashes in the original XML were in a comment start- (&lt;!--) or end-delimiter (--&gt;), the XML will not parse correctly without reversing this transformation before parsing.</p>
 <pre>
 &lt;!-- XML SOURCE START (note: each instance of
      two '-' (U+002D: HYPHEN-MINUS) characters
@@ -1527,6 +1527,12 @@ int main(void)
         <b id="I-D.iab-xml2rfc">[I-D.iab-xml2rfc]</b>
       </td>
       <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-iab-xml2rfc-00">The 'XML2RFC' version 3 Vocabulary</a>", Internet-Draft draft-iab-xml2rfc-00, December 2015.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="I-D.iab-rfc-css">[I-D.iab-rfc-css]</b>
+      </td>
+      <td class="top"><a>Flanagan, H.</a>, "<a href="http://tools.ietf.org/html/draft-iab-rfc-css-00">CSS Requirements for RFCs</a>", Internet-Draft draft-iab-rfc-css-00, January 2016.</td>
     </tr>
     <tr>
       <td class="reference">
