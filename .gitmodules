@@ -1,0 +1,3 @@
+[submodule "example/draft-iab-xml2rfc"]
+	path = example/draft-iab-xml2rfc
+	url = https://github.com/paulehoffman/draft-iab-xml2rfc.git

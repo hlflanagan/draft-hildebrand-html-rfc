@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?rfc toc="yes"?> <!-- PI gets removed.  This comment doesn't. -->
-<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
+<!DOCTYPE rfc SYSTEM "../rfc2629.dtd">
 <rfc ipr='trust200902'
   xmlns:xi='http://www.w3.org/2001/XInclude' tocInclude='true' sortRefs='true'
   updates='6949, 5646'>
