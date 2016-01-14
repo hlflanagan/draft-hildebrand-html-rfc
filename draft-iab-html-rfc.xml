@@ -298,7 +298,7 @@
             with charset attribute with value "utf-8":</t>
           <figure>
             <artwork><![CDATA[
-<meta charset="utf-8"/>]]></artwork>
+<meta charset="utf-8">]]></artwork>
           </figure>
         </section>
         <section anchor="head-title" title="Document Title">
@@ -309,8 +309,9 @@
         <section anchor="meta" title="Document metadata">
           <t>The following &lt;meta&gt; elements will be included:
             <list style="symbols">
-              <t>author - comma-separated &lt;fullname&gt;s of all of the
-                &lt;author&gt;s from the XML source</t>
+              <t>author - comma-separated "fullname"s and "asciiFullname"s of
+                all of the &lt;author&gt;s from the &lt;front&gt; of the XML
+                source</t>
               <t>description - the &lt;abstract&gt; from the XML source</t>
               <t>generator - the name and version number of the software used
                 to create the HTML</t>
@@ -322,10 +323,12 @@
           <figure>
             <artwork><![CDATA[
 <meta name="author" content="Joe Hildebrand,Heather Flanagan">
-<meta name="keywords" content="html,css,rfc">
 <meta name="description" content="This document defines...">
-<meta name="generator" content="xmljade v0.2.4">]]></artwork>
+<meta name="generator" content="xmljade v0.2.4">
+<meta name="keywords" content="html,css,rfc">]]></artwork>
           </figure>
+          <t>Note: the HTML &lt;meta&gt; tag does not contain a closing
+            slash.</t>
         </section>
         <section anchor="style" title="Style">
           <t>The &lt;head&gt; element contains an embedded CSS style sheet in a
@@ -351,7 +354,8 @@
         </section>
         <section anchor="links" title="Links">
           <t>Each &lt;link&gt; element from the XML source is copied into
-            the HTML header.</t>
+            the HTML header.  Note: the HTML &lt;link&gt; element does not
+            include a closing slash.</t>
         </section>
       </section>
       <section anchor="document-information" title="Document Information">
@@ -727,7 +731,8 @@ ______________
         <section title="Other Artwork" anchor="element">
           <t>Other artwork will have a src attribute uses the "data" URI scheme
             defined in <xref target="RFC2397"/>.  Such artwork is rendered in an
-            HTML image element.</t>
+            HTML &lt;img&gt; element.  Note: the HTML &lt;img&gt; element does
+            not have a closing slash.</t>
           <t>Note: such images are not yet allowed by the RFC Series Editor,
             even though the format supports them.  The RFC Series Editor may
             allow a limited set of "data:" mediatypes for artwork in the
@@ -736,7 +741,7 @@ ______________
             <artwork><![CDATA[
 <div class="artwork art-logo" id="p-2-58">
   <img alt="IETF logo"
-       src="data:image/gif;charset=utf-8;base64,..."/>
+       src="data:image/gif;charset=utf-8;base64,...">
   <a class="pilcrow" href="#p-2-58">&para;</a>
 </div>]]></artwork>
           </figure>
@@ -846,7 +851,8 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
         </figure>
       </section>
       <section title="&lt;br&gt;" anchor="element.br">
-        <t>This element is directly rendered as its HTML counterpart.</t>
+        <t>This element is directly rendered as its HTML counterpart.  Note:
+          in HTML, &lt;br&gt; does not have a closing slash.</t>
       </section>
       <section title="&lt;city&gt;" anchor="element.city">
         <t>This element is rendered as a &lt;span&gt; element with CSS

@@ -685,7 +685,7 @@
 <p id="rfc.section.1.p.2">This document describes the HTML format that will be used as one of the publication formats for the RFC Series. It defines a strict subset of HTML appropriate for RFC Series documents.  The visual layout of the document will be defined through a cascading style sheet (CSS) <a href="#W3C.REC-CSS2-20110607">[W3C.REC-CSS2-20110607]</a>.  The CSS will be included in the HTML file but will be described in <a href="#I-D.iab-rfc-css">[I-D.iab-rfc-css]</a>.</p>
 <p id="rfc.section.1.p.3">The details (particularly any vocabularies) described in this document are expected to change based on experience gained in implementing the RFC production center's toolset. Revised documents will be published capturing those changes as the toolset is completed. Other implementers must not expect those changes to remain backwards-compatible with the details described this document.</p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#requirements-for-html" id="requirements-for-html">Requirements for the HTML Format</a></h1>
-<p id="rfc.section.2.p.1">This section lists the design requirements used to create the HTML format described in this document.  These requirements build on those found in <a href="#RFC6949">[RFC6949]</a>. Many of these requirements are naturally fulfilled by using the output of the prep tool <a href="#I-D.iab-rfcv3-preptool">[I-D.iab-rfcv3-preptool]</a>.</p>
+<p id="rfc.section.2.p.1">This section lists the design requirements used to create the HTML format described in this document.  These requirements build on those found in <a href="#RFC6949">[RFC6949]</a>. Many of these requirements are naturally fulfilled by using the output of the preparation tool <a href="#I-D.iab-rfcv3-preptool">[I-D.iab-rfcv3-preptool]</a>.</p>
 <p/>
 
 <ul>
@@ -701,7 +701,7 @@
   <li>Both user-defined and auto-generated anchors must be supported and linkable, with user-defined anchors appearing in an "id" attribute.  Auto-generated anchors will be generated for every heading, paragraph, and so on, not just those that do not have user-defined anchors.  User-defined anchors may, and auto-generated anchors will, appear next to paragraphs, figures, tables, blockquotes, and section titles.</li>
   <li>All section, subsections, figures, and paragraphs should have stable numbered link anchors.  Additionally, anchors expressed in the source XML should be exposed as anchors in the HTML output as well.</li>
   <li>The HTML must make it easy to separate sections along with all of their subsections into separate files.  This will make creating EPUB documents easier in the future.</li>
-  <li>The HTML produced for Internet-Drafts will differ fromt that produced by the RFC Editor due to differences in the output from the prep tool.</li>
+  <li>The HTML produced for Internet-Drafts will differ from that produced by the RFC Editor due to differences in the output from the prep tool.</li>
   <li>The abstract must be marked up or tagged in a way that popular search engines will extract it as a summary.</li>
 </ul>
 
@@ -733,19 +733,19 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.4.p.3">NOTE: none of these rules affect the rendered output of the HTML, but are intended to increase the chance that text comparison tools (e.g. "diff") that operate on the HTML output easier to write.</p>
+<p id="rfc.section.4.p.3">NOTE: none of these rules affect the rendered output of the HTML, but are intended to increase the chance that text comparison tools (e.g., "diff") that operate on the HTML output easier to write.</p>
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#common" id="common">Common Items</a></h1>
 <p id="rfc.section.5.p.1">This section lists items that are common across multiple parts of the HTML document.</p>
 <h1 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1.</a> <a href="#ids" id="ids">IDs</a></h1>
 <p id="rfc.section.5.1.p.1">HTML elements that are generated from XML elements that include an "anchor" attribute will use the value of the "anchor" attribute as the value of the "id" attribute of the corresponding HTML element.  The prep tool produces XML with "anchor" attributes in all elements that need them.  Some HTML constructs (such as &lt;section&gt;) will use multiple instances of these identifiers.</p>
 <h1 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2.</a> <a href="#pilcrows" id="pilcrows">Pilcrows</a></h1>
-<p id="rfc.section.5.2.p.1">Each paragraph, artwork, or sourcecode segment outside of a &lt;figure&gt; or &lt;table&gt; element will be appended with a space and a "pilcrow" (U+00B6: PILCROW SIGN), otherwise known as a "paragraph sign".  For the purposes of clarity in ASCII renderings of this document, in this document pilcrows are rendered as "&amp;para;".  The pilcrow will linked to the "id" attribute on the XML entity to which it is associated using an &lt;a&gt; element of class "pilcrow".  For example:</p>
+<p id="rfc.section.5.2.p.1">Each paragraph, artwork, or sourcecode segment outside of a &lt;figure&gt; or &lt;table&gt; element will be appended with a space and a "pilcrow" (U+00B6: PILCROW SIGN), otherwise known as a "paragraph sign".  For the purposes of clarity in ASCII renderings of this document, in this document pilcrows are rendered as "&amp;para;".  The pilcrow will be linked to the "id" attribute on the XML entity to which it is associated using an &lt;a&gt; element of class "pilcrow".  For example:</p>
 <pre>
 &lt;p id="p-1.1-1"&gt;
   Some paragraph text. &lt;a class="pilcrow" href="#p-1.1-1"&gt;&amp;para;&lt;/a&gt;
 &lt;/p&gt;</pre>
 <p id="rfc.section.5.2.p.2">The pilcrow will normally be invisible unless the element it is attached to is moused over.  The pilcrow will be surrounded by a link that points to the element it is attached to.</p>
-<p id="rfc.section.5.2.p.3">Pilcrows are never included inside a &lt;table&gt; or &lt;figure&gt; elements, since the figure number or table number serve as adequate link targets.</p>
+<p id="rfc.section.5.2.p.3">Pilcrows are never included inside a &lt;table&gt; or &lt;figure&gt; element, since the figure number or table number serves as an adequate link target.</p>
 <p id="rfc.section.5.2.p.4">Elements that might otherwise contain a pilcrow do not get marked with a pilcrow if they contain one or more child elements that are marked with a pilcrow. For example:</p>
 <pre>
 &lt;blockquote id="p-1.2-1"&gt;
@@ -780,16 +780,16 @@
 <h1 id="rfc.section.6.3"><a href="#rfc.section.6.3">6.3.</a> <a href="#head-element" id="head-element">Head Element</a></h1>
 <p id="rfc.section.6.3.p.1">The root &lt;html&gt; will contain a &lt;head&gt; element that contains the following elements, as needed.</p>
 <h1 id="rfc.section.6.3.1"><a href="#rfc.section.6.3.1">6.3.1.</a> <a href="#charset-declaration" id="charset-declaration">Charset Declaration</a></h1>
-<p id="rfc.section.6.3.1.p.1">In order to be correctly processed by browsers that load the HTML using a mechanism that does not provide a valid MIME content-type or charset (such as from a local file system using a "file:" URL), the HTML &lt;head&gt; element contains a &lt;meta&gt; element, with charset attribute with value "utf-8":</p>
+<p id="rfc.section.6.3.1.p.1">In order to be correctly processed by browsers that load the HTML using a mechanism that does not provide a valid content-type or charset (such as from a local file system using a "file:" URL), the HTML &lt;head&gt; element contains a &lt;meta&gt; element, with charset attribute with value "utf-8":</p>
 <pre>
-&lt;meta charset="utf-8"/&gt;</pre>
+&lt;meta charset="utf-8"&gt;</pre>
 <h1 id="rfc.section.6.3.2"><a href="#rfc.section.6.3.2">6.3.2.</a> <a href="#head-title" id="head-title">Document Title</a></h1>
 <p id="rfc.section.6.3.2.p.1">The contents of the &lt;title&gt; element from the XML source will be placed inside an HTML &lt;title&gt; element in the header.</p>
 <h1 id="rfc.section.6.3.3"><a href="#rfc.section.6.3.3">6.3.3.</a> <a href="#meta" id="meta">Document metadata</a></h1>
 <p id="rfc.section.6.3.3.p.1">The following &lt;meta&gt; elements will be included: </p>
 
 <ul>
-  <li>author - comma-separated &lt;fullname&gt;s of all of the &lt;author&gt;s from the XML source</li>
+  <li>author - comma-separated "fullname"s and "asciiFullname"s of all of the &lt;author&gt;s from the &lt;front&gt; of the XML source</li>
   <li>description - the &lt;abstract&gt; from the XML source</li>
   <li>generator - the name and version number of the software used to create the HTML</li>
   <li>keywords - comma-separated &lt;keyword&gt;s from the XML source</li>
@@ -798,9 +798,10 @@
 <p> For example: </p>
 <pre>
 &lt;meta name="author" content="Joe Hildebrand,Heather Flanagan"&gt;
-&lt;meta name="keywords" content="html,css,rfc"&gt;
 &lt;meta name="description" content="This document defines..."&gt;
-&lt;meta name="generator" content="xmljade v0.2.4"&gt;</pre>
+&lt;meta name="generator" content="xmljade v0.2.4"&gt;
+&lt;meta name="keywords" content="html,css,rfc"&gt;</pre>
+<p id="rfc.section.6.3.3.p.2">Note: the HTML &lt;meta&gt; tag does not contain a closing slash.</p>
 <h1 id="rfc.section.6.3.4"><a href="#rfc.section.6.3.4">6.3.4.</a> <a href="#style" id="style">Style</a></h1>
 <p id="rfc.section.6.3.4.p.1">The &lt;head&gt; element contains an embedded CSS style sheet in a &lt;style&gt; element.  The styles in the style sheet are to be set consistently between documents by the RFC Editor, according to the best practices of the day.</p>
 <p id="rfc.section.6.3.4.p.2">To ensure consistent formatting, individual style attributes should not be used in the main portion of the document.</p>
@@ -812,7 +813,7 @@
 &lt;/style&gt;
 &lt;link rel="stylesheet" type="text/css" href="rfc-local.css"&gt;</pre>
 <h1 id="rfc.section.6.3.5"><a href="#rfc.section.6.3.5">6.3.5.</a> <a href="#links" id="links">Links</a></h1>
-<p id="rfc.section.6.3.5.p.1">Each &lt;link&gt; element from the XML source is copied into the HTML header.</p>
+<p id="rfc.section.6.3.5.p.1">Each &lt;link&gt; element from the XML source is copied into the HTML header.  Note: the HTML &lt;link&gt; element does not include a closing slash.</p>
 <h1 id="rfc.section.6.4"><a href="#rfc.section.6.4">6.4.</a> <a href="#document-information" id="document-information">Document Information</a></h1>
 <p id="rfc.section.6.4.p.1">Information about the document as a whole will appear as the first child of the HTML &lt;body&gt; element, embedded in an HTML &lt;dl&gt; element with id="identifiers".  The defined terms in the definition list are "Workgroup:", "Series:", "Status:", "Published:", and "Authors:". For example:</p>
 <pre>
@@ -858,7 +859,7 @@
 <h1 id="rfc.section.8"><a href="#rfc.section.8">8.</a> <a href="#back-matter" id="back-matter">Back Matter</a></h1>
 <p id="rfc.section.8.p.1">The back matter of the HTML document includes an index (if generated), information about the authors, and further information about the document itself.</p>
 <h1 id="rfc.section.8.1"><a href="#rfc.section.8.1">8.1.</a> <a href="#index" id="index">Index</a></h1>
-<p id="rfc.section.8.1.p.1">The index will be produced at the end of the document (before the author information) if and only if the XML document's &lt;rfc&gt; element has a indexInclude attribute with the value "true", and there is one or more &lt;iref&gt; elements in the document.</p>
+<p id="rfc.section.8.1.p.1">The index will be produced at the end of the document (before the author information) if and only if the XML document's &lt;rfc&gt; element has an indexInclude attribute with the value "true", and there is one or more &lt;iref&gt; elements in the document.</p>
 <h1 id="rfc.section.8.1.1"><a href="#rfc.section.8.1.1">8.1.1.</a> <a href="#index-index" id="index-index">Index Contents</a></h1>
 <p id="rfc.section.8.1.1.p.1">The index section will start with an &lt;h2&gt; heading containing the text "Index", followed by links to each of the lettered portions of the index.  Links are not generated for letters that do not occur as the first letter of an index item.</p>
 <p id="rfc.section.8.1.1.p.2">For example:</p>
@@ -871,7 +872,7 @@
   &lt;/div&gt;
   ...</pre>
 <h1 id="rfc.section.8.1.2"><a href="#rfc.section.8.1.2">8.1.2.</a> <a href="#index-letters" id="index-letters">Index Letters</a></h1>
-<p id="rfc.section.8.1.2.p.1">The index index is followed by a &lt;ul&gt; tag that contains a &lt;li&gt; tag for each first letter represented in the index. This &lt;li&gt; tag has the class "indexChar", and contains an &lt;a&gt; tag with the id pointed to by the index index, as well as an href to itself.  The &lt;li&gt; tag also includes a &lt;ul&gt; tag that will contain the index items.</p>
+<p id="rfc.section.8.1.2.p.1">The index letter is followed by a &lt;ul&gt; tag that contains a &lt;li&gt; tag for each first letter represented in the index. This &lt;li&gt; tag has the class "indexChar", and contains an &lt;a&gt; tag with the id pointed to by the index letter, as well as an href to itself.  The &lt;li&gt; tag also includes a &lt;ul&gt; tag that will contain the index items.</p>
 <p id="rfc.section.8.1.2.p.2">For example:</p>
 <pre>
 &lt;ul&gt;
@@ -883,7 +884,7 @@
   &lt;/li&gt;
   ...</pre>
 <h1 id="rfc.section.8.1.3"><a href="#rfc.section.8.1.3">8.1.3.</a> <a href="#index-items" id="index-items">Index Items</a></h1>
-<p id="rfc.section.8.1.3.p.1">Each index item can have multiple &lt;iref&gt; elements to point to, all with the same item attribute.  Each index item is represented by a &lt;li&gt; tag of class "indexItem" containing a &lt;span&gt; of class "irefItem" for the item text and one of class "irefRefs" for the generated references (if there is at least one reference to the item not having a subitem).  Each generated reference contains an &lt;a&gt; tag containing the section number where the &lt;iref&gt; was found, with an "href" attribute pointing to the "irefid" attribute of the &lt;iref&gt; element from the XML document. If the primary attribute of the &lt;iref&gt; element has the value "true", the &lt;a&gt; element in the HTML document will have the class "indexPrimary". Commas may be used to separate the generated references, surrounded by a &lt;span&gt; tag with class "comma".</p>
+<p id="rfc.section.8.1.3.p.1">Each index item can have multiple &lt;iref&gt; elements to point to, all with the same item attribute.  Each index item is represented by an &lt;li&gt; tag of class "indexItem" containing a &lt;span&gt; of class "irefItem" for the item text and one of class "irefRefs" for the generated references (if there is at least one reference to the item not having a subitem).  Each generated reference contains an &lt;a&gt; tag containing the section number where the &lt;iref&gt; was found, with an "href" attribute pointing to the "irefid" attribute of the &lt;iref&gt; element from the XML document. If the primary attribute of the &lt;iref&gt; element has the value "true", the &lt;a&gt; element in the HTML document will have the class "indexPrimary". Commas may be used to separate the generated references, surrounded by a &lt;span&gt; tag with class "comma".</p>
 <p id="rfc.section.8.1.3.p.2">For example:</p>
 <pre>
 &lt;li class="indexItem"&gt;
@@ -1047,7 +1048,7 @@ ______________
   &lt;/figcaption&gt;
 &lt;/figure&gt;</pre>
 <h1 id="rfc.section.9.5.2"><a href="#rfc.section.9.5.2">9.5.2.</a> <a href="#element.artwork-svg" id="element.artwork-svg">SVG Artwork</a></h1>
-<p id="rfc.section.9.5.2.p.1">SVG artwork MUST be included inline.  The SVG is wrapped in a &lt;div&gt; element with CSS classes "artwork" and "art-svg".</p>
+<p id="rfc.section.9.5.2.p.1">SVG artwork will be included inline.  The SVG is wrapped in a &lt;div&gt; element with CSS classes "artwork" and "art-svg".</p>
 <p id="rfc.section.9.5.2.p.2">Note: the alt attribute of &lt;artwork&gt; is not currently used for SVG; instead, the &lt;title&gt; and &lt;desc&gt; tags are used in the SVG.</p>
 <pre>
 &lt;div class="artwork art-svg" id="p-2-17"&gt;
@@ -1059,12 +1060,12 @@ ______________
   &lt;a href="#p-2-17" class="pilcrow"&gt;&amp;para;&lt;/a&gt;&lt;/pre&gt;
 &lt;/div&gt;</pre>
 <h1 id="rfc.section.9.5.3"><a href="#rfc.section.9.5.3">9.5.3.</a> <a href="#element" id="element">Other Artwork</a></h1>
-<p id="rfc.section.9.5.3.p.1">Other artwork will have a src attribute uses the "data" URI scheme defined in <a href="#RFC2397">[RFC2397]</a>.  Such artwork is rendered in an HTML image element.</p>
+<p id="rfc.section.9.5.3.p.1">Other artwork will have a src attribute uses the "data" URI scheme defined in <a href="#RFC2397">[RFC2397]</a>.  Such artwork is rendered in an HTML &lt;img&gt; element.  Note: the HTML &lt;img&gt; element does not have a closing slash.</p>
 <p id="rfc.section.9.5.3.p.2">Note: such images are not yet allowed by the RFC Series Editor, even though the format supports them.  The RFC Series Editor may allow a limited set of "data:" mediatypes for artwork in the future&#8203;.</p>
 <pre>
 &lt;div class="artwork art-logo" id="p-2-58"&gt;
   &lt;img alt="IETF logo"
-       src="data:image/gif;charset=utf-8;base64,..."/&gt;
+       src="data:image/gif;charset=utf-8;base64,..."&gt;
   &lt;a class="pilcrow" href="#p-2-58"&gt;&amp;para;&lt;/a&gt;
 &lt;/div&gt;</pre>
 <h1 id="rfc.section.9.6"><a href="#rfc.section.9.6">9.6.</a> <a href="#element.aside" id="element.aside">&lt;aside&gt;</a></h1>
@@ -1097,8 +1098,8 @@ ______________
 You &lt;span class="bcp14"&gt;MUST&lt;/span&gt; be joking.</pre>
 <h1 id="rfc.section.9.10"><a href="#rfc.section.9.10">9.10.</a> <a href="#element.blockquote" id="element.blockquote">&lt;blockquote&gt;</a></h1>
 <p id="rfc.section.9.10.p.1">This element renders as the similar HTML &lt;blockquote&gt; element.  If there is a "cite" attribute, it is  copied to the HTML cite attribute.  If there is a "quoteFrom" attribute, it is placed inside a &lt;cite&gt; element at the end of the quote, with an &lt;a&gt; element surrounding it (if there is a "cite" attribute), linking to the "cite" URL.</p>
-<p id="rfc.section.9.10.p.2">If the blockquote does not contain another element that get a <a href="#pilcrows">pilcrow</a> <cite title="NONE">[pilcrows]</cite>, a pilcrow is added.</p>
-<p id="rfc.section.9.10.p.3">Note that the "--" at the begining of the &lt;cite&gt; element should be a proper emdash, which is difficult to show in the current format of this format.</p>
+<p id="rfc.section.9.10.p.2">If the blockquote does not contain another element that gets a <a href="#pilcrows">pilcrow</a> <cite title="NONE">[pilcrows]</cite>, a pilcrow is added.</p>
+<p id="rfc.section.9.10.p.3">Note that the "--" at the beginning of the &lt;cite&gt; element should be a proper emdash, which is difficult to show in the current format of this format.</p>
 <pre>
 &lt;blockquote id="p-1.2-1"
   cite="http://..."&gt;
@@ -1124,7 +1125,7 @@ You &lt;span class="bcp14"&gt;MUST&lt;/span&gt; be joking.</pre>
   &lt;/p&gt;
 ...</pre>
 <h1 id="rfc.section.9.12"><a href="#rfc.section.9.12">9.12.</a> <a href="#element.br" id="element.br">&lt;br&gt;</a></h1>
-<p id="rfc.section.9.12.p.1">This element is directly rendered as its HTML counterpart.</p>
+<p id="rfc.section.9.12.p.1">This element is directly rendered as its HTML counterpart.  Note: in HTML, &lt;br&gt; does not have a closing slash.</p>
 <h1 id="rfc.section.9.13"><a href="#rfc.section.9.13">9.13.</a> <a href="#element.city" id="element.city">&lt;city&gt;</a></h1>
 <p id="rfc.section.9.13.p.1">This element is rendered as a &lt;span&gt; element with CSS class "locality".</p>
 <pre>
@@ -1152,7 +1153,7 @@ about something that we need to remember later.
 <h1 id="rfc.section.9.18"><a href="#rfc.section.9.18">9.18.</a> <a href="#element.dd" id="element.dd">&lt;dd&gt;</a></h1>
 <p id="rfc.section.9.18.p.1">This element is directly rendered as its HTML counterpart.</p>
 <h1 id="rfc.section.9.19"><a href="#rfc.section.9.19">9.19.</a> <a href="#element.displayreference" id="element.displayreference">&lt;displayreference&gt;</a></h1>
-<p id="rfc.section.9.19.p.1">Does not effect the HTML output.  The prep tool (<a href="#I-D.iab-rfcv3-preptool">[I-D.iab-rfcv3-preptool]</a>) will have already used this element to generate the &lt;xref&gt;'s "derivedContent" attribute.</p>
+<p id="rfc.section.9.19.p.1">Does not affect the HTML output.  The prep tool (<a href="#I-D.iab-rfcv3-preptool">[I-D.iab-rfcv3-preptool]</a>) will have already used this element to generate the &lt;xref&gt;'s "derivedContent" attribute.</p>
 <h1 id="rfc.section.9.20"><a href="#rfc.section.9.20">9.20.</a> <a href="#element.dl" id="element.dl">&lt;dl&gt;</a></h1>
 <p id="rfc.section.9.20.p.1">This element is directly rendered as its HTML counterpart.</p>
 <p id="rfc.section.9.20.p.2">If the hanging attribute is "false", add the "dlParallel" class, else add the "dlHanging" class.</p>
@@ -1195,7 +1196,7 @@ about something that we need to remember later.
 <pre>
 &lt;meta name="keywords" content="html,css,rfc"&gt;</pre>
 <h1 id="rfc.section.9.29"><a href="#rfc.section.9.29">9.29.</a> <a href="#element.li" id="element.li">&lt;li&gt;</a></h1>
-<p id="rfc.section.9.29.p.1">This element is rendered as its HTML counterpart, however if there is no contained element that had a <a href="#pilcrows">pilcrow</a> <cite title="NONE">[pilcrows]</cite> attached, a pilcrow is added.</p>
+<p id="rfc.section.9.29.p.1">This element is rendered as its HTML counterpart.  However if there is no contained element that had a <a href="#pilcrows">pilcrow</a> <cite title="NONE">[pilcrows]</cite> attached, a pilcrow is added.</p>
 <pre>
 &lt;li id="p-2-7"&gt;Item &lt;a href="#p-2-7" class="pilcrow"&gt;&amp;para;&lt;/a&gt;&lt;/li&gt;</pre>
 <h1 id="rfc.section.9.30"><a href="#rfc.section.9.30">9.30.</a> <a href="#element.link" id="element.link">&lt;link&gt;</a></h1>
@@ -1407,7 +1408,7 @@ href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;Section
 <h1 id="rfc.section.9.45"><a href="#rfc.section.9.45">9.45.</a> <a href="#element.rfc" id="element.rfc">&lt;rfc&gt;</a></h1>
 <p id="rfc.section.9.45.p.1">Various attributes of this element are represented in different parts of the HTML document.</p>
 <h1 id="rfc.section.9.46"><a href="#rfc.section.9.46">9.46.</a> <a href="#element.section" id="element.section">&lt;section&gt;</a></h1>
-<p id="rfc.section.9.46.p.1">This element is rendered as an HTML &lt;section&gt; element, containing an appropriate level HTML heading element (&lt;h2&gt;-&lt;h6&gt;).  That heading element contains a &lt;a&gt; element around the part number (pn), if applicable (for instance, &lt;abstract&gt; does not get a section number).  Another &lt;a&gt; element is included with the section's name.</p>
+<p id="rfc.section.9.46.p.1">This element is rendered as an HTML &lt;section&gt; element, containing an appropriate level HTML heading element (&lt;h2&gt;-&lt;h6&gt;).  That heading element contains an &lt;a&gt; element around the part number (pn), if applicable (for instance, &lt;abstract&gt; does not get a section number).  Another &lt;a&gt; element is included with the section's name.</p>
 <pre>
 &lt;section id="intro"&gt;
   &lt;h2 id="s-1"&gt;
@@ -1477,7 +1478,7 @@ int main(void)
 <h1 id="rfc.section.9.63"><a href="#rfc.section.9.63">9.63.</a> <a href="#element.tt" id="element.tt">&lt;tt&gt;</a></h1>
 <p id="rfc.section.9.63.p.1">This element is directly rendered as its HTML counterpart.</p>
 <h1 id="rfc.section.9.64"><a href="#rfc.section.9.64">9.64.</a> <a href="#element.ul" id="element.ul">&lt;ul&gt;</a></h1>
-<p id="rfc.section.9.64.p.1">This element is directly rendered as its HTML counterpart. If the "spacing" attribute has the value "compact", a CSS class of "ulCompact" will be added. If the "empty" attribute has the value "true", as CSS class of "ulEmpty" will be added.</p>
+<p id="rfc.section.9.64.p.1">This element is directly rendered as its HTML counterpart. If the "spacing" attribute has the value "compact", a CSS class of "ulCompact" will be added. If the "empty" attribute has the value "true", a CSS class of "ulEmpty" will be added.</p>
 <h1 id="rfc.section.9.65"><a href="#rfc.section.9.65">9.65.</a> <a href="#element.uri" id="element.uri">&lt;uri&gt;</a></h1>
 <p id="rfc.section.9.65.p.1">As shown in <a href="#authors-addresses">Section 8.2</a> this element is rendered as an HTML &lt;div&gt; containing the string "URI:" and an HTML &lt;a&gt; element, with "href" attribute set to the linked URI, CSS class of "url" [sic], and the contents set to the linked URI.</p>
 <pre>
@@ -1524,15 +1525,15 @@ int main(void)
     </tr>
     <tr>
       <td class="reference">
-        <b id="I-D.iab-xml2rfc">[I-D.iab-xml2rfc]</b>
-      </td>
-      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-iab-xml2rfc-00">The 'XML2RFC' version 3 Vocabulary</a>", Internet-Draft draft-iab-xml2rfc-00, December 2015.</td>
-    </tr>
-    <tr>
-      <td class="reference">
         <b id="I-D.iab-rfc-css">[I-D.iab-rfc-css]</b>
       </td>
       <td class="top"><a>Flanagan, H.</a>, "<a href="http://tools.ietf.org/html/draft-iab-rfc-css-00">CSS Requirements for RFCs</a>", Internet-Draft draft-iab-rfc-css-00, January 2016.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="I-D.iab-xml2rfc">[I-D.iab-xml2rfc]</b>
+      </td>
+      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-iab-xml2rfc-00">The 'XML2RFC' version 3 Vocabulary</a>", Internet-Draft draft-iab-xml2rfc-00, December 2015.</td>
     </tr>
     <tr>
       <td class="reference">
