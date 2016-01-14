@@ -24,7 +24,7 @@ start:
 stop:
 	@$(MAKE) -C example stop
 
-publish: test.3.html $(DRAFT).txt
+publish: $(DRAFT).txt
 	git co gh-pages
 	git co $(BRANCH) -- example/xml2rfc.css
 	git co $(BRANCH) -- example/test.x.xml
