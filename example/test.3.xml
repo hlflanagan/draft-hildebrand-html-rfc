@@ -295,7 +295,7 @@ artwork does not
       <figure><name>Inline with &lt;svg&gt; element</name>
         <artwork type="svg" alt="green stroke yellow fill circle">
           <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+            <circle cx="50" cy="50" r="40" stroke="black" stroke-width="4" fill="white" />
           </svg>
         </artwork>
       </figure>
@@ -303,7 +303,7 @@ artwork does not
         <artwork type="svg" align="right"><xi:include href='http://localhost:8080/redbluecircle.svg'/></artwork>
       </figure>
       <figure><name>SVG as a data: URI</name>
-        <artwork type="svg" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEwMCIKICAgICB3aWR0aD0iMTAwIgogICAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGNpcmNsZSBjeD0iNTAiCiAgICAgICAgICBjeT0iNTAiCiAgICAgICAgICBmaWxsPSJ5ZWxsb3ciCiAgICAgICAgICByPSI0MCIKICAgICAgICAgIHN0cm9rZT0iYmxhY2siCiAgICAgICAgICBzdHJva2Utd2lkdGg9IjQiLz4KPC9zdmc+Cg=="/>
+        <artwork type="svg" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEwMCIKICAgICB3aWR0aD0iMTAwIgogICAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGNpcmNsZSBjeD0iNTAiCiAgICAgICAgICBjeT0iNTAiCiAgICAgICAgICBmaWxsPSJ3aGl0ZSIKICAgICAgICAgIHI9IjQwIgogICAgICAgICAgc3Ryb2tlPSJibGFjayIKICAgICAgICAgIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4="/>
       </figure>
       <figure><name>Inline with &lt;src&gt; attribute</name>
         <!-- <artwork type="svg" src="circle.svg"/> -->
