@@ -500,9 +500,5 @@ html(lang='en', class=$$('/rfc/front/seriesInfo/@name'))
       span.rendered Rendered:
         time(datetime=rendered)= rendered
 
-| <!-- XML SOURCE START (note: each instance of two '-' (U+002D: HYPHEN-MINUS)
-| characters changed to "&#x2d;&#x2d;") -->
-!= "<!--\n"
-!= $source.toString('utf8').replace(/--/g, "&#x2d;&#x2d;")
-!= "\n-->"
-| <!-- XML SOURCE END -->
+  script#xml2rfc-source(type='application/xml')
+    != $source.toString('utf8')

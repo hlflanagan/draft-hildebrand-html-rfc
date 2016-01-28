@@ -611,23 +611,17 @@
       </section>
       <section title="XML Source" anchor="xml-source">
         <t>At the very end of the document, the XML source that was used to
-          produce this document will be included within a comment.  This comment
-          may be preceded by another comment that describes the source.</t>
-        <t>Since the sequence "--" is invalid in an HTML comment, any instances
-          of "--" in the input XML will be modified to use the escaped form of
-          the HYPHEN-MINUS characters: "&amp;#x2d;&amp;#x2d;".  Note that if the
-          dashes in the original XML were in a comment start- (&lt;!--) or
-          end-delimiter (--&gt;), the XML will not parse correctly without
-          reversing this transformation before parsing.</t>
+          produce this document will be included within an HTML &lt;script&gt;
+          tag, with "type" attribute of "application/xml" and id of
+          "xml2rfc-source". The source document will also be wrapped in a CDATA
+          block to reduce the need to further escape the XML.</t>
         <figure>
           <artwork><![CDATA[
-<!-- XML SOURCE START (note: each instance of
-     two '-' (U+002D: HYPHEN-MINUS) characters
-     changed to "&#x2d;&#x2d;") -->
-<!--
-<?xml version="1.0" encoding="utf-8"?>
-<rfc>
-  <!&#x2d;&#x2d; A comment &#x2d;&#x2d;>]]></artwork>
+<script id="xml2rfc-source" type="application/xml"><![CDATA[
+<?xml version='1.0'?>
+<rfc/>
+]]]]><![CDATA[></script>]]></artwork>
+<!-- Note to self: two CDATA's above to escape the liternal CDATA. -->
         </figure>
       </section>
     </section>

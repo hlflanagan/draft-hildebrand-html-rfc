@@ -37,3 +37,6 @@ publish: $(DRAFT).txt
 	git ci -m "Publish to GitHub pages"
 	git push origin gh-pages
 	git co $(BRANCH)
+
+watch: start
+	watchman-make -p '*.xml' Makefile -t $(DRAFT).txt -p 'example/**/*.xml' 'example/**/*.svg' -t example

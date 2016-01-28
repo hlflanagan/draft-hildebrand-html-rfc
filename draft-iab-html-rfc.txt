@@ -96,7 +96,7 @@ Table of Contents
      8.4.  XML Source  . . . . . . . . . . . . . . . . . . . . . . .  17
    9.  Elements  . . . . . . . . . . . . . . . . . . . . . . . . . .  17
      9.1.  <abstract>  . . . . . . . . . . . . . . . . . . . . . . .  17
-     9.2.  <address> . . . . . . . . . . . . . . . . . . . . . . . .  18
+     9.2.  <address> . . . . . . . . . . . . . . . . . . . . . . . .  17
      9.3.  <annotation>  . . . . . . . . . . . . . . . . . . . . . .  18
      9.4.  <area>  . . . . . . . . . . . . . . . . . . . . . . . . .  18
      9.5.  <artwork> . . . . . . . . . . . . . . . . . . . . . . . .  18
@@ -912,23 +912,15 @@ Internet-Draft                  HTML RFC                    January 2016
 8.4.  XML Source
 
    At the very end of the document, the XML source that was used to
-   produce this document will be included within a comment.  This
-   comment may be preceded by another comment that describes the source.
+   produce this document will be included within an HTML <script> tag,
+   with "type" attribute of "application/xml" and id of "xml2rfc-
+   source".  The source document will also be wrapped in a CDATA block
+   to reduce the need to further escape the XML.
 
-   Since the sequence "--" is invalid in an HTML comment, any instances
-   of "--" in the input XML will be modified to use the escaped form of
-   the HYPHEN-MINUS characters: "&#x2d;&#x2d;".  Note that if the dashes
-   in the original XML were in a comment start- (<!--) or end-delimiter
-   (-->), the XML will not parse correctly without reversing this
-   transformation before parsing.
-
-   <!-- XML SOURCE START (note: each instance of
-        two '-' (U+002D: HYPHEN-MINUS) characters
-        changed to "&#x2d;&#x2d;") -->
-   <!--
-   <?xml version="1.0" encoding="utf-8"?>
-   <rfc>
-     <!&#x2d;&#x2d; A comment &#x2d;&#x2d;>
+   <script id="xml2rfc-source" type="application/xml"><![CDATA[
+   <?xml version='1.0'?>
+   <rfc/>
+   ]]></script>
 
 9.  Elements
 
@@ -942,18 +934,6 @@ Internet-Draft                  HTML RFC                    January 2016
    anchor="abstract" and <name>Abstract</name>, but without a section
    number.
 
-
-
-
-
-
-
-
-Hildebrand & Hoffman      Expires July 15, 2016                [Page 17]
-
-Internet-Draft                  HTML RFC                    January 2016
-
-
    <section id="abstract">
      <h2><a href="#abstract" class="selfRef">Abstract</a></h2>
      <p id="p-abstract-1">This document defines...
@@ -964,6 +944,15 @@ Internet-Draft                  HTML RFC                    January 2016
 9.2.  <address>
 
    This element is used in Authors' Addresses (Section 8.2).
+
+
+
+
+
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 17]
+
+Internet-Draft                  HTML RFC                    January 2016
+
 
 9.3.  <annotation>
 
@@ -1001,6 +990,17 @@ Internet-Draft                  HTML RFC                    January 2016
    The <div> element will have CSS classes of "artwork" and "art-"
    prepended to the value of the <artwork> element's "type" attribute,
    if it exists.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2002,8 +2002,8 @@ Internet-Draft                  HTML RFC                    January 2016
               css-00 (work in progress), January 2016.
 
    [I-D.iab-xml2rfc]
-              Hoffman, P., "The 'XML2RFC' version 3 Vocabulary", draft-
-              iab-xml2rfc-00 (work in progress), December 2015.
+              Hoffman, P., "The "xml2rfc" version 3 Vocabulary", draft-
+              iab-xml2rfc-02 (work in progress), January 2016.
 
 
 
@@ -2053,7 +2053,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
    [I-D.iab-rfc-framework]
               Flanagan, H., "RFC Format Framework", draft-iab-rfc-
-              framework-00 (work in progress), January 2016.
+              framework-01 (work in progress), January 2016.
 
 Authors' Addresses
 

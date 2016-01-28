@@ -989,16 +989,12 @@
   &lt;/span&gt;
 &lt;/div&gt;</pre>
 <h1 id="rfc.section.8.4"><a href="#rfc.section.8.4">8.4.</a> <a href="#xml-source" id="xml-source">XML Source</a></h1>
-<p id="rfc.section.8.4.p.1">At the very end of the document, the XML source that was used to produce this document will be included within a comment.  This comment may be preceded by another comment that describes the source.</p>
-<p id="rfc.section.8.4.p.2">Since the sequence "--" is invalid in an HTML comment, any instances of "--" in the input XML will be modified to use the escaped form of the HYPHEN-MINUS characters: "&amp;#x2d;&amp;#x2d;".  Note that if the dashes in the original XML were in a comment start- (&lt;!--) or end-delimiter (--&gt;), the XML will not parse correctly without reversing this transformation before parsing.</p>
+<p id="rfc.section.8.4.p.1">At the very end of the document, the XML source that was used to produce this document will be included within an HTML &lt;script&gt; tag, with "type" attribute of "application/xml" and id of "xml2rfc-source". The source document will also be wrapped in a CDATA block to reduce the need to further escape the XML.</p>
 <pre>
-&lt;!-- XML SOURCE START (note: each instance of
-     two '-' (U+002D: HYPHEN-MINUS) characters
-     changed to "&amp;#x2d;&amp;#x2d;") --&gt;
-&lt;!--
-&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;rfc&gt;
-  &lt;!&amp;#x2d;&amp;#x2d; A comment &amp;#x2d;&amp;#x2d;&gt;</pre>
+&lt;script id="xml2rfc-source" type="application/xml"&gt;&lt;![CDATA[
+&lt;?xml version='1.0'?&gt;
+&lt;rfc/&gt;
+]]&gt;&lt;/script&gt;</pre>
 <h1 id="rfc.section.9"><a href="#rfc.section.9">9.</a> <a href="#elements" id="elements">Elements</a></h1>
 <p id="rfc.section.9.p.1">This section describes how each of the XML elements from <a href="#I-D.iab-xml2rfc">[I-D.iab-xml2rfc]</a> is rendered to HTML.  Many of the descriptions have examples to clarify how elements will be rendered.</p>
 <h1 id="rfc.section.9.1"><a href="#rfc.section.9.1">9.1.</a> <a href="#element.abstract" id="element.abstract">&lt;abstract&gt;</a></h1>
@@ -1533,7 +1529,7 @@ int main(void)
       <td class="reference">
         <b id="I-D.iab-xml2rfc">[I-D.iab-xml2rfc]</b>
       </td>
-      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-iab-xml2rfc-00">The 'XML2RFC' version 3 Vocabulary</a>", Internet-Draft draft-iab-xml2rfc-00, December 2015.</td>
+      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-iab-xml2rfc-02">The "xml2rfc" version 3 Vocabulary</a>", Internet-Draft draft-iab-xml2rfc-02, January 2016.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -1580,7 +1576,7 @@ int main(void)
       <td class="reference">
         <b id="I-D.iab-rfc-framework">[I-D.iab-rfc-framework]</b>
       </td>
-      <td class="top"><a>Flanagan, H.</a>, "<a href="http://tools.ietf.org/html/draft-iab-rfc-framework-00">RFC Format Framework</a>", Internet-Draft draft-iab-rfc-framework-00, January 2016.</td>
+      <td class="top"><a>Flanagan, H.</a>, "<a href="http://tools.ietf.org/html/draft-iab-rfc-framework-01">RFC Format Framework</a>", Internet-Draft draft-iab-rfc-framework-01, January 2016.</td>
     </tr>
   </tbody>
 </table>
