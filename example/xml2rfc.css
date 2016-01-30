@@ -1,103 +1,50 @@
-
+@viewport {
+  zoom: 1.0;
+  width: extend-to-zoom;
+}
+@-ms-viewport {
+  width: extend-to-zoom;
+  zoom: 1.0;
+}
 body {
-  font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
-  margin: 0 5% 0 5%;
+  max-width: 724px;
+  margin: 2em auto;
+  color: #333;
   background-color: #fff;
-  color: #000;
+  font: 15px 'Noto Sans', Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  line-height: 130%;
 }
-h1, h2, h3, h4, h5, h6 {
-  clear: left;
+
+/* headings */
+#title, h1, h2, h3, h4, h5, h6 {
+  line-height: 100%;
+  margin: 0.8em 0 0.3em;
 }
-h4, h5, h6 {
-  font-size: 16px;
+#title {
+  font-size: 36px;
 }
-#identifiers {
-  float: right;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 8px;
-  margin: 20px;
-  background: transparent;
-  background-color: #eee;
+h1 {
+  font-size: 30px;
 }
-#identifiers dt {
-  margin-top: 2px;
-  font-weight: bold;
-  float: left;
-  clear: left;
-  text-align: right;
-  width: 5.5em;
+h2 {
+  font-size: 24px;
 }
-#identifiers dd {
-  margin-left: 8px;
-  margin-top: 2px;
-  float: left;
+h3, h4, h5, h6 {
+  font-size: 18px;
+}
+
+/* general structure */
+p {
+  padding: 0;
+  margin: 0.8em 0 0.8em 2em;
+  text-align: left;
 }
 div, span {
   position: relative;
 }
-.ascii {
-  display: none;
-  background: yellow;
-  position: absolute;
-  bottom: 0px;
-  left: -4px;
-  padding: 4px;
-}
-span:hover > .ascii {
-  display: block;
-}
-div:hover > .ascii {
-  display: block;
-}
-.reference {
-  padding-bottom: 10px;
-  float: left;
-}
-.reference dt {
-  margin-top: 8px;
-  font-weight: bold;
-  float: left;
-  text-align: right;
-  width: 6em;
-  white-space: nowrap;
-  clear: left;
-}
-.reference dd {
-  margin-top: 8px;
-  margin-left: 6.5em;
-}
-.refInstance {
-  padding-bottom: 10px;
-}
-#toc ul {
-  list-style-type: none;
-}
-section {
-  clear: both;
-}
-.bcp14 {
-  color: #666;
-  font-weight: bold;
-}
-.selfRef {
-  color: #000;
-  text-decoration: none;
-}
-.ulCompact {
-  line-height: 80%;
-}
-.ulEmpty {
-  list-style-type: none;
-}
-.olCompact {
-  line-height: 80%;
-}
-.olPercent dt {
-  float: left;
-  clear: left;
-  text-align: right;
-  margin-right: 8px;
+div {
+  margin: 0;
 }
 .alignRight {
   text-align: right;
@@ -105,62 +52,138 @@ section {
 .alignCenter {
   text-align: center;
 }
-.dlParallel dt {
+
+/* lists */
+ol, ul, li {
+  padding: 0;
+  margin: 0.8em 0 0.8em 2em;
+}
+li, p {
+  margin-left: 0;
+}
+ul.empty, .ulEmpty {
+  list-style-type: none;
+}
+ul.empty li, .ulEmpty li {
+  margin-top: .5em;
+}
+ul.compact, .ulCompact,
+ol.compact, .olCompact {
+  line-height: 100%;
+  margin: 0 0 0 2em;
+}
+
+/* definition lists */
+dl {
+  margin-left: 1em;
+}
+dl > dt {
   float: left;
-  clear: left;
-  margin-right: 8px;
-  font-weight: bold;
+  margin-right: 1em;
 }
-.dlCompact {
-  line-height: 80%;
+dl.nohang > dt {
+  float: none;
 }
-code {
+dl > dd {
+  margin-bottom: .8em;
+  min-height: 1.3em;
+}
+/* I find the dlCompact style stupid */
+dl.compact > dd, dlCompact > dd {
+  margin-bottom: 0em;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+  margin-bottom: 0em;
+}
+
+/* links */
+a {
+  text-decoration: none;
+}
+a[href] {
+  color: #2a6496;
+}
+figcaption a[href], a[href].selfRef {
+  color: #000;
+}
+a[href]:hover {
   background-color: #eee;
-  font-family: 'Droid Serif', Monaco, monospace;
-  font-size: 90%;
+}
+
+/* Figures */
+tt, code, pre, code {
+  background-color: #f9f9f9;
+  font: 11pt 'Droid Serif', Monaco, monospace;
+}
+pre {
+  border: 1px solid #eee;
+  padding: 5px;
+  margin: 0.8em 0.4em 0.4em;
   line-height: 1.15em;
 }
-aside {
-  clear: both;
+figure {
+  margin: 0;
+}
+figure blockquote {
+  margin: 0.8em 0.4em 0.4em;
+}
+figcaption {
+  font-style: italic;
+  margin: 0 1.5em;
+}
+@media screen {
+  pre {
+    overflow-x: auto;
+    max-width: 100%;
+    max-width: calc(100% - 22px);
+  }
+}
+
+/* aside, blockquote */
+aside, blockquote {
   margin-left: 40px;
   margin-right: 40px;
   padding: 10px;
 }
 blockquote {
-  background-color: #eee;
-  margin-left: 40px;
-  margin-right: 40px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  float: left;
-  clear: both;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 3px;
 }
-blockquote cite {
-  float: right;
-  clear: both;
+cite {
+  display: block;
+  text-align: right;
+  font-style: italic;
 }
-figure blockquote {
-  margin-left: 0;
+
+/* tables */
+table {
+  margin-left: 0em;
+  border-collapse: collapse;
 }
-figure .code {
-  margin-left: 0;
+th {
+  text-align: left;
+  border-bottom: 2px solid #ddd;
 }
-figcaption {
-  padding-top: 10px;
-  padding-bottom: 10px;
+td {
+  border-top: 1px solid #ddd;
+  vertical-align: top;
 }
-@media screen {
-  .code {
-    overflow-x: auto;
-    max-width: 100%;
-  }
+tr:nth-child(2n+1) > td,
+tr:nth-child(2n+1) > th {
+  background-color: #f9f9f9;
 }
+table caption {
+  font-style: italic;
+  margin: 0 1.5em;
+}
+
+/* pilcrow */
 a.pilcrow {
-  color: #999;
+  color: #777;
   text-decoration: none;
-  visibility:hidden;
-  font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+  visibility: hidden;
   user-select: none;
   -ms-user-select: none;
   -o-user-select:none;
@@ -169,131 +192,251 @@ a.pilcrow {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
-aside:hover > a.pilcrow {
-  visibility: visible;
+@media screen {
+  aside:hover > a.pilcrow,
+  p:hover > a.pilcrow,
+  blockquote:hover > a.pilcrow,
+  div:hover > a.pilcrow,
+  li:hover > a.pilcrow,
+  pre:hover > a.pilcrow {
+    visibility: visible;
+  }
 }
-p:hover > a.pilcrow {
-  visibility: visible;
+
+/* ascii overlay */
+/* Joe: this doesn't work if the ascii text is longer than the original text,
+  something that I expect will be common in some scripts */
+.ascii {
+  display: none;
+  color: #000;
+  background-color: #e2edf6;
+  position: absolute;
+  top: -2px;
+  left: -1px;
+  padding: 1px;
+  width: 100%;
+  height: 100%;
 }
-blockquote:hover > a.pilcrow {
-  visibility: visible;
+@media screen {
+  span:hover > .ascii {
+    display: block;
+  }
+  div:hover > .ascii {
+    display: block;
+  }
 }
-div:hover > a.pilcrow {
-  visibility: visible;
+
+/* misc */
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
 }
-li:hover > a.pilcrow {
-  visibility: visible;
+.bcp14 {
+  font-variant: small-caps;
 }
-pre:hover > a.pilcrow {
-  visibility: visible;
+/* Joe: This is all kludgy, not because your intent is wrong, but because you
+  insist on adding whitespace both to the inside and the outside of the <span>
+  tags that you use for these rules.  I've hacked around this as I am able
+  without modifying the html, but you really need to fix the spacing at the
+  source.  If you fix it, all these nasty tricks with -0.2em margins can be
+  removed. */
+.comma, .fullStop, .closeParen, .openParen {
+  display: none;
 }
-div#toc {
-  page-break-before: always;
+.role {
+  font-variant: all-small-caps;
 }
-p {
-  text-align: justify;
-  orphans: 3;
-  widows: 3;
-  line-height: 120%;
+.role::before {
+  content: " [";
 }
-table {
-  border-collapse: collapse;
+.role::after {
+  content: "]";
 }
-th {
-  border: solid thin;
-  text-align: center;
-  background-color: #ccc;
+
+/* info block */
+#identifiers {
+  color: #555;
+  margin: 0;
 }
-td {
-  border: solid thin;
-  padding-left: 5px;
-  padding-right: 5px;
+#identifiers dt {
+  min-width: 6em;
+  color: #777;
+  font-weight: 700;
 }
-.rfceditor-remove:before {
-  content: "The RFC Editor\awill remove\athis section";
-  background-color: rgba(235, 249, 105, 1);
-  float: right;
-  white-space: pre;
-  padding: 4px;
-  margin-left: 10px;
+#identifiers dd {
+  margin-left: 7em;
+  margin-bottom: 0;
 }
-.rfcEditorRemove {
-  background-color: rgba(235, 249, 105, 0.25);
-  clear: both;
+#identifiers .org::before {
+  margin-left: -0.2em; /* hack */
+  content: ", ";
 }
-.cref {
-  background-color: rgba(235, 249, 105, 0.25);
-  padding: 4px;
-}
-.crefSource {
+.docInfo {
+  text-align: right;
   font-style: italic;
-  background-color: rgba(235, 249, 105, 1);
+  font-size: 12px;
+  color: #999;
+  margin-right: 20px;
 }
+
+/* table of contents */
+nav.toc ul {
+  margin: 0 0 0 1.5em;
+  padding: 0;
+  list-style: none;
+}
+nav.toc li {
+  margin: 0;
+  text-indent: -2.5em;
+  padding-left: 2.5em;
+  padding-bottom: 5px;
+}
+
+/* references */
+.reference dt {
+  text-align: right;
+  font-weight: bold;
+  min-width: 6em;
+}
+.reference dd {
+  margin-left: 7em;
+}
+.reference dd > span::after,
+.refInstance > span::after {
+  margin-left: -0.2em;
+  content: ",";
+}
+.reference dd > time::after,
+.refInstance > time::after {
+  /* This hack doesn't work here because the HTML file isn't consistent about
+     including whitespace between the end of the <time> element content and the
+     tag. */
+  margin-left: -0.2em;
+  content: ".";
+}
+
+/* index */
+.index ul {
+  margin: 0 0 0 1em;
+  padding: 0;
+  list-style: none;
+}
+.index ul ul {
+  margin: 0;
+}
+.index li {
+  margin: 0;
+  text-indent: -2em;
+  padding-left: 2em;
+  padding-bottom: 5px;
+}
+.indexIndex {
+  margin-left: 2em;
+}
+.indexIndex:before {
+  content: " ... "
+}
+.index a {
+  font-weight: 700;
+}
+
+/* authors */
 address.vcard {
-  padding-bottom: 20px;
   font-style: normal;
+  margin: 1em;
 }
-address.vcard > div {
-  padding-bottom: 4px;
+address.vcard > * {
+  margin: 0.4em 1em;
+}
+address.vcard .nameRole {
+  font-weight: 700;
+  margin-left: 0;
 }
 address.vcard .label {
-  margin: 0;
-  padding: 0;
-  padding-bottom: 4px;
+  margin: 0 2em;
   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
-}
-address.vcard .namerole {
-  font-weight: bold;
 }
 address.vcard .type {
   display: none;
 }
-.index ul {
-  list-style-type: none;
+
+/* temporary notes */
+.rfcEditorRemove::before {
+  position: absolute;
+  top: 0.2em;
+  right: 0.2em;
+  padding: 0.2em;
+  content: "The RFC Editor will remove this note";
+  color: #b76427;
+  background-color: rgba(249, 232, 105, 0.3);
 }
-.index a {
-  text-decoration: none;
+.rfcEditorRemove {
+  position: relative;
+  padding-top: 1.8em;
+  background-color: rgba(249, 232, 105, 0.3);
+  border-radius: 3px;
 }
-.indexIndex a {
-  font-weight: bold;
+.cref {
+  background-color: rgba(249, 232, 105, 0.3);
 }
-.indexChar a {
-  text-decoration: none;
-  font-weight: bold;
+.cref::before {
+  content: "[[ ";
 }
-.index a.primary {
-  font-weight: bold;
+.cref::after {
+  content: " ]]";
 }
-.docInfo {
-  float: right;
-  clear: both;
+.crefSource {
   font-style: italic;
-  font-size: small;
-  color: #999;
-  margin-right: 20px;
 }
-.comma {
-  margin-left: -4px;
+
+/* alternative layout for wide screens */
+@media screen and (min-width: 1024px) {
+  body {
+    padding-left: 1.5em;
+    padding-right: 29em;
+  }
+
+  h2#toc, nav.toc {
+    position: fixed;
+    right: 0;
+    right: calc(50vw - 500px);
+    width: 300px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 1em;
+    z-index: 1;
+  }
+  h2#toc {
+    top: 16px;
+    height: 64px;
+  }
+  nav.toc {
+    top: 80px;
+    overflow: auto;
+    bottom: 0;
+  }
 }
-.fullStop {
-  margin-left: -4px;
-}
-.closeParen {
-  margin-left: -4px;
-}
-.openParen {
-  margin-right: -4px;
-}
+
+/* pagination */
 @media print {
-  div#toc {
+  body {
+    font-family: 'Times New Roman', serif;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  nav#toc {
     page-break-before: always;
   }
-  pre {
+  figure, pre {
     page-break-inside: avoid;
   }
   h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
     page-break-after: avoid;
   }
+  /* Joe: is this really necessary? */
   h2+*, h3+*, h4+*, h5+*, h6+* {
     page-break-before: avoid;
   }
