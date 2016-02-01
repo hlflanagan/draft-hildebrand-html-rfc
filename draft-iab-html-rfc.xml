@@ -341,7 +341,7 @@
           </figure>
         </section>
         <section anchor="license" title="Link to License">
-          <t>The lt;head&gt; element contains a &lt;link&gt; tag, with "rel"
+          <t>The &lt;head&gt; element contains a &lt;link&gt; tag, with "rel"
             attribute of "license" and "href" attribute pointing to the an
             appropriate copyright license for the document.</t>
           <figure>

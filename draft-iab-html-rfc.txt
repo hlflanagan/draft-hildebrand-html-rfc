@@ -580,7 +580,7 @@ Internet-Draft                  HTML RFC                    January 2016
 
 6.3.5.  Link to License
 
-   The lt;head> element contains a <link> tag, with "rel" attribute of
+   The <head> element contains a <link> tag, with "rel" attribute of
    "license" and "href" attribute pointing to the an appropriate
    copyright license for the document.
 
