@@ -1,9 +1,9 @@
 <?xml version='1.0'?>
 <rfc consensus='false'
-     expiresDate='2016-07-28'
+     expiresDate='2016-08-01'
      indexInclude='true'
      ipr='trust200902'
-     prepTime='2016-01-28T16:54:47Z'
+     prepTime='2016-02-01T19:53:59Z'
      scripts='Common,Inherited,Latin'
      sortRefs='true'
      submissionType='IETF'
@@ -64,7 +64,7 @@
         <email>rse@rfc-editor.org</email>
       </address>
     </author>
-    <date day='28' month='January' year='2016'/>
+    <date day='1' month='February' year='2016'/>
     <area>gen</area>
     <workgroup>RFC-Interest Pseudo Working Group</workgroup>
     <keyword>html</keyword>
@@ -84,7 +84,7 @@
     </abstract>
     <seriesInfo name='foo' value='4'/>
     <seriesInfo name='Internet-Draft'
-                value='draft-hildebrand-html-rfc-04'/>
+                value='draft-iab-html-rfc-test-00'/>
     <note pn='s-note-1' removeInRFC='true'>
       <name slugifiedName='n-editorial-note'>Editorial Note</name>
       <t pn='p-note-1-1'>
@@ -131,7 +131,7 @@
           than as "work in progress."
         </t>
         <t pn='p-boilerplate-1-4'>
-          This Internet-Draft will expire on 2016-07-28.
+          This Internet-Draft will expire on 2016-08-01.
         </t>
       </section>
       <section numbered='false' pn='s-boilerplate-2'>

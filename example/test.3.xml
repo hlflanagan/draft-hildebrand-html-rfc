@@ -60,7 +60,7 @@
       </ul>
     </abstract>
     <seriesInfo name='foo' value='4'/>
-    <seriesInfo name='Internet-Draft' value='draft-hildebrand-html-rfc-04'/>
+    <seriesInfo name='Internet-Draft' value='draft-iab-html-rfc-test-00'/>
     <note removeInRFC='true'>
       <name>Editorial Note</name>
       <t>

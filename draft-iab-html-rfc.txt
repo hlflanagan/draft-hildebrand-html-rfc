@@ -79,25 +79,26 @@ Table of Contents
      6.3.  Head Element  . . . . . . . . . . . . . . . . . . . . . .  10
        6.3.1.  Charset Declaration . . . . . . . . . . . . . . . . .  10
        6.3.2.  Document Title  . . . . . . . . . . . . . . . . . . .  10
-       6.3.3.  Document metadata . . . . . . . . . . . . . . . . . .  10
-       6.3.4.  Style . . . . . . . . . . . . . . . . . . . . . . . .  11
-       6.3.5.  Links . . . . . . . . . . . . . . . . . . . . . . . .  11
-     6.4.  Document Information  . . . . . . . . . . . . . . . . . .  11
+       6.3.3.  Document Metadata . . . . . . . . . . . . . . . . . .  10
+       6.3.4.  Link to XML source  . . . . . . . . . . . . . . . . .  11
+       6.3.5.  Link to License . . . . . . . . . . . . . . . . . . .  11
+       6.3.6.  Style . . . . . . . . . . . . . . . . . . . . . . . .  11
+       6.3.7.  Links . . . . . . . . . . . . . . . . . . . . . . . .  12
+     6.4.  Document Information  . . . . . . . . . . . . . . . . . .  12
      6.5.  Table of Contents . . . . . . . . . . . . . . . . . . . .  12
    7.  Main Body . . . . . . . . . . . . . . . . . . . . . . . . . .  13
    8.  Back Matter . . . . . . . . . . . . . . . . . . . . . . . . .  13
      8.1.  Index . . . . . . . . . . . . . . . . . . . . . . . . . .  13
        8.1.1.  Index Contents  . . . . . . . . . . . . . . . . . . .  13
-       8.1.2.  Index Letters . . . . . . . . . . . . . . . . . . . .  13
+       8.1.2.  Index Letters . . . . . . . . . . . . . . . . . . . .  14
        8.1.3.  Index Items . . . . . . . . . . . . . . . . . . . . .  14
-       8.1.4.  Index Sub-items . . . . . . . . . . . . . . . . . . .  14
+       8.1.4.  Index Sub-items . . . . . . . . . . . . . . . . . . .  15
      8.2.  Authors' Addresses  . . . . . . . . . . . . . . . . . . .  15
      8.3.  Document Information  . . . . . . . . . . . . . . . . . .  16
-     8.4.  XML Source  . . . . . . . . . . . . . . . . . . . . . . .  17
    9.  Elements  . . . . . . . . . . . . . . . . . . . . . . . . . .  17
      9.1.  <abstract>  . . . . . . . . . . . . . . . . . . . . . . .  17
      9.2.  <address> . . . . . . . . . . . . . . . . . . . . . . . .  17
-     9.3.  <annotation>  . . . . . . . . . . . . . . . . . . . . . .  18
+     9.3.  <annotation>  . . . . . . . . . . . . . . . . . . . . . .  17
      9.4.  <area>  . . . . . . . . . . . . . . . . . . . . . . . . .  18
      9.5.  <artwork> . . . . . . . . . . . . . . . . . . . . . . . .  18
        9.5.1.  Text Artwork  . . . . . . . . . . . . . . . . . . . .  18
@@ -105,7 +106,6 @@ Table of Contents
        9.5.3.  Other Artwork . . . . . . . . . . . . . . . . . . . .  19
      9.6.  <aside> . . . . . . . . . . . . . . . . . . . . . . . . .  20
      9.7.  <author>  . . . . . . . . . . . . . . . . . . . . . . . .  20
-       9.7.1.  Authors of this document  . . . . . . . . . . . . . .  20
 
 
 
@@ -114,6 +114,7 @@ Hildebrand & Hoffman      Expires July 15, 2016                 [Page 2]
 Internet-Draft                  HTML RFC                    January 2016
 
 
+       9.7.1.  Authors of this document  . . . . . . . . . . . . . .  20
        9.7.2.  Authors of references . . . . . . . . . . . . . . . .  21
      9.8.  <back>  . . . . . . . . . . . . . . . . . . . . . . . . .  21
      9.9.  <bcp14> . . . . . . . . . . . . . . . . . . . . . . . . .  21
@@ -161,7 +162,6 @@ Internet-Draft                  HTML RFC                    January 2016
      9.45. <rfc> . . . . . . . . . . . . . . . . . . . . . . . . . .  32
      9.46. <section> . . . . . . . . . . . . . . . . . . . . . . . .  32
      9.47. <seriesInfo>  . . . . . . . . . . . . . . . . . . . . . .  32
-     9.48. <sourcecode>  . . . . . . . . . . . . . . . . . . . . . .  32
 
 
 
@@ -170,6 +170,7 @@ Hildebrand & Hoffman      Expires July 15, 2016                 [Page 3]
 Internet-Draft                  HTML RFC                    January 2016
 
 
+     9.48. <sourcecode>  . . . . . . . . . . . . . . . . . . . . . .  32
      9.49. <street>  . . . . . . . . . . . . . . . . . . . . . . . .  33
      9.50. <strong>  . . . . . . . . . . . . . . . . . . . . . . . .  33
      9.51. <sub> . . . . . . . . . . . . . . . . . . . . . . . . . .  33
@@ -216,7 +217,6 @@ Internet-Draft                  HTML RFC                    January 2016
    will be published capturing those changes as the toolset is
    completed.  Other implementers must not expect those changes to
    remain backwards-compatible with the details described this document.
-
 
 
 
@@ -539,7 +539,7 @@ Internet-Draft                  HTML RFC                    January 2016
    The contents of the <title> element from the XML source will be
    placed inside an HTML <title> element in the header.
 
-6.3.3.  Document metadata
+6.3.3.  Document Metadata
 
    The following <meta> elements will be included:
 
@@ -569,7 +569,24 @@ Internet-Draft                  HTML RFC                    January 2016
 
    Note: the HTML <meta> tag does not contain a closing slash.
 
-6.3.4.  Style
+6.3.4.  Link to XML source
+
+   The <head> element contains a <link> tag, with "rel" attribute of
+   "alternate", "type" attribute of "application/rfc+xml", and "href"
+   attribute pointing to the prepared XML source that was used to
+   generate this document.
+
+   <link rel="alternate" type="application/rfc+xml" href="source.xml">
+
+6.3.5.  Link to License
+
+   The lt;head> element contains a <link> tag, with "rel" attribute of
+   "license" and "href" attribute pointing to the an appropriate
+   copyright license for the document.
+
+   <link rel="license" href="https://www.rfc-editor.org/copyright/">
+
+6.3.6.  Style
 
    The <head> element contains an embedded CSS style sheet in a <style>
    element.  The styles in the style sheet are to be set consistently
@@ -592,7 +609,16 @@ Internet-Draft                  HTML RFC                    January 2016
    </style>
    <link rel="stylesheet" type="text/css" href="rfc-local.css">
 
-6.3.5.  Links
+
+
+
+
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 11]
+
+Internet-Draft                  HTML RFC                    January 2016
+
+
+6.3.7.  Links
 
    Each <link> element from the XML source is copied into the HTML
    header.  Note: the HTML <link> element does not include a closing
@@ -605,18 +631,6 @@ Internet-Draft                  HTML RFC                    January 2016
    with id="identifiers".  The defined terms in the definition list are
    "Workgroup:", "Series:", "Status:", "Published:", and "Authors:".
    For example:
-
-
-
-
-
-
-
-
-Hildebrand & Hoffman      Expires July 15, 2016                [Page 11]
-
-Internet-Draft                  HTML RFC                    January 2016
-
 
    <dl id="identifiers">
      <dt>Workgroup:</dt>
@@ -653,6 +667,13 @@ Internet-Draft                  HTML RFC                    January 2016
    <name> child element).  Each <nav>, <ul>, and <li> element will have
    the class "toc".
 
+
+
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 12]
+
+Internet-Draft                  HTML RFC                    January 2016
+
+
    For example:
 
    <h2 id="toc">Table of Contents</h2>
@@ -666,13 +687,6 @@ Internet-Draft                  HTML RFC                    January 2016
            <a href="s-1.1">1.1</a>. <a href="n-sub-intro">Sub Intro</a>
          </li>
    ...
-
-
-
-Hildebrand & Hoffman      Expires July 15, 2016                [Page 12]
-
-Internet-Draft                  HTML RFC                    January 2016
-
 
 7.  Main Body
 
@@ -709,6 +723,13 @@ Internet-Draft                  HTML RFC                    January 2016
      </div>
      ...
 
+
+
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 13]
+
+Internet-Draft                  HTML RFC                    January 2016
+
+
 8.1.2.  Index Letters
 
    The index letter is followed by a <ul> tag that contains a <li> tag
@@ -718,17 +739,6 @@ Internet-Draft                  HTML RFC                    January 2016
    includes a <ul> tag that will contain the index items.
 
    For example:
-
-
-
-
-
-
-
-Hildebrand & Hoffman      Expires July 15, 2016                [Page 13]
-
-Internet-Draft                  HTML RFC                    January 2016
-
 
    <ul>
      <li class="indexChar">
@@ -768,6 +778,14 @@ Internet-Draft                  HTML RFC                    January 2016
    </li>
    ...
 
+
+
+
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 14]
+
+Internet-Draft                  HTML RFC                    January 2016
+
+
 8.1.4.  Index Sub-items
 
    If an index item has at least one subitem, the <li> of that item will
@@ -776,15 +794,6 @@ Internet-Draft                  HTML RFC                    January 2016
    the class of the first <span> tag is "irefSubItem".
 
    For example:
-
-
-
-
-
-Hildebrand & Hoffman      Expires July 15, 2016                [Page 14]
-
-Internet-Draft                  HTML RFC                    January 2016
-
 
    <ul>
      <li class="indexSubItem">
@@ -825,6 +834,14 @@ Internet-Draft                  HTML RFC                    January 2016
          Cisco Systems, Inc. <span class="ascii">Cisco Systems,
          Inc.</span>
        </div>
+
+
+
+Hildebrand & Hoffman      Expires July 15, 2016                [Page 15]
+
+Internet-Draft                  HTML RFC                    January 2016
+
+
        <div class="adr">
          <div class="street-address">1 Main Street</div>
          <div class="street-address">Suite 1</div>
@@ -834,14 +851,6 @@ Internet-Draft                  HTML RFC                    January 2016
            </span>
            <span class="comma">,</span>
            <span class="region">CO</span>
-
-
-
-Hildebrand & Hoffman      Expires July 15, 2016                [Page 15]
-
-Internet-Draft                  HTML RFC                    January 2016
-
-
            <span class="postal-code">
              80202 <span class="ascii">80202</span>
            </span>
@@ -880,15 +889,6 @@ Internet-Draft                  HTML RFC                    January 2016
    most readers are included after the author information.  These are
    gathered together into a <div> of class "docInfo".
 
-   The finalized time is copied from the <rfc> element's prepTime
-   attribute.  The rendered time is the time that this HTML was
-   generated.
-
-   For example:
-
-
-
-
 
 
 
@@ -897,6 +897,12 @@ Hildebrand & Hoffman      Expires July 15, 2016                [Page 16]
 
 Internet-Draft                  HTML RFC                    January 2016
 
+
+   The finalized time is copied from the <rfc> element's prepTime
+   attribute.  The rendered time is the time that this HTML was
+   generated.
+
+   For example:
 
    <div class="docInfo">
      <span class="finalized">
@@ -908,19 +914,6 @@ Internet-Draft                  HTML RFC                    January 2016
        datetime="2015-04-29T18:59:10Z">2015-04-29T18:59:10Z</time>
      </span>
    </div>
-
-8.4.  XML Source
-
-   At the very end of the document, the XML source that was used to
-   produce this document will be included within an HTML <script> tag,
-   with "type" attribute of "application/xml" and id of "xml2rfc-
-   source".  The source document will also be wrapped in a CDATA block
-   to reduce the need to further escape the XML.
-
-   <script id="xml2rfc-source" type="application/xml"><![CDATA[
-   <?xml version='1.0'?>
-   <rfc/>
-   ]]></script>
 
 9.  Elements
 
@@ -945,6 +938,13 @@ Internet-Draft                  HTML RFC                    January 2016
 
    This element is used in Authors' Addresses (Section 8.2).
 
+9.3.  <annotation>
+
+   This element is rendered as a span of class "annotation" at the end
+   of a <reference> element, the span containing appropriately-
+   transformed elements from the children of the <annotation> tag.  A
+   <span> of class "comma" is added before the annotation, containing
+   ",".
 
 
 
@@ -953,14 +953,6 @@ Hildebrand & Hoffman      Expires July 15, 2016                [Page 17]
 
 Internet-Draft                  HTML RFC                    January 2016
 
-
-9.3.  <annotation>
-
-   This element is rendered as a span of class "annotation" at the end
-   of a <reference> element, the span containing appropriately-
-   transformed elements from the children of the <annotation> tag.  A
-   <span> of class "comma" is added before the annotation, containing
-   ",".
 
    <span class="comma">,</span>
    <span class="annotation">
@@ -990,6 +982,14 @@ Internet-Draft                  HTML RFC                    January 2016
    The <div> element will have CSS classes of "artwork" and "art-"
    prepended to the value of the <artwork> element's "type" attribute,
    if it exists.
+
+
+
+
+
+
+
+
 
 
 

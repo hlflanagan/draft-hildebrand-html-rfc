@@ -306,7 +306,7 @@
             will be placed inside an HTML &lt;title&gt; element in the
             header.</t>
         </section>
-        <section anchor="meta" title="Document metadata">
+        <section anchor="meta" title="Document Metadata">
           <t>The following &lt;meta&gt; elements will be included:
             <list style="symbols">
               <t>author - comma-separated "fullname"s and "asciiFullname"s of
@@ -329,6 +329,25 @@
           </figure>
           <t>Note: the HTML &lt;meta&gt; tag does not contain a closing
             slash.</t>
+        </section>
+        <section anchor="xmlsource" title="Link to XML source">
+          <t>The &lt;head&gt; element contains a &lt;link&gt; tag, with "rel"
+            attribute of "alternate", "type" attribute of "application/rfc+xml",
+            and "href" attribute pointing to the prepared XML source that was
+            used to generate this document.</t>
+          <figure>
+            <artwork><![CDATA[
+<link rel="alternate" type="application/rfc+xml" href="source.xml">]]></artwork>
+          </figure>
+        </section>
+        <section anchor="license" title="Link to License">
+          <t>The lt;head&gt; element contains a &lt;link&gt; tag, with "rel"
+            attribute of "license" and "href" attribute pointing to the an
+            appropriate copyright license for the document.</t>
+          <figure>
+            <artwork><![CDATA[
+<link rel="license" href="https://www.rfc-editor.org/copyright/">]]></artwork>
+          </figure>
         </section>
         <section anchor="style" title="Style">
           <t>The &lt;head&gt; element contains an embedded CSS style sheet in a
@@ -607,21 +626,6 @@
     datetime="2015-04-29T18:59:10Z">2015-04-29T18:59:10Z</time>
   </span>
 </div>]]></artwork>
-        </figure>
-      </section>
-      <section title="XML Source" anchor="xml-source">
-        <t>At the very end of the document, the XML source that was used to
-          produce this document will be included within an HTML &lt;script&gt;
-          tag, with "type" attribute of "application/xml" and id of
-          "xml2rfc-source". The source document will also be wrapped in a CDATA
-          block to reduce the need to further escape the XML.</t>
-        <figure>
-          <artwork><![CDATA[
-<script id="xml2rfc-source" type="application/xml"><![CDATA[
-<?xml version='1.0'?>
-<rfc/>
-]]]]><![CDATA[></script>]]></artwork>
-<!-- Note to self: two CDATA's above to escape the liternal CDATA. -->
         </figure>
       </section>
     </section>

@@ -470,6 +470,8 @@ html(lang='en', class=$$('/rfc/front/seriesInfo/@name'))
     //-   include xml2rfc.css
     //- link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Noto+Sans') 
     //- link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Droid+Serif') 
+    link(rel='alternate', type='application/rfc+xml', href=$sourceFile)
+    link(rel='license' href='https://www.rfc-editor.org/copyright/')
     link(rel='stylesheet', type='text/css', href='xml2rfc.css')
     link(rel='stylesheet', type='text/css', href='local.css')
     each link in $$('link')
@@ -499,6 +501,3 @@ html(lang='en', class=$$('/rfc/front/seriesInfo/@name'))
       - var rendered = dt.isoDateTime()
       span.rendered Rendered:
         time(datetime=rendered)= rendered
-
-  script#xml2rfc-source(type='application/xml')
-    != $source.toString('utf8')

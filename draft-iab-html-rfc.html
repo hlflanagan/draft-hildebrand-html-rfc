@@ -390,9 +390,11 @@
 <link href="#rfc.section.6.3" rel="Chapter" title="6.3 Head Element"/>
 <link href="#rfc.section.6.3.1" rel="Chapter" title="6.3.1 Charset Declaration"/>
 <link href="#rfc.section.6.3.2" rel="Chapter" title="6.3.2 Document Title"/>
-<link href="#rfc.section.6.3.3" rel="Chapter" title="6.3.3 Document metadata"/>
-<link href="#rfc.section.6.3.4" rel="Chapter" title="6.3.4 Style"/>
-<link href="#rfc.section.6.3.5" rel="Chapter" title="6.3.5 Links"/>
+<link href="#rfc.section.6.3.3" rel="Chapter" title="6.3.3 Document Metadata"/>
+<link href="#rfc.section.6.3.4" rel="Chapter" title="6.3.4 Link to XML source"/>
+<link href="#rfc.section.6.3.5" rel="Chapter" title="6.3.5 Link to License"/>
+<link href="#rfc.section.6.3.6" rel="Chapter" title="6.3.6 Style"/>
+<link href="#rfc.section.6.3.7" rel="Chapter" title="6.3.7 Links"/>
 <link href="#rfc.section.6.4" rel="Chapter" title="6.4 Document Information"/>
 <link href="#rfc.section.6.5" rel="Chapter" title="6.5 Table of Contents"/>
 <link href="#rfc.section.7" rel="Chapter" title="7 Main Body"/>
@@ -404,7 +406,6 @@
 <link href="#rfc.section.8.1.4" rel="Chapter" title="8.1.4 Index Sub-items"/>
 <link href="#rfc.section.8.2" rel="Chapter" title="8.2 Authors' Addresses"/>
 <link href="#rfc.section.8.3" rel="Chapter" title="8.3 Document Information"/>
-<link href="#rfc.section.8.4" rel="Chapter" title="8.4 XML Source"/>
 <link href="#rfc.section.9" rel="Chapter" title="9 Elements"/>
 <link href="#rfc.section.9.1" rel="Chapter" title="9.1 &lt;abstract&gt;"/>
 <link href="#rfc.section.9.2" rel="Chapter" title="9.2 &lt;address&gt;"/>
@@ -575,9 +576,11 @@
 <li>6.3.   <a href="#rfc.section.6.3">Head Element</a></li>
 <ul><li>6.3.1.   <a href="#rfc.section.6.3.1">Charset Declaration</a></li>
 <li>6.3.2.   <a href="#rfc.section.6.3.2">Document Title</a></li>
-<li>6.3.3.   <a href="#rfc.section.6.3.3">Document metadata</a></li>
-<li>6.3.4.   <a href="#rfc.section.6.3.4">Style</a></li>
-<li>6.3.5.   <a href="#rfc.section.6.3.5">Links</a></li>
+<li>6.3.3.   <a href="#rfc.section.6.3.3">Document Metadata</a></li>
+<li>6.3.4.   <a href="#rfc.section.6.3.4">Link to XML source</a></li>
+<li>6.3.5.   <a href="#rfc.section.6.3.5">Link to License</a></li>
+<li>6.3.6.   <a href="#rfc.section.6.3.6">Style</a></li>
+<li>6.3.7.   <a href="#rfc.section.6.3.7">Links</a></li>
 </ul><li>6.4.   <a href="#rfc.section.6.4">Document Information</a></li>
 <li>6.5.   <a href="#rfc.section.6.5">Table of Contents</a></li>
 </ul><li>7.   <a href="#rfc.section.7">Main Body</a></li>
@@ -589,7 +592,6 @@
 <li>8.1.4.   <a href="#rfc.section.8.1.4">Index Sub-items</a></li>
 </ul><li>8.2.   <a href="#rfc.section.8.2">Authors' Addresses</a></li>
 <li>8.3.   <a href="#rfc.section.8.3">Document Information</a></li>
-<li>8.4.   <a href="#rfc.section.8.4">XML Source</a></li>
 </ul><li>9.   <a href="#rfc.section.9">Elements</a></li>
 <ul><li>9.1.   <a href="#rfc.section.9.1">&lt;abstract&gt;</a></li>
 <li>9.2.   <a href="#rfc.section.9.2">&lt;address&gt;</a></li>
@@ -785,7 +787,7 @@
 &lt;meta charset="utf-8"&gt;</pre>
 <h1 id="rfc.section.6.3.2"><a href="#rfc.section.6.3.2">6.3.2.</a> <a href="#head-title" id="head-title">Document Title</a></h1>
 <p id="rfc.section.6.3.2.p.1">The contents of the &lt;title&gt; element from the XML source will be placed inside an HTML &lt;title&gt; element in the header.</p>
-<h1 id="rfc.section.6.3.3"><a href="#rfc.section.6.3.3">6.3.3.</a> <a href="#meta" id="meta">Document metadata</a></h1>
+<h1 id="rfc.section.6.3.3"><a href="#rfc.section.6.3.3">6.3.3.</a> <a href="#meta" id="meta">Document Metadata</a></h1>
 <p id="rfc.section.6.3.3.p.1">The following &lt;meta&gt; elements will be included: </p>
 
 <ul>
@@ -802,18 +804,26 @@
 &lt;meta name="generator" content="xmljade v0.2.4"&gt;
 &lt;meta name="keywords" content="html,css,rfc"&gt;</pre>
 <p id="rfc.section.6.3.3.p.2">Note: the HTML &lt;meta&gt; tag does not contain a closing slash.</p>
-<h1 id="rfc.section.6.3.4"><a href="#rfc.section.6.3.4">6.3.4.</a> <a href="#style" id="style">Style</a></h1>
-<p id="rfc.section.6.3.4.p.1">The &lt;head&gt; element contains an embedded CSS style sheet in a &lt;style&gt; element.  The styles in the style sheet are to be set consistently between documents by the RFC Editor, according to the best practices of the day.</p>
-<p id="rfc.section.6.3.4.p.2">To ensure consistent formatting, individual style attributes should not be used in the main portion of the document.</p>
-<p id="rfc.section.6.3.4.p.3">Different readers of a specification will desire different formatting when reading the HTML versions of RFCs.  To facilitate this, the &lt;head&gt; element also includes a &lt;link&gt; to a style sheet in the same directory as the HTML file, named "rfc-local.css". Any formatting in the linked style sheet will override the formatting in the included style sheet. For example:</p>
+<h1 id="rfc.section.6.3.4"><a href="#rfc.section.6.3.4">6.3.4.</a> <a href="#xmlsource" id="xmlsource">Link to XML source</a></h1>
+<p id="rfc.section.6.3.4.p.1">The &lt;head&gt; element contains a &lt;link&gt; tag, with "rel" attribute of "alternate", "type" attribute of "application/rfc+xml", and "href" attribute pointing to the prepared XML source that was used to generate this document.</p>
+<pre>
+&lt;link rel="alternate" type="application/rfc+xml" href="source.xml"&gt;</pre>
+<h1 id="rfc.section.6.3.5"><a href="#rfc.section.6.3.5">6.3.5.</a> <a href="#license" id="license">Link to License</a></h1>
+<p id="rfc.section.6.3.5.p.1">The lt;head&gt; element contains a &lt;link&gt; tag, with "rel" attribute of "license" and "href" attribute pointing to the an appropriate copyright license for the document.</p>
+<pre>
+&lt;link rel="license" href="https://www.rfc-editor.org/copyright/"&gt;</pre>
+<h1 id="rfc.section.6.3.6"><a href="#rfc.section.6.3.6">6.3.6.</a> <a href="#style" id="style">Style</a></h1>
+<p id="rfc.section.6.3.6.p.1">The &lt;head&gt; element contains an embedded CSS style sheet in a &lt;style&gt; element.  The styles in the style sheet are to be set consistently between documents by the RFC Editor, according to the best practices of the day.</p>
+<p id="rfc.section.6.3.6.p.2">To ensure consistent formatting, individual style attributes should not be used in the main portion of the document.</p>
+<p id="rfc.section.6.3.6.p.3">Different readers of a specification will desire different formatting when reading the HTML versions of RFCs.  To facilitate this, the &lt;head&gt; element also includes a &lt;link&gt; to a style sheet in the same directory as the HTML file, named "rfc-local.css". Any formatting in the linked style sheet will override the formatting in the included style sheet. For example:</p>
 <pre>
 &lt;style&gt;
   body {}
   ...
 &lt;/style&gt;
 &lt;link rel="stylesheet" type="text/css" href="rfc-local.css"&gt;</pre>
-<h1 id="rfc.section.6.3.5"><a href="#rfc.section.6.3.5">6.3.5.</a> <a href="#links" id="links">Links</a></h1>
-<p id="rfc.section.6.3.5.p.1">Each &lt;link&gt; element from the XML source is copied into the HTML header.  Note: the HTML &lt;link&gt; element does not include a closing slash.</p>
+<h1 id="rfc.section.6.3.7"><a href="#rfc.section.6.3.7">6.3.7.</a> <a href="#links" id="links">Links</a></h1>
+<p id="rfc.section.6.3.7.p.1">Each &lt;link&gt; element from the XML source is copied into the HTML header.  Note: the HTML &lt;link&gt; element does not include a closing slash.</p>
 <h1 id="rfc.section.6.4"><a href="#rfc.section.6.4">6.4.</a> <a href="#document-information" id="document-information">Document Information</a></h1>
 <p id="rfc.section.6.4.p.1">Information about the document as a whole will appear as the first child of the HTML &lt;body&gt; element, embedded in an HTML &lt;dl&gt; element with id="identifiers".  The defined terms in the definition list are "Workgroup:", "Series:", "Status:", "Published:", and "Authors:". For example:</p>
 <pre>
@@ -988,13 +998,6 @@
     datetime="2015-04-29T18:59:10Z"&gt;2015-04-29T18:59:10Z&lt;/time&gt;
   &lt;/span&gt;
 &lt;/div&gt;</pre>
-<h1 id="rfc.section.8.4"><a href="#rfc.section.8.4">8.4.</a> <a href="#xml-source" id="xml-source">XML Source</a></h1>
-<p id="rfc.section.8.4.p.1">At the very end of the document, the XML source that was used to produce this document will be included within an HTML &lt;script&gt; tag, with "type" attribute of "application/xml" and id of "xml2rfc-source". The source document will also be wrapped in a CDATA block to reduce the need to further escape the XML.</p>
-<pre>
-&lt;script id="xml2rfc-source" type="application/xml"&gt;&lt;![CDATA[
-&lt;?xml version='1.0'?&gt;
-&lt;rfc/&gt;
-]]&gt;&lt;/script&gt;</pre>
 <h1 id="rfc.section.9"><a href="#rfc.section.9">9.</a> <a href="#elements" id="elements">Elements</a></h1>
 <p id="rfc.section.9.p.1">This section describes how each of the XML elements from <a href="#I-D.iab-xml2rfc">[I-D.iab-xml2rfc]</a> is rendered to HTML.  Many of the descriptions have examples to clarify how elements will be rendered.</p>
 <h1 id="rfc.section.9.1"><a href="#rfc.section.9.1">9.1.</a> <a href="#element.abstract" id="element.abstract">&lt;abstract&gt;</a></h1>
