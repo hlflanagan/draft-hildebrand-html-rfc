@@ -402,9 +402,9 @@ mixin tocSections(p, depth)
           - var nm = $('name',s)
           if $att(s, 'toc') != 'exclude'
             li.toc
-              a(href=pn)= sn
+              a(href="#"+pn)= sn
               = "."
-              a(href=$att(nm,'slugifiedName'))= nm.text()
+              a(href="#"+$att(nm,'slugifiedName'))= nm.text()
             +tocSections(s, depth-1)
 
 mixin toc
