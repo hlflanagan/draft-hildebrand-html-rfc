@@ -1,3 +1,3 @@
 See:
 
-http://hildjj.github.io/draft-hildebrand-html-rfc/
+http://hildjj.github.io/draft-iab-html-rfc/
