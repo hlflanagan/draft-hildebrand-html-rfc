@@ -2,7 +2,8 @@
   "dentin-ignore": [
     "artwork",
     "sourcecode",
-    "pre"
+    "pre",
+    "script"
   ],
   "define": {
     "mode": "ID"

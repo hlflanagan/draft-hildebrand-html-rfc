@@ -402,9 +402,9 @@ mixin tocSections(p, depth)
           - var nm = $('name',s)
           if $att(s, 'toc') != 'exclude'
             li.toc
-              a(href=pn)= sn
+              a(href="#"+pn)= sn
               = "."
-              a(href=$att(nm,'slugifiedName'))= nm.text()
+              a(href="#"+$att(nm,'slugifiedName'))= nm.text()
             +tocSections(s, depth-1)
 
 mixin toc
@@ -470,6 +470,8 @@ html(lang='en', class=$$('/rfc/front/seriesInfo/@name'))
     //-   include xml2rfc.css
     //- link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Noto+Sans') 
     //- link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Droid+Serif') 
+    link(rel='alternate', type='application/rfc+xml', href=$sourceFile)
+    link(rel='license' href='https://www.rfc-editor.org/copyright/')
     link(rel='stylesheet', type='text/css', href='xml2rfc.css')
     link(rel='stylesheet', type='text/css', href='local.css')
     each link in $$('link')
@@ -499,10 +501,3 @@ html(lang='en', class=$$('/rfc/front/seriesInfo/@name'))
       - var rendered = dt.isoDateTime()
       span.rendered Rendered:
         time(datetime=rendered)= rendered
-
-| <!-- XML SOURCE START (note: each instance of two '-' (U+002D: HYPHEN-MINUS)
-| characters changed to "&#x2d;&#x2d;") -->
-!= "<!--\n"
-!= $source.toString('utf8').replace(/--/g, "&#x2d;&#x2d;")
-!= "\n-->"
-| <!-- XML SOURCE END -->

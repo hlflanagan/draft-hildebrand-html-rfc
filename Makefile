@@ -1,5 +1,6 @@
 DRAFT=draft-iab-html-rfc
 BRANCH := $(shell git symbolic-ref --short HEAD)
+DNAME := $(shell xmllint --xpath "string(/rfc/@docName)" $(DRAFT).xml)
 
 .PHONY: clean example publish start stop
 
@@ -37,3 +38,10 @@ publish: $(DRAFT).txt
 	git ci -m "Publish to GitHub pages"
 	git push origin gh-pages
 	git co $(BRANCH)
+
+submit: $(DRAFT).txt $(DRAFT).xml
+	cp $(DRAFT).txt $(DNAME).txt
+	cp $(DRAFT).xml $(DNAME).xml
+
+watch: start
+	watchman-make -p '*.xml' Makefile -t $(DRAFT).txt -p 'example/**/*.xml' 'example/**/*.svg' -t example

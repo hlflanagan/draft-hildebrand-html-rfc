@@ -1,7 +1,7 @@
 XMLJADE=node_modules/.bin/xmljade
 HTTPSERVER=node_modules/.bin/http-server
 LOCALHOST_DIR=localhost
-RNG = draft-hoffman-xml2rfc/xml2rfcv3-full.rng
+RNG = draft-iab-xml2rfc/xml2rfcv3.rng
 
 .PHONY: start stop clean lint
 .PRECIOUS: %.3.xml %.n.xml %.x.xml

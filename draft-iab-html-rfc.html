@@ -390,9 +390,11 @@
 <link href="#rfc.section.6.3" rel="Chapter" title="6.3 Head Element"/>
 <link href="#rfc.section.6.3.1" rel="Chapter" title="6.3.1 Charset Declaration"/>
 <link href="#rfc.section.6.3.2" rel="Chapter" title="6.3.2 Document Title"/>
-<link href="#rfc.section.6.3.3" rel="Chapter" title="6.3.3 Document metadata"/>
-<link href="#rfc.section.6.3.4" rel="Chapter" title="6.3.4 Style"/>
-<link href="#rfc.section.6.3.5" rel="Chapter" title="6.3.5 Links"/>
+<link href="#rfc.section.6.3.3" rel="Chapter" title="6.3.3 Document Metadata"/>
+<link href="#rfc.section.6.3.4" rel="Chapter" title="6.3.4 Link to XML source"/>
+<link href="#rfc.section.6.3.5" rel="Chapter" title="6.3.5 Link to License"/>
+<link href="#rfc.section.6.3.6" rel="Chapter" title="6.3.6 Style"/>
+<link href="#rfc.section.6.3.7" rel="Chapter" title="6.3.7 Links"/>
 <link href="#rfc.section.6.4" rel="Chapter" title="6.4 Document Information"/>
 <link href="#rfc.section.6.5" rel="Chapter" title="6.5 Table of Contents"/>
 <link href="#rfc.section.7" rel="Chapter" title="7 Main Body"/>
@@ -404,7 +406,6 @@
 <link href="#rfc.section.8.1.4" rel="Chapter" title="8.1.4 Index Sub-items"/>
 <link href="#rfc.section.8.2" rel="Chapter" title="8.2 Authors' Addresses"/>
 <link href="#rfc.section.8.3" rel="Chapter" title="8.3 Document Information"/>
-<link href="#rfc.section.8.4" rel="Chapter" title="8.4 XML Source"/>
 <link href="#rfc.section.9" rel="Chapter" title="9 Elements"/>
 <link href="#rfc.section.9.1" rel="Chapter" title="9.1 &lt;abstract&gt;"/>
 <link href="#rfc.section.9.2" rel="Chapter" title="9.2 &lt;address&gt;"/>
@@ -497,8 +498,8 @@
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Hildebrand, J., Ed. and P. Hoffman" />
-  <meta name="dct.identifier" content="urn:ietf:id:draft-iab-html-rfc-01" />
-  <meta name="dct.issued" scheme="ISO8601" content="2016-1-12" />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-iab-html-rfc-02" />
+  <meta name="dct.issued" scheme="ISO8601" content="2016-2-2" />
   <meta name="dct.abstract" content="In order to meet the evolving needs of the Internet community, the format for RFCs is changing from a plain-text, ASCII-only format to a canonical XML format that will in turn be rendered into several publication formats. This document defines the HTML format that will be rendered for an RFC or Internet-Draft." />
   <meta name="description" content="In order to meet the evolving needs of the Internet community, the format for RFCs is changing from a plain-text, ASCII-only format to a canonical XML format that will in turn be rendered into several publication formats. This document defines the HTML format that will be rendered for an RFC or Internet-Draft." />
 
@@ -522,12 +523,12 @@
   <td class="right">P. Hoffman</td>
 </tr>
 <tr>
-  <td class="left">Expires: July 15, 2016</td>
+  <td class="left">Expires: August 5, 2016</td>
   <td class="right">ICANN</td>
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">January 12, 2016</td>
+  <td class="right">February 2, 2016</td>
 </tr>
 
     	
@@ -535,7 +536,7 @@
   </table>
 
   <p class="title">HyperText Markup Language Request For Comments Format<br />
-  <span class="filename">draft-iab-html-rfc-01</span></p>
+  <span class="filename">draft-iab-html-rfc-02</span></p>
   
   <h1 id="rfc.abstract">
   <a href="#rfc.abstract">Abstract</a>
@@ -547,7 +548,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on July 15, 2016.</p>
+<p>This Internet-Draft will expire on August 5, 2016.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -575,9 +576,11 @@
 <li>6.3.   <a href="#rfc.section.6.3">Head Element</a></li>
 <ul><li>6.3.1.   <a href="#rfc.section.6.3.1">Charset Declaration</a></li>
 <li>6.3.2.   <a href="#rfc.section.6.3.2">Document Title</a></li>
-<li>6.3.3.   <a href="#rfc.section.6.3.3">Document metadata</a></li>
-<li>6.3.4.   <a href="#rfc.section.6.3.4">Style</a></li>
-<li>6.3.5.   <a href="#rfc.section.6.3.5">Links</a></li>
+<li>6.3.3.   <a href="#rfc.section.6.3.3">Document Metadata</a></li>
+<li>6.3.4.   <a href="#rfc.section.6.3.4">Link to XML source</a></li>
+<li>6.3.5.   <a href="#rfc.section.6.3.5">Link to License</a></li>
+<li>6.3.6.   <a href="#rfc.section.6.3.6">Style</a></li>
+<li>6.3.7.   <a href="#rfc.section.6.3.7">Links</a></li>
 </ul><li>6.4.   <a href="#rfc.section.6.4">Document Information</a></li>
 <li>6.5.   <a href="#rfc.section.6.5">Table of Contents</a></li>
 </ul><li>7.   <a href="#rfc.section.7">Main Body</a></li>
@@ -589,7 +592,6 @@
 <li>8.1.4.   <a href="#rfc.section.8.1.4">Index Sub-items</a></li>
 </ul><li>8.2.   <a href="#rfc.section.8.2">Authors' Addresses</a></li>
 <li>8.3.   <a href="#rfc.section.8.3">Document Information</a></li>
-<li>8.4.   <a href="#rfc.section.8.4">XML Source</a></li>
 </ul><li>9.   <a href="#rfc.section.9">Elements</a></li>
 <ul><li>9.1.   <a href="#rfc.section.9.1">&lt;abstract&gt;</a></li>
 <li>9.2.   <a href="#rfc.section.9.2">&lt;address&gt;</a></li>
@@ -695,7 +697,7 @@
   <li>The HTML documents from the RFC Editor or Internet-Drafts directory may be re-rendered from the canonical XML format in the future to ensure the ongoing readability of the documents.  The intent is that any re-rendering would be due to exceptional circumstances rather than for minor annoyances.</li>
   <li>The HTML must display adequately in at least one text-based browser.  Some consumers of the RFC series can only access the series on text-based terminals.</li>
   <li>The HTML document will be self-contained, without requiring external files for images, CSS, JavaScript, or the like.  This will allow the HTML file to be moved over various non-HTTP transports (such as e-mail, FTP, and rsync) without breakage.</li>
-  <li>Any use of JavaScript in the HTML document must not be required for comprehensive reading of the document, because some consumers of the RFC series routinely disable JavaScript for security purposes.</li>
+  <li>JavaScript will be supported on a limited basis.  It will not be permitted to overwrite or change any text present in the rendered html.  It may, on a limited basis, add additional text that provides post-publication metadata or pointers if warranted.  All such text will be clearly marked as additional.</li>
   <li>The HTML document will allow easy local override of the default CSS formatting.  This will allow users who have a different visual style that they prefer to make RFCs display with that style without having to alter the contents of the HTML document.  This might also be valuable for allowing people with specific accessibility needs to use a customized CSS.</li>
   <li>HTML tags in documents will rarely have attributes whose only purpose is to affect the rendered styling, and those will only be used if it would not be possible to specify that styling in CSS.  No such attributes are known at this time.</li>
   <li>Both user-defined and auto-generated anchors must be supported and linkable, with user-defined anchors appearing in an "id" attribute.  Auto-generated anchors will be generated for every heading, paragraph, and so on, not just those that do not have user-defined anchors.  User-defined anchors may, and auto-generated anchors will, appear next to paragraphs, figures, tables, blockquotes, and section titles.</li>
@@ -785,7 +787,7 @@
 &lt;meta charset="utf-8"&gt;</pre>
 <h1 id="rfc.section.6.3.2"><a href="#rfc.section.6.3.2">6.3.2.</a> <a href="#head-title" id="head-title">Document Title</a></h1>
 <p id="rfc.section.6.3.2.p.1">The contents of the &lt;title&gt; element from the XML source will be placed inside an HTML &lt;title&gt; element in the header.</p>
-<h1 id="rfc.section.6.3.3"><a href="#rfc.section.6.3.3">6.3.3.</a> <a href="#meta" id="meta">Document metadata</a></h1>
+<h1 id="rfc.section.6.3.3"><a href="#rfc.section.6.3.3">6.3.3.</a> <a href="#meta" id="meta">Document Metadata</a></h1>
 <p id="rfc.section.6.3.3.p.1">The following &lt;meta&gt; elements will be included: </p>
 
 <ul>
@@ -802,18 +804,26 @@
 &lt;meta name="generator" content="xmljade v0.2.4"&gt;
 &lt;meta name="keywords" content="html,css,rfc"&gt;</pre>
 <p id="rfc.section.6.3.3.p.2">Note: the HTML &lt;meta&gt; tag does not contain a closing slash.</p>
-<h1 id="rfc.section.6.3.4"><a href="#rfc.section.6.3.4">6.3.4.</a> <a href="#style" id="style">Style</a></h1>
-<p id="rfc.section.6.3.4.p.1">The &lt;head&gt; element contains an embedded CSS style sheet in a &lt;style&gt; element.  The styles in the style sheet are to be set consistently between documents by the RFC Editor, according to the best practices of the day.</p>
-<p id="rfc.section.6.3.4.p.2">To ensure consistent formatting, individual style attributes should not be used in the main portion of the document.</p>
-<p id="rfc.section.6.3.4.p.3">Different readers of a specification will desire different formatting when reading the HTML versions of RFCs.  To facilitate this, the &lt;head&gt; element also includes a &lt;link&gt; to a style sheet in the same directory as the HTML file, named "rfc-local.css". Any formatting in the linked style sheet will override the formatting in the included style sheet. For example:</p>
+<h1 id="rfc.section.6.3.4"><a href="#rfc.section.6.3.4">6.3.4.</a> <a href="#xmlsource" id="xmlsource">Link to XML source</a></h1>
+<p id="rfc.section.6.3.4.p.1">The &lt;head&gt; element contains a &lt;link&gt; tag, with "rel" attribute of "alternate", "type" attribute of "application/rfc+xml", and "href" attribute pointing to the prepared XML source that was used to generate this document.</p>
+<pre>
+&lt;link rel="alternate" type="application/rfc+xml" href="source.xml"&gt;</pre>
+<h1 id="rfc.section.6.3.5"><a href="#rfc.section.6.3.5">6.3.5.</a> <a href="#license" id="license">Link to License</a></h1>
+<p id="rfc.section.6.3.5.p.1">The &lt;head&gt; element contains a &lt;link&gt; tag, with "rel" attribute of "license" and "href" attribute pointing to the an appropriate copyright license for the document.</p>
+<pre>
+&lt;link rel="license" href="https://www.rfc-editor.org/copyright/"&gt;</pre>
+<h1 id="rfc.section.6.3.6"><a href="#rfc.section.6.3.6">6.3.6.</a> <a href="#style" id="style">Style</a></h1>
+<p id="rfc.section.6.3.6.p.1">The &lt;head&gt; element contains an embedded CSS style sheet in a &lt;style&gt; element.  The styles in the style sheet are to be set consistently between documents by the RFC Editor, according to the best practices of the day.</p>
+<p id="rfc.section.6.3.6.p.2">To ensure consistent formatting, individual style attributes should not be used in the main portion of the document.</p>
+<p id="rfc.section.6.3.6.p.3">Different readers of a specification will desire different formatting when reading the HTML versions of RFCs.  To facilitate this, the &lt;head&gt; element also includes a &lt;link&gt; to a style sheet in the same directory as the HTML file, named "rfc-local.css". Any formatting in the linked style sheet will override the formatting in the included style sheet. For example:</p>
 <pre>
 &lt;style&gt;
   body {}
   ...
 &lt;/style&gt;
 &lt;link rel="stylesheet" type="text/css" href="rfc-local.css"&gt;</pre>
-<h1 id="rfc.section.6.3.5"><a href="#rfc.section.6.3.5">6.3.5.</a> <a href="#links" id="links">Links</a></h1>
-<p id="rfc.section.6.3.5.p.1">Each &lt;link&gt; element from the XML source is copied into the HTML header.  Note: the HTML &lt;link&gt; element does not include a closing slash.</p>
+<h1 id="rfc.section.6.3.7"><a href="#rfc.section.6.3.7">6.3.7.</a> <a href="#links" id="links">Links</a></h1>
+<p id="rfc.section.6.3.7.p.1">Each &lt;link&gt; element from the XML source is copied into the HTML header.  Note: the HTML &lt;link&gt; element does not include a closing slash.</p>
 <h1 id="rfc.section.6.4"><a href="#rfc.section.6.4">6.4.</a> <a href="#document-information" id="document-information">Document Information</a></h1>
 <p id="rfc.section.6.4.p.1">Information about the document as a whole will appear as the first child of the HTML &lt;body&gt; element, embedded in an HTML &lt;dl&gt; element with id="identifiers".  The defined terms in the definition list are "Workgroup:", "Series:", "Status:", "Published:", and "Authors:". For example:</p>
 <pre>
@@ -988,17 +998,6 @@
     datetime="2015-04-29T18:59:10Z"&gt;2015-04-29T18:59:10Z&lt;/time&gt;
   &lt;/span&gt;
 &lt;/div&gt;</pre>
-<h1 id="rfc.section.8.4"><a href="#rfc.section.8.4">8.4.</a> <a href="#xml-source" id="xml-source">XML Source</a></h1>
-<p id="rfc.section.8.4.p.1">At the very end of the document, the XML source that was used to produce this document will be included within a comment.  This comment may be preceded by another comment that describes the source.</p>
-<p id="rfc.section.8.4.p.2">Since the sequence "--" is invalid in an HTML comment, any instances of "--" in the input XML will be modified to use the escaped form of the HYPHEN-MINUS characters: "&amp;#x2d;&amp;#x2d;".  Note that if the dashes in the original XML were in a comment start- (&lt;!--) or end-delimiter (--&gt;), the XML will not parse correctly without reversing this transformation before parsing.</p>
-<pre>
-&lt;!-- XML SOURCE START (note: each instance of
-     two '-' (U+002D: HYPHEN-MINUS) characters
-     changed to "&amp;#x2d;&amp;#x2d;") --&gt;
-&lt;!--
-&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;rfc&gt;
-  &lt;!&amp;#x2d;&amp;#x2d; A comment &amp;#x2d;&amp;#x2d;&gt;</pre>
 <h1 id="rfc.section.9"><a href="#rfc.section.9">9.</a> <a href="#elements" id="elements">Elements</a></h1>
 <p id="rfc.section.9.p.1">This section describes how each of the XML elements from <a href="#I-D.iab-xml2rfc">[I-D.iab-xml2rfc]</a> is rendered to HTML.  Many of the descriptions have examples to clarify how elements will be rendered.</p>
 <h1 id="rfc.section.9.1"><a href="#rfc.section.9.1">9.1.</a> <a href="#element.abstract" id="element.abstract">&lt;abstract&gt;</a></h1>
@@ -1533,7 +1532,7 @@ int main(void)
       <td class="reference">
         <b id="I-D.iab-xml2rfc">[I-D.iab-xml2rfc]</b>
       </td>
-      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-iab-xml2rfc-00">The 'XML2RFC' version 3 Vocabulary</a>", Internet-Draft draft-iab-xml2rfc-00, December 2015.</td>
+      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-iab-xml2rfc-02">The "xml2rfc" version 3 Vocabulary</a>", Internet-Draft draft-iab-xml2rfc-02, January 2016.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -1580,7 +1579,7 @@ int main(void)
       <td class="reference">
         <b id="I-D.iab-rfc-framework">[I-D.iab-rfc-framework]</b>
       </td>
-      <td class="top"><a>Flanagan, H.</a>, "<a href="http://tools.ietf.org/html/draft-iab-rfc-framework-00">RFC Format Framework</a>", Internet-Draft draft-iab-rfc-framework-00, January 2016.</td>
+      <td class="top"><a>Flanagan, H.</a>, "<a href="http://tools.ietf.org/html/draft-iab-rfc-framework-01">RFC Format Framework</a>", Internet-Draft draft-iab-rfc-framework-01, January 2016.</td>
     </tr>
   </tbody>
 </table>

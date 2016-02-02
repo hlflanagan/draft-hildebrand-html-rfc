@@ -1,9 +1,9 @@
 <?xml version='1.0'?>
 <rfc consensus='false'
-     expiresDate='2016-07-14'
+     expiresDate='2016-08-02'
      indexInclude='true'
      ipr='trust200902'
-     prepTime='2016-01-14T16:34:07Z'
+     prepTime='2016-02-02T19:13:09Z'
      scripts='Common,Inherited,Latin'
      sortRefs='true'
      submissionType='IETF'
@@ -64,7 +64,7 @@
         <email>rse@rfc-editor.org</email>
       </address>
     </author>
-    <date day='14' month='January' year='2016'/>
+    <date day='2' month='February' year='2016'/>
     <area>gen</area>
     <workgroup>RFC-Interest Pseudo Working Group</workgroup>
     <keyword>html</keyword>
@@ -84,7 +84,7 @@
     </abstract>
     <seriesInfo name='foo' value='4'/>
     <seriesInfo name='Internet-Draft'
-                value='draft-hildebrand-html-rfc-04'/>
+                value='draft-iab-html-rfc-test-00'/>
     <note pn='s-note-1' removeInRFC='true'>
       <name slugifiedName='n-editorial-note'>Editorial Note</name>
       <t pn='p-note-1-1'>
@@ -131,7 +131,7 @@
           than as "work in progress."
         </t>
         <t pn='p-boilerplate-1-4'>
-          This Internet-Draft will expire on 2016-07-14.
+          This Internet-Draft will expire on 2016-08-02.
         </t>
       </section>
       <section numbered='false' pn='s-boilerplate-2'>
@@ -522,9 +522,9 @@ artwork does not
                xmlns='http://www.w3.org/2000/svg'>
             <circle cx='50'
                     cy='50'
-                    fill='yellow'
+                    fill='white'
                     r='40'
-                    stroke='green'
+                    stroke='black'
                     stroke-width='4'/>
           </svg>
         </artwork>
@@ -540,9 +540,9 @@ artwork does not
                xmlns='http://www.w3.org/2000/svg'>
             <circle cx='50'
                     cy='50'
-                    fill='blue'
+                    fill='white'
                     r='40'
-                    stroke='red'
+                    stroke='black'
                     stroke-width='4'/>
           </svg>
         </artwork>
@@ -557,7 +557,7 @@ artwork does not
                xmlns='http://www.w3.org/2000/svg'>
             <circle cx='50'
                     cy='50'
-                    fill='yellow'
+                    fill='white'
                     r='40'
                     stroke='black'
                     stroke-width='4'/>
@@ -579,9 +579,9 @@ artwork does not
                xmlns='http://www.w3.org/2000/svg'>
             <circle cx='50'
                     cy='50'
-                    fill='blue'
+                    fill='white'
                     r='40'
-                    stroke='red'
+                    stroke='black'
                     stroke-width='4'/>
           </svg>
         </artwork>
