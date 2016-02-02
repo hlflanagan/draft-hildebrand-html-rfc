@@ -91,9 +91,11 @@
         files for images, CSS, JavaScript, or the like.  This will allow
         the HTML file to be moved over various non-HTTP transports (such as
         e-mail, FTP, and rsync) without breakage.</t>
-      <t>Any use of JavaScript in the HTML document must not be required for
-        comprehensive reading of the document, because some consumers of the
-        RFC series routinely disable JavaScript for security purposes.</t>
+      <t>JavaScript will be supported on a limited basis.  It will not be
+        permitted to overwrite or change any text present in the rendered html.
+        It may, on a limited basis, add additional text that provides
+        post-publication metadata or pointers if warranted.  All such text will
+        be clearly marked as additional.</t>
       <t>The HTML document will allow easy local override of the default CSS
         formatting.  This will allow users who have a different visual style
         that they prefer to make RFCs display with that style without having to
