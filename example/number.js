@@ -40,7 +40,15 @@ exports.isPart = function(e) {
   if ((typeof(e.get) === "function") && e.get('ancestor::reference')) {
     return false;
   }
-  var nm = (typeof(e) === "string") ? e : e.name();
+  var nm = e;
+  if (typeof(e) !== "string") {
+    var p = e.parent && e.parent()
+    if (p && p.name && (p.name() === 't')) {
+      return false;
+    }
+    nm = e.name();
+  }
+
   return (parts.indexOf(nm) >= 0);
 };
 

@@ -1,10 +1,10 @@
 <?xml version='1.0'?>
 <!-- PI gets removed.  This comment doesn't. -->
 <rfc consensus='false'
-     expiresDate='2016-08-02'
+     expiresDate='2016-08-05'
      indexInclude='true'
      ipr='trust200902'
-     prepTime='2016-02-02T19:13:09Z'
+     prepTime='2016-02-05T17:38:45Z'
      scripts='Common,Inherited,Latin'
      sortRefs='true'
      submissionType='IETF'
@@ -65,7 +65,7 @@
         <email>rse@rfc-editor.org</email>
       </address>
     </author>
-    <date day='2' month='February' year='2016'/>
+    <date day='5' month='February' year='2016'/>
     <area>gen</area>
     <workgroup>RFC-Interest Pseudo Working Group</workgroup>
     <keyword>html</keyword>
@@ -132,7 +132,7 @@
           than as "work in progress."
         </t>
         <t pn='p-boilerplate-1-4'>
-          This Internet-Draft will expire on 2016-08-02.
+          This Internet-Draft will expire on 2016-08-05.
         </t>
       </section>
       <section numbered='false' pn='s-boilerplate-2'>
@@ -218,16 +218,33 @@
         <blockquote pn='p-1.2-4'>
           This is a shorter blockquote example
         </blockquote>
-        <aside pn='p-1.2-5'>
-          <t pn='p-1.2-6'>
+        <t pn='p-1.2-5'>
+          Sed ut perspiciatis unde omnis iste natus error sit
+          voluptatem accusantium doloremque laudantium, totam rem
+          aperiam, eaque ipsa quae ab illo inventore veritatis et
+          quasi architecto beatae vitae dicta sunt explicabo. Nemo
+          enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+          aut fugit, sed quia consequuntur magni dolores eos qui
+          ratione voluptatem sequi nesciunt. Neque porro quisquam est,
+          qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
+          velit, sed quia non numquam eius modi tempora incidunt ut
+          labore et dolore magnam aliquam quaerat voluptatem. Ut enim
+          ad minima veniam, quis nostrum exercitationem ullam corporis
+          suscipit laboriosam, nisi ut aliquid ex ea commodi
+          consequatur? Quis autem vel eum iure reprehenderit qui in ea
+          voluptate velit esse quam nihil molestiae consequatur, vel
+          illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+        </t>
+        <aside pn='p-1.2-6'>
+          <t pn='p-1.2-7'>
             This is a longer aside. This paragraph has a comment.
             <cref anchor='crefAnchor' display='true'
             source='life'>Just a brief comment about something that we
             need to remember later.</cref>
           </t>
           <ul empty='false' spacing='normal'>
-            <li pn='p-1.2-7'>This is a short list...</li>
-            <li pn='p-1.2-8'>...that is inside the aside.</li>
+            <li pn='p-1.2-8'>This is a short list...</li>
+            <li pn='p-1.2-9'>...that is inside the aside.</li>
           </ul>
         </aside>
       </section>
@@ -644,6 +661,58 @@ int main(void)
 }
 ]]></sourcecode>
         </figure>
+      </section>
+      <!-- TODO: Fix the inline sourcecode -->
+      <section pn='s-2.2'>
+        <name slugifiedName='n-yang-abnf'>YANG ABNF</name>
+        <t pn='p-2.2-1'>
+          This is an example of a single ABNF file split across
+          several inline blocks.  It should be recoverable with
+          <sourcecode type='shell'>xmllint --xpath
+          '//sourcecode[@name="yang.abnf"]/text()'
+          test.x.xml</sourcecode>.
+        </t>
+        <sourcecode name='yang.abnf' pn='p-2.2-2' type='abnf'><![CDATA[
+module-stmt         = optsep module-keyword sep identifier-arg-str
+                     optsep
+                     "{" stmtsep
+                         module-header-stmts
+                         linkage-stmts
+                         meta-stmts
+                         revision-stmts
+                         body-stmts
+                     "}" optsep]]></sourcecode>
+        <t pn='p-2.2-3'>Some text</t>
+        <sourcecode name='yang.abnf' pn='p-2.2-4' type='abnf'><![CDATA[
+submodule-stmt      = optsep submodule-keyword sep identifier-arg-str
+                     optsep
+                     "{" stmtsep
+                         submodule-header-stmts
+                         linkage-stmts
+                         meta-stmts
+                         revision-stmts
+                         body-stmts
+                     "}" optsep]]></sourcecode>
+        <t pn='p-2.2-5'>Some text</t>
+        <sourcecode name='yang.abnf' pn='p-2.2-6' type='abnf'><![CDATA[
+module-header-stmts = ;; these stmts can appear in any order
+                     [yang-version-stmt stmtsep]
+                      namespace-stmt stmtsep
+                      prefix-stmt stmtsep]]></sourcecode>
+        <t pn='p-2.2-7'>Some text</t>
+        <sourcecode name='yang.abnf' pn='p-2.2-8' type='abnf'><![CDATA[
+submodule-header-stmts =
+                     ;; these stmts can appear in any order
+                     [yang-version-stmt stmtsep]
+                      belongs-to-stmt stmtsep]]></sourcecode>
+        <t pn='p-2.2-9'>Some text</t>
+        <sourcecode name='yang.abnf' pn='p-2.2-10' type='abnf'><![CDATA[
+meta-stmts          = ;; these stmts can appear in any order
+                     [organization-stmt stmtsep]
+                     [contact-stmt stmtsep]
+                     [description-stmt stmtsep]
+                     [reference-stmt stmtsep]
+                     "}"]]></sourcecode>
       </section>
     </section>
     <section pn='s-3'>
