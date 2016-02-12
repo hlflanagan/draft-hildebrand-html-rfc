@@ -250,6 +250,10 @@ mixin section(e)
   else
     +elem(e)(pn="s-" + number.section(e))
 
+mixin sourcecode(e)
+  - number.loadSrc(e)
+  +elem(e)
+
 mixin table(e)
   +elem(e)(pn="t-" + number.sequentialNumber(e))
 

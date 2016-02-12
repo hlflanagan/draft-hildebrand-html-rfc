@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 var dataUri = require('strong-data-uri');
 var url = require('url');
 var urllibsync = require('urllib-sync');
@@ -119,14 +120,37 @@ att = function(e, a) {
   return attr.value();
 }
 
+function setSrc(e, src) {
+  var s = path.basename(src);
+  if (e.name() === 'sourcecode') {
+    // sourcecode doesn't overwrite
+    if (!att(e, 'name')) {
+      e.attr('name', s);
+    }
+  } else {
+    // artwork overwrites
+    e.attr('originalSrc', s);
+  }
+}
+
 exports.loadSrc = function(e) {
   var src = att(e, 'src');
   if (!src) { return; }
+  var isSourcecode = (e.name() === 'sourcecode');
+
   var typ = att(e, 'type');
+  if (!typ) {
+    if (isSourcecode) {
+      var m = src.match(/\.([a-zA-Z0-9]{1,5})$/);
+      if (m) {
+        typ = m[1];
+        e.attr({type: typ});
+      }
+    }
+  }
   if (!typ) {
     process.stderr.write("'type' attribute suggested for src: " + src + "\n");
   }
-
   var types = ['ascii-art', 'call-flow', 'hex-dump', 'svg'];
 
   // TODO: can base64 generate ".."?
@@ -142,7 +166,7 @@ exports.loadSrc = function(e) {
   }
 
   var todata = false;
-  if (types.indexOf(typ) === -1) {
+  if ((types.indexOf(typ) === -1) && !isSourcecode) {
     // For unknown types, turn the data into a data: if it's not already
     if (up.protocol == 'data:') {
       return;
@@ -179,19 +203,20 @@ exports.loadSrc = function(e) {
 
   if (todata) {
     var du = dataUri.encode(data, media);
-    e.attr({'src': du, 'xml:base': u});
+    e.attr('src', du);
+    setSrc(e, src);
   } else {
-    if (typ === 'svg') {
+    if ((typ === 'svg')  && !isSourcecode) {
       var svg = xml.parseXmlString(data);
       var svgr = svg.root();
       if (up.protocol != 'data:') {
-        svgr.attr({'xml:base': u});
+        setSrc(e, src);
       }
       e.addChild(svgr);
     } else {
       e.cdata(data.toString('utf8'));
       if (up.protocol != 'data:') {
-        e.attr({'xml:base': u});
+        setSrc(e, src);
       }
     }
     e.attr('src').remove();

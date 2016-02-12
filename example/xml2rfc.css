@@ -47,10 +47,31 @@ div {
   margin: 0;
 }
 .alignRight {
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  align-items: flex-end;
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  margin: 0.8em 0.4em 0.4em;
 }
+.alignRight pre {
+  border: none;
+  margin: 0;
+}
+
 .alignCenter {
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  margin: 0.8em 0.4em 0.4em;
+}
+.alignCenter pre {
+  border: none;
+  margin: 0;
 }
 
 /* lists */

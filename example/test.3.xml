@@ -289,8 +289,12 @@
 artwork does not
      ALWAYS
    have to bepartofafigure.
-                            --ee cummings
-      </artwork>
+                            --ee cummings</artwork>
+      <!-- TODO: center paulH's way -->
+      <artwork align='center' type='ascii-art'>
+some
+texting goes
+here</artwork>
       <artwork align='right'>Just a step to the right</artwork>
       <figure>
         <name>It figures</name>
@@ -384,7 +388,7 @@ int main(void)
         <name>YANG ABNF</name>
         <t>This is an example of a single ABNF file split across several
           inline blocks.  It should be recoverable with
-          <sourcecode type='shell'>xmllint --xpath '//sourcecode[@name="yang.abnf"]/text()' test.x.xml</sourcecode>.</t>
+          <sourcecode type='bash'>xmllint --xpath '//sourcecode[@name="yang.abnf"]/text()' test.x.xml</sourcecode>.</t>
         <sourcecode type='abnf' name='yang.abnf'><![CDATA[
 module-stmt         = optsep module-keyword sep identifier-arg-str
                      optsep
@@ -397,7 +401,9 @@ module-stmt         = optsep module-keyword sep identifier-arg-str
                      "}" optsep]]></sourcecode>
         <t>Some text</t>
         <sourcecode type='abnf' name='yang.abnf'><![CDATA[
-submodule-stmt      = optsep submodule-keyword sep identifier-arg-str
+submodule-stmt      = optsep submodule-keyword sep identifier-arg-str]]></sourcecode>
+<t>Some text</t>
+<sourcecode type='abnf' name='yang.abnf'><![CDATA[
                      optsep
                      "{" stmtsep
                          submodule-header-stmts
@@ -427,6 +433,25 @@ meta-stmts          = ;; these stmts can appear in any order
                      [reference-stmt stmtsep]
                      "}"]]></sourcecode>
 
+      </section>
+      <section>
+        <name>Python</name>
+        <t>Trying some Python code</t>
+        <sourcecode type="python" name="paul.py"><![CDATA[
+def foo():]]></sourcecode>
+        <sourcecode type="python" name="paul.py"><![CDATA[
+  print("hello, world!")]]></sourcecode>
+      </section>
+      <section>
+        <name>Long lines</name>
+        <sourcecode type="gibberish">
+This is gibberish: aklsdjalskjd aslkdj asldkj aslkdja sldkjasdklajd alkdjasdlkj dalkjd lajks dlkasjdaskjd asdlkjasd lkjds</sourcecode>
+      </section>
+      <section>
+        <name>With src</name>
+        <sourcecode src='package.json'/>
+        <t>Some docs might talk about svg, and need examples thereof:</t>
+        <sourcecode src='localhost/redbluecircle.svg' type='svg'/>
       </section>
     </section>
     <section>
