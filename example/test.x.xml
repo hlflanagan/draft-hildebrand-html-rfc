@@ -3,7 +3,7 @@
      expiresDate='2016-08-12'
      indexInclude='true'
      ipr='trust200902'
-     prepTime='2016-02-12T19:47:41Z'
+     prepTime='2016-02-12T21:01:03Z'
      scripts='Common,Inherited,Latin'
      sortRefs='true'
      submissionType='IETF'
@@ -676,8 +676,7 @@ int main(void)
 {
     printf("hello, world\n");
     return 0;
-}
-]]></sourcecode>
+}]]></sourcecode>
         </figure>
       </section>
       <!-- TODO: Fix the inline sourcecode -->

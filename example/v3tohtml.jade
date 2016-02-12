@@ -301,23 +301,25 @@ mixin sourcecode(e)
   - var att = {}
   - var cl = $att(e, 'type')
   - if (cl != null) { att['class'] = "lang-" + cl; }
-  if e.parent().name() == 'section'
+  - var pnm = e.parent().name()
+  - var pn = $att(e, 'anchor') || $att(e, 'pn')
+  - att['id'] = pn
+  if (pnm == 'section') || (pnm == 'figure')
     div.scdiv
       pre.sourcecode&attributes(att)
         +children(e)
       //- TODO: figure out link here
-      +pilcrow(e)
+      if (pnm != 'figure')
+        +pilcrow(e)
   else
     code.sourcecode&attributes(att)
       +children(e)
-    
 
 mixin t(e)
   - var pn = $att(e, 'anchor') || $att(e, 'pn')
   p(id=pn)
-    .testing1
-      +children(e)
-      +pilcrow(e)
+    +children(e)
+    +pilcrow(e)
 
 mixin table(e)
   table(id=$att(e, 'anchor'))
