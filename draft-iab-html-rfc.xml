@@ -13,7 +13,7 @@
 <!ENTITY I-D.iab-rfcv3-preptool SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.iab-rfcv3-preptool.xml">
 <!ENTITY I-D.iab-rfc-framework SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.iab-rfc-framework.xml">
 ]>
-<rfc ipr="trust200902" docName="draft-iab-html-rfc-02" category="info">
+<rfc ipr="trust200902" docName="draft-iab-html-rfc-03" category="info">
   <front>
     <title abbrev="HTML RFC">HyperText Markup Language Request For Comments Format</title>
     <author initials="J." surname="Hildebrand" fullname="Joe Hildebrand" role="editor">
@@ -28,7 +28,7 @@
         <email>paul.hoffman@icann.org</email>
       </address>
     </author>
-    <date year="2016" month="February" day="2"/>
+    <date year="2016" month="February" day="12"/>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
@@ -680,7 +680,7 @@
         <section title="Text Artwork" anchor="element.artwork-text">
           <t>Text artwork is rendered inside an HTML &lt;pre&gt; element, which
             is contained by a &lt;div&gt; element for consistency with SVG
-            artwork.  Note that CDATA blocks do not work consistently in HTML,
+            artwork.  Note that CDATA blocks are not a part of HTML,
             so all &lt;, &gt;, and &amp; must be escaped as &amp;lt;, &amp;gt;,
             and &amp;amp;, respectively.</t>
           <t>The &lt;div&gt; element will have CSS classes of "artwork" and
@@ -1387,7 +1387,8 @@ href="http://www.rfc-editor.org/info/rfc7878#s-2.3">Section
         <t>This element is rendered in an HTML &lt;pre&gt; with a CSS class of
           "sourcecode".  Note that CDATA blocks do not work consistently in
           HTML, so all &lt;, &gt;, and &amp; must be escaped as &amp;lt;,
-          &amp;gt;, and &amp;amp;, respectively.  If the input XML has a "type" attribute, another CSS class of "lang-" and the type is added.</t>
+          &amp;gt;, and &amp;amp;, respectively.  If the input XML has a "type"
+          attribute, another CSS class of "lang-" and the type is added.</t>
         <t>If the sourcecode is not inside a &lt;figure&gt; element, a
           <xref target='pilcrows'>pilcrow</xref> is included.  Inside a
           &lt;figure&gt; element, the figure title serves the purpose of the
