@@ -38,10 +38,23 @@ mixin abstract(e)
       a.selfRef(href='#abstract') Abstract
     +children(e)
 
+mixin address_foot(addr, ascii)
+  each p in $$('postal', addr)
+    +postal(p, ascii)
+  each ph in $$('phone', addr)
+    +phone(ph)
+  each f in $$('facsimile', addr)
+    +facsimile(f)
+  each e in $$('email', addr)
+    +email(e, ascii)
+  each u in $$('uri', addr)
+    +uri(u)
+
 mixin artwork(e)
   - var classes = ['artwork']
   - var cl = $att(e, 'type')
   - if (cl != null) { classes.push("art-" + cl); }
+  - if (cl !== 'svg') { classes.push("art-text"); }
   - var align = $att(e, 'align')
   - align = align.charAt(0).toUpperCase() + align.slice(1).toLowerCase()
   - if ((align != null) && (align!='Left')) { classes.push('align' + align); }
@@ -49,6 +62,8 @@ mixin artwork(e)
   div(id=id, class=classes)
     if cl == 'svg'
         +children(e)
+        if (e.parent().name() == 'figure') && (align == 'Right')
+          span
     else
       - var src = $att(e, 'src')
       - var alt = $att(e, 'alt')
@@ -60,38 +75,42 @@ mixin artwork(e)
     if e.parent().name() != 'figure'
       +pilcrow(e)
 
-mixin ascii(e, asciiAt)
-  - var a = $att(e, asciiAt || "ascii")
-  if a
-    = " "
-    span.ascii= a
-    = " "
-
-mixin aside(e)
-  aside(id=$att(e, 'pn'))
-    +children(e)
-    +pilcrow(e)
+mixin author(a)
+  .author
+    .author-name
+      - var nonascii = v3.pickNames(a, true, true);
+      - var ascii = v3.pickNames(a, true, false);
+      if nonascii && ascii
+        span.non-ascii= nonascii
+        = " ("
+        span.ascii= ascii
+        = ")"
+      else
+        span= nonascii || ascii
+      if $att(a, "role") == "editor"
+        = ", "
+        span.editor Ed.
+    - var org = $('organization', a)
+    if org
+      +organization(org)
 
 mixin back(e)
   - var refs = $$('references', e)
-  if refs.length > 0
-    - var snn = $('count(middle/section)') + 1
-    - var sn = 's-' + snn
+  - var start_section = "" + ($('count(middle/section)') + 1)
+  if refs.length == 1
+    - refs[0].attr('pn', 's-' + start_section)
+    +references(refs[0])
+  else if refs.length > 1
     section(id='n-references')
-      h2(id=sn)
-        a.selfRef(href='#' + sn)= snn + "."
+      h2(id='s-'+start_section)
+        a.selfRef(href='#s-'+start_section)= start_section + "."
         = " "
         a.selfRef(href='#n-references') References
       each ref, i in refs
-        - var rsn = sn + "." + (i+1)
-        section(id=$('name/@slugifiedName', ref))
-          h3(id=rsn)
-            a.selfRef(href='#' + rsn)= snn + "." + (i+1) + "."
-            = " "
-            a.selfRef(href='#' + $('name/@slugifiedName', ref)): +children($('name', ref))
-          dl.reference
-            +children(ref)
-  each adx in $$('back/section')
+        - refs[i].attr('pn', 's-' + start_section + "." + (i+1))
+        +references(refs[i])
+        
+  each adx in $$('section', e)
     +section(adx)
 
 mixin bcp14(e)
@@ -111,6 +130,18 @@ mixin blockquote(e)
         else
           = quotedFrom
 
+mixin city(e, ascii)
+  span.city
+    = v3.preferTrim(e.text(), $att(e, 'ascii'), ascii)
+
+mixin code(e, ascii)
+  span.postal-code
+    = v3.preferTrim(e.text(), $att(e, 'ascii'), ascii)
+
+mixin country(e, ascii)
+  .country-name
+    = v3.preferTrim(e.text(), $att(e, 'ascii'), ascii)
+
 mixin cref(e)
   span.cref(id=$att(e,'anchor'))
     +children(e)
@@ -124,8 +155,20 @@ mixin dl(e)
   - if ($att(e,'hanging')=='false') { classes.push('dlParallel'); } else { classes.push('dlHanging'); }
   dl(class=classes): +children(e)
 
+mixin email(e, ascii)
+  div
+    - var et = v3.preferTrim(e.text(), $att(e, 'ascii'), ascii)
+    span Email:
+    a.email(href="mailto:" + et)= et
+
 mixin eref(e)
   a.eref(href=$att(e,'target'))= e.text() || $att(e,'target')
+
+mixin facsimile(e)
+  div
+    span Fax:
+    span.tel= e.text()
+    span.type fax
 
 mixin figure(e)
   +elem(e)
@@ -138,7 +181,7 @@ mixin figure(e)
         - var sn = $att(nm, "slugifiedName")
         a.selfRef(href="#"+sn, id=sn): +children(nm)
 
-mixin identifiers(e)
+mixin front(e)
   - var published = dt.isoDate($('date',e))
   dl#identifiers
     dt Workgroup:
@@ -152,21 +195,11 @@ mixin identifiers(e)
     dd
       time.published(datetime=published)= published
     - var authors = $$('author',e)
-    dt= (authors.length > 1) ? "Authors:" : "Author:"
-    dd.authors
-      each a in authors
-        .author
-          span.fn
-            span.initial= $att(a, "initials")
-              +ascii(a, "asciiInitials")
-            = " "
-            span.surname= $att(a, "surname")
-              +ascii(a, "asciiSurname")
-          span.openParen (
-          - var org = $("organization", a)
-          span.org= org.text()
-            +ascii(org)
-          span.closeParen )
+    if authors.length > 0
+      dt= (authors.length > 1) ? "Authors:" : "Author:"
+      dd.authors
+        each a in authors
+          +author(a)
 
 mixin iref(e)
   span.iref(id=$att(e,"irefid"))
@@ -198,79 +231,125 @@ mixin ol(e)
     ol(class=classes,start=$att(e,'start'),type=style)
       +children(e)
 
+mixin organization(e)
+  - var orga = $att(e, "ascii")
+  if orga
+    .org
+      span.non-ascii= e.text()
+      = " ("
+      span.ascii= orga
+      = ")"
+  else
+    .org
+      .span= e.text()
+
+mixin phone(e)
+  div
+    span Phone:
+    span.tel= e.text()
+    span.type VOICE
+
 mixin pilcrow(e)
   if !$('ancestor::table', e) && !$('*//@pn', e)
     - var ref = $att(e, 'anchor') || $att(e, 'pn')
     = " "
     a.pilcrow(href='#'+ref) &para;
 
-mixin postal(e)
-  - var plines = $$('postalLine/text()', e)
+mixin postal(e, ascii)
+  - var plines = $$('postalLine', e)
   if plines.length > 0
-    pre.label= plines.join('\n')
-    - var pascii = $$('postalLine/@ascii', e)
-    if pascii.length > 0
-      = " "
-      pre.ascii= pascii.join('\n')
+    pre.label
+      for pl in plines
+        = v3.preferTrim(pl.text(), $att(pl, 'ascii'), ascii) + "\n"
   else
     .adr
       each st in $$('street', e)
-        .street-address= st.text().trim()
-          +ascii(st)
-      div
-        each city in $$('city', e)
-          span.city= city.text().trim()
-            +ascii(city)
-        span.comma ,
-        each region in $$('region', e)
-          span.region= region.text().trim()
-            +ascii(region)
-        each code in $$('code', e)
-          = " "
-          span.postal-code= code.text()
-            +ascii(code)
-      each country in $$('country', e)
-        .country-name= country.text().trim()
-          +ascii(country)
+        +street(st, ascii)
+      .city-region-code
+        each c, i in $$('city', e)
+          if i != 0
+            = " "
+          +city(c, ascii)
+        = ","
+        each r in $$('region', e)
+          | &nbsp;
+          +region(r, ascii)
+        each c in $$('code', e)
+          | &nbsp;
+          +code(c, ascii)
+      each c in $$('country', e)
+        +country(c, ascii)
 
-mixin refText(e)
+mixin refTextReal(e, ascii)
   - var authors = $$('front/author', e)
-  if authors.length > 0
-    span.refAuthor= $att(authors[0], 'surname') + ", " + $att(authors[0], 'initials')
-      +ascii(authors[0], 'asciiFullname')
-    each a in authors.slice(1,-1)
-      span.comma ,
-      span.refAuthor= $att(a, 'fullname')
-        +ascii(a, 'asciiFullname')
-    if authors.length > 1
-      span= " and "
-      span.refAuthor= $att(authors[authors.length-1], 'fullname')
-        +ascii(authors[authors.length-1], 'asciiFullname')
+  each a, i in authors
+    - var last = (i === authors.length-1)
+    - var name = v3.pickNames(a, (authors.length>1) && last, ascii)
+    if !name
+      - name = v3.preferTrim($('organization/text()', a), $('organization/@ascii', a), ascii)
+    span.refAuthor= name
+    if $att(a, "role") == 'editor'
+      = ", "
+      span.refEditor Ed.
+    if authors.length>2
+      if !last
+        = ", "
+      if i == authors.length-2
+        = "and "
+    else if authors.length==2
+      if !last
+        = " and "
+    
   - var title = $('front/title', e)
-  span.refTitle "#{title.text().trim()}"
-    +ascii(title)
+  - var title_txt = v3.preferTrim(title.text(), $att(title, 'ascii'), ascii)
+  if title_txt
+    if authors.length
+      = ", "
+    - var quoteTitle = $att(e, 'quoteTitle') !== 'false'
+    if quoteTitle
+      = '"'
+    span.refTitle= title_txt
+    if quoteTitle
+      = '"'
+    
   - var refcontent = $('refcontent', e)
   if refcontent
-    span.comma ,
+    = ", "
     span.refContent
       +children(refcontent)
+      
   each si in $$('seriesInfo', e)
-    span.comma ,
+    = ", "
     span.refSeries
-      span.refSeriesName= $att(si, 'name')
-        +ascii(si, 'asciiName')
-      span.refSeriesValue= $att(si, 'value')
-        +ascii(si, 'asciiValue')
+      span.refSeriesName= v3.preferTrim($att(si, 'name'), $att(si, 'asciiName'), ascii)
+      span.refSeriesValue= v3.preferTrim($att(si, 'value'), $att(si, 'asciiValue'), ascii)
   - var refdate = $('front/date', e)
   if refdate
-    span.comma ,
+    = ", "
     - var dat = [$att(refdate, 'month')||"", $att(refdate, 'year')||""]
     time.refDate(datetime=dt.isoYearMonth(refdate))= dat.join(' ')
-  span.fullStop .
   - var annotation = $('annotation', e)
   if annotation
+    = ", "
     span.annotation
       +children(annotation)
+  - var target = $att(e, 'target')
+  if target
+    = ", <"
+    a.refTarget(href=target)= target
+    = ">"
+  = "."
+
+mixin refText(e)
+  //- if there are ANY ascii* attributes, do two copies of the reference.
+  - var ascii = $$('descendant-or-self::*/@*[starts-with(name(), "ascii")]', e)
+  if ascii.length > 0
+    .ascii
+      +refTextReal(e, true)
+    .non-ascii
+      +refTextReal(e, false)
+  else
+    +refTextReal(e, false)
       
 mixin reference(e)
   - var anc = $att(e, 'anchor')
@@ -282,17 +361,36 @@ mixin reference(e)
     .refInstance(id=anc)
       +refText(e)
 
+mixin references(s)
+  //- just like section, but with dl.reference wrapped around children
+  //- it might be possible to gin up a temporary container
+  - var pn = $att(s,'pn')
+  - var sn = pn.replace(/^s-/, '')
+  - var depth = Math.min(sn.split('.').length + 1, 6)
+  - var id = $att(s, 'anchor')||$('name/@slugifiedName',s)
+  section(id=id, class=rm)
+    #{"h" + depth}(id=pn)
+      a.selfRef(href='#' + pn)= sn + "."
+      = " "
+      a.selfRef(href='#' + id): +children($("name", s))
+    dl.reference
+      +children(s)
+
+mixin region(e, ascii)
+  span.region
+    = v3.preferTrim(e.text(), $att(e, 'ascii'), ascii)
+
 mixin section(s)
-  - var sn = $att(s,'pn')
-  - var snn = sn.replace(/^s-/, '')
+  - var pn = $att(s,'pn')
+  - var sn = pn.replace(/^s-/, '')
   - var depth = Math.min(sn.split('.').length + 1, 6)
   - var rm = ($att(s, 'removeInRFC')==="yes") ? "rfceditor-remove" : null
   - var id = $att(s, 'anchor')||$('name/@slugifiedName',s)
   section(id=id, class=rm)
-    #{"h" + depth}(id=sn)
+    #{"h" + depth}(id=pn)
       if s.parent().name() != 'boilerplate'
         //- TODO: add class of ipr if boilerplate
-        a.selfRef(href='#' + sn)= snn + "."
+        a.selfRef(href='#' + pn)= sn + "."
         = " "
       a.selfRef(href='#' + id): +children($("name", s))
     +children(s)
@@ -315,6 +413,10 @@ mixin sourcecode(e)
     code.sourcecode&attributes(att)
       +children(e)
 
+mixin street(st, ascii)
+  .street-address
+    = v3.preferTrim(st.text(), $att(st, 'ascii'), ascii)
+
 mixin t(e)
   - var pn = $att(e, 'anchor') || $att(e, 'pn')
   p(id=pn)
@@ -335,7 +437,6 @@ mixin table(e)
 mixin title(e)
   h1#title
     +children(e)
-    +ascii(title)
 mixin tt(e)
   code: +children(e)
 
@@ -345,6 +446,13 @@ mixin ul(e)
   - if ($att(e,'empty')=='true') { classes.push('ulEmpty'); }
   ul(class=classes): +children(e)
 
+mixin uri(e)
+  div
+    span URI:
+    = " <"
+    a.authorURI(href=e.text())= e.text()
+    = ">"
+    
 mixin xref(e)
   - var target = $att(e,'target')
   - var t = $att(e,'derivedContent')
@@ -357,76 +465,103 @@ mixin xref(e)
   else
     a.xref(href='#'+target)= t
 
+mixin foot_author_real(e, ascii)
+  .nameRole
+    span.fn
+      = v3.preferTrim($att(e, 'fullname'), $att(e, 'asciiFullname'), ascii)
+    if $att(e, 'role')
+      = " ("
+      span.role= $att(e, 'role')
+      = ")"
+  - var org = $('organization', e)
+  if org
+    .org= v3.preferTrim(org.text(), $att(org, 'ascii'), ascii)
+  - var addr = $('address', e)
+  if addr
+    +address_foot(addr, ascii)
+        
 mixin foot_author(e)
   address.vcard
-    .nameRole
-      span.fn
-        = $att(e, 'fullname')
-        +ascii(e, "asciiFullname")
-      if $att(e, 'role')
-        span.openParen (
-        span.role= $att(e, 'role')
-        span.closeParen )
-    - var org = $('organization', e)
-    .org= org.text()
-      +ascii(org)
-    - var addr = $('address', e)
-    each p in $$('postal', addr)
-      +postal(p)
-    each phone in $$('phone/text()', addr)
-      div
-        span Phone:
-        span.tel= phone
-        span.type VOICE
-    each fax in $$('facsimile/text()', addr)
-      div
-        span Fax:
-        span.tel= fax
-        span.type fax
-    each email in $$('email', addr)
-      div
-        - var et = email.text().trim()
-        span Email:
-        a.email(href="mailto:" + et)= et
-        +ascii(email)
-    each uri in $$('uri/text()', addr)
-      div
-        span URI:
-        a.authorURI(href=uri)= uri
+    - var ascii = $$('descendant-or-self::*/@*[starts-with(name(), "ascii")]', e)
+    if ascii.length > 0
+      .ascii
+        +foot_author_real(e, true)
+      .alternative-contact Alternate contact information:
+      .non-ascii
+        +foot_author_real(e, false)
+    else
+      +foot_author_real(e, false)
 
 mixin referencegroup(e)
   - var anc=$att(e,'anchor')
   dt(id=anc) [#{anc}]
   dd
     +children(e)
-    
+
+mixin tocLi(p, depth)
+  each s in $$('section', p)
+    - var pn = $att(s,'pn')
+    - var sn = pn.replace(/^s-/, '')
+    - var nm = $('name',s)
+    if $att(s, 'toc') != 'exclude'
+      li.toc
+        a(href="#"+pn)= sn
+        = ". "
+        a(href="#"+$att(nm,'slugifiedName'))= nm.text()
+      +tocSections(s, depth-1)
+      
 mixin tocSections(p, depth)
   if depth > 0
     - var sects = $$('section', p)
     if sects.length
       ul.toc
-        each s in $$('section', p)
-          - var pn = $att(s,'pn')
-          - var sn = pn.replace(/^s-/, '')
-          - var nm = $('name',s)
-          if $att(s, 'toc') != 'exclude'
-            li.toc
-              a(href="#"+pn)= sn
-              = "."
-              a(href="#"+$att(nm,'slugifiedName'))= nm.text()
-            +tocSections(s, depth-1)
-
+        +tocLi(p, depth)
+        block
+          
+mixin toc_ref(ref, sn)
+  - var rpn = 's-' + sn
+  - var nm = $('name', ref)
+  - var id = $att(ref, 'anchor')||$att(nm,'slugifiedName')
+  li.toc
+    a(href="#"+rpn)= sn
+    = ". "
+    a(href='#'+id)= nm.text()
+      
 mixin toc
-  if $att($root(), 'tocInclude') == 'true'
+  if $att($root(), 'tocInclude') != 'false'
     - var depth = $att($root(), 'tocDepth')
     h2#toc Table of Contents
     nav.toc
       +tocSections($('middle'), depth)
-      +tocSections($('back'), depth)
-    
+        - var refs = $$('//back/references')
+        if refs.length > 0
+          - var sn = $('count(middle/section)') + 1
+          - var pn = 's-' + sn
+          if refs.length > 1
+            li.toc
+              a(href="#"+pn)= sn
+              = ". "
+              a(href='#n-references') References
+            ul.toc
+              each ref, i in refs
+                +toc_ref(ref, sn + "." + (i+1))
+          else
+            +toc_ref(refs[0], sn)
+        +tocLi($('back'), depth)
+        if $$('//iref').length && ($('/rfc/@indexInclude') != "false")
+          li.toc
+            a(href="#index") Index
+        - var authors = $$('front/author')
+        if authors.length > 0
+          li.toc
+            if authors.length > 1
+              a(href="#author-addresses") Authors' Addresses
+            else
+              a(href="#author-addresses") Author's Address
+
 mixin index
   - var irs = $$('//iref')
-  if irs.length
+  if irs.length && ($('/rfc/@indexInclude') != "false")
     h2 Index
     - var parts = v3.indexPartition(irs)
     .index
@@ -465,7 +600,7 @@ mixin index
                                   a.indexPrimary(href='#'+s.irefid)= s.section
                                 else
                                   a(href='#'+s.irefid)= s.section
-    
+
 doctype html
 html(lang='en', class=$$('/rfc/front/seriesInfo/@name'))
   head
@@ -486,9 +621,22 @@ html(lang='en', class=$$('/rfc/front/seriesInfo/@name'))
     each link in $$('link')
       +elem(link)
   body
-    +identifiers($('front'))
+    table.ears
+      thead
+        tr
+          td.left Internet-Draft
+          td.center= $('/rfc/front/title/@abbrev') || $('/rfc/front/title/text()')
+          td.right= dt.monthYear($('/rfc/front/date'))
+      tfoot
+        tr
+          td.left= $('/rfc/front/author/@asciiSurname') || $('/rfc/front/author/@asciiFullname')|| $('/rfc/front/author/@surname') || $('/rfc/front/author/@fullname')
+          td.center= "Expires " + dt.monthDayYear($('/rfc/@expiresDate'))
+          td.right [Page]
+    +front($('front'))
     h1#title= $('front/title/text()')
-    +abstract($('front/abstract'))
+    - var abst = $('front/abstract')
+    if abst
+      +abstract(abst)
     each note in $$('front/note')
       +note(note)
     +children($('front/boilerplate'))
@@ -497,16 +645,19 @@ html(lang='en', class=$$('/rfc/front/seriesInfo/@name'))
     +back($('back'))
     +index()
     - var authors = $$('front/author')
-    section#author-addresses
-      h2
-        a.selfRef(href='#author-addresses')
-          = (authors.length > 1) ? "Authors' Addresses" : "Author's Address"
-      each a in authors
-        +foot_author(a)
+    if authors.length > 0
+      section#author-addresses
+        h2
+          a.selfRef(href='#author-addresses')
+            = (authors.length > 1) ? "Authors' Addresses" : "Author's Address"
+        each a, i in authors
+          if i != 0
+            hr.addr
+          +foot_author(a)
     .docInfo
-      - var finalized = $('@finalizedTime')
-      span.prepared Prepared:
+      - var finalized = $('@prepTime')
+      span.prepared= "Prepared: "
         time(datetime=finalized)= finalized
       - var rendered = dt.isoDateTime()
-      span.rendered Rendered:
+      span.rendered= "Rendered: "
         time(datetime=rendered)= rendered

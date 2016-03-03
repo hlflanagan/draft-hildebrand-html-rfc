@@ -16,6 +16,10 @@ body {
   line-height: 130%;
 }
 
+.ears {
+  display: none;
+}
+
 /* headings */
 #title, h1, h2, h3, h4, h5, h6 {
   line-height: 100%;
@@ -24,14 +28,17 @@ body {
 #title {
   font-size: 36px;
 }
-h1 {
-  font-size: 30px;
+.author {
+  padding-bottom: 4px;
 }
-h2 {
+h1 {
   font-size: 24px;
 }
+h2 {
+  font-size: 20px;
+}
 h3, h4, h5, h6 {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 /* general structure */
@@ -46,32 +53,43 @@ div, span {
 div {
   margin: 0;
 }
-.alignRight {
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: row;
-  align-items: flex-end;
+.alignRight.art-text {
   background-color: #f9f9f9;
   border: 1px solid #eee;
+}
+.alignRight {
   margin: 0.8em 0.4em 0.4em;
 }
-.alignRight pre {
+.alignRight > *:first-child {
   border: none;
   margin: 0;
+  float: right;
+  clear: both;
+}
+.alignRight > *:nth-child(2) {
+  clear: both;
+  display: block;
+  border: none;
 }
 
-.alignCenter {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
+svg {
+  display: block;
+}
+
+.alignCenter.art-text {
   background-color: #f9f9f9;
   border: 1px solid #eee;
+}
+.alignCenter {
   margin: 0.8em 0.4em 0.4em;
 }
-.alignCenter pre {
+.alignCenter > *:first-child {
   border: none;
-  margin: 0;
+  /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+     support flexbox yet.
+  */
+  display: table;
+  margin: 0 auto;
 }
 
 /* lists */
@@ -224,29 +242,6 @@ a.pilcrow {
   }
 }
 
-/* ascii overlay */
-/* Joe: this doesn't work if the ascii text is longer than the original text,
-  something that I expect will be common in some scripts */
-.ascii {
-  display: none;
-  color: #000;
-  background-color: #e2edf6;
-  position: absolute;
-  top: -2px;
-  left: -1px;
-  padding: 1px;
-  width: 100%;
-  height: 100%;
-}
-@media screen {
-  span:hover > .ascii {
-    display: block;
-  }
-  div:hover > .ascii {
-    display: block;
-  }
-}
-
 /* misc */
 hr {
   border: 0;
@@ -255,23 +250,9 @@ hr {
 .bcp14 {
   font-variant: small-caps;
 }
-/* Joe: This is all kludgy, not because your intent is wrong, but because you
-  insist on adding whitespace both to the inside and the outside of the <span>
-  tags that you use for these rules.  I've hacked around this as I am able
-  without modifying the html, but you really need to fix the spacing at the
-  source.  If you fix it, all these nasty tricks with -0.2em margins can be
-  removed. */
-.comma, .fullStop, .closeParen, .openParen {
-  display: none;
-}
+
 .role {
   font-variant: all-small-caps;
-}
-.role::before {
-  content: " [";
-}
-.role::after {
-  content: "]";
 }
 
 /* info block */
@@ -288,16 +269,17 @@ hr {
   margin-left: 7em;
   margin-bottom: 0;
 }
-#identifiers .org::before {
-  margin-left: -0.2em; /* hack */
-  content: ", ";
-}
+
+/* The prepared/rendered info at the very bottom of the page */
 .docInfo {
-  text-align: right;
   font-style: italic;
   font-size: 12px;
   color: #999;
   margin-right: 20px;
+  float: right;
+}
+.docInfo span {
+  display: block;
 }
 
 /* table of contents */
@@ -322,18 +304,13 @@ nav.toc li {
 .reference dd {
   margin-left: 7em;
 }
-.reference dd > span::after,
-.refInstance > span::after {
-  margin-left: -0.2em;
-  content: ",";
+
+.refInstance {
+  margin-bottom: 18px;
 }
-.reference dd > time::after,
-.refInstance > time::after {
-  /* This hack doesn't work here because the HTML file isn't consistent about
-     including whitespace between the end of the <time> element content and the
-     tag. */
-  margin-left: -0.2em;
-  content: ".";
+
+.reference .ascii {
+  margin-bottom: 6px;
 }
 
 /* index */
@@ -366,9 +343,7 @@ address.vcard {
   font-style: normal;
   margin: 1em;
 }
-address.vcard > * {
-  margin: 0.4em 1em;
-}
+
 address.vcard .nameRole {
   font-weight: 700;
   margin-left: 0;
@@ -379,6 +354,16 @@ address.vcard .label {
 }
 address.vcard .type {
   display: none;
+}
+
+.alternative-contact {
+  margin: 6px 0 6px -12px;
+}
+
+hr.addr {
+  max-width: 150px;
+  border-top: solid 1px;
+  margin: 0px;
 }
 
 /* temporary notes */
@@ -440,9 +425,6 @@ address.vcard .type {
 
 /* pagination */
 @media print {
-  body {
-    font-family: 'Times New Roman', serif;
-  }
   p {
     orphans: 3;
     widows: 3;
@@ -457,8 +439,93 @@ address.vcard .type {
     font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
     page-break-after: avoid;
   }
-  /* Joe: is this really necessary? */
   h2+*, h3+*, h4+*, h5+*, h6+* {
     page-break-before: avoid;
+  }
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 10pt;
+  }
+}
+
+.ears thead .left {
+  string-set: ears-top-left content();
+}
+
+.ears thead .center {
+  string-set: ears-top-center content();
+}
+
+.ears thead .right {
+  string-set: ears-top-right content();
+}
+
+.ears tfoot .left {
+  string-set: ears-bottom-left content();
+}
+
+.ears tfoot .center {
+  string-set: ears-bottom-center content();
+}
+
+.ears tfoot .right {
+  string-set: ears-bottom-right content();
+}
+
+@page :first {
+  padding-top: 0;
+  @top-left {
+    content: normal;
+    border: none;
+  }
+  @top-center {
+    content: normal;
+    border: none;
+  }
+  @top-right {
+    content: normal;
+    border: none;
+  }
+}
+
+@page {
+  size: A4;
+  margin-bottom: 45mm;
+  padding-top: 20px;
+  @top-left {
+    content: 'Internet-Draft';
+    vertical-align: bottom;
+    border-bottom: solid 1px;
+  }
+  @top-left {
+    content: string(ears-top-left);
+    vertical-align: bottom;
+    border-bottom: solid 1px;
+  }
+  @top-center {
+    content: string(ears-top-center);
+    vertical-align: bottom;
+    border-bottom: solid 1px;
+  }
+  @top-right {
+    content: string(ears-top-right);
+    vertical-align: bottom;
+    border-bottom: solid 1px;
+  }
+  @bottom-left {
+    content: string(ears-bottom-left);
+    vertical-align: top;
+    border-top: solid 1px;
+  }
+  @bottom-center {
+    content: string(ears-bottom-center);
+    vertical-align: top;
+    border-top: solid 1px;
+  }
+  @bottom-right {
+      content: '[Page ' counter(page) ']';
+      vertical-align: top;
+      border-top: solid 1px;
   }
 }

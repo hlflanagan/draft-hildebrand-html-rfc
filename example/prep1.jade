@@ -194,7 +194,7 @@ mixin references(e)
     references&attributes(a)
       - var nm = $('name', e)
       if nm
-        +elem(nm)
+        +name(nm)
       - var rs = e.find('reference|referencegroup')
       - rs.sort(number.cmpAnchor)
       +nodes(rs)

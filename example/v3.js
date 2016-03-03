@@ -166,3 +166,54 @@ exports.indexPartition = function(irefs) {
   });
   return arefs;
 }
+
+exports.pickNames = function pickNames(author, initials_surname, preferAscii) {
+  var initials = atv(author, 'initials');
+  var surname = atv(author, 'surname');
+  var fullname = atv(author, 'fullname');
+  var asciiInitials = atv(author, 'asciiInitials');
+  var asciiSurname = atv(author, 'asciiSurname');
+  var asciiFullname = atv(author, 'asciiFullname');
+  var hasAscii = asciiInitials || asciiSurname || asciiFullname;
+  // if there is no ascii* attribs, it's old-school.
+  if (!hasAscii) {
+    preferAscii = false;
+  }
+  if (preferAscii) {
+    if (asciiInitials && asciiSurname) {
+      if (initials_surname) {
+        return asciiInitials + " " + asciiSurname;
+      } else {
+        return asciiSurname + ", " + asciiInitials;
+      }
+    }
+    if (asciiFullname) {
+      return asciiFullname;
+    }
+    // if we don't have enough to make a name from ascii, try to make
+    // a name from non-ascii.  This assumes that just a surname or just
+    // an initial isn't enough for a name.
+  }
+  if ((initials||asciiInitials) && (surname||asciiSurname)) {
+    if (initials_surname) {
+      return (initials||asciiInitials) + " " + (surname||asciiSurname);
+    } else {
+      return (surname||asciiSurname) + ", " + (initials||asciiInitials);
+    }
+  }
+  if (fullname||asciiFullname) {
+    return fullname||asciiFullname;
+  }
+  return surname || asciiSurname || "";
+}
+
+exports.preferTrim = function(non, ascii, preferAscii) {
+  var nonT = non ? non.trim() : "";
+  var asciiT = ascii ? ascii.trim() : "";
+
+  if (preferAscii) {
+    return asciiT || nonT;
+  } else {
+    return nonT || asciiT;
+  }
+}

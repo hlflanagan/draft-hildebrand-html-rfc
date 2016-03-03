@@ -186,7 +186,7 @@ exports.loadSrc = function(e) {
     data = fs.readFileSync(up.pathname);
   } else if (up.protocol === 'data:') {
     data = dataUri.decode(u);
-  } else if ((up.protocol === 'http:') || (up.protocol === 'http:')) {
+  } else if ((up.protocol === 'http:') || (up.protocol === 'https:')) {
     // jade is strictly snychronous
     var res = urllibsync.request(u);
     if (res.status !== 200) {

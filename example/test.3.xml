@@ -6,7 +6,6 @@
   updates='6949, 5646'>
   <link href="https://github.com/hildjj/draft-hildebrand-html-rfc.git" rel="alternate"/>
   <!-- Need right-to-left names -->
-  <!-- Paul got to <postal> -->
   <front>
     <!--
       comment in the front
@@ -285,16 +284,17 @@
         ea est elit occaecat. In cupidatat ea ipsum est fugiat ad pariatur
         nulla. </li>
       </ol>
+      <t>This should be centered:</t>
       <artwork anchor='not-actually-ee' xml:lang='en' type='poetry' align='center'>
 artwork does not
      ALWAYS
-   have to bepartofafigure.
-                            --ee cummings</artwork>
-      <!-- TODO: center paulH's way -->
+   have to be part of a figure.
+                            --0xEE cummings</artwork>
       <artwork align='center' type='ascii-art'>
 some
 texting goes
 here</artwork>
+      <t>This should be pushed right:</t>
       <artwork align='right'>Just a step to the right</artwork>
       <figure>
         <name>It figures</name>
@@ -318,15 +318,15 @@ here</artwork>
           </svg>
         </artwork>
       </figure>
-      <figure><name>Inline with XInclude</name>
+      <figure><name>Inline with XInclude (right)</name>
         <artwork type="svg" align="right"><xi:include href='http://localhost:8080/redbluecircle.svg'/></artwork>
       </figure>
       <figure><name>SVG as a data: URI</name>
         <artwork type="svg" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEwMCIKICAgICB3aWR0aD0iMTAwIgogICAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGNpcmNsZSBjeD0iNTAiCiAgICAgICAgICBjeT0iNTAiCiAgICAgICAgICBmaWxsPSJ3aGl0ZSIKICAgICAgICAgIHI9IjQwIgogICAgICAgICAgc3Ryb2tlPSJibGFjayIKICAgICAgICAgIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4="/>
       </figure>
-      <figure><name>Inline with &lt;src&gt; attribute</name>
+      <figure><name>Inline with &lt;src&gt; attribute (center)</name>
         <!-- <artwork type="svg" src="circle.svg"/> -->
-        <artwork type="svg" src='http://localhost:8080/redbluecircle.svg' anchor='externalCircle'/>
+        <artwork align="center" type="svg" src='http://localhost:8080/redbluecircle.svg' anchor='externalCircle'/>
       </figure>
       <t>Artwork can also be outside a figure. Here are two.</t>
       <artwork type="logo" src="http://localhost:8080/ietflogotrans.gif" alt="IETF logo"/>
@@ -460,6 +460,25 @@ This is gibberish: aklsdjalskjd aslkdj asldkj aslkdja sldkjasdklajd alkdjasdlkj 
   <back>
     <displayreference target="STD69" to="EPP"/>
     <displayreference target="RFC5646" to="LANG-TAGS"/>
+    <references anchor='norm'>
+      <name>Normative References</name>
+      <xi:include href='reference.RFC.2119.xml'/>
+      <reference anchor="GOST3410" target='http://example.com/GOST34.10'>
+        <front>
+          <title ascii='Information technology. Cryptographic data security. Signature and verification processes of [electronic] digital signature'>
+            Информационная технология. Криптографическая защита информации. Процессы формирования и проверки электронной цифровой подписи
+          </title>
+          <author>
+            <organization ascii='Federal Agency on Technical Regulating and Metrology'>
+              Государственный стандарт Российской Федерации
+            </organization>
+          </author>
+          <date year="2012"/>
+        </front>
+        <annotation>(In Russian)</annotation>
+        <seriesInfo name="GOST R" value="34.10-2012"/>
+      </reference>
+    </references>
     <references>
       <name>Informative References</name>
       <xi:include href='reference.RFC.6949.xml'/>
@@ -492,7 +511,7 @@ This is gibberish: aklsdjalskjd aslkdj asldkj aslkdja sldkjasdklajd alkdjasdlkj 
         <xi:include href='reference.RFC.5733.xml'/>
       </referencegroup>
       <referencegroup anchor="Bibble">
-        <reference anchor="Bibble3" quoteTitle="false">
+        <reference anchor="Bibble3" quoteTitle="false" target="http://example.com/bibble3">
           <front>
             <title>Bibble protocol spec</title>
             <author initials="N." surname="One" fullname="No One"/>
@@ -502,7 +521,7 @@ This is gibberish: aklsdjalskjd aslkdj asldkj aslkdja sldkjasdklajd alkdjasdlkj 
         </reference>
         <reference anchor="Bibble2">
           <front>
-            <title ascii="Bibble use cases">𝔹ibble use cases</title>
+            <title ascii="Bibble use cases">Bi̬bble use cases</title>
             <author initials="Ñ." asciiInitials="N." surname="One" fullname="Ño One" asciiFullname="No One"/>
             <author initials="Ñ." asciiInitials="N." surname="Two" fullname="Ño Two" asciiFullname="No Two"/>
             <author initials="Ñ." asciiInitials="N." surname="Three" fullname="Ño Three" asciiFullname="No Three"/>
@@ -519,6 +538,10 @@ This is gibberish: aklsdjalskjd aslkdj asldkj aslkdja sldkjasdklajd alkdjasdlkj 
         <t>Have parts, too</t>
         <t>And more parts</t>
       </section>
+    </section>
+    <section>
+      <name>Another appendix</name>
+      <t>This one is just as useless</t>
     </section>
   </back>
 </rfc>

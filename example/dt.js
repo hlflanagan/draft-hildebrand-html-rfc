@@ -9,9 +9,20 @@ var months = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December" ];
 
-exports.monthName = function(d) {
-  return months[d.getMonth()];
+function monthName(d) {
+  switch (typeof(d)) {
+    case 'number':
+      return months[d];
+    case 'string':
+      var num = parseInt(d, 10);
+      return isNaN(num) ? d : months[num];
+    case 'object':
+      // Date
+      return months[d.getMonth()];
+  }
+  return undefined;
 }
+exports.monthName =  monthName;
 
 exports.monthNumber = function(m) {
   if (m instanceof Date) {
@@ -70,3 +81,20 @@ exports.isoDateTime = function(d) {
   }
   return exports.isoDate(d) + "T" + pad2(d.getUTCHours()) + ":" + pad2(d.getUTCMinutes()) + ":" + pad2(d.getUTCSeconds()) + "Z";
 };
+
+exports.monthYear = function(e) {
+  var year = atv(e, 'year') || "";
+  var month = monthName(atv(e, 'month')) || "";
+  if (month && year) {
+    return month + " " + year;
+  }
+  return month + year;
+}
+
+exports.monthDayYear = function(iso) {
+  // YYYY-MM-DD
+  var parts = iso.split('-');
+  return months[parseInt(parts[1], 10)-1] + " " +
+         parts[2].replace(/^0+/, '') + ", " +
+         parts[0];
+}
