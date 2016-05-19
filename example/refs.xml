@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rfc ipr='trust200902'>
+  <front>
+    <title>test</title>
+    <author/>
+  </front>
+  <middle>
+    <section>
+      <name>None</name>
+    </section>
+  </middle>
+  <back>
+    <references>
+      <name>Denominational</name>
+    </references>
+    <references>
+      <name>Informational</name>
+    </references>
+  </back>
+</rfc>
