@@ -7,15 +7,16 @@
     "example": "examples"
   },
   "dependencies": {
-    "http-server": "0.9",
-    "libxmljs": "0.17",
+    "bluebird": "3.3",
+    "express": "4.13",
+    "jade": "1.11",
+    "libxmljs": "hildjj/libxmljs",
+    "resolve": "1.1",
+    "rfc-preptool": "latest",
     "romanize": "0.1",
-    "slug": "0.9",
-    "strong-data-uri": "*",
-    "unicode-properties": "1.1",
-    "unicode-trie": "0.3",
-    "urllib-sync": "1.1",
-    "xmljade": "0.3"
+    "through2": "2.0",
+    "vinyl-fs": "2.4",
+    "xmljade": "latest"
   },
   "devDependencies": {},
   "scripts": {
@@ -26,7 +27,7 @@
     "url": "https://github.com/hildjj/draft-hildebrand-html-rfc.git"
   },
   "author": "",
-  "license": "BSD",
+  "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/hildjj/draft-hildebrand-html-rfc/issues"
   },

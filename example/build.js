@@ -90,19 +90,7 @@ toPDF = t2p((f) => {
   })
 })
 
-// Hopefully, this doesn't happen anymore.
-process.on("unhandledRejection", function(reason, promise) {
-  if (listener) {
-    console.log('UNHANDLED', reason)
-    server.stop()
-  }
-});
-
-// e.g. crash
-process.on('exit', () => server.stop())
-
-server.start()
-.then(() => {
+xform = () => {
   return new Promise((res, rej) => {
     vfs.src('*.xml')
     .pipe(log())
@@ -116,6 +104,34 @@ server.start()
     .on('end', res)
     .on('error', rej)
   })
+}
+
+copy = () => {
+  return new Promise((res, rej) => {
+    vfs.src('*.css')
+    .pipe(vfs.dest('./out'))
+    .on('end', res)
+    .on('error', rej)
+  })
+}
+
+// Hopefully, this doesn't happen anymore.
+process.on("unhandledRejection", function(reason, promise) {
+  if (listener) {
+    console.log('UNHANDLED', reason)
+    server.stop()
+  }
+});
+
+// e.g. crash
+process.on('exit', () => server.stop())
+
+server.start()
+.then(() => {
+  return bb.all([
+    copy(),
+    xform()
+  ])
 })
 .then(_ => {
   console.log('done')

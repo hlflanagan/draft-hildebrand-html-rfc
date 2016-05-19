@@ -13,7 +13,7 @@ mixin elem(e)
     +children(e)
     block
 
-mixin children(e, opts)
+mixin children(e)
   if (e)
     each c in e.childNodes()
       case c.type()
@@ -27,10 +27,12 @@ mixin children(e, opts)
           != "<!--" + c.text() + "-->"
         when 'element'
           - var nm = c.name()
-          if jade_mixins[nm] != null
+          if jade_mixins[nm]
             +#{nm}(c)
-          else if !v3.isIgnored(nm)
-            +elem(c, opts)
+          else if c.namespace()
+            +elem(c)
+          else
+            - console.error('Unknown element name:', nm)
 
 mixin abstract(e)
   section#abstract
@@ -38,6 +40,7 @@ mixin abstract(e)
       a.selfRef(href='#abstract') Abstract
     +children(e)
 
+//- not address to keep it from firing in the header
 mixin address_foot(addr, ascii)
   each p in $$('postal', addr)
     +postal(p, ascii)
@@ -80,7 +83,7 @@ mixin author(a)
     .author-name
       - var nonascii = v3.pickNames(a, true, true);
       - var ascii = v3.pickNames(a, true, false);
-      if nonascii && ascii
+      if nonascii && ascii && (nonascii !== ascii)
         span.non-ascii= nonascii
         = " ("
         span.ascii= ascii
@@ -130,6 +133,9 @@ mixin blockquote(e)
         else
           = quotedFrom
 
+mixin br(e)
+  br
+
 mixin city(e, ascii)
   span.city
     = v3.preferTrim(e.text(), $att(e, 'ascii'), ascii)
@@ -149,11 +155,20 @@ mixin cref(e)
       = " "
       span.crefSource= "\u2014" + $att(e,'source')
 
+mixin dd(e)
+  +elem(e)
+
 mixin dl(e)
   - var classes=[]
   - if ($att(e,'spacing')=='compact') { classes.push('dlCompact'); }
   - if ($att(e,'hanging')=='false') { classes.push('dlParallel'); } else { classes.push('dlHanging'); }
   dl(class=classes): +children(e)
+
+mixin dt(e)
+  +elem(e)
+
+mixin em(e)
+  +elem(e)
 
 mixin email(e, ascii)
   div
@@ -202,11 +217,14 @@ mixin front(e)
           +author(a)
 
 mixin iref(e)
-  span.iref(id=$att(e,"irefid"))
+  span.iref(id=$att(e,"pn"))
 
 mixin li(e)
   +elem(e)
     +pilcrow(e)
+
+mixin name(e)
+  //- ignored
 
 mixin note(e)
   - var rm = ($att(e, 'removeInRFC')=="yes") ? "rfcEditorRemove" : null
@@ -385,14 +403,16 @@ mixin section(s)
   - var sn = pn.replace(/^s-/, '')
   - var depth = Math.min(sn.split('.').length + 1, 6)
   - var rm = ($att(s, 'removeInRFC')==="yes") ? "rfceditor-remove" : null
-  - var id = $att(s, 'anchor')||$('name/@slugifiedName',s)
+  - var id = $att(s, 'anchor') || $('name/@slugifiedName',s)
   section(id=id, class=rm)
     #{"h" + depth}(id=pn)
-      if s.parent().name() != 'boilerplate'
+      if $att(s, 'numbered') !== 'false'
         //- TODO: add class of ipr if boilerplate
         a.selfRef(href='#' + pn)= sn + "."
         = " "
-      a.selfRef(href='#' + id): +children($("name", s))
+      - var nm = $('name', s)
+      if nm
+        a.selfRef(href='#' + id): +children(nm, s)
     +children(s)
 
 mixin sourcecode(e)
@@ -417,6 +437,15 @@ mixin street(st, ascii)
   .street-address
     = v3.preferTrim(st.text(), $att(st, 'ascii'), ascii)
 
+mixin strong(e)
+  +elem(e)
+  
+mixin sub(e)
+  +elem(e)
+
+mixin sup(e)
+  +elem(e)
+
 mixin t(e)
   - var pn = $att(e, 'anchor') || $att(e, 'pn')
   p(id=pn)
@@ -434,9 +463,28 @@ mixin table(e)
         a.selfRef(href="#"+$att(nm, "slugifiedName")): +children(nm)
     +children(e)
 
+mixin tbody(e)
+  +elem(e)
+  
+mixin td(e)
+  +elem(e)
+
+mixin tfoot(e)
+  +elem(e)
+
+mixin th(e)
+  +elem(e)
+
+mixin thead(e)
+  +elem(e)
+
 mixin title(e)
   h1#title
     +children(e)
+
+mixin tr(e)
+  +elem(e)
+
 mixin tt(e)
   code: +children(e)
 
@@ -469,9 +517,10 @@ mixin foot_author_real(e, ascii)
   .nameRole
     span.fn
       = v3.preferTrim($att(e, 'fullname'), $att(e, 'asciiFullname'), ascii)
-    if $att(e, 'role')
+    - var role = $att(e, 'role')
+    if role
       = " ("
-      span.role= $att(e, 'role')
+      span.role= role
       = ")"
   - var org = $('organization', e)
   if org
@@ -500,15 +549,20 @@ mixin referencegroup(e)
 
 mixin tocLi(p, depth)
   each s in $$('section', p)
+    if $att(s, 'numbered') !== 'false'
     - var pn = $att(s,'pn')
     - var sn = pn.replace(/^s-/, '')
     - var nm = $('name',s)
-    if $att(s, 'toc') != 'exclude'
-      li.toc
-        a(href="#"+pn)= sn
-        = ". "
-        a(href="#"+$att(nm,'slugifiedName'))= nm.text()
-      +tocSections(s, depth-1)
+    if nm
+      - var slug = $att(nm,'slugifiedName')
+      - var n = nm.text()
+      
+      if $att(s, 'toc') != 'exclude'
+        li.toc
+          a(href="#"+pn)= sn
+          = ". "
+          a(href="#"+slug)= n
+        +tocSections(s, depth-1)
       
 mixin tocSections(p, depth)
   if depth > 0
@@ -634,8 +688,7 @@ html(lang='en', class=$$('/rfc/front/seriesInfo/@name'))
           td.right [Page]
     +front($('front'))
     h1#title= $('front/title/text()')
-    - var abst = $('front/abstract')
-    if abst
+    each abst in $$('front/abstract')
       +abstract(abst)
     each note in $$('front/note')
       +note(note)

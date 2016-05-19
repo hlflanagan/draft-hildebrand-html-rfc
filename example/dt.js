@@ -18,7 +18,9 @@ function monthName(d) {
       return isNaN(num) ? d : months[num];
     case 'object':
       // Date
-      return months[d.getMonth()];
+      if (d) {
+        return months[d.getMonth()];
+      }
   }
   return undefined;
 }
@@ -84,6 +86,7 @@ exports.isoDateTime = function(d) {
 
 exports.monthYear = function(e) {
   var year = atv(e, 'year') || "";
+  console.log('MONTH', atv(e, 'month'))
   var month = monthName(atv(e, 'month')) || "";
   if (month && year) {
     return month + " " + year;
