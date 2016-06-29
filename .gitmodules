@@ -1,9 +1,0 @@
-[submodule "example/draft-iab-xml2rfc"]
-	path = example/draft-iab-xml2rfc
-	url = https://github.com/paulehoffman/draft-iab-xml2rfc.git
-[submodule "example/draft-svg-rfc"]
-	path = example/draft-svg-rfc
-	url = https://github.com/nevil-brownlee/draft-svg-rfc
-[submodule "example/rfcv3-preptool"]
-	path = example/rfcv3-preptool
-	url = https://github.com/paulehoffman/rfcv3-preptool

@@ -2,8 +2,8 @@ node_modules
 .DS_Store
 trash
 example/draft-iab-xml2rfc/
-example/draft-svg-rfc
+example/draft-svg-rfc/
+example/out/
 example/rfcv3-preptool/
 example/rngStrip/
-example/out/
-gh-pages/
+gh-pages/example/draft-svg-rfc/
