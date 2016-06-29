@@ -174,7 +174,7 @@ exports.pickNames = function pickNames(author, initials_surname, preferAscii) {
   var asciiInitials = atv(author, 'asciiInitials');
   var asciiSurname = atv(author, 'asciiSurname');
   var asciiFullname = atv(author, 'asciiFullname');
-  var hasAscii = asciiInitials || asciiSurname || asciiFullname;
+  var hasAscii = !!(asciiInitials || asciiSurname || asciiFullname);
   // if there is no ascii* attribs, it's old-school.
   if (!hasAscii) {
     preferAscii = false;

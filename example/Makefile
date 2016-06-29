@@ -1,30 +1,31 @@
-XMLJADE=node_modules/.bin/xmljade
-XMLLINT=xmllint
-PRINCE=prince
+NODE_BIN=node_modules/.bin
+PREP=$(NODE_BIN)/rfc-preptool
+XMLJADE=$(NODE_BIN)/xmljade
+PRINCE=$(shell which prince 2> /dev/null)
 WK=wkhtmltopdf
+XMLLINT=xmllint
+PYTHON=python3
 HTTPSERVER=node_modules/.bin/http-server
 LOCALHOST_DIR=localhost
-RNG=draft-iab-xml2rfc/xml2rfcv3.rng
+SRC=$(wildcard *.xml)
+ALL_HTML=$(SRC:%.xml=out/%.html)
+ALL_WK=$(SRC:%.xml=out/%.$(WK).a.pdf)
+ALL_PRINCE=$(SRC:%.xml=out/%.prince.a.pdf)
 
-.PHONY: start stop clean lint
-.PRECIOUS: %.3.xml %.n.xml %.x.xml %.i.xml %.3.pdf %.3w.pdf
+.PHONY: start stop clean html pdf all
+.PRECIOUS: out/%.xml
 
-%.3.xml: %.xml convertv2v3/convertv2v3
-	perl convertv2v3/convertv2v3  < $< > $@
+out/%.xml: %.xml
+	$(PREP) $< $@
 
-%.i.xml: %.3.xml server.PID
-	$(XMLLINT) --xinclude --noent $< -o $@
-
-%.n.xml: %.i.xml prep1.jade lib.jade number.js
-	$(XMLJADE) --pretty --output $@ prep1.jade $<
-
-%.x.xml: %.n.xml prep2.jade lib.jade xref.js
-	$(XMLJADE) --pretty --output $@ prep2.jade $<
-
-%.3.html: %.x.xml v3tohtml.jade lib.jade v3.js dt.js xml2rfc.css
+out/%.html: out/%.xml v3tohtml.jade lib.jade v3.js
 	$(XMLJADE) --pretty --html --doublequote --output $@ v3tohtml.jade $<
 
-%.3w.pdf:%.3.html xml2rfc.css local.css
+out/%.$(WK).pdf: out/%.html out/xml2rfc.css out/local.css
+	@if [ -z "$(WK)" ]; then \
+	  echo "Download wkhtmltopdf from http://wkhtmltopdf.org/downloads.html"; \
+		exit 1; \
+	fi
 	$(WK) \
 	  -q \
 	  --encoding utf8 \
@@ -40,22 +41,30 @@ RNG=draft-iab-xml2rfc/xml2rfcv3.rng
 	  $< \
 	  $@
 
-%.3wa.pdf: %.3w.pdf %.x.xml PDFappendXML.py
-	python3 PDFappendXML.py $< $(word 2,$^) $@
+out/%.$(WK).a.pdf: out/%.$(WK).pdf PDFappendXML.py
+	$(PYTHON) PDFappendXML.py $< $(word 2,$^) $@
 
-%.3.pdf: %.3.html xml2rfc.css local.css
+out/%.prince.pdf: out/%.html out/xml2rfc.css out/local.css
+	@if [ -z "$(PRINCE)" ]; then \
+	  echo "Download prince from http://www.princexml.com/download/"; \
+		exit 1; \
+	fi
 	$(PRINCE) -o $@ $<
 
-%.3a.pdf: %.3.pdf %.x.xml PDFappendXML.py
+out/%.prince.a.pdf: out/%.prince.pdf PDFappendXML.py
 	python3 PDFappendXML.py $< $(word 2,$^) $@
 
-all: test.3.html test.3a.pdf test.3wa.pdf
+all: html pdf
+
+html: start
+	$(MAKE) real-html; $(MAKE) stop
+
+real-html: $(ALL_HTML)
+
+pdf: $(ALL_WK) $(ALL_PRINCE)
 
 clean:
-	$(RM) test.3.html test.3.pdf test.3a.pdf test.3w.pdf test.3wa.pdf test.i.xml test.n.xml test.x.xml
-
-lint: server.PID
-	xmllint --noout --noent --xinclude --relaxng $(RNG) *.3.xml *.n.xml *.x.xml
+	$(RM) out/*.pdf out/*.html out/*.xml
 
 start: server.PID
 
@@ -64,4 +73,10 @@ server.PID:
 	@echo '`make stop` to stop the server'
 
 stop:
-	@if [ -a server.PID ]; then echo 'Stopping'; kill `cat server.PID`; rm server.PID; else echo 'Not running'; fi;
+	@if [ -a server.PID ]; then \
+	  echo 'Stopping'; \
+	  pkill -F server.PID; \
+	  $(RM) server.PID; \
+	else \
+	  echo 'Not running'; \
+	fi

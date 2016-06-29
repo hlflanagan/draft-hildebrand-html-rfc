@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const bb            = require('bluebird'),
       child_process = require('child_process'),
       fs            = bb.promisifyAll(require('fs')),
@@ -71,7 +73,14 @@ toHtml = t2p((f) => {
   return xmljade.transformFile("v3tohtml.jade", f.contents, {
     pretty: true,
     html: true,
-    "dentin-doublequote": true
+    "dentin-doublequote": true,
+    "dentin-ignore": [
+      "artwork",
+      "sourcecode",
+      "pre",
+      "script"
+    ],
+    xmlFileName: f.basename
   })
   .then((data) => {
     f.contents = new Buffer(data)
@@ -90,9 +99,9 @@ toPDF = t2p((f) => {
   })
 })
 
-xform = () => {
+xform = (inp) => {
   return new Promise((res, rej) => {
-    vfs.src('*.xml')
+    vfs.src(inp)
     .pipe(log())
     .pipe(prep())
     // write intermediate prep'd XML file, for prince input
@@ -103,6 +112,9 @@ xform = () => {
     .pipe(vfs.dest('./out'))
     .on('end', res)
     .on('error', rej)
+  })
+  .catch((er) => {
+    console.log("ERROR:", er)
   })
 }
 
@@ -125,18 +137,30 @@ process.on("unhandledRejection", function(reason, promise) {
 
 // e.g. crash
 process.on('exit', () => server.stop())
+let inp = process.argv.slice(2)
+if (inp.length === 0) {
+  inp = ['*.xml']
+}
 
 server.start()
 .then(() => {
   return bb.all([
     copy(),
-    xform()
+    xform(inp)
   ])
 })
 .then(_ => {
   console.log('done')
+  console.log('watching')
+  fs.watch(__dirname, (change, file) => {
+    if (/\.css$/.test(file)) {
+      copy()
+    }
+    if (/\.xml$/.test(file)) {
+      xform([file])
+    }
+    if (/\.jade$/.test(file)) {
+      xform(inp)
+    }
+  })
 })
-.catch(er => {
-  console.log("ERROR:", er)
-})
-.finally(() => server.stop())

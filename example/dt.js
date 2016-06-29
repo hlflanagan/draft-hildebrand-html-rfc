@@ -86,7 +86,6 @@ exports.isoDateTime = function(d) {
 
 exports.monthYear = function(e) {
   var year = atv(e, 'year') || "";
-  console.log('MONTH', atv(e, 'month'))
   var month = monthName(atv(e, 'month')) || "";
   if (month && year) {
     return month + " " + year;

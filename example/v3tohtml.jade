@@ -2,7 +2,7 @@
 - var v3 = require('./v3')
 - var dt = require('./dt')
 
-mixin elem(e)
+mixin elem(e, extra)
   - var a = $att(e, attributes)
   if a.id == null
     - a.id = a.anchor || a.pn
@@ -10,29 +10,34 @@ mixin elem(e)
   - delete a.pn
   - a = $nsDecls(e, a)
   #{$qname(e)}&attributes(a)
-    +children(e)
+    +children(e, extra)
     block
 
-mixin children(e)
+mixin children(e, extra)
   if (e)
-    each c in e.childNodes()
-      case c.type()
-        when 'text'
-          if c.text().trim().length > 0
-            = c.text()
-        when 'cdata'
-          //- CDATA doens't work in HTML5.  Escape.
+    +nodes(e.childNodes(), extra)
+
+mixin nodes(list, extra)
+  each c in list
+    case c.type()
+      when 'text'
+        if c.text().trim().length > 0
           = c.text()
-        when 'comment'
-          != "<!--" + c.text() + "-->"
-        when 'element'
-          - var nm = c.name()
-          if jade_mixins[nm]
-            +#{nm}(c)
-          else if c.namespace()
-            +elem(c)
-          else
-            - console.error('Unknown element name:', nm)
+      when 'cdata'
+        //- CDATA doens't work in HTML5.  Escape.
+        = c.text()
+      when 'comment'
+        != "<!--" + c.text() + "-->"
+      when 'element'
+        - var nm = c.name()
+        if jade_mixins[nm]
+          +#{nm}(c, extra)
+        else if c.namespace()
+          +elem(c, extra)
+        else
+          - console.error('Unknown element name:', nm)
+      default
+        - console.error('Unknown node type:', c.type())
 
 mixin abstract(e)
   section#abstract
@@ -42,16 +47,7 @@ mixin abstract(e)
 
 //- not address to keep it from firing in the header
 mixin address_foot(addr, ascii)
-  each p in $$('postal', addr)
-    +postal(p, ascii)
-  each ph in $$('phone', addr)
-    +phone(ph)
-  each f in $$('facsimile', addr)
-    +facsimile(f)
-  each e in $$('email', addr)
-    +email(e, ascii)
-  each u in $$('uri', addr)
-    +uri(u)
+  +children(addr, ascii)
 
 mixin artwork(e)
   - var classes = ['artwork']
@@ -78,18 +74,21 @@ mixin artwork(e)
     if e.parent().name() != 'figure'
       +pilcrow(e)
 
+mixin aside(e)
+  +elem(e)
+
 mixin author(a)
   .author
     .author-name
-      - var nonascii = v3.pickNames(a, true, true);
-      - var ascii = v3.pickNames(a, true, false);
+      - var nonascii = v3.pickNames(a, true, false);
+      - var ascii = v3.pickNames(a, true, true);
       if nonascii && ascii && (nonascii !== ascii)
         span.non-ascii= nonascii
         = " ("
         span.ascii= ascii
         = ")"
       else
-        span= nonascii || ascii
+        = nonascii || ascii
       if $att(a, "role") == "editor"
         = ", "
         span.editor Ed.
@@ -112,9 +111,7 @@ mixin back(e)
       each ref, i in refs
         - refs[i].attr('pn', 's-' + start_section + "." + (i+1))
         +references(refs[i])
-        
-  each adx in $$('section', e)
-    +section(adx)
+  +nodes($$('section', e))
 
 mixin bcp14(e)
   span.bcp14= e.text()
@@ -188,16 +185,32 @@ mixin facsimile(e)
 mixin figure(e)
   +elem(e)
     - var fn = $att(e, 'pn')
+    - var anchor = $att(e, 'anchor')
     - var nm = $('name', e)
     figcaption
       a(href="#"+fn) Figure #{fn.replace(/^f-/, '')}.
       if nm
         = " "
         - var sn = $att(nm, "slugifiedName")
-        a.selfRef(href="#"+sn, id=sn): +children(nm)
+        a.selfRef(href="#"+(anchor||sn), id=sn): +children(nm)
 
 mixin front(e)
   - var published = dt.isoDate($('date',e))
+
+  table.ears
+    thead
+      tr
+        td.left Internet-Draft
+        td.center= $('title/@abbrev', e) || $('title/text()', e)
+        td.right= dt.monthYear($('date', e))
+    tfoot
+      tr
+        td.left= $('author/@asciiSurname', e) || $('author/@asciiFullname', e)|| $('author/@surname', e) || $('author/@fullname', e)
+        td.center
+          - var ed = $('/rfc/@expiresDate')
+          if ed
+            = "Expires " + dt.monthDayYear(ed)
+        td.right [Page]
   dl#identifiers
     dt Workgroup:
     dd.workgroup= $('workgroup/text()',e)
@@ -213,8 +226,7 @@ mixin front(e)
     if authors.length > 0
       dt= (authors.length > 1) ? "Authors:" : "Author:"
       dd.authors
-        each a in authors
-          +author(a)
+        +nodes(authors)
 
 mixin iref(e)
   span.iref(id=$att(e,"pn"))
@@ -222,6 +234,9 @@ mixin iref(e)
 mixin li(e)
   +elem(e)
     +pilcrow(e)
+
+mixin link(e)
+  +elem(e)
 
 mixin name(e)
   //- ignored
@@ -258,13 +273,12 @@ mixin organization(e)
       span.ascii= orga
       = ")"
   else
-    .org
-      .span= e.text()
+    .org= e.text()
 
 mixin phone(e)
   div
     span Phone:
-    span.tel= e.text()
+    a.tel(href='tel:' + e.text())= e.text()
     span.type VOICE
 
 mixin pilcrow(e)
@@ -281,22 +295,23 @@ mixin postal(e, ascii)
         = v3.preferTrim(pl.text(), $att(pl, 'ascii'), ascii) + "\n"
   else
     .adr
-      each st in $$('street', e)
-        +street(st, ascii)
+      +nodes($$('street', e))
       .city-region-code
+        - var foundcity = false
         each c, i in $$('city', e)
+          - foundcity = true
           if i != 0
-            = " "
+            | &nbsp;
           +city(c, ascii)
-        = ","
-        each r in $$('region', e)
+        each r, i in $$('region', e)
+          if (i == 0) && foundcity
+            = ","
           | &nbsp;
           +region(r, ascii)
         each c in $$('code', e)
           | &nbsp;
           +code(c, ascii)
-      each c in $$('country', e)
-        +country(c, ascii)
+      +nodes($$('country', e))
 
 mixin refTextReal(e, ascii)
   - var authors = $$('front/author', e)
@@ -317,7 +332,7 @@ mixin refTextReal(e, ascii)
     else if authors.length==2
       if !last
         = " and "
-    
+
   - var title = $('front/title', e)
   - var title_txt = v3.preferTrim(title.text(), $att(title, 'ascii'), ascii)
   if title_txt
@@ -329,13 +344,13 @@ mixin refTextReal(e, ascii)
     span.refTitle= title_txt
     if quoteTitle
       = '"'
-    
+
   - var refcontent = $('refcontent', e)
   if refcontent
     = ", "
     span.refContent
       +children(refcontent)
-      
+
   each si in $$('seriesInfo', e)
     = ", "
     span.refSeries
@@ -368,9 +383,40 @@ mixin refText(e)
       +refTextReal(e, false)
   else
     +refTextReal(e, false)
-      
+
+mixin relref(e)
+  - var target = $att(e, 'target')
+  - var dr = $('//displayreference[@target="' + target + '"]/@to')
+  - var dl = $att(e, 'derivedLink')
+  - var df = $att(e, 'displayFormat')
+  - var sect = $att(e, 'section')
+  if dr
+    - target = dr
+
+  if df == 'of'
+    a.relref(href=dl)= 'Section ' + sect
+    = ' of ['
+    a.xref(href='#'+target)= target
+    = ']'
+  else if df == 'comma'
+    = '['
+    a.xref(href='#'+target)= target
+    = '], '
+    a.relref(href=dl)= 'Section ' + sect
+  else if df == 'parens'
+    = '['
+    a.xref(href='#'+target)= target
+    = '] ('
+    a.relref(href=dl)= 'Section ' + sect
+    = ')'
+  else if df == 'bare'
+    a.relref(href=dl)= sect
+
 mixin reference(e)
   - var anc = $att(e, 'anchor')
+  - var dr = $('//displayreference[@target="' + anc + '"]/@to')
+  if dr
+    - anc = dr
   if e.parent().name() != 'referencegroup'
     dt(id=anc) [#{anc}]
     dd
@@ -378,6 +424,15 @@ mixin reference(e)
   else
     .refInstance(id=anc)
       +refText(e)
+
+mixin referencegroup(e)
+  - var anc=$att(e,'anchor')
+  - var dr = $('//displayreference[@target="' + anc + '"]/@to')
+  if dr
+    - anc = dr
+  dt(id=anc) [#{anc}]
+  dd
+    +children(e)
 
 mixin references(s)
   //- just like section, but with dl.reference wrapped around children
@@ -407,6 +462,8 @@ mixin section(s)
   section(id=id, class=rm)
     #{"h" + depth}(id=pn)
       if $att(s, 'numbered') !== 'false'
+        if $('ancestor::back', s)
+          - sn = 'Appendix ' + sn
         //- TODO: add class of ipr if boilerplate
         a.selfRef(href='#' + pn)= sn + "."
         = " "
@@ -439,7 +496,7 @@ mixin street(st, ascii)
 
 mixin strong(e)
   +elem(e)
-  
+
 mixin sub(e)
   +elem(e)
 
@@ -465,7 +522,7 @@ mixin table(e)
 
 mixin tbody(e)
   +elem(e)
-  
+
 mixin td(e)
   +elem(e)
 
@@ -500,12 +557,15 @@ mixin uri(e)
     = " <"
     a.authorURI(href=e.text())= e.text()
     = ">"
-    
+
 mixin xref(e)
   - var target = $att(e,'target')
   - var t = $att(e,'derivedContent')
   - var target_el = e.doc().get('//*[@anchor="' + target + '"]')
   - var tn = target_el.name()
+  - var dr = $('//displayreference[@target="' + target + '"]/@to')
+  if dr
+    - target = dr
   if (tn == 'reference') || (tn == 'referencegroup')
     | [
     a.xref(href='#'+target)= t
@@ -528,7 +588,7 @@ mixin foot_author_real(e, ascii)
   - var addr = $('address', e)
   if addr
     +address_foot(addr, ascii)
-        
+
 mixin foot_author(e)
   address.vcard
     - var ascii = $$('descendant-or-self::*/@*[starts-with(name(), "ascii")]', e)
@@ -541,12 +601,6 @@ mixin foot_author(e)
     else
       +foot_author_real(e, false)
 
-mixin referencegroup(e)
-  - var anc=$att(e,'anchor')
-  dt(id=anc) [#{anc}]
-  dd
-    +children(e)
-
 mixin tocLi(p, depth)
   each s in $$('section', p)
     if $att(s, 'numbered') !== 'false'
@@ -556,14 +610,14 @@ mixin tocLi(p, depth)
     if nm
       - var slug = $att(nm,'slugifiedName')
       - var n = nm.text()
-      
+
       if $att(s, 'toc') != 'exclude'
         li.toc
           a(href="#"+pn)= sn
           = ". "
           a(href="#"+slug)= n
         +tocSections(s, depth-1)
-      
+
 mixin tocSections(p, depth)
   if depth > 0
     - var sects = $$('section', p)
@@ -571,7 +625,7 @@ mixin tocSections(p, depth)
       ul.toc
         +tocLi(p, depth)
         block
-          
+
 mixin toc_ref(ref, sn)
   - var rpn = 's-' + sn
   - var nm = $('name', ref)
@@ -580,7 +634,7 @@ mixin toc_ref(ref, sn)
     a(href="#"+rpn)= sn
     = ". "
     a(href='#'+id)= nm.text()
-      
+
 mixin toc
   if $att($root(), 'tocInclude') != 'false'
     - var depth = $att($root(), 'tocDepth')
@@ -666,32 +720,18 @@ html(lang='en', class=$$('/rfc/front/seriesInfo/@name'))
     title= $('front/title/text()')
     //- style
     //-   include xml2rfc.css
-    //- link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Noto+Sans') 
-    //- link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Droid+Serif') 
+    //- link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Noto+Sans')
+    //- link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Droid+Serif')
     link(rel='alternate', type='application/rfc+xml', href=$sourceFile)
     link(rel='license' href='https://www.rfc-editor.org/copyright/')
     link(rel='stylesheet', type='text/css', href='xml2rfc.css')
-    link(rel='stylesheet', type='text/css', href='local.css')
-    each link in $$('link')
-      +elem(link)
+    link(rel='stylesheet', type='text/css', href='rfc-local.css')
+    +nodes($$('/rfc/link'))
   body
-    table.ears
-      thead
-        tr
-          td.left Internet-Draft
-          td.center= $('/rfc/front/title/@abbrev') || $('/rfc/front/title/text()')
-          td.right= dt.monthYear($('/rfc/front/date'))
-      tfoot
-        tr
-          td.left= $('/rfc/front/author/@asciiSurname') || $('/rfc/front/author/@asciiFullname')|| $('/rfc/front/author/@surname') || $('/rfc/front/author/@fullname')
-          td.center= "Expires " + dt.monthDayYear($('/rfc/@expiresDate'))
-          td.right [Page]
     +front($('front'))
     h1#title= $('front/title/text()')
-    each abst in $$('front/abstract')
-      +abstract(abst)
-    each note in $$('front/note')
-      +note(note)
+    +nodes($$('front/abstract'))
+    +nodes($$('front/note'))
     +children($('front/boilerplate'))
     +toc()
     +children($('middle'))

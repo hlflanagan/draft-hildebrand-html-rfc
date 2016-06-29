@@ -2,28 +2,19 @@ DRAFT=draft-iab-html-rfc
 BRANCH := $(shell git symbolic-ref --short HEAD)
 DNAME := $(shell xmllint --xpath "string(/rfc/@docName)" $(DRAFT).xml)
 
-.PHONY: clean example publish start stop
+.PHONY: clean publish
 
 %.txt: %.xml
-	xml2rfc --text --html $<
+	xml2rfc -N --text --html $<
 
 %.html: %.xml
-	xml2rfc --text --html $<
+	xml2rfc -N --text --html $<
 
-all: $(DRAFT).txt example
+all: $(DRAFT).txt
 
 clean:
 	$(RM) $(DRAFT).html $(DRAFT).3.html $(DRAFT).3.xml $(DRAFT).n.xml $(DRAFT).txt
 	@$(MAKE) -C example clean
-
-example:
-	@$(MAKE) -C example
-
-start:
-	@$(MAKE) -C example start
-
-stop:
-	@$(MAKE) -C example stop
 
 publish: $(DRAFT).txt
 	git co gh-pages

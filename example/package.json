@@ -10,7 +10,7 @@
     "bluebird": "3.3",
     "express": "4.13",
     "jade": "1.11",
-    "libxmljs": "hildjj/libxmljs",
+    "libxmljs": "0.18",
     "resolve": "1.1",
     "rfc-preptool": "latest",
     "romanize": "0.1",

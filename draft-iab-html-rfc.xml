@@ -206,8 +206,8 @@
           class "pilcrow".  For example:</t>
         <figure>
           <artwork><![CDATA[
-<p id="p-1.1-1">
-  Some paragraph text. <a class="pilcrow" href="#p-1.1-1">&para;</a>
+<p id="s-1.1-1">
+  Some paragraph text. <a class="pilcrow" href="#s-1.1-1">&para;</a>
 </p>]]></artwork>
         </figure>
         <t>The pilcrow will normally be invisible unless the element it is
@@ -221,42 +221,14 @@
           marked with a pilcrow. For example:</t>
         <figure>
           <artwork><![CDATA[
-<blockquote id="p-1.2-1">
-  <p id="p-1.2-2">Four score and seven years ago our fathers brought
+<blockquote id="s-1.2-1">
+  <p id="s-1.2-2">Four score and seven years ago our fathers brought
     forth on this continent, a new nation, conceived in Liberty, and
     dedicated to the proposition that all men are created equal.
-    <a href="#p-1.2-2" class="pilcrow">&para;</a></p>
+    <a href="#s-1.2-2" class="pilcrow">&para;</a></p>
   <!-- NO pilcrow here -->
 </blockquote>]]></artwork>
         </figure>
-      </section>
-      <section anchor="ascii-equivalents" title="ASCII Equivalents">
-        <t>Many elements in the v3 schema in <xref target="I-D.iab-xml2rfc"/> contain attributes for
-          ASCII equivalents of the Unicode text contained in the element or
-          the Unicode attribute value.  These alternatives are included in the HTML as in a
-          &lt;span&gt; tag with the class "ascii".  The &lt;span&gt; is
-          included inside the tag that is showing the text to the user. For example:</t>
-        <figure>
-          <artwork><![CDATA[
-<span class="surname">
-  HILDEBRAND
-  <span class="ascii">Hildebrand</span>
-</span>]]></artwork>
-        </figure>
-      </section>
-      <section anchor="syntactic" title="Syntactic Elements">
-        <t>A few HTML elements are added to ensure particular syntax items can
-          be styled appropriately using CSS.</t>
-        <t>Commas that are not in running text (e.g., that might have white-space
-          added before them by the HTML indentation step) are wrapped by an
-          HTML &lt;span&gt; tag of CSS class "comma".</t>
-        <t>Periods that are not in running text (e.g., that might have white-space
-          added before them by the HTML indentation step) are wrapped by an
-          HTML &lt;span&gt; tag of CSS class "fullStop".</t>
-        <t>Open and close parentheses that are not running text (e.g., that might
-          have white-space added before them by the HTML indentation step) are
-          wrapped by an HTML &lt;span&gt; tag of CSS class "openParen" or
-          "closeParen" respectively.</t>
       </section>
     </section>
     <section anchor="front-matter" title="Front Matter">
@@ -379,11 +351,45 @@
             include a closing slash.</t>
         </section>
       </section>
+      <section anchor='page-headers-footers' title="Page Headers and Footers">
+        <t>In order to simplify printing by HTML renderers that implement
+          <xref target='W3C.WD-css3-page-20130314'/>, a hidden HTML
+          &lt;table&gt; tag of class "ears" is added at the beginning of the HTML &lt;body&gt;
+          tag, containing HTML &lt;thead&gt; and &lt;tfoot&gt; tags, each of
+          which contains an HTML &lt;tr&gt; tag, which contains three HTML
+          &lt;td&gt; tags with class "left", "center", and "right",
+          respectively.</t>
+        <t>The &lt;thead&gt; corresponds to the top of the page, the
+          &lt;tfoot&gt; to the bottom.  The string "[Page]" can be used
+          as a placeholder for the page number.  In practice, this must
+          always be in the &lt;tfoot&gt;'s right &lt;td&gt;, and no control
+          of the page number formatting is implied.</t>
+        <figure>
+         <artwork><![CDATA[
+<table class="ears">
+  <thead>
+    <tr>
+      <td class="left">Internet-Draft</td>
+      <td class="center">HTML RFC</td>
+      <td class="right">March 2016</td>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td class="left">Hildebrand</td>
+      <td class="center">Expires September 2, 2016</td>
+      <td class="right">[Page]</td>
+    </tr>
+  </tfoot>
+</table>]]></artwork>
+        </figure>
+      </section>
       <section anchor="document-information" title="Document Information">
         <t>Information about the document as a whole will appear as the first child of the
           HTML &lt;body&gt; element, embedded in an HTML &lt;dl&gt; element
           with id="identifiers".  The defined terms in the definition list
-          are "Workgroup:", "Series:", "Status:", "Published:", and "Authors:". For example:</t>
+          are "Workgroup:", "Series:", "Status:", "Published:", and "Author:"
+          or "Authors:" (as appropriate). For example:</t>
         <figure>
           <artwork><![CDATA[
 <dl id="identifiers">
@@ -401,11 +407,13 @@
       <div class="author">
         <span class="initial">J.</span>
         <span class="surname">Hildebrand</span>
-        (<span class="organization">Cisco Systems, Inc.</span>)</div>
+        (<span class="organization">Cisco Systems, Inc.</span>), Ed.
+      </div>
       <div class="author">
         <span class="initial">H.</span>
         <span class="surname">Flanagan</span>
-        (<span class="organization">RFC Editor</span>)</div>
+        (<span class="organization">RFC Editor</span>)
+      </div>
     </dd>
 </dl>]]></artwork>
         </figure>
@@ -499,16 +507,14 @@
           an "href" attribute pointing to the "irefid" attribute of the &lt;iref&gt; element from the XML document. If the primary
           attribute of the &lt;iref&gt; element has the value "true", the &lt;a&gt; element in the HTML document
           will have the class "indexPrimary". Commas may be used to separate the
-          generated references, surrounded by a &lt;span&gt; tag with class
-          "comma".</t>
+          generated references.</t>
           <t>For example:</t>
           <figure>
             <artwork><![CDATA[
 <li class="indexItem">
   <span class="irefItem">Bullets</span>
   <span class="irefRefs">
-    <a class="indexPrimary" href="#s-Bullets-1">2</a>
-    <span class="comma">,</span>
+    <a class="indexPrimary" href="#s-Bullets-1">2</a>,
     <a href="#s-Bullets-2">2</a>
   </span>
   <!-- subitems go here -->
@@ -539,11 +545,11 @@
       </section>
       <section anchor='authors-addresses' title="Authors' Addresses">
         <t>At the end of the document, author information will be included
-          inside an HTML &lt;section&gt; element.  The class names have been chosen to
-          match the class names in <xref target="HCARD"/>.</t>
-        <t>Note: The following example shows several ASCII equivalents that are
-          the same as their nominal equivalents for clarity; normally the ASCII
-          equivalents would not be included for these cases.</t>
+          inside an HTML &lt;section&gt; element whose id attribute is
+          "author-addresses".  The class names of the constituent HTML tags
+          have been chosen to match the class names in <xref target="HCARD"/>.</t>
+        <t>The information for each author will be separated by an HTML
+          &lt;hr&gt; element with class "addr"</t>
         <figure>
           <artwork><![CDATA[
 <section id="author-addresses">
@@ -553,56 +559,15 @@
     </a>
   </h2>
   <address class="vcard">
-    <div class="nameRole">
-      <span class="fn">
-        Joe Hildebrand <span class="ascii">Joe Hildebrand</span>
-      </span>
-      <span class="openParen">(</span>
-      <span class="role">editor</span>
-      <span class="closeParen">)</span>
-    </div>
-    <div class="org">
-      Cisco Systems, Inc. <span class="ascii">Cisco Systems,
-      Inc.</span>
-    </div>
-    <div class="adr">
-      <div class="street-address">1 Main Street</div>
-      <div class="street-address">Suite 1</div>
-      <div>
-        <span class="city">
-          Denver <span class="ascii">Denver</span>
-        </span>
-        <span class="comma">,</span>
-        <span class="region">CO</span>
-        <span class="postal-code">
-          80202 <span class="ascii">80202</span>
-        </span>
-      </div>
-      <div class="country-name">US</div>
-    </div>
-    <div>
-      <span>Phone:</span>
-      <span class="tel">+1-720-555-1212</span>
-      <span class="type">VOICE</span>
-    </div>
-    <div>
-      <span>Fax:</span>
-      <span class="tel">+1-303-555-1212</span>
-      <span class="type">fax</span>
-    </div>
-    <div>
-      <span>Email:</span>
-      <a class="email" href="mailto:jhildebr@example.com">
-        jhildebr@example.com
-      </a>
-      <span class="ascii">jhildebr@example.com</span>
-    </div>
-    <div>
-      <span>URI:</span>
-      <a class="url" href="http://www.example.com">
-        http://www.example.com
-      </a>
-    </div>
+    <div class="nameRole"><span class="fn">Joe Hildebrand</span>
+      (<span class="role">editor</span>)</div>
+    <div class="org">Cisco Systems, Inc.</div>
+  </address>
+  <hr class="addr">
+  <address class="vcard">
+    <div class="nameRole"><span class="fn">Heather Flanagan</span>
+      (<span class="role">editor</span>)</div>
+    <div class="org">RFC Editor</div>
   </address>
 </section>]]></artwork>
         </figure>
@@ -642,28 +607,58 @@
           <artwork><![CDATA[
 <section id="abstract">
   <h2><a href="#abstract" class="selfRef">Abstract</a></h2>
-  <p id="p-abstract-1">This document defines...
-    <a href="#p-abstract-1" class="pilcrow">&para;</a>
+  <p id="s-abstract-1">This document defines...
+    <a href="#s-abstract-1" class="pilcrow">&para;</a>
   </p>
 </section>]]></artwork>
         </figure>
       </section>
       <section title="&lt;address&gt;" anchor="element.address">
-        <t>This element is used in <xref target='authors-addresses'>Authors'
-          Addresses</xref>.</t>
-      </section>
-      <section title="&lt;annotation&gt;" anchor="element.annotation">
-        <t>This element is rendered as a span of class "annotation" at the end
-          of a &lt;reference&gt; element, the span
-          containing appropriately-transformed elements from the children of
-          the &lt;annotation&gt; tag.  A &lt;span&gt; of class "comma" is added
-          before the annotation, containing ",".</t>
+        <t>This element is used in
+          <xref target='authors-addresses' format='title'/>. It is rendered
+          as an HTML &lt;address&gt; tag of class "vcard".  If none of the
+          descendant XML elements has an "ascii" attribute, the &lt;address&gt;
+          HTML tag includes the HTML rendering of each of the descendant
+          XML elements.  Otherwise, the &lt;address&gt; HTML tag includes
+          an HTML &lt;div&gt; tag of class "ascii" (containing the HTML
+          rendering of the ASCII variants of each of the descendant XML
+          elements), an HTML &lt;div&gt; tag of class "alternative-contact",
+          (containing the text "Alternate contact information:"), and
+          an HTML &lt;div&gt; tag of class "non-ascii" (containing the HTML
+          rendering of the non-ASCII variants of each of the descendant XML
+          elements).
+        </t>
+        <t>Note: The following example shows some ASCII equivalents that are
+          the same as their nominal equivalents for clarity; normally the ASCII
+          equivalents would not be included for these cases.</t>
         <figure>
           <artwork><![CDATA[
-<span class="comma">,</span>
-<span class="annotation">
-  You <span class="bcp14">MUST</span> read this annotation.
-</span>]]></artwork>
+<address class="vcard">
+  <div class="ascii">
+    <div class="nameRole"><span class="fn">Joe Hildebrand</span>
+      (<span class="role">editor</span>)</div>
+    <div class="org">Cisco Systems, Inc.</div>
+  </div>
+  <div class="alternative-contact">
+    Alternate contact information:
+  </div>
+  <div class="non-ascii">
+    <div class="nameRole"><span class="fn">Joe Hildebrand</span>
+      (<span class="role">editor</span>)</div>
+    <div class="org">Cisco Systems, Inc.</div>
+  </div>
+</address>]]></artwork>
+        </figure>
+      </section>
+      <section title="&lt;annotation&gt;" anchor="element.annotation">
+        <t>This element is rendered as the text ", " (a comma and a space)
+          followed by a span of class "annotation" at the end
+          of a &lt;reference&gt; element, the span
+          containing appropriately-transformed elements from the children of
+          the &lt;annotation&gt; tag.</t>
+        <figure>
+          <artwork><![CDATA[
+, <span class="annotation">Some <em>thing</em>.</span>]]></artwork>
         </figure>
       </section>
       <section title="&lt;area&gt;" anchor="element.area">
@@ -683,14 +678,13 @@
             artwork.  Note that CDATA blocks are not a part of HTML,
             so all &lt;, &gt;, and &amp; must be escaped as &amp;lt;, &amp;gt;,
             and &amp;amp;, respectively.</t>
-          <t>The &lt;div&gt; element will have CSS classes of "artwork" and
-            "art-" prepended to the value of the &lt;artwork&gt; element's "type"
-            attribute, if it exists.</t>
+          <t>The &lt;div&gt; element will have CSS classes of "artwork",
+            "art-text", and "art-" prepended to the value of the &lt;artwork&gt;
+            element's "type" attribute, if it exists.</t>
           <figure>
             <artwork><![CDATA[
-<figure id="f-1">
-  <div class="artwork art-ascii-art" id="p-2-52">
-    <pre>
+<div class="artwork art-text art-ascii-art"  id="s-1-2">
+  <pre>
 ______________
 &lt; hello, world &gt;
 --------------
@@ -699,32 +693,33 @@ ______________
       (__)\       )\/\
           ||----w |
           ||     ||
-</pre>
-  </div>
-  <figcaption>
-    <a href="#f-1">Figure 1.</a>
-    <a class="selfRef" href="#n-it-figures" id="n-it-figures">
-      It figures
-    </a>
-  </figcaption>
-</figure>]]></artwork>
+  </pre>
+  <a class="pilcrow" href="#s-1-2">&para;</a>
+</div>]]></artwork>
           </figure>
         </section>
         <section title="SVG Artwork" anchor="element.artwork-svg">
           <t>SVG artwork will be included inline.  The SVG is wrapped in a
             &lt;div&gt; element with CSS classes "artwork" and "art-svg".</t>
+          <t>If the SVG artwork element is a child of &lt;figure&gt; and the
+            artwork is specified as align='right', an
+            empty HTML &lt;span&gt; element is added directly after the
+            &lt;svg&gt; element, in order to get right alignment work correctly
+            in HTML rendering engines that do not support the flex-box
+            model.</t>
           <t>Note: the alt attribute of &lt;artwork&gt; is not currently used
-            for SVG; instead, the &lt;title&gt; and &lt;desc&gt; tags are used in the
-            SVG.</t>
+            for SVG; instead, the &lt;title&gt; and &lt;desc&gt; tags are used
+            in the SVG.</t>
           <figure>
             <artwork><![CDATA[
-<div class="artwork art-svg" id="p-2-17">
+<div class="artwork art-svg" id="s-2-17">
   <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+    <desc>Alt text here</desc>
     <circle
       cx="50" cy="50" r="40"
       stroke="green" stroke-width="4" fill="yellow" />
   </svg>
-  <a href="#p-2-17" class="pilcrow">&para;</a></pre>
+  <a href="#s-2-17" class="pilcrow">&para;</a></pre>
 </div>]]></artwork>
           </figure>
         </section>
@@ -739,29 +734,74 @@ ______________
             future​.</t>
           <figure>
             <artwork><![CDATA[
-<div class="artwork art-logo" id="p-2-58">
+<div class="artwork art-logo" id="s-2-58">
   <img alt="IETF logo"
        src="data:image/gif;charset=utf-8;base64,...">
-  <a class="pilcrow" href="#p-2-58">&para;</a>
+  <a class="pilcrow" href="#s-2-58">&para;</a>
 </div>]]></artwork>
           </figure>
         </section>
       </section>
       <section title="&lt;aside&gt;" anchor="element.aside">
         <t>This element is rendered as an HTML &lt;aside&gt; element, with
-           all child content appropriately transformed and a
-           <xref target='pilcrows'>pilcrow</xref> added.</t>
+           all child content appropriately transformed.</t>
         <figure>
           <artwork><![CDATA[
-<aside id="p-1.2-6">A little more than kin, and less than kind.
-  <a href="#p-1.2-6" class="pilcrow">&para;</a>
+<aside id="s-2.1-2">
+  <p id="s-2.1-2.1">
+    A little more than kin, and less than kind.
+    <a class="pilcrow" href="#s-2.1-2.1">&para;</a>
+  </p>
 </aside>]]></artwork>
         </figure>
       </section>
       <section title="&lt;author&gt;" anchor="element.author">
+        <t>The &lt;author&gt; element is used in several places in the output.
+           Different rendering is used for each.</t>
+        <section title="Authors in Document Information">
+          <t>As seen in the <xref target='document-information' format='title'/>
+            at the beginning of the HTML, each document author is rendered
+            as an HTML &lt;div&gt; tag of class "author".</t>
+          <t>Inside the &lt;div class="author"&gt; HTML tag, the author's
+            initials and surname (or the fullname, if it exists and the others
+            do not) will be rendered in an HTML &lt;div&gt;
+            tag of class "author-name". If the &lt;author&gt;
+            contains "asciiInitials" and "asciiSurname" attributes, or contains
+            as "asciiFullname" attribute, the author's name is rendered twice,
+            with the first being the non-ASCII version, wrapped in an HTML
+            &lt;span&gt; tag of class "non-ascii", followed by the ASCII
+            version wrapped in an HTML &lt;span&gt; tag of class "ascii",
+            wrapped in parentheses.  If the &lt;author&gt; has a "role"
+            attribute of "editor", the &lt;div class="author-name"&gt; will
+            also contain the text ", " (comma, space), followed by an HTML
+            &lt;span&gt; tag of class "editor", which contains the text "Ed.".</t>
+          <t>If the &lt;author&gt; element contains an
+            <xref target='element.organization' format='title'/>
+            element, it is also rendered inside the &lt;div class="author"&gt;
+            HTML tag. </t>
+          <figure>
+            <artwork><![CDATA[
+<div class="author">
+  <div class="author-name">
+    H. Flanagan,
+    <span class="editor">Ed.</span></div>
+  <div class="org">Test Org</div>
+</div>
+<div class="author">
+  <div class="author-name">
+    <span class="non-ascii">Hildebrand</span>
+    (<span class="ascii">HILDEBRAND</span>)
+  </div>
+  <div class="org">
+    <span class="non-ascii">Test Org</span>
+    (<span class="ascii">TEST ORG</span>)
+  </div>
+</div>]]></artwork>
+            </figure>
+        </section>
         <section title="Authors of this document">
-          <t>As seen in <xref target='authors-addresses'>Authors' Addresses</xref>,
-            at the end of the document, each document author is rendered into an
+          <t>As seen in <xref target='authors-addresses' format='title'/>,
+            at the end of the HTML, each document author is rendered into an
             HTML &lt;address&gt; element with the CSS class "vcard".</t>
           <t>The HTML &lt;address&gt; element will contain an HTML &lt;div&gt;
             with CSS class "nameRole".  That div will contain an HTML &lt;span&gt;
@@ -770,33 +810,104 @@ ______________
             element with CSS class "role" containing the value of the "role"
             attribute of the &lt;author&gt; XML element (if there is a role).
             Parentheses will surround the &lt;span class="role"&gt;, if it
-            exists, each enclosed in a &lt;span&gt; with CSS class "openParen"
-            or "closeParen" as appropriate.</t>
+            exists.</t>
           <figure>
               <artwork><![CDATA[
 <address class="vcard">
   <div class="nameRole">
     <span class="fn">Joe Hildebrand</span>
-    <span class="openParen">(</span>
-    <span class="role">editor</span>
-    <span class="closeParen">)</span>
+    (<span class="role">editor</span>)
   </div>
   ...]]></artwork>
           </figure>
-          <t>The &lt;author&gt; element from the &lt;front&gt; of the document
-            is also rendered into the <xref target='document-information'>Document
-            Information</xref>, the <xref target='meta'>HTML meta headers</xref>,
-            and in &lt;references&gt;.
-            See each of those sections for details.</t>
+          <t>After the name, the
+            <xref target='element.organization' format='title'/> and
+            <xref target='element.address' format='title'/> child elements of
+            the author are rendered inside the HTML &lt;address&gt; tag.</t>
+          <t>When the &lt;author&gt; element or any of its descendant elements
+            has any attribute that start with "ascii", all of the author
+            information is displayed twice.  The first version is wrapped in
+            an HTML &lt;div&gt; tag with class "ascii"; this version prefers
+            the ASCII version of information, such as "asciiFullname", but falls
+            back on the non-ASCII version if the ASCII version doesn't exist.
+            The second version is wrapped in an HTML &lt;div&gt; tag with class
+            "non-ascii"; this version prefers the non-ASCII version of
+            information, such as "fullname", but falls back on the ASCII
+            version if the non-ASCII version does not exist.  Between these
+            two HTML &lt;div&gt;s, a third &lt;div&gt; is inserted, with class
+            "alternative-contact", containing the text "Alternate contact
+            information:".</t>
+          <figure>
+              <artwork><![CDATA[
+<address class="vcard">
+  <div class="ascii">
+    <div class="nameRole">
+      <span class="fn">The ASCII name</span>
+  </div>
+  <div class="alternative-contact">
+    Alternate contact information:
+  </div>
+  <div class="non-ascii">
+    <div class="nameRole">
+      <span class="fn">The non-ASCII name</span>
+      (<span class="role">editor</span>)</div>
+  </div>
+</address>]]></artwork>
+          </figure>
         </section>
         <section title="Authors of references">
           <t>In the output generated from a reference element, author tags are
             rendered inside an HTML &lt;span&gt; element with CSS class
-            "refAuthor".</t>
+            "refAuthor".  See <xref target='RFC7322'/>, section 4.8.6.2 for
+            which sections of the author name to use.</t>
+          <figure>
+              <artwork><![CDATA[
+<span class="refAuthor">Flanagan, H.</span> and
+<span class="refAuthor">N. Brownlee</span>]]></artwork>
+          </figure>
         </section>
       </section>
       <section title="&lt;back&gt;" anchor="element.back">
-        <t>This element does not add any direct output to HTML.</t>
+        <t>If there is exactly one
+          <xref target='element.references' format='title'/> child, renders
+          that child similarly to a <xref target='element.section' format='title'/>.
+          If there are more than one
+          <xref target='element.references' format='title'/> child, renders
+          as a <xref target='element.section' format='title'/> whose name is
+          "References", containing a <xref target='element.section' format='title'/>
+          for each <xref target='element.references' format='title'/>.</t>
+        <t>After any <xref target='element.references' format='title'/> sections,
+          renders each <xref target='element.section' format='title'/> child
+          as appendices.</t>
+          <figure>
+              <artwork><![CDATA[
+<section id="n-references">
+  <h2 id="s-2">
+    <a class="selfRef" href="#s-2">2.</a>
+    <a class="selfRef" href="#n-references">References</a>
+  </h2>
+  <section id="n-normative">
+    <h3 id="s-2.1">
+      <a class="selfRef" href="#s-2.1">2.1.</a>
+      <a class="selfRef" href="#n-normative">Normative</a>
+    </h3>
+    <dl class="reference"></dl>
+  </section>
+  <section id="n-informational">
+    <h3 id="s-2.2">
+      <a class="selfRef" href="#s-2.2">2.2.</a>
+      <a class="selfRef" href="#n-informational">Informational</a>
+    </h3>
+    <dl class="reference"></dl>
+  </section>
+</section>
+<section id="n-unimportant">
+  <h2 id="s-A">
+    <a class="selfRef" href="#s-A">Appendix A.</a>
+    <a class="selfRef" href="#n-unimportant">Unimportant</a>
+  </h2>
+</section>]]></artwork>
+          </figure>
       </section>
       <section title="&lt;bcp14&gt;" anchor="element.bcp14">
         <t>This element marks up words like MUST and SHOULD with an HTML
@@ -815,27 +926,27 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
           attribute), linking to the "cite" URL.</t>
         <t>If the blockquote does not contain another element that gets a
           <xref target='pilcrows'>pilcrow</xref>, a pilcrow is added.</t>
-        <t>Note that the "--" at the beginning of the &lt;cite&gt; element
+        <t>Note that the "&amp;mdash;" at the beginning of the &lt;cite&gt; element
           should be a proper emdash, which is difficult to show in the
           current format of this format.</t>
         <figure>
           <artwork><![CDATA[
-<blockquote id="p-1.2-1"
+<blockquote id="s-1.2-1"
   cite="http://...">
-  <p id="p-1.2-2">Four score and seven years ago our fathers
+  <p id="s-1.2-2">Four score and seven years ago our fathers
     brought forth on this continent, a new nation, conceived
     in Liberty, and dedicated to the proposition that all men
     are created equal.
-    <a href="#p-1.2-2" class="pilcrow">&para;</a>
+    <a href="#s-1.2-2" class="pilcrow">&para;</a>
   </p>
-  <cite>-- <a href="http://...">Abraham Lincoln</a></cite>
+  <cite>&mdash; <a href="http://...">Abraham Lincoln</a></cite>
 </blockquote>]]></artwork>
         </figure>
       </section>
       <section title="&lt;boilerplate&gt;" anchor="element.boilerplate">
         <t>The IPR boilerplate for the document appears directly after the
           Abstract. The children of the input &lt;boilerplate&gt; element
-          are treated similarly to sections.</t>
+          are treated similarly to unnumbered sections.</t>
         <figure>
           <artwork><![CDATA[
 <section id="status-of-this-memo">
@@ -843,9 +954,9 @@ You <span class="bcp14">MUST</span> be joking.]]></artwork>
     <a href="#status-of-this-memo" class="selfRef">
       Status of this Memo</a>
   </h2>
-  <p id="p-boilerplate-1-1">This Internet-Draft is submitted in full
+  <p id="s-boilerplate-1-1">This Internet-Draft is submitted in full
     conformance with the provisions of BCP 78 and BCP 79.
-    <a href="#p-boilerplate-1-1" class="pilcrow">&para;</a>
+    <a href="#s-boilerplate-1-1" class="pilcrow">&para;</a>
   </p>
 ...]]></artwork>
         </figure>
@@ -907,10 +1018,11 @@ about something that we need to remember later.
         <t>This element is directly rendered as its HTML counterpart.</t>
       </section>
       <section title="&lt;displayreference&gt;" anchor="element.displayreference">
-        <t>Does not affect the HTML output.  The prep tool
-          (<xref target='I-D.iab-rfcv3-preptool'/>) will have already
-          used this element to generate the &lt;xref&gt;'s "derivedContent"
-          attribute.</t>
+        <t>Does not affect the HTML output, but used in the generation of
+          <xref target='element.reference' format='title'/>,
+          <xref target='element.referencegroup' format='title'/>,
+          <xref target='element.relref' format='title'/>, and
+          <xref target='element.xref' format='title'/>.</t>
       </section>
       <section title="&lt;dl&gt;" anchor="element.dl">
         <t>This element is directly rendered as its HTML counterpart.</t>
@@ -929,15 +1041,13 @@ about something that we need to remember later.
           rendered as an HTML &lt;div&gt; containing the string "Email:" and
           an HTML &lt;a&gt; element, with "href" attribute set to the
           equivalent "mailto:" URI, CSS class of "email", and the contents set
-          to the email address.</t>
-        <t>If the email contains an ascii attribute, a span of class ascii is
-          also contained in the div.</t>
+          to the email address.  If this is the version of the address with
+          ASCII, the "ascii" attribute is preferred to the element text.</t>
         <figure>
           <artwork><![CDATA[
 <div>
   <span>Email:</span>
-  <a href="mailto:joe@example.net" class="email">joe@example.net</a>
-  <span class="ascii">joe@example.net</span>
+  <a class="email" href="mailto:joe@example.com">joe@example.com</a>
 </div>]]></artwork>
         </figure>
       </section>
@@ -954,7 +1064,7 @@ about something that we need to remember later.
         <t>This element renders as the HTML &lt;figure&gt; element, containing
           the artwork or sourcecode indicated and an HTML &lt;figcaption&gt;
           element.  The &lt;figcaption&gt; will contain an &lt;a&gt; element
-          with CSS class "selfRef" around the figure number.  It will also
+          around the figure number.  It will also
           contain another &lt;a&gt; element with CSS class "selfRef" around the
           figure name, if a name was given.</t>
         <figure>
@@ -962,14 +1072,16 @@ about something that we need to remember later.
 <figure id="f-1">
   ...
   <figcaption>
-    <a href="#f-1" class="selfRef">Figure 1.</a>
-    <a href="#n-it-figures" class="selfRef">It figures</a>
+    <a href="#f-1">Figure 1.</a>
+    <a href="#n-it-figures" id="n-it-figures" class="selfRef">
+      It figures
+    </a>
   </figcaption>
 </figure>]]></artwork>
         </figure>
       </section>
       <section title="&lt;front&gt;" anchor="element.front">
-        <t>This element does not add any direct output to HTML.</t>
+        <t>See <xref target='document-information' format='title'/>.</t>
       </section>
       <section title="&lt;iref&gt;" anchor="element.iref">
         <t>This element is rendered as an empty &lt;&gt; tag of class iref, with
@@ -994,7 +1106,7 @@ about something that we need to remember later.
           is added.</t>
         <figure>
           <artwork><![CDATA[
-<li id="p-2-7">Item <a href="#p-2-7" class="pilcrow">&para;</a></li>]]></artwork>
+<li id="s-2-7">Item <a href="#s-2-7" class="pilcrow">&para;</a></li>]]></artwork>
         </figure>
       </section>
       <section title="&lt;link&gt;" anchor="element.link">
@@ -1007,11 +1119,14 @@ about something that we need to remember later.
       <section title="&lt;name&gt;" anchor="element.name">
         <t>This element is never rendered directly, but instead when
           considering its parent element, such as
-          &lt;section&gt;.</t>
+          <xref target="element.figure" format="title"/>,
+          <xref target="element.references" format="title"/>,
+          <xref target="element.section" format="title"/>, or
+          <xref target="element.table" format="title"/>.</t>
       </section>
       <section title="&lt;note&gt;" anchor="element.note">
         <t>This element is rendered similarly to a
-          &lt;section&gt;, but without
+          <xref target='element.section' format='title'/>, but without
           a section number, and with the CSS class of "note".  If the
           "removeInRFC" attribute is set to "yes", the generated &lt;div&gt;
           will also include the CSS class "rfcEditorRemove".</t>
@@ -1021,9 +1136,9 @@ about something that we need to remember later.
   <h2>
     <a href="#n-editorial-note" class="selfRef">Editorial Note</a>
   </h2>
-  <p id="p-note-1-1">
+  <p id="s-note-1-1">
     Discussion of this draft takes place...
-    <a href="#p-note-1-1" class="pilcrow">&para;</a>
+    <a href="#s-note-1-1" class="pilcrow">&para;</a>
   </p>
 </section>]]></artwork>
         </figure>
@@ -1064,23 +1179,32 @@ about something that we need to remember later.
       </section>
       <section title="&lt;organization&gt;" anchor="element.organization">
         <t>As shown in <xref target='authors-addresses'/> this element is
-        rendered as an HTML &lt;div&gt; tag with CSS class "org".</t>
+          rendered as an HTML &lt;div&gt; tag with CSS class "org".</t>
+        <t>If the element contains the "ascii" attribute, the organization name
+          is rendered twice, once with the non-ASCII version wrapped in an
+          HTML &lt;span&gt; tag of class "non-ascii", then as the ASCII version
+          wrapped in an HTML &lt;span&gt; tag of class "ascii" wrapped in
+          parentheses.</t>
         <figure>
           <artwork><![CDATA[
-<div class="org">Cisco Systems, Inc.</div>]]></artwork>
+<div class="org">
+  <span class="non-ascii">Test Org</span>
+  (<span class="ascii">TEST ORG</span>)
+</div>]]></artwork>
         </figure>
       </section>
       <section title="&lt;phone&gt;" anchor="element.phone">
         <t>As shown in <xref target='authors-addresses'/> this element is
-        rendered as an HTML &lt;div&gt; containing the string "Phone:"  (wrapped
-        in a span), an HTML &lt;span&gt; with CSS class "tel" containing the
-        phone number and an HTML &lt;span&gt; with CSS class "type" containing
-        the string "VOICE".</t>
+          rendered as an HTML &lt;div&gt; containing the string "Phone:"  (wrapped
+          in a span), an HTML &lt;a&gt; tag with CSS class "tel" containing the
+          phone number (and an href with a corresponding "tel:" URI) and an
+          HTML &lt;span&gt; with CSS class "type" containing the string
+          "VOICE".</t>
         <figure>
           <artwork><![CDATA[
 <div>
   <span>Phone:</span>
-  <span class="tel">+1-720-555-1212</span>
+  <a class="tel" href="tel:+1-720-555-1212">+1-720-555-1212</a>
   <span class="type">VOICE</span>
 </div>
 ]]></artwork>
@@ -1098,7 +1222,7 @@ about something that we need to remember later.
             <t>A &lt;div&gt; that includes:
               <list style='symbols'>
                 <t>The rendering of all &lt;city&gt; elements</t>
-                <t>A comma (wrapped in a span of class "comma")</t>
+                <t>A comma and a space: ", "</t>
                 <t>The rendering of all &lt;region&gt; elements</t>
                 <t>Whitespace</t>
                 <t>The rendering of all &lt;code&gt; elements</t>
@@ -1113,8 +1237,7 @@ about something that we need to remember later.
   <div class="street-address">1 Main Street</div>
   <div class="street-address">Suite 1</div>
   <div>
-    <span class="city">Denver</span>
-    <span class="comma">,</span>
+    <span class="city">Denver</span>,
     <span class="region">CO</span>
     <span class="postal-code">80212</span>
   </div>
@@ -1164,10 +1287,8 @@ Computer Sciences Division</pre>]]></artwork>
     <span class="refAuthor">Phillips, A.</span>
     <span>and</span>
     <span class="refAuthor">M. Davis</span>
-    <span class="refTitle">"Tags for Identifying Languages"</span>
-    <span class="comma">,</span>
+    <span class="refTitle">"Tags for Identifying Languages"</span>,
     ...
-    <span class="fullStop">.</span>
   </dd>
 </dl>]]></artwork>
         </figure>
@@ -1205,13 +1326,28 @@ Computer Sciences Division</pre>]]></artwork>
         </figure>
       </section>
       <section title="&lt;references&gt;" anchor="element.references">
-        <t>If there is at least one &lt;references&gt; element, a "References"
-          section is added to the document, continuing with the next major
-          section number after the last
-          &lt;section&gt;.
+        <t>If there is at exactly one &lt;references&gt; element, a
+          section is added to the document, continuing with the next
+          section number after the last top-level &lt;section&gt; in
+          &lt;middle&gt;.  The &lt;name&gt; element of the &lt;references&gt;
+          element is used as the section name.
         </t>
-        <t>Each references element will be added to that "References" section
-          as if it were a section itself.</t>
+        <figure>
+          <artwork><![CDATA[
+<section id="n-my-references">
+  <h2 id="s-3">
+    <a href="#s-3" class="selfRef">3.</a>
+    <a href="#n-my-references class="selfRef">My References</a>
+  </h2>
+  ...
+</section>]]></artwork>
+        </figure>
+        <t>If there is more than one &lt;references&gt; element, an HTML
+          &lt;section&gt; element  is created to contain a sub-section for
+          each of the &lt;references&gt;.  The section number will be the next
+          section number after the last top-level &lt;section&gt; in
+          &lt;middle&gt;. The name of this section will
+          be "References", and it's "id" attribute will be "n-references".</t>
         <figure>
           <artwork><![CDATA[
 <section id="n-references">
@@ -1227,11 +1363,12 @@ Computer Sciences Division</pre>]]></artwork>
     <dl class="reference">...
     </dl>
   </section>
+  ...
 </section>]]></artwork>
         </figure>
       </section>
       <section title="&lt;region&gt;" anchor="element.region">
-        <t>This element is rendered as a &lt;span&gt; element with CSS
+        <t>This element is rendered as a &lt;span&gt; tag with CSS
           class "region".</t>
         <figure>
           <artwork><![CDATA[
@@ -1239,29 +1376,31 @@ Computer Sciences Division</pre>]]></artwork>
         </figure>
       </section>
       <section title="&lt;relref&gt;" anchor="element.relref">
-        <t>This element is rendered as one or more HTML &lt;a&gt; elements
-          containing appropriate external links as their "href" attributes
-          as well as (potentially) some connective text.  All of the &lt;a&gt;
-          elements generated will have class "relref".  The contents of the
-          &lt;a&gt; element(s) are determined by the values of the
-          "derivedRemoteContent" and "displayFormat" attributes.</t>
+        <t>This element is rendered as an HTML &lt;a&gt; tag with CSS class
+          "relref" and "href" attribute of the "derivedLink" attribute of the
+          element. Different values of the "displayFormat" attribute cause
+          the text inside that HTML &lt;a&gt; tag to change, as well as extra
+          text to be generated.  Some values of the "displayFormat"
+          attribute also cause another HTML &lt;a&gt; tag to be rendered
+          with CSS class "xref" and an "href" of "#" and the "target" attribute
+          (modified by any applicable &lt;displayreference&gt; XML element)
+          and text inside of the "target" attribute
+          (modified by any applicable &lt;displayreference&gt; XML element).
+          When used, this &lt;a class='xref'&gt; HTML tag is always surrounded
+          by square brackets, like "[&lt;a class='xref' href='#foo'&gt;foo&lt;/a&gt;]".</t>
         <section title="displayFormat='of'" anchor="element.relref.df-of">
-          <t>The output is an &lt;a&gt; element with "href" attribute whose
-            value is the value of the "derivedLink" attribute, and whose
-            contents are the value of the "derivedRemoteContent" attribute.
+          <t>The output is an &lt;a class='relref'&gt; HTML tag, with
+            contents of "Section " and the value of the "section" attribute.
             This is followed by the word "of" (surrounded by whitespace). This
-            is followed by a second &lt;a&gt; element, surrounded by square
-            brackets, whose href attribute is the value of the "target"
-            attribute prepended with "#", and whose content is the value of
-            the "target" attribute.</t>
-          <t>For example, if Section 2.3 of RFC 7878 has the title "Protocol
-            Overview", with an input of:</t>
+            is followed by the &lt;a class='xref'&gt; HTML tag (surrounded by
+            square brackets).</t>
+          <t>For example, with an input of:</t>
           <t>
 <figure>
   <artwork>
 See &lt;relref section="2.3" target="RFC7878" displayFormat="of"
-derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-derivedRemoteContent="Section 2.3"/&gt; for an overview.</artwork></figure>
+derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"/&gt;
+for an overview.</artwork></figure>
           </t>
           <t>The HTML generated will be:</t>
           <t>
@@ -1269,37 +1408,31 @@ derivedRemoteContent="Section 2.3"/&gt; for an overview.</artwork></figure>
   <artwork>
 See &lt;a class="relref"
 href="http://www.rfc-editor.org/info/rfc7878#s-2.3"&gt;Section
-2.3&lt;/a&gt; of [&lt;a class="relref" href="#RFC7878"&gt;RFC7878&lt;/a&gt;]
+2.3&lt;/a&gt; of [&lt;a class="xref" href="#RFC7878"&gt;RFC7878&lt;/a&gt;]
 for an overview.</artwork></figure>
           </t>
         </section>
         <section title="displayFormat='comma'" anchor="element.relref.df-comma">
-          <t>The output is an &lt;a&gt; element with  "href" attribute whose
-            value is the value of the "target"  attribute prepended by "#",
-            and whose content is the value of the  "target" attribute; the
-            entire element is wrapped in square brackets.  This is followed by
-            a comma (","), followed by
-            whitespace.  This is followed by an &lt;a&gt;
-            element whose "href" attribute is the value of the "derivedLink"
-            attribute and whose content is the value of the
-            "derivedRemoteContent" attribute.</t>
-          <t>For example, if Section 2.3 of RFC 7878 has the title "Protocol
-            Overview", for an input of:</t>
+          <t>The output is an &lt;a class='xref'&gt; HTML tag (wrapped by
+            square brackets), followed by a comma (","), followed by
+            whitespace, followed by an &lt;a class='relref'&gt; HTML tag, with
+            contents of "Section " and the value of the "section"
+            attribute.</t>
+          <t>For example, with an input of:</t>
           <t>
 <figure>
   <artwork>
 See &lt;relref section="2.3" target="RFC7878" displayFormat="comma"
-derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"
-derivedRemoteContent="Section 2.3"/&gt;, for an overview.</artwork></figure>
+derivedLink="http://www.rfc-editor.org/info/rfc7878#s-2.3"/&gt;,
+for an overview.</artwork></figure>
           </t>
           <t>The HTML generated will be:</t>
           <t>
 <figure>
   <artwork><![CDATA[
-See [<a class="relref" href="#RFC7878">RFC7878</a>],
-<a class="relref"
-href="http://www.rfc-editor.org/info/rfc7878#s-2.3">Section
-2.3</a>, for an overview.]]></artwork></figure>
+See [<a class="xref" href="#RFC7878">RFC7878</a>], <a class="relref"
+href="http://www.rfc-editor.org/info/rfc7878#s-2.3">Section 2.3</a>,
+for an overview.]]></artwork></figure>
           </t>
         </section>
         <section title="displayFormat='parens'" anchor="element.relref.df-parens">
@@ -1370,7 +1503,7 @@ href="http://www.rfc-editor.org/info/rfc7878#s-2.3">Section
     <a href="#s-1" class="selfRef">1.</a>
     <a href="#intro" class="selfRef">Introduction</a>
   </h2>
-  <p id="p-1-1">Paragraph <a href="#p-1-1" class="pilcrow">&para;</a>
+  <p id="s-1-1">Paragraph <a href="#s-1-1" class="pilcrow">&para;</a>
   </p>
 </section>]]></artwork>
         </figure>
@@ -1423,16 +1556,13 @@ int main(void)
       <section title="&lt;sup&gt;" anchor="element.sup">
         <t>This element is directly rendered as its HTML counterpart.</t>
       </section>
-      <section title="&lt;svg&gt;" anchor="element.svg">
-        <t>This element is rendered as part of the &lt;artwork&gt; element.</t>
-      </section>
       <section title="&lt;t&gt;" anchor="element.t">
         <t>This element is rendered as an HTML &lt;p&gt; element.  A
           <xref target='pilcrows'>pilcrow</xref> is included.</t>
         <figure>
           <artwork><![CDATA[
-<p id="p-1-1">A paragraph.
-  <a href="#p-1-1" class="pilcrow">&para;</a></p>]]></artwork>
+<p id="s-1-1">A paragraph.
+  <a href="#s-1-1" class="pilcrow">&para;</a></p>]]></artwork>
         </figure>
       </section>
       <section title="&lt;table&gt;" anchor="element.table">
@@ -1476,7 +1606,7 @@ int main(void)
         <t>This element is directly rendered as its HTML counterpart.</t>
       </section>
       <section title="&lt;tt&gt;" anchor="element.tt">
-        <t>This element is directly rendered as its HTML counterpart.</t>
+        <t>This element is rendered as an HTML &lt;code&gt; element.</t>
       </section>
       <section title="&lt;ul&gt;" anchor="element.ul">
       <t>This element is directly rendered as its HTML counterpart. If the
@@ -1522,6 +1652,17 @@ int main(void)
 [<a class="xref" href="#RFC1234">RFC1234</a>]]]></artwork>
         </figure>
       </section>
+      <!--
+        Moved to the end so I can stop wondering why there are
+        more sections in this doc than v3.
+      -->
+      <section title="&lt;svg xmlns='http://www.w3.org/2000/svg'&gt;" anchor="element.svg">
+        <t>This element is rendered as part of the &lt;artwork&gt; element.
+          The "xmlns='http://www.w3.org/2000/svg'" namespace declaration should
+          be included, and the SVG should be serialized as well-formed XML,
+          even for tags that would otherwise not need closing in HTML5.</t>
+      </section>
+
     </section>
     <section anchor="iana-considerations" title="IANA Considerations">
       <t>This document contains no actions for IANA</t>
@@ -1544,6 +1685,7 @@ int main(void)
 &RFC2397;
 &RFC3629;
 &RFC5646;
+&RFC7322;
 &I-D.iab-rfc-css;
 &I-D.iab-xml2rfc;
 &W3C.REC-html5-20141028;
@@ -1567,10 +1709,30 @@ int main(void)
         <seriesInfo name="World Wide Web Consortium Recommendation" value="REC-CSS2-20110607"/>
         <format type="HTML" target="http://www.w3.org/TR/2011/REC-CSS2-20110607"/>
       </reference>
-
     </references>
 
     <references title="Informative References">
+      <reference anchor="W3C.WD-css3-page-20130314" target="http://www.w3.org/TR/2013/WD-css3-page-20130314">
+        <front>
+          <title>CSS Paged Media Module Level 3</title>
+          <author initials="M." surname="Grant" fullname="Melinda Grant">
+            <organization/>
+          </author>
+          <author initials="E." surname="Etemad" fullname="Elika Etemad">
+            <organization/>
+          </author>
+          <author initials="H." surname="Lie" fullname="Hakon Wium Lie">
+            <organization/>
+          </author>
+          <author initials="S." surname="Sapin" fullname="Simon Sapin">
+            <organization/>
+          </author>
+          <date month="March" day="14" year="2013"/>
+        </front>
+        <seriesInfo name="World Wide Web Consortium WD" value="WD-css3-page-20130314"/>
+        <format type="HTML" target="http://www.w3.org/TR/2013/WD-css3-page-20130314"/>
+      </reference>
+
     <reference anchor="HCARD" target="http://microformats.org/wiki/hcard">
       <front>
         <title>hCard 1.0</title>
@@ -1579,7 +1741,6 @@ int main(void)
       </front>
     </reference>
 &RFC6949;
-&RFC7322;
 &I-D.iab-rfcv3-preptool;
 &I-D.iab-rfc-framework;
     </references>
