@@ -515,8 +515,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
    The following <meta> elements will be included:
 
-   o  author - comma-separated "fullname"s and "asciiFullname"s of all
-      of the <author>s from the <front> of the XML source
+   o  author - one each for the each of the "fullname"s and
+      "asciiFullname"s of all of the <author>s from the <front> of the
+      XML source
 
    o  description - the <abstract> from the XML source
 
@@ -527,7 +528,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
    For example:
 
-   <meta name="author" content="Joe Hildebrand,Heather Flanagan">
+   <meta name="author" content="Joe Hildebrand">
+   <meta name="author" content="JOE HILDEBRAND">
+   <meta name="author" content="Heather Flanagan">
    <meta name="description" content="This document defines...">
    <meta name="generator" content="xmljade v0.2.4">
    <meta name="keywords" content="html,css,rfc">
@@ -550,9 +553,6 @@ Internet-Draft                  HTML RFC                   February 2016
    copyright license for the document.
 
    <link rel="license" href="https://www.rfc-editor.org/copyright/">
-
-
-
 
 
 

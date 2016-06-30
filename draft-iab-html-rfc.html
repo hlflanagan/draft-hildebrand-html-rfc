@@ -779,7 +779,7 @@
 <p id="rfc.section.6.3.3.p.1">The following &lt;meta&gt; elements will be included: </p>
 
 <ul>
-  <li>author - comma-separated "fullname"s and "asciiFullname"s of all of the &lt;author&gt;s from the &lt;front&gt; of the XML source</li>
+  <li>author - one each for the each of the "fullname"s and "asciiFullname"s of all of the &lt;author&gt;s from the &lt;front&gt; of the XML source</li>
   <li>description - the &lt;abstract&gt; from the XML source</li>
   <li>generator - the name and version number of the software used to create the HTML</li>
   <li>keywords - comma-separated &lt;keyword&gt;s from the XML source</li>
@@ -787,7 +787,9 @@
 
 <p> For example: </p>
 <pre>
-&lt;meta name="author" content="Joe Hildebrand,Heather Flanagan"&gt;
+&lt;meta name="author" content="Joe Hildebrand"&gt;
+&lt;meta name="author" content="JOE HILDEBRAND"&gt;
+&lt;meta name="author" content="Heather Flanagan"&gt;
 &lt;meta name="description" content="This document defines..."&gt;
 &lt;meta name="generator" content="xmljade v0.2.4"&gt;
 &lt;meta name="keywords" content="html,css,rfc"&gt;</pre>

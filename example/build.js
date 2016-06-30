@@ -91,7 +91,8 @@ toHtml = t2p((f) => {
 const exec = bb.promisify(child_process.exec)
 toPDF = t2p((f) => {
   return exec(`prince --attach=out/${f.stem}.xml ${f.path} -o -`, {
-    encoding: 'Buffer'
+    encoding: 'Buffer',
+    maxBuffer: 500*1024
   })
   .then((data) => {
     f.contents = data

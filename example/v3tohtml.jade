@@ -713,7 +713,10 @@ doctype html
 html(lang='en', class=$$('/rfc/front/seriesInfo/@name'))
   head
     meta(charset='utf-8')
-    meta(name='author', content=$$('front/author/@fullname'))
+    each fn in $$('front/author/@fullname')
+      meta(name='author', content=fn)
+    each fn in $$('front/author/@asciiFullname')
+      meta(name='author', content=fn)
     meta(name='keywords', content=$$('front/keyword/text()'))
     meta(name='description', content=v3.ws($$('front/abstract//text()')))
     meta(name='generator', content=version)

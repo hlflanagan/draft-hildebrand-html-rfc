@@ -283,7 +283,7 @@
         <section anchor="meta" title="Document Metadata">
           <t>The following &lt;meta&gt; elements will be included:
             <list style="symbols">
-              <t>author - comma-separated "fullname"s and "asciiFullname"s of
+              <t>author - one each for the each of the "fullname"s and "asciiFullname"s of
                 all of the &lt;author&gt;s from the &lt;front&gt; of the XML
                 source</t>
               <t>description - the &lt;abstract&gt; from the XML source</t>
@@ -296,7 +296,9 @@
           </t>
           <figure>
             <artwork><![CDATA[
-<meta name="author" content="Joe Hildebrand,Heather Flanagan">
+<meta name="author" content="Joe Hildebrand">
+<meta name="author" content="JOE HILDEBRAND">
+<meta name="author" content="Heather Flanagan">
 <meta name="description" content="This document defines...">
 <meta name="generator" content="xmljade v0.2.4">
 <meta name="keywords" content="html,css,rfc">]]></artwork>
