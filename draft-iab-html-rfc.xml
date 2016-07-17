@@ -13,7 +13,7 @@
 <!ENTITY I-D.iab-rfcv3-preptool SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.iab-rfcv3-preptool.xml">
 <!ENTITY I-D.iab-rfc-framework SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.iab-rfc-framework.xml">
 ]>
-<rfc ipr="trust200902" docName="draft-iab-html-rfc-03" category="info">
+<rfc ipr="trust200902" docName="draft-iab-html-rfc-04" category="info">
   <front>
     <title abbrev="HTML RFC">HyperText Markup Language Request For Comments Format</title>
     <author initials="J." surname="Hildebrand" fullname="Joe Hildebrand" role="editor">
@@ -28,7 +28,7 @@
         <email>paul.hoffman@icann.org</email>
       </address>
     </author>
-    <date year="2016" month="February" day="12"/>
+    <date year="2016" month="July" day="17"/>
     <keyword>html</keyword>
     <keyword>css</keyword>
     <keyword>rfc</keyword>
@@ -409,7 +409,8 @@
       <div class="author">
         <span class="initial">J.</span>
         <span class="surname">Hildebrand</span>
-        (<span class="organization">Cisco Systems, Inc.</span>), Ed.
+        (<span class="organization">Cisco Systems, Inc.</span>),
+        <span class="editor">Ed.</span>
       </div>
       <div class="author">
         <span class="initial">H.</span>
@@ -706,7 +707,7 @@ ______________
           <t>If the SVG artwork element is a child of &lt;figure&gt; and the
             artwork is specified as align='right', an
             empty HTML &lt;span&gt; element is added directly after the
-            &lt;svg&gt; element, in order to get right alignment work correctly
+            &lt;svg&gt; element, in order to get right alignment to work correctly
             in HTML rendering engines that do not support the flex-box
             model.</t>
           <t>Note: the alt attribute of &lt;artwork&gt; is not currently used
@@ -827,7 +828,7 @@ ______________
             <xref target='element.address' format='title'/> child elements of
             the author are rendered inside the HTML &lt;address&gt; tag.</t>
           <t>When the &lt;author&gt; element or any of its descendant elements
-            has any attribute that start with "ascii", all of the author
+            has any attribute that starts with "ascii", all of the author
             information is displayed twice.  The first version is wrapped in
             an HTML &lt;div&gt; tag with class "ascii"; this version prefers
             the ASCII version of information, such as "asciiFullname", but falls
@@ -1349,7 +1350,7 @@ Computer Sciences Division</pre>]]></artwork>
           each of the &lt;references&gt;.  The section number will be the next
           section number after the last top-level &lt;section&gt; in
           &lt;middle&gt;. The name of this section will
-          be "References", and it's "id" attribute will be "n-references".</t>
+          be "References", and its "id" attribute will be "n-references".</t>
         <figure>
           <artwork><![CDATA[
 <section id="n-references">

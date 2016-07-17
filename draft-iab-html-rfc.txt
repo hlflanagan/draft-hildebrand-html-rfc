@@ -5,12 +5,12 @@
 Network Working Group                                 J. Hildebrand, Ed.
 Internet-Draft                                       Cisco Systems, Inc.
 Intended status: Informational                                P. Hoffman
-Expires: August 15, 2016                                           ICANN
-                                                       February 12, 2016
+Expires: January 18, 2017                                          ICANN
+                                                           July 17, 2016
 
 
          HyperText Markup Language Request For Comments Format
-                         draft-iab-html-rfc-03
+                         draft-iab-html-rfc-04
 
 Abstract
 
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 15, 2016.
+   This Internet-Draft will expire on January 18, 2017.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016                [Page 1]
+Hildebrand & Hoffman    Expires January 18, 2017                [Page 1]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    the Trust Legal Provisions and are provided without warranty as
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016                [Page 2]
+Hildebrand & Hoffman    Expires January 18, 2017                [Page 2]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
        9.7.2.  Authors of this document  . . . . . . . . . . . . . .  21
@@ -165,9 +165,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016                [Page 3]
+Hildebrand & Hoffman    Expires January 18, 2017                [Page 3]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
      9.48. <sourcecode>  . . . . . . . . . . . . . . . . . . . . . .  36
@@ -221,9 +221,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016                [Page 4]
+Hildebrand & Hoffman    Expires January 18, 2017                [Page 4]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 2.  Requirements for the HTML Format
@@ -277,9 +277,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016                [Page 5]
+Hildebrand & Hoffman    Expires January 18, 2017                [Page 5]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
       without having to alter the contents of the HTML document.  This
@@ -333,9 +333,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016                [Page 6]
+Hildebrand & Hoffman    Expires January 18, 2017                [Page 6]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    o  NOTE: designing for these consumers does not preclude the use of
@@ -389,9 +389,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016                [Page 7]
+Hildebrand & Hoffman    Expires January 18, 2017                [Page 7]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 5.  Common Items
@@ -445,9 +445,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016                [Page 8]
+Hildebrand & Hoffman    Expires January 18, 2017                [Page 8]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 6.  Front Matter
@@ -501,9 +501,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016                [Page 9]
+Hildebrand & Hoffman    Expires January 18, 2017                [Page 9]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 6.3.2.  Document Title
@@ -557,9 +557,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 10]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 10]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 6.3.6.  Style
@@ -613,9 +613,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 11]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 11]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    <table class="ears">
@@ -669,9 +669,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 12]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 12]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    <dl id="identifiers">
@@ -689,7 +689,8 @@ Internet-Draft                  HTML RFC                   February 2016
          <div class="author">
            <span class="initial">J.</span>
            <span class="surname">Hildebrand</span>
-           (<span class="organization">Cisco Systems, Inc.</span>), Ed.
+           (<span class="organization">Cisco Systems, Inc.</span>),
+           <span class="editor">Ed.</span>
          </div>
          <div class="author">
            <span class="initial">H.</span>
@@ -724,10 +725,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 13]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 13]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    <h2 id="toc">Table of Contents</h2>
@@ -781,9 +781,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 14]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 14]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 8.1.2.  Index Letters
@@ -837,9 +837,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 15]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 15]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 8.1.4.  Index Sub-items
@@ -893,9 +893,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 16]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 16]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 8.3.  Document Information
@@ -949,9 +949,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 17]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 17]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    Otherwise, the <address> HTML tag includes an HTML <div> tag of class
@@ -1005,9 +1005,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 18]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 18]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    class "alignRight" will be added.  If the "align" attribute has the
@@ -1045,7 +1045,7 @@ Internet-Draft                  HTML RFC                   February 2016
 
    If the SVG artwork element is a child of <figure> and the artwork is
    specified as align='right', an empty HTML <span> element is added
-   directly after the <svg> element, in order to get right alignment
+   directly after the <svg> element, in order to get right alignment to
    work correctly in HTML rendering engines that do not support the
    flex-box model.
 
@@ -1061,9 +1061,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 19]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 19]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    <div class="artwork art-svg" id="s-2-17">
@@ -1117,9 +1117,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 20]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 20]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    Inside the <div class="author"> HTML tag, the author's initials and
@@ -1173,9 +1173,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 21]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 21]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    <address class="vcard">
@@ -1189,7 +1189,7 @@ Internet-Draft                  HTML RFC                   February 2016
    the author are rendered inside the HTML <address> tag.
 
    When the <author> element or any of its descendant elements has any
-   attribute that start with "ascii", all of the author information is
+   attribute that starts with "ascii", all of the author information is
    displayed twice.  The first version is wrapped in an HTML <div> tag
    with class "ascii"; this version prefers the ASCII version of
    information, such as "asciiFullname", but falls back on the non-ASCII
@@ -1229,9 +1229,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 22]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 22]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 9.8.  <back>
@@ -1285,9 +1285,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 23]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 23]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 9.10.  <blockquote>
@@ -1341,9 +1341,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 24]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 24]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 9.13.  <city>
@@ -1397,9 +1397,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 25]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 25]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 9.18.  <dd>
@@ -1453,9 +1453,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 26]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 26]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 9.25.  <figure>
@@ -1509,9 +1509,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 27]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 27]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 9.30.  <link>
@@ -1565,9 +1565,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 28]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 28]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    <dl class="olPercent">
@@ -1621,9 +1621,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 29]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 29]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    When there is no <postalLine> child, the following child elements are
@@ -1677,9 +1677,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 30]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 30]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 9.39.  <refcontent>
@@ -1733,9 +1733,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 31]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 31]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    <dt id="STD69">[STD69]</dt>
@@ -1770,7 +1770,7 @@ Internet-Draft                  HTML RFC                   February 2016
    element is created to contain a sub-section for each of the
    <references>.  The section number will be the next section number
    after the last top-level <section> in <middle>.  The name of this
-   section will be "References", and it's "id" attribute will be
+   section will be "References", and its "id" attribute will be
    "n-references".
 
 
@@ -1789,9 +1789,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 32]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 32]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    <section id="n-references">
@@ -1845,9 +1845,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 33]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 33]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    See <relref section="2.3" target="RFC7878" displayFormat="of"
@@ -1901,9 +1901,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 34]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 34]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    The HTML generated will be:
@@ -1957,9 +1957,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 35]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 35]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 9.47.  <seriesInfo>
@@ -2013,9 +2013,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 36]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 36]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
 9.52.  <sup>
@@ -2069,9 +2069,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 37]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 37]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    Inside a reference, the title is rendered as an HTML <span> tag with
@@ -2125,9 +2125,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 38]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 38]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    <a class="xref" href="#target">Table 2</a>
@@ -2181,9 +2181,9 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 39]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 39]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    [RFC7322]  Flanagan, H. and S. Ginoza, "RFC Style Guide", RFC 7322,
@@ -2196,7 +2196,7 @@ Internet-Draft                  HTML RFC                   February 2016
 
    [I-D.iab-xml2rfc]
               Hoffman, P., "The "xml2rfc" version 3 Vocabulary", draft-
-              iab-xml2rfc-03 (work in progress), February 2016.
+              iab-xml2rfc-04 (work in progress), June 2016.
 
    [W3C.REC-html5-20141028]
               Hickson, I., Berjon, R., Faulkner, S., Leithead, T.,
@@ -2237,14 +2237,14 @@ Internet-Draft                  HTML RFC                   February 2016
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 40]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 40]
 
-Internet-Draft                  HTML RFC                   February 2016
+Internet-Draft                  HTML RFC                       July 2016
 
 
    [I-D.iab-rfc-framework]
               Flanagan, H., "RFC Format Framework", draft-iab-rfc-
-              framework-04 (work in progress), February 2016.
+              framework-06 (work in progress), June 2016.
 
 Authors' Addresses
 
@@ -2293,4 +2293,4 @@ Authors' Addresses
 
 
 
-Hildebrand & Hoffman     Expires August 15, 2016               [Page 41]
+Hildebrand & Hoffman    Expires January 18, 2017               [Page 41]

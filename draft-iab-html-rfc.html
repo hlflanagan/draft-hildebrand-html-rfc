@@ -498,8 +498,8 @@
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Hildebrand, J., Ed. and P. Hoffman" />
-  <meta name="dct.identifier" content="urn:ietf:id:draft-iab-html-rfc-03" />
-  <meta name="dct.issued" scheme="ISO8601" content="2016-2-12" />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-iab-html-rfc-04" />
+  <meta name="dct.issued" scheme="ISO8601" content="2016-7-17" />
   <meta name="dct.abstract" content="In order to meet the evolving needs of the Internet community, the format for RFCs is changing from a plain-text, ASCII-only format to a canonical XML format that will in turn be rendered into several publication formats. This document defines the HTML format that will be rendered for an RFC or Internet-Draft." />
   <meta name="description" content="In order to meet the evolving needs of the Internet community, the format for RFCs is changing from a plain-text, ASCII-only format to a canonical XML format that will in turn be rendered into several publication formats. This document defines the HTML format that will be rendered for an RFC or Internet-Draft." />
 
@@ -523,12 +523,12 @@
   <td class="right">P. Hoffman</td>
 </tr>
 <tr>
-  <td class="left">Expires: August 15, 2016</td>
+  <td class="left">Expires: January 18, 2017</td>
   <td class="right">ICANN</td>
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">February 12, 2016</td>
+  <td class="right">July 17, 2016</td>
 </tr>
 
     	
@@ -536,7 +536,7 @@
   </table>
 
   <p class="title">HyperText Markup Language Request For Comments Format<br />
-  <span class="filename">draft-iab-html-rfc-03</span></p>
+  <span class="filename">draft-iab-html-rfc-04</span></p>
   
   <h1 id="rfc.abstract">
   <a href="#rfc.abstract">Abstract</a>
@@ -548,7 +548,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on August 15, 2016.</p>
+<p>This Internet-Draft will expire on January 18, 2017.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -852,7 +852,8 @@
       &lt;div class="author"&gt;
         &lt;span class="initial"&gt;J.&lt;/span&gt;
         &lt;span class="surname"&gt;Hildebrand&lt;/span&gt;
-        (&lt;span class="organization"&gt;Cisco Systems, Inc.&lt;/span&gt;), Ed.
+        (&lt;span class="organization"&gt;Cisco Systems, Inc.&lt;/span&gt;),
+        &lt;span class="editor"&gt;Ed.&lt;/span&gt;
       &lt;/div&gt;
       &lt;div class="author"&gt;
         &lt;span class="initial"&gt;H.&lt;/span&gt;
@@ -1025,7 +1026,7 @@ ______________
 &lt;/div&gt;</pre>
 <h1 id="rfc.section.9.5.2"><a href="#rfc.section.9.5.2">9.5.2.</a> <a href="#element.artwork-svg" id="element.artwork-svg">SVG Artwork</a></h1>
 <p id="rfc.section.9.5.2.p.1">SVG artwork will be included inline.  The SVG is wrapped in a &lt;div&gt; element with CSS classes "artwork" and "art-svg".</p>
-<p id="rfc.section.9.5.2.p.2">If the SVG artwork element is a child of &lt;figure&gt; and the artwork is specified as align='right', an empty HTML &lt;span&gt; element is added directly after the &lt;svg&gt; element, in order to get right alignment work correctly in HTML rendering engines that do not support the flex-box model.</p>
+<p id="rfc.section.9.5.2.p.2">If the SVG artwork element is a child of &lt;figure&gt; and the artwork is specified as align='right', an empty HTML &lt;span&gt; element is added directly after the &lt;svg&gt; element, in order to get right alignment to work correctly in HTML rendering engines that do not support the flex-box model.</p>
 <p id="rfc.section.9.5.2.p.3">Note: the alt attribute of &lt;artwork&gt; is not currently used for SVG; instead, the &lt;title&gt; and &lt;desc&gt; tags are used in the SVG.</p>
 <pre>
 &lt;div class="artwork art-svg" id="s-2-17"&gt;
@@ -1089,7 +1090,7 @@ ______________
   &lt;/div&gt;
   ...</pre>
 <p id="rfc.section.9.7.2.p.3">After the name, the <a href="#element.organization">&lt;organization&gt;</a> and <a href="#element.address">&lt;address&gt;</a> child elements of the author are rendered inside the HTML &lt;address&gt; tag.</p>
-<p id="rfc.section.9.7.2.p.4">When the &lt;author&gt; element or any of its descendant elements has any attribute that start with "ascii", all of the author information is displayed twice.  The first version is wrapped in an HTML &lt;div&gt; tag with class "ascii"; this version prefers the ASCII version of information, such as "asciiFullname", but falls back on the non-ASCII version if the ASCII version doesn't exist.  The second version is wrapped in an HTML &lt;div&gt; tag with class "non-ascii"; this version prefers the non-ASCII version of information, such as "fullname", but falls back on the ASCII version if the non-ASCII version does not exist.  Between these two HTML &lt;div&gt;s, a third &lt;div&gt; is inserted, with class "alternative-contact", containing the text "Alternate contact information:".</p>
+<p id="rfc.section.9.7.2.p.4">When the &lt;author&gt; element or any of its descendant elements has any attribute that starts with "ascii", all of the author information is displayed twice.  The first version is wrapped in an HTML &lt;div&gt; tag with class "ascii"; this version prefers the ASCII version of information, such as "asciiFullname", but falls back on the non-ASCII version if the ASCII version doesn't exist.  The second version is wrapped in an HTML &lt;div&gt; tag with class "non-ascii"; this version prefers the non-ASCII version of information, such as "fullname", but falls back on the ASCII version if the non-ASCII version does not exist.  Between these two HTML &lt;div&gt;s, a third &lt;div&gt; is inserted, with class "alternative-contact", containing the text "Alternate contact information:".</p>
 <pre>
 &lt;address class="vcard"&gt;
   &lt;div class="ascii"&gt;
@@ -1381,7 +1382,7 @@ Computer Sciences Division&lt;/pre&gt;</pre>
   &lt;/h2&gt;
   ...
 &lt;/section&gt;</pre>
-<p id="rfc.section.9.42.p.2">If there is more than one &lt;references&gt; element, an HTML &lt;section&gt; element  is created to contain a sub-section for each of the &lt;references&gt;.  The section number will be the next section number after the last top-level &lt;section&gt; in &lt;middle&gt;. The name of this section will be "References", and it's "id" attribute will be "n-references".</p>
+<p id="rfc.section.9.42.p.2">If there is more than one &lt;references&gt; element, an HTML &lt;section&gt; element  is created to contain a sub-section for each of the &lt;references&gt;.  The section number will be the next section number after the last top-level &lt;section&gt; in &lt;middle&gt;. The name of this section will be "References", and its "id" attribute will be "n-references".</p>
 <pre>
 &lt;section id="n-references"&gt;
   &lt;h2 id="s-3"&gt;
@@ -1596,7 +1597,7 @@ int main(void)
       <td class="reference">
         <b id="I-D.iab-xml2rfc">[I-D.iab-xml2rfc]</b>
       </td>
-      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-iab-xml2rfc-03">The "xml2rfc" version 3 Vocabulary</a>", Internet-Draft draft-iab-xml2rfc-03, February 2016.</td>
+      <td class="top"><a>Hoffman, P.</a>, "<a href="http://tools.ietf.org/html/draft-iab-xml2rfc-04">The "xml2rfc" version 3 Vocabulary</a>", Internet-Draft draft-iab-xml2rfc-04, June 2016.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -1643,7 +1644,7 @@ int main(void)
       <td class="reference">
         <b id="I-D.iab-rfc-framework">[I-D.iab-rfc-framework]</b>
       </td>
-      <td class="top"><a>Flanagan, H.</a>, "<a href="http://tools.ietf.org/html/draft-iab-rfc-framework-04">RFC Format Framework</a>", Internet-Draft draft-iab-rfc-framework-04, February 2016.</td>
+      <td class="top"><a>Flanagan, H.</a>, "<a href="http://tools.ietf.org/html/draft-iab-rfc-framework-06">RFC Format Framework</a>", Internet-Draft draft-iab-rfc-framework-06, June 2016.</td>
     </tr>
   </tbody>
 </table>
