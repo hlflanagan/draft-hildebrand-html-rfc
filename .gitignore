@@ -1,5 +1,9 @@
-convertv2v3
-examples
 node_modules
 .DS_Store
-draft-hoffman-xml2rfc
+trash
+example/draft-iab-xml2rfc/
+example/draft-svg-rfc/
+example/out/
+example/rfcv3-preptool/
+example/rngStrip/
+gh-pages/

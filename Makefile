@@ -1,21 +1,38 @@
-DRAFT=draft-hildebrand-html-rfc
-XMLJADE=../xmljade/bin/xmljade
+DRAFT=draft-iab-html-rfc
+BRANCH := $(shell git symbolic-ref --short HEAD)
+DNAME := $(shell xmllint --xpath "string(/rfc/@docName)" $(DRAFT).xml)
 
-%.3.xml: %.xml convertv2v3/convertv2v3
-	perl convertv2v3/convertv2v3  < $< > $@
-
-%.n.xml: %.3.xml number.jade number.js
-	$(XMLJADE) number.jade $< | xmllint --format - > $@
-
-%.3.html: %.n.xml v3tohtml.jade v3.js xml2rfc.css
-	$(XMLJADE) v3tohtml.jade $< | js-beautify --type html -s 2  -w 70 -n -f - > $@
+.PHONY: clean publish
 
 %.txt: %.xml
-	xml2rfc --text --html $<
+	xml2rfc -N --text --html $<
 
-.PRECIOUS: %.3.xml %.n.xml
+%.html: %.xml
+	xml2rfc -N --text --html $<
 
-all: $(DRAFT).3.html $(DRAFT).txt test.3.html
+all: $(DRAFT).txt
 
 clean:
-	$(RM) $(DRAFT).html $(DRAFT).3.html $(DRAFT).3.xml $(DRAFT).n.xml $(DRAFT).txt test.3.html test.n.xml
+	$(RM) $(DRAFT).html $(DRAFT).3.html $(DRAFT).3.xml $(DRAFT).n.xml $(DRAFT).txt
+	@$(MAKE) -C example clean
+
+publish: $(DRAFT).txt
+	git co gh-pages
+	git co $(BRANCH) -- example/xml2rfc.css
+	git co $(BRANCH) -- example/test.x.xml
+	git co $(BRANCH) -- example/test.n.xml
+	git co $(BRANCH) -- example/test.3.xml
+	git co $(BRANCH) -- example/test.3.html
+	git co $(BRANCH) -- $(DRAFT).txt
+	git co $(BRANCH) -- $(DRAFT).xml
+	git co $(BRANCH) -- $(DRAFT).html
+	git ci -m "Publish to GitHub pages"
+	git push origin gh-pages
+	git co $(BRANCH)
+
+submit: $(DRAFT).txt $(DRAFT).xml
+	cp $(DRAFT).txt $(DNAME).txt
+	cp $(DRAFT).xml $(DNAME).xml
+
+watch: start
+	watchman-make -p '*.xml' Makefile -t $(DRAFT).txt -p 'example/**/*.xml' 'example/**/*.svg' -t example
